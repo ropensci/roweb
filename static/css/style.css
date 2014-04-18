@@ -835,7 +835,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   color: white;
 }
 .header-10 .header-background {
-  background: #1b1f23;
+  background: #22313F;
 }
 .header-10 .navbar {
   position: absolute;
@@ -1534,7 +1534,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   font-weight: normal;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #7f8c8d;
-  background: #1abc9c;
+  background: #34495E;
   font-weight: 300;
   -webkit-transition: 0.25s color, 0.25s background-color;
   -moz-transition: 0.25s color, 0.25s background-color;
