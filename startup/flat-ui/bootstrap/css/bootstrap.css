@@ -279,6 +279,8 @@ body {
   color: #333;
   background-color: #fff;
 }
+
+
 input,
 button,
 select,
@@ -3748,6 +3750,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   height: 20px;
   padding: 15px 15px;
   font-size: 18px;
+  font-variant: normal;
   line-height: 20px;
 }
 .navbar-brand:hover,
