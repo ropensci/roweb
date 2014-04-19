@@ -1290,8 +1290,9 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 .projects-3 .projects .info {
   text-align: center;
-  font-size: 16px;
-  color: #95a5a6;
+  font-size: 20px;
+  /*color: #95a5a6;*/
+  color: #FCFCFC;
   margin-top: 43px;
 }
 .projects-3 .projects .info b {
