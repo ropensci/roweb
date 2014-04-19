@@ -1755,3 +1755,130 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
     margin-bottom: 0;
   }
 }
+
+
+
+/**
+ * Blog 3 stylesheet  
+ * */
+.blog-3 {
+  padding-top: 130px;
+  padding-bottom: 130px;
+}
+.blog-3 p {
+  margin: 0;
+}
+.blog-3 p + p {
+  margin-top: 30px;
+}
+.blog-3 h6 {
+  font-size: 20px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  margin: 0 0 25px;
+  text-transform: none;
+}
+.blog-3 .title {
+  margin-bottom: 84px;
+  text-align: center;
+}
+.blog-3 .title h3 {
+  font-size: 35px;
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: -1px;
+}
+.blog-3 .title .submitted {
+  font-size: 16px;
+  color: #bdc3c7;
+  margin-top: 15px;
+}
+.blog-3 .title img {
+  display: block;
+  margin: 0 auto 37px;
+/*  -webkit-transform: rotate(-30deg);
+  -moz-transform: rotate(-30deg);
+  -ms-transform: rotate(-30deg);
+  -o-transform: rotate(-30deg);
+  transform: rotate(-30deg);*/
+}
+.blog-3 .img {
+  height: 380px;
+  margin: 110px 0;
+  background: url('../../startup/common-files/img/Brazil_002.jpg') 50% 80% no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+@media (max-width: 1200px) and (min-width: 768px) {
+  .blog-3 .img {
+    background-position-y: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .blog-3 .img {
+    margin-right: -20px;
+    margin-left: -20px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+.blog-3 .quote {
+  position: relative;
+  margin-bottom: 35px;
+  font-size: 37px;
+  line-height: 50px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #2c3e50;
+  letter-spacing: -1px;
+  font-weight: 300;
+}
+.blog-3 .quote:before {
+  content: url('../../startup/common-files/icons/quote-up.png');
+  position: absolute;
+  top: -17px;
+  left: -40px;
+}
+@media (max-width: 767px) {
+  .blog-3 .quote {
+    margin-left: 40px;
+    font-size: 29px;
+    line-height: 38px;
+  }
+}
+.blog-3 .promo {
+  margin-bottom: 70px;
+}
+.blog-3 .links {
+  margin-top: 76px;
+}
+.blog-3 .links,
+.blog-3 .links * {
+  font-size: 13px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #bdc3c7;
+}
+.blog-3 .links h6 {
+  margin: 0 0 23px;
+  letter-spacing: 0.19em;
+  font-size: 12px;
+  font-weight: 500;
+}
+.blog-3 .links a {
+  color: #1abc9c;
+  font-size: 20px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.5;
+}
+.blog-3 .links a:hover,
+.blog-3 .links a:focus,
+.blog-3 .links a.active {
+  color: #15967d;
+}
