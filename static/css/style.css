@@ -1206,9 +1206,11 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   padding-bottom: 110px;
 }
 .projects-3 h3 {
+  font-family: "proxima-nova";
   margin: 0 0 80px;
-  font-size: 30px;
-  font-weight: 300;
+  font-size: 40px;
+  font-weight: 600;
+  font-variant: normal;
   text-align: center;
 }
 .projects-3 .projects {
