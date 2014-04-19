@@ -1301,10 +1301,12 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 .projects-3 .projects .name {
   /*color: #34495e;*/
-  color: #F7CA18;
+  /*CHANGED THINGS*/
+  color: #22313F;
   font-family: "proxima-nova";
   font-size: 22px;
-  font-weight: 500;
+  font-weight: 600;
+  font-weight: normal;
   margin-bottom: 10px;
   -webkit-transition: color 0.4s;
   -moz-transition: color 0.4s;
