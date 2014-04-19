@@ -1304,9 +1304,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   /*CHANGED THINGS*/
   color: #22313F;
   font-family: "proxima-nova";
-  font-size: 22px;
-  font-weight: 600;
-  font-weight: normal;
+  font-size: 23px;
+  font-weight: 700;
   margin-bottom: 10px;
   -webkit-transition: color 0.4s;
   -moz-transition: color 0.4s;
