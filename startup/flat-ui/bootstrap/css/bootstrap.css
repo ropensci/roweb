@@ -702,7 +702,7 @@ code {
   color: #c7254e;
   white-space: nowrap;
   background-color: #f9f2f4;
-  border-radius: 4px;
+  /*border-radius: 4px;*/
 }
 kbd {
   padding: 2px 4px;
