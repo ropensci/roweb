@@ -3649,6 +3649,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-top-right-radius: 0;
 }
 .navbar {
+  font-family: "proxima-nova";
   position: relative;
   min-height: 50px;
   margin-bottom: 20px;
