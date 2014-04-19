@@ -851,8 +851,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   font-size: 25px;
   font-weight: normal;
   color: #ffffff;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 800;
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 1--;
 }
 .header-10 .navbar .brand img:first-child {
   float: left;
