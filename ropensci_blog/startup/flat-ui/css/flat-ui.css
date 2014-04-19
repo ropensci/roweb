@@ -465,32 +465,32 @@ code,
 kbd,
 pre,
 samp {
-  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-family: "Anonymous Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
 }
 code {
   padding: 2px 6px;
   font-size: 85%;
   color: #c7254e;
   background-color: #f9f2f4;
-  border-radius: 4px;
+  border-radius: 0px;
 }
 kbd {
   padding: 2px 6px;
   font-size: 85%;
   color: #ffffff;
   background-color: #34495e;
-  border-radius: 4px;
-  box-shadow: none;
+  border-radius: 0px;
+  /*box-shadow: none;*/
 }
 pre {
   padding: 8px;
-  margin: 0 0 15px;
-  font-size: 13px;
+  /*margin: 0 0 15px;*/
+  font-size: 18px;
   line-height: 1.72222;
   color: inherit;
   background-color: #ffffff;
-  border: 2px solid #e7e9ec;
-  border-radius: 6px;
+  /*border: 2px solid #e7e9ec;*/
+  /*border-radius: 6px;*/
   white-space: pre;
 }
 .pre-scrollable {
