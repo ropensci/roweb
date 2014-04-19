@@ -1127,8 +1127,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   }
 }
 .content-15 .features p {
-  font-size: 25px;
-  font-weight: normal;
+  font-size: 20px;
+  font-weight: 300;
   color: #7f8c8d;
 }
 .content-15 .features .col-sm-7 img {
