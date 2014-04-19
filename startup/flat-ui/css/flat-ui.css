@@ -199,7 +199,7 @@ you can use the generic selector below, but it's slower:
   border-top-color: #34495e !important;
 }
 body {
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova","Lato", Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 1.72222;
   color: #34495e;
