@@ -1300,8 +1300,10 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   color: #7f8c8d;
 }
 .projects-3 .projects .name {
-  color: #34495e;
-  font-size: 18px;
+  /*color: #34495e;*/
+  color: #F7CA18;
+  font-family: "proxima-nova";
+  font-size: 22px;
   font-weight: 500;
   margin-bottom: 10px;
   -webkit-transition: color 0.4s;
