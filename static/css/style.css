@@ -1352,10 +1352,10 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   position: relative;
 }
 .content-9 h3 {
-  font-size: 30px;
-  font-weight: normal;
+  font-size: 40px;
+  font-weight: 600;
   color: #2c3e50;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin-bottom: 24px;
   font-weight: 300;
 }
