@@ -104,8 +104,11 @@ code,
 kbd,
 pre,
 samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
+  font-family: "anonymous-pro",sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  /*font-family: monospace, monospace;
+  font-size: 1em;*/
 }
 button,
 input,
