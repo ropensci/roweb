@@ -731,7 +731,7 @@ body .navbar-collapse#header-16 {
 body > .navbar-collapse {
   padding: 25px 0;
   overflow: auto;
-  background: #222527;
+  background: #C2C8CB;
   min-height: 100%;
 }
 body > .navbar-collapse::-webkit-scrollbar {
