@@ -1914,6 +1914,13 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   letter-spacing: normal;
   line-height: 1.5;
 }
+
+.blog-3 img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .blog-3 .links a:hover,
 .blog-3 .links a:focus,
 .blog-3 .links a.active {
