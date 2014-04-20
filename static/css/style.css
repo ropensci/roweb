@@ -1806,7 +1806,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   margin-top: 30px;
 }
 .blog-3 h6 {
-  font-size: 50px;
+  font-size: 20px;
   /*CHANGED*/
   font-family: "livory", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
@@ -1818,7 +1818,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   text-align: center;
 }
 .blog-3 .title h3 {
-  font-size: 35px;
+  font-size: 50px;
+  font-family: "livory";
   margin: 0;
   font-weight: 300;
   letter-spacing: -1px;
