@@ -835,7 +835,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   color: white;
 }
 .header-10 .header-background {
-  background: #46484B;
+  background: #BDC3C7;
+  /*navbar background color: CHANGED*/
 }
 .header-10 .navbar {
   position: absolute;
