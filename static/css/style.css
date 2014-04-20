@@ -891,15 +891,15 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .header-10 .navbar .nav > li > a:hover,
 .header-10 .navbar .nav > li > a:focus,
 .header-10 .navbar .nav > li > a.active {
-  color: #bdc3c7;
+  color: #2CC36B;
 }
 .header-10 .navbar .nav > li.active > a {
-  color: #bdc3c7;
+  color: #2CC36B;
 }
 .header-10 .navbar .nav > li.active > a:hover,
 .header-10 .navbar .nav > li.active > a:focus,
 .header-10 .navbar .nav > li.active > a.active {
-  color: #bdc3c7;
+  color: #2CC36B;
 }
 .header-10 .navbar .navbar-form {
   padding: 19px 0 19px 50px;
