@@ -883,7 +883,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   color: #7f8c8d;
   font-weight: 500;
   letter-spacing: 1px;
-  color: #ffffff;
+  /*color: #ffffff;*/
+  color: #2D8BC9;
 }
 .header-10 .navbar .nav > li > a:hover,
 .header-10 .navbar .nav > li > a:focus,
