@@ -472,7 +472,7 @@ code {
   font-size: 110%;
   color: #c7254e;
   background-color: #f9f2f4;
-  border-radius: 4px;
+  /*border-radius: 4px;*/
 }
 kbd {
   padding: 2px 6px;
@@ -489,8 +489,8 @@ pre {
   line-height: 1.72222;
   color: inherit;
   background-color: #ffffff;
-  border: 2px solid #e7e9ec;
-  border-radius: 6px;
+  /*border: 2px solid #e7e9ec;*/
+  /*border-radius: 6px;*/
   white-space: pre;
 }
 .pre-scrollable {
