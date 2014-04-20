@@ -1899,12 +1899,15 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   letter-spacing: 0.2em;
   color: #bdc3c7;
 }
+
 .blog-3 .links h6 {
   margin: 0 0 23px;
   letter-spacing: 0.19em;
   font-size: 12px;
   font-weight: 500;
 }
+
+
 .blog-3 .links a {
   color: #1abc9c;
   font-size: 20px;
