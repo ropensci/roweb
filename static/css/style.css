@@ -1630,6 +1630,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   margin: 0 0 20px;
   font-size: 18px;
   font-weight: normal;
+  font-variant: small-caps;
   color: #34495e;
   font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: none;
