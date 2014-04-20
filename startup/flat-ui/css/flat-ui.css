@@ -681,7 +681,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-family: 'anonymous-pro', Monaco, Menlo, Consolas, "Courier New", monospace;
 }
 code {
   padding: 2px 6px;
@@ -705,8 +705,8 @@ pre {
   line-height: 1.72222;
   color: inherit;
   background-color: #ffffff;
-  border: 2px solid #e7e9ec;
-  border-radius: 6px;
+/*  border: 2px solid #e7e9ec;
+  border-radius: 6px;*/
   white-space: pre;
 }
 .pre-scrollable {
