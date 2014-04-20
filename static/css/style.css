@@ -859,6 +859,9 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   font-weight: 1--;
 }
 
+.header-10 .navbar img {
+  height: 75px;
+}
 
 /*THIS WORKS*/
 .header-10 .navbar .brand img:first-child {
