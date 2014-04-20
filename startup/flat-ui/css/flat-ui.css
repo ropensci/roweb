@@ -465,11 +465,11 @@ code,
 kbd,
 pre,
 samp {
-  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-family: "anonymous-pro", Monaco, Menlo, Consolas, "Courier New", monospace;
 }
 code {
   padding: 2px 6px;
-  font-size: 85%;
+  font-size: 110%;
   color: #c7254e;
   background-color: #f9f2f4;
   border-radius: 4px;
