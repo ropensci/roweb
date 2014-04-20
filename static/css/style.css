@@ -831,7 +831,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   width: 100%;
   padding-top: 0;
   padding-bottom: 0;
-  height: 80px;
+  height: 60px;
+  /*This is navbar height: CHANGED*/
   color: white;
 }
 .header-10 .header-background {
