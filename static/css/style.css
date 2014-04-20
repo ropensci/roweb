@@ -961,10 +961,12 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 .header-10-sub .background {
   background-image: url('../../startup/common-files/img/header/science.png');
-  /*opacity: 20;
+  background-size: cover;
+
+  /* opacity: 20;
   filter: alpha(opacity=2000);
   opacity: .4;
-  filter: alpha(opacity=20);*/
+  filter: alpha(opacity=20); */
 }
 .header-10-sub .hero-unit {
   padding: 0;
