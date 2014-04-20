@@ -1016,6 +1016,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   font-family: "livory" , Helvetica, Arial, sans-serif;
   border: 8px solid #ffffff;
   background-color: #F6F6FF;
+  opacity:0.5;
   display: inline-block;
   margin: 0;
   padding: 30px 40px;
