@@ -853,13 +853,14 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   font-size: 24px;
   font-weight: normal;
   font-variant: normal;
-  color: #ffffff;
-   font-family: 'Flat-UI-Icons', 'proxima-nova';
+  color: #2D8BC9;
+  /*CHANGED*/
+   font-family: 'proxima-nova';
   /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
   font-weight: 1--;
 }
 
-.header-10 .navbar img {
+.navlogo {
   height: 75px;
   overflow: hidden;
 }
