@@ -888,6 +888,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   /*CHANGED: This is the font color for menu;*/
   color: #C0392B;
 }
+
+/*CHANGED: Hover color for menu*/
 .header-10 .navbar .nav > li > a:hover,
 .header-10 .navbar .nav > li > a:focus,
 .header-10 .navbar .nav > li > a.active {
