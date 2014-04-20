@@ -881,9 +881,10 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   font-size: 14px;
   font-weight: normal;
   color: #7f8c8d;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 1px;
   /*color: #ffffff;*/
+  /*CHANGED: This is the font color for menu;*/
   color: #2D8BC9;
 }
 .header-10 .navbar .nav > li > a:hover,
