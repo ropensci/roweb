@@ -648,7 +648,7 @@ section * {
   background: none;
   padding: 0;
   width: 30px;
-  height: 30px;
+  height: 25px;
   background: url("../../startup/common-files/icons/menu-icon@2x.png") 50% no-repeat;
   -webkit-background-size: 17px 12px;
   -moz-background-size: 17px 12px;
