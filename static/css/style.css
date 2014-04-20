@@ -860,6 +860,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   font-weight: 1--;
 }
 
+/*This is the navbar logo: CHANGED*/
 .navlogo img {
   max-height: 75px;
   overflow: hidden;
