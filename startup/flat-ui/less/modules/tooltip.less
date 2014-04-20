@@ -54,3 +54,26 @@
   width: 183px;
   border-radius: @border-radius-large;
 }
+
+// Alternate Color
+// --------------------------------------------------
+
+// Light color skin
+.tooltip-light {
+  &.bottom .tooltip-arrow {
+    border-bottom-color: mix(@brand-primary, white, 9%);
+  }
+  &.left .tooltip-arrow {
+    border-left-color: mix(@brand-primary, white, 9%);
+  }
+  &.right .tooltip-arrow {
+    border-right-color: mix(@brand-primary, white, 9%);
+  }
+  &.top .tooltip-arrow {
+    border-top-color: mix(@brand-primary, white, 9%);
+  }
+  .tooltip-inner {
+    background-color: mix(@brand-primary, white, 9%);
+    color: @brand-primary;
+  }
+}

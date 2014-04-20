@@ -91,7 +91,7 @@
       padding: 0 15px;
     }
   }
-  @media (max-width: @screen-sm-max) {
+  @media (max-width: @screen-xs-max) {
     border-radius: 0 0 @border-radius-large @border-radius-large !important;
   }
   .divider {
@@ -218,6 +218,21 @@
     .divider {
       background-color: mix(@brand-primary, white, 85%);
       border-bottom-color: mix(@brand-primary, white, 85%);
+    }
+  }
+}
+
+//
+// Responsive: Landscape phone
+// --------------------------------------------------
+@media (max-width: @screen-xs-max) {
+  .dropdown-menu {
+    li {
+      a {
+        [class*="icon-"] {
+          display: none;
+        }
+      }
     }
   }
 }

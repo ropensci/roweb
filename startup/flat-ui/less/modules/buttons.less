@@ -145,3 +145,31 @@
 .btn-block {
   white-space: normal;
 }
+
+// SOCIAL BUTTONS
+// ----------------------
+
+[class*="btn-social-"] {
+  .button-size(10px, 15px, @btn-social-font-size-base, @btn-social-line-height-base, @border-radius-base);
+}
+
+// Set the backgrounds
+// -------------------------
+.btn-social-pinterest {
+  .social-button-variant(@btn-default-color, @social-pinterest);
+}
+.btn-social-linkedin {
+  .social-button-variant(@btn-default-color, @social-linkedin)
+}
+.btn-social-stumbleupon {
+  .social-button-variant(@btn-default-color, @social-stumbleupon);
+}
+.btn-social-googleplus {
+  .social-button-variant(@btn-default-color, @social-googleplus);
+}
+.btn-social-facebook {
+  .social-button-variant(@btn-default-color, @social-facebook);
+}
+.btn-social-twitter {
+  .social-button-variant(@btn-default-color, @social-twitter);
+}

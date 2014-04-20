@@ -547,16 +547,6 @@
 // COMPONENT MIXINS
 // --------------------------------------------------
 
-// Color swatches grid
-.calc-color(@first-color, @second-color) {
-  .palette-@{first-color} {
-    background-color: ~"@{@{first-color}}";
-  }
-  .palette-@{second-color} {
-    background-color: ~"@{@{second-color}}";
-  }  
-}
-
 // Dropdown arrow
 // -------------------------
 .dropdown-arrow(@color: @brand-primary; @top: 5px; @left: 15px; @size: 9px) {
@@ -575,6 +565,35 @@
   }
 }
 
+
+// Tables
+// -------------------------
+.table-row-variant(@state; @background) {
+  // Exact selectors below required to override `.table-striped` and prevent
+  // inheritance to nested tables.
+  .table > thead > tr,
+  .table > tbody > tr,
+  .table > tfoot > tr {
+    > td.@{state},
+    > th.@{state},
+    &.@{state} > td,
+    &.@{state} > th {
+      background-color: @background;
+    }
+  }
+
+  // Hover states for `.table-hover`
+  // Note: this is not available for cells or rows within `thead` or `tfoot`.
+  .table-hover > tbody > tr {
+    > td.@{state}:hover,
+    > th.@{state}:hover,
+    &.@{state}:hover > td,
+    &.@{state}:hover > th {
+      background-color: darken(@background, 2%);
+    }
+  }
+}
+
 // Button variants
 // -------------------------
 // Easily pump out default styles, as well as :hover, :focus, :active,
@@ -584,6 +603,7 @@
   background-color: @background;
 
   &:hover,
+  &.hover,
   &:focus,
   &:active,
   &.active,
@@ -603,12 +623,18 @@
   fieldset[disabled] & {
     &,
     &:hover,
+    &.hover,
     &:focus,
     &:active,
     &.active {
       background-color: @background;
       border-color: @background;
     }
+  }
+
+  .badge {
+    color: @background;
+    background-color: @inverse;
   }
 }
 

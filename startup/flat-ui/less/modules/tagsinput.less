@@ -4,7 +4,7 @@
 
 .tagsinput {
   background: white;
-  border: 2px solid @brand-secondary;
+  border: 2px solid mix(@inverse, @brand-primary, 90%);
   border-radius: @border-radius-large;
   height: 100px;
   margin-bottom: 18px;
@@ -14,8 +14,8 @@
 
   .tag {    
     border-radius: @border-radius-base;
-    background-color: @brand-secondary;
-    color: @inverse;
+    background-color: mix(@inverse, @brand-primary, 90%);
+    color: mix(@brand-primary, @inverse, 65%);
     font-size: ceil(@component-font-size-base * 0.933); // ~14px
     cursor: pointer;
     display: inline-block;
@@ -118,4 +118,15 @@
   background: #fbd8db !important;
   color: #90111a !important;
   margin-left: 5px !important;
+}
+
+// Alternate Color
+// --------------------------------------------------
+.tagsinput-primary {
+  border-color: @brand-secondary;
+
+  .tag {
+    background-color: @brand-secondary;
+    color: @inverse;
+  }
 }
