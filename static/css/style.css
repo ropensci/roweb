@@ -975,7 +975,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   margin: 0 0 30px;
   font-size: 45px;
   font-weight: normal;
-  color: #ffffff;
+  /*color: #ffffff;*/
+  color: #D91E18;
   /*CHANGED THINGS*/
   font-family: "livory" ,"Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
