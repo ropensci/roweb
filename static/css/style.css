@@ -1360,17 +1360,17 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   font-weight: 300;
 }
 .content-9 p {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: normal;
   color: #7f8c8d;
   line-height: 30px;
 }
 .content-9 h6 {
   text-transform: none;
-  font-size: 18px;
+  font-size: 23px;
   font-weight: normal;
   color: #34495e;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
 }
 .content-9 .info {
