@@ -207,7 +207,7 @@ th {
   }
   pre,
   blockquote {
-    border: 1px solid #999;
+    /*border: 1px solid #999;*/
 
     page-break-inside: avoid;
   }
@@ -715,9 +715,9 @@ pre {
   color: #333;
   word-break: break-all;
   word-wrap: break-word;
-  background-color: #f5f5f5;
+/*  background-color: #f5f5f5;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 4px;*/
 }
 pre code {
   padding: 0;
