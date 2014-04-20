@@ -1628,10 +1628,11 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 .footer-6 h6 {
   margin: 0 0 20px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: normal;
   font-variant: small-caps;
   color: #34495e;
+  font-weight: 300;
   font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: none;
 }
