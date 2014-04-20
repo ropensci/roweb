@@ -1502,15 +1502,11 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   margin: 0 0 30px;
   font-size: 48px;
   font-weight: normal;
-  /*color: #ffffff;*/
   color: #D91E18;
   font-weight: 600;
   line-height: 56px;
 }
 
-.content-23 .hero-unit h3 {
-  color: #D91E18;
-}
 
 @media (max-width: 480px) {
   .content-23 .hero-unit h1 {
