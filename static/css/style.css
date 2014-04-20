@@ -648,7 +648,7 @@ section * {
   background: none;
   padding: 0;
   width: 30px;
-  height: 25px;
+  height: 30px;
   background: url("../../startup/common-files/icons/menu-icon@2x.png") 50% no-repeat;
   -webkit-background-size: 17px 12px;
   -moz-background-size: 17px 12px;
@@ -1015,7 +1015,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   /*CHANGED THINGS*/
   font-family: "livory" , Helvetica, Arial, sans-serif;
   border: 8px solid #ffffff;
-  background-color: rgba(236, 240, 241,0.4);
+  background-color: rgba(236, 240, 241,0.8);
   display: inline-block;
   margin: 0;
   padding: 30px 40px;
