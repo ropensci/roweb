@@ -89,7 +89,7 @@ h6 {
   font-weight: normal;
 }
 p {
-  font-size: 18.004px;
+  font-size: 20px;
   /* 18px */
   line-height: 1.722169;
   /* 31px */
@@ -1818,7 +1818,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   text-align: center;
 }
 .blog-3 .title h3 {
-  font-size: 50px;
+  font-size: 40px;
   font-family: "livory";
   margin: 0;
   font-weight: 300;
