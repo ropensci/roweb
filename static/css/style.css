@@ -1374,7 +1374,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   font-weight: 500;
 }
 .content-9 .info {
-  font-size: 14px;
+  font-family: "livory";
+  font-size: 20px;
   font-weight: normal;
   color: #7f8c8d;
   margin-top: 40px;
