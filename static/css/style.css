@@ -963,7 +963,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   background: url('../../startup/common-files/img/header/science.png') repeat;
  opacity: 20;
   filter: alpha(opacity=2000);
-  opacity: .9;
+  opacity: .5;
   filter: alpha(opacity=20); 
 }
 .header-10-sub .hero-unit {
