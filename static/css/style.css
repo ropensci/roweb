@@ -1793,6 +1793,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
  * Blog 3 stylesheet  
  * */
 .blog-3 {
+  font-family: "livory";
   padding-top: 130px;
   padding-bottom: 130px;
 }
