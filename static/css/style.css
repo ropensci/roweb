@@ -1008,9 +1008,11 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .header-10-sub .hero-unit.hero-unit-bordered h1 {
   font-size: 46px;
   font-weight: normal;
-  color: #ffffff;
+  /*color: #ffffff;*/
   font-weight: 500;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #22313F;
+  /*CHANGED THINGS*/
+  font-family: "livory" , Helvetica, Arial, sans-serif;
   border: 8px solid white;
   display: inline-block;
   margin: 0;
