@@ -3998,8 +3998,11 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
 /*CHANGED*/
 /*Change this actually*/
 .label {
-  font-size: 72%;
-  font-weight: normal;
+/*  font-size: 72%;
+  font-weight: normal;*/
+  font-size: 12px;
+  font-family: 'proxima-nova';
+  font-variant: small-caps;
   padding: .15em .5em .2em;
 }
 .label[href]:hover,
