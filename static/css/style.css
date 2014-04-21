@@ -2289,5 +2289,9 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   .sidebar-nav .navbar li a {
     padding-top: 12px;
     padding-bottom: 12px;
+    font-family: 'proxima-nova';
+    font-style: normal;
+    font-size: 24px;
+    font-variant: small-caps;
   }
 }
