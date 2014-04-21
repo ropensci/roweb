@@ -1948,6 +1948,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .post table {
   padding-top: 10px;
   padding-bottom: 10px;
+  float: left;
+  clear: both;
 }
 
 
