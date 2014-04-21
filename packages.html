@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="startup/flat-ui/css/flat-ui.css">
         <!-- Using only with Flat-UI (free)-->
         <link rel="stylesheet" href="startup/common-files/css/icon-font.css">
+        <link href="startup/table-assets/css/tablecloth.css" rel="stylesheet">
         <!-- end -->
         <link rel="stylesheet" href="startup/common-files/css/animations.css">
         <link rel="stylesheet" href="static/css/style.css">
@@ -264,7 +265,22 @@
             </div>
         </div>
     </div>
-</footer>          <!-- Placed at the end of the document so the pages load faster -->
+</footer>         
+
+
+    <script src="static/table-assets/js/jquery.tablesorter.min.js"></script>
+    <script src="static/table-assets/js/jquery.tablecloth.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
+        $("table").tablecloth({
+          theme: "paper",
+          striped: true,
+          sortable: true,
+          condensed: true
+        });
+      });
+    </script>
+
             <script src="startup/common-files/js/jquery-1.10.2.min.js"></script>
             <script src="startup/common-files/js/jquery.bxslider.min.js"></script>
             <script src="startup/common-files/js/jquery.scrollTo-1.4.3.1-min.js"></script>
