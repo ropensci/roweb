@@ -2282,6 +2282,9 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   .sidebar-nav .navbar li {
     float: none;
     display: block;
+    font-style: normal;
+    font-size: 24px;
+    font-variant: small-caps;
   }
   .sidebar-nav .navbar li a {
     padding-top: 12px;
