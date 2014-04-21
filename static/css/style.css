@@ -1832,6 +1832,16 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   font-weight: 300;
   letter-spacing: -1px;
 }
+
+.blog-3 .title h4 {
+  font-size: 35px;
+  font-family: "livory";
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: -1px;
+}
+
+
 .blog-3 .title .submitted {
   font-size: 16px;
   color: #2C3E50;
