@@ -6,7 +6,7 @@
 body {
   color: #34495e;
   font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.231;
 }
 input,
@@ -14,7 +14,7 @@ button,
 select,
 textarea {
   font-family: "livory", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 20px;
 }
 a {
   color: #16a085;
