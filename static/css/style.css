@@ -1948,7 +1948,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 
 .post  a {
   color: #2B86C2;
-  font-size: 100%;
+  font-size: 20px;
   font-family: "livory", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   text-transform: none;
@@ -1958,7 +1958,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 
 .post td {
   color: #2C3E50;
-  font-size: 100%;
+  font-size: 20px;
   font-family: "livory", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   text-transform: none;
