@@ -512,7 +512,7 @@ h5,
 .h5,
 h6,
 .h6 {
-  font-family: "livory","Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "livory", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #2c3e50;
 }
 h1 {
@@ -2023,7 +2023,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .contacts-1 h6,
 .contacts-1 .h6 {
   margin: 0 0 12px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "livory","Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   font-size: 18px;
   text-transform: none;
