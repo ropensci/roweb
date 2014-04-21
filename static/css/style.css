@@ -1793,7 +1793,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 
 .footer-6 p {
   font-family: 'proxima-nova';
-  font-size: 10px;
+  font-size: 12px;
+  font-weight: 100;
 }
 
 /**
