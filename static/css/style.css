@@ -1956,11 +1956,20 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   line-height: 1.5;
 }
 
-.post td th {
+.post td {
   color: #2C3E50;
   font-size: 20px;
   font-family: "livory", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.5;
+}
+.post th {
+  color: #2C3E50;
+  font-size: 22px;
+  font-family: "livory", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
   text-transform: none;
   letter-spacing: normal;
   line-height: 1.5;
