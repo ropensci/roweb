@@ -3854,6 +3854,8 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
 .table > tfoot > tr > td {
   padding: 9px 25px;
   line-height: 1.231;
+  /*CHANGED*/
+  font-family: "livory", "Helvetica Neue", Helvetica, Arial, sans-serif;
   border-top: 2px solid #eef0f0;
 }
 .table > thead > tr > th,
