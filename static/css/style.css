@@ -1342,7 +1342,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   transition: color 0.4s;
 }
 .projects-3 .projects .project:hover .photo-wrapper {
-  background-color: #fff;
+  background-color: #ecf0f1;
 }
 .projects-3 .projects .project:hover .photo {
   opacity: 40;
