@@ -1930,3 +1930,10 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .blog-3 .links a.active {
   color: #15967d;
 }
+
+/*This is for a regular page*/
+.post {
+  font-family: "livory";
+  padding-top: 130px;
+  padding-bottom: 130px;
+}
