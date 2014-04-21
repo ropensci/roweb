@@ -842,16 +842,16 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   background: #BDC3C7;
   /*navbar background color: CHANGED*/
 }
-.header-10 .navbar {
+.header-10 .contacts-1 .navbar {
   position: absolute;
   z-index: 2;
   top: 0;
   margin: 0;
 }
-.header-10 .navbar.navbar-fixed-top {
+.header-10 .contacts-1  .navbar.navbar-fixed-top {
   top: 0 !important;
 }
-.header-10 .navbar .brand {
+.header-10 .contacts-1  .navbar .brand {
   padding-top: 25px;
   font-size: 24px;
   font-weight: normal;
@@ -870,17 +870,17 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 
 /*THIS WORKS*/
-.header-10 .navbar .brand img:first-child {
+.header-10 .contacts-1  .navbar .brand img:first-child {
   float: left;
   margin: -10px 15px 0 0;
 }
-.header-10 .navbar .nav > li {
+.header-10  .contacts-1  .navbar .nav > li {
   margin-left: 40px;
 }
-.header-10 .navbar .nav > li:first-child {
+.header-10  .contacts-1  .navbar .nav > li:first-child {
   margin-left: 0;
 }
-.header-10 .navbar .nav > li > a {
+.header-10 .contacts-1  .navbar .nav > li > a {
   padding: 29px 0 27px;
   font-size: 15px;
   font-weight: normal;
@@ -893,33 +893,33 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 
 /*CHANGED: Hover color for menu*/
-.header-10 .navbar .nav > li > a:hover,
-.header-10 .navbar .nav > li > a:focus,
-.header-10 .navbar .nav > li > a.active {
+.header-10 .contacts-1  .navbar .nav > li > a:hover,
+.header-10 .contacts-1  .navbar .nav > li > a:focus,
+.header-10 .contacts-1  .navbar .nav > li > a.active {
   color: #2CC36B;
 }
-.header-10 .navbar .nav > li.active > a {
+.header-10 .contacts-1  .navbar .nav > li.active > a {
   color: #2CC36B;
 }
-.header-10 .navbar .nav > li.active > a:hover,
-.header-10 .navbar .nav > li.active > a:focus,
-.header-10 .navbar .nav > li.active > a.active {
+.header-10 .contacts-1  .navbar .nav > li.active > a:hover,
+.header-10 .contacts-1  .navbar .nav > li.active > a:focus,
+.header-10 .contacts-1  .navbar .nav > li.active > a.active {
   color: #2CC36B;
 }
-.header-10 .navbar .navbar-form {
+.header-10 .contacts-1  .navbar .navbar-form {
   padding: 19px 0 19px 50px;
 }
-.header-10 .navbar .btn {
+.header-10 .contacts-1  .navbar .btn {
   padding-left: 26px;
   padding-right: 26px;
 }
-.header-10 .navbar .btn.btn-success {
+.header-10 .contacts-1  .navbar .btn.btn-success {
   font-size: 15px;
   font-weight: normal;
   color: #ffffff;
   font-weight: 500;
 }
-.header-10 .navbar .navbar-toggle {
+.header-10 .contacts-1  .navbar .navbar-toggle {
   margin-top: 30px;
 }
 .header-10-sub {
