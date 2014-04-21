@@ -2082,7 +2082,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 .contacts-1 .phone {
   font-size: 13px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "livory","Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   letter-spacing: 2px;
   line-height: 1.2;
@@ -2093,7 +2093,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   font-size: 46px;
   letter-spacing: normal;
   white-space: nowrap;
-  color: #1abc9c;
+  color: #2C89C7;
 }
 @media (max-width: 992px) and (min-width: 768px) {
   .contacts-1 .phone big {
