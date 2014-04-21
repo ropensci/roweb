@@ -2117,3 +2117,150 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   }
 }
 
+/*The About Page*/
+
+/**
+ * Project 3 stylesheet  
+ * */
+.crew-3 {
+  padding-top: 110px;
+  padding-bottom: 110px;
+}
+.crew-3 h3 {
+  font-family: "proxima-nova";
+  margin: 0 0 80px;
+  font-size: 40px;
+  font-weight: 600;
+  font-variant: normal;
+  text-align: center;
+}
+.crew-3 .projects {
+  display: table;
+  width: 100%;
+}
+.crew-3 .projects + .projects {
+  margin-top: 85px;
+}
+.crew-3 .projects .project-wrapper {
+  display: table-cell;
+}
+.crew-3 .projects .project-wrapper:first-child + .project-wrapper {
+  text-align: center;
+}
+.crew-3 .projects .project-wrapper:first-child + .project-wrapper + .project-wrapper {
+  text-align: right;
+}
+.crew-3 .projects .project {
+  width: 220px;
+  display: inline-block;
+  vertical-align: top;
+}
+.crew-3 .projects .photo-wrapper {
+  width: 220px;
+  height: 220px;
+  position: relative;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #ecf0f1;
+  -webkit-transition: background-color 0.4s;
+  -moz-transition: background-color 0.4s;
+  -o-transition: background-color 0.4s;
+  transition: background-color 0.4s;
+}
+.crew-3 .projects .photo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: 50% 50% no-repeat;
+  opacity: 100;
+  filter: alpha(opacity=10000);
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transition: opacity 0.4s;
+  -moz-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+}
+.crew-3 .projects .overlay {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  text-align: center;
+  color: #fff;
+  line-height: 220px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: opacity 0.4s;
+  -moz-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+}
+.crew-3 .projects .overlay [class*="fui-"] {
+  font-size: 46px;
+}
+.crew-3 .projects .info {
+  text-align: center;
+  font-family: "proxima-nova";
+  font-size: 20px;
+  /*color: #95a5a6;*/
+  color: #FCFCFC;
+  margin-top: 43px;
+}
+.crew-3 .projects .info b {
+  color: #7f8c8d;
+}
+.crew-3 .projects .name {
+  /*color: #34495e;*/
+  /*CHANGED THINGS*/
+  color: #22313F;
+  font-family: "proxima-nova";
+  font-size: 23px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  -webkit-transition: color 0.4s;
+  -moz-transition: color 0.4s;
+  -o-transition: color 0.4s;
+  transition: color 0.4s;
+}
+.crew-3 .projects .project:hover .photo-wrapper {
+  background-color: #1abc9c;
+}
+.crew-3 .projects .project:hover .photo {
+  opacity: 40;
+  filter: alpha(opacity=4000);
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+.crew-3 .projects .project:hover .overlay {
+  opacity: 100;
+  filter: alpha(opacity=10000);
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.crew-3 .projects .project:hover .name {
+  color: #1abc9c;
+}
+@media (max-width: 767px) {
+  .crew-3 .projects {
+    display: block;
+    width: auto;
+  }
+  .crew-3 .projects .project-wrapper {
+    display: block;
+    text-align: center!important;
+  }
+  .crew-3 .projects .project-wrapper + .project-wrapper {
+    margin-top: 85px;
+  }
+}
