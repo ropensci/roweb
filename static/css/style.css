@@ -751,9 +751,10 @@ body > .navbar-collapse .nav > li {
 body > .navbar-collapse .nav > li > a {
   display: block;
   padding: 12px 35px;
+  /*CHANGED*/
  /* border-bottom: 1px solid #24292d;*/
-  font-size: 13px;
-  font-weight: normal;
+  font-size: 15px;
+  font-weight: 500;
   letter-spacing: 1px;
   color: #5b5e61;
   text-transform: uppercase;
