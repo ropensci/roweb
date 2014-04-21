@@ -2271,6 +2271,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
     padding: 0;
     max-height: none;
     font-family: 'proxima-nova';
+    font-style: normal;
+    font-size: 20px;
     font-variant: small-caps;
   }
   .sidebar-nav .navbar ul {
