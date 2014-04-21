@@ -3994,6 +3994,9 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
 .table-hover > tbody > tr.danger:hover > th {
   background-color: #fce7e4;
 }
+
+/*CHANGED*/
+/*Change this actually*/
 .label {
   font-size: 72%;
   font-weight: normal;
