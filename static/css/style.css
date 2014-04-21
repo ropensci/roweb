@@ -1936,14 +1936,14 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 /*This is for a regular page*/
 .post {
   font-family: "livory";
-  padding-top: 130px;
-  padding-bottom: 130px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .post h1 {
   font-family: "livory";
-  padding-top: 130px;
-  padding-bottom: 130px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 
