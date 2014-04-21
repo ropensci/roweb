@@ -1036,8 +1036,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 @media (max-width: 480px) {
   .header-10-sub .hero-unit.hero-unit-bordered h1 {
-    font-size: 22px;
-    font-weight: normal;
+    font-size: 25px;
+    font-weight: 500;
     color: #22313F;
     font-family: "livory" , Helvetica, Arial, sans-serif;
     font-weight: 500;
