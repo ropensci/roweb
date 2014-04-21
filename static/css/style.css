@@ -1305,7 +1305,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   left: 0;
   top: 0;
   text-align: center;
-  color: #fff;
+  color: #1ABC9C;
   line-height: 220px;
   opacity: 0;
   filter: alpha(opacity=0);
@@ -1358,11 +1358,11 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 .projects-3 .projects .project:hover .name {
   /*color: #17A68B;*/
-  color: #ECF0F1;
+  color: #7F8C8D;
 }
 
 .projects-3 a {
-color: #ECF0F1;
+color: #7F8C8D;
 }
 
 @media (max-width: 767px) {
