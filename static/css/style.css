@@ -1939,6 +1939,12 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   padding-bottom: 130px;
 }
 
+.post h1 {
+  font-family: "livory";
+  padding-top: 130px;
+  padding-bottom: 130px;
+}
+
 
 .post  a {
   color: #2B86C2;
@@ -1950,7 +1956,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   line-height: 1.5;
 }
 
-.post td {
+.post td th {
   color: #2C3E50;
   font-size: 20px;
   font-family: "livory", "Helvetica Neue", Helvetica, Arial, sans-serif;
