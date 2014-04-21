@@ -161,7 +161,8 @@ a.text-primary:focus {
   color: #15967d;
 }
 .text-success {
-  color: #2ecc71;
+  color: #16A085;
+  /*CHANGED*/
 }
 a.text-success:hover,
 a.text-success:focus {
