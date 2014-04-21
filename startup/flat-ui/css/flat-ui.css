@@ -4032,6 +4032,7 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
   background-color: #a4adb7;
 }
 .label-success {
+  /*CHANGED*/
   background-color: #19B698;
   color: #ffffff;
 }
