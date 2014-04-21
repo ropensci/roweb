@@ -1002,7 +1002,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   font-size: 25px;
   font-weight: normal;
   color: #bdc3c7;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "livory" , "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   line-height: 37.5px;
 }
@@ -1011,7 +1011,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
     font-size: 36px;
     font-weight: normal;
     color: #ffffff;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "livory" , "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 300;
   }
   .header-10-sub .hero-unit p {
