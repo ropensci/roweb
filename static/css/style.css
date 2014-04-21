@@ -2008,7 +2008,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .contacts-1 h6,
 .contacts-1 .h6 {
   margin: 0 0 12px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "livory", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   font-size: 18px;
   text-transform: none;
@@ -2027,7 +2027,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   font-weight: 700;
 }
 .contacts-1 a {
-  color: #1abc9c;
+  /*color: #1abc9c;*/
+  color: #2AB395;
 }
 .contacts-1 a:hover,
 .contacts-1 a:focus,
