@@ -1358,11 +1358,11 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 .projects-3 .projects .project:hover .name {
   /*color: #17A68B;*/
-  color: #ecf0f1;
+  color: #1ABC9C;
 }
 
 .projects-3 a {
-color: #ecf0f1;
+color: #1ABC9C;
 }
 
 @media (max-width: 767px) {
