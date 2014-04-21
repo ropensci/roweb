@@ -1948,7 +1948,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 
 .post  a {
   color: #2B86C2;
-  font-size: 20px;
+  font-size: 100%;
   font-family: "livory", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   text-transform: none;
@@ -1958,7 +1958,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 
 .post td {
   color: #2C3E50;
-  font-size: 20px;
+  font-size: 100%;
   font-family: "livory", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   text-transform: none;
@@ -1967,12 +1967,11 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 .post th {
   color: #2C3E50;
-  font-size: 22px;
+  font-size: 120%;
   font-family: "livory", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   text-transform: none;
   letter-spacing: normal;
-  line-height: 1.5;
 }
 
 .post p {
