@@ -2008,7 +2008,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .contacts-1 h6,
 .contacts-1 .h6 {
   margin: 0 0 12px;
-  font-family: "livory", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   font-size: 18px;
   text-transform: none;
@@ -2027,8 +2027,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   font-weight: 700;
 }
 .contacts-1 a {
-  /*color: #1abc9c;*/
-  color: #2AB395;
+  color: #1abc9c;
 }
 .contacts-1 a:hover,
 .contacts-1 a:focus,
@@ -2117,163 +2116,3 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   }
 }
 
-.contacts-1 {
-  z-index: 100;
-  width: 100%;
-  padding-top: 0;
-  padding-bottom: 0;
-  height: 60px;
-  /*This is navbar height: CHANGED*/
-  color: white;
-}
-.contacts-1 .header-background {
-  background: #BDC3C7;
-  /*navbar background color: CHANGED*/
-}
-.contacts-1 .navbar {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  margin: 0;
-}
-.contacts-1 .navbar.navbar-fixed-top {
-  top: 0 !important;
-}
-.contacts-1 .navbar .brand {
-  padding-top: 25px;
-  font-size: 24px;
-  font-weight: normal;
-  font-variant: normal;
-  color: #2D8BC9;
-  /*CHANGED*/
-   font-family: 'proxima-nova';
-  /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-  font-weight: 1--;
-}
-
-/*This is the navbar logo: CHANGED*/
-.navlogo img {
-  max-height: 75px;
-  overflow: hidden;
-}
-
-/*THIS WORKS*/
-.contacts-1 .navbar .brand img:first-child {
-  float: left;
-  margin: -10px 15px 0 0;
-}
-.contacts-1 .navbar .nav > li {
-  margin-left: 40px;
-}
-.contacts-1 .navbar .nav > li:first-child {
-  margin-left: 0;
-}
-.contacts-1 .navbar .nav > li > a {
-  padding: 29px 0 27px;
-  font-size: 15px;
-  font-weight: normal;
-  color: #7f8c8d;
-  font-weight: 500;
-  letter-spacing: 1px;
-  /*color: #ffffff;*/
-  /*CHANGED: This is the font color for menu;*/
-  color: #364C61;
-}
-
-/*CHANGED: Hover color for menu*/
-.contacts-1 .navbar .nav > li > a:hover,
-.contacts-1 .navbar .nav > li > a:focus,
-.contacts-1 .navbar .nav > li > a.active {
-  color: #2CC36B;
-}
-.contacts-1 .navbar .nav > li.active > a {
-  color: #2CC36B;
-}
-.contacts-1 .navbar .nav > li.active > a:hover,
-.contacts-1 .navbar .nav > li.active > a:focus,
-.contacts-1 .navbar .nav > li.active > a.active {
-  color: #2CC36B;
-}
-.contacts-1 .navbar .navbar-form {
-  padding: 19px 0 19px 50px;
-}
-.contacts-1 .navbar .btn {
-  padding-left: 26px;
-  padding-right: 26px;
-}
-.contacts-1 .navbar .btn.btn-success {
-  font-size: 15px;
-  font-weight: normal;
-  color: #ffffff;
-  font-weight: 500;
-}
-.contacts-1 .navbar .navbar-toggle {
-  margin-top: 30px;
-}
-.contacts-1-sub {
-  position: relative;
-  z-index: 50;
-  height: 800px;
-  background-color: #1b1f23;
-  color: white;
-  text-align: center;
-}
-.contacts-1-sub.v-center,
-.contacts-1-sub .v-center {
-  display: table;
-  width: 100%;
-}
-.contacts-1-sub.v-center > div,
-.contacts-1-sub .v-center > div {
-  display: table-cell;
-  vertical-align: middle;
-  margin-top: 0;
-  margin-bottom: 0;
-  float: none;
-}
-@media (min-width: 768px) {
-  .contacts-1-sub.v-center.row:before,
-  .contacts-1-sub .v-center.row:before,
-  .contacts-1-sub.v-center.row:after,
-  .contacts-1-sub .v-center.row:after {
-    display: none;
-  }
-}
-@media (max-width: 767px) {
-  .contacts-1-sub.v-center,
-  .contacts-1-sub .v-center {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  .contacts-1-sub.v-center.row,
-  .contacts-1-sub .v-center.row {
-    display: block;
-    width: auto;
-  }
-  .contacts-1-sub.v-center.row:before,
-  .contacts-1-sub .v-center.row:before,
-  .contacts-1-sub.v-center.row:after,
-  .contacts-1-sub .v-center.row:after {
-    display: none;
-  }
-  .contacts-1-sub.v-center.row > *,
-  .contacts-1-sub .v-center.row > * {
-    display: block;
-    vertical-align: baseline;
-  }
-}
-.contacts-1-sub .background {
-  background: url('../../startup/common-files/img/header/subway-lines.png') repeat;
- opacity: 20;
-  filter: alpha(opacity=2000);
-  opacity: .9;
-  filter: alpha(opacity=20); 
-}
-.contacts-1-sub .hero-unit {
-  padding: 0;
-  margin: 0;
-  background-color: transparent;
-}
