@@ -1359,6 +1359,11 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .projects-3 .projects .project:hover .name {
   color: #E74C3C;
 }
+
+.projects-3 a {
+color: #E74C3C;
+}
+
 @media (max-width: 767px) {
   .projects-3 .projects {
     display: block;
