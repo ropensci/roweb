@@ -1949,7 +1949,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   line-height: 1.5;
 }
 
-.post  p {
+.post  p td tr {
   color: #2C3E50;
   font-size: 20px;
   font-family: "livory", "Helvetica Neue", Helvetica, Arial, sans-serif;
