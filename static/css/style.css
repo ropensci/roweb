@@ -1811,6 +1811,17 @@ color: #1ABC9C;
   padding-top: 130px;
   padding-bottom: 130px;
 }
+
+full_fig {
+  width: auto\9;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+
+
 .blog-3 p {
  font-family: "livory";
  color: #2C3E50;
