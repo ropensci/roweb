@@ -2147,6 +2147,11 @@ color: #1ABC9C;
 /**
  * Project 3 stylesheet  
  * */
+
+ .crew-3 p {
+  margin: 0 0 20px;
+}
+
 .crew-3 {
   padding-top: 40px;
   padding-bottom: 40px;
