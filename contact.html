@@ -60,15 +60,23 @@
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <form>
-                    <label class="h6">Name</label>
-                    <input type="text" class="form-control">
-                    <label class="h6">E-mail</label>
-                    <input type="text" class="form-control">
-                    <label class="h6">Message</label>
-                    <textarea rows="7" class="form-control"></textarea>
-                    <button type="submit" class="btn btn-primary"><span class="fui-mail"></span></button>
-                </form>
+    <div id="wufoo-z7x3x5">
+        Fill out my <a href="http://ropensci.wufoo.com/forms/z7x3x5">online form</a>.
+        </div>
+        <script type="text/javascript">var z7x3x5;(function(d, t) {
+        var s = d.createElement(t), options = {
+        'userName':'ropensci',
+        'formHash':'z7x3x5',
+        'autoResize':true,
+        'height':'577',
+        'async':true,
+        'header':'show'};
+        s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'wufoo.com/scripts/embed/form.js';
+        s.onload = s.onreadystatechange = function() {
+        var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+        try { z7x3x5 = new WufooForm();z7x3x5.initialize(options);z7x3x5.display(); } catch (e) {}};
+        var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+        })(document, 'script');</script>
             </div>
 
             <div class="col-sm-4 col-sm-offset-1">
