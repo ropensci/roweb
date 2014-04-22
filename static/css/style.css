@@ -2157,7 +2157,7 @@ color: #1ABC9C;
   padding-bottom: 40px;
 }
 .crew-3 h3 {
-  font-family: "livory";
+  font-family: "proxima-nova";
   margin: 0 0 80px;
   font-size: 40px;
   font-weight: 600;
@@ -2248,7 +2248,7 @@ color: #1ABC9C;
 }
 
 .crew-3 li {
-    font-family: "proxima-nova";
+    font-family: "livory";
   font-size: inherit;
   color: #2C3E50;
   line-height: 1.5em;
