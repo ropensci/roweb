@@ -2010,6 +2010,10 @@ color: #1ABC9C;
 
 
 .wufoo .info{display:none}
+
+.wufoo .info {
+    font-family: "livory","Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 /**
  * Copntact 1 stylesheet  
  * */
