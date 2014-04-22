@@ -838,6 +838,11 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   /*This is navbar height: CHANGED*/
   color: white;
 }
+
+.header-10 h2 h3 {
+   font-family: 'livory';  
+}
+
 .header-10 .header-background {
   background: #BDC3C7;
   /*navbar background color: CHANGED*/
