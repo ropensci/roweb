@@ -2171,16 +2171,16 @@ color: #1ABC9C;
  * */
 
  .crew-3 p {
-  padding-bottom: 25px;
+  padding-bottom: 10px;
 }
 
 .crew-3 {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 .crew-3 h3 {
   font-family: "proxima-nova";
-  margin: 0 0 80px;
+  margin: 0 0 25px;
   font-size: 40px;
   font-weight: 600;
   font-variant: normal;
