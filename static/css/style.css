@@ -2008,59 +2008,61 @@ color: #1ABC9C;
 
 /*end regular page*/
 
+
+
 /**
  * Copntact 1 stylesheet  
  * */
-.contacts-1 {
+.wufoo .contacts-1 {
   padding-top: 110px;
   padding-bottom: 110px;
   color: #2C3E50;
 }
-.contacts-1 h3 {
+.wufoo .contacts-1 h3 {
   font-size: 30px;
   margin: 0 0 60px;
   font-weight: 300;
 }
 @media (max-width: 480px) {
-  .contacts-1 h3 {
+  .wufoo .contacts-1 h3 {
     font-size: 26px;
     margin: 0 0 30px;
   }
 }
-.contacts-1 h6,
-.contacts-1 .h6 {
+.wufoo .contacts-1 h6,
+.wufoo .contacts-1 .h6 {
   margin: 0 0 12px;
   font-family: "livory","Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   font-size: 18px;
   text-transform: none;
 }
-.contacts-1 label.h6 {
+.wufoo .contacts-1 label.h6 {
   margin-bottom: 18px;
 }
-.contacts-1 label.h6 {
+.wufoo .contacts-1 label.h6 {
   margin-bottom: 18px;
 }
-.contacts-1 p {
+.wufoo .contacts-1 p {
   font-size: 16px;
   line-height: 1.6;
 }
-.contacts-1 b {
+.wufoo .contacts-1 b {
   font-weight: 700;
 }
-.contacts-1 a {
+.wufoo .contacts-1 a {
   color: #E74C3C;
 }
-.contacts-1 a:hover,
-.contacts-1 a:focus,
-.contacts-1 a.active {
+.wufoo .contacts-1 a:hover,
+.wufoo .contacts-1 a:focus,
+.wufoo .contacts-1 a.active {
   color: #15967d;
 }
-.contacts-1 form {
+.wufoo .contacts-1 form {
   margin: 0;
 }
-.contacts-1 form input,
-.contacts-1 form textarea {
+.wufoo .contacts-1 form input,
+.wufoo .contacts-1 form textarea {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -2073,35 +2075,35 @@ color: #1ABC9C;
   font-size: 17px;
   line-height: 22px;
 }
-.contacts-1 form input:focus,
-.contacts-1 form textarea:focus {
+.wufoo .contacts-1 form input:focus,
+.wufoo .contacts-1 form textarea:focus {
   border-color: #1abc9c;
 }
-.contacts-1 form input {
+.wufoo .contacts-1 form input {
   height: 45px;
 }
-.contacts-1 form label {
+.wufoo .contacts-1 form label {
   margin-bottom: 18px;
 }
-.contacts-1 form .btn {
+.wufoo .contacts-1 form .btn {
   margin-top: 7px;
   min-width: 150px;
 }
-.contacts-1 form .btn [class*="fui-"] {
+.wufoo .contacts-1 form .btn [class*="fui-"] {
   font-size: 24px;
 }
-.contacts-1 form .btn.btn-primary:hover,
-.contacts-1 form .btn.btn-primary:focus {
+.wufoo .contacts-1 form .btn.btn-primary:hover,
+.wufoo .contacts-1 form .btn.btn-primary:focus {
   background-color: #e74c3c;
 }
-.contacts-1 form .btn.btn-primary:active,
-.contacts-1 form .btn.btn-primary.active {
+.wufoo .contacts-1 form .btn.btn-primary:active,
+.wufoo .contacts-1 form .btn.btn-primary.active {
   background-color: #c44133;
 }
-.contacts-1 .additional {
+.wufoo .contacts-1 .additional {
   margin-bottom: 45px;
 }
-.contacts-1 .phone {
+.wufoo .contacts-1 .phone {
   font-size: 13px;
   font-family: "livory","Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
@@ -2109,7 +2111,7 @@ color: #1ABC9C;
   line-height: 1.2;
   color: #95a5a6;
 }
-.contacts-1 .phone big {
+.wufoo .contacts-1 .phone big {
   display: block;
   font-size: 46px;
   letter-spacing: normal;
@@ -2117,23 +2119,23 @@ color: #1ABC9C;
   color: #2C89C7;
 }
 @media (max-width: 992px) and (min-width: 768px) {
-  .contacts-1 .phone big {
+  .wufoo .contacts-1 .phone big {
     font-size: 32px;
   }
 }
 @media (max-width: 767px) {
-  .contacts-1 > .container > .row > * + * {
+  .wufoo .contacts-1 > .container > .row > * + * {
     margin-top: 55px;
   }
 }
 @media (max-width: 480px) {
-  .contacts-1 form {
+  .wufoo .contacts-1 form {
     margin-bottom: 80px;
   }
-  .contacts-1 form label {
+  .wufoo .contacts-1 form label {
     margin-bottom: 0px;
   }
-  .contacts-1 .phone big {
+  .wufoo .contacts-1 .phone big {
     font-size: 40px;
   }
 }
