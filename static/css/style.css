@@ -2246,6 +2246,14 @@ color: #1ABC9C;
   color: #34495E;
   margin-top: 43px;
 }
+
+.crew-3 li {
+    font-family: "proxima-nova";
+  font-size: inherit;
+  color: #2C3E50;
+  line-height: 1.5em;
+}
+
 .crew-3 .projects .info b {
   color: #7f8c8d;
 }
