@@ -1812,13 +1812,15 @@ color: #1ABC9C;
   padding-bottom: 130px;
 }
 
-.blog-3 full_fig {
+.full_fig {
   width: auto\9;
   height: auto;
   max-width: 100%;
   vertical-align: middle;
   border: 0;
   -ms-interpolation-mode: bicubic;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 
