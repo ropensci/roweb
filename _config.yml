@@ -9,4 +9,33 @@ deploy: false
 
 exclude: ['*.Rmd']
 
-
+packages: 
+- rbefdata
+- bhl
+- citeulike
+- dryad
+- flybase
+- neotoma
+- npn
+- rAltmetric
+- ecoengine
+- rdatacite
+- rEBI
+- reml
+- renterz
+- rfigshare
+- rfishbase
+- rfisheries
+- rgbif
+- rhindawi
+- rImpactStory
+- ritis
+- RMendeley
+- ropensnp
+- rpensoft
+- rplos
+- rspringer
+- rvertnet
+- taxize
+- treebase
+- ecoengine
