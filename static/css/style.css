@@ -1984,6 +1984,7 @@ color: #1ABC9C;
 }
 
 .blog-3 li {
+  color: inherit;
   line-height: 125%;
 }
 
