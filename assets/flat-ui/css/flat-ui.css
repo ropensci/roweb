@@ -4043,9 +4043,9 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
 }
 .label-success {
   /*CHANGED*/
-  font-size: 12px;
+/*  font-size: 12px;
   font-family: 'proxima-nova';
-  font-variant: small-caps;
+  font-variant: small-caps;*/
   background-color: #19B698;
   color: #ffffff;
 }
