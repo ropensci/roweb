@@ -1,0 +1,133 @@
+{% include header.html %}
+
+<!-- ==================== Header ==================== -->
+
+<header class="jumbotron subhead" id="overview">
+  <h1>Package_Name</h1>
+  <p class="lead">Programmatic interface to the Package_Name</p>
+  <div class="subnav">
+    <ul class="nav nav-pills">
+      <li><a href="#installing">Installing</a></li>
+      <li><a href="#quickstart">Quick start guide</a></li>
+      <li><a href="#tutorials">Tutorials</a></li>
+      <li><a href="#usecases">Use-cases</a></li>
+      <li><a href="#support">Support and Bugs</a></li>
+      
+    </ul>
+  </div>
+</header>
+<div class="alert">
+  <button class="close" data-dismiss="alert">×</button>
+  <strong>Heads up!</strong> We're in the middle of a site redesign/upgrade so you may find some incomplete pages. 
+</div>
+<!-- ==================== Installing the Package ==================== -->
+
+
+<section id="installing">
+  <div class="row">
+      <div class="page-header span12">
+    <h1>Installing <small>Stable and development versions available</small></h1>
+  </div>
+    <div class="span12">
+          <ul id="myTab" class="nav nav-tabs">
+            <li class="active"><a href="#StableVersion" data-toggle="tab">Stable Version</a></li>
+            <li><a href="#dev" data-toggle="tab">Development Version</a></li>
+            <li><a href="#keys" data-toggle="tab"><i class="ss-icon">&#x1F511;</i> API Keys</a></li>
+          </ul>
+          <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active" id="StableVersion">
+              <div class="row"><div class="span12">
+              <div class="span8"><pre class="prettyprint"><code><span class="functioncall">install.packages</span><span class="keyword">(</span><span class="string">"Package_Name"</span><span class="keyword">)</span></code></pre></div>
+              <div class="span3">After installing the package, please also be sure to obtain <a href="rmendeley.html#keys">API keys</a> associated with your login and store them in your rprofile.</div></div>
+               </div>
+            </div>
+            <div class="tab-pane fade" id="dev">
+                 <div class="row"><div class="span12">
+              <div class="span8"><pre class="prettyprint"><code>library(devtools)<br>install_github("Package_Name", "ropensci")
+    </code></pre></div>
+              <div class="span3"><p>The dev version of Package_Name has newer functions currently in development. Some of these may not be stable.</p>
+             
+              <a class="btn" href="https://github.com/ropensci/Package_Name/tree/dev"> <i class="ss-social-circle ss-icon">&#xF670;</i> View this project on github</a>    
+           
+
+            </div></div>
+               </div>
+            </div>
+
+                 <div class="tab-pane fade" id="keys">
+              <p>You can obtain Package_Name API keys <a href="http://url/to/API_key/">here</a>. Once you retrieve your account specific keys, save them in your <code>.rprofile</code> like so: </p>
+<pre class="prettyprint"><code>options(Package_NameKey = "YOUR_KEY")
+options(Package_NameSecret = "YOUR_SECRET")</code></pre> <br>
+Read more about <a href="api_keys.html">API keys and R</a>.
+            </div>
+    </div>         
+</section>
+<!-- ==================== Quick start guide ==================== -->
+
+<section id="quickstart">
+  <div class="page-header">
+    <h1>Quick start guide<small></small></h1>
+  </div>
+
+  <div class="row">
+    <div class="span1"></div>
+    <div class="span12">
+   <pre class="prettyprint">
+<code><span class="functioncall">library</span><span class="keyword">(</span><span class="string">"Package_Name"</span><span class="keyword">)</span></code>
+   </pre>
+
+   <br>
+     <p>For a full list of functions and a web manual, visit the <a href="http://ropensci.github.com/Package_Name/">package repository</a> on GitHub.</p>
+</div>   </div> 
+
+<!-- ==================== Tutorial ==================== -->
+
+<section id="tutorials">
+ <div class="page-header">
+    <h1>Tutorials <small></small></h1>
+  </div>
+   <i class="ss-icon">&#x1F50E;</i> Searching metadata in Package_Name<br>
+  <i class="ss-icon">&#xEB00;</i> Downloading data from Package_Name<br>
+  <i class="ss-icon">&#x1F4CA;</i> Visualizing search results from Package_Name.<br>
+  <br>
+  <a href="../tutorials/index.html#Package_Name" class="btn">See more tutorials...</a>
+
+ 
+</section>
+
+<!-- ==================== End Tutorial ==================== -->
+
+<!-- ==================== Begin use-cases ==================== -->
+
+<section id="usecases">
+ <div class="page-header">
+    <h1>Use cases & resources<small></small></h1>
+  </div>
+  <div class="row">
+  <div class="span12">
+  <p>If you have ideas for use-cases or have written about this package anywhere, please drop us a line.</p>
+   </div>
+   </div> 
+</section>
+<!-- ==================== End use-cases ==================== -->
+
+
+<!-- ==================== Begin Support ==================== -->
+
+<section id="support">
+ <div class="page-header">
+    <h1>Support <small></small></h1>
+  </div>
+  <div class="row">
+  <div class="span12">
+  <p>If you have issues or bug reports with any of the functions in the package, <a href="https://github.com/ropensci/Package_Name/issues/new" target="blank" class="btn btn-danger"><i class="icon-white icon-wrench"></i> Submit an issue <i class="ss-icon ss-navigateright"></i></a> </p>
+
+   </div>
+   </div> 
+  </section>
+
+  <!-- ==================== End Support ==================== -->
+
+
+
+  {% include footer.html %}
