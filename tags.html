@@ -1,0 +1,33 @@
+---
+layout: page
+title: Tags
+header: Posts By Tag
+date: 2012-09-28
+
+---
+
+<div class="row">
+  <div class="span12">
+    <div class="sidebar">
+      <div class="row">
+        <div class="span5">
+        {% for tag in site.tags %}
+          <h2 id="{{ tag[0] }}">{{ tag[0] }}</h2>
+          <ul>
+            {% assign pages_list = tag[1] %}
+            {% include JB/pages_list %}
+          </ul>
+          {% endfor %}
+        </div>
+        <div class="span3">
+          <div class='cloud'>
+            {% tag_cloud %}
+          </div>
+          <br/>
+          <br/>
+          <emph>Posts under the R tag are also featured on <a href="http://www.r-bloggers.com">R-bloggers.com</a></emph>
+        </div> <!-- end span3-->
+      </div> <!-- end row-->
+    </div> <!-- end sidebar-->
+  </div> <!-- end row-->
+</div> <!-- end span12-->
