@@ -102,7 +102,7 @@
 .header-maps-sub {
   position: relative;
   z-index: 50;
-  height: 1024px;
+  height: 900px;
   background-color: #1b1f23;
   color: white;
   text-align: center;
@@ -252,7 +252,8 @@
   font-weight: normal;
   color: #7f8c8d;
   color: #ffffff;
-  background: #121518;
+  /*background: #121518;*/
+  background: #bfc7cf;
   opacity: 80;
   filter: alpha(opacity=8000);
   opacity: 0.8;
