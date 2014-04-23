@@ -2371,6 +2371,9 @@ color: #1ABC9C;
 #sidebar li {
   border:0 #f2f2f2 solid;
   border-bottom-width:1px;
+  font-family: 'proxima-nova';
+  font-size: 90%;
+  font-variant: small-caps;
 }
 
 /* collapsed sidebar styles */
@@ -2405,6 +2408,8 @@ color: #1ABC9C;
   #sidebar {
     background-color:#3b3b3b;
     padding-top:0;
+    font-family: 'proxima-nova';
+    font-variant: small-caps;
   }
   #sidebar .nav>li {
     color: #ddd;
