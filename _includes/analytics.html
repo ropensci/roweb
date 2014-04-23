@@ -1,0 +1,37 @@
+ <!-- Gauges Analytics -->
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '500ebcf4613f5d79c700001c');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+<!-- Google Analytics and event tracker -->
+<script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-462421-6']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+</script>
+
+<script type="text/javascript">
+function recordOutboundLink(link, category, action) {
+  try {
+    var pageTracker=_gat._getTracker("UA-462421-6");
+    pageTracker._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100)
+  }catch(err){}
+}
+</script>
+
