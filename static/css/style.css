@@ -2332,34 +2332,6 @@ color: #1ABC9C;
 }
 
 
-/* make sidebar nav vertical */ 
-/*@media (min-width: 768px) {
-  .sidebar-nav .navbar .navbar-collapse {
-  padding: 100;
-  max-height: none;
-  }
-  .sidebar-nav .navbar ul {
-    float: none;
-    display: block;
-  }
-  .sidebar-nav .navbar li {
-    float: none;
-    display: block;
-    font-style: normal;
-    font-size: 24px;
-    font-variant: small-caps;
-  }
-  .sidebar-nav .navbar li a {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    font-family: 'proxima-nova';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 24px;
-    font-variant: small-caps;
-  }
-}
-*/
 #sidebar {
   height: 100%;
   padding-right: 0;
@@ -2383,6 +2355,7 @@ color: #1ABC9C;
     -webkit-transition: all 0.25s ease-out;
     -moz-transition: all 0.25s ease-out;
     transition: all 0.25s ease-out;
+    margin: 5px;
   }
   .row-offcanvas-right
   .sidebar-offcanvas {
@@ -2392,7 +2365,6 @@ color: #1ABC9C;
   .row-offcanvas-left
   .sidebar-offcanvas {
     left: -41.6%;
-    padding: 10px;
   }
   .row-offcanvas-right.active {
     right: 41.6%;
