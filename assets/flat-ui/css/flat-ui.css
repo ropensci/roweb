@@ -4002,7 +4002,7 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
 .label {
 /*  font-size: 72%;
   font-weight: normal;*/
-  font-size: 10px;
+  font-size: 16px;
   font-family: "p22-underground-sc",'proxima-nova';
   font-variant: small-caps;
   font-style: normal;
