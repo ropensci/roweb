@@ -160,6 +160,7 @@
   filter: alpha(opacity=2000);
   opacity: .9;
   filter: alpha(opacity=20); 
+    background-position: 50% 50%;
 }
 
 
@@ -169,6 +170,7 @@
   filter: alpha(opacity=2000);
   opacity: .9;
   filter: alpha(opacity=20); 
+    background-position: 50% 50%;
 }
 
 
