@@ -1,0 +1,283 @@
+/**
+ * Header 10 stylesheet  
+ * */
+.header-maps {
+  z-index: 100;
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 60px;
+  /*This is navbar height: CHANGED*/
+  color: white;
+}
+
+.header-maps h2 h3 {
+   font-family: 'livory';  
+}
+
+.header-maps .header-background {
+  background: #BDC3C7;
+  /*navbar background color: CHANGED*/
+}
+.header-maps .navbar {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  margin: 0;
+}
+.header-maps .navbar.navbar-fixed-top {
+  top: 0 !important;
+}
+.header-maps .navbar .brand {
+  padding-top: 25px;
+  font-size: 24px;
+  font-weight: normal;
+  font-variant: normal;
+  color: #2D8BC9;
+  /*CHANGED*/
+   font-family: 'proxima-nova';
+  /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  font-weight: 1--;
+}
+
+/*This is the navbar logo: CHANGED*/
+.navlogo img {
+  max-height: 75px;
+  overflow: hidden;
+}
+
+/*THIS WORKS*/
+.header-maps .navbar .brand img:first-child {
+  float: left;
+  margin: -10px 15px 0 0;
+}
+.header-maps .navbar .nav > li {
+  margin-left: 40px;
+}
+.header-maps .navbar .nav > li:first-child {
+  margin-left: 0;
+}
+.header-maps .navbar .nav > li > a {
+  padding: 29px 0 27px;
+  font-size: 15px;
+  font-weight: normal;
+  color: #7f8c8d;
+  font-weight: 500;
+  letter-spacing: 1px;
+  /*color: #ffffff;*/
+  /*CHANGED: This is the font color for menu;*/
+  color: #364C61;
+}
+
+/*CHANGED: Hover color for menu*/
+.header-maps .navbar .nav > li > a:hover,
+.header-maps .navbar .nav > li > a:focus,
+.header-maps .navbar .nav > li > a.active {
+  color: #2CC36B;
+}
+.header-maps .navbar .nav > li.active > a {
+  color: #2CC36B;
+}
+.header-maps .navbar .nav > li.active > a:hover,
+.header-maps .navbar .nav > li.active > a:focus,
+.header-maps .navbar .nav > li.active > a.active {
+  color: #2CC36B;
+}
+.header-maps .navbar .navbar-form {
+  padding: 19px 0 19px 50px;
+}
+.header-maps .navbar .btn {
+  padding-left: 26px;
+  padding-right: 26px;
+}
+.header-maps .navbar .btn.btn-success {
+  font-size: 15px;
+  font-weight: normal;
+  color: #ffffff;
+  font-weight: 500;
+}
+.header-maps .navbar .navbar-toggle {
+  margin-top: 30px;
+}
+.header-maps-sub {
+  position: relative;
+  z-index: 50;
+  height: 1024px;
+  background-color: #1b1f23;
+  color: white;
+  text-align: center;
+}
+.header-maps-sub.v-center,
+.header-maps-sub .v-center {
+  display: table;
+  width: 100%;
+}
+.header-maps-sub.v-center > div,
+.header-maps-sub .v-center > div {
+  display: table-cell;
+  vertical-align: middle;
+  margin-top: 0;
+  margin-bottom: 0;
+  float: none;
+}
+@media (min-width: 768px) {
+  .header-maps-sub.v-center.row:before,
+  .header-maps-sub .v-center.row:before,
+  .header-maps-sub.v-center.row:after,
+  .header-maps-sub .v-center.row:after {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .header-maps-sub.v-center,
+  .header-maps-sub .v-center {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .header-maps-sub.v-center.row,
+  .header-maps-sub .v-center.row {
+    display: block;
+    width: auto;
+  }
+  .header-maps-sub.v-center.row:before,
+  .header-maps-sub .v-center.row:before,
+  .header-maps-sub.v-center.row:after,
+  .header-maps-sub .v-center.row:after {
+    display: none;
+  }
+  .header-maps-sub.v-center.row > *,
+  .header-maps-sub .v-center.row > * {
+    display: block;
+    vertical-align: baseline;
+  }
+}
+.header-maps-sub .background {
+  background: url('../../assets/common-files/img/header/maps.png') repeat;
+ opacity: 20;
+  filter: alpha(opacity=2000);
+  opacity: .9;
+  filter: alpha(opacity=20); 
+}
+
+
+.header-11-sub .background {
+  background: url('../../assets/common-files/img/header/maps.png') repeat;
+ opacity: 20;
+  filter: alpha(opacity=2000);
+  opacity: .9;
+  filter: alpha(opacity=20); 
+}
+
+
+
+.header-maps-sub .hero-unit {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+}
+.header-maps-sub .hero-unit h1 {
+  margin: 0 0 30px;
+  font-size: 48px;
+  font-weight: normal;
+  /*color: #ffffff;*/
+  color: #22313F;
+  /*CHANGED THINGS*/
+  font-family: "livory" ,"Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+.header-maps-sub .hero-unit p {
+  font-size: 25px;
+  font-weight: normal;
+  color: #bdc3c7;
+  font-family: "livory" , "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  line-height: 37.5px;
+}
+@media (max-width: 480px) {
+  .header-maps-sub .hero-unit h1 {
+    font-size: 32px;
+    font-weight: normal;
+    color: #ffffff;
+    font-family: "livory" , "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+  }
+  .header-maps-sub .hero-unit p {
+    font-size: 22px;
+    font-weight: normal;
+    color: #bdc3c7;
+    line-height: 35px;
+    font-weight: 300;
+  }
+}
+.header-maps-sub .hero-unit.hero-unit-bordered h1 {
+  font-size: 46px;
+  font-weight: normal;
+  font-weight: 500;
+  color: #22313F;
+  /*CHANGED THINGS*/
+  font-family: "livory" , Helvetica, Arial, sans-serif;
+  /*border: 8px solid #ffffff;*/
+  /*background-color: rgba(236, 240, 241,0.8);*/
+  display: inline-block;
+  margin: 0;
+  padding: 30px 40px;
+}
+@media (max-width: 480px) {
+  .header-maps-sub .hero-unit.hero-unit-bordered h1 {
+    font-size: 27px;
+    font-weight: 500;
+    color: #22313F;
+    font-family: "livory" , Helvetica, Arial, sans-serif;
+    font-weight: 500;
+  }
+}
+@media (max-width: 480px) {
+  .header-maps-sub.v-center > div {
+    padding-top: 35px;
+    padding-bottom: 70px;
+  }
+}
+.header-maps-sub .control-btn {
+  width: 53px;
+  height: 53px;
+  line-height: 53px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 19px;
+  font-weight: normal;
+  color: #7f8c8d;
+  color: #ffffff;
+  background: #121518;
+  opacity: 80;
+  filter: alpha(opacity=8000);
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  position: absolute;
+  left: 50%;
+  bottom: 90px;
+  margin-left: -26.5px;
+}
+.header-maps-sub .control-btn:hover,
+.header-maps-sub .control-btn:focus,
+.header-maps-sub .control-btn.active {
+  color: #ffffff;
+}
+.header-maps-sub .control-btn:hover,
+.header-maps-sub .control-btn:focus,
+.header-maps-sub .control-btn:active,
+.header-maps-sub .control-btn.active {
+  opacity: 100;
+  filter: alpha(opacity=10000);
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+@media (max-width: 480px) {
+  .header-maps-sub .control-btn {
+    bottom: 30px;
+  }
+}
