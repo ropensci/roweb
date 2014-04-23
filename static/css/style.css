@@ -1832,6 +1832,7 @@ color: #1ABC9C;
 .blog-3 p {
  font-family: "livory";
  color: #2C3E50;
+ font-weight: 300;
   margin: 0;
 }
 .blog-3 p + p {
