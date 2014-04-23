@@ -1,0 +1,20 @@
+---
+layout: rss-feed
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+	<channel>
+		<title>rOpenSci Blog</title>
+		<description>RSS feed of posts from the rOpenSci blog</description>
+		<!-- <link>http://ropensci.org/feed.xml</link> -->
+		<link>http://ropensci.org/feed.xml</link>
+		{% for post in site.posts limit:10 %}
+			<item>
+				<title>{{ post.title }}</title>
+				<description>{{ post.content | relative_urls_to_absolute | xml_escape }}</description>
+				<published>{{ post.date }}</published>
+				<link>http://ropensci.org{{ post.url }}</link>
+			</item>
+		{% endfor %}
+	</channel>
+</rss>
