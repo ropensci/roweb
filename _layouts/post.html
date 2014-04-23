@@ -1,16 +1,16 @@
 
-<!-- {% include header.html %} -->
-<section class="blog-3">`
+ {% include header.html %}   
+<section class="blog-3">
     <div class="container">
         <div class="title">
-            <img src="assets/common-files/img/content/blog_header_logo.png" alt="">
-            <h3>{{blog.title}}</h3>
+            <img src="{{ site.url }}/assets/common-files/img/content/blog_header_logo.png" alt="">
+            <h3>{{ page.title }}</h3>
             <div class="submitted">
               <!-- author goes here -->
       {% if page.author == "Carl Boettiger" or page.author == "Karthik Ram" or page.author == "Ted Hart" or page.author == "Scott Chamberlain" or page.author == "Core Team" %}
-        <i class="ss-icon">&#x1F464; &nbsp; <a href="/about/index.html#devteam"> {{ page.author }} </a> </i><br>
+        <a href="/about/index.html#devteam"> {{ page.author }} </a><br>
       {% else %}
-        <i class="ss-icon">&#x1F464; &nbsp; <a href={{ page.authorurl }} target="_blank"> {{ page.author }} </a> </i><br>
+        <a href={{ page.authorurl }} target="_blank"> {{ page.author }} </a> <br>
       {% endif %}
               <!-- end author -->
             </div>
@@ -30,7 +30,8 @@
   <div class="col-sm-8 col-sm-offset-2">  
   {% for tag in page.tags %} <a href="/tags/{{ tag }}" class="badge badge-inverse" rel="tooltip" data-placement="right" title="View posts tagged with &quot;{{ tag }}&quot;"><span class="blog_tag">{{ tag }}</span></a> {% if forloop.last != true %} {% endif %} {% endfor %} 
 </div>
+  {% include disqus.html %}
  </div> 
  <!-- End tags -->
-  {% include disqus.html %}
+
   {% include footer.html %}
