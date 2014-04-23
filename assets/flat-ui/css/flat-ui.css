@@ -4002,9 +4002,11 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
 .label {
 /*  font-size: 72%;
   font-weight: normal;*/
-  font-size: 12px;
-  font-family: 'proxima-nova';
+  font-size: 10px;
+  font-family: "p22-underground-sc",'proxima-nova';
   font-variant: small-caps;
+  font-style: normal;
+  font-weight: 900;
   padding: .15em .5em .2em;
 }
 .label[href]:hover,
