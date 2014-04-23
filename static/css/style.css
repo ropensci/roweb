@@ -1433,6 +1433,7 @@ color: #1ABC9C;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: 50% 50%;
   color: white;
 }
 .content-23 .holder {
