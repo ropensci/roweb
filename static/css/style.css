@@ -1870,7 +1870,7 @@ color: #1ABC9C;
 
 
 .blog-3 .title .submitted {
-  font-size: 18px;
+  font-size: 20px;
   color: #2C3E50;
   margin-top: 15px;
 }
@@ -1953,7 +1953,9 @@ color: #1ABC9C;
 
 
 .blog-3 .links a {
-  color: #1abc9c;
+  /*color: #1abc9c;*/
+  /*Changing the green to some other color*/
+  color: #2E8ECE;
   font-size: 20px;
   font-family: "livory", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
