@@ -1,0 +1,175 @@
+---
+title: Intro to working with World Bank climate data in R
+pkg: rWBclimate
+layout: usecases
+---
+
+<body>
+<p>The <a href="http://www.ropensci.org">ROpenSci</a> package <code>rWBclimate</code> provides full access to all the climate data provided by the <a href="http://www.worldbank.org/">World Bank</a> via their <a href="http://data.worldbank.org/developers/climate-data-api">climate data api</a>.  The package provides an easy way to download data for research and visualization purposes.  While the package provides access to a tremendous amount of data we wil focus on a few simple examples.  Full documentation and detailed examples can be found at the <a href="https://github.com/ropensci/rWBclimate">package website</a>.</p>
+
+<p>Let&#39;s begin by loading the necessary libraries.</p>
+
+<pre class="prettyprint"><code>library(rWBclimate)
+</code></pre>
+
+<h3>Downloading ensemble climate data</h3>
+
+<p>The package can download data for any of the 13 major climate models, but it also offers provides access to ensemble data derived from all models.  We&#39;ll focus on this for our examples.  Model data is provided both for the past as a backcasting, and for the future.  Output for both only comes in 20 year averages.  Here we&#39;ll plot temperature data for Great Britain for the past as well as two <a href="http://climatesanity.wordpress.com/tag/global-depletion-of-groundwater-resources/">climate scenarios</a>, A2 and B1.</p>
+
+<pre class="prettyprint"><code>
+### Grab temp data
+gbr.dat.t &lt;- get_ensemble_temp(&quot;GBR&quot;, &quot;annualavg&quot;, 1900, 2100)
+</code></pre>
+
+<pre><code>## Loading required package: rjson
+</code></pre>
+
+<pre class="prettyprint"><code>### Subset to just the median percentile
+gbr.dat.t &lt;- subset(gbr.dat.t, gbr.dat.t$percentile == 50)
+## Plot and note the past is the same for each scenario
+ggplot(gbr.dat.t, aes(x = fromYear, y = data, group = scenario, colour = scenario)) + 
+    geom_point() + geom_path() + theme_bw() + xlab(&quot;Year&quot;) + ylab(&quot;Annual Average Temperature in 20 year increments&quot;)
+</code></pre>
+
+<img src="../assets/img/usecases/rwbclimate_intro1.png">
+
+<p>As you can see the A2 scenario of unchecked growth predicts a higher annual average temperature.  We can look at the same kind of data except this time examining changes in precipitation.</p>
+
+<pre class="prettyprint"><code>gbr.dat.p &lt;- get_ensemble_precip(&quot;GBR&quot;, &quot;annualavg&quot;, 1900, 2100)
+gbr.dat.p &lt;- subset(gbr.dat.p, gbr.dat.p$percentile == 50)
+ggplot(gbr.dat.p, aes(x = fromYear, y = data, group = scenario, colour = scenario)) + 
+    geom_point() + geom_path() + theme_bw() + xlab(&quot;Year&quot;) + ylab(&quot;Annual Average precipitation in mm&quot;)
+</code></pre>
+
+<img src="../assets/img/usecases/rwbclimate_intro2.png">
+
+<p>Here the difference between predicted increases in precipitation are less drastic when comparing the two different scenarios.</p>
+
+<h3>Downloading historical data</h3>
+
+<p>The api also provides access to historical data.  In this example we&#39;ll download historical temperature data, then overlay it with backcasted model data to see how it compares.  Historical data can be output in various formats, and we&#39;ll be looking at annual averages.  Model backcast data only comes in 20 increments, so we&#39;ll overlay the raw data with not only model backcast averages but also averages of the historical data during the same window.</p>
+
+<pre class="prettyprint"><code>
+### Let&#39;s compare historical data with our backcasted data
+
+gbr.modelpast &lt;- subset(gbr.dat.t, gbr.dat.t$scenario == &quot;past&quot;)
+gbr.historical &lt;- get_historical_temp(&quot;GBR&quot;, &quot;year&quot;)
+### Plot create historical plot
+hist.plot &lt;- ggplot(gbr.historical, aes(x = year, y = data)) + geom_point() + 
+    geom_path()
+
+### Create a centroid for the past
+gbr.modelpast$centroid &lt;- round((gbr.modelpast$fromYear + gbr.modelpast$toYear)/2)
+
+### Create averages based the same windows used in the model output for
+### comparison
+win_avg &lt;- function(from, to, df) {
+    win &lt;- subset(df, df$year &gt;= from &amp; df$year &lt;= to)
+
+    return(c(mean(win$data), round(mean(c(from, to)))))
+}
+hist.avg &lt;- matrix(0, ncol = 2, nrow = 0)
+for (i in 1:dim(gbr.modelpast)[1]) {
+    hist.avg &lt;- rbind(hist.avg, win_avg(gbr.modelpast$fromYear[i], gbr.modelpast$toYear[i], 
+        gbr.historical))
+}
+colnames(hist.avg) &lt;- c(&quot;data&quot;, &quot;centroid&quot;)
+
+### Create new dataframe of historical averages and model averages
+hist.comp &lt;- rbind(hist.avg, cbind(gbr.modelpast$data, gbr.modelpast$centroid))
+hist.comp &lt;- as.data.frame(hist.comp)
+hist.comp$Output &lt;- c(rep(&quot;Historical&quot;, 4), rep(&quot;Model&quot;, 4))
+
+### overlay the averages with the original raw data plot
+hist.plot &lt;- hist.plot + geom_point(data = hist.comp, aes(x = centroid, y = data, 
+    colour = Output, group = Output, size = 3)) + geom_path(data = hist.comp, 
+    aes(x = centroid, y = data, colour = Output, group = Output)) + guides(size = FALSE)
+
+hist.plot + xlab(&quot;Year&quot;) + ylab(&quot;Annual average temperature in deg C&quot;) + theme_bw()
+</code></pre>
+
+<img src="../assets/img/usecases/rwbclimate_intro3.png">
+
+<pre class="prettyprint"><code>
+</code></pre>
+
+<p>With this plot its easy to see that the ensemble predictions overestimate past temperatures but generally have predicted the trends correctly, just up shifted by about 0.5 degrees.</p>
+
+<h3>Making maps.</h3>
+
+<p>One of the most useful aspects of the climate api is the ability to create maps of climate data.  You can access  data on two spatial scales, Country, and watershed basin.  Watershed basin will provide greater spatial resolution than country (though not in all instances).  The package has convenient data frames with lists of all the basins or countries in all the continents.  Here we&#39;ll look at a map of expected precipitation anomalies in Europe.  Maps work by downloading kml files, storing them locally and then reading them into R.  It relies on having a local directory which can be set with <code>options(kmlpath = &lt;yourpath&gt;)</code>.  After that a few function calls will download the requested map, link climate data to the map and plot it for you (also note that the initial downloads of kml files can take some time)</p>
+
+<pre class="prettyprint"><code>
+### Set local path
+options(kmlpath = &quot;~/kmltemp&quot;)
+
+# create dataframe with mapping data to plot
+eu_basin &lt;- create_map_df(Eur_basin)
+</code></pre>
+
+<pre class="prettyprint"><code>
+### Get some data
+eu_basin_dat &lt;- get_ensemble_temp(Eur_basin, &quot;annualanom&quot;, 2080, 2100)
+## Subset data to just one scenario, and one percentile so we have 1 piece
+## of information per spatial unit
+eu_basin_dat &lt;- subset(eu_basin_dat, eu_basin_dat$scenario == &quot;a2&quot; &amp; eu_basin_dat$percentile == 
+    50)
+
+# link map dataframe to climate data
+
+eu_map &lt;- climate_map(eu_basin, eu_basin_dat, return_map = T)
+</code></pre>
+
+<pre class="prettyprint"><code>eu_map + scale_fill_continuous(&quot;Temperature \n anomaly by 2080&quot;, low = &quot;yellow&quot;, 
+    high = &quot;red&quot;)
+</code></pre>
+
+<img src="../assets/img/usecases/rwbclimate_intro4.png">
+
+<p>The temperature anomaly mapped shows a general increase in temperature over the control period of 1961 - 2009.  The geratest increase looks to be coming in the interior of Eastern Europe.  Now that we have the basic map data download it&#39;s easy to bind new data to the existing map dataframe with the kml cooridates.  Let&#39;s say we want to look at this map of anomalies but for all time periods to see how it increases, we can easily do that with a couple of for loops.</p>
+
+<pre class="prettyprint"><code># get all the future time periods
+eu_basin_dat &lt;- get_ensemble_temp(Eur_basin, &quot;annualanom&quot;, 2000, 2100)
+# subset the data to one observation per spatial unit (basin)
+eu_basin_dat &lt;- subset(eu_basin_dat, eu_basin_dat$scenario == &quot;a2&quot; &amp; eu_basin_dat$percentile == 
+    50)
+### Next we need to create a dataframe that binds each year of data to the
+### map dataframe Bind it all together and create master dataframe with an
+### identifier for each year.
+
+# get unique years
+years &lt;- unique(eu_basin_dat$fromYear)
+
+# create an initial dataframe to join other years to.
+
+master_map &lt;- climate_map(eu_basin, eu_basin_dat[eu_basin_dat$fromYear == years[1], 
+    ], return_map = F)
+</code></pre>
+
+<pre class="prettyprint"><code>master_map$year &lt;- rep(years[1], dim(master_map)[1])
+</code></pre>
+
+<pre class="prettyprint"><code>
+for (i in 2:length(years)) {
+    ## Note that return map is False meaning a dataframe is returned not a
+    ## ggplot2 map
+
+    tmp_map &lt;- climate_map(eu_basin, eu_basin_dat[eu_basin_dat$fromYear == years[i], 
+        ], return_map = F)
+    tmp_map$year &lt;- rep(years[i], dim(tmp_map)[1])
+    master_map &lt;- rbind(master_map, tmp_map)
+}
+</code></pre>
+
+<pre class="prettyprint"><code>
+ggplot(master_map, aes(x = long, y = lat, group = group, fill = data)) + geom_polygon() + 
+    facet_wrap(~year) + scale_fill_continuous(&quot;Temperature \n anomaly&quot;, low = &quot;yellow&quot;, 
+    high = &quot;red&quot;) + theme_bw() + ggtitle(expression(atop(&quot;Global warming in Europe&quot;, 
+    atop(italic(&quot;Temperature anomaly over control period (1961-2009)&quot;), &quot;&quot;))))
+</code></pre>
+
+<img src="../assets/img/usecases/rwbclimate_intro5.png">
+
+<p>Here the increase with each time period is obvious, especially since all the anomalies are plotted on the same temperature scale.</p>
+
+</body>
