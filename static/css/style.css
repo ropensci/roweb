@@ -827,7 +827,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   color: #fff;
 }
 /**
- * Header 10 stylesheet  
+ * Header 10 stylesheet
  * */
 .header-10 {
   z-index: 100;
@@ -840,7 +840,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 
 .header-10 h2 h3 {
-   font-family: 'livory';  
+   font-family: 'livory';
 }
 
 .header-10 .header-background {
@@ -987,7 +987,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
  opacity: 20;
   filter: alpha(opacity=2000);
   opacity: .9;
-  filter: alpha(opacity=20); 
+  filter: alpha(opacity=20);
 }
 .header-10-sub .hero-unit {
   padding: 0;
@@ -1098,7 +1098,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   }
 }
 /**
- * Content 15 stylesheet  
+ * Content 15 stylesheet
  * */
 .content-15 {
   padding-top: 125px;
@@ -1233,7 +1233,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   }
 }
 /**
- * Project 3 stylesheet  
+ * Project 3 stylesheet
  * */
 .projects-3 {
   padding-top: 110px;
@@ -1384,7 +1384,7 @@ color: #1ABC9C;
   }
 }
 /**
- * Content 9 stylesheet  
+ * Content 9 stylesheet
  * */
 .content-9 {
   padding-top: 130px;
@@ -1571,7 +1571,7 @@ color: #1ABC9C;
   }
 }
 /**
- * Content 12 stylesheet  
+ * Content 12 stylesheet
  * */
 .content-12 {
   position: relative;
@@ -1612,7 +1612,7 @@ color: #1ABC9C;
   }
 }
 /**
- * Footer 6 stylesheet  
+ * Footer 6 stylesheet
  * */
 .footer-6 {
   padding-top: 110px;
@@ -1810,7 +1810,7 @@ color: #1ABC9C;
 }
 
 /**
- * Blog 3 stylesheet  
+ * Blog 3 stylesheet
  * */
 .blog-3 {
   font-family: "livory";
@@ -2047,7 +2047,7 @@ color: #1ABC9C;
     font-family: "livory","Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 /**
- * Copntact 1 stylesheet  
+ * Copntact 1 stylesheet
  * */
 .contacts-1 {
   padding-top: 110px;
@@ -2179,7 +2179,7 @@ color: #1ABC9C;
 /*The About Page*/
 
 /**
- * Project 3 stylesheet  
+ * Project 3 stylesheet
  * */
 
  .crew-3 p {
@@ -2406,7 +2406,7 @@ color: #1ABC9C;
   #sidebar .nav>li>a:hover, #sidebar .nav>li>a:focus {
     text-decoration: none;
     background: linear-gradient(#373737, #323232);
-    color: #fff;  
+    color: #fff;
   }
   #sidebar .nav .caret {
     border-top-color: #fff;
@@ -2421,5 +2421,3 @@ color: #1ABC9C;
 #disqus {
   color: #31465A;
 }
-
-
