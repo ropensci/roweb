@@ -23,7 +23,7 @@ Note that this entire workflow is in a Github gist [here][gist]. In addition, yo
 
 Install these packages if you don't have them. Most packages are on CRAN, but install the following packages from Github: `rplos`, `alm`, `rImpactStory`, and `rAltmetric` by running `install_github("PACKAGE_NAME", "ropensci")`.
 
-{% highlight r %}
+```r
 library(alm)
 library(rImpactStory)
 library(rAltmetric)
@@ -33,7 +33,7 @@ library(reshape)
 library(reshape2)
 library(httr)
 library(lubridate)
-{% endhighlight %}
+```
 
 <br>
 Define a function `parse_is` to parse ImpactStory results
@@ -48,24 +48,24 @@ Define a function `compare_altmet_prov` to collect altmetrics from three provide
 <br>
 Safe version in case of errors
 
-{% highlight r %}
+```r
 compare_altmet_prov_safe <- plyr::failwith(NULL, compare_altmet_prov)
-{% endhighlight %}
+```
 
 <br>
 Search for and get DOIs for 50 papers (we used more in the paper)
 
-{% highlight r %}
+```r
 res <- searchplos(terms = "*:*", fields = "id", toquery = list("publication_date:[2011-06-30T00:00:00Z TO 2012-06-01T23:59:59Z] ", "doc_type:full"), start = 0, limit = 50)
-{% endhighlight %}
+```
 
 <br>
 Get data from each provider
 
-{% highlight r %}
+```r
 dat <- llply(as.character(res[, 1]), compare_altmet_prov_safe, isaddifnot = TRUE, sleep = 1, .progress = "text")
 dat <- ldply(dat)
-{% endhighlight %}
+```
 
 <br><br>
 ### Plot differences
@@ -73,7 +73,7 @@ dat <- ldply(dat)
 Great, we have data! Next, let's make a plot of the difference between max and min value across the three providers for 7 article-level metrics.
 
 
-{% highlight r %}
+```r
 alldat <- sort_df(dat, "doi")
 
 dat_split <- split(alldat, f = alldat$doi)
@@ -105,7 +105,7 @@ ggplot(dat_split_df_melt, aes(x = log10(value), fill = variable)) +
         panel.grid.minor = element_blank(),
         legend.position = "none",
         panel.border = element_rect(size = 1))
-{% endhighlight %}
+```
 
 ![center](/assets/blog-images/2013-08-01-altmetrics/dataconst_plot1.png)
 
@@ -114,7 +114,7 @@ ggplot(dat_split_df_melt, aes(x = log10(value), fill = variable)) +
 Okay, so there are some inconsistencies in data from different providers. Perhaps the same metric (e.g., tweets) were collected on different days for each provider? Let's take a look. We first define a function to get the difference in days between a vector of values, then apply that function over the data for each metric. We then reshape the data a bit using the `reshape2` package, and make the plot.
 
 
-{% highlight r %}
+```r
 datediff <- function(x) {
     datesorted <- sort(x)
     round(as.numeric(difftime(datesorted[3], datesorted[1])), 0)
@@ -138,7 +138,7 @@ ggplot(dat_split_df_melt, aes(x = datediff, y = log10(value + 1), colour = varia
         panel.background = element_rect(colour = "white")) +
     guides(col = guide_legend(nrow = 2, override.aes = list(size = 4))) +
     labs(x = "\nDate difference (no. of days)", y = "Value of difference between max and min\n")
-{% endhighlight %}
+```
 
 ![center](/assets/blog-images/2013-08-01-altmetrics/dataconst_plot2.png)
 
@@ -147,7 +147,7 @@ ggplot(dat_split_df_melt, aes(x = datediff, y = log10(value + 1), colour = varia
 Let's dig in to indivdual articles. Here, we reshape some data, selecting just 20 DOIs (i.e., papers), and plot the values of each metric for each DOI, coloring points by provider. Note that points are slightly offset horizontally to make them easier to see.
 
 
-{% highlight r %}
+```r
 alldat_m <- melt(dat_split_df[1:60,], id.vars=c(1,2,11))
 alldat_m <- alldat_m[!alldat_m$variable %in% "connotea",]
 
@@ -164,7 +164,7 @@ ggplot(na.omit(alldat_m[,-3]), aes(x=doi, y=value, colour=provider)) +
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank()) +
   guides(col = guide_legend(title="", override.aes=list(size=5), nrow = 1, byrow = TRUE))
-{% endhighlight %}
+```
 
 ![center](/assets/blog-images/2013-08-01-altmetrics/dataconst2.png)
 

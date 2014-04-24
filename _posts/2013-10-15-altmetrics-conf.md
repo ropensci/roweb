@@ -13,19 +13,19 @@ I attended the recent [ALM Workshop 2013][almworkshop] and [data challenge][data
 
 ### Some sad and good news about open source
 
-In a related meeting before the ALM Workshop, NISO held a 1 day meeting to talk about altmetrics standards - check out the talks and some video [here][niso]. One of the points Cameron Neylon made was a sad one => "...basic principle of scholarly publishing industry: no one will use anything built by another publisher" (quote around 2:04:45). PLOS makes great open source software for collecting and providing altmetrics via an API (see the output [here] and the feely available code [here][almcode]), but no other publishers will use it. During [my talk][talk] titled *Programmatic access for Altmetrics*, I suggested that we can learn something from the open source community in that you can create a lot of value off of a common set of open source tools. The Public Knowledge Project (PKP) is using the PLOS created ALM app for publishers they interact with, which is promising. However, other publishers could leverage this software as well, providing easy access to altmetrics data to the publisher, and the community if they expose their API. 
+In a related meeting before the ALM Workshop, NISO held a 1 day meeting to talk about altmetrics standards - check out the talks and some video [here][niso]. One of the points Cameron Neylon made was a sad one => "...basic principle of scholarly publishing industry: no one will use anything built by another publisher" (quote around 2:04:45). PLOS makes great open source software for collecting and providing altmetrics via an API (see the output [here] and the feely available code [here][almcode]), but no other publishers will use it. During [my talk][talk] titled *Programmatic access for Altmetrics*, I suggested that we can learn something from the open source community in that you can create a lot of value off of a common set of open source tools. The Public Knowledge Project (PKP) is using the PLOS created ALM app for publishers they interact with, which is promising. However, other publishers could leverage this software as well, providing easy access to altmetrics data to the publisher, and the community if they expose their API.
 
 ### More uptake of our software
 
 We have working on an R library (uncreatively named `alm`) to interact with the PLOS ALM API. Get it [at CRAN][almcran], or from Github [here][almgit]. The awesome thing about anyone that uses the ALM software made by PLOS is that our package works out of the box for the new data source. All you have to do is change the base url in a function call. The url for the PLOS ALM API is http://alm.plos.org/api/v3/articles - changing that url is all that's needed:
 
-{% highlight r %}
+```r
 alm(doi=<doi>, url=<theurl>)
-{% endhighlight %}
+```
 
 Juan Alperin of PKP had installed the ALM software for a set of journals they work with, and during the data challenge on Saturday was able to interact with his altmetrics data using the alm package by simply changing the base url.
 
-Hopefully more publishers will start using the PLOS ALM open source software - and they can use our software off the shelf. 
+Hopefully more publishers will start using the PLOS ALM open source software - and they can use our software off the shelf.
 
 ### Reproducible altmetrics research
 
