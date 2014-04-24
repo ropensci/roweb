@@ -28,7 +28,7 @@
 <!-- The tags -->
 <div class="container">
   <div class="col-sm-8 col-sm-offset-2">  
-  {% for tag in page.tags %} <a href="/tags/{{ tag }}" class="badge badge-inverse" rel="tooltip" data-placement="right" title="View posts tagged with &quot;{{ tag }}&quot;"><span class="blog_tag">{{ tag }}</span></a> {% if forloop.last != true %} {% endif %} {% endfor %} 
+  {% for tag in page.tags %} <a href="/tags/{{ tag }}" class="badge badge-success" rel="tooltip" data-placement="right" title="View posts tagged with &quot;{{ tag }}&quot;"><span class="blog_tag">{{ tag }}</span></a> {% if forloop.last != true %} {% endif %} {% endfor %} 
 </div>
 <div id="disqus">
   {% include disqus.html %}
