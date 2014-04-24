@@ -2,16 +2,17 @@
 layout: blog_layout
 title: "rOpenSci Blog"
 ---
+  
+  <h2>{{ page.title }}</h2>
 
-<div class="row">
-      <div class="col-sm-6">
-      <a href="/tags.html" class="btn btn-success">Tag</a>
-      <a href="/archives.html" class="btn btn-success">Date</a>
-      <a href="http://ropensci.org/feed.xml" target="_blank" class="ss-social ss-icon btn" rel="tooltip" data-placement="right" title="Blog posts via RSS Feed">RSS</a>
+      <div class="col-md-3 sidebarr">
+      <span class="label label-inverse"><a href="/tags.html">posts by tag</a></span><br>
+      <span class="label label-inverse"><a href="/archives.html">posts by date</a></span><br>
+      <!-- <a href="http://ropensci.org/feed.xml" target="_blank" class="ss-social ss-icon btn" rel="tooltip" data-placement="right" title="Blog posts via RSS Feed">RSS</a> -->
     </div>
-</div>
 
-<div id='post' class="col-md-12">
+
+<div id='post' class="col-sm-12 col-md-9">
   <!--   List of posts for landing page -->
   {% for post in paginator.posts %}
       <h3><a href="{{ site.dir }}{{ post.url }}">{{ post.title }}</a></h3>

@@ -4034,6 +4034,15 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
   background-color: #485b6e;
   color: #ffffff;
 }
+
+.label-inverse a {
+  background-color: #485b6e;
+  color: #ffffff;
+}
+
+
+
+
 .label-inverse[href] {
   color: #ffffff;
 }

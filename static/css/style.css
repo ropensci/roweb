@@ -1986,6 +1986,10 @@ color: #1ABC9C;
   /*text-align: center;*/
 }
 
+.blog-3 .sidebarr {
+  padding-top: 80px;
+}
+
 .blog-3 li {
  color: #2C3E50;
   line-height: 150%;
