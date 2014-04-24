@@ -10,7 +10,7 @@ tags:
 - EOL
 ---
 
-In [a recent blog post][cacheoff] we discussed caching calls to the web offline, on your own computer. Just like you can cache data on your own computer, a data provider can do the same thing. Most of the data providers we work with do not provide caching. However, at least one does: [EOL][eol], or Encyclopedia of Life. EOL allows you to set the amount of time (in seconds) that the call is cached, within which time you can make the same call and get the data back faster. We have a number of functions to interface with EOL in our `taxize` package. 
+In [a recent blog post][cacheoff] we discussed caching calls to the web offline, on your own computer. Just like you can cache data on your own computer, a data provider can do the same thing. Most of the data providers we work with do not provide caching. However, at least one does: [EOL][eol], or Encyclopedia of Life. EOL allows you to set the amount of time (in seconds) that the call is cached, within which time you can make the same call and get the data back faster. We have a number of functions to interface with EOL in our `taxize` package.
 
 Install and load `taxize` and `ggplot2`.
 
@@ -42,12 +42,12 @@ testcache <- function(terms, cache){
   second <- system.time( eol_search(terms=terms, cache_ttl = cache) )
   Sys.sleep(cache+2)
   third <- system.time( eol_search(terms=terms, cache_ttl = cache) )
-  
-  df <- data.frame(labs=c('nocache','withcache','cachetimedout'), 
+
+  df <- data.frame(labs=c('nocache','withcache','cachetimedout'),
                    vals=c(first[[3]], second[[3]], third[[3]]))
   df$labs <- factor(df$labs, levels = c('nocache','withcache','cachetimedout'))
-  ggplot(df, aes(labs, vals)) + 
-    geom_bar(stat='identity') + 
+  ggplot(df, aes(labs, vals)) +
+    geom_bar(stat='identity') +
     theme_grey(base_size = 20) +
     ggtitle(sprintf("search term: '%s'\n", terms)) +
     labs(y='Time to get data\n', x='')
@@ -62,7 +62,7 @@ Search for the term _lion_
 testcache(terms = "lion", cache = 5)
 ```
 
-![](/assets/img/blog/2014-02-12-caching-with-api/unnamed-chunk-4.png) 
+![](/assets/blog-images/2014-02-12-caching-with-api/unnamed-chunk-4.png)
 
 
 Search for the term _beetle_
@@ -72,7 +72,7 @@ Search for the term _beetle_
 testcache(terms = "beetle", cache = 10)
 ```
 
-![](/assets/img/blog/2014-02-12-caching-with-api/unnamed-chunk-5.png)
+![](/assets/blog-images/2014-02-12-caching-with-api/unnamed-chunk-5.png)
 
 
 Caching works the same way with the `eol_pages` function. No other API services and associated functions in `taxize` support caching on the server side by the data provider. Of course you can do your own caching using `knitr` or other methods - some of which we discussed in [an earlier post][cacheoff].

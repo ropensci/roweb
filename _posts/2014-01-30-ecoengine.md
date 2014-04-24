@@ -10,11 +10,11 @@ tags:
 - museums
 - biodiversity
 - informatics
---- 
+---
 
 Natural history museums have long been valuable repositories of data on species diversity. These data have been critical for fostering and shaping the development of fields such as  biogeography and systematics. The importance of these data repositories is becoming increasingly important, especially in the context of climate change, where a strong understanding of how species responded to past climate is key to understanding their responses in the future. Leading the way in opening up such valuable data is a new effort by the [ Berkeley Initiative in Global Change Biology](http://globalchange.berkeley.edu/ecoinformatics-engine) called the [Ecoengine](http://ecoengine.berkeley.edu/).
 
-The engine is a [fast and open API](http://ecoengine.berkeley.edu/) that provides access to over 3 million specimens and vegetation data from surveys. Many of these specimens have already been georeferenced opening up several use cases for such data. In addition, the engine also provides access to species checklists and sensor data from the Keck Hydrowatch project from the Eel river field station. Our newest package, `ecoengine`, provides an easy interface to these data. 
+The engine is a [fast and open API](http://ecoengine.berkeley.edu/) that provides access to over 3 million specimens and vegetation data from surveys. Many of these specimens have already been georeferenced opening up several use cases for such data. In addition, the engine also provides access to species checklists and sensor data from the Keck Hydrowatch project from the Eel river field station. Our newest package, `ecoengine`, provides an easy interface to these data.
 
 ### Installing the package
 
@@ -56,14 +56,14 @@ lynx_data
 ```
 
 ```
-## [Total results]: 795 
-## [Args]: 
-## country = United States 
-## genus = lynx 
-## georeferenced = FALSE 
-## page_size = 25 
-## page = 1 
-## [Type]: observations 
+## [Total results]: 795
+## [Args]:
+## country = United States
+## genus = lynx
+## georeferenced = FALSE
+## page_size = 25
+## page = 1
+## [Type]: observations
 ## [Number of results]: 25
 ```
 
@@ -88,25 +88,25 @@ lynx_data
 ```
 
 ```
-## [Total results]: 795 
-## [Args]: 
-## country = United States 
-## genus = lynx 
-## georeferenced = FALSE 
-## page_size = 25 
-## page = all 
-## [Type]: observations 
+## [Total results]: 795
+## [Args]:
+## country = United States
+## genus = lynx
+## georeferenced = FALSE
+## page_size = 25
+## page = all
+## [Type]: observations
 ## [Number of results]: 795
 ```
 
 
-Other fields (all documented and available from `?ee_observations`) include kingdom, phylum, clss (intentionally misspelled to avoid conflict with a sql keyword), genus and scientific_name. Any of these fields can also be searched exactly by adding `__exact` at the end. 
+Other fields (all documented and available from `?ee_observations`) include kingdom, phylum, clss (intentionally misspelled to avoid conflict with a sql keyword), genus and scientific_name. Any of these fields can also be searched exactly by adding `__exact` at the end.
 
-We can request georeferenced data only for visualization purposes. 
+We can request georeferenced data only for visualization purposes.
 
 
 ```r
-lynx_data <- ee_observations(genus = "lynx", progress = FALSE, page = "all", 
+lynx_data <- ee_observations(genus = "lynx", progress = FALSE, page = "all",
     georeferenced = TRUE)
 ```
 
@@ -124,7 +124,7 @@ ee_map(lynx_data)
 
 This generates an interactive Leaflet JS map and renders to your default browser. You can easily embed such maps into talks using iFrames and [Slidify](http://slidify.org/).
 
-![Map of Lynx observations across North America](/assets/img/blog/2014-01-30-ecoengine/ecoengine_map.png)
+![Map of Lynx observations across North America](/assets/blog-images/2014-01-30-ecoengine/ecoengine_map.png)
 
 The search possibilities are endless and the data can be supplemented by many other sources in our site (e.g. taxize). Here are a few example queries.
 
@@ -224,17 +224,17 @@ names(spider_details)
 ```
 
 ```
-##  [1] "url"                              "observation_type"                
-##  [3] "scientific_name"                  "collection_code"                 
-##  [5] "institution_code"                 "country"                         
-##  [7] "state_province"                   "county"                          
+##  [1] "url"                              "observation_type"
+##  [3] "scientific_name"                  "collection_code"
+##  [5] "institution_code"                 "country"
+##  [7] "state_province"                   "county"
 ##  [9] "locality"                         "coordinate_uncertainty_in_meters"
-## [11] "begin_date"                       "end_date"                        
-## [13] "kingdom"                          "phylum"                          
-## [15] "clss"                             "order"                           
-## [17] "family"                           "genus"                           
-## [19] "specific_epithet"                 "infraspecific_epithet"           
-## [21] "source"                           "remote_resource"                 
+## [11] "begin_date"                       "end_date"
+## [13] "kingdom"                          "phylum"
+## [15] "clss"                             "order"
+## [17] "family"                           "genus"
+## [19] "specific_epithet"                 "infraspecific_epithet"
+## [21] "source"                           "remote_resource"
 ## [23] "earliest_period_or_lowest_system" "latest_period_or_highest_system"
 ```
 
@@ -243,45 +243,45 @@ unique(spider_details$scientific_name)
 ```
 
 ```
-##  [1] "holocnemus pluchei"        "oecobius navus"           
-##  [3] "uloborus diversus"         "neriene litigiosa"        
-##  [5] "theridion sp. A"           "tidarren sp."             
-##  [7] "dictyna sp. A"             "dictyna sp. B"            
-##  [9] "mallos sp."                "yorima sp."               
-## [11] "hahnia sanjuanensis"       "cybaeus sp."              
-## [13] "zanomys sp."               "anachemmis sp."           
-## [15] "titiotus sp."              "oxyopes scalaris"         
-## [17] "zora hespera"              "drassinella sp."          
-## [19] "phrurotimpus mateonus"     "scotinella sp."           
-## [21] "castianeira luctifera"     "meriola californica"      
-## [23] "drassyllus insularis"      "herpyllus propinquus"     
-## [25] "micaria utahna"            "trachyzelotes lyonneti"   
+##  [1] "holocnemus pluchei"        "oecobius navus"
+##  [3] "uloborus diversus"         "neriene litigiosa"
+##  [5] "theridion sp. A"           "tidarren sp."
+##  [7] "dictyna sp. A"             "dictyna sp. B"
+##  [9] "mallos sp."                "yorima sp."
+## [11] "hahnia sanjuanensis"       "cybaeus sp."
+## [13] "zanomys sp."               "anachemmis sp."
+## [15] "titiotus sp."              "oxyopes scalaris"
+## [17] "zora hespera"              "drassinella sp."
+## [19] "phrurotimpus mateonus"     "scotinella sp."
+## [21] "castianeira luctifera"     "meriola californica"
+## [23] "drassyllus insularis"      "herpyllus propinquus"
+## [25] "micaria utahna"            "trachyzelotes lyonneti"
 ## [27] "ebo evansae"               "habronattus oregonensis"  
 ## [29] "metaphidippus sp."         "platycryptus californicus"
-## [31] "calymmaria sp."            "frontinella communis"     
-## [33] "undetermined sp."          "latrodectus hesperus"     
+## [31] "calymmaria sp."            "frontinella communis"
+## [33] "undetermined sp."          "latrodectus hesperus"
 ## [35] "theridion sp. B"           "agelenopsis oregonensis"  
-## [37] "pardosa spp."              "schizocosa mccooki"       
-## [39] "hololena sp."              "callobius sp."            
-## [41] "pimus sp."                 "aliatypus sp."            
-## [43] "antrodiaetus sp."          "antrodiaetus riversi"     
-## [45] "anyphaena californica"     "aculepeira packardi"      
-## [47] "araneus bispinosus"        "araniella displicata"     
-## [49] "cyclosa conica"            "cyclosa turbinata"        
-## [51] "brommella sp."             "cicurina sp."             
-## [53] "dictyna sp."               "emblyna oregona"          
-## [55] "orodrassus sp."            "sergiolus sp."            
-## [57] "erigone sp."               "pityohyphantes sp."       
-## [59] "tachygyna sp."             "alopecosa kochi"          
-## [61] "oxyopes salticus"          "philodromus sp."          
-## [63] "tibellus oblongus"         "pimoa sp."                
-## [65] "undetermined spp."         "metaphidippus manni"      
-## [67] "thiodina sp."              "diaea livens"             
-## [69] "metellina sp."             "cobanus cambridgei"       
-## [71] "tetragnatha sp."           "tetragnatha versicolor"   
-## [73] "dipoena sp."               "theridion spp."           
-## [75] "misumena vatia"            "misumenops sp."           
-## [77] "tmarus angulatus"          "xysticus sp."             
+## [37] "pardosa spp."              "schizocosa mccooki"
+## [39] "hololena sp."              "callobius sp."
+## [41] "pimus sp."                 "aliatypus sp."
+## [43] "antrodiaetus sp."          "antrodiaetus riversi"
+## [45] "anyphaena californica"     "aculepeira packardi"
+## [47] "araneus bispinosus"        "araniella displicata"
+## [49] "cyclosa conica"            "cyclosa turbinata"
+## [51] "brommella sp."             "cicurina sp."
+## [53] "dictyna sp."               "emblyna oregona"
+## [55] "orodrassus sp."            "sergiolus sp."
+## [57] "erigone sp."               "pityohyphantes sp."
+## [59] "tachygyna sp."             "alopecosa kochi"
+## [61] "oxyopes salticus"          "philodromus sp."
+## [63] "tibellus oblongus"         "pimoa sp."
+## [65] "undetermined spp."         "metaphidippus manni"
+## [67] "thiodina sp."              "diaea livens"
+## [69] "metellina sp."             "cobanus cambridgei"
+## [71] "tetragnatha sp."           "tetragnatha versicolor"
+## [73] "dipoena sp."               "theridion spp."
+## [75] "misumena vatia"            "misumenops sp."
+## [77] "tmarus angulatus"          "xysticus sp."
 ## [79] "hyptiotes gertschi"        "mexigonus morosus"
 ```
 
@@ -301,17 +301,17 @@ condor
 ```
 
 ```
-## [Total results]: 8 
-## [Args]: 
-## page_size = 25 
-## scientific_name = Gymnogyps californianus 
-## georeferenced = FALSE 
-## page = 1 
-## [Type]: photos 
+## [Total results]: 8
+## [Args]:
+## page_size = 25
+## scientific_name = Gymnogyps californianus
+## georeferenced = FALSE
+## page = 1
+## [Type]: photos
 ## [Number of results]: 8
 ```
 
-The package also provides functionality to quickly browse photos in the default browser. By calling `view_photos()` on any `ecoengine` object of type `photos`, R will render a static html page with thumbnails and metadata and launch a default browser with additional links. 
+The package also provides functionality to quickly browse photos in the default browser. By calling `view_photos()` on any `ecoengine` object of type `photos`, R will render a static html page with thumbnails and metadata and launch a default browser with additional links.
 
 
 ```r
@@ -319,11 +319,11 @@ view_photos(ee_photos(scientific_name = "Gymnogyps californianus", quiet = TRUE)
 ```
 
 
-![Ecoengine photo viewer](/assets/img/blog/2014-01-30-ecoengine/ecoengine_photo_viewer.png)
+![Ecoengine photo viewer](/assets/blog-images/2014-01-30-ecoengine/ecoengine_photo_viewer.png)
 
 **Sensor data**
 
-Sensor data come from the [Keck HydroWatch Center](http://nrs.ucop.edu/research/special_projects/Keck_HydroWatchl.htm). Retrieving the data are simple. Three functions provides all the necessary functionality. 
+Sensor data come from the [Keck HydroWatch Center](http://nrs.ucop.edu/research/special_projects/Keck_HydroWatchl.htm). Retrieving the data are simple. Three functions provides all the necessary functionality.
 
 * `ee_list_sensors()`  - provides a list of sensors and the data they provide.
 * `ee_sensor_data()` - retrieves data for any of these sensors (ids obtained by the previous function) and a date window.
@@ -331,7 +331,7 @@ Sensor data come from the [Keck HydroWatch Center](http://nrs.ucop.edu/research/
 
 ### Searching the engine  
 
-The search is [elastic](http://www.elasticsearch.org/) by default. One can search for any field in `ee_observations()` across all available resources. For example, 
+The search is [elastic](http://www.elasticsearch.org/) by default. One can search for any field in `ee_observations()` across all available resources. For example,
 
 ```r
 # The search function runs an automatic elastic search across all resources
@@ -347,6 +347,3 @@ lynx_results[, -3]
 In the next CRAN update we will add methods to retrieve all the vegetation data, the interactive maps, searching the data directly from the map (for example by drawing bounding boxes) and having a formatted query returned back to your R prompt for inclusion in a script.
 
 As with all of our packages we welcome contributions to the [GitHub repository](https://github.com/ropensci/ecoengine) as [issues](https://github.com/ropensci/ecoengine/issues?page=1&state=open) or [pull requests](https://github.com/ropensci/ecoengine/pulls).
-
-
-
