@@ -6094,6 +6094,7 @@ fieldset[disabled] .navbar-inverse .navbar-btn.active {
 .carousel-caption {
   padding: 20px 19px 22px;
   background: #243342;
+  color: #D04132;
   background: rgba(36, 51, 66, 0.7);
   left: 0;
   right: 0;
@@ -6104,17 +6105,24 @@ fieldset[disabled] .navbar-inverse .navbar-btn.active {
 }
 .carousel-caption h3,
 .carousel-caption p {
-  color: #ffffff;
+  color: #ECF0F1;
 }
 .carousel-caption h3 {
   font-size: 18px;
   line-height: 20px;
   margin: 0 0 5px;
 }
+
+.carousel-caption h4 {
+  color: #19B496;
+}
+
+
 .carousel-caption p {
   font-size: 15px;
   line-height: 20px;
   margin-bottom: 0;
+  color: #ECF0F1;
 }
 @media (max-width: 767px) {
   .carousel-caption {
