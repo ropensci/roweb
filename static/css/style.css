@@ -1977,10 +1977,10 @@ color: #1ABC9C;
 
 .blog-3 h3 {
   font-family: "livory";
-  font-size: 40px;
+  font-size: 35px;
   padding-top: 80px;
   padding-bottom: 80px;
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .blog-3 li {
