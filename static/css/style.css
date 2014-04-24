@@ -17,7 +17,8 @@ textarea {
   font-size: 20px;
 }
 a {
-  color: #16a085;
+  /*color: #16a085;*/
+  color: #2E8ECE;
   text-decoration: none;
   -webkit-transition: color 0.25s, background 0.25s;
   -moz-transition: color 0.25s, background 0.25s;
