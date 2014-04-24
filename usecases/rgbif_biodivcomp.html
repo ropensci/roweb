@@ -24,7 +24,7 @@ library(doMC)
 <p>We&#39;ll not restrain our search to any particular taxonomic group, although you will likely do that in your own research. We&#39;ll make a new column with single lat/long coordinates for each cell for easy plotting. Last, we&#39;ll select 100 random cell IDs.</p>
 
 <pre class="prettyprint"><code>temp &lt;- gbifdata(densitylist(originisocountrycode = &quot;US&quot;))
-temp &lt;- transform(temp, lat = (minLatitude + maxLatitude)/2, lon = (minLongitude + 
+temp &lt;- transform(temp, lat = (minLatitude + maxLatitude)/2, lon = (minLongitude +
     maxLongitude)/2)
 cellids &lt;- sample(temp$cellid, 100)
 </code></pre>
@@ -41,20 +41,20 @@ registerDoMC(cores = 4)
 out &lt;- ldply(cellids, getdata, .parallel = TRUE)
 out2 &lt;- merge(out, temp[, c(&quot;cellid&quot;, &quot;lat&quot;, &quot;lon&quot;)], by = &quot;cellid&quot;)
 # remove points outside the US
-out3 &lt;- out2[out2$lat &lt; 49 &amp; out2$lat &gt; 24.7433195 &amp; out2$lon &gt; -130 &amp; out2$lon &lt; 
+out3 &lt;- out2[out2$lat &lt; 49 &amp; out2$lat &gt; 24.7433195 &amp; out2$lon &gt; -130 &amp; out2$lon &lt;
     -66.9513812, ]
 </code></pre>
 
 <h3>Plot data</h3>
 
 <pre class="prettyprint"><code>mapp &lt;- map_data(&quot;state&quot;)
-ggplot(mapp, aes(long, lat)) + geom_polygon(aes(group = group), fill = &quot;white&quot;, 
-    alpha = 0, color = &quot;gray80&quot;, size = 0.8) + geom_point(data = out3, aes(lon, 
-    lat, color = richness), size = 3, alpha = 0.8) + scale_color_gradient2(low = &quot;white&quot;, 
-    mid = &quot;lightblue&quot;, high = &quot;blue&quot;) + labs(x = &quot;&quot;, y = &quot;&quot;) + theme_bw(base_size = 14) + 
+ggplot(mapp, aes(long, lat)) + geom_polygon(aes(group = group), fill = &quot;white&quot;,
+    alpha = 0, color = &quot;gray80&quot;, size = 0.8) + geom_point(data = out3, aes(lon,
+    lat, color = richness), size = 3, alpha = 0.8) + scale_color_gradient2(low = &quot;white&quot;,
+    mid = &quot;lightblue&quot;, high = &quot;blue&quot;) + labs(x = &quot;&quot;, y = &quot;&quot;) + theme_bw(base_size = 14) +
     theme(legend.position = &quot;bottom&quot;, legend.key = element_blank())
 </code></pre>
 
-<img src="../assets/img/usecases/rgbif_biodivcomp.png">
+<img src="../assets/usecases-images/rgbif_biodivcomp.png">
 
 </body>

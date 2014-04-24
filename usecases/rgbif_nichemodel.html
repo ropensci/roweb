@@ -20,7 +20,7 @@ library(maptools)
 
 <p>Make a list of files that are installed with the dismo package, then create a rasterStack from these</p>
 
-<pre class="prettyprint"><code>files &lt;- list.files(paste(system.file(package = &quot;dismo&quot;), &quot;/ex&quot;, sep = &quot;&quot;), 
+<pre class="prettyprint"><code>files &lt;- list.files(paste(system.file(package = &quot;dismo&quot;), &quot;/ex&quot;, sep = &quot;&quot;),
     &quot;grd&quot;, full.names = TRUE)
 predictors &lt;- stack(files)
 </code></pre>
@@ -51,7 +51,7 @@ plot(wrld_simpl, add = TRUE)
 points(df2, col = &quot;blue&quot;)
 </code></pre>
 
-<img src="../assets/img/usecases/rgbif_nichemodel.png">
+<img src="../assets/usecases-images/rgbif_nichemodel.png">
 
 <h3>Further reading</h3>
 

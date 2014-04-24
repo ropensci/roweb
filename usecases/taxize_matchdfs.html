@@ -23,15 +23,15 @@ layout: usecases
 
 <h3>Table 1</h3>
 
-<pre class="prettyprint"><code>df1 &lt;- data.frame(species = c(&quot;Helianthus annuus&quot;, &quot;Silene acaulis&quot;, &quot;Mimulus alpinus&quot;, 
-    &quot;Phlox drummondii&quot;, &quot;Triteleia hyacinthina&quot;), var1 = rnorm(5), var2 = rnorm(5), 
+<pre class="prettyprint"><code>df1 &lt;- data.frame(species = c(&quot;Helianthus annuus&quot;, &quot;Silene acaulis&quot;, &quot;Mimulus alpinus&quot;,
+    &quot;Phlox drummondii&quot;, &quot;Triteleia hyacinthina&quot;), var1 = rnorm(5), var2 = rnorm(5),
     stringsAsFactors = FALSE)
 </code></pre>
 
 <h3>Table 2</h3>
 
-<pre class="prettyprint"><code>df2 &lt;- data.frame(species = c(&quot;Helianthus annuus texanus&quot;, &quot;Cucubalus acaulis&quot;, 
-    &quot;Mimulus langsdorffii alpinus&quot;, &quot;Armeria drummondii&quot;, &quot;Triteleia hyocinthina&quot;), 
+<pre class="prettyprint"><code>df2 &lt;- data.frame(species = c(&quot;Helianthus annuus texanus&quot;, &quot;Cucubalus acaulis&quot;,
+    &quot;Mimulus langsdorffii alpinus&quot;, &quot;Armeria drummondii&quot;, &quot;Triteleia hyocinthina&quot;),
     var3 = rnorm(5), var4 = rnorm(5), stringsAsFactors = FALSE)
 </code></pre>
 
@@ -136,7 +136,7 @@ ggplot(alldat, aes(var1, var4)) +
   labs(x=&quot;Cool variable&quot;, y=&quot;Other super sweet variable&quot;)
 </code></pre>
 
-<img src="../assets/img/usecases/taxize_matchdfs.png">
+<img src="../assets/usecases-images/taxize_matchdfs.png">
 
 <p>And that&#39;s it. Of course in practice your tables will be larger to much larger, but the same concept applies - it will just take longer. </p>
 
