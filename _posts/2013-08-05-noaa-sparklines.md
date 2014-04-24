@@ -10,9 +10,9 @@ tags:
 - API
 ---
 
-We have started a new R package interacting with NOAA climate data called **rnoaa**. You can find our package in development [here](https://github.com/ropensci/rnoaa) and documentation for NOAA web services [here](http://www.ncdc.noaa.gov/cdo-web/webservices). It is still early days for this package, but we wanted to demo what you can do with the package. 
+We have started a new R package interacting with NOAA climate data called **rnoaa**. You can find our package in development [here](https://github.com/ropensci/rnoaa) and documentation for NOAA web services [here](http://www.ncdc.noaa.gov/cdo-web/webservices). It is still early days for this package, but we wanted to demo what you can do with the package.
 
-In this example, we search for stations that collect climate data, then get the data for those stations, pull out only the precipitation data, then get latitude/longitude coordinates for each station, and plot data on a map. 
+In this example, we search for stations that collect climate data, then get the data for those stations, pull out only the precipitation data, then get latitude/longitude coordinates for each station, and plot data on a map.
 
 Load packages
 
@@ -46,12 +46,12 @@ Get data from stations, just searching on the first 60.
 {% highlight r %}
 noaa_fw <- failwith(NULL, noaa)
 registerDoMC(cores = 4)
-dat <- compact(llply(as.character(res)[1:60], function(x) noaa_fw(dataset = "GHCND", 
+dat <- compact(llply(as.character(res)[1:60], function(x) noaa_fw(dataset = "GHCND",
     station = x, year = 2010, month = 7), .parallel = TRUE))
 {% endhighlight %}
 
 
-Make a data.frame and fix dates. 
+Make a data.frame and fix dates.
 
 
 {% highlight r %}
@@ -65,7 +65,7 @@ Get station lat and long data so that we can put data on a map.
 
 
 {% highlight r %}
-latlongs <- llply(res[1:60], function(x) noaa_stations(x, dataset = "GHCND")$data$meta[c("id", 
+latlongs <- llply(res[1:60], function(x) noaa_stations(x, dataset = "GHCND")$data$meta[c("id",
     "latitude", "longitude")])
 latlongs <- ldply(latlongs, function(x) as.data.frame(x))
 df2 <- merge(df, latlongs, by.x = "station", by.y = "id")
@@ -92,20 +92,20 @@ head(df2)
 {% endhighlight %}
 
 
-Plot the data. Each sparkline on the map is the precipitation data for a station, where the values are tenths of mm of precipitation. The x-axis of each sparkline is number of days, where each line is the last 30 days of precipitation data. The blue line in each sparkline is the same y-axis for each line for reference. The station with the greatest value (87.6 mm) is the one in the ocean in American Somoa at (-14.31667,-170.7667). 
+Plot the data. Each sparkline on the map is the precipitation data for a station, where the values are tenths of mm of precipitation. The x-axis of each sparkline is number of days, where each line is the last 30 days of precipitation data. The blue line in each sparkline is the same y-axis for each line for reference. The station with the greatest value (87.6 mm) is the one in the ocean in American Somoa at (-14.31667,-170.7667).
 
 
 {% highlight r %}
 world_map <- map_data("world")
-p <- ggplot() + geom_polygon(data = world_map, aes(x = long, y = lat, group = group), 
-    fill = "white", color = "gray40", size = 0.2) + annotate(geom = "text", 
+p <- ggplot() + geom_polygon(data = world_map, aes(x = long, y = lat, group = group),
+    fill = "white", color = "gray40", size = 0.2) + annotate(geom = "text",
     x = -155, y = -55, label = sprintf("Max value is\n %s mm", max(df2$value)/10))
-p + geom_subplot(aes(longitude, latitude, group = station, subplot = geom_line(aes(date, 
-    value)), size = 1), ref = ref_vline(aes(fill = length(value)), thickness = 0.1), 
+p + geom_subplot(aes(longitude, latitude, group = station, subplot = geom_line(aes(date,
+    value)), size = 1), ref = ref_vline(aes(fill = length(value)), thickness = 0.1),
     width = rel(2), height = rel(5), data = df2) + theme(legend.position = "none")
 {% endhighlight %}
 
-![center](/assets/img/blog/2013-08-05-noaa-sparklines/plotit.png) 
+![center](/assets/blog-images/2013-08-05-noaa-sparklines/plotit.png)
 
 
-There is a lot more to come in this package. Keep an eye on this blog and our twitter account (@ropensci). 
+There is a lot more to come in this package. Keep an eye on this blog and our twitter account (@ropensci).

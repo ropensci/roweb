@@ -17,7 +17,7 @@ Before digging in, why would you want to get climate data programatically vs. vi
 
 ## Interactive visualizations in R
 
-Let's start off with something shiny. The majority of time I make static visualizations, which are great for me to look at during analyses, and for publications of research findings in PDFs. However, static visualizations don't take advantage of the interactive nature of the web. Ramnath Vaidyanathan has developed an R package, [rCharts][rcharts], to generate dynamic Javascript visualizations directly from R that can be used interactively in a browser. Here is an example visualizing a dataset that comes with R. 
+Let's start off with something shiny. The majority of time I make static visualizations, which are great for me to look at during analyses, and for publications of research findings in PDFs. However, static visualizations don't take advantage of the interactive nature of the web. Ramnath Vaidyanathan has developed an R package, [rCharts][rcharts], to generate dynamic Javascript visualizations directly from R that can be used interactively in a browser. Here is an example visualizing a dataset that comes with R.
 
 
 {% highlight r %}
@@ -80,11 +80,11 @@ dat_r$party <- rep("R", nrow(dat_r))
 dat_both <- rbind(dat_d, dat_r)
 
 # Plot data
-ggplot(dat_both, aes(day, count, colour = party)) + theme_grey(base_size = 20) + 
+ggplot(dat_both, aes(day, count, colour = party)) + theme_grey(base_size = 20) +
     geom_line() + scale_colour_manual(values = c("blue", "red"))
 {% endhighlight %}
 
-![center](/assets/img/blog/2013-08-17-sciordata/govdat.png) 
+![center](/assets/blog-images/2013-08-17-sciordata/govdat.png)
 
 
 
@@ -114,11 +114,11 @@ names(out) <- seq(1979, 1990, 1)
 df <- ldply(out)
 
 # Plot data
-ggplot(df, aes(long, lat, group = group)) + geom_polygon(fill = "steelblue") + 
+ggplot(df, aes(long, lat, group = group)) + geom_polygon(fill = "steelblue") +
     theme_ice() + facet_wrap(~.id)
 {% endhighlight %}
 
-![center](/assets/img/blog/2013-08-17-sciordata/seaice2.png) 
+![center](/assets/blog-images/2013-08-17-sciordata/seaice2.png)
 
 
 
@@ -143,12 +143,12 @@ country.dat.bcc <- country.dat[country.dat$gcm == "bccr_bcm2_0", ]
 country.dat.bcc <- subset(country.dat.bcc, country.dat.bcc$scenario != "a2")
 
 # Plot data
-ggplot(country.dat.bcc, aes(x = fromYear, y = data, group = locator, colour = locator)) + 
-    geom_point() + geom_path() + ylab("Temperature anomaly over baseline") + 
+ggplot(country.dat.bcc, aes(x = fromYear, y = data, group = locator, colour = locator)) +
+    geom_point() + geom_path() + ylab("Temperature anomaly over baseline") +
     theme_bw(base_size = 20)
 {% endhighlight %}
 
-![center](/assets/img/blog/2013-08-17-sciordata/unnamed-chunk-1.png) 
+![center](/assets/blog-images/2013-08-17-sciordata/unnamed-chunk-1.png)
 
 
 
@@ -164,7 +164,7 @@ temp <- lookup_names(name = "bird", type = "common")
 comnames <- temp[temp$species_id %in% c(357, 359, 1108), "common_name"]
 
 # Get some data
-out <- getobsspbyday(speciesid = c(357, 359, 1108), startdate = "2010-04-01", 
+out <- getobsspbyday(speciesid = c(357, 359, 1108), startdate = "2010-04-01",
     enddate = "2013-09-31")
 names(out) <- comnames
 df <- ldply(out)
@@ -172,19 +172,19 @@ df$date <- as.Date(df$date)
 
 # Visualize data
 library(ggplot2)
-ggplot(df, aes(date, count)) + geom_line() + theme_grey(base_size = 20) + facet_grid(.id ~ 
+ggplot(df, aes(date, count)) + geom_line() + theme_grey(base_size = 20) + facet_grid(.id ~
     .)
 {% endhighlight %}
 
-![center](/assets/img/blog/2013-08-17-sciordata/rnpn.png) 
+![center](/assets/blog-images/2013-08-17-sciordata/rnpn.png)
 
 
 
 ### Feedback and new climate data sources
 
-Do use the above pacakges ([govdat][govdat], [rnoaa][rnoaa], [rWBclimate][rWBclimate], and [rnpn][rnpn]) to get climate data, and get in touch with bug reports, and feature requests. 
+Do use the above pacakges ([govdat][govdat], [rnoaa][rnoaa], [rWBclimate][rWBclimate], and [rnpn][rnpn]) to get climate data, and get in touch with bug reports, and feature requests.
 
-Surely there are other sources of climate data out there that you want to use in R, right? Let us know what else you want to use. Better yet, if you can sling some R code, start writing your own package to interact with a source of climate data on the web - we can lend a hand. 
+Surely there are other sources of climate data out there that you want to use in R, right? Let us know what else you want to use. Better yet, if you can sling some R code, start writing your own package to interact with a source of climate data on the web - we can lend a hand.
 
 [sciocweb]: http://scioclimate.wikispaces.com
 [sciox]: https://twitter.com/#sciox
