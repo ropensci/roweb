@@ -1,0 +1,32 @@
+---
+title: Plot species occurrence data
+pkg: rvertnet
+layout: usecases
+---
+ 
+<body>
+<h3>Load libraries</h3>
+
+<pre class="prettyprint"><code>library(rvertnet)
+library(ggplot2)
+</code></pre>
+
+<h3>Define a species list</h3>
+
+<pre class="prettyprint"><code>splist &lt;- splist &lt;- c(&quot;Accipiter erythronemius&quot;, &quot;Junco hyemalis&quot;, &quot;Aix sponsa&quot;, 
+    &quot;Haliaeetus leucocephalus&quot;, &quot;Corvus corone&quot;, &quot;Threskiornis molucca&quot;, &quot;Merops malimbicus&quot;)
+</code></pre>
+
+<h3>Search for occurrences in VertNet</h3>
+
+<pre class="prettyprint"><code>out &lt;- lapply(splist, function(x) vertoccurrence(t = x, grp = &quot;bird&quot;, num = 500))
+</code></pre>
+
+<h3>Plot data</h3>
+
+<pre class="prettyprint"><code>vertmap(out)
+</code></pre>
+
+<img src="../assets/img/usecases/rvertnet.png">
+
+</body>

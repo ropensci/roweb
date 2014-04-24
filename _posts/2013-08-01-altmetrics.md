@@ -1,10 +1,10 @@
 ---
 name: altmetrics
 layout: post
-title: Consuming article-level metrics 
+title: Consuming article-level metrics
 date: 2013-08-01
 author: Scott Chamberlain
-tags: 
+tags:
 - R
 - ropensci
 - raltmetric
@@ -17,13 +17,13 @@ We recently had a paper come out in [a special issue](http://www.niso.org/public
 
 To get data from the *article-level metrics* providers we used one R package we created to get DOIs for PLOS articles ([rplos](https://github.com/ropensci/rplos)) and three R packages we created to get metrics: [alm](https://github.com/ropensci/alm), [rImpactStory](https://github.com/ropensci/rimpactstory), and [rAltmetric](https://github.com/ropensci/rAltmetric). Here, we will show how we produced visualizations in the paper. The code here is basically that used in the paper - but modified to make it useable by you hopefully.
 
-Note that this entire workflow is in a Github gist [here][gist]. In addition, you will need to sign up for API keys for [ImpactStory](http://impactstory.org/api-docs) and [Altmetric](http://api.altmetric.com/index.html#keys). 
+Note that this entire workflow is in a Github gist [here][gist]. In addition, you will need to sign up for API keys for [ImpactStory](http://impactstory.org/api-docs) and [Altmetric](http://api.altmetric.com/index.html#keys).
 
 ### First, let's get some data
 
 Install these packages if you don't have them. Most packages are on CRAN, but install the following packages from Github: `rplos`, `alm`, `rImpactStory`, and `rAltmetric` by running `install_github("PACKAGE_NAME", "ropensci")`.
 
-{% highlight r %}
+```r
 library(alm)
 library(rImpactStory)
 library(rAltmetric)
@@ -33,7 +33,7 @@ library(reshape)
 library(reshape2)
 library(httr)
 library(lubridate)
-{% endhighlight %}
+```
 
 <br>
 Define a function `parse_is` to parse ImpactStory results
@@ -48,32 +48,32 @@ Define a function `compare_altmet_prov` to collect altmetrics from three provide
 <br>
 Safe version in case of errors
 
-{% highlight r %}
+```r
 compare_altmet_prov_safe <- plyr::failwith(NULL, compare_altmet_prov)
-{% endhighlight %}
+```
 
 <br>
 Search for and get DOIs for 50 papers (we used more in the paper)
 
-{% highlight r %}
+```r
 res <- searchplos(terms = "*:*", fields = "id", toquery = list("publication_date:[2011-06-30T00:00:00Z TO 2012-06-01T23:59:59Z] ", "doc_type:full"), start = 0, limit = 50)
-{% endhighlight %}
+```
 
 <br>
 Get data from each provider
 
-{% highlight r %}
+```r
 dat <- llply(as.character(res[, 1]), compare_altmet_prov_safe, isaddifnot = TRUE, sleep = 1, .progress = "text")
 dat <- ldply(dat)
-{% endhighlight %}
+```
 
 <br><br>
-### Plot differences 
+### Plot differences
 
 Great, we have data! Next, let's make a plot of the difference between max and min value across the three providers for 7 article-level metrics.
 
 
-{% highlight r %}
+```r
 alldat <- sort_df(dat, "doi")
 
 dat_split <- split(alldat, f = alldat$doi)
@@ -94,27 +94,27 @@ dat_split_df_melt <- melt(dat_split_df_1)
 
 dat_split_df_melt <- dat_split_df_melt[!dat_split_df_melt$variable %in% "connotea", ]
 
-ggplot(dat_split_df_melt, aes(x = log10(value), fill = variable)) + 
-    theme_bw(base_size = 14) + 
-    geom_bar() + 
-    scale_fill_discrete(name = "Almetric") + 
-    facet_grid(variable ~ ., scales = "free") + 
-    labs(x = expression(log[10](Value)), y = "Count") + 
-    theme(strip.text.y = element_text(angle = 0), 
-        panel.grid.major = element_blank(), 
-        panel.grid.minor = element_blank(), 
-        legend.position = "none", 
+ggplot(dat_split_df_melt, aes(x = log10(value), fill = variable)) +
+    theme_bw(base_size = 14) +
+    geom_bar() +
+    scale_fill_discrete(name = "Almetric") +
+    facet_grid(variable ~ ., scales = "free") +
+    labs(x = expression(log[10](Value)), y = "Count") +
+    theme(strip.text.y = element_text(angle = 0),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = "none",
         panel.border = element_rect(size = 1))
-{% endhighlight %}
+```
 
-![center](/assets/img/blog/2013-08-01-altmetrics/dataconst_plot1.png) 
+![center](/assets/blog-images/2013-08-01-altmetrics/dataconst_plot1.png)
 
 <br><br>
 ### Different collection dates?
 Okay, so there are some inconsistencies in data from different providers. Perhaps the same metric (e.g., tweets) were collected on different days for each provider? Let's take a look. We first define a function to get the difference in days between a vector of values, then apply that function over the data for each metric. We then reshape the data a bit using the `reshape2` package, and make the plot.
 
 
-{% highlight r %}
+```r
 datediff <- function(x) {
     datesorted <- sort(x)
     round(as.numeric(difftime(datesorted[3], datesorted[1])), 0)
@@ -126,46 +126,46 @@ dat_split_df_melt <- melt(dat_split_df_1)
 dat_split_df_ <- merge(dat_split_df_melt, dat_split_df_2, by = "doi")
 dat_split_df_melt <- dat_split_df_[!dat_split_df_$variable %in% "connotea", ]
 
-ggplot(dat_split_df_melt, aes(x = datediff, y = log10(value + 1), colour = variable)) + 
-    theme_bw(base_size = 14) + 
-    geom_point(size = 3, alpha = 0.6) + 
-    scale_colour_brewer("Source", type = "qual", palette = 3) + 
-    theme(panel.grid.major = element_blank(), 
-        panel.grid.minor = element_blank(), 
-        legend.position = c(0.65, 0.9), 
-        panel.border = element_rect(size = 1), 
-        legend.key = element_blank(), 
-        panel.background = element_rect(colour = "white")) + 
-    guides(col = guide_legend(nrow = 2, override.aes = list(size = 4))) + 
+ggplot(dat_split_df_melt, aes(x = datediff, y = log10(value + 1), colour = variable)) +
+    theme_bw(base_size = 14) +
+    geom_point(size = 3, alpha = 0.6) +
+    scale_colour_brewer("Source", type = "qual", palette = 3) +
+    theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = c(0.65, 0.9),
+        panel.border = element_rect(size = 1),
+        legend.key = element_blank(),
+        panel.background = element_rect(colour = "white")) +
+    guides(col = guide_legend(nrow = 2, override.aes = list(size = 4))) +
     labs(x = "\nDate difference (no. of days)", y = "Value of difference between max and min\n")
-{% endhighlight %}
+```
 
-![center](/assets/img/blog/2013-08-01-altmetrics/dataconst_plot2.png) 
+![center](/assets/blog-images/2013-08-01-altmetrics/dataconst_plot2.png)
 
 <br><br>
 ### Diggin' in
 Let's dig in to indivdual articles. Here, we reshape some data, selecting just 20 DOIs (i.e., papers), and plot the values of each metric for each DOI, coloring points by provider. Note that points are slightly offset horizontally to make them easier to see.
 
 
-{% highlight r %}
+```r
 alldat_m <- melt(dat_split_df[1:60,], id.vars=c(1,2,11))
 alldat_m <- alldat_m[!alldat_m$variable %in% "connotea",]
 
 ggplot(na.omit(alldat_m[,-3]), aes(x=doi, y=value, colour=provider)) +
-  theme_bw(base_size = 14) + 
+  theme_bw(base_size = 14) +
   geom_point(size=4, alpha=0.4, position=position_jitter(width=0.15)) +
   scale_colour_manual(values = c('#FC1D00','#FD8A00','#0D71A5','#2CCC00')) +
   facet_grid(variable~., scales='free') +
   theme(axis.text.x=element_blank(),
         strip.text.y=element_text(angle = 0),
-        legend.position="top", 
+        legend.position="top",
         legend.key = element_blank(),
         panel.border = element_rect(size=1),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank()) +
   guides(col = guide_legend(title="", override.aes=list(size=5), nrow = 1, byrow = TRUE))
-{% endhighlight %}
+```
 
-![center](/assets/img/blog/2013-08-01-altmetrics/dataconst2.png) 
+![center](/assets/blog-images/2013-08-01-altmetrics/dataconst2.png)
 
 [gist]: https://gist.github.com/sckott/6136591
