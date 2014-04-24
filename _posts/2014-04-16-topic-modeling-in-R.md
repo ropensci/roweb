@@ -51,8 +51,8 @@ From here, we have what we need to fit the topic model. I don't want to focus on
 The window below is an interactive visualization of the LDA output derived from elife abstracts. The aim of this visualization is to aid interpretation of topics. Topic interpretation tends to be difficult since each topic is defined by a probability distribution with support over many of words. With this interactive visualization, one can focus on the most "relevant" words for any topic by hovering/clicking over the appropriate circle. We will define "relevance" shortly, but for now, go ahead and click on the circle towards the bottom labeled "11".
 
 
-</div><div class="span10">
-<iframe src="https://cpsievert.shinyapps.io/LDAelife/" width="1200" height = "800"></iframe></div><div class="span8 offset1">
+</div><div class="col-sm-10 col-lg-10">
+<iframe src="https://cpsievert.shinyapps.io/LDAelife/" width="1200" height = "800"></iframe></div><div class="col-sm-8 col-sm-offset-2"> 
 
 Now that topic 11 is selected, in the bar chart to the right, we see "relat", "evolut", and "similar" are the top 3 most relevant words. Towards the bottom of the bar chart, we see "resid" which is the 30th most relevant. Note that before the model was fit [stemming](http://en.wikipedia.org/wiki/Stemming) was performed. Thus, a word like "relat" could stand for "relation", "relations", "relationship", etc. You might now be thinking: "That's great, I can see this topic is related to evolutionary biology, but why are these words ranked in this order?"
 
