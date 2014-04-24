@@ -7,7 +7,7 @@ title: Tags
 	{% for tag in post.tags %}
 	{% if tag == page.tag %}
 		<a href="{{ post.url }}">{{ post.title }}</a> - <strong>{{ post.date | date: "%B %e, %Y" }}</strong>
-		<br/><small> {% for tag in post.tags %} <a href="/tags/{{ tag }}" title="View posts tagged with &quot;{{ tag }}&quot;"><u>{{ tag }}</u></a>  {% if forloop.last != true %} {% endif %} {% endfor %} </small></p><br>
+		<br/><small> {% for tag in post.tags %} <a href="/tags/{{ tag }}" title="View posts tagged with &quot;{{ tag }}&quot;"><span class="label label-inverse">{{ tag }}</span></a>  {% if forloop.last != true %} {% endif %} {% endfor %} </small></p><br>
 	{% endif %}
 	{% endfor %}
 	{% endfor %}
