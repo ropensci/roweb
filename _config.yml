@@ -2,7 +2,7 @@ permalink: /blog/:year/:month/:day/:title
 markdown: redcarpet
 
 paginate_path: "blog/page:num"
-paginate: 5
+paginate: 3
 pygments: false
 redcarpet:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
@@ -10,7 +10,7 @@ deploy: false
 
 exclude: ['*.Rmd']
 
-packages: 
+packages:
 - rbefdata
 - bhl
 - citeulike
