@@ -16,7 +16,7 @@ title: "rOpenSci Blog"
   {% for post in paginator.posts %}
       <h3><a href="{{ site.dir }}{{ post.url }}">{{ post.title }}</a></h3>
       {{ post.author }} &mdash; <i>{{ post.date | date: "%B %e, %Y" }}</i><br>
-      {{ post.content | truncatewords:100}}<br>
+      {{ post.content | strip_html | truncatewords:75}}<br>
       <hr class="gray-line">
   {% endfor %}
 
