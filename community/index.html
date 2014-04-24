@@ -1,3 +1,7 @@
+---
+layout: dummy_page
+title: "rOpenSci - Open Tools for Open Science"
+---
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,19 +12,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-        <link rel="shortcut icon" href="assets/flat-ui/images/favicon.ico">
+        <link rel="shortcut icon" href="{{ site.url }}/assets/flat-ui/images/favicon.ico">
          
-        <link rel="stylesheet" href="assets/flat-ui/bootstrap/css/bootstrap.css">
-        <link rel="stylesheet" href="assets/flat-ui/css/flat-ui.css">
+        <link rel="stylesheet" href="{{ site.url }}/assets/flat-ui/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="{{ site.url }}/assets/flat-ui/css/flat-ui.css">
         
-        <link rel="stylesheet" href="assets/common-files/css/icon-font.css">
+        <link rel="stylesheet" href="{{ site.url }}/assets/common-files/css/icon-font.css">
         <!-- end -->
-        <link rel="stylesheet" href="assets/common-files/css/animations.css">
-        <link rel="stylesheet" href="static/css/style.css">
-        <link rel="stylesheet" href="static/css/github.css">
+        <link rel="stylesheet" href="{{ site.url }}/assets/common-files/css/animations.css">
+        <link rel="stylesheet" href="{{ site.url }}/static/css/style.css">
+        <link rel="stylesheet" href="{{ site.url }}/static/css/github.css">
         <script type="text/javascript" src="//use.typekit.net/djn7rbd.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-        <script src="static/highlight.pack.js"></script>
+        <script src="{{ site.url }}/static/highlight.pack.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
         
         <title>rOpenSci community</title>
@@ -29,38 +33,18 @@
     <body>
 
 <div class="page-wrapper"><header class="header-10">
-    <div class="container">
-        <div class="row">
-
-            <div class="navbar col-sm-12" role="navigation">
-                <div class="navbar-header navlogo">
-                    <button type="button" class="navbar-toggle"></button>
-                    <a class="brand" href="#"><img src="assets/common-files/img/header/nav_small.png"></a>
-                </div>
-                <div class="collapse navbar-collapse pull-right">
-                    <ul class="nav pull-left">
-                        <li><a href="#">HOME</a></li>
-                        <li><a href="#">BLOG</a></li>
-                        <li><a href="#">PACKAGES</a></li>
-                        <li><a href="#">COMMUNITY</a></li>
-                        <li><a href="#">CONTACT</a></li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </div>
+{% include navbar.html %}
     <div class="header-background"></div>
 </header>
 <section class="blog-3">
     <div class="container">
         <div class="title">
-            <img src="assets/common-files/img/content/blog_header_logo.png" alt="">
+            <img src="{{ site.url }}/assets/common-files/img/content/blog_header_logo.png" alt="">
             <h3>Community</h3>
         </div>
 
             <div class="row"><div class="col-sm-8 col-sm-offset-2">
-        <p>rOpenSci is entirely a <a href="http://karthik.github.io/roweb/community.html#community" title="rOpenSci community">community effort</a>. The project originally came together from conversations between like-minded researchers and continues to expand as more people contribute tools, expertise, and research ideas. We are now a fast growing global community of researchers, students, software developers, and various others working towards improving the world of science. <a href="http://karthik.github.io/roweb/contact.html" title="rOpenSci Contact">We welcome you</a> to join us and help improve tools and practices available to researchers.</p>
+        <p>rOpenSci is entirely a <a href="#community" title="rOpenSci community">community effort</a>. The project originally came together from conversations between like-minded researchers and continues to expand as more people contribute tools, expertise, and research ideas. We are now a fast growing global community of researchers, students, software developers, and various others working towards improving the world of science. <a href="http://karthik.github.io/roweb/contact.html" title="rOpenSci Contact">We welcome you</a> to join us and help improve tools and practices available to researchers.</p>
     </div> </div>
 
 
@@ -106,7 +90,7 @@
             <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/simon_goring.png" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/simon_goring.png" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -119,7 +103,7 @@
             <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/david_winter.png" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/david_winter.png" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -132,7 +116,7 @@
             <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/lee_marsh.jpg" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/lee_marsh.jpg" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -151,7 +135,7 @@
             <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/sara_varela.jpg" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/sara_varela.jpg" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -164,7 +148,7 @@
             <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/vijay_barve.jpg" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/vijay_barve.jpg" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -177,7 +161,7 @@
             <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/rafael_maia.jpg" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/rafael_maia.jpg" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -196,7 +180,7 @@
             <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/ramnath.png" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/ramnath.png" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -209,7 +193,7 @@
              <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/banbury.jpg" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/banbury.jpg" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -222,7 +206,7 @@
             <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/thomas_leeper.png" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/thomas_leeper.png" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -241,7 +225,7 @@
             <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/ed_szocs.png" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/ed_szocs.png" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -254,7 +238,7 @@
             <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/toby.jpg" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/toby.jpg" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -267,7 +251,7 @@
             <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/javier_gonzalez.jpg" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/javier_gonzalez.jpg" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -288,7 +272,7 @@
             <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/najko_jahn.png" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/najko_jahn.png" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -301,7 +285,7 @@
              <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/david_springate.jpg" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/david_springate.jpg" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -314,7 +298,7 @@
             <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/stefan.jpg" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/stefan.jpg" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -333,7 +317,7 @@
            <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/pfaff.png" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/pfaff.png" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -346,7 +330,7 @@
             <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/brian.jpg" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/brian.jpg" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -360,7 +344,7 @@
             <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/hilary_parker.jpg" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/hilary_parker.jpg" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -380,7 +364,7 @@
            <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/alyssa_frazee.jpg" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/alyssa_frazee.jpg" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -393,7 +377,7 @@
             <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/ciera_martinez.jpg" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/ciera_martinez.jpg" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -407,7 +391,7 @@
             <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/martin_fenner.jpg" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/martin_fenner.jpg" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -427,7 +411,7 @@
            <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/gavin_simpson.jpg" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/gavin_simpson.jpg" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -440,7 +424,7 @@
            <div class="project-wrapper">
                 <div class="project">
                     <div class="photo-wrapper">
-                        <div class="photo"><img src="assets/common-files/img/community/plus_one.png" alt=""></div>
+                        <div class="photo"><img src="{{ site.url }}/assets/common-files/img/community/plus_one.png" alt=""></div>
                         <div class="overlay"><span class="fui-eye"></span></div>
                     </div>
                     <div class="info">
@@ -461,79 +445,4 @@
 </div> <!-- end row for co-devs -->
 <!-- End co-devs here -->
 
-<footer class="footer-6">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3">
-                <div><a class="brand" href="#">rOpenSci</a></div>
-            </div>
-            <nav>
-                <div class="col-sm-2">
-                    <h6>About</h6>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-2">
-                    <h6>Work</h6>
-                    <ul>
-                        <li><a href="#">R Packages</a></li>
-                        <li><a href="#">Tutorials</a></li>
-                        <li><a href="#">Use cases</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-2">
-                    <h6>Stuff</h6>
-                    <ul>
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Terms</a></li>
-                    </ul>
-                </div>
-            </nav>
-            <div class="col-sm-3">
-                <h6>Subscribe</h6>
-                <div class="input-group">
-                    <input type="text" class="form-control">
-                    <span class="input-group-btn">
-                        <button class="btn" type="button">
-                            <span class="fui-arrow-right"> </span>
-                        </button>
-                    </span>
-                </div>
-                <div class="social-btns">
-                    <a href="#">
-                        <div class="fui-googleplus"></div>
-                        <div class="fui-googleplus"></div>
-                    </a>
-                    <a href="#">
-                        <div class="fui-twitter"></div>
-                        <div class="fui-twitter"></div>
-                    </a>
-                    <a href="#">
-                        <div class="fui-vimeo"></div>
-                        <div class="fui-vimeo"></div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>          <!-- Placed at the end of the document so the pages load faster -->
-            <script src="assets/common-files/js/jquery-1.10.2.min.js"></script>
-            <script src="assets/common-files/js/jquery.bxslider.min.js"></script>
-            <script src="assets/common-files/js/jquery.scrollTo-1.4.3.1-min.js"></script>
-            <script src="assets/flat-ui/js/bootstrap.min.js"></script>
-            <script src="assets/common-files/js/masonry.pkgd.min.js"></script>
-            <script src="assets/common-files/js/modernizr.custom.js"></script>
-            <script src="assets/common-files/js/page-transitions.js"></script>
-            <script src="assets/common-files/js/easing.min.js"></script>
-            <script src="assets/common-files/js/jquery.svg.js"></script>
-            <script src="assets/common-files/js/jquery.svganim.js"></script>
-            <script src="assets/common-files/js/jquery.backgroundvideo.min.js"></script>
-            <script src="assets/common-files/js/froogaloop.min.js"></script>
-            <script src="assets/common-files/js/startup-kit.js"></script>
-        </div>
-    </body>
-</html>
+  {% include footer.html %}
