@@ -5,21 +5,18 @@ title: "rOpenSci Blog"
 
 <div class="row">
       <div class="col-sm-6">
-<!--         <h3>Posts by</h3> -->
       <a href="/tags.html" class="btn btn-success">Tag</a>
       <a href="/archives.html" class="btn btn-success">Date</a>
-<!--       <br><br> -->
       <a href="http://ropensci.org/feed.xml" target="_blank" class="ss-social ss-icon btn" rel="tooltip" data-placement="right" title="Blog posts via RSS Feed">RSS</a>
     </div>
 </div>
 
 <div id='post' class="col-md-12">
-<!--   List of posts for landing page -->
+  <!--   List of posts for landing page -->
   {% for post in paginator.posts %}
       <h3><a href="{{ site.dir }}{{ post.url }}">{{ post.title }}</a></h3>
       {{ post.author }} &mdash; <i>{{ post.date | date: "%B %e, %Y" }}</i><br>
       {{ post.content | truncatewords:100}}<br>
-<!--       <a href="{{ site.dir }}{{ post.url }}" class="badge badge-info">Read more...{{ post.content | number_of_words }} words</a> -->
       <hr class="gray-line">
   {% endfor %}
 
