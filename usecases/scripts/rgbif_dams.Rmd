@@ -1,0 +1,94 @@
+# https://datadryad.org/resource/doi:10.5061/dryad.63q27/3
+# http://www.worldclim.org/current
+
+This is an attempt to address this question from a Twitter conversation: https://twitter.com/corey_phillis/status/421731370029686784
+
+> what i’d really like is to be able to cross-ref the dam db with rgbif. What fish spp. are above/below these dams? Corey Phillis (@corey_phillis)
+
+To attack this problem we need dam data and GBIF data. We already have an R package for GBIF - we just need the dam data, hopefully retrievable in a programmatic fashion. 
+
+## Get dam data
+
+Download zip file and extract files
+
+```{r getdata}
+url <- 'http://sedac.ciesin.columbia.edu/downloads/data/grand-v1/grand-v1-dams-rev01/dams-rev01-global-shp.zip'
+file <- basename(url)
+download.file(url, file)
+tmpdir <- tempdir()
+untar(file, exdir = tmpdir)
+list.files(tmpdir)
+```
+
+Rivers
+
+```{r}
+# url_rivers <- 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/physical/ne_50m_rivers_lake_centerlines.zip'
+# url_rivers <- 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_rivers_lake_centerlines.zip'
+url_rivers <- 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/physical/ne_10m_rivers_lake_centerlines.zip'
+file2 <- basename(url_rivers)
+download.file(url_rivers, file2)
+tmpdir2 <- tempdir()
+untar(file2, exdir = tmpdir2)
+list.files(tmpdir2)
+```
+
+Open shp files
+
+```{r read}
+library(rgdal)
+dat <- readOGR(tmpdir, "GRanD_dams_v1_1")
+head(dat@data[,1:5])
+```
+
+Get river data
+
+```{r}
+dat_rivers <- readOGR(tmpdir2, 'ne_10m_rivers_lake_centerlines')
+head(dat_rivers@data)
+plot(dat_rivers)
+```
+
+Get a single river
+
+```{r}
+dat_rivers@lines[[1]]
+plot(SpatialLines(dat_rivers@lines[1:140]))
+points(dat)
+```
+
+
+Plot to visualize dams
+
+```{r plot}
+plot(dat_rivers, col="blue")
+points(dat)
+```
+
+Extract data
+
+```{r extract}
+
+```
+
+## taxize - get some fish species
+
+```{r taxize}
+library(taxize)
+# tsn <- get_tsn('Salmonidae')
+# splist <- itis_downstream(tsn, downto='species')
+splist <- c('Oncorhynchus mykiss', '')
+```
+
+
+## Get GBIF occurrence data
+
+```{r gbif1, warning=FALSE, message=FALSE}
+asdfsdf
+```
+
+## Visualize
+
+```{r vis}
+asdfsdf
+```

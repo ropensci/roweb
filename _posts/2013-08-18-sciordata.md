@@ -17,10 +17,10 @@ Before digging in, why would you want to get climate data programatically vs. vi
 
 ## Interactive visualizations in R
 
-Let's start off with something shiny. The majority of time I make static visualizations, which are great for me to look at during analyses, and for publications of research findings in PDFs. However, static visualizations don't take advantage of the interactive nature of the web. Ramnath Vaidyanathan has developed an R package, [rCharts][rcharts], to generate dynamic Javascript visualizations directly from R that can be used interactively in a browser. Here is an example visualizing a dataset that comes with R. 
+Let's start off with something shiny. The majority of time I make static visualizations, which are great for me to look at during analyses, and for publications of research findings in PDFs. However, static visualizations don't take advantage of the interactive nature of the web. Ramnath Vaidyanathan has developed an R package, [rCharts][rcharts], to generate dynamic Javascript visualizations directly from R that can be used interactively in a browser. Here is an example visualizing a dataset that comes with R.
 
 
-{% highlight r %}
+```r
 library(devtools)
 install_github("rCharts", "ramnathv")
 library(rCharts)
@@ -33,7 +33,7 @@ n1 <- nPlot(Freq ~ Hair, group = "Eye", data = hair_eye_male, type = "multiBarCh
 
 # Visualize
 n1$show(cdn = TRUE)
-{% endhighlight %}
+```
 
 
 Check out the output [here][rchartsout]. If you like you can take the source code from the visualization (right click on select *View Page Source*) and put it in your html files, and you're good to go (as long as you have dependencies, etc.) - quicker than learning [d3][d3] and company from scratch, eh. This is a super simple example, but you can imagine the possibilities.  
@@ -45,13 +45,13 @@ Check out the output [here][rchartsout]. If you like you can take the source cod
 ### First, install some packages - these are all just on Github, so you need to have devtools installed
 
 
-{% highlight r %}
+```r
 library(devtools)
 install_github("govdat", "sckott")
 install_github("rnoaa", "ropensci")
 install_github("rWBclimate", "ropensci")
 install_github("rnpn", "ropensci")
-{% endhighlight %}
+```
 
 
 
@@ -60,7 +60,7 @@ install_github("rnpn", "ropensci")
 #### Look at mentions of the phrase "climate change" in congress, using the govdat package
 
 
-{% highlight r %}
+```r
 library(govdat)
 library(ggplot2)
 
@@ -80,11 +80,11 @@ dat_r$party <- rep("R", nrow(dat_r))
 dat_both <- rbind(dat_d, dat_r)
 
 # Plot data
-ggplot(dat_both, aes(day, count, colour = party)) + theme_grey(base_size = 20) + 
+ggplot(dat_both, aes(day, count, colour = party)) + theme_grey(base_size = 20) +
     geom_line() + scale_colour_manual(values = c("blue", "red"))
-{% endhighlight %}
+```
 
-![center](/assets/img/blog/2013-08-17-sciordata/govdat.png) 
+![center](/assets/blog-images/2013-08-17-sciordata/govdat.png)
 
 
 
@@ -93,7 +93,7 @@ ggplot(dat_both, aes(day, count, colour = party)) + theme_grey(base_size = 20) +
 #### Map sea ice for 12 years, for April only, for the North pole
 
 
-{% highlight r %}
+```r
 library(rnoaa)
 library(scales)
 library(ggplot2)
@@ -114,11 +114,11 @@ names(out) <- seq(1979, 1990, 1)
 df <- ldply(out)
 
 # Plot data
-ggplot(df, aes(long, lat, group = group)) + geom_polygon(fill = "steelblue") + 
+ggplot(df, aes(long, lat, group = group)) + geom_polygon(fill = "steelblue") +
     theme_ice() + facet_wrap(~.id)
-{% endhighlight %}
+```
 
-![center](/assets/img/blog/2013-08-17-sciordata/seaice2.png) 
+![center](/assets/blog-images/2013-08-17-sciordata/seaice2.png)
 
 
 
@@ -129,7 +129,7 @@ ggplot(df, aes(long, lat, group = group)) + geom_polygon(fill = "steelblue") +
 Data can be extracted from countries or basins submitted as vectors. Here we will plot the expected temperature anomaly for each 20 year period over a baseline control period of 1961-2000. These countries chosen span the north to south pole. It's clear from the plot that the northern most countries (US and Canada) have the biggest anomaly, and Belize, the most equatorial country, has the smallest anomaly.
 
 
-{% highlight r %}
+```r
 library(rWBclimate)
 
 # Search for data
@@ -143,12 +143,12 @@ country.dat.bcc <- country.dat[country.dat$gcm == "bccr_bcm2_0", ]
 country.dat.bcc <- subset(country.dat.bcc, country.dat.bcc$scenario != "a2")
 
 # Plot data
-ggplot(country.dat.bcc, aes(x = fromYear, y = data, group = locator, colour = locator)) + 
-    geom_point() + geom_path() + ylab("Temperature anomaly over baseline") + 
+ggplot(country.dat.bcc, aes(x = fromYear, y = data, group = locator, colour = locator)) +
+    geom_point() + geom_path() + ylab("Temperature anomaly over baseline") +
     theme_bw(base_size = 20)
-{% endhighlight %}
+```
 
-![center](/assets/img/blog/2013-08-17-sciordata/unnamed-chunk-1.png) 
+![center](/assets/blog-images/2013-08-17-sciordata/unnamed-chunk-1.png)
 
 
 
@@ -156,7 +156,7 @@ ggplot(country.dat.bcc, aes(x = fromYear, y = data, group = locator, colour = lo
 ### Phenology data from the USA National Phenology Network, using rnpn
 
 
-{% highlight r %}
+```r
 library(rnpn)
 
 # Lookup names
@@ -164,7 +164,7 @@ temp <- lookup_names(name = "bird", type = "common")
 comnames <- temp[temp$species_id %in% c(357, 359, 1108), "common_name"]
 
 # Get some data
-out <- getobsspbyday(speciesid = c(357, 359, 1108), startdate = "2010-04-01", 
+out <- getobsspbyday(speciesid = c(357, 359, 1108), startdate = "2010-04-01",
     enddate = "2013-09-31")
 names(out) <- comnames
 df <- ldply(out)
@@ -172,19 +172,19 @@ df$date <- as.Date(df$date)
 
 # Visualize data
 library(ggplot2)
-ggplot(df, aes(date, count)) + geom_line() + theme_grey(base_size = 20) + facet_grid(.id ~ 
+ggplot(df, aes(date, count)) + geom_line() + theme_grey(base_size = 20) + facet_grid(.id ~
     .)
-{% endhighlight %}
+```
 
-![center](/assets/img/blog/2013-08-17-sciordata/rnpn.png) 
+![center](/assets/blog-images/2013-08-17-sciordata/rnpn.png)
 
 
 
 ### Feedback and new climate data sources
 
-Do use the above pacakges ([govdat][govdat], [rnoaa][rnoaa], [rWBclimate][rWBclimate], and [rnpn][rnpn]) to get climate data, and get in touch with bug reports, and feature requests. 
+Do use the above pacakges ([govdat][govdat], [rnoaa][rnoaa], [rWBclimate][rWBclimate], and [rnpn][rnpn]) to get climate data, and get in touch with bug reports, and feature requests.
 
-Surely there are other sources of climate data out there that you want to use in R, right? Let us know what else you want to use. Better yet, if you can sling some R code, start writing your own package to interact with a source of climate data on the web - we can lend a hand. 
+Surely there are other sources of climate data out there that you want to use in R, right? Let us know what else you want to use. Better yet, if you can sling some R code, start writing your own package to interact with a source of climate data on the web - we can lend a hand.
 
 [sciocweb]: http://scioclimate.wikispaces.com
 [sciox]: https://twitter.com/#sciox

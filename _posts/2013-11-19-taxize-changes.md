@@ -19,10 +19,10 @@ We are building a taxonomic toolbelt for R called taxize - which gives you progr
 ## Install and load taxize
 
 
-{% highlight r %}
+```r
 install.packages("taxize")
 library(taxize)
-{% endhighlight %}
+```
 
 
 ***************
@@ -32,81 +32,81 @@ library(taxize)
 Each taxonomic service has their own unique ID for a taxon. We had a way to get ITIS and NCBI identifiers before - we now have functions for Tropicos, EOL, and the Catalogue of Life.
 
 
-{% highlight r %}
+```r
 get_tpsid(sciname = "Helianthus petiolaris patens")
-{% endhighlight %}
+```
 
 
 
-{% highlight text %}
-##        1 
-## 50140022 
+```
+##        1
+## 50140022
 ## attr(,"class")
 ## [1] "tpsid"
-{% endhighlight %}
+```
 
 
 
-{% highlight r %}
+```r
 get_colid(sciname = "Pinus contorta")
-{% endhighlight %}
+```
 
 
 
-{% highlight text %}
-##          1 
-## "14376216" 
+```
+##          1
+## "14376216"
 ## attr(,"class")
 ## [1] "colid"
-{% endhighlight %}
+```
 
 
-And we have a new function to get identifiers across all sources. And it's vectorized so you can pass in many names. 
+And we have a new function to get identifiers across all sources. And it's vectorized so you can pass in many names.
 
 
-{% highlight r %}
+```r
 get_ids(names = c("Chironomus riparius", "Poa annua"), db = c("ncbi", "itis"))
-{% endhighlight %}
+```
 
 
 
-{% highlight text %}
+```
 ## $ncbi
-## Chironomus riparius           Poa annua 
-##            "315576"             "93036" 
+## Chironomus riparius           Poa annua
+##            "315576"             "93036"
 ## attr(,"match")
 ## [1] "found" "found"
 ## attr(,"class")
 ## [1] "uid"
-## 
+##
 ## $itis
-## Chironomus riparius           Poa annua 
-##            "129313"             "41107" 
+## Chironomus riparius           Poa annua
+##            "129313"             "41107"
 ## attr(,"match")
 ## [1] "found" "found"
 ## attr(,"class")
 ## [1] "tsn"
-## 
+##
 ## attr(,"class")
 ## [1] "ids"
-{% endhighlight %}
+```
 
 
 ***************
 
 ## Taxonomic classifications
 
-We had a function called `classification` to get a taxonomic hierarchy from a particular source, ITIS or NCBI. We now have functions for Tropicos, EOL, and the Catalogue of Life. In addition, we have a function to get classifications across sources. 
+We had a function called `classification` to get a taxonomic hierarchy from a particular source, ITIS or NCBI. We now have functions for Tropicos, EOL, and the Catalogue of Life. In addition, we have a function to get classifications across sources.
 
 
-{% highlight r %}
+```r
 out <- get_ids(names = "Poa annua", db = c("ncbi", "itis"))
 classification(out)
-{% endhighlight %}
+```
 
 
 
-{% highlight text %}
+```
 ## $ncbi
 ## $ncbi$`Poa annua`
 ##        ScientificName         Rank    UID
@@ -130,8 +130,8 @@ classification(out)
 ## 18             Poinae     subtribe 640628
 ## 19                Poa        genus   4544
 ## 20          Poa annua      species  93036
-## 
-## 
+##
+##
 ## $itis
 ## $itis$`Poa annua`
 ##         rankName       taxonName    tsn
@@ -147,7 +147,7 @@ classification(out)
 ## 10        Family         Poaceae  40351
 ## 11         Genus             Poa  41074
 ## 12       Species       Poa annua  41107
-{% endhighlight %}
+```
 
 
 ***************
@@ -157,13 +157,13 @@ classification(out)
 Just like the `classification` function, synonyms now searches across sources for synonym names. However, this function only has methods for ITIS and Tropicos.
 
 
-{% highlight r %}
+```r
 synonyms(c("Poa annua", "Pinus contorta", "Puma concolor"), db = "itis")
-{% endhighlight %}
+```
 
 
 
-{% highlight text %}
+```
 ## $`Poa annua`
 ##                           name    tsn
 ## 1      Poa annua var. aquatica 538978
@@ -177,15 +177,15 @@ synonyms(c("Poa annua", "Pinus contorta", "Puma concolor"), db = "itis")
 ## 9     Poa annua var. eriolepis 802117
 ## 10 Poa annua var. rigidiuscula 802119
 ## 11        Poa annua f. reptans 803667
-## 
+##
 ## $`Pinus contorta`
 ##      name    tsn
 ## 1 nomatch 183327
-## 
+##
 ## $`Puma concolor`
 ##             name    tsn
 ## 1 Felis concolor 180587
-{% endhighlight %}
+```
 
 
 ***************
@@ -195,32 +195,32 @@ synonyms(c("Poa annua", "Pinus contorta", "Puma concolor"), db = "itis")
 We have a variety of ways to get common names from scientific names for different sources. To simply things, there are two new functions to work across sources.
 
 
-{% highlight r %}
+```r
 sci2comm(scinames = "Helianthus annuus", db = "itis")
-{% endhighlight %}
+```
 
 
 
-{% highlight text %}
+```
 ## $`Helianthus annuus`
 ##            comname    lang   tsn
 ## 1 common sunflower English 36616
 ## 2        sunflower English 36616
 ## 3   wild sunflower English 36616
 ## 4 annual sunflower English 36616
-{% endhighlight %}
+```
 
 
 And vice versa
 
 
-{% highlight r %}
+```r
 comm2sci(commnames = "annual blue grass", db = "tropicos")
-{% endhighlight %}
+```
 
 
 
-{% highlight text %}
+```
 ## $`annual blue grass`
 ##     NameId ScientificName ScientificNameWithAuthors  Family
 ## 1 25509881      Poa annua              Poa annua L. Poaceae
@@ -228,7 +228,7 @@ comm2sci(commnames = "annual blue grass", db = "tropicos")
 ## 1              sp.                    1             Legitimate      !
 ##   Author DisplayReference DisplayDate TotalRows
 ## 1     L.    Sp. Pl. 1: 68        1753         1
-{% endhighlight %}
+```
 
 
 ***************
@@ -240,22 +240,22 @@ We reworked the functions that interact with the ITIS service. We still have all
 Get references associated with names.
 
 
-{% highlight r %}
+```r
 itis_refs(c(202385, 70340))
-{% endhighlight %}
+```
 
 
 
-{% highlight text %}
+```
 ## [[1]]
 ##   actualPubDate          isbn issn listedPubDate        pages
 ## 1    2005-10-01 0-8018-8221-4         2005-10-01         2142
 ## 2    1993-01-01 1-56098-217-9         1992-01-01 xviii + 1207
 ## 3    1981-04-03                       1981-04-03         1181
 ##                                      pubComment
-## 1                                              
+## 1
 ## 2 Corrections were made to text at 3rd printing
-## 3                                              
+## 3
 ##                                                                                    pubName
 ## 1  Mammal Species of the World: A Taxonomic and Geographic Reference, 3rd ed., vols. 1 & 2
 ## 2 Mammal Species of the World: A Taxonomic and Geographic Reference, 2nd ed., 3rd printing
@@ -272,11 +272,11 @@ itis_refs(c(202385, 70340))
 ## 1                  202385       2013-11-04
 ## 2                  202385       2013-11-04
 ## 3                  202385       2013-11-04
-## 
+##
 ## [[2]]
 ##   actualPubDate          isbn      issn listedPubDate     pages pubComment
-## 1    1988-01-01 0-913235-47-4 0097-0638    1988-01-01 vii + 277           
-## 2    1998-01-01 1-888569-01-8 0097-0638    1998-01-01       526           
+## 1    1988-01-01 0-913235-47-4 0097-0638    1988-01-01 vii + 277
+## 2    1998-01-01 1-888569-01-8 0097-0638    1998-01-01       526
 ##                                             pubName
 ## 1 American Fisheries Society Special Publication 16
 ## 2 American Fisheries Society Special Publication 26
@@ -295,19 +295,19 @@ itis_refs(c(202385, 70340))
 ##   updateDate
 ## 1 2013-04-26
 ## 2 2013-11-04
-{% endhighlight %}
+```
 
 
 Get hierarchy: full, up (immediate), and down (immediate)
 
 
-{% highlight r %}
+```r
 itis_hierarchy(tsn = 180543)
-{% endhighlight %}
+```
 
 
 
-{% highlight text %}
+```
 ##       parentName parentTsn     rankName                 taxonName    tsn
 ## 1                               Kingdom                  Animalia 202423
 ## 2       Animalia    202423   Subkingdom                 Bilateria 914154
@@ -340,30 +340,30 @@ itis_hierarchy(tsn = 180543)
 ## 29  Ursus arctos    180543   Subspecies    Ursus arctos sitkensis 726994
 ## 30  Ursus arctos    180543   Subspecies Ursus arctos stikeenensis 726995
 ## 31  Ursus arctos    180543   Subspecies     Ursus arctos syriacus 726996
-{% endhighlight %}
+```
 
 
 
-{% highlight r %}
+```r
 itis_hierarchy(tsn = 180543, what = "up")
-{% endhighlight %}
+```
 
 
 
-{% highlight text %}
+```
 ##   parentName parentTsn rankName    taxonName    tsn
 ## 1      Ursus    180541  Species Ursus arctos 180543
-{% endhighlight %}
+```
 
 
 
-{% highlight r %}
+```r
 itis_hierarchy(tsn = 180543, what = "down")
-{% endhighlight %}
+```
 
 
 
-{% highlight text %}
+```
 ##      parentName parentTsn   rankName                 taxonName    tsn
 ## 1  Ursus arctos    180543 Subspecies       Ursus arctos arctos 202383
 ## 2  Ursus arctos    180543 Subspecies   Ursus arctos horribilis 202385
@@ -381,5 +381,4 @@ itis_hierarchy(tsn = 180543, what = "down")
 ## 14 Ursus arctos    180543 Subspecies    Ursus arctos sitkensis 726994
 ## 15 Ursus arctos    180543 Subspecies Ursus arctos stikeenensis 726995
 ## 16 Ursus arctos    180543 Subspecies     Ursus arctos syriacus 726996
-{% endhighlight %}
-
+```

@@ -1,0 +1,67 @@
+A common situation when a set of species is having more than one table of data, each with taxonomic names. These tables need to be merged at some point. 
+
+The problem is that some of the names in the separate tables may actually be the same, but one table may have updated names while the other may have old names. Therefore, when merging, two rows of data that should be matched are not.
+
+We can easily take care of this problem using taxize. 
+
+### Install taxize from CRAN
+
+```{r install, eval=FALSE}
+install.packages("taxize")
+```
+
+### Load taxize
+
+```{r load, message=FALSE, warning=FALSE}
+library(taxize)
+```
+
+### Table 1
+
+```{r table1, message=FALSE, warning=FALSE, comment=NA, cache=TRUE}
+df1 <- data.frame(species=c('Helianthus annuus','Silene acaulis','Mimulus alpinus','Phlox drummondii','Triteleia hyacinthina'), var1=rnorm(5), var2=rnorm(5), stringsAsFactors=FALSE)
+```
+
+### Table 2
+
+```{r table2, message=FALSE, warning=FALSE, comment=NA, cache=TRUE}
+df2 <- data.frame(species=c('Helianthus annuus texanus','Cucubalus acaulis','Mimulus langsdorffii alpinus','Armeria drummondii','Triteleia hyocinthina'), var3=rnorm(5), var4=rnorm(5), stringsAsFactors=FALSE)
+```
+
+Take a look. 
+
+```{r tablesee, message=FALSE, warning=FALSE, comment=NA, cache=TRUE}
+df1
+df2
+```
+
+### Get the up to date accepted names for both tables
+
+And add that as a new column to each table. In this example I'm using the `tpl_search` function which searches the Plantlist.org, but you can use other functions for the Taxonomic Name Resolution Service (TNRS), NCBI, EOL, and more. 
+
+```{r lookupnames, message=FALSE, warning=FALSE, comment=NA, cache=TRUE}
+(df1_corr <- tpl_search(as.character(df1$species), corr=TRUE))
+(df2_corr <- tpl_search(as.character(df2$species), corr=TRUE))
+```
+
+It looks like 4 of the 5 names in df2 are synonyms, while 1 name was misspelled. Let's get the new names for df2 into df2.
+
+```{r newnames, message=FALSE, warning=FALSE, comment=NA, cache=TRUE}
+df2$newsp <- apply(df2_corr[c("New.Genus","New.Species")], 1, paste, collapse=" ")
+df2 <- df2[,-1]
+```
+
+
+### Merge tables and make a plot
+
+```{r merge, message=FALSE, warning=FALSE, comment=NA, cache=TRUE, tidy=FALSE, fig.height=5}
+(alldat <- merge(df1, df2, by.x="species", by.y="newsp"))
+
+library(ggplot2)
+ggplot(alldat, aes(var1, var4)) +
+  theme_grey(base_size=18) +
+  geom_point(size=4) +
+  labs(x="Cool variable", y="Other super sweet variable")
+```
+
+And that's it. Of course in practice your tables will be larger to much larger, but the same concept applies - it will just take longer. 
