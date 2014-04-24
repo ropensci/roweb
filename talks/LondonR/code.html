@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<head>
+<style type="text/css">.knitr.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+},
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0em 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.rimage.left {
+  text-align: left;
+}
+.rimage.right {
+  text-align: right;
+}
+.rimage.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}</style>
+  <title>A minimal knitr example in HTML</title>
+</head>
+<body>
+  
+<div class="chunk" id="foo"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">library</span><span class="hl std">(rWBclimate)</span>
+<span class="hl std">eu_basin</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">create_map_df</span><span class="hl std">(Eur_basin)</span>
+<span class="hl std">eu_basin_dat</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">get_ensemble_temp</span><span class="hl std">(Eur_basin,</span> <span class="hl str">&quot;annualanom&quot;</span><span class="hl std">,</span> <span class="hl num">2080</span><span class="hl std">,</span> <span class="hl num">2100</span><span class="hl std">)</span>
+</pre></div>
+</div></div>
+
+    
+</body>
+</html>

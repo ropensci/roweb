@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>rOpenSci - GeoLunch, December 5th, 2013</title>
+	<meta name="description" content="rOpenSci - Fostering next generation of data science with R">
+	<meta name="author" content="Karthik Ram">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<!-- Core and extension CSS files -->
+	<script src="http://use.edgefonts.net/source-code-pro.js"></script>
+    <script src="http://use.edgefonts.net/quattrocento-sans.js"></script>
+    <script src="http://use.edgefonts.net/gentium-book-basic.js"></script>
+    <script type="text/javascript" src="//use.typekit.net/xsl8aec.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<link rel="stylesheet" href="core/deck.core.css">
+	<link rel="stylesheet" href="extensions/goto/deck.goto.css">
+	<link rel="stylesheet" href="extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="extensions/status/deck.status.css">
+	<link rel="stylesheet" href="extensions/hash/deck.hash.css">
+	<link rel="stylesheet" href="extensions/automatic/deck.automatic.css">
+	<link rel="stylesheet" href="themes/style/barug.css">
+	<link rel="stylesheet" href="themes/transition/fade.css">
+	<link rel="stylesheet" href="themes/style/knitr.css">
+	<link rel="stylesheet" href="themes/style/knitr2.css">
+	<link href="ss-social/webfonts/ss-social.css" rel="stylesheet" />
+	<link href="ss-standard/webfonts/ss-standard.css" rel="stylesheet"/>
+	<script src="js/modernizr.custom.js"></script>
+
+</head>
+
+
+
+
+ <body class="deck-container">
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="ropensci">
+	<div>
+	<br><br><br>
+	<hgroup>
+	<img src="images/ropensci.png">
+	<center><h3><span style="color:#B8172F; font-size:50px">Fostering the next generation of open science with R </span><i class="ss-globe"></i></h3><br><br>
+
+	<h3>Karthik Ram (@_inundata) <br> <a href="http://nature.berkeley.edu/~kram"><br> <span style="color:#464749">Supported by: </span><br><img src="images/sloan_logo2.png"></a> </h3>
+	</center>
+	</hgroup>
+	</div>
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="lots_of_data">
+<br><br>
+<img src="images/notebook2.png" height="654" width="849">
+</section>
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="notes_for_nature">
+<br><br>
+<img src="images/notes_for_nature.png">
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="from_sensors_too"   data-duration="8000">
+<br><br>
+<table>
+    <tr>
+        <td><img src="images/sensors.png">
+
+    </tr>
+</table>
+
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="science_is_closed">
+<br><br>
+	<div>
+	<h1>These data are hard to get to <span style="color: #b22d28;"><i class="ss-lock"></i></span></h1>
+	</div>
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="science_lacks_reproducibility2">
+<br><br>
+<img src="images/step2.png">
+</section>
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+
+<section class="slide" id="open_science">
+<br><br>
+	<div>
+	<h1>Open Science <span style="color: #59c54a;"><i class="ss-unlock"></i></span></h1>
+	</div>	
+</section>
+
+
+
+ <!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="sharing_increases_citations">
+<br><br>
+	<div>
+	<img src="images/sharing_data.png" height="465" width="1068">
+	<br>
+	<p>Source: <i class="ss-icon ss-link"> <a href="http://www.plosone.org/article/info:doi%2F10.1371%2Fjournal.pone.0000308">PLOS, 2007</a></i></p>
+	</div>	
+</section>
+
+ <!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="nsf_biosketches">
+<br><br>
+	<blockquote>Instructions for preparation of the Biographical Sketch have been revised to rename the <span style="background-color: #ebe455;">"Publications" section to "Products"</span> and amend terminology and instructions accordingly. This change makes clear that products may include, but are not limited to, publications, <span style="background-color: #ebe455;">data sets, software, patents, and copyrights.
+</blockquote>
+
+<br><i class="ss-icon ss-link"> <a href="http://www.nsf.gov/pubs/2013/nsf13004/nsf13004.jsp?WT.mc_id=USNSF_109"> Issuance of a new NSF Proposal & Award Policies and Procedures Guide (October 4<sup>th</sup>)</a></i></br>
+</section>
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+
+<section class="slide" id="gui_analysis_is_bad">
+	<h2>Why R?</h2>
+	<h3>The old way...</h3>
+	<img src="images/old-way.png">
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+
+<section class="slide" id="R_is_better">
+	<h2>Why R?</h2>
+	<h3>A better way</h3><br><br>
+	<pre class="knitr"><div class="source"><span class="functioncall">glm</span><span class="keyword">(</span><span class="symbol">y</span> <span class="keyword">~</span> <span class="keyword">-</span><span class="number">1</span> <span class="keyword">+</span> <span class="symbol">a</span> <span class="keyword">+</span> <span class="symbol">c</span> <span class="keyword">+</span> <span class="symbol">z</span> <span class="keyword">+</span> <span class="symbol">a</span><span class="keyword">:</span><span class="symbol">z</span><span class="keyword">,</span> <span class="argument">data</span> <span class="argument">=</span> <span class="symbol">mydata</span><span class="keyword">,</span> <span class="argument">maxit</span> <span class="argument">=</span> <span class="number">30</span><span class="keyword">)</span></div></pre>
+	<br><br>
+	<h3>This is <u>reproducible</u>, <u>repeatable</u> and can serve as a analytic workflow.</h3>
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="open_science_tools">
+<br><br>
+	<div>
+	<h2>Open Science needs open source tools</h2>
+	<img src="images/exponential_r_growth.png" height="367" width="378">
+	<br><br>
+	<p>Source: <i class="ss-icon ss-link"> <a href="http://blog.revolutionanalytics.com/2010/01/r-package-growth.html">Revolution Analytics, 2010</a>, 
+	<a href="http://www.nature.com/nature/journal/v482/n7386/abs/nature10836.html">Nature editorial, 2012</a></i></p>
+	</div>	
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="open_science_open_code">
+	<br>
+	<div>
+	<center><h2>Open data + code</h2></center>
+	<img src="images/openscience_opencode2.png" height="625" width="661">
+	<p>Source: <i class="ss-icon ss-link"><a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2486.2012.02693.x/abstract"> Wolkovich et al. Global Change Biology, 2012</a></i>.
+
+	</p>
+	</div>
+</section>
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="ropensci_main">
+<br><br>
+    <div>
+    <img src="images/ropensci.png" height="118" width="301">
+    <br><br>
+    <blockquote>Enable access  to scientific data repositories, full-text of articles, and science metrics and also <i>facilitate a culture shift in the scientific community.</i></blockquote>
+    </div>
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="ropensci_packages">
+<br><br>
+	<div>
+	<img src="images/ropensci.png" height="118" width="301">
+	<br> <span style="font-size:165%; font-family:'Museo Sans'"><center>More info @ <span style="color:#3163a6;"><code>ropensci.org/packages</code></span></center></span><br>
+    <table  cellpadding="40" cellspacing="40">
+<tr>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>
+		<img src="images/clear_line.png" height="1" width="250">
+<pre><img src="images/line_separator_blue.png"><span style="color:#669900; font-family:'Museo Sans'; font-size:110%"><i class="ss-icon ss-box"></i> Data</span>
+Treebase, Fishbase, 
+Flybase,
+GBIF, Vertnet
+Dryad, ITIS
+NPN, Taxize
+opensnp</pre><br></td>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>
+<img src="images/clear_line.png" height="1" width="250"><pre><img src="images/line_separator_red.png"><span style="color:#c4a12e; font-family:'Museo Sans'; font-size:105%"><i class="ss-icon ss-notebook"></i>&nbsp; Journals</span>
+PLOS
+Springer
+textmine
+pensoft</pre>
+</td>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td><img src="images/clear_line.png" height="1" width="250"><pre><img src="images/line_separator_green.png"><span style="color:#e2460e; font-family:'Museo Sans'; font-size:105%"><i class="ss-icon ss-list"></i>&nbsp; Hybrid</span>
+figshare
+Mendeley
+DataONE, 
+rAltmetric, rEML,
+rNEXML</pre>
+</td>
+</tr>
+    </table>
+	</div>
+</section>
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+
+<section class="slide" id="rplos">
+	<img src="images/plos.png" height="107" width="107" align="left"><h2>Search full text of 100k+ open access articles - <code>rplos</code></h2>
+	<br>
+	<section class="slide deck-previous" id="rplos_code"><div>
+		<pre class="knitr"><span class="functioncall">library</span><span class="keyword">(</span><span class="symbol">rplos</span><span class="keyword">)</span>
+<span class="functioncall">plot_throughtime</span><span class="keyword">(</span><span class="functioncall">list</span><span class="keyword">(</span><span class="string">"reproducible science"</span><span class="keyword">)</span><span class="keyword">,</span> <span class="number">500</span><span class="keyword">)</span></pre>
+	</div>
+	</section>
+
+	<section class="slide deck-current" id="rplos_figure">
+		<div>
+	<img src="images/plos_example.png">
+	</div>
+	</section>
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="dryad">
+	<br><br>
+	<img src="images/dryad.png" height="119" width="107" align="left"><h2>Accessing data behind papers - <code>dryad</code></h2>
+	<div>
+	<pre class="knitr"><span class="comment"># Get the URL for a data file</span>
+<span class="symbol">dryaddat</span> <span class="assignement">&lt;-</span> <span class="functioncall">download_url</span><span class="keyword">(</span><span class="string">"10255/dryad.1759"</span><span class="keyword">)</span>
+
+<span class="comment"># Get a file given the URL</span>
+<span class="symbol">file</span> <span class="assignement">&lt;-</span> <span class="functioncall">dryad_getfile</span><span class="keyword">(</span><span class="symbol">dryaddat</span><span class="keyword">)</span>
+</pre>
+	</div>	
+</section>
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="rgbif">
+<img src="images/gbif.png" height="104" width="107" align="left"><h2>Mapping biodiversity data - <code>rgbif</code></h2>
+<section  class="slide deck-previous" id="getting_distribution_data">
+	<pre class="knitr">
+<span class="symbol">distribution</span> <span class="assignement">&lt;-</span> <span class="functioncall">occurrencelist</span><span class="keyword">(</span><span class="argument">sciname</span> <span class="argument">=</span> <span class="string">"Danaus plexippus"</span><span class="keyword">,</span> <span class="argument">coordinatestatus</span> <span class="argument">=</span> <span class="number">TRUE</span><span class="keyword">,</span> <span class="argument">maxresults</span> <span class="argument">=</span> <span class="number">1000</span><span class="keyword">,</span> <span class="argument">latlongdf</span> <span class="argument">=</span> <span class="number">TRUE</span><span class="keyword">)</span>
+</pre></section>
+<section  class="slide deck-current" id="plotting_distribution_data">	
+	<img src="images/rgbif.png" height="457" width="702">
+</section>	
+	<div>
+
+	</div>	
+</section>
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="rgbif_sdm">
+
+	<div>
+		<h2>Species distribution modeling</h2>
+		<img src="images/sdm.png">
+	</div>	
+</section>
+
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="rwbclimate">
+<h2>World Bank climate knowledge portal <code>rWBclimate</code></h2>
+<pre class="knitr r"><span class="hl kwd">library</span><span class="hl std">(rWBclimate)</span>
+<span class="hl std">eu_basin</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">create_map_df</span><span class="hl std">(Eur_basin)</span>
+<span class="hl std">eu_basin_dat</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">get_ensemble_temp</span><span class="hl std">(Eur_basin,</span> <span class="hl str">&quot;annualanom&quot;</span><span class="hl std">,</span> <span class="hl num">2080</span><span class="hl std">,</span> <span class="hl num">2100</span><span class="hl std">)</span>
+</pre>
+<img src="images/rWBclimate.png">
+</section>
+
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="taxize">
+	<h2>Resolve taxonomic names</h2>
+<pre class="knitr r"><span class="hl kwd">library</span><span class="hl std">(taxize)</span>
+<span class="hl std">splist</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">c</span><span class="hl std">(</span><span class="hl str">&quot;Helanthus annuus&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;Pinos contorta&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;Collomia grandiflorra&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;Abies magnificaa&quot;</span><span class="hl std">,</span>
+    <span class="hl str">&quot;Rosa california&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;Datura wrighti&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;Mimulus bicolour&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;Nicotiana glauca&quot;</span><span class="hl std">,</span>
+    <span class="hl str">&quot;Maddia sativa&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;Bartlettia scapposa&quot;</span><span class="hl std">)</span>
+<span class="hl std">splist_tnrs</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">tnrs</span><span class="hl std">(</span><span class="hl kwc">query</span> <span class="hl std">= splist,</span> <span class="hl kwc">getpost</span> <span class="hl std">=</span> <span class="hl str">&quot;POST&quot;</span><span class="hl std">,</span> <span class="hl kwc">source_</span> <span class="hl std">=</span> <span class="hl str">&quot;iPlant_TNRS&quot;</span><span class="hl std">)</span>
+</pre>
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="taxize0">
+	<h2>Taxize queries 11 different name resolution services</h2>
+
+<pre>Encylopedia of Life
+Taxonomic Name Resolution Service
+Integrated Taxonomic Information Service
+Phylomatic
+uBio
+Global Names Resolver
+Global Names Index
+IUCN Red List
+Tropicos
+Plantminer
+Theplantlist dot org
+Catalogue of Life
+Global Invasive Species Database</pre>
+</section>
+
+
+<section class="slide" id="alt_metrics0">
+	<h2>Measure research impact in real time</h2>
+<img src="images/altmetric.png" height="570" width="1131">
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="alt_metrics">
+	<br><br>
+	<h2>Tracking altmetrics - <code>rAltmetric, ALM</code></h2>
+	<div><pre class="knitr r"><span class="functioncall">library</span>(rAltmetric)</pre></div>
+</pre></div><div class="source"><pre class="knitr r"><span class="functioncall">altmetrics</span>(<span class="string">"doi/10.1038/489201a"</span>)
+</pre></div><div class="output"><pre class="knitr r">## Altmetrics on: "Future impact: Predicting scientific success" with altmetric_id: 942310 published in Nature.
+##   provider count
+## 1 Facebook     1
+## 2    Feeds    10
+## 3  Google+     1
+## 4    Cited   179
+## 5   Tweets   159
+## 6 Accounts   171
+</pre>
+	</div>	
+</section>
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="figshare">
+	<br><br>
+	<h2>Sharing unpublished data - <code>(figshare)</code></h2>
+	<div>
+	<h3 class="figshare">Using fig<b>share</b>'s <a href="http://api.figshare.com/docs/">API</a> it is now possible to share figures, data and any other object generated in <code>R</code> directly to any figshare account.</h3><br>
+	<pre class="knitr r"><span class="functioncall">library</span><span class="keyword">(rfigshare)</span>
+<span class="functioncall">fs_auth</span><span class="keyword">()</span>
+<span class="hl com"># uses api keys to login</span>
+<span class="keyword">id</span> <span class="hl kwb">&lt;-</span> <span class="functioncall">fs_create</span><span class="keyword">()</span>
+<span class="functioncall">fs_upload</span><span class="keyword">(id, r_objects)</span>
+</pre>
+</div>
+</section>
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+
+<section class="slide" id="new_stuff">
+<br><br>
+    <div>
+    <h1>Moving from invidual data sources to data pipelines</h1>
+    </div>
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+
+<section class="slide" id="reproducible_research">
+<br><br>
+    <div>
+    <h1>Sharing robust data products</h1>
+    </div>
+</section>
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="eml1">
+<br><br>
+<blockquote>EML (Jones et al., 2001) is a comprehensive standard that
+has been adopted by a sector of the larger international ecological research community.
+</blockquote>
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="eml1b">
+<br><br>
+<blockquote>EML provides a common structure for these resources, to better enable ecologists to document, 
+share, and interpret ecological data</blockquote>
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="eml2">
+<br><br>
+<h2>EML standard enables data integration at the machine level (with little or no human intervention).</h2>
+</section>
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="eml3">
+<br><br><br>
+<h2>EML has four general descriptors at the top of the hierarchy. One can choose
+to describe a <b>dataset</b>, a <b>protocol</b>, a <b>citation</b>, or <b>software</b>.</h2>
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="eml4">
+	<h2>Without metadata, a data table such as this one is useless.</h2>
+<img src="images/bad-metadata.png">
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="eml5">
+	<h2>A table with limited metadata</h2>
+<img src="images/limited-metadata.png">
+</section>
+
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="eml6">
+	<h2>Valid EML</h2>
+<pre><code>
+&lt;?xml version="1.0"?&gt;
+&lt;eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:ds="eml://ecoinformatics.org/dataset-2.1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" packageId="reml_3794487.58997023" system="reml"&gt;
+  &lt;dataset&gt;
+    &lt;title&gt;reml example&lt;/title&gt;
+    &lt;creator&gt;
+      &lt;individualName&gt;
+        &lt;givenName&gt;Karthik&lt;/givenName&gt;
+        &lt;surName&gt;Ram&lt;/surName&gt;
+      &lt;/individualName&gt;
+      &lt;electronicMailAddress&gt;karthik.ram@gmail.com&lt;/electronicMailAddress&gt;
+    &lt;/creator>
+</code></pre>
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="eml7">
+	<h2>Valid EML</h2>
+<pre><code>
+&lt;?xml version="1.0"?&gt;
+&lt;eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:ds="eml://ecoinformatics.org/dataset-2.1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" packageId="reml_3794487.58997023" system="reml"&gt;
+  &lt;dataset&gt;
+    &lt;title&gt;reml example&lt;/title&gt;
+    &lt;creator&gt;
+      &lt;individualName&gt;
+        &lt;givenName&gt;Karthik&lt;/givenName&gt;
+        &lt;surName&gt;Ram&lt;/surName&gt;
+      &lt;/individualName&gt;
+      &lt;electronicMailAddress&gt;karthik.ram@gmail.com&lt;/electronicMailAddress&gt;
+    &lt;/creator>
+</code></pre>
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="eml8">
+	<h2>Units are well defined</h2>
+<pre><code>
+ &lt;attributeName&gt;ct&lt;/attributeName&gt;
+          &lt;attributeDefinition&gt;count&lt;/attributeDefinition&gt;
+          &lt;measurementScale&gt;
+            &lt;nominal&gt;
+              &lt;nonNumericDomain&gt;
+                &lt;textDomain&gt;
+                  &lt;definition&gt;number&lt;/definition&gt;
+                &lt;/textDomain&gt;
+              &lt;/nonNumericDomain&gt;
+            &lt;/nominal&gt;
+          &lt;/measurementScale&gt;
+        &lt;/attribute&gt;
+</code></pre>
+</section>
+
+
+<section class="slide" id="reml_demo1">
+	<h2>A live demo of rEML</h2>
+<pre class="knitr r"><span class="hl kwd">library</span><span class="hl std">(rfisheries)</span>
+<span class="hl std">species</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">species_codes</span><span class="hl std">()</span>
+<span class="hl std">tunas</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">grep</span><span class="hl std">(</span><span class="hl str">&quot;Tuna&quot;</span><span class="hl std">, species</span><span class="hl opt">$</span><span class="hl std">english_name)</span>
+<span class="hl std">who</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">c</span><span class="hl std">(</span><span class="hl str">&quot;TUX&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;COD&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;VET&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;NPA&quot;</span><span class="hl std">)</span>
+<span class="hl std">by_species</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">lapply</span><span class="hl std">(who,</span> <span class="hl kwa">function</span><span class="hl std">(</span><span class="hl kwc">x</span><span class="hl std">)</span> <span class="hl kwd">landings</span><span class="hl std">(</span><span class="hl kwc">species</span> <span class="hl std">= x))</span>
+<span class="hl kwd">names</span><span class="hl std">(by_species)</span> <span class="hl kwb">&lt;-</span> <span class="hl std">who</span>
+<span class="hl std">dat</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">melt</span><span class="hl std">(by_species,</span> <span class="hl kwc">id</span> <span class="hl std">=</span> <span class="hl kwd">c</span><span class="hl std">(</span><span class="hl str">&quot;catch&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;year&quot;</span><span class="hl std">))</span>
+<span class="hl kwd">names</span><span class="hl std">(dat)</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">c</span><span class="hl std">(</span><span class="hl str">&quot;catch&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;year&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;a3_code&quot;</span><span class="hl std">)</span>
+</pre>
+<br><a href="https://gist.github.com/karthik/7809986">Full example code</a>
+</section>
+
+
+<section class="slide" id="reml_demo">
+	<h2>Writing valid EML and uploading to a persistent repo is simple</h2>
+<pre class="knitr r"><span class="hl kwd">require</span><span class="hl std">(reml)</span>
+<span class="hl std">description</span> <span class="hl kwb">&lt;-</span> <span class="hl str">&quot;Landings data for several species by year, from the OpenFisheries database&quot;</span>
+
+
+<span class="hl kwd">eml_write</span><span class="hl std">(</span><span class="hl kwc">dat</span> <span class="hl std">= dat, meta,</span> <span class="hl kwc">title</span> <span class="hl std">=</span> <span class="hl str">&quot;Landings Data&quot;</span><span class="hl std">,</span> <span class="hl kwc">description</span> <span class="hl std">= description,</span>
+    <span class="hl kwc">creator</span> <span class="hl std">=</span> <span class="hl str">&quot;Karthik Ram &lt;karthik@ropensci.org&gt;&quot;</span><span class="hl std">,</span> <span class="hl kwc">file</span> <span class="hl std">=</span> <span class="hl str">&quot;landings.xml&quot;</span><span class="hl std">)</span>
+
+
+<span class="hl kwd">eml_publish</span><span class="hl std">(</span><span class="hl str">&quot;landings.xml&quot;</span><span class="hl std">,</span> <span class="hl kwc">description</span> <span class="hl std">= description,</span> <span class="hl kwc">categories</span> <span class="hl std">=</span> <span class="hl str">&quot;Ecology&quot;</span><span class="hl std">,</span>
+    <span class="hl kwc">tags</span> <span class="hl std">=</span> <span class="hl str">&quot;fisheries&quot;</span><span class="hl std">,</span> <span class="hl kwc">destination</span> <span class="hl std">=</span> <span class="hl str">&quot;figshare&quot;</span><span class="hl std">,</span> <span class="hl kwc">visibility</span> <span class="hl std">=</span> <span class="hl str">&quot;public&quot;</span><span class="hl std">)</span>
+</pre>
+</section>
+<!-- END rEML -->
+<!--    ##############    slide delimiter  ##############    -->
+
+
+
+
+<section class="slide" id="spocc1">
+<br><br>
+    <div>
+    <h1> Species occurrence data (SPOCC) </h1>
+    </div>
+</section>
+
+
+<section class="slide" id="spocc2">
+<br><br>
+    <div>
+   <img src="images/spocc_outline.png">
+   <br>
+    </div>
+</section>
+
+
+<section class="slide" id="taxaviewer">
+<br><br>
+    <div>
+    	<h2>Combine various data sources</h2>
+    	<img src="images/taxaviewer.png">
+    	<a href="http://glimmer.rstudio.com/ropensci/usgs_app/">Live Shiny app</a>
+    </div>
+</section>
+
+<section class="slide" id="geojson">
+<br><br>
+    <div>
+    	<h2>Natively render geojson on GitHub</h2>
+    	<img src="images/geojson.png">
+    	<a href="https://gist.github.com/karthik/7807356">View on gists</a>
+    </div>
+</section>
+
+
+
+<section class="slide" id="cartodb">
+<br><br>
+    <div>
+    	<h2>Visualize data with Cartodb</h2>
+<iframe width='100%' height='800' frameborder='0' src='http://recology.cartodb.com/viz/76a5598e-444b-11e3-8a8c-5404a6a69006/embed_map?title=false&description=false&search=false&shareable=false&cartodb_logo=true&layer_selector=false&legends=false&scrollwheel=true&sublayer_options=1&sql=&zoom=3&center_lat=37.61423141542417&center_lon=-100.72265625'></iframe>
+    </div>
+</section>
+
+
+
+<section class="slide" id="recoengine">
+<br><br>
+    <div>
+    	<h2>Other data apps</h2>
+    	<img src="images/ecoengine_viewer.png">
+    </div>
+</section>
+
+
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="sample-workflow">
+  <h2>A reproducible workflow in R</h2><br><br>
+<table cellspacing=100 cellpadding=100><tr><td>
+<pre><img src="images/line_separator_purple.png"><strong>Load your own data</strong>
+	<p>load all raw untransformed data.</p>
+</pre></td>
+<td valign="center"><br>&nbsp;<strong>→</strong> &nbsp;</td>
+<td>
+
+<pre><img src="images/line_separator_blue.png"><strong>Acquire additional data from the web</strong>
+<br><p>e.g. resolve taxonomic names, acquire additional datasets.</p>
+</pre></td>
+<td valign="center"><br>&nbsp;<strong>→</strong> &nbsp;</td>
+<td>
+<pre><img src="images/line_separator_red.png"><strong>Document everything with metadata</strong>
+<br><p>The <code>REML</code> package makes it really easy to add valid EML to your data</p>
+</pre></td>
+<td valign="center"><br>&nbsp;<strong>→</strong> &nbsp;</td>
+<td>
+<pre><img src="images/line_separator_green.png"><strong>Submit to a persistent repository</strong>
+<br><p>Share your data by submitting to figshare or one at your institution</p>
+
+<br><p>Generate interactive maps, viewers.</p>
+</pre></td>
+</tr></table>
+<br>
+</section>
+
+<section class="slide" id="nexml">
+<br><br>
+    <div>
+    <h1> rNeXML - extensible and verifiable comparitive data </h1>
+    </div>
+</section>
+
+<section class="slide" id="nexml2">
+<br><br>
+    <div>
+    <h2> NeXML - extensible and verifiable comparitive data </h2>
+    <img src="images/nexml.png">
+    </div>
+</section>
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="whats_next">
+	<br><br>
+	<h2>Upcoming projects</h2>
+	<div>
+<ul>
+<li><h3>A robust ecosystem of R tools for ecoinformatics and beyond</h3></li>
+<li><h3>Build a native R kernel for the IPython notebook</h3></li>
+<li><h3>Build a general purpose interactive mapping library</h3></li>
+<li><h3> Integrate with Dat (an open source tool that enables the sharing of large datasets, allowing for a decentralized collaboration flow similar to what git offers for source code.) <img src="images/dat-data.png"></h3></li>
+<li> <h3>Upcoming book on open science with R (Chapman and Hall, eta summer 2014)</h3></li>
+
+</ul>
+
+
+	</div>	
+</section>
+
+
+<!--    ##############    closing slide  ##############    -->
+<section class="slide" id="outro">
+	<div>
+	<hgroup>
+	<h1>rOpenSci.org</h1>
+	<h2><i class="ss-icon ss-social-circle"><a href="http://GitHub.com/ropensci"  style="color:#010101;">&#xF670; </a></i> ropensci<br>
+	<i class="ss-social-circle ss-icon"><a href="http://twitter.com/ropensci"  style="color:#79cef7;">&#xF620;</a></i> @ropensci <br>
+	<h2>To navigate this presentation, type <span style="color:#e64b65;font-style:bold; text-shadow: none"><b>M</a></span> to see all slides. <br><b><span style="color:#e64b65;font-style:bold; text-shadow: none"><b>G</a></span> to go to a specific slide</h2>
+</hgroup>
+</div>
+</section>
+
+
+
+
+
+
+<!-- ============================================================================= -->
+<!-- ====      END PRESENTATION  ==== -->
+<!-- Everything below can be ignored (just js libraries) -->
+<!-- ============================================================================= -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+
+<!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.7.min.js"><\/script>')</script>
+
+<!-- Deck Core and extensions -->
+<script src="core/deck.core.js"></script>
+<script src="extensions/hash/deck.hash.js"></script>
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+<script src="extensions/blank/deck.blank.js"></script>
+
+<!-- Initialize the deck -->
+<script>
+$(function() {
+	$.deck('.slide');
+});
+</script>
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '500ebcf4613f5d79c700001c');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+</body>
+</html>

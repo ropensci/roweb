@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>LondonR, Open tools for reproducible research</title>
+	<meta name="description" content="An introduction to R's role in facilitating open science">
+	<meta name="author" content="Karthik Ram">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">	
+	<!-- Core and extension CSS files -->
+	<script src="http://use.edgefonts.net/source-code-pro.js"></script>
+    <script src="http://use.edgefonts.net/quattrocento-sans.js"></script>
+    <script src="http://use.edgefonts.net/gentium-book-basic.js"></script>
+	<link rel="stylesheet" href="core/deck.core.css">
+	<link rel="stylesheet" href="extensions/goto/deck.goto.css">
+	<link rel="stylesheet" href="extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="extensions/status/deck.status.css">
+	<link rel="stylesheet" href="extensions/hash/deck.hash.css">
+	<link rel="stylesheet" href="themes/style/barug.css">
+	<link rel="stylesheet" href="themes/transition/fade.css">
+	<link rel="stylesheet" href="themes/style/knitr.css">
+	<link href="ss-social/webfonts/ss-social.css" rel="stylesheet" />
+	<link href="ss-standard/webfonts/ss-standard.css" rel="stylesheet"/>
+	<script src="modernizr.custom.js"></script>
+</head>
+
+
+
+
+ <body class="deck-container">
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="ropensci">
+	<div>
+	<br><br><br>
+	<hgroup>
+	<img src="images/ropensci.png">
+	<center><h3><span style="color:#be4b4d; font-size:50px"> Fostering the next generation of open science through R</span> <i class="ss-globe"></i></h3><br><br>
+
+	<h3>Karthik Ram</h3>
+	<br>
+	<h3>karthik@ropensci.org</h3>
+	</center>
+	</hgroup>
+	</div>
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="lots_of_data">
+<br><br>
+<img src="images/notebook2.png" height="654" width="849">
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="from_sensors_too">
+<br><br>
+<table>
+    <tr>
+        <td><img src="images/sensors.png">
+
+    </tr>
+</table>
+
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="science_lacks_reproducibility">
+<br><br>
+<blockquote>Most science is not reproducible or repeatable, even within the same research group over time.
+</blockquote>
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="science_lacks_reproducibility2">
+<br><br>
+<img src="images/step2.png">
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="science_is_closed">
+<br><br>
+	<div>
+	<h1>Science <span style="color: #b22d28;"><i class="ss-lock"></i></span></h1>
+	</div>	
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="data_life_cycle">
+<h2>Data Life Cycle</h2>
+	<div>
+	<img src="images/datalifecycle.png">
+	<p> source: Michener, 2006 Ecoinformatics.</p>
+	</div>	
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+
+
+<section class="slide" id="open_science">
+<br><br>
+	<div>
+	<h1>Open Science <span style="color: #59c54a;"><i class="ss-unlock"></i></span></h1>
+	</div>	
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="open_science_open_code">
+	<br>
+	<div>
+	<center><h2>Open data + code</h2></center>
+	<img src="images/openscience_opencode2.png" height="625" width="661">
+	<p>Source: <i class="ss-icon ss-link"><a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2486.2012.02693.x/abstract"> Wolkovich et al. Global Change Biology, 2012</a></i>.
+	
+	</p>
+	</div>	
+</section>
+
+ <!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="sharing_increases_citations">
+<br><br>
+	<div>
+	<img src="images/sharing_data.png" height="465" width="1068">
+	<br>
+	<p>Source: <i class="ss-icon ss-link"> <a href="http://www.plosone.org/article/info:doi%2F10.1371%2Fjournal.pone.0000308">PLOS, 2007</a></i></p>
+	</div>	
+</section>
+
+ <!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="nsf_biosketches">
+<br><br>
+	<blockquote>Instructions for preparation of the Biographical Sketch have been revised to rename the <span style="background-color: #ebe455;">"Publications" section to "Products"</span> and amend terminology and instructions accordingly. This change makes clear that products may include, but are not limited to, publications, <span style="background-color: #ebe455;">data sets, software, patents, and copyrights.
+</blockquote>
+
+<br><i class="ss-icon ss-link"> <a href="http://www.nsf.gov/pubs/2013/nsf13004/nsf13004.jsp?WT.mc_id=USNSF_109"> Issuance of a new NSF Proposal & Award Policies and Procedures Guide (October 4<sup>th</sup>)</a></i></br>
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="r+openscience">
+<br><br>
+	<div>
+	<h1>R <i class="ss-plus"></i> Open Science <span style="color: #59c54a;"><i class="ss-unlock"></i></span></h1>
+	</div>	
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+
+<section class="slide" id="gui_analysis_is_bad">
+	<h2>Why R?</h2>
+	<h3>The old way...</h3>
+	<img src="images/old-way.png">
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+
+<section class="slide" id="R_is_better">
+	<h2>Why R?</h2>
+	<h3>A better way</h3><br><br>
+	<pre class="knitr"><div class="source"><span class="functioncall">glm</span><span class="keyword">(</span><span class="symbol">y</span> <span class="keyword">~</span> <span class="keyword">-</span><span class="number">1</span> <span class="keyword">+</span> <span class="symbol">a</span> <span class="keyword">+</span> <span class="symbol">c</span> <span class="keyword">+</span> <span class="symbol">z</span> <span class="keyword">+</span> <span class="symbol">a</span><span class="keyword">:</span><span class="symbol">z</span><span class="keyword">,</span> <span class="argument">data</span> <span class="argument">=</span> <span class="symbol">mydata</span><span class="keyword">,</span> <span class="argument">maxit</span> <span class="argument">=</span> <span class="number">30</span><span class="keyword">)</span></div></pre>
+	<br><br>
+	<h3>This is <u>reproducible</u>, <u>repeatable</u> and can serve as a analytic workflow.</h3>
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="open_science_tools">
+<br><br>
+	<div>
+	<h2>Open Science needs open source tools</h2>
+	<img src="images/exponential_r_growth.png" height="367" width="378">
+	<br><br>
+	<p>Source: <i class="ss-icon ss-link"> <a href="http://blog.revolutionanalytics.com/2010/01/r-package-growth.html">Revolution Analytics, 2010</a>, 
+	<a href="http://www.nature.com/nature/journal/v482/n7386/abs/nature10836.html">Nature editorial, 2012</a></i></p>
+	</div>	
+</section>
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="publishing_R_packages">
+<br><br>
+	<div>
+	<img src="images/r_in_journals.png" height="419" width="795">
+	<br><br><center><h3>R packages are increasingly showing up in domain journals.</h3></center>
+	<br><br>
+	Source: <i class="ss-icon ss-link"> <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1755-0998.2011.03108.x/abstract?deniedAccessCustomisedMessage=&userIsAuthenticated=false"> Molecular Ecology, 2012</a></i>
+	</div>	
+</section>
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="ropensci_main">
+<br><br>
+	<div>
+   <br><br><br><br>
+<h2>Our mission is to develop tools (mostly around R) to access <span style="background-color:#e9e254">scientific data repositories</span>, <span style="background-color:#e9e254">full-text of articles</span>, and <span style="background-color:#e9e254">science metrics</span>.</h2>
+	</div>	
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="ropensci_packages">
+<br><br>
+	<div>
+	<img src="images/ropensci.png" height="118" width="301">
+	<br> <span style="font-size:125%; font-family:'Museo Sans'"><center>Full list at <span style="color:#3163a6; background-color:#fff9ed">ropensci.org/packages</span></center></span><br>
+    <table  cellpadding="40" cellspacing="40">
+<tr>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+	<td>
+		<img src="images/clear_line.png" height="1" width="250">
+<pre><span style="color:#669900; font-family:'Museo Sans'; font-size:110%"><i class="ss-icon ss-box"></i> Data</span>
+Treebase, Fishbase, Flybase
+GBIF, Vertnet, Dryad,ITIS
+Taxize, opensnp, rWBclimate.</pre><br></td> 
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+	<td>
+<img src="images/clear_line.png" height="1" width="250"><pre><span style="color:#c4a12e; font-family:'Museo Sans'; font-size:105%"><i class="ss-icon ss-notebook"></i>&nbsp; Journals</span>
+PLOS
+Springer
+textmine
+pensoft</pre>
+</td> 
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+	<td><img src="images/clear_line.png" height="1" width="250"><pre><span style="color:#e2460e; font-family:'Museo Sans'; font-size:105%"><i class="ss-icon ss-list"></i>&nbsp; Hybrid</span>
+figshare
+Mendeley
+DataONE
+raltmet
+rImpactStory
+rAltmetrics</pre>
+</td> 
+</tr>
+    </table>
+	</div>	
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+
+
+<section class="slide" id="rplos">
+	<img src="images/plos.png" height="107" width="107" align="left"><h2>Public Library of Science full text - <code>rplos</code></h2>
+	<br>
+	<section class="slide deck-previous" id="rplos_code"><div>
+		<pre class="knitr"><span class="functioncall">library</span><span class="keyword">(</span><span class="symbol">rplos</span><span class="keyword">)</span>
+<span class="functioncall">plot_throughtime</span><span class="keyword">(</span><span class="functioncall">list</span><span class="keyword">(</span><span class="string">"reproducible science"</span><span class="keyword">)</span><span class="keyword">,</span> <span class="number">500</span><span class="keyword">)</span></pre>
+	</div>	
+	</section>
+
+	<section class="slide deck-current" id="rplos_figure">
+		<div>
+	<img src="images/plos_example.png">
+	</div>	
+	</section>
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="dryad">
+	<br><br>
+	<img src="images/dryad.png" height="119" width="107" align="left"><h2>Accessing data behind papers - <code>dryad</code></h2>
+	<div>
+	<pre class="knitr"><span class="comment"># Get the URL for a data file</span>
+<span class="symbol">dryaddat</span> <span class="assignement">&lt;-</span> <span class="functioncall">download_url</span><span class="keyword">(</span><span class="string">"10255/dryad.1759"</span><span class="keyword">)</span>
+
+<span class="comment"># Get a file given the URL</span>
+<span class="symbol">file</span> <span class="assignement">&lt;-</span> <span class="functioncall">dryad_getfile</span><span class="keyword">(</span><span class="symbol">dryaddat</span><span class="keyword">)</span>
+</pre>
+	</div>	
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="treebase">
+	<br><br>
+	<img src="images/treebase.png" height="83" width="107" align="left"><h2>Validate results from papers - <code>treebase</code></h2>
+<div class="chunk"><div class="rcode"><div class="source"><pre class="knitr r"><span class="functioncall">library</span>(treebase)
+tree &lt;- <span class="functioncall">search_treebase</span>(<span class="string">"Derryberry"</span>, <span class="string">"author"</span>)[[1]]
+## http://purl.org/phylo/treebase/phylows/study/find?query=dcterms.contributor=Derryberry&format=rss1&recordSchema=tree
+## Query resolved, looking at each matching resource...
+## 4 resources found matching query
+## Attempting try 1
+## Looking for nexus files...
+## Tree read in successfully
+<span class="functioncall">plot</span>(tree)
+</pre></div></div><div class="rimage default"><img src="figure/foo.png"  class="plot" /></div></div>
+<a href="http://www.museum.lsu.edu/brumfield/pubs/furnphylogeny2011.pdf">Derryberry et al. appeared in Evolution recently on diversification in ovenbirds and woodcreepers</a>
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="rgbif">
+<img src="images/gbif.png" height="104" width="107" align="left"><h2>Mapping biodiversity data - <code>rgbif</code></h2>
+<section  class="slide deck-previous" id="getting_distribution_data">
+	<pre class="knitr">
+<span class="symbol">distribution</span> <span class="assignement">&lt;-</span> <span class="functioncall">occurrencelist</span><span class="keyword">(</span><span class="argument">sciname</span> <span class="argument">=</span> <span class="string">"Danaus plexippus"</span><span class="keyword">,</span> <span class="argument">coordinatestatus</span> <span class="argument">=</span> <span class="number">TRUE</span><span class="keyword">,</span> <span class="argument">maxresults</span> <span class="argument">=</span> <span class="number">1000</span><span class="keyword">,</span> <span class="argument">latlongdf</span> <span class="argument">=</span> <span class="number">TRUE</span><span class="keyword">)</span>
+</pre></section>
+<section  class="slide deck-current" id="plotting_distribution_data">	
+	<img src="images/rgbif.png" height="457" width="702">
+	<br>Also see <a href="http://cartodb.com/">Cartodb's</a> powerful mapping capabilites and <a href="https://GitHub.com/Vizzuality/cartodb/">R package.</a>
+</section>	
+	<div>
+
+	</div>	
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="rwbclimate">
+<h2>World Bank climate knowledge portal <code>rWBclimate</code></h2>
+<pre class="knitr r"><span class="hl kwd">library</span><span class="hl std">(rWBclimate)</span>
+<span class="hl std">eu_basin</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">create_map_df</span><span class="hl std">(Eur_basin)</span>
+<span class="hl std">eu_basin_dat</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">get_ensemble_temp</span><span class="hl std">(Eur_basin,</span> <span class="hl str">&quot;annualanom&quot;</span><span class="hl std">,</span> <span class="hl num">2080</span><span class="hl std">,</span> <span class="hl num">2100</span><span class="hl std">)</span>
+</pre>
+<img src="images/rWBclimate.png">
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="alt_metrics0">
+	<h2>Measure research impact in real time</h2>
+<img src="images/impactstory.png" height="570" width="1131">
+<a href="http://impactstory.org">ImpactStory.org</a>
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="alt_metrics">
+	<br><br>
+	<h2>Tracking altmetrics - <code>rImpactStory, rAltmetric</code></h2>
+	<div><pre class="knitr r"><span class="functioncall">library</span>(rAltmetric)</pre></div>
+</pre></div><div class="source"><pre class="knitr r"><span class="functioncall">altmetrics</span>(<span class="string">"doi/10.1038/489201a"</span>)
+</pre></div><div class="output"><pre class="knitr r">## Altmetrics on: "Future impact: Predicting scientific success" with altmetric_id: 942310 published in Nature.
+##   provider count
+## 1 Facebook     1
+## 2    Feeds    10
+## 3  Google+     1
+## 4    Cited   179
+## 5   Tweets   159
+## 6 Accounts   171
+</pre>
+	</div>	
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="figshare">
+	<br><br>
+	<img src="images/figshare.png" align="left"><h2>Sharing unpublished data - <code>fig<b>share</b></code></h2>
+	<div>
+	<h3 class="figshare">Using fig<b>share</b>'s new <a href="http://api.figshare.com/docs/">API</a> it is now possible to share figures, data and any other object generated in <code>R</code> directly to one's figshare account.</h3><br>
+	<div class="chunk" id="foo"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">library</span><span class="hl std">(figshare)</span>
+<span class="hl kwd">fs_auth</span><span class="hl std">()</span>
+<span class="hl std">id</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">fs_create</span><span class="hl std">()</span>
+<span class="hl kwd">fs_upload</span><span class="hl std">(id, r_object)</span>
+</pre></div>
+</div></div>
+	</div>	
+</section>
+
+
+<!-- ============================================================================= -->
+<!-- =====  DataONE slides          ==== -->
+<!-- ============================================================================= -->
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="dataone">
+<br><br><br><br><br><br>
+<div>
+<a href="http://dataone.org"><img src="images/dataone_logo.png"></a><h3 class="figshare"><center>A multi-institution consortium to build infrastructure for open science</h3></center>
+</div>	
+</section>
+
+
+<!-- ============================================================================= -->
+<!-- =====  Collaborative writing slides + GitHub 							  ==== -->
+<!-- ============================================================================= -->
+
+
+
+<section class="slide" id="GitHub_and_science">
+<br><br>
+<div>
+<h1><i class="ss-social-circle ss-icon">&#xF670;</i><br> Executible papers and pre-print servers </span></h1>
+</div>	
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="GitHub_and_science_more">
+<div>
+<center><h2>Rapid peer-peer sharing of code is great for science</h2></center><br>
+<br>
+<h3>Free repositories such as GitHub make it possible to <span style="color:#c2552c">share data, code, manuscripts in progress</span> and easily collaborate with anyone while providing powerful revision control.</h3>	
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="GitHub_and_science_more2">
+<img src="images/collaboration.png" height="458" width="986">
+<center><h3>Manuscripts can be <i class="ss-icon ss-fork"> forked</i> and merged <i class="ss-icon ss-merge"></i> by any collaborator.</h3></center>
+</section>
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="GitHub_and_science_more1">
+<img src="images/preprint.png" height="1129" width="922">
+</section>
+
+
+<section class="slide" id="GitHub_and_writing">
+<br><br>
+<div>
+<h1><br> R + collaborative writing <i class="ss-icon ss-write"></i></span></h1>
+</div>	
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="GitHub_and_markdown">
+<div>
+<br><h2><code>knitr</code> + Markdown</h2><br>
+<img src="images//knitr.png" height="348" width="924">
+<br>
+<pre>Xie Y (2012). <a href="http://yihui.name/knitr/">knitr</a>: A general-purpose package for dynamic report generation in R.</pre>
+</div>	
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="GitHub_markdown_knitr">
+<div>
+<br><h2><code>knitr</code> + Markdown + GitHub</h2>
+<p>GitHub <a href="http://github.github.com/github-flavored-markdown/">automatically renders Markdown</a> and even provides syntax highlighting</p><br>
+<img src="images/piwowar.png" height="721" width="992">
+<br>
+</div>	
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="executible_paper">
+<div>
+<br><h2><code>knitr</code> + Markdown + GitHub = executible paper</h2><br>
+<img src="images/executible_documents.png" height="760" width="943">
+<br>
+</div>	
+</section>
+
+
+<!--    ##############    summary slide  ##############    -->
+<section class="slide" id="summary">
+	<div>
+<br><br><br>
+	<h2>Various tools in R can drive <i class="ss-sync">data reuse</i>,  <i class="ss-connection"> new collaborations</i>, <i class="ss-fork"> new tools</i>, <i class="ss-barchart"> novel visualization</i>,  and keep the entire research process transparent through <i class="ss-notebook"> open notebooks</i>.
+	</h2>
+	<!-- <p><i class="ss-link"> </i>&nbsp; http://inundata.org/BARUG</p>
+	<p><i class="ss-download"></i>&nbsp; PDF</p> -->
+</div>
+</section>
+
+
+
+<!--    ##############    closing slide  ##############    -->
+<section class="slide" id="outro">
+	<div>
+	<hgroup>
+	<h1>ropensci.org</h1>
+	<h2><i class="ss-icon ss-social-circle"><a href="http://GitHub.com/ropensci"  style="color:#010101;">&#xF670; </a></i> ropensci<br>
+	<i class="ss-social-circle ss-icon"><a href="http://twitter.com/ropensci"  style="color:#79cef7;">&#xF620;</a></i> @ropensci <br> 
+	<i class="ss-social-circle ss-icon"><a href="http://gplus.to/ropensci" style="color: #dc0026;">&#xF613;</a></i> gplus.to/ropensci <br></h2>
+	<h2>To navigate this presentation, type <span style="color:#e64b65;font-style:bold; text-shadow: none"><b>M</a></span> to see all slides. <br><b><span style="color:#e64b65;font-style:bold; text-shadow: none"><b>G</a></span> to go to a specific slide</h2>
+</hgroup>
+</div>
+</section>
+
+<!-- ============================================================================= -->
+<!-- ====      END PRESENTATION  ==== -->
+<!-- Everything below can be ignored (just js libraries) -->
+<!-- ============================================================================= -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+
+<!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="jquery-1.7.min.js"><\/script>')</script>
+
+<!-- Deck Core and extensions -->
+<script src="core/deck.core.js"></script>
+<script src="extensions/hash/deck.hash.js"></script>
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+<script src="extensions/blank/deck.blank.js"></script>
+
+<!-- Initialize the deck -->
+<script>
+$(function() {
+	$.deck('.slide');
+});
+</script>
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '5070cca2f5a1f5093500000e');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+</body>
+</html>
