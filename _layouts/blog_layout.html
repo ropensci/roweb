@@ -1,6 +1,20 @@
+{% include header.html %}
+ <section class="blog-3">
+    <div class="container">
+<!--         <div class="title">
+            <img src="{{ site.url }}//assets/common-files/img/content/blog_header_logo.png" alt="">
+            <h3>Events</h3>
+        </div> -->
 
-  {% include header.html %}
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
 
-<!-- Need to add templating for blog posts here -->
+             {{ content }}
+            </div>
 
-  {% include footer.html %}
+        </div>
+    </div>
+
+</section>
+
+{% include footer.html %}
