@@ -3064,6 +3064,8 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
   }
 }
 .pagination ul li {
+  font-family: "p22-underground-sc";
+  font-size: 14px;
   display: inline-block;
   margin-right: -3px;
   vertical-align: middle;
