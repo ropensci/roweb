@@ -4,7 +4,6 @@ pkg: rbison
 layout: usecases
 ---
 
-<body>
 <p>Keep in mind that BISON data is at least in part within GBIF, which can be accessed from R using our rgbif package. However, BISON provides a slightly different interface to their data than does GBIF, and if you are just interested in US data, then BISON may be easier to use.</p>
 
 <p>In addition, this example can be done using GBIF data via <code>rgbif</code>.</p>
@@ -24,9 +23,9 @@ library(plyr)
 
 <p>We&#39;ll not restrain our search to any particular taxonomic group, although you will likely do that in your own research. </p>
 
-<pre class="prettyprint"><code>mynames &lt;- c(&quot;Helianthus annuus&quot;, &quot;Pinus contorta&quot;, &quot;Poa annua&quot;, &quot;Madia sativa&quot;, 
-    &quot;Arctostaphylos glauca&quot;, &quot;Heteromeles arbutifolia&quot;, &quot;Symphoricarpos albus&quot;, 
-    &quot;Ribes viburnifolium&quot;, &quot;Diplacus aurantiacus&quot;, &quot;Salvia leucophylla&quot;, &quot;Encelia californica&quot;, 
+<pre class="prettyprint"><code>mynames &lt;- c(&quot;Helianthus annuus&quot;, &quot;Pinus contorta&quot;, &quot;Poa annua&quot;, &quot;Madia sativa&quot;,
+    &quot;Arctostaphylos glauca&quot;, &quot;Heteromeles arbutifolia&quot;, &quot;Symphoricarpos albus&quot;,
+    &quot;Ribes viburnifolium&quot;, &quot;Diplacus aurantiacus&quot;, &quot;Salvia leucophylla&quot;, &quot;Encelia californica&quot;,
     &quot;Ribes indecorum&quot;, &quot;Ribes malvaceum&quot;, &quot;Cercocarpus betuloides&quot;, &quot;Penstemon spectabilis&quot;)
 </code></pre>
 
@@ -53,10 +52,8 @@ library(plyr)
 plot(radfit(out$abd))
 </code></pre>
 
-<img src="../assets/img/usecases/rbison.png">
+<img src="../assets/usecases-images/rbison.png">
 
 <h3>Further reading</h3>
 
 <p>Read more about plotting abundance distributions <a href="http://cran.r-project.org/web/packages/vegan/vignettes/diversity-vegan.pdf">here</a>. </p>
-
-</body>

@@ -1,0 +1,20 @@
+
+  {% include header.html %}
+
+  <div class="container">
+
+  <header class="jumbotron subhead" id="overview">
+    <h1><i class="ss-icon" style="color:#ebeef6;">&#xEB85;</i> {{ page.title }} </h1>
+    <p class="lead"><i class="ss-icon" style="color:#C9CDD3;">&#x1F517;</i>rOpenSci package: <a href="https://github.com/ropensci/{{ page.pkg }}">{{ page.pkg }}</a> </p>
+  </header>
+
+  <div class="col-sm-9">
+    {{ content }}
+  </div>
+
+  </div>
+  </div>
+  </div>
+
+  {% include disqus.html %}
+  {% include footer.html %}

@@ -27,21 +27,21 @@ gbr.dat.t &lt;- get_ensemble_temp(&quot;GBR&quot;, &quot;annualavg&quot;, 1900, 
 <pre class="prettyprint"><code>### Subset to just the median percentile
 gbr.dat.t &lt;- subset(gbr.dat.t, gbr.dat.t$percentile == 50)
 ## Plot and note the past is the same for each scenario
-ggplot(gbr.dat.t, aes(x = fromYear, y = data, group = scenario, colour = scenario)) + 
+ggplot(gbr.dat.t, aes(x = fromYear, y = data, group = scenario, colour = scenario)) +
     geom_point() + geom_path() + theme_bw() + xlab(&quot;Year&quot;) + ylab(&quot;Annual Average Temperature in 20 year increments&quot;)
 </code></pre>
 
-<img src="../assets/img/usecases/rwbclimate_intro1.png">
+<img src="../assets/usecases-images/rwbclimate_intro1.png">
 
 <p>As you can see the A2 scenario of unchecked growth predicts a higher annual average temperature.  We can look at the same kind of data except this time examining changes in precipitation.</p>
 
 <pre class="prettyprint"><code>gbr.dat.p &lt;- get_ensemble_precip(&quot;GBR&quot;, &quot;annualavg&quot;, 1900, 2100)
 gbr.dat.p &lt;- subset(gbr.dat.p, gbr.dat.p$percentile == 50)
-ggplot(gbr.dat.p, aes(x = fromYear, y = data, group = scenario, colour = scenario)) + 
+ggplot(gbr.dat.p, aes(x = fromYear, y = data, group = scenario, colour = scenario)) +
     geom_point() + geom_path() + theme_bw() + xlab(&quot;Year&quot;) + ylab(&quot;Annual Average precipitation in mm&quot;)
 </code></pre>
 
-<img src="../assets/img/usecases/rwbclimate_intro2.png">
+<img src="../assets/usecases-images/rwbclimate_intro2.png">
 
 <p>Here the difference between predicted increases in precipitation are less drastic when comparing the two different scenarios.</p>
 
@@ -55,7 +55,7 @@ ggplot(gbr.dat.p, aes(x = fromYear, y = data, group = scenario, colour = scenari
 gbr.modelpast &lt;- subset(gbr.dat.t, gbr.dat.t$scenario == &quot;past&quot;)
 gbr.historical &lt;- get_historical_temp(&quot;GBR&quot;, &quot;year&quot;)
 ### Plot create historical plot
-hist.plot &lt;- ggplot(gbr.historical, aes(x = year, y = data)) + geom_point() + 
+hist.plot &lt;- ggplot(gbr.historical, aes(x = year, y = data)) + geom_point() +
     geom_path()
 
 ### Create a centroid for the past
@@ -70,7 +70,7 @@ win_avg &lt;- function(from, to, df) {
 }
 hist.avg &lt;- matrix(0, ncol = 2, nrow = 0)
 for (i in 1:dim(gbr.modelpast)[1]) {
-    hist.avg &lt;- rbind(hist.avg, win_avg(gbr.modelpast$fromYear[i], gbr.modelpast$toYear[i], 
+    hist.avg &lt;- rbind(hist.avg, win_avg(gbr.modelpast$fromYear[i], gbr.modelpast$toYear[i],
         gbr.historical))
 }
 colnames(hist.avg) &lt;- c(&quot;data&quot;, &quot;centroid&quot;)
@@ -81,14 +81,14 @@ hist.comp &lt;- as.data.frame(hist.comp)
 hist.comp$Output &lt;- c(rep(&quot;Historical&quot;, 4), rep(&quot;Model&quot;, 4))
 
 ### overlay the averages with the original raw data plot
-hist.plot &lt;- hist.plot + geom_point(data = hist.comp, aes(x = centroid, y = data, 
-    colour = Output, group = Output, size = 3)) + geom_path(data = hist.comp, 
+hist.plot &lt;- hist.plot + geom_point(data = hist.comp, aes(x = centroid, y = data,
+    colour = Output, group = Output, size = 3)) + geom_path(data = hist.comp,
     aes(x = centroid, y = data, colour = Output, group = Output)) + guides(size = FALSE)
 
 hist.plot + xlab(&quot;Year&quot;) + ylab(&quot;Annual average temperature in deg C&quot;) + theme_bw()
 </code></pre>
 
-<img src="../assets/img/usecases/rwbclimate_intro3.png">
+<img src="../assets/usecases-images/rwbclimate_intro3.png">
 
 <pre class="prettyprint"><code>
 </code></pre>
@@ -112,7 +112,7 @@ eu_basin &lt;- create_map_df(Eur_basin)
 eu_basin_dat &lt;- get_ensemble_temp(Eur_basin, &quot;annualanom&quot;, 2080, 2100)
 ## Subset data to just one scenario, and one percentile so we have 1 piece
 ## of information per spatial unit
-eu_basin_dat &lt;- subset(eu_basin_dat, eu_basin_dat$scenario == &quot;a2&quot; &amp; eu_basin_dat$percentile == 
+eu_basin_dat &lt;- subset(eu_basin_dat, eu_basin_dat$scenario == &quot;a2&quot; &amp; eu_basin_dat$percentile ==
     50)
 
 # link map dataframe to climate data
@@ -120,18 +120,18 @@ eu_basin_dat &lt;- subset(eu_basin_dat, eu_basin_dat$scenario == &quot;a2&quot; 
 eu_map &lt;- climate_map(eu_basin, eu_basin_dat, return_map = T)
 </code></pre>
 
-<pre class="prettyprint"><code>eu_map + scale_fill_continuous(&quot;Temperature \n anomaly by 2080&quot;, low = &quot;yellow&quot;, 
+<pre class="prettyprint"><code>eu_map + scale_fill_continuous(&quot;Temperature \n anomaly by 2080&quot;, low = &quot;yellow&quot;,
     high = &quot;red&quot;)
 </code></pre>
 
-<img src="../assets/img/usecases/rwbclimate_intro4.png">
+<img src="../assets/usecases-images/rwbclimate_intro4.png">
 
 <p>The temperature anomaly mapped shows a general increase in temperature over the control period of 1961 - 2009.  The geratest increase looks to be coming in the interior of Eastern Europe.  Now that we have the basic map data download it&#39;s easy to bind new data to the existing map dataframe with the kml cooridates.  Let&#39;s say we want to look at this map of anomalies but for all time periods to see how it increases, we can easily do that with a couple of for loops.</p>
 
 <pre class="prettyprint"><code># get all the future time periods
 eu_basin_dat &lt;- get_ensemble_temp(Eur_basin, &quot;annualanom&quot;, 2000, 2100)
 # subset the data to one observation per spatial unit (basin)
-eu_basin_dat &lt;- subset(eu_basin_dat, eu_basin_dat$scenario == &quot;a2&quot; &amp; eu_basin_dat$percentile == 
+eu_basin_dat &lt;- subset(eu_basin_dat, eu_basin_dat$scenario == &quot;a2&quot; &amp; eu_basin_dat$percentile ==
     50)
 ### Next we need to create a dataframe that binds each year of data to the
 ### map dataframe Bind it all together and create master dataframe with an
@@ -142,7 +142,7 @@ years &lt;- unique(eu_basin_dat$fromYear)
 
 # create an initial dataframe to join other years to.
 
-master_map &lt;- climate_map(eu_basin, eu_basin_dat[eu_basin_dat$fromYear == years[1], 
+master_map &lt;- climate_map(eu_basin, eu_basin_dat[eu_basin_dat$fromYear == years[1],
     ], return_map = F)
 </code></pre>
 
@@ -154,7 +154,7 @@ for (i in 2:length(years)) {
     ## Note that return map is False meaning a dataframe is returned not a
     ## ggplot2 map
 
-    tmp_map &lt;- climate_map(eu_basin, eu_basin_dat[eu_basin_dat$fromYear == years[i], 
+    tmp_map &lt;- climate_map(eu_basin, eu_basin_dat[eu_basin_dat$fromYear == years[i],
         ], return_map = F)
     tmp_map$year &lt;- rep(years[i], dim(tmp_map)[1])
     master_map &lt;- rbind(master_map, tmp_map)
@@ -162,13 +162,13 @@ for (i in 2:length(years)) {
 </code></pre>
 
 <pre class="prettyprint"><code>
-ggplot(master_map, aes(x = long, y = lat, group = group, fill = data)) + geom_polygon() + 
-    facet_wrap(~year) + scale_fill_continuous(&quot;Temperature \n anomaly&quot;, low = &quot;yellow&quot;, 
-    high = &quot;red&quot;) + theme_bw() + ggtitle(expression(atop(&quot;Global warming in Europe&quot;, 
+ggplot(master_map, aes(x = long, y = lat, group = group, fill = data)) + geom_polygon() +
+    facet_wrap(~year) + scale_fill_continuous(&quot;Temperature \n anomaly&quot;, low = &quot;yellow&quot;,
+    high = &quot;red&quot;) + theme_bw() + ggtitle(expression(atop(&quot;Global warming in Europe&quot;,
     atop(italic(&quot;Temperature anomaly over control period (1961-2009)&quot;), &quot;&quot;))))
 </code></pre>
 
-<img src="../assets/img/usecases/rwbclimate_intro5.png">
+<img src="../assets/usecases-images/rwbclimate_intro5.png">
 
 <p>Here the increase with each time period is obvious, especially since all the anomalies are plotted on the same temperature scale.</p>
 
