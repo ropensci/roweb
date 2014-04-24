@@ -4040,6 +4040,22 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
   color: #ffffff;
 }
 
+/*label for blog*/
+.label-blog {
+  font-size: 16px;
+  font-family: "proxima-nova";
+  font-variant: small-caps;
+  font-style: normal;
+  font-weight: 300;
+  background-color: #2C89C7;
+  color: #ffffff;
+}
+
+.label-blog a {
+  background-color: #2C89C7;
+  color: #ffffff;
+}
+/*end label for blog*/
 
 
 
