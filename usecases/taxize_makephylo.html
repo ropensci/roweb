@@ -3,7 +3,7 @@ title: Make a phylogeny from species names alone
 pkg: taxize
 layout: usecases
 ---
- 
+
 <body>
 <p>There is only functionality for plants right now in taxize. We hope to add more taxan groups soon.</p>
 
@@ -12,15 +12,15 @@ layout: usecases
 <pre class="prettyprint"><code>library(taxize)
 </code></pre>
 
-<pre class="prettyprint"><code>splist &lt;- c(&quot;Helianthus annuus&quot;, &quot;Pinus contorta&quot;, &quot;Collomia grandiflora&quot;, &quot;Abies magnifica&quot;, 
-    &quot;Rosa californica&quot;, &quot;Datura wrightii&quot;, &quot;Mimulus bicolor&quot;, &quot;Nicotiana glauca&quot;, 
+<pre class="prettyprint"><code>splist &lt;- c(&quot;Helianthus annuus&quot;, &quot;Pinus contorta&quot;, &quot;Collomia grandiflora&quot;, &quot;Abies magnifica&quot;,
+    &quot;Rosa californica&quot;, &quot;Datura wrightii&quot;, &quot;Mimulus bicolor&quot;, &quot;Nicotiana glauca&quot;,
     &quot;Madia sativa&quot;, &quot;Bartlettia scaposa&quot;)
 </code></pre>
 
 <h3>Phylomatic is a web service with an API that we can use to get a phylogeny. Fetch phylogeny from phylomatic</h3>
 
-<pre class="prettyprint"><code>phylogeny &lt;- phylomatic_tree(taxa = splist, taxnames = TRUE, get = &quot;POST&quot;, informat = &quot;newick&quot;, 
-    method = &quot;phylomatic&quot;, storedtree = &quot;R20120829&quot;, taxaformat = &quot;slashpath&quot;, 
+<pre class="prettyprint"><code>phylogeny &lt;- phylomatic_tree(taxa = splist, taxnames = TRUE, get = &quot;POST&quot;, informat = &quot;newick&quot;,
+    method = &quot;phylomatic&quot;, storedtree = &quot;R20120829&quot;, taxaformat = &quot;slashpath&quot;,
     outformat = &quot;newick&quot;, clean = &quot;true&quot;, parallel = TRUE)
 </code></pre>
 
@@ -34,6 +34,6 @@ layout: usecases
 <pre class="prettyprint"><code>plot(phylogeny)
 </code></pre>
 
-<img src="../assets/img/usecases/taxize_makephylo.png">
+<img src="../assets/usecases-images/taxize_makephylo.png">
 
 </body>

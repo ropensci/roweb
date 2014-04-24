@@ -19,15 +19,15 @@ library(reshape2)
 
 <h2>Define a species list</h2>
 
-<pre class="prettyprint"><code>spplist &lt;- c(&quot;Ambrosia artemisiifolia&quot;, &quot;Cirsium arvense&quot;, &quot;Centaurea melitensis&quot;, 
-    &quot;Centaurea diffusa&quot;, &quot;Ambrosia trifida&quot;, &quot;Helianthus annuus&quot;, &quot;Carthamus oxyacanthus&quot;, 
-    &quot;Cnicothamnus lorentzii&quot;, &quot;Stevia rebaudiana&quot;, &quot;Cynara cardunculus&quot;, &quot;Cichorium intybus&quot;, 
-    &quot;Smallanthus sonchifolius&quot;, &quot;Cichorium endivia&quot;, &quot;Acicarpha spathulata&quot;, 
-    &quot;Scaevola aemula&quot;, &quot;Nymphoides peltata&quot;, &quot;Platycodon grandiflorus&quot;, &quot;Echinacea angustifolia&quot;, 
-    &quot;Guizotia abyssinica&quot;, &quot;Helianthus tuberosus&quot;, &quot;Helianthus argophyllus&quot;, 
-    &quot;Helianthus anomalus&quot;, &quot;Helianthus bolanderi&quot;, &quot;Helianthus ciliaris&quot;, &quot;Helianthus deserticola&quot;, 
-    &quot;Helianthus paradoxus&quot;, &quot;Leontodon taraxacoides&quot;, &quot;Carthamus tinctorius&quot;, 
-    &quot;Centaurea maculosa&quot;, &quot;Lactuca perennis&quot;, &quot;Lactuca saligna&quot;, &quot;Lactuca sativa&quot;, 
+<pre class="prettyprint"><code>spplist &lt;- c(&quot;Ambrosia artemisiifolia&quot;, &quot;Cirsium arvense&quot;, &quot;Centaurea melitensis&quot;,
+    &quot;Centaurea diffusa&quot;, &quot;Ambrosia trifida&quot;, &quot;Helianthus annuus&quot;, &quot;Carthamus oxyacanthus&quot;,
+    &quot;Cnicothamnus lorentzii&quot;, &quot;Stevia rebaudiana&quot;, &quot;Cynara cardunculus&quot;, &quot;Cichorium intybus&quot;,
+    &quot;Smallanthus sonchifolius&quot;, &quot;Cichorium endivia&quot;, &quot;Acicarpha spathulata&quot;,
+    &quot;Scaevola aemula&quot;, &quot;Nymphoides peltata&quot;, &quot;Platycodon grandiflorus&quot;, &quot;Echinacea angustifolia&quot;,
+    &quot;Guizotia abyssinica&quot;, &quot;Helianthus tuberosus&quot;, &quot;Helianthus argophyllus&quot;,
+    &quot;Helianthus anomalus&quot;, &quot;Helianthus bolanderi&quot;, &quot;Helianthus ciliaris&quot;, &quot;Helianthus deserticola&quot;,
+    &quot;Helianthus paradoxus&quot;, &quot;Leontodon taraxacoides&quot;, &quot;Carthamus tinctorius&quot;,
+    &quot;Centaurea maculosa&quot;, &quot;Lactuca perennis&quot;, &quot;Lactuca saligna&quot;, &quot;Lactuca sativa&quot;,
     &quot;Lactuca serriola&quot;, &quot;Lactuca virosa&quot;, &quot;Taraxacum officinale&quot;, &quot;Barnadesia spinosa&quot;)
 </code></pre>
 
@@ -53,7 +53,7 @@ gisd &lt;- do.call(rbind, gisdout)
 
 <pre class="prettyprint"><code>df &lt;- rbind(grisout, iscout, daisieout, i3nout, gisdout)[, -2]
 dat &lt;- dcast(df, searched_name ~ db, value.var = &quot;eol_object_id&quot;)
-dat &lt;- ddply(dat, .(searched_name), transform, weedy = ifelse(length(na.omit(c(daisie, 
+dat &lt;- ddply(dat, .(searched_name), transform, weedy = ifelse(length(na.omit(c(daisie,
     gisd, gris, i3n, isc))) &gt; 1, &quot;#024DFD&quot;, &quot;#ED6500&quot;))
 dat$searched_name &lt;- gsub(&quot; &quot;, &quot;_&quot;, dat$searched_name)
 </code></pre>
@@ -78,6 +78,7 @@ statustree &lt;- dat[match(tiporder, dat$searched_name), ]
 legend(&quot;bottomleft&quot;, legend = c(&quot;Weed&quot;, &quot;Not a weed&quot;), fill = c(&quot;#024DFD&quot;, &quot;#ED6500&quot;))
 </code></pre>
 
-<img src="http://assets.ropensci.org/img/usecases/taxize_invasivephylo_tree.png">
+<!-- <img src="http://assets.ropensci.org/img/usecases/taxize_invasivephylo_tree.png"> -->
+<img src="../assets/usecases-images/taxize_invasivephylo_tree.png">
 
 </body>

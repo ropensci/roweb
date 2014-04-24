@@ -3,7 +3,7 @@ title: From a species list to cleaning names to a map of their occurrences
 pkg: taxize
 layout: usecases
 ---
- 
+
 <body>
 <h3>Load libraries</h3>
 
@@ -12,8 +12,8 @@ layout: usecases
 
 <p>Most of us will start out with a species list, something like the one below. Note that each of the names is spelled incorrectly.</p>
 
-<pre class="prettyprint"><code>splist &lt;- c(&quot;Helanthus annuus&quot;, &quot;Pinos contorta&quot;, &quot;Collomia grandiflorra&quot;, &quot;Abies magnificaa&quot;, 
-    &quot;Rosa california&quot;, &quot;Datura wrighti&quot;, &quot;Mimulus bicolour&quot;, &quot;Nicotiana glauca&quot;, 
+<pre class="prettyprint"><code>splist &lt;- c(&quot;Helanthus annuus&quot;, &quot;Pinos contorta&quot;, &quot;Collomia grandiflorra&quot;, &quot;Abies magnificaa&quot;,
+    &quot;Rosa california&quot;, &quot;Datura wrighti&quot;, &quot;Mimulus bicolour&quot;, &quot;Nicotiana glauca&quot;,
     &quot;Maddia sativa&quot;, &quot;Bartlettia scapposa&quot;)
 </code></pre>
 
@@ -28,7 +28,7 @@ splist_tnrs &lt;- tnrs(query = splist, getpost = &quot;POST&quot;, source_ = &qu
 
 <pre class="prettyprint"><code>
 # Remove some fields
-(splist_tnrs &lt;- splist_tnrs[, !names(splist_tnrs) %in% c(&quot;matchedName&quot;, &quot;annotations&quot;, 
+(splist_tnrs &lt;- splist_tnrs[, !names(splist_tnrs) %in% c(&quot;matchedName&quot;, &quot;annotations&quot;,
     &quot;uri&quot;)])
 </code></pre>
 
@@ -55,8 +55,8 @@ splist_tnrs &lt;- tnrs(query = splist, getpost = &quot;POST&quot;, source_ = &qu
 (splist &lt;- as.character(splist_tnrs$acceptedName))
 </code></pre>
 
-<pre><code>##  [1] &quot;Helianthus annuus&quot;    &quot;Pinus contorta&quot;       &quot;Collomia grandiflora&quot; &quot;Abies magnifica&quot;     
-##  [5] &quot;Rosa californica&quot;     &quot;Datura wrightii&quot;      &quot;Mimulus bicolor&quot;      &quot;Nicotiana glauca&quot;    
+<pre><code>##  [1] &quot;Helianthus annuus&quot;    &quot;Pinus contorta&quot;       &quot;Collomia grandiflora&quot; &quot;Abies magnifica&quot;
+##  [5] &quot;Rosa californica&quot;     &quot;Datura wrightii&quot;      &quot;Mimulus bicolor&quot;      &quot;Nicotiana glauca&quot;
 ##  [9] &quot;Madia sativa&quot;         &quot;Bartlettia scaposa&quot;
 </code></pre>
 
@@ -163,19 +163,19 @@ library(ggplot2)
 
 <h3>Get occurences</h3>
 
-<pre class="prettyprint"><code>occurr_list &lt;- occurrencelist_many(as.character(allnames$spname), coordinatestatus = TRUE, maxresults = 100, 
+<pre class="prettyprint"><code>occurr_list &lt;- occurrencelist_many(as.character(allnames$spname), coordinatestatus = TRUE, maxresults = 100,
     fixnames = &quot;change&quot;)
 </code></pre>
 
 <h3>Make a map</h3>
 
-<pre class="prettyprint"><code>gbifmap_list(occurr_list) + guides(col = guide_legend(title = &quot;&quot;, nrow = 3, byrow = TRUE)) + theme(legend.position = &quot;bottom&quot;, 
+<pre class="prettyprint"><code>gbifmap_list(occurr_list) + guides(col = guide_legend(title = &quot;&quot;, nrow = 3, byrow = TRUE)) + theme(legend.position = &quot;bottom&quot;,
     legend.key = element_blank()) + coord_equal()
 </code></pre>
 
 <pre><code>## Rendering map...plotting 857 points
 </code></pre>
 
-<img src="../assets/img/usecases/taxize_listtomap.png">
+<img src="../assets/usecases-images/taxize_listtomap.png">
 
 </body>
