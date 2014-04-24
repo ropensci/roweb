@@ -4,7 +4,7 @@ layout: post
 title: From occurrence data to interactive maps on the web
 date: 2013-07-04
 author: Scott Chamberlain
-tags: 
+tags:
 - R
 - ropensci
 - rbison
@@ -12,7 +12,7 @@ tags:
 - geojson
 ---
 
-We have a number of packages for getting species occurrence data: [rgbif][rgbif] and [rbison][rbison]. The power of R is that you can pull down this occurrence data, manipulate the data, do some analyses, and visualize the data - all in one open source framework. 
+We have a number of packages for getting species occurrence data: [rgbif][rgbif] and [rbison][rbison]. The power of R is that you can pull down this occurrence data, manipulate the data, do some analyses, and visualize the data - all in one open source framework.
 
 However, when dealing with occurrence data on maps, it is often useful to be able to interact with the visualization. [Github][github], a code hosting and collaboration site, now renders a particular type of map file format as an interactive map. This file format is called `.geojson`. Here is an example of an interactive map hosted on Github, embedded here:
 
@@ -30,11 +30,11 @@ To demonstrate how easy it can be to do this on your own, the following is a sma
 
 ### Install rbison from Github
 
-{% highlight r %}
+```r
 # install_github('rbison', 'ropensci') # uncomment if you haven't
 # installed it
 library(rbison)
-{% endhighlight %}
+```
 
 
 ***************
@@ -44,21 +44,21 @@ library(rbison)
 Search for data on the bison.
 
 
-{% highlight r %}
+```r
 dat <- bison(species = "Bison bison", count = 500)
-{% endhighlight %}
+```
 
 
 Take a peak at the data just to make sure we have some occurrence data
 
 
-{% highlight r %}
+```r
 head(bison_data(dat, "data_df"))
-{% endhighlight %}
+```
 
 
 
-{% highlight text %}
+```
          id        name longitude latitude
 1 686467428 Bison bison    -118.8    43.31
 2 656975776 Bison bison    -118.8    43.31
@@ -73,7 +73,7 @@ head(bison_data(dat, "data_df"))
 4                              iNaturalist.org
 5                              iNaturalist.org
 6                              iNaturalist.org
-{% endhighlight %}
+```
 
 
 ***************
@@ -82,15 +82,15 @@ head(bison_data(dat, "data_df"))
 
 Before this step I made a folder called *mygeojson* to write data in to, which will also be a Github repository.
 
-In this example, we are using the option method='web' in the `togeojson` function, but we could also use method='local' which wouldl use the `rgdal` package to convert to a geojson file format locally. Specifying method='web' uses the [Ogre web client](http://ogre.adc4gis.com/). 
+In this example, we are using the option method='web' in the `togeojson` function, but we could also use method='local' which wouldl use the `rgdal` package to convert to a geojson file format locally. Specifying method='web' uses the [Ogre web client](http://ogre.adc4gis.com/).
 
 
-{% highlight r %}
+```r
 dat_df <- bison_data(dat, "data_df")
 write.csv(dat_df, "~/github/sac/mygeojson/bison_bison.csv")
 file <- "~/github/sac/mygeojson/bison_bison.csv"
 togeojson(file, method = "web", destpath = "~/github/sac/mygeojson/", outfilename = "bison_bison")
-{% endhighlight %}
+```
 
 
 ***************
@@ -116,16 +116,16 @@ Then go to your new repo on Github and click on the `.geojson` file you created,
 
 <br>
 
-Check out the full screen version [here](https://render.github.com/view/geojson?url=https://raw.github.com/sckott/mygeojson/master/bison_bison.geojson). 
+Check out the full screen version [here](https://render.github.com/view/geojson?url=https://raw.github.com/sckott/mygeojson/master/bison_bison.geojson).
 
 ***************
 
-It is as easy as that! We'll add this functionality into our `rgbif` package as well. 
+It is as easy as that! We'll add this functionality into our `rgbif` package as well.
 
 Further reading:
 
 + http://blog.geomusings.com/2013/06/18/geojson-on-github-now-what/
-+ I wrote earlier about this topic on my own blog [here](http://sckott.github.io/2013/06/geojson/). 
++ I wrote earlier about this topic on my own blog [here](http://sckott.github.io/2013/06/geojson/).
 + Github help for geojson file https://help.github.com/articles/mapping-geojson-files-on-github#embedding-your-map-elsewhere
 
 [rgbif]: https://github.com/ropensci/rgbif

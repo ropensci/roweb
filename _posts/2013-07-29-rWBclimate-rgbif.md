@@ -16,7 +16,7 @@ tags:
 One of our primary goals at ROpenSci is to wrap as many science API's as possible.  While each package can be used as a standalone interface, there's lots of ways our packages can overlap and complement each other.  Sure [He-Man](http://www.youtube.com/watch?v=7yeA7a0uS3A) usually rode [Battle Cat](http://en.wikipedia.org/wiki/Battle_Cat), but there's no reason he couldn't ride a [my little pony](http://drawception.com/pub/panels/2012/5-14/swgpnXLCRm-8.png) sometimes too.  That's the case with our packages for [GBIF](http://www.gbif.org/) and the [worldbank climate data api](http://data.worldbank.org/developers/climate-data-api).  Both packages will give you lots and lots of data, but a shared feature of both is the ability to plot spatial information.  The [rWBclimate](https://github.com/ropensci/rWBclimate) package provides a robust mapping ability on top of access to climate data.  At it's most bare bones, it can be used as alternative to the built in mapping facilities included in [rgbif](https://github.com/ropensci/rgbif/).  Building on the example in the [rgbif tutorial](http://www.ropensci.org/tutorials/rgbif_tutorial.html#occurrencelist) we'll plot data for two species in the US and Mexico, the dark eyed junco (*Junco hyemalis*) and the wood duck (*Aix sponsa*).  Here's how you can use the kml interface from rWBclimate to download a map of the US and Mexico and overlay it with data from rgbif.
 <br>
 
-{% highlight r %}
+```r
 
 library(ggplot2)
 library(rWBclimate)
@@ -36,10 +36,10 @@ sp.map <- ggplot(sp.map.df,aes(x=long,y=lat,group=group))+geom_polygon(fill="whi
 ## Overlay occurrence data
 sp.map + geom_point(data=gbifdata(out),aes(y=decimalLatitude,x=decimalLongitude,group=taxonName,colour=taxonName))
 
-{% endhighlight %}
+```
 
 <br>
-![center](/assets/img/blog/2013-07-29-rWBclimate-rgbif/gbifmap1.png)
+![center](/assets/blog-images/2013-07-29-rWBclimate-rgbif/gbifmap1.png)
 *************
 <br>
 
@@ -49,7 +49,7 @@ sp.map + geom_point(data=gbifdata(out),aes(y=decimalLatitude,x=decimalLongitude,
 
 So that's how you could make a basic map, but what if you want to overlay climate data with occurrence data?  That's easy too.  You repeat essentially the same steps as above, but be sure to grab some climate data too. In this example I've chose to grab data for 8 different tree species that exhibit somewhat of a lattitudinal gradient.  I'll map them on top of historical temperature data.  In this case I'll be using the average annual temperature from 1990 to 2000.  Because I want a bit better spatial resolution I'll be using basin level data instead of country level data.  
 
-{% highlight r %}
+```r
 
 ### Download map data
 usmex <- c(273:284,328:365)
@@ -83,10 +83,10 @@ usmex.map <- ggplot()+geom_polygon(data=usmex.map.df,aes(x=long,y=lat,group=grou
 ## And overlay of gbif data
 usmex.map + geom_point(data=gbifdata(out),aes(y=decimalLatitude,x=decimalLongitude,group=taxonName,colour= taxonName)) + xlim(-125,-59)+ylim(5,55)
 
-{% endhighlight %}
+```
 
 <br>
-![center](/assets/img/blog/2013-07-29-rWBclimate-rgbif/gbifmap2.png)
+![center](/assets/blog-images/2013-07-29-rWBclimate-rgbif/gbifmap2.png)
 
 
-The map doesn't have borders because it's created at the basin level, but it would be easy enough to add an outline for the countries.  You could also plot any of your own data over climate maps because they are based on decimal lattitude and longitude coordinates, or data from multiple sources. 
+The map doesn't have borders because it's created at the basin level, but it would be easy enough to add an outline for the countries.  You could also plot any of your own data over climate maps because they are based on decimal lattitude and longitude coordinates, or data from multiple sources.

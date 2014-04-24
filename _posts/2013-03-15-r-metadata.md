@@ -4,36 +4,36 @@ layout: post
 title: Scholarly metadata in R
 date: 2013-03-15
 author: Scott Chamberlain
-tags: 
+tags:
 - R
 - ropensci
 - metadata
 - API
 ---
 
-Scholarly metadata - the meta-information surrounding articles - can be super useful.  Although metadata does not contain the full content of articles, it contains a lot of useful information, including title, authors, abstract, URL to the article, etc. 
+Scholarly metadata - the meta-information surrounding articles - can be super useful.  Although metadata does not contain the full content of articles, it contains a lot of useful information, including title, authors, abstract, URL to the article, etc.
 
 One of the largest sources of metadata is provided via the Open Archives Initiative Protocol for Metadata Harvesting or [OAI-PMH](http://www.openarchives.org/OAI/openarchivesprotocol.html). Many publishers, provide their metadata through their own endpoint, and implement the standard OAI-PMH methods: [GetRecord](http://www.openarchives.org/OAI/openarchivesprotocol.html#GetRecord), [Identify](http://www.openarchives.org/OAI/openarchivesprotocol.html#Identify), [ListIdentifiers](http://www.openarchives.org/OAI/openarchivesprotocol.html#ListIdentifiers), [ListMetadataFormats](http://www.openarchives.org/OAI/openarchivesprotocol.html#ListMetadataFormats), [ListRecords](http://www.openarchives.org/OAI/openarchivesprotocol.html#ListRecords), and [ListSets](http://www.openarchives.org/OAI/openarchivesprotocol.html#ListSets). Many providers use OAI-PMH, including [DataCite](http://oai.datacite.org/), [Dryad](http://wiki.datadryad.org/Data_Access#OAI-PMH), and [PubMed](http://www.ncbi.nlm.nih.gov/pmc/tools/oai/).
 
 Some data-/article-providers provide their metadata via their own APIs. For example, Nature Publishing Group provides their own metadata API [here](http://developers.nature.com/docs) in non OAI-PMH format; you can get PLoS metadata through their [search API](http://api.plos.org/), and the BHL (see below) provides their own custom metadata service.
 
-In addition, CrossRef provides a number of metadata search services: [metadata search](http://search.labs.crossref.org/help/api) and [openurl](http://labs.crossref.org/openurl/). 
+In addition, CrossRef provides a number of metadata search services: [metadata search](http://search.labs.crossref.org/help/api) and [openurl](http://labs.crossref.org/openurl/).
 
-What about the other publishers? (please tell me if I'm wrong about these three) 
+What about the other publishers? (please tell me if I'm wrong about these three)
 
 + Springer has [a metadata API](http://dev.springer.com/docs), but it is terrible, soooo...
-+ Elsevier, are you kidding? Well, they do have some sort of API service, but its a pain in the ass. 
++ Elsevier, are you kidding? Well, they do have some sort of API service, but its a pain in the ass.
 + Wiley, no better than Elsevier.
 
 Note that metadata can live in other places:
 
-+ Another package being developed by David Springate, [rpubmed](https://github.com/ropensci/rpubmed) can get PubMed metadata. 
-+ Our wrapper to the Mendeley API, [RMendeley](https://github.com/ropensci/rmendeley), gets article metadata via Mendeley's database. 
-+ Our wrapper to the Biodiversity Heritage Library API [here](http://www.biodiversitylibrary.org/api2/docs/docs.html) gets their metadata. 
++ Another package being developed by David Springate, [rpubmed](https://github.com/ropensci/rpubmed) can get PubMed metadata.
++ Our wrapper to the Mendeley API, [RMendeley](https://github.com/ropensci/rmendeley), gets article metadata via Mendeley's database.
++ Our wrapper to the Biodiversity Heritage Library API [here](http://www.biodiversitylibrary.org/api2/docs/docs.html) gets their metadata.
 
 No, you can't get metadata via Google Scholar - the don't allow scraping, and don't have expose their data via an API.
 
-I have discussed this package [in a previous blog post](http://sckott.github.com/2012/09/rmetadata/), but have since worked on the code a bit, and thought it deserved a new post. 
+I have discussed this package [in a previous blog post](http://sckott.github.com/2012/09/rmetadata/), but have since worked on the code a bit, and thought it deserved a new post.
 
 You can see a tutorial for this package [here](http://ropensci.github.com/rmetadata/), and contribute to the code [here](https://github.com/ropensci/rmetadata).
 
@@ -41,34 +41,34 @@ You can see a tutorial for this package [here](http://ropensci.github.com/rmetad
 
 ### Install rmetadata
 
-{% highlight r %}
+```r
 # install_github('rmetadata', 'ropensci') # uncomment to install
 library(rmetadata)
-{% endhighlight %}
+```
 
 
 ***************
 
 ### Count OAI-PMH identifiers for a data provider.
-	
 
-{% highlight r %}
+
+```r
 # For DataCite.
 count_identifiers("datacite")
 
   provider   count
 1 datacite 1216193
-{% endhighlight %}
+```
 
 
 *********
-	
+
 ### Lookup article info via CrossRef with DOI and get a citation.
 
 #### As Bibtex
-	
 
-{% highlight r %}
+
+```r
 print(crossref_citation("10.3998/3336451.0009.101"), style = "Bibtex")
 
 @Article{,
@@ -80,42 +80,42 @@ print(crossref_citation("10.3998/3336451.0009.101"), style = "Bibtex")
   volume = {9},
   doi = {10.3998/3336451.0009.101},
 }
-{% endhighlight %}
+```
 
-	
+
 #### As regular text
-	
 
-{% highlight r %}
+
+```r
 print(crossref_citation("10.3998/3336451.0009.101"), style = "text")
 
 Bilder G (2006). "In Google We Trust?" _The Journal of Electronic
 Publishing_, *9*. <URL:
 http://dx.doi.org/10.3998/3336451.0009.101>.
-{% endhighlight %}
+```
 
-	
+
 *********
-	
-### Search the CrossRef Metatdata for DOIs using free form references.
-	
-#### Search with title, author, year, and journal
-	
 
-{% highlight r %}
+### Search the CrossRef Metatdata for DOIs using free form references.
+
+#### Search with title, author, year, and journal
+
+
+```r
 crossref_search_free(query = "Piwowar Sharing Detailed Research Data Is Associated with Increased Citation Rate PLOS one 2007")
 
                                                                                              text
 1 Piwowar Sharing Detailed Research Data Is Associated with Increased Citation Rate PLOS one 2007
   match                   doi score
 1  TRUE 10.1038/npre.2007.361 4.905
-{% endhighlight %}
+```
 
-	
+
 #### Get a DOI and get the citation using \code{crossref_search}
-	
 
-{% highlight r %}
+
+```r
 # Get a DOI for a paper
 doi <- crossref_search_free(query = "Piwowar sharing data PLOS one")$doi
 
@@ -124,76 +124,76 @@ crossref_search(doi = doi)[, 1:3]
 
                            doi score normalizedScore
 1 10.1371/journal.pone.0000308 18.19             100
-{% endhighlight %}
+```
 
 
 *********
-	
-### Get a random set of DOI's through CrossRef.
-	
 
-{% highlight r %}
+### Get a random set of DOI's through CrossRef.
+
+
+```r
 # Default search gets 20 random DOIs
 crossref_r()
 
  [1] "10.4028/www.scientific.net/MSF.126-128.467"
- [2] "10.2139/ssrn.548523"                       
- [3] "10.1016/S0012-821X(02)00562-9"             
- [4] "10.1093/rsq/13.2-3.167"                    
- [5] "10.5772/55055"                             
- [6] "10.1515/BC.1999.050"                       
- [7] "10.1016/S0020-7292(98)90160-6"             
- [8] "10.1111/j.1439-0418.1985.tb02788.x"        
- [9] "10.1089/aid.2012.0115"                     
-[10] "10.1016/0002-9378(95)90155-8"              
-[11] "10.1001/jama.1949.02900490055028"          
-[12] "10.1051/jphyscol:1989172"                  
-[13] "10.1016/s0301-2115(03)00298-7"             
-[14] "10.1007/BF02735292"                        
-[15] "10.1016/0003-4916(65)90026-6"              
-[16] "10.4156/jdcta.vol5.issue5.12"              
-[17] "10.1007/s10904-009-9316-2"                 
-[18] "10.1023/A:1021690001832"                   
-[19] "10.1007/s12262-012-0724-0"                 
+ [2] "10.2139/ssrn.548523"
+ [3] "10.1016/S0012-821X(02)00562-9"
+ [4] "10.1093/rsq/13.2-3.167"
+ [5] "10.5772/55055"
+ [6] "10.1515/BC.1999.050"
+ [7] "10.1016/S0020-7292(98)90160-6"
+ [8] "10.1111/j.1439-0418.1985.tb02788.x"
+ [9] "10.1089/aid.2012.0115"
+[10] "10.1016/0002-9378(95)90155-8"
+[11] "10.1001/jama.1949.02900490055028"
+[12] "10.1051/jphyscol:1989172"
+[13] "10.1016/s0301-2115(03)00298-7"
+[14] "10.1007/BF02735292"
+[15] "10.1016/0003-4916(65)90026-6"
+[16] "10.4156/jdcta.vol5.issue5.12"
+[17] "10.1007/s10904-009-9316-2"
+[18] "10.1023/A:1021690001832"
+[19] "10.1007/s12262-012-0724-0"
 [20] "10.1007/bf02192860"
-{% endhighlight %}
+```
 
 
 
-{% highlight r %}
+```r
 
 # Specify you want journal articles only
 crossref_r(type = "journal_article")
 
- [1] "10.1016/j.jacc.2011.09.055"                                 
- [2] "10.1002/dev.420170603"                                      
- [3] "10.4315/0362-028X.JFP-10-403"                               
- [4] "10.1016/S0925-4927(98)00016-X"                              
- [5] "10.1111/j.1933-1592.2002.tb00141.x"                         
- [6] "10.1541/ieejfms.127.629"                                    
- [7] "10.5539/enrr.v3n1p62"                                       
- [8] "10.1016/S0960-9776(96)90038-7"                              
- [9] "10.1016/0925-9635(94)05240-9"                               
-[10] "10.1016/s0929-693x(97)86846-7"                              
+ [1] "10.1016/j.jacc.2011.09.055"
+ [2] "10.1002/dev.420170603"
+ [3] "10.4315/0362-028X.JFP-10-403"
+ [4] "10.1016/S0925-4927(98)00016-X"
+ [5] "10.1111/j.1933-1592.2002.tb00141.x"
+ [6] "10.1541/ieejfms.127.629"
+ [7] "10.5539/enrr.v3n1p62"
+ [8] "10.1016/S0960-9776(96)90038-7"
+ [9] "10.1016/0925-9635(94)05240-9"
+[10] "10.1016/s0929-693x(97)86846-7"
 [11] "10.1002/(SICI)1096-9071(199601)48:1<53::AID-JMV9>3.0.CO;2-K"
-[12] "10.1016/s0267-7261(01)00016-1"                              
-[13] "10.1111/j.1748-0361.2003.tb00575.x"                         
-[14] "10.1097/00005721-197701000-00011"                           
-[15] "10.1007/s00894-009-0593-z"                                  
-[16] "10.1071/AR9830063"                                          
-[17] "10.1186/gb-2009-10-4-r39"                                   
-[18] "10.2165/00128415-201113540-00038"                           
-[19] "10.1007/BF00522986"                                         
+[12] "10.1016/s0267-7261(01)00016-1"
+[13] "10.1111/j.1748-0361.2003.tb00575.x"
+[14] "10.1097/00005721-197701000-00011"
+[15] "10.1007/s00894-009-0593-z"
+[16] "10.1071/AR9830063"
+[17] "10.1186/gb-2009-10-4-r39"
+[18] "10.2165/00128415-201113540-00038"
+[19] "10.1007/BF00522986"
 [20] "10.1080/19407963.2011.539385"
-{% endhighlight %}
+```
 
-	
+
 *********
-	
-### Search the CrossRef Metatdata API. 
-	
 
-{% highlight r %}
+### Search the CrossRef Metatdata API.
+
+
+```r
 # Search for two different query terms
 crossref_search(query = c("renear", "palmer"), rows = 4)[, 1:3]
 
@@ -202,11 +202,11 @@ crossref_search(query = c("renear", "palmer"), rows = 4)[, 1:3]
 2  10.1002/meet.2009.1450460141 2.169              66
 3 10.4242/BalisageVol3.Renear01 2.102              64
 4 10.4242/BalisageVol5.Renear01 2.102              64
-{% endhighlight %}
+```
 
 
 
-{% highlight r %}
+```r
 
 # Get results for a certain year
 crossref_search(query = c("renear", "palmer"), year = 2010)[, 1:3]
@@ -232,24 +232,24 @@ crossref_search(query = c("renear", "palmer"), year = 2010)[, 1:3]
 18           10.2105/AJPH.2009.191098 0.6029              57
 19              10.1353/mpq.2010.0004 0.5167              49
 20                 10.1353/mpq.0.0048 0.5167              49
-{% endhighlight %}
+```
 
-	
+
 *********
-	
-### Get a short DOI from shortdoi.org.
-	
 
-{% highlight r %}
+### Get a short DOI from shortdoi.org.
+
+
+```r
 # Geta a short DOI, just the short DOI returned
 short_doi(doi = "10.1371/journal.pone.0042793")
 
 [1] "10/f2bfz9"
-{% endhighlight %}
+```
 
 
 
-{% highlight r %}
+```r
 
 # Geta a short DOI, all data returned
 short_doi(doi = "10.1371/journal.pone.0042793", justshort = FALSE)
@@ -262,15 +262,15 @@ $ShortDOI
 
 $IsNew
 [1] FALSE
-{% endhighlight %}
+```
 
-	
+
 *********
-	
-### Get a record from a OAI-PMH data provider.
-	
 
-{% highlight r %}
+### Get a record from a OAI-PMH data provider.
+
+
+```r
 # Single provider, one identifier
 md_getrecord(provider = "pensoft", identifier = "10.3897/zookeys.1.10")
 
@@ -278,11 +278,11 @@ md_getrecord(provider = "pensoft", identifier = "10.3897/zookeys.1.10")
 1 A new candidate for a Gondwanaland distribution in the Zodariidae (Araneae): Australutica in Africa
       creator date             type
 1 Jocqué,Rudy 2008 Research Article
-{% endhighlight %}
+```
 
 
 
-{% highlight r %}
+```r
 
 # Single provider, multiple identifiers
 md_getrecord(provider = "pensoft", identifier = c("10.3897/zookeys.1.10", "10.3897/zookeys.4.57"))
@@ -293,15 +293,15 @@ md_getrecord(provider = "pensoft", identifier = c("10.3897/zookeys.1.10", "10.38
         creator date             type
 1   Jocqué,Rudy 2008 Research Article
 2 Cassola,Fabio 2008 Research Article
-{% endhighlight %}
+```
 
-	
+
 *********
 
-### List available metadata formats from various providers. 
-	
+### List available metadata formats from various providers.
 
-{% highlight r %}
+
+```r
 # List metadata formats for a provider
 md_listmetadataformats(provider = "dryad")
 
@@ -320,11 +320,11 @@ md_listmetadataformats(provider = "dryad")
 2    http://www.openarchives.org/OAI/2.0/rdf/
 3                 http://www.w3.org/2005/Atom
 4                    http://www.loc.gov/METS/
-{% endhighlight %}
+```
 
 
 
-{% highlight r %}
+```r
 
 # List metadata formats for a specific identifier for a provider
 md_listmetadataformats(provider = "pensoft", identifier = "10.3897/zookeys.1.10")
@@ -338,17 +338,17 @@ md_listmetadataformats(provider = "pensoft", identifier = "10.3897/zookeys.1.10"
                             metadataNamespace
 1 http://www.openarchives.org/OAI/2.0/oai_dc/
 2                  http://www.loc.gov/mods/v3
-{% endhighlight %}
+```
 
 
 *********
 
 ### Some plotting - mean number of authors per paper
 
-Okay, so this isn't a super useful visualization, but you can surely think of something better. 
+Okay, so this isn't a super useful visualization, but you can surely think of something better.
 
 
-{% highlight r %}
+```r
 library(ggplot2)
 library(ggthemes)
 library(reshape)
@@ -356,14 +356,14 @@ library(reshape)
 
 temp <- md_listrecords(provider = "pensoft", from = "2011-10-01", until = "2012-01-01")
 temp2 <- ldply(temp)[, -1]
-auths <- sapply(temp2$creator, function(x) length(strsplit(as.character(x), 
+auths <- sapply(temp2$creator, function(x) length(strsplit(as.character(x),
     ";")[[1]]))
 toplot <- data.frame(authors = auths, articletype = temp2$type)
 toplot_ <- ddply(toplot, .(articletype), summarise, authors = mean(authors))
 toplot_$articletype <- reorder(toplot_$articletype, toplot_$authors)
 
-ggplot(toplot_, aes(articletype, authors)) + theme_tufte(base_size = 16) + geom_bar(stat = "identity") + 
+ggplot(toplot_, aes(articletype, authors)) + theme_tufte(base_size = 16) + geom_bar(stat = "identity") +
     coord_flip()
-{% endhighlight %}
+```
 
-![center](/assets/img/blog/someplotting.png) 
+![center](/assets/blog-images/someplotting.png)

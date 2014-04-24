@@ -4,7 +4,7 @@ layout: post
 title: is.invasive()
 date: 2012-11-26
 author: Scott Chamberlain
-tags: 
+tags:
 - R
 - ropensci
 - taxize
@@ -17,7 +17,7 @@ _____________
 
 ## Ignasi Bartomeus
 
-![ignasi](/assets/img/blog/ignasi_bartomeus.png)
+![ignasi](/assets/blog-images/ignasi_bartomeus.png)
 
 
 Celebrating that I am contributing to the R-bloggers.com blog aggregator I am going to post a very simple function to check which species (both plants and animals) are considered “invaders” somewhere in the world. Basically the function asks that to the [Global Invasive Species Database (GISD)](http://www.issg.org/database/welcome/).
@@ -29,6 +29,6 @@ Hope it can be useful to more people, I uploaded the code as a Gist:
 <script src="https://gist.github.com/ibartomeus/4136068.js"></script>
 
 
-UPDATE: The function is now available on [taxize R package](http://ropensci.github.com/taxize_/) developed by the rOpenScience people!
+UPDATE: The function is now available on [taxize R package](https://github.com/ropensci/taxize/) developed by the rOpenScience people!
 
 ___________
