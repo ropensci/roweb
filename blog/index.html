@@ -1,0 +1,42 @@
+---
+layout: blog_layout
+title: "rOpenSci Blog"
+---
+
+<div class="row">
+      <div class="span2">
+<!--         <h3>Posts by</h3> -->
+      <a href="/tags.html" class="btn btn-success">Tag</a>
+      <a href="/archives.html" class="btn btn-success">Date</a>
+<!--       <br><br> -->
+      <a href="http://ropensci.org/feed.xml" target="_blank" class="ss-social ss-icon btn" rel="tooltip" data-placement="right" title="Blog posts via RSS Feed">RSS</a>
+    </div>
+</div>
+
+<div id='post' class="span9">
+<!--   List of posts for landing page -->
+  {% for post in paginator.posts %}
+      <h3><a href="{{ site.dir }}{{ post.url }}">{{ post.title }}</a></h3>
+      {{ post.author }} &mdash; <i>{{ post.date | date: "%B %e, %Y" }}</i><br>
+      {{ post.content | strip_html | truncatewords:100}}<br>
+<!--       <a href="{{ site.dir }}{{ post.url }}" class="badge badge-info">Read more...{{ post.content | number_of_words }} words</a> -->
+      <hr class="gray-line">
+  {% endfor %}
+
+  <!-- Pagination links -->
+  <div class="pagination">
+    <ul>
+      {% if paginator.previous_page %}
+      <li>{% if paginator.previous_page == 1 %}<a href="/blog">&laquo;</a>{% else %}<a href="/blog/page{{paginator.previous_page}}">&laquo;</a>{% endif %}</li>
+      {% else %}
+      <li class="disabled"><a href="/blog">&laquo;</a></li>
+      {% endif %}
+      {% if paginator.page == 1 %}<li class="active"><a href="/blog">1</a></span>{% else %}<li><a href="/blog">1</a></li>{% endif %}
+      {% for count in (2..paginator.total_pages) %}
+      {% if count == paginator.page %}<li class="active"><a href="/blog/page{{count}}">{{count}}</a></li>{% else %}<li><a href="/blog/page{{count}}">{{count}}</a></li>{% endif %}
+      {% endfor %}
+      {% if paginator.next_page %}<li><a href="/blog/page{{paginator.next_page}}">&raquo;</a></li>{% else %}<li class="disabled">&raquo;</li>{% endif %}
+    </ul>
+  </div>
+  <!-- End pagination -->
+</div>
