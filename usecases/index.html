@@ -2,28 +2,30 @@
 layout: dummy_page
 title: "rOpenSci use cases"
 ---
-
-{% include header.html %}
+{% include header_posts.html %}   
 <section class="blog-3">
     <div class="container">
         <div class="title">
-            <h3>Use cases</h3>
+            <img src="{{ site.url }}/assets/common-files/img/content/blog_header_logo.png" alt="">
+            <h3>{{ page.title }}</h3>
         </div>
-
         <div class="row">
-            <div class="col-xs-6 col-md-3">
+            <div class="col-sm-10 col-sm-offset-1">
+             <!-- main use case block begins -->
+        <div class="row">
+            <div class="col-xs-9 col-sm-4">
               <a href="rbison.html" class="thumbnail"><img src="../assets/usecases-images/rbison.png" alt=""></a>
               <div class="caption" align="center">
                 <p><a href="rbison.html">Macroecology - testing the species-abundance distribution</a></p>
               </div>
             </div>
-            <div class="col-xs-6 col-md-3">
+            <div class="col-xs-9 col-sm-4">
               <a href="rgbif_nichemodel.html" class="thumbnail"><img src="../assets/usecases-images/rgbif_nichemodel.png" alt=""></a>
               <div class="caption" align="center">
                 <p><a href="rgbif_nichemodel.html">Ecological niche modelling (aka species distribution modelling)</a></p>
               </div>
             </div>
-            <div class="col-xs-6 col-md-3">
+            <div class="col-xs-9 col-sm-4">
               <a href="rgbif_biodivcomp.html" class="thumbnail"><img src="../assets/usecases-images/rgbif_biodivcomp.png" alt=""></a>
               <div class="caption" align="center">
                 <p><a href="rgbif_biodivcomp.html">Biodiversity comparisons across cities</a></p>
@@ -32,19 +34,19 @@ title: "rOpenSci use cases"
         </div> <!-- end row -->
 
         <div class="row">
-            <div class="col-xs-6 col-md-3">
+            <div class="col-xs-9 col-sm-4">
                 <a href="rvertnet.html" class="thumbnail"><img src="../assets/usecases-images/rvertnet.png" alt=""></a>
                 <div class="caption" align="center">
                   <p><a href="rvertnet.html">Plot species occurrence data from VertNet.org</a></p>
                 </div>
             </div>
-            <div class="col-xs-6 col-md-3">
+            <div class="col-xs-9 col-sm-4">
                 <a href="taxize_listtomap.html" class="thumbnail"><img src="../assets/usecases-images/taxize_listtomap.png" alt=""></a>
                 <div class="caption" align="center">
                   <p><a href="taxize_listtomap.html">From a species list to cleaning names to a map of their occurrences</a></p>
                 </div>
             </div>
-            <div class="col-xs-6 col-md-3">
+            <div class="col-xs-9 col-sm-4">
                 <a href="taxize_makephylo.html" class="thumbnail"><img src="../assets/usecases-images/taxize_makephylo.png" alt=""></a>
                 <div class="caption" align="center">
                   <p><a href="taxize_makephylo.html">Make a phylogeny from species names alone</a></p>
@@ -53,19 +55,19 @@ title: "rOpenSci use cases"
         </div>
 
         <div class="row">
-            <div class="col-xs-6 col-md-3">
+            <div class="col-xs-9 col-sm-4">
                 <a href="rwbclimate_intro.html" class="thumbnail"><img src="../assets/usecases-images/rwbclimate_intro3.png" alt=""></a>
                 <div class="caption" align="center">
                   <p><a href="rwbclimate_intro.html">Intro to working with World Bank climate data in R</a></p>
                 </div>
             </div>
-            <div class="col-xs-6 col-md-3">
+            <div class="col-xs-9 col-sm-4">
                 <a href="rgbif_gistmap.html" class="thumbnail"><img src="../assets/usecases-images/rgbifgistmap_sshot.png" alt=""></a>
                 <div class="caption" align="center">
                   <p><a href="rgbif_gistmap.html">Easily make an interactive map on the web from R</a></p>
                 </div>
             </div>
-            <div class="col-xs-6 col-md-3">
+            <div class="col-xs-9 col-sm-4">
                 <a href="taxize_matchdfs.html" class="thumbnail"><img src="../assets/usecases-images/taxize_matchdfs.png" alt=""></a>
                 <div class="caption" align="center">
                   <p><a href="taxize_matchdfs.html">Match tables with different taxon names</a></p>
@@ -74,15 +76,20 @@ title: "rOpenSci use cases"
         </div>
 
         <div class="row">
-           <div class="col-xs-6 col-md-3">
+           <div class="col-xs-9 col-sm-4">
                 <a href="taxize_invasivephylo.html" class="thumbnail"><img src="../assets/usecases-images/taxize_invasivephylo_tree.png" alt=""></a>
                 <div class="caption" align="center">
                   <p><a href="taxize_invasivephylo.html">Examine invasiveness on a phylogenetic tree</a></p>
                 </div>
           </div>
         </div>
-
-    </div> <!-- end container -->
+<!-- Main use case block ends  -->   
+            </div>
+        </div>
+    </div>
 
 </section>
-{% include footer.html %}
+
+
+
+  {% include footer.html %}
