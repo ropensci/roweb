@@ -33,16 +33,16 @@ library(taxize)
 
 Sometimes you just want to have a visual of the taxonomic relationships among taxa. If you don't know how to build a molecular phylogeny, don't have time, or there just isn't molecular data, you can sorta build one using taxonomy. Building on our `classification` function, you can get a bunch of taxonomic hierarchies from the `classification` function, then pass them to the new function `class2tree`. Like so:
 
-Define a species list 
+Define a species list
 
 
 ```r
-spnames <- c("Latania lontaroides", "Randia cubana", "Blumea brevipes", "Commelina erecta", 
-    "Miconia pyramidalis", "Aquilegia moorcroftiana", "Acridocarpus austrocaledonicus", 
-    "Vaccinium wrightii", "Riocreuxia flanaganii", "Macroditassa adnata", "Acianthera ochreata", 
-    "Spathodea campanulata", "Leucadendron salicifolium", "Habenaria fluminensis", 
-    "Platostoma siamense", "Bulbophyllum hoehnei", "Aspidosperma polyneuron", 
-    "Rhynchospora fascicularis", "Sida lonchitis", "Ardisia cymosa", "Morinda brachycalyx", 
+spnames <- c("Latania lontaroides", "Randia cubana", "Blumea brevipes", "Commelina erecta",
+    "Miconia pyramidalis", "Aquilegia moorcroftiana", "Acridocarpus austrocaledonicus",
+    "Vaccinium wrightii", "Riocreuxia flanaganii", "Macroditassa adnata", "Acianthera ochreata",
+    "Spathodea campanulata", "Leucadendron salicifolium", "Habenaria fluminensis",
+    "Platostoma siamense", "Bulbophyllum hoehnei", "Aspidosperma polyneuron",
+    "Rhynchospora fascicularis", "Sida lonchitis", "Ardisia cymosa", "Morinda brachycalyx",
     "Tetrastigma hypoglaucum", "Paphiopedilum vietnamense", "Goodenia glabra")
 ```
 
@@ -64,7 +64,7 @@ tr <- class2tree(out)
 plot(tr, no.margin = TRUE)
 ```
 
-![](/assets/img/blog/2014-02-19-taxize-update/unnamed-chunk-5.png) 
+![](/assets/blog-images/2014-02-19-taxize-update/unnamed-chunk-5.png)
 
 
 ### New functions: get_gbfid
@@ -79,8 +79,8 @@ get_gbifid(sciname = "Poa annua", verbose = FALSE)
 ```
 
 ```
-##         1 
-## "2704179" 
+##         1
+## "2704179"
 ## attr(,"class")
 ## [1] "gbifid"
 ```
@@ -90,8 +90,8 @@ get_gbifid(sciname = "Pinus contorta", verbose = FALSE)
 ```
 
 ```
-##         1 
-## "5285750" 
+##         1
+## "5285750"
 ## attr(,"class")
 ## [1] "gbifid"
 ```
@@ -101,8 +101,8 @@ get_gbifid(sciname = "Puma concolor", verbose = FALSE)
 ```
 
 ```
-##         1 
-## "2435099" 
+##         1
+## "2435099"
 ## attr(,"class")
 ## [1] "gbifid"
 ```
@@ -127,8 +127,8 @@ library(rgbif)
 ```
 
 ```
-##         1 
-## "2435099" 
+##         1
+## "2435099"
 ## attr(,"class")
 ## [1] "gbifid"
 ```
@@ -141,17 +141,17 @@ occ_search(id)
 ## $meta
 ## $meta$offset
 ## [1] 0
-## 
+##
 ## $meta$limit
 ## [1] 20
-## 
+##
 ## $meta$endOfRecords
 ## [1] FALSE
-## 
+##
 ## $meta$count
 ## [1] 8392
-## 
-## 
+##
+##
 ## $hierarchy
 ## $hierarchy[[1]]
 ##            name     key    rank
@@ -162,8 +162,8 @@ occ_search(id)
 ## 5       Felidae    9703  family
 ## 6          Puma 2435098   genus
 ## 7 Puma concolor 2435099 species
-## 
-## 
+##
+##
 ## $data
 ##             name       key longitude latitude
 ## 1  Puma concolor 866527350   -110.58    31.85
@@ -193,7 +193,7 @@ In addition, `get_ids` now accepts 'gbif' as an option for the `db` parameter - 
 
 ### New functions: rbind and cbind for classification
 
-The `classification` function gives back taxonomic hierarchies from a variety of sources, including NCBI, ITIS, Catalogue of Life, Tropicos, EOL, and now GBIF. If you pass in many taxonomic IDs or taxon names, you get back a list of hierarchies. We added two functions to make it convenient to mash these outputs together, `rbind` for basically stacking hierarchies on top of one another, and `cbind` for making a width-wise combination of hierarchies. Our `cbind` doesn't do exactly what your used to cbind doing for data.frame's. The examples below are based on some changed code since the newest CRAN version, but you can install the development version with the changes from Github (see [here](https://github.com/ropensci/taxize#install-taxize) for instructions). 
+The `classification` function gives back taxonomic hierarchies from a variety of sources, including NCBI, ITIS, Catalogue of Life, Tropicos, EOL, and now GBIF. If you pass in many taxonomic IDs or taxon names, you get back a list of hierarchies. We added two functions to make it convenient to mash these outputs together, `rbind` for basically stacking hierarchies on top of one another, and `cbind` for making a width-wise combination of hierarchies. Our `cbind` doesn't do exactly what your used to cbind doing for data.frame's. The examples below are based on some changed code since the newest CRAN version, but you can install the development version with the changes from Github (see [here](https://github.com/ropensci/taxize#install-taxize) for instructions).
 
 From a call to `get_ids`, then passed on to `classification`, we get a object of class `classification_ids`
 
@@ -204,19 +204,19 @@ From a call to `get_ids`, then passed on to `classification`, we get a object of
 
 ```
 ## $ncbi
-## Puma concolor 
-##        "9696" 
+## Puma concolor
+##        "9696"
 ## attr(,"match")
 ## [1] "found"
 ## attr(,"class")
 ## [1] "uid"
-## 
+##
 ## $gbif
-## Puma concolor 
-##     "2435099" 
+## Puma concolor
+##     "2435099"
 ## attr(,"class")
 ## [1] "gbifid"
-## 
+##
 ## attr(,"class")
 ## [1] "ids"
 ```
@@ -257,12 +257,12 @@ From a call to `get_ids`, then passed on to `classification`, we get a object of
 ## 26              Felinae    subfamily
 ## 27                 Puma        genus
 ## 28        Puma concolor      species
-## 
+##
 ## attr(,"class")
 ## [1] "classification"
 ## attr(,"db")
 ## [1] "ncbi"
-## 
+##
 ## $gbif
 ## $`2435099`
 ##            name    rank
@@ -273,10 +273,10 @@ From a call to `get_ids`, then passed on to `classification`, we get a object of
 ## 5       Felidae  family
 ## 6          Puma   genus
 ## 7 Puma concolor species
-## 
+##
 ## attr(,"class")
 ## [1] "classification"
-## 
+##
 ## attr(,"class")
 ## [1] "classification_ids"
 ```
@@ -349,11 +349,11 @@ rbind(cl)
 ```
 
 
-Or we can do the same thing on the class `classification` that we get back from a call to one of `get_colid`, `get_tsn`, `get_eolid`, `get_tpsid`, `get_gbifid`, or `get_uid`, that's then passed on to `classification` 
+Or we can do the same thing on the class `classification` that we get back from a call to one of `get_colid`, `get_tsn`, `get_eolid`, `get_tpsid`, `get_gbifid`, or `get_uid`, that's then passed on to `classification`
 
 
 ```r
-cl_col <- classification(get_colid(c("Puma concolor", "Accipiter striatus"), 
+cl_col <- classification(get_colid(c("Puma concolor", "Accipiter striatus"),
     verbose = FALSE))
 rbind(cl_col)
 ```
