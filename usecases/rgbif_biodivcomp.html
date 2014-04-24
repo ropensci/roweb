@@ -1,0 +1,60 @@
+---
+title: Biodiversity comparisons across cities
+pkg: rgbif
+layout: usecases
+---
+
+<body>
+<p>In this example, we compare biodiversity in different regsions using GBIF data from rgbif.</p>
+
+<p>This example can be done using BISON data as well with our rbison package.</p>
+
+<h3>Load libraries</h3>
+
+<pre class="prettyprint"><code>library(rgbif)
+</code></pre>
+
+	<pre class="prettyprint"><code>library(ggplot2)
+library(plyr)
+library(doMC)
+</code></pre>
+
+<h3>Get GBIF data using the rOpenSci package rgbif.</h3>
+
+<p>We&#39;ll not restrain our search to any particular taxonomic group, although you will likely do that in your own research. We&#39;ll make a new column with single lat/long coordinates for each cell for easy plotting. Last, we&#39;ll select 100 random cell IDs.</p>
+
+<pre class="prettyprint"><code>temp &lt;- gbifdata(densitylist(originisocountrycode = &quot;US&quot;))
+temp &lt;- transform(temp, lat = (minLatitude + maxLatitude)/2, lon = (minLongitude + 
+    maxLongitude)/2)
+cellids &lt;- sample(temp$cellid, 100)
+</code></pre>
+
+<p>Then search for data for each of those cell ID&#39;s. We&#39;ll define a function to pass in each cell ID.</p>
+
+<pre class="prettyprint"><code>getdata &lt;- function(x, maxresults = 100) {
+    out &lt;- occurrencelist(cellid = x, coordinatestatus = TRUE, maxresults = maxresults)
+    df &lt;- gbifdata(out, coordinatestatus = TRUE)
+    data.frame(cellid = x, richness = length(unique(df$taxonName)))
+}
+
+registerDoMC(cores = 4)
+out &lt;- ldply(cellids, getdata, .parallel = TRUE)
+out2 &lt;- merge(out, temp[, c(&quot;cellid&quot;, &quot;lat&quot;, &quot;lon&quot;)], by = &quot;cellid&quot;)
+# remove points outside the US
+out3 &lt;- out2[out2$lat &lt; 49 &amp; out2$lat &gt; 24.7433195 &amp; out2$lon &gt; -130 &amp; out2$lon &lt; 
+    -66.9513812, ]
+</code></pre>
+
+<h3>Plot data</h3>
+
+<pre class="prettyprint"><code>mapp &lt;- map_data(&quot;state&quot;)
+ggplot(mapp, aes(long, lat)) + geom_polygon(aes(group = group), fill = &quot;white&quot;, 
+    alpha = 0, color = &quot;gray80&quot;, size = 0.8) + geom_point(data = out3, aes(lon, 
+    lat, color = richness), size = 3, alpha = 0.8) + scale_color_gradient2(low = &quot;white&quot;, 
+    mid = &quot;lightblue&quot;, high = &quot;blue&quot;) + labs(x = &quot;&quot;, y = &quot;&quot;) + theme_bw(base_size = 14) + 
+    theme(legend.position = &quot;bottom&quot;, legend.key = element_blank())
+</code></pre>
+
+<img src="../assets/img/usecases/rgbif_biodivcomp.png">
+
+</body>
