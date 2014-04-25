@@ -8,7 +8,7 @@
             <div class="submitted">
               <!-- author goes here -->
       {% if page.author == "Carl Boettiger" or page.author == "Karthik Ram" or page.author == "Ted Hart" or page.author == "Scott Chamberlain" or page.author == "Core Team" %}
-        <a href="/about.html#core"> {{ page.author }} </a><br>
+        <a href="/about/#core"> {{ page.author }} </a><br>
       {% else %}
         <a href={{ page.authorurl }} target="_blank"> {{ page.author }} </a> <br>
       {% endif %}

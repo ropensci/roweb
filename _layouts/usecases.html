@@ -1,20 +1,24 @@
+ {% include header_posts.html %}   
+<section class="blog-3">
+    <div class="container">
+        <div class="title">
+            <img src="{{ site.url }}/assets/common-files/img/content/blog_header_logo.png" alt="">
+            <h3>{{ page.title }}</h3>
 
-  {% include header.html %}
+            <div class="submitted">rOpenSci package: <a href="https://github.com/ropensci/{{ page.pkg }}">{{ page.pkg }}</a></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                {{ content }}
+            </div>
+        </div>
+    </div>
 
-  <div class="container">
+</section>
 
-  <header class="jumbotron subhead" id="overview">
-    <h1><i class="ss-icon" style="color:#ebeef6;">&#xEB85;</i> {{ page.title }} </h1>
-    <p class="lead"><i class="ss-icon" style="color:#C9CDD3;">&#x1F517;</i>rOpenSci package: <a href="https://github.com/ropensci/{{ page.pkg }}">{{ page.pkg }}</a> </p>
-  </header>
-
-  <div class="col-sm-8 col-sm-offset-2">
-    {{ content }}
-  </div>
-
-  </div>
-  </div>
-  </div>
-
+<div class="container">
+<div id="disqus">
   {% include disqus.html %}
-  {% include footer.html %}
+</div>  
+ </div> 
+{% include footer.html %}
