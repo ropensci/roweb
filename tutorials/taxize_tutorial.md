@@ -59,8 +59,7 @@ The correct spellings are *Helianthus annuus* and *Homo sapiens*. Another approa
 
 
 ```r
-mynames <- c("Helianthus annuus", "Pinus contort", "Poa anua", "Abis magnifica",
-    "Rosa california", "Festuca arundinace", "Sorbus occidentalos", "Madia sateva")
+mynames <- c("Helianthus annuus", "Pinus contort", "Poa anua", "Abis magnifica","Rosa california", "Festuca arundinace", "Sorbus occidentalos", "Madia sateva")
 tnrs(query = mynames, source = "iPlant_TNRS")[, -c(5:7)]
 ```
 
@@ -85,8 +84,7 @@ Another common use case is when there are many synonyms for a species. In this e
 
 
 ```r
-mynames <- c("Helianthus annuus ssp. jaegeri", "Helianthus annuus ssp. lenticularis",
-    "Helianthus annuus ssp. texanus")
+mynames <- c("Helianthus annuus ssp. jaegeri", "Helianthus annuus ssp. lenticularis","Helianthus annuus ssp. texanus")
 (tsn <- get_tsn(mynames))
 ```
 
