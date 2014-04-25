@@ -652,7 +652,7 @@ section * {
   padding: 0;
   width: 30px;
   height: 30px;
-  background: url("../../assets/common-files/icons/menu-icon@2x.png") 50% no-repeat;
+  background: url("/assets/common-files/icons/menu-icon@2x.png") 50% no-repeat;
   -webkit-background-size: 17px 12px;
   -moz-background-size: 17px 12px;
   -o-background-size: 17px 12px;
@@ -984,7 +984,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   }
 }
 .header-10-sub .background {
-  background: url('../../assets/common-files/img/header/subway-lines.png') repeat;
+  background: url('/assets/common-files/img/header/subway-lines.png') repeat;
  opacity: 20;
   filter: alpha(opacity=2000);
   opacity: .9;
@@ -1429,7 +1429,7 @@ color: #1ABC9C;
 }
 .content-23 {
   position: relative;
-    background-image: url('../../assets/common-files/img/header/community.jpg');
+    background-image: url('/assets/common-files/img/header/community.jpg');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -1887,7 +1887,7 @@ color: #1ABC9C;
 .blog-3 .img {
   height: 380px;
   margin: 110px 0;
-  background: url('../../assets/common-files/img.jpg') 50% 80% no-repeat;
+  background: url('/assets/common-files/img.jpg') 50% 80% no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -1917,7 +1917,7 @@ color: #1ABC9C;
   font-weight: 300;
 }
 .blog-3 .quote:before {
-  content: url('../../assets/common-files/icons/quote-up.png');
+  content: url('/assets/common-files/icons/quote-up.png');
   position: absolute;
   top: -17px;
   left: -40px;
