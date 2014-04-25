@@ -13,31 +13,27 @@ layout: usecases
 
 <h3>Install taxize from CRAN</h3>
 
-<pre class="prettyprint"><code>install.packages(&quot;taxize&quot;)
+<pre><code>install.packages("taxize")
 </code></pre>
 
 <h3>Load taxize</h3>
 
-<pre class="prettyprint"><code>library(taxize)
+<pre><code>library("taxize")
 </code></pre>
 
 <h3>Table 1</h3>
 
-<pre class="prettyprint"><code>df1 &lt;- data.frame(species = c(&quot;Helianthus annuus&quot;, &quot;Silene acaulis&quot;, &quot;Mimulus alpinus&quot;,
-    &quot;Phlox drummondii&quot;, &quot;Triteleia hyacinthina&quot;), var1 = rnorm(5), var2 = rnorm(5),
-    stringsAsFactors = FALSE)
+<pre><code>df1 <- data.frame(species = c("Helianthus annuus", "Silene acaulis", "Mimulus alpinus","Phlox drummondii", "Triteleia hyacinthina"), var1 = rnorm(5), var2 = rnorm(5),stringsAsFactors = FALSE)
 </code></pre>
 
 <h3>Table 2</h3>
 
-<pre class="prettyprint"><code>df2 &lt;- data.frame(species = c(&quot;Helianthus annuus texanus&quot;, &quot;Cucubalus acaulis&quot;,
-    &quot;Mimulus langsdorffii alpinus&quot;, &quot;Armeria drummondii&quot;, &quot;Triteleia hyocinthina&quot;),
-    var3 = rnorm(5), var4 = rnorm(5), stringsAsFactors = FALSE)
+<pre><code>df2 <- data.frame(species = c("Helianthus annuus texanus", "Cucubalus acaulis","Mimulus langsdorffii alpinus", "Armeria drummondii", "Triteleia hyocinthina"),var3 = rnorm(5), var4 = rnorm(5), stringsAsFactors = FALSE)
 </code></pre>
 
 <p>Take a look. </p>
 
-<pre class="prettyprint"><code>df1
+<pre><code>df1
 </code></pre>
 
 <pre><code>                species    var1    var2
@@ -48,7 +44,7 @@ layout: usecases
 5 Triteleia hyacinthina  3.0563  2.3601
 </code></pre>
 
-<pre class="prettyprint"><code>df2
+<pre><code>df2
 </code></pre>
 
 <pre><code>                       species    var3    var4
@@ -63,7 +59,7 @@ layout: usecases
 
 <p>And add that as a new column to each table. In this example I&#39;m using the <code>tpl_search</code> function which searches the Plantlist.org, but you can use other functions for the Taxonomic Name Resolution Service (TNRS), NCBI, EOL, and more. </p>
 
-<pre class="prettyprint"><code>(df1_corr &lt;- tpl_search(as.character(df1$species), corr = TRUE))
+<pre><code>(df1_corr <- tpl_search(as.character(df1$species), corr = TRUE))
 </code></pre>
 
 <pre><code>       Genus     Species Infraspecific Plant.Name.Index Taxonomic.status
@@ -86,7 +82,7 @@ layout: usecases
 5 FALSE   FALSE
 </code></pre>
 
-<pre class="prettyprint"><code>(df2_corr &lt;- tpl_search(as.character(df2$species), corr = TRUE))
+<pre><code>(df2_corr <- tpl_search(as.character(df2$species), corr = TRUE))
 </code></pre>
 
 <pre><code>       Genus      Species Infraspecific Plant.Name.Index Taxonomic.status
@@ -111,13 +107,13 @@ layout: usecases
 
 <p>It looks like 4 of the 5 names in df2 are synonyms, while 1 name was misspelled. Let&#39;s get the new names for df2 into df2.</p>
 
-<pre class="prettyprint"><code>df2$newsp &lt;- apply(df2_corr[c(&quot;New.Genus&quot;, &quot;New.Species&quot;)], 1, paste, collapse = &quot; &quot;)
-df2 &lt;- df2[, -1]
+<pre><code>df2$newsp <- apply(df2_corr[c("New.Genus", "New.Species")], 1, paste, collapse = " ")
+df2 <- df2[, -1]
 </code></pre>
 
 <h3>Merge tables and make a plot</h3>
 
-<pre class="prettyprint"><code>(alldat &lt;- merge(df1, df2, by.x=&quot;species&quot;, by.y=&quot;newsp&quot;))
+<pre><code>(alldat <- merge(df1, df2, by.x="species", by.y="newsp"))
 </code></pre>
 
 <pre><code>                species    var1    var2    var3    var4
@@ -128,12 +124,12 @@ df2 &lt;- df2[, -1]
 5 Triteleia hyacinthina  3.0563  2.3601  2.1583  0.5587
 </code></pre>
 
-<pre class="prettyprint"><code>
-library(ggplot2)
+<pre><code>
+library("ggplot2")
 ggplot(alldat, aes(var1, var4)) +
   theme_grey(base_size=18) +
   geom_point() +
-  labs(x=&quot;Cool variable&quot;, y=&quot;Other super sweet variable&quot;)
+  labs(x="Cool variable", y="Other super sweet variable")
 </code></pre>
 
 <img src="../assets/usecases-images/taxize_matchdfs.png">

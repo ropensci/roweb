@@ -11,44 +11,43 @@ layout: usecases
 
 <h3>Load libraries</h3>
 
-<pre class="prettyprint"><code>library(rgbif)
-library(dismo)
-library(maptools)
+<pre><code>library("rgbif")
+library("dismo")
+library("maptools")
 </code></pre>
 
 <h3>Raster files</h3>
 
 <p>Make a list of files that are installed with the dismo package, then create a rasterStack from these</p>
 
-<pre class="prettyprint"><code>files &lt;- list.files(paste(system.file(package = &quot;dismo&quot;), &quot;/ex&quot;, sep = &quot;&quot;),
-    &quot;grd&quot;, full.names = TRUE)
-predictors &lt;- stack(files)
+<pre><code>files <- list.files(paste(system.file(package = "dismo"), "/ex", sep = ""), "grd", full.names = TRUE)
+predictors <- stack(files)
 </code></pre>
 
 <h3>Get world boundaries</h3>
 
-<pre class="prettyprint"><code>data(wrld_simpl)
+<pre><code>data(wrld_simpl)
 </code></pre>
 
 <h3>Get GBIF data using the rOpenSci package rgbif</h3>
 
-<pre class="prettyprint"><code>nn &lt;- name_lookup(&quot;bradypus*&quot;, rank = &quot;species&quot;)
-nn &lt;- unique(nn$data$nubKey)
-nn &lt;- na.omit(nn)
-df &lt;- occ_search(taxonKey = nn, georeferenced = TRUE, limit = 500, return = &quot;data&quot;)
-df &lt;- df[sapply(df, class) %in% &quot;data.frame&quot;]  # remove those w/o data
-library(plyr)
-df &lt;- ldply(df)
-df2 &lt;- df[, c(&quot;longitude&quot;, &quot;latitude&quot;)]
+<pre><code>nn <- name_lookup("bradypus*", rank = "species")
+nn <- unique(nn$data$nubKey)
+nn <- na.omit(nn)
+df <- occ_search(taxonKey = nn, georeferenced = TRUE, limit = 500, return = "data")
+df <- df[sapply(df, class) %in% "data.frame"]  # remove those w/o data
+library("plyr")
+df <- ldply(df)
+df2 <- df[, c("longitude", "latitude")]
 </code></pre>
 
 <h3>Plot</h3>
 
 <p>(1) Add raster data, (2) Add political boundaries, (3) Add the points (occurrences)</h3></p>
 
-<pre class="prettyprint"><code>plot(predictors, 1)
+<pre><code>plot(predictors, 1)
 plot(wrld_simpl, add = TRUE)
-points(df2, col = &quot;blue&quot;)
+points(df2, col = "blue")
 </code></pre>
 
 <img src="../assets/usecases-images/rgbif_nichemodel.png">

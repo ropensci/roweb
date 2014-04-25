@@ -9,73 +9,64 @@ layout: usecases
 
 <h2>Install and load taxize</h2>
 
-<pre class="prettyprint"><code>install.packages(&quot;taxize&quot;)
+<pre><code>install.packages("taxize")
 </code></pre>
 
-<pre class="prettyprint"><code>library(taxize)
-library(XML)
-library(reshape2)
+<pre><code>library("taxize")
+library("XML")
+library("reshape2")
 </code></pre>
 
 <h2>Define a species list</h2>
 
-<pre class="prettyprint"><code>spplist &lt;- c(&quot;Ambrosia artemisiifolia&quot;, &quot;Cirsium arvense&quot;, &quot;Centaurea melitensis&quot;,
-    &quot;Centaurea diffusa&quot;, &quot;Ambrosia trifida&quot;, &quot;Helianthus annuus&quot;, &quot;Carthamus oxyacanthus&quot;,
-    &quot;Cnicothamnus lorentzii&quot;, &quot;Stevia rebaudiana&quot;, &quot;Cynara cardunculus&quot;, &quot;Cichorium intybus&quot;,
-    &quot;Smallanthus sonchifolius&quot;, &quot;Cichorium endivia&quot;, &quot;Acicarpha spathulata&quot;,
-    &quot;Scaevola aemula&quot;, &quot;Nymphoides peltata&quot;, &quot;Platycodon grandiflorus&quot;, &quot;Echinacea angustifolia&quot;,
-    &quot;Guizotia abyssinica&quot;, &quot;Helianthus tuberosus&quot;, &quot;Helianthus argophyllus&quot;,
-    &quot;Helianthus anomalus&quot;, &quot;Helianthus bolanderi&quot;, &quot;Helianthus ciliaris&quot;, &quot;Helianthus deserticola&quot;,
-    &quot;Helianthus paradoxus&quot;, &quot;Leontodon taraxacoides&quot;, &quot;Carthamus tinctorius&quot;,
-    &quot;Centaurea maculosa&quot;, &quot;Lactuca perennis&quot;, &quot;Lactuca saligna&quot;, &quot;Lactuca sativa&quot;,
-    &quot;Lactuca serriola&quot;, &quot;Lactuca virosa&quot;, &quot;Taraxacum officinale&quot;, &quot;Barnadesia spinosa&quot;)
+<pre><code>spplist <- c("Ambrosia artemisiifolia", "Cirsium arvense", "Centaurea melitensis","Centaurea diffusa", "Ambrosia trifida", "Helianthus annuus", "Carthamus oxyacanthus","Cnicothamnus lorentzii", "Stevia rebaudiana", "Cynara cardunculus", "Cichorium intybus","Smallanthus sonchifolius", "Cichorium endivia", "Acicarpha spathulata","Scaevola aemula", "Nymphoides peltata", "Platycodon grandiflorus", "Echinacea angustifolia","Guizotia abyssinica", "Helianthus tuberosus", "Helianthus argophyllus","Helianthus anomalus", "Helianthus bolanderi", "Helianthus ciliaris", "Helianthus deserticola","Helianthus paradoxus", "Leontodon taraxacoides", "Carthamus tinctorius","Centaurea maculosa", "Lactuca perennis", "Lactuca saligna", "Lactuca sativa","Lactuca serriola", "Lactuca virosa", "Taraxacum officinale", "Barnadesia spinosa")
 </code></pre>
 
 <h2>Search databases via EOL</h2>
 
-<pre class="prettyprint"><code>grisout &lt;- eol_invasive(name = spplist, dataset = &quot;gris&quot;)
-gris &lt;- do.call(rbind, grisout)
+<pre><code>grisout <- eol_invasive(name = spplist, dataset = "gris")
+gris <- do.call(rbind, grisout)
 
-iscout &lt;- eol_invasive(name = spplist, dataset = &quot;isc&quot;)
-isc &lt;- do.call(rbind, iscout)
+iscout <- eol_invasive(name = spplist, dataset = "isc")
+isc <- do.call(rbind, iscout)
 
-daisieout &lt;- eol_invasive(name = spplist, dataset = &quot;daisie&quot;)
-daisie &lt;- do.call(rbind, daisieout)
+daisieout <- eol_invasive(name = spplist, dataset = "daisie")
+daisie <- do.call(rbind, daisieout)
 
-i3nout &lt;- eol_invasive(name = spplist, dataset = &quot;i3n&quot;)
-i3n &lt;- do.call(rbind, i3nout)
+i3nout <- eol_invasive(name = spplist, dataset = "i3n")
+i3n <- do.call(rbind, i3nout)
 
-gisdout &lt;- eol_invasive(name = spplist, dataset = &quot;gisd&quot;)
-gisd &lt;- do.call(rbind, gisdout)
+gisdout <- eol_invasive(name = spplist, dataset = "gisd")
+gisd <- do.call(rbind, gisdout)
 </code></pre>
 
 <h2>Combine data sets</h2>
 
-<pre class="prettyprint"><code>df &lt;- rbind(grisout, iscout, daisieout, i3nout, gisdout)[, -2]
-dat &lt;- dcast(df, searched_name ~ db, value.var = &quot;eol_object_id&quot;)
-dat &lt;- ddply(dat, .(searched_name), transform, weedy = ifelse(length(na.omit(c(daisie,
-    gisd, gris, i3n, isc))) &gt; 1, &quot;#024DFD&quot;, &quot;#ED6500&quot;))
-dat$searched_name &lt;- gsub(&quot; &quot;, &quot;_&quot;, dat$searched_name)
+<pre><code>df <- rbind(grisout, iscout, daisieout, i3nout, gisdout)[, -2]
+dat <- dcast(df, searched_name ~ db, value.var = "eol_object_id")
+dat <- ddply(dat, .(searched_name), transform, weedy = ifelse(length(na.omit(c(daisie,
+    gisd, gris, i3n, isc))) &gt; 1, "#024DFD", "#ED6500"))
+dat$searched_name <- gsub(" ", "_", dat$searched_name)
 </code></pre>
 
 <h2>Make the tree</h2>
 
 <p>Plain species tree</p>
 
-<pre class="prettyprint"><code>tree &lt;- phylomatic_tree(taxa = spplist, storedtree = &quot;smith2011&quot;)
-tree$tip.label &lt;- taxize_capwords(tree$tip.label)
+<pre><code>tree <- phylomatic_tree(taxa = spplist, storedtree = "smith2011")
+tree$tip.label <- taxize_capwords(tree$tip.label)
 </code></pre>
 
 <p>Order statustree by previous tip order of previous tree</p>
 
-<pre class="prettyprint"><code>tiporder &lt;- tree$tip.label
-statustree &lt;- dat[match(tiporder, dat$searched_name), ]
+<pre><code>tiporder <- tree$tip.label
+statustree <- dat[match(tiporder, dat$searched_name), ]
 </code></pre>
 
 <p>Plot colored and labeled tree</p>
 
-<pre class="prettyprint"><code>plot(tree, cex = 0.75, tip.color = as.character(statustree$weedy), show.node.label = TRUE)
-legend(&quot;bottomleft&quot;, legend = c(&quot;Weed&quot;, &quot;Not a weed&quot;), fill = c(&quot;#024DFD&quot;, &quot;#ED6500&quot;))
+<pre><code>plot(tree, cex = 0.75, tip.color = as.character(statustree$weedy), show.node.label = TRUE)
+legend("bottomleft", legend = c("Weed", "Not a weed"), fill = c("#024DFD", "#ED6500"))
 </code></pre>
 
 <!-- <img src="http://assets.ropensci.org/img/usecases/taxize_invasivephylo_tree.png"> -->
