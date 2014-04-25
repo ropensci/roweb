@@ -9,29 +9,28 @@ layout: usecases
 
 <h3>Load libraries</h3>
 
-<pre class="prettyprint"><code>library(taxize)
+<pre><code>library("taxize")
 </code></pre>
 
-<pre class="prettyprint"><code>splist &lt;- c(&quot;Helianthus annuus&quot;, &quot;Pinus contorta&quot;, &quot;Collomia grandiflora&quot;, &quot;Abies magnifica&quot;,
-    &quot;Rosa californica&quot;, &quot;Datura wrightii&quot;, &quot;Mimulus bicolor&quot;, &quot;Nicotiana glauca&quot;,
-    &quot;Madia sativa&quot;, &quot;Bartlettia scaposa&quot;)
+<pre><code>splist <- c("Helianthus annuus", "Pinus contorta", "Collomia grandiflora", "Abies magnifica","Rosa californica", "Datura wrightii", "Mimulus bicolor", "Nicotiana glauca","Madia sativa", "Bartlettia scaposa")
 </code></pre>
 
 <h3>Phylomatic is a web service with an API that we can use to get a phylogeny. Fetch phylogeny from phylomatic</h3>
 
-<pre class="prettyprint"><code>phylogeny &lt;- phylomatic_tree(taxa = splist, taxnames = TRUE, get = &quot;POST&quot;, informat = &quot;newick&quot;,
-    method = &quot;phylomatic&quot;, storedtree = &quot;R20120829&quot;, taxaformat = &quot;slashpath&quot;,
-    outformat = &quot;newick&quot;, clean = &quot;true&quot;, parallel = TRUE)
+<pre><code>phylogeny <- phylomatic_tree(taxa = splist, taxnames = TRUE,
+    get = "POST", informat = "newick", method = "phylomatic",
+    storedtree = "R20120829", taxaformat = "slashpath",
+    outformat = "newick", clean = "true", parallel = TRUE)
 </code></pre>
 
 <h3>Format tip-labels</h3>
 
-<pre class="prettyprint"><code>phylogeny$tip.label &lt;- capwords(phylogeny$tip.label, onlyfirst = TRUE)
+<pre><code>phylogeny$tip.label <- capwords(phylogeny$tip.label, onlyfirst = TRUE)
 </code></pre>
 
 <h3>Plot phylogeny</h3>
 
-<pre class="prettyprint"><code>plot(phylogeny)
+<pre><code>plot(phylogeny)
 </code></pre>
 
 <img src="../assets/usecases-images/taxize_makephylo.png">

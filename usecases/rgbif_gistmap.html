@@ -3,7 +3,7 @@ title: Easily make an interactive map on the web from R
 pkg: rgbif
 layout: usecases
 ---
- 
+
 <body>
 <p>R is great, but not so great for interactive stuff. Github recently announced support for interactive maps based on geojson format data. geojson is basically just JSON data with additional metadata for mapping purposes. We have discussed this before on our blog when we talked about <a href="http://ropensci.org/blog/2013/07/04/rbison-geoson/">making geojson based maps</a> and about <a href="http://ropensci.org/blog/2013/07/17/style-geojson/">styling geojson maps</a>. </p>
 
@@ -11,42 +11,41 @@ layout: usecases
 
 <h3>Install development version of rgbif from Github, branch <em>newapi</em></h3>
 
-<pre class="prettyprint"><code>install.packages(&quot;rgbif&quot;)
+<pre><code>install.packages("rgbif")
 </code></pre>
 
 <h3>Load packages</h3>
 
-<pre class="prettyprint"><code>library(rgbif)
-library(plyr)
+<pre><code>library("rgbif")
+library("plyr")
 </code></pre>
 
 <h3>Define a species list, and search for GBIF keys using <code>gbif_lookup</code></h3>
 
-<pre class="prettyprint"><code>splist &lt;- c(&quot;Accipiter erythronemius&quot;, &quot;Junco hyemalis&quot;, &quot;Aix sponsa&quot;)
-keys &lt;- sapply(splist, function(x) name_backbone(name = x, kingdom = &quot;plants&quot;)$speciesKey, 
-    USE.NAMES = FALSE)
+<pre><code>splist <- c("Accipiter erythronemius", "Junco hyemalis", "Aix sponsa")
+keys <- sapply(splist, function(x) name_backbone(name = x, kingdom = "plants")$speciesKey,USE.NAMES = FALSE)
 </code></pre>
 
 <h3>Search for occurrence data for each species using <code>occ_search</code></h3>
 
 <p>And fix names so that there is only one unique name string per taxon. </p>
 
-<pre class="prettyprint"><code>out &lt;- occ_search(keys, georeferenced = TRUE, limit = 100, return = &quot;data&quot;)
-out &lt;- lapply(out, function(x) {
-    lens &lt;- sapply(x$name, function(y) length(strsplit(as.character(y), &quot; &quot;)[[1]]))
-    shortest &lt;- x$name[lens == 2][[1]]
-    x$name &lt;- shortest
+<pre><code>out <- occ_search(keys, georeferenced = TRUE, limit = 100, return = "data")
+out <- lapply(out, function(x) {
+    lens <- sapply(x$name, function(y) length(strsplit(as.character(y), " ")[[1]]))
+    shortest <- x$name[lens == 2][[1]]
+    x$name <- shortest
     x
 })
-dat &lt;- ldply(out)
+dat <- ldply(out)
 </code></pre>
 
 <h3>Make a geojson file</h3>
 
 <p>Add styling to your data.frame for the map using <code>stylegeojson</code>, making points vary in size and color by species. We also need to write the file to the machine. Then, we use the function <code>togeojson</code></p>
 
-<pre class="prettyprint"><code>datgeojson &lt;- stylegeojson(input = dat, var = &quot;name&quot;, color = c(&quot;#976AAE&quot;, &quot;#6B944D&quot;, 
-    &quot;#BD5945&quot;), size = c(&quot;small&quot;, &quot;medium&quot;, &quot;large&quot;))
+<pre><code>datgeojson <- stylegeojson(input = dat, var = "name", color = c("#976AAE", "#6B944D",
+    "#BD5945"), size = c("small", "medium", "large"))
 
 # We can see that there is no styling info associated with the occurrences
 head(datgeojson)
@@ -70,8 +69,8 @@ head(datgeojson)
 
 <p>Now write the data to disk, then convert to geojson.</p>
 
-<pre class="prettyprint"><code>write.csv(datgeojson, &quot;~/my.csv&quot;)
-togeojson(input = &quot;~/my.csv&quot;, method = &quot;web&quot;, outfilename = &quot;my&quot;)
+<pre><code>write.csv(datgeojson, "~/my.csv")
+togeojson(input = "~/my.csv", method = "web", outfilename = "my")
 </code></pre>
 
 <pre><code>## Success! File is at ~/my.geojson
@@ -81,7 +80,7 @@ togeojson(input = &quot;~/my.csv&quot;, method = &quot;web&quot;, outfilename = 
 
 <p>Simply use the <code>gist</code> function to send the geojson file to Github gists, and you&#39;ve got an ineractive map on the interwebs.</p>
 
-<pre class="prettyprint"><code>gist(&quot;~/my.geojson&quot;, description = &quot;Occurrences of three bird species mapped&quot;)
+<pre><code>gist("~/my.geojson", description = "Occurrences of three bird species mapped")
 </code></pre>
 
 <p>And the gist function call tells you where to go find your map on your github account. Done, that was easy, no? And we can even embed the map here, like this:</p>

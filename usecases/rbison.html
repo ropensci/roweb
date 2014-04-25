@@ -14,41 +14,38 @@ layout: usecases
 
 <h3>Load libraries</h3>
 
-<pre class="prettyprint"><code>library(rbison)
-library(ggplot2)
-library(plyr)
+<pre><code>library("rbison")
+library("ggplot2")
+library("plyr")
 </code></pre>
 
 <h3>Get BISON data using the rOpenSci package rbison.</h3>
 
 <p>We&#39;ll not restrain our search to any particular taxonomic group, although you will likely do that in your own research. </p>
 
-<pre class="prettyprint"><code>mynames &lt;- c(&quot;Helianthus annuus&quot;, &quot;Pinus contorta&quot;, &quot;Poa annua&quot;, &quot;Madia sativa&quot;,
-    &quot;Arctostaphylos glauca&quot;, &quot;Heteromeles arbutifolia&quot;, &quot;Symphoricarpos albus&quot;,
-    &quot;Ribes viburnifolium&quot;, &quot;Diplacus aurantiacus&quot;, &quot;Salvia leucophylla&quot;, &quot;Encelia californica&quot;,
-    &quot;Ribes indecorum&quot;, &quot;Ribes malvaceum&quot;, &quot;Cercocarpus betuloides&quot;, &quot;Penstemon spectabilis&quot;)
+<pre><code>mynames <- c("Helianthus annuus", "Pinus contorta", "Poa annua", "Madia sativa","Arctostaphylos glauca", "Heteromeles arbutifolia", "Symphoricarpos albus","Ribes viburnifolium", "Diplacus aurantiacus", "Salvia leucophylla", "Encelia californica","Ribes indecorum", "Ribes malvaceum", "Cercocarpus betuloides", "Penstemon spectabilis")
 </code></pre>
 
 <h3>Get data</h3>
 
 <p>Define a function to get data needed, here just the summary data, then pull out just the <em>total</em> column and make a <code>data.frame</code> along with the input taxon name</p>
 
-<pre class="prettyprint"><code>getdata &lt;- function(x) {
-    tmp &lt;- bison(species = x, what = &quot;summary&quot;)$summary
+<pre><code>getdata <- function(x) {
+    tmp <- bison(species = x, what = "summary")$summary
     data.frame(x, abd = tmp$total)
 }
 </code></pre>
 
 <h3>Get the data by passing each name to the <code>getdata</code> function</h3>
 
-<pre class="prettyprint"><code>out &lt;- ldply(mynames, getdata)
+<pre><code>out <- ldply(mynames, getdata)
 </code></pre>
 
 <h3>Plot</h3>
 
 <p>Plot species-abundance distributions using the <code>radfit</code> function in vegan</p>
 
-<pre class="prettyprint"><code>library(vegan)
+<pre><code>library(vegan)
 plot(radfit(out$abd))
 </code></pre>
 
