@@ -11,48 +11,48 @@ layout: usecases
 
 <h3>Load libraries</h3>
 
-<pre class="prettyprint"><code>library(rgbif)
+<pre><code>library("rgbif")
 </code></pre>
 
-	<pre class="prettyprint"><code>library(ggplot2)
-library(plyr)
-library(doMC)
+<pre><code>library("ggplot2")
+library("plyr")
+library("doMC")
 </code></pre>
 
 <h3>Get GBIF data using the rOpenSci package rgbif.</h3>
 
-<p>We&#39;ll not restrain our search to any particular taxonomic group, although you will likely do that in your own research. We&#39;ll make a new column with single lat/long coordinates for each cell for easy plotting. Last, we&#39;ll select 100 random cell IDs.</p>
+<p>We'll not restrain our search to any particular taxonomic group, although you will likely do that in your own research. We&#39;ll make a new column with single lat/long coordinates for each cell for easy plotting. Last, we&#39;ll select 100 random cell IDs.</p>
 
-<pre class="prettyprint"><code>temp &lt;- gbifdata(densitylist(originisocountrycode = &quot;US&quot;))
-temp &lt;- transform(temp, lat = (minLatitude + maxLatitude)/2, lon = (minLongitude +
-    maxLongitude)/2)
-cellids &lt;- sample(temp$cellid, 100)
+<pre><code>temp <- gbifdata(densitylist(originisocountrycode = "US"))
+temp <- transform(temp, lat = (minLatitude + maxLatitude)/2, lon = (minLongitude + maxLongitude)/2)
+cellids <- sample(temp$cellid, 100)
 </code></pre>
 
 <p>Then search for data for each of those cell ID&#39;s. We&#39;ll define a function to pass in each cell ID.</p>
 
-<pre class="prettyprint"><code>getdata &lt;- function(x, maxresults = 100) {
-    out &lt;- occurrencelist(cellid = x, coordinatestatus = TRUE, maxresults = maxresults)
-    df &lt;- gbifdata(out, coordinatestatus = TRUE)
+<pre><code>getdata <- function(x, maxresults = 100) {
+    out <- occurrencelist(cellid = x, coordinatestatus = TRUE, maxresults = maxresults)
+    df <- gbifdata(out, coordinatestatus = TRUE)
     data.frame(cellid = x, richness = length(unique(df$taxonName)))
 }
 
 registerDoMC(cores = 4)
-out &lt;- ldply(cellids, getdata, .parallel = TRUE)
-out2 &lt;- merge(out, temp[, c(&quot;cellid&quot;, &quot;lat&quot;, &quot;lon&quot;)], by = &quot;cellid&quot;)
+out <- ldply(cellids, getdata, .parallel = TRUE)
+out2 <- merge(out, temp[, c("cellid", "lat", "lon")], by = "cellid")
 # remove points outside the US
-out3 &lt;- out2[out2$lat &lt; 49 &amp; out2$lat &gt; 24.7433195 &amp; out2$lon &gt; -130 &amp; out2$lon &lt;
-    -66.9513812, ]
+out3 <- out2[out2$lat &lt; 49 & out2$lat &gt; 24.7433195 & out2$lon &gt; -130 & out2$lon &lt; -66.9513812, ]
 </code></pre>
 
 <h3>Plot data</h3>
 
-<pre class="prettyprint"><code>mapp &lt;- map_data(&quot;state&quot;)
-ggplot(mapp, aes(long, lat)) + geom_polygon(aes(group = group), fill = &quot;white&quot;,
-    alpha = 0, color = &quot;gray80&quot;, size = 0.8) + geom_point(data = out3, aes(lon,
-    lat, color = richness), size = 3, alpha = 0.8) + scale_color_gradient2(low = &quot;white&quot;,
-    mid = &quot;lightblue&quot;, high = &quot;blue&quot;) + labs(x = &quot;&quot;, y = &quot;&quot;) + theme_bw(base_size = 14) +
-    theme(legend.position = &quot;bottom&quot;, legend.key = element_blank())
+<pre><code>mapp <- map_data("state")
+ggplot(mapp, aes(long, lat)) +
+ geom_polygon(aes(group = group), fill = "white", alpha = 0, color = "gray80", size = 0.8) +
+ geom_point(data = out3, aes(lon, lat, color = richness), size = 3, alpha = 0.8) +
+ scale_color_gradient2(low = "white", mid = "lightblue", high = "blue") +
+ labs(x = ", y = ") +
+ theme_bw(base_size = 14) +
+ theme(legend.position = "bottom", legend.key = element_blank())
 </code></pre>
 
 <img src="../assets/usecases-images/rgbif_biodivcomp.png">
