@@ -2,63 +2,53 @@
 layout: dummy_page
 title: "rOpenSci - Related Packages"
 ---
-
-<body>
-
+{% include header.html %}
 <section class="post">
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
 
-<!-- <div class="col-md-3" id="leftCol">
+  <h2>Related packages</h2>
+   <p>This is a growing list of R packages that collect open data from the web, or are tools for doing <em>weby</em> things. Packages are grouped by field. <a href="https://github.com/ropensci/webservices">Contribute to this list</a></p>
 
-        <ul class="nav nav-stacked" id="sidebar">
-          <li><a href="#sec0">Section 0</a></li>
-          <li><a href="#sec1">Section 1</a></li>
-          <li><a href="#sec2">Section 2</a></li>
-          <li><a href="#sec3">Section 3</a></li>
-          <li><a href="#sec4">Section 4</a></li>
-        </ul>
-
-  </div> -->
 
 
 <div class="row">
-  <div class="col-md-3" id="leftCol">
-    <ul class="nav nav-stacked" data-spy="affix">
-      <li><a href="#ecolevol">Ecology and evolution</a></li>
-      <li><a href="#genetic">Genes/genomes</a></li>
-      <li><a href="#earthsci">Earth science</a></li>
-      <li><a href="#economics">Economics</a></li>
-      <li><a href="#finance">Finance</a></li>
-      <li><a href="#chemistry">Chemistry</a></li>
-      <li><a href="#agriculture">Agriculture</a></li>
-      <li><a href="#literature">Literature</a></li>
-      <li><a href="#marketing">Marketing</a></li>
-      <li><a href="#datadepots">Data Depots</a></li>
-      <li><a href="#machinelearning">Machine learning</a></li>
-      <li><a href="#webanalytics">Web analytics</a></li>
-      <li><a href="#news">News</a></li>
-      <li><a href="#media">Media</a></li>
-      <li><a href="#sports">Sports</a></li>
-      <li><a href="#maps">Maps</a></li>
-      <li><a href="#socialmedia">Social media</a></li>
-      <li><a href="#government">Government</a></li>
-      <li><a href="#googlewebservices">Google web services</a></li>
-      <li><a href="#amazonwebservices">Amazon web services</a></li>
-      <li><a href="#other">Other</a></li>
-    </ul>
-  </div>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-sm-3">
+      <div class="col-xs-6 col-sm-6 sidebar-offcanvas" id="sidebar" role="navigation">
+          <ul class="nav">
+            <li class="active"><li><a href="#ecolevol">Ecology/Evolution</a></li>
+            <li><a href="#genetic">Genes/genomes</a></li>
+            <li><a href="#earthsci">Earth science</a></li>
+            <li><a href="#economics">Economics</a></li>
+            <li><a href="#finance">Finance</a></li>
+            <li><a href="#chemistry">Chemistry</a></li>
+            <li><a href="#agriculture">Agriculture</a></li>
+            <li><a href="#literature">Literature</a></li>
+            <li><a href="#marketing">Marketing</a></li>
+            <li><a href="#datadepots">Data Depots</a></li>
+            <li><a href="#machinelearning">Machine learning</a></li>
+            <li><a href="#webanalytics">Web analytics</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#media">Media</a></li>
+            <li><a href="#sports">Sports</a></li>
+            <li><a href="#maps">Maps</a></li>
+            <li><a href="#socialmedia">Social media</a></li>
+            <li><a href="#government">Government</a></li>
+            <li><a href="#googlewebservices">Google web services</a></li>
+            <li><a href="#amazonwebservices">Amazon web services</a></li>
+            <li><a href="#other">Other</a></li>
+          </ul>
+      </div>
+      </div>
 
-  <div class="span9">
+<div class="col-sm-9">
 
 <section id="ecolevol">
-  <div class="page-header">
-    <h1>Ecological and Evolutionary Biology</h1>
-  </div>
+<h2>Ecology &amp; Evolution</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -100,12 +90,14 @@ title: "rOpenSci - Related Packages"
     </tr>
     </tbody>
   </table>
+</div>
+      </div> <!-- This ends table -->
+</section>
 
 <section id="genetic">
-  <div class="page-header"><h1>Genes and Genomes</h1></div>
+  <h2>Genes and Genomes</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -137,12 +129,14 @@ title: "rOpenSci - Related Packages"
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="earthsci">
-  <div class="page-header"><h1>Earth Science</h1></div>
+  <h2>Earth Science</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -199,12 +193,14 @@ title: "rOpenSci - Related Packages"
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="economics">
-  <div class="page-header"><h1>Economics and Business</h1></div>
+  <h2>Economics and Business</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -233,12 +229,14 @@ price of a particular property specified by street address and ZIP code (or city
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="finance">
-  <div class="page-header"><h1>Finance</h1></div>
+  <h2>Finance</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -280,12 +278,14 @@ price of a particular property specified by street address and ZIP code (or city
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="chemistry">
-  <div class="page-header"><h1>Chemistry</h1></div>
+  <h2>Chemistry</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -302,12 +302,14 @@ price of a particular property specified by street address and ZIP code (or city
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="agriculture">
-  <div class="page-header"><h1>Agriculture</h1></div>
+  <h2>Agriculture</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -325,12 +327,14 @@ price of a particular property specified by street address and ZIP code (or city
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="literature">
-  <div class="page-header"><h1>Literature, Metadata, Text, and Altmetrics</h1></div>
+  <h2>Literature, Metadata, Text, and Altmetrics</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -367,12 +371,14 @@ price of a particular property specified by street address and ZIP code (or city
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="marketing">
-  <div class="page-header"><h1>Marketing</h1></div>
+  <h2>Marketing</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -389,12 +395,14 @@ price of a particular property specified by street address and ZIP code (or city
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="datadepots">
-  <div class="page-header"><h1>Data Depots</h1></div>
+  <h2>Data Depots</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -441,12 +449,14 @@ price of a particular property specified by street address and ZIP code (or city
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="machinelearning">
-  <div class="page-header"><h1>Machine Learning as a Service</h1></div>
+  <h2>Machine Learning as a Service</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -468,12 +478,14 @@ price of a particular property specified by street address and ZIP code (or city
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="webanalytics">
-  <div class="page-header"><h1>Web Analytics</h1></div>
+  <h2>Web Analytics</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -500,12 +512,14 @@ price of a particular property specified by street address and ZIP code (or city
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="news">
-  <div class="page-header"><h1>News</h1></div>
+  <h2>News</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -527,12 +541,14 @@ price of a particular property specified by street address and ZIP code (or city
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="media">
-  <div class="page-header"><h1>Images, Graphics, Videos, Music</h1></div>
+  <h2>Images, Graphics, Videos, Music</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -560,12 +576,14 @@ remove vertices/nodes and edges in a graph and change their attributes/character
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="sports">
-  <div class="page-header"><h1>Sports</h1></div>
+  <h2>Sports</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -592,12 +610,14 @@ remove vertices/nodes and edges in a graph and change their attributes/character
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="maps">
-  <div class="page-header"><h1>Maps</h1></div>
+  <h2>Maps</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -645,12 +665,14 @@ display in, e.g., Google Earth.</td>
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="socialmedia">
-  <div class="page-header"><h1>Social media</h1></div>
+  <h2>Social media</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -682,12 +704,14 @@ display in, e.g., Google Earth.</td>
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="government">
-  <div class="page-header"><h1>Government</h1></div>
+  <h2>Government</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -719,12 +743,14 @@ display in, e.g., Google Earth.</td>
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="googlewebservices">
-  <div class="page-header"><h1>Google Web Services</h1></div>
+  <h2>Google Web Services</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -776,12 +802,14 @@ display in, e.g., Google Earth.</td>
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="amazonwebservices">
-  <div class="page-header"><h1>Amazon Web Services</h1></div>
+  <h2>Amazon Web Services</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -813,12 +841,14 @@ display in, e.g., Google Earth.</td>
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
 <section id="other">
-  <div class="page-header"><h1 id="other">Other</h1></div>
+<h2>Other</h2>
   <div class="row">
-    <div class="span1"></div>
-    <div class="span9">
+    <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -860,6 +890,14 @@ display in, e.g., Google Earth.</td>
 </tr>
     </tbody>
   </table>
+</div>
+</div>
+</section>
 
   </div>
-<!--   </div> -->
+
+</div>
+  </div>
+
+</section>
+{% include footer.html %}

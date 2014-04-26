@@ -9,58 +9,51 @@ In this example, we compare biodiversity in different regsions using GBIF data f
 This example can be done using BISON data as well with our rbison package.
 
 ```{r defaults, eval=TRUE, echo=FALSE, cache=TRUE}
-opts_chunk$set(comment=NA, warning=FALSE, message=FALSE, fig.width=7, fig.height=6)
+opts_chunk$set(comment=NA, warning=FALSE, message=FALSE, fig.width=7, fig.height=6, fig.path="../assets/usecases-images/")
 ```
 
 ### Load libraries
 
 ```{r load}
-library(rgbif)
-library(ggplot2)
-library(plyr)
+library("rgbif")
+library("ggplot2")
+library("plyr")
+library("RCurl")
 ```
 
 ### Get bounding boxes for some cites
 
 ```{r box}
-box <- read.table("bounding.txt", sep="\t", col.names=c("city","minlat","maxlon","maxlat","minlon"))
+rawdat <- getURL('https://raw.githubusercontent.com/amyxzhang/boundingbox-cities/master/boundbox.txt')
+dat <- read.table(text = rawdat, header = FALSE, sep="\t", col.names=c("city","minlat","maxlon","maxlat","minlon"))
+dat <- data.frame(city=dat$city, minlon=dat$minlon, minlat=dat$minlat, maxlon=dat$maxlon, maxlat=dat$maxlat)
 ```
 
-### Get GBIF data using the rOpenSci package rgbif.
-
-We'll not restrain our search to any particular taxonomic group, although you will likely do that in your own research. We'll make a new column with single lat/long coordinates for each cell for easy plotting. Last, we'll select 100 random cell IDs.
-
-```{r getbounding}
-temp <- gbifdata(densitylist(originisocountrycode="US"))
-temp <- transform(temp, lat = (minLatitude+maxLatitude)/2, lon = (minLongitude+maxLongitude)/2) 
-cellids <- sample(temp$cellid, 100)
-```
-
-Then search for data for each of those cell ID's. We'll define a function to pass in each cell ID.
-
-```{r getdata}
-getdata <- function(x, maxresults=100){
-  out <- occurrencelist(cellid=x, coordinatestatus=TRUE, maxresults=maxresults)
-  df <- gbifdata(out, coordinatestatus=TRUE)
-  data.frame(cellid=x, richness=length(unique(df$taxonName)))
+```{r newsearch}
+getdata <- function(x){
+  coords <- as.numeric(x[c('minlon','minlat','maxlon','maxlat')])
+  num <- occ_search(geometry = coords)$meta$count
+  data.frame(city=x['city'], richness=num, stringsAsFactors = FALSE)
 }
+```
 
-out <- ldply(cellids, getdata)
-out2 <- merge(out, temp[,c('cellid','lat','lon')], by='cellid')
-# remove points outside the US
-out3 <- out2[out2$lat < 49 & out2$lat > 24.7433195 & out2$lon > -130 & out2$lon < -66.9513812,]
+```{r}
+out <- apply(dat, 1, getdata)
+out <- merge(dat, ldply(out), by="city") # merge to original table
+# add centroids from bounding boxes
+out <- transform(out, lat = (minlat+maxlat)/2, lon = (minlon+maxlon)/2)
 ```
 
 ### Plot data
 
 ```{r plot}
-mapp <- map_data('state')
+mapp <- map_data('world')
 ggplot(mapp, aes(long, lat)) +
   geom_polygon(aes(group=group), fill="white", alpha=0, color="gray80", size=0.8) +
-  geom_point(data=out3, aes(lon, lat, color=richness), size=3, alpha=0.8) +
-  scale_color_gradient2(low = "white", mid="lightblue", high = "blue") +
+  geom_point(data=out, aes(lon, lat, color=richness), size=5, alpha=0.8) +
+  scale_color_gradient2(low = "white", high = "steelblue") +
   labs(x="", y="") +
-  theme_bw(base_size=14) + 
+  theme_grey(base_size=14) +
   theme(legend.position = "bottom", legend.key = element_blank())
 ```
 
