@@ -4,6 +4,10 @@ pkg: taxize
 layout: usecases
 ---
 
+
+
+
+
 Load libraries
 
 
@@ -29,10 +33,6 @@ The tnrs function accepts a vector of 1 or more
 
 ```r
 splist_tnrs <- tnrs(query = splist, getpost = "POST", source = "iPlant_TNRS")
-```
-
-```
-## Calling http://taxosaurus.org/retrieve/42a52667e7806849f15404186e367a42
 ```
 
 
@@ -202,12 +202,11 @@ df <- ldply(res)
 
 
 ```r
-gbifmap(df)
+gbifmap(df) + 
+  theme_grey(base_size = 16) +
+  theme(legend.position = "bottom", legend.key = element_blank()) + 
+  guides(col = guide_legend(nrow = 2)) 
 ```
 
-```
-## Rendering map...plotting 499 points
-```
-
-![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
+![plot of chunk unnamed-chunk-16](../../assets/usecases-images/unnamed-chunk-16.png) 
 

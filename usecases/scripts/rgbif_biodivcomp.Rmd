@@ -9,15 +9,15 @@ In this example, we compare biodiversity in different regsions using GBIF data f
 This example can be done using BISON data as well with our rbison package.
 
 ```{r defaults, eval=TRUE, echo=FALSE, cache=TRUE}
-opts_chunk$set(comment=NA, warning=FALSE, message=FALSE, fig.width=7, fig.height=6)
+opts_chunk$set(comment=NA, warning=FALSE, message=FALSE, fig.width=7, fig.height=6, fig.path="../assets/usecases-images/")
 ```
 
 ### Load libraries
 
 ```{r load}
-library(rgbif)
-library(ggplot2)
-library(plyr)
+library("rgbif")
+library("ggplot2")
+library("plyr")
 ```
 
 ### Get bounding boxes for some cites
@@ -32,7 +32,7 @@ We'll not restrain our search to any particular taxonomic group, although you wi
 
 ```{r getbounding}
 temp <- gbifdata(densitylist(originisocountrycode="US"))
-temp <- transform(temp, lat = (minLatitude+maxLatitude)/2, lon = (minLongitude+maxLongitude)/2) 
+temp <- transform(temp, lat = (minLatitude+maxLatitude)/2, lon = (minLongitude+maxLongitude)/2)
 cellids <- sample(temp$cellid, 100)
 ```
 
@@ -60,7 +60,7 @@ ggplot(mapp, aes(long, lat)) +
   geom_point(data=out3, aes(lon, lat, color=richness), size=3, alpha=0.8) +
   scale_color_gradient2(low = "white", mid="lightblue", high = "blue") +
   labs(x="", y="") +
-  theme_bw(base_size=14) + 
+  theme_grey(base_size=14) +
   theme(legend.position = "bottom", legend.key = element_blank())
 ```
 

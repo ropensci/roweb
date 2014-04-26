@@ -4,6 +4,11 @@ pkg: taxize
 layout: usecases
 ---
 
+
+```{r defaults, eval=TRUE, echo=FALSE, include=FALSE}
+opts_chunk$set(fig.path="../../assets/usecases-images/", warning=FALSE, message=FALSE, fig.width=8, fig.height=6)
+```
+
 Load libraries
 
 ```{r}
@@ -112,6 +117,9 @@ df <- ldply(res)
 
 ### Make a map
 
-```{r}
-gbifmap(df)
+```{r tidy=FALSE}
+gbifmap(df) + 
+  theme_grey(base_size = 16) +
+  theme(legend.position = "bottom", legend.key = element_blank()) + 
+  guides(col = guide_legend(nrow = 2)) 
 ```
