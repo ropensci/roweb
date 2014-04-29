@@ -26,6 +26,8 @@ The first step is to grab the [KML](https://developers.google.com/kml/documentat
 ```r
 
 library(rWBclimate)
+# Install spocc from our GitHub repo
+# devtools::install_github("spocc", "ropensci")
 library(spocc)
 library(taxize)
 library(plyr)
