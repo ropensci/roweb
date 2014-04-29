@@ -294,7 +294,7 @@ If we find a direct match (here *Gammarus roeseli*), we are lucky. But we can al
 
 ## Citing
 
-To cite taxize in publications use:
+To cite `taxize` in publications use:
 
 <br>
 
