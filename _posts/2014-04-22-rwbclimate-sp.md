@@ -25,12 +25,13 @@ The first step is to grab the [KML](https://developers.google.com/kml/documentat
 
 ```r
 
-library(rWBclimate)
+library("rWBclimate")
 # Install spocc from our GitHub repo
 # devtools::install_github("spocc", "ropensci")
-library(spocc)
-library(taxize)
-library(plyr)
+library("spocc")
+library("taxize")
+library("plyr")
+library("sp")
 ```
 
 ```r
@@ -69,8 +70,7 @@ Now we have created a map of the US and Mexico, downloaded the average temperatu
 
 ## Grab some species occurrence data for the 8 tree species.
 
-splist <- c("Acer saccharum", "Abies balsamea", "Arbutus xalapensis", "Betula alleghaniensis",
-    "Chilopsis linearis", "Conocarpus erectus", "Populus tremuloides", "Larix laricina")
+splist <- c("Acer saccharum", "Abies balsamea", "Arbutus xalapensis", "Betula alleghaniensis", "Chilopsis linearis", "Conocarpus erectus", "Populus tremuloides", "Larix laricina")
 
 ## get data from bison and gbif
 splist <- sort(splist)
@@ -92,9 +92,7 @@ Now we've downloaded the data using their latin names, we might want to know the
 ```r
 
 ### grab common names
-cname <- ldply(sci2comm(get_tsn(splist), db = "itis", simplify = TRUE), function(x) {
-    return(x[1])
-})[, 2]
+cname <- ldply(sci2comm(get_tsn(splist), db = "itis", simplify = TRUE), function(x) { return(x[1]) })[, 2]
 ```
 
 ```r
@@ -115,13 +113,17 @@ Now we have all the components we need, species data and spatial polygons with t
 ```r
 
 ## Now just create the base temperature map
-usmex.map <- ggplot() + geom_polygon(data = usmex.map.df, aes(x = long, y = lat,
-    group = group, fill = data, alpha = 0.9)) + scale_fill_continuous("Average annual \n temp: 1990-2000",
-    low = "yellow", high = "red") + guides(alpha = F) + theme_bw(10)
+usmex.map <- ggplot() +
+  geom_polygon(data = usmex.map.df, aes(x = long, y = lat, group = group, fill = data, alpha = 0.9)) +
+  scale_fill_continuous("Average annual \n temp: 1990-2000", low = "yellow", high = "red") +
+  guides(alpha = F) +
+  theme_bw(10)
 
 ## And overlay of gbif data
-usmex.map <- usmex.map + geom_point(data = out_df, aes(y = latitude, x = longitude,
-    group = common, colour = common)) + xlim(-125, -59) + ylim(5, 55)
+usmex.map <- usmex.map +
+  geom_point(data = out_df, aes(y = latitude, x = longitude, group = common, colour = common)) +
+  xlim(-125, -59) +
+  ylim(5, 55)
 
 print(usmex.map)
 ```
@@ -178,9 +180,12 @@ First let's look at a plot of mean temporature vs latititude, and to identify th
 
 
 ```r
-ggplot(summary_data, aes(x = mlat, y = mtemp, label = cname)) + geom_text() +
-    xlab("Mean Latitude") + ylab("Mean Temperature (C)") + theme_bw() + xlim(10,
-    50)
+ggplot(summary_data, aes(x = mlat, y = mtemp, label = cname)) +
+  geom_text() +
+  xlab("Mean Latitude") +
+  ylab("Mean Temperature (C)") +
+  theme_bw() +
+  xlim(10, 50)
 ```
 
 ![plot of chunk means](/assets/blog-images/2014-04-22-rwbclimate-sp/means.png)
@@ -191,9 +196,12 @@ This gives us a sense about how the means of each value are related, but we can 
 
 
 ```r
-ggplot(spDF, aes(as.factor(cname), temp)) + geom_boxplot() + theme_bw(13) +
-    ylab("Temperature") + xlab("Common Name") + theme(axis.text.x = element_text(angle = 45,
-    hjust = 0.5, vjust = 0.5))
+ggplot(spDF, aes(as.factor(cname), temp)) +
+  geom_boxplot() +
+  theme_bw(13) +
+  ylab("Temperature") +
+  xlab("Common Name") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 0.5, vjust = 0.5))
 ```
 
 ![plot of chunk boxplots](/assets/blog-images/2014-04-22-rwbclimate-sp/boxplots.png)
