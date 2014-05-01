@@ -1,6 +1,7 @@
 ---
 title: alm tutorial
 layout: tutorial
+packge_version: 0.1.6
 ---
 
 ## What are article level metrics?

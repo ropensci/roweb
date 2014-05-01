@@ -1,6 +1,7 @@
 ---
 title: taxize tutorial
 layout: tutorial
+packge_version: 0.2.2
 ---
 
 ### About the package
