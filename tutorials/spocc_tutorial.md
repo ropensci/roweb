@@ -58,14 +58,7 @@ The most significant function in spocc is the `occ` (short for occurrence) funct
 
 
 ```r
-library(spocc)
-```
-
-```
-## Loading required package: ggplot2
-```
-
-```r
+library("spocc")
 df <- occ(query = "Accipiter striatus", from = "gbif")
 df
 ```
@@ -415,5 +408,5 @@ To cite `spocc` in publications use:
 
 ## License and bugs
 
-* License: [MIT]()
+* License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our Github repo for spocc](https://github.com/ropensci/spocc/issues?state=open)
