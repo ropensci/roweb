@@ -219,5 +219,5 @@ To cite `spocc` in publications use:
 
 ## License and bugs
 
-* License: [MIT]()
+* License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our Github repo for spocc](https://github.com/ropensci/spocc/issues?state=open)
