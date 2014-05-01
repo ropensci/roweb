@@ -1,6 +1,7 @@
 ---
 title: rplos tutorial
 layout: tutorial
+packge_version: 0.3.6
 ---
 
 The `rplos` package interacts with the API services of [PLoS](http://www.plos.org/) (Public Library of Science) Journals. In order to use `rplos`, you need to obtain [your own key](http://api.plos.org/registration/) to their API services. Instruction for obtaining and installing keys so they load automatically when you launch R are on our GitHub Wiki page [Installation and use of API keys](https://github.com/ropensci/rOpenSci/wiki/Installation-and-use-of-API-keys).
@@ -339,4 +340,4 @@ To cite `rplos` in publications use:
 ## License and bugs
 
 * License: [CC0](http://creativecommons.org/choose/zero/)
-* Report bugs at [our Github repo for alm](https://github.com/ropensci/rplos/issues?state=open)
+* Report bugs at [our Github repo for rplos](https://github.com/ropensci/rplos/issues?state=open)
