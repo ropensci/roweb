@@ -1,0 +1,161 @@
+---
+title: rsnps tutorial
+layout: tutorial
+packge_version: 0.1.0
+---
+
+```{r, eval=TRUE, echo=FALSE}
+opts_chunk$set(fig.path="../assets/tutorial-images/rsnps/")
+```
+
+<section id="installation">
+
+## Installation
+
+When available on CRAN
+
+```{r install, eval=FALSE}
+install.packages("rsnps")
+```
+
+Or get from Github
+
+```{r load, eval=FALSE}
+install.packages("devtools")
+library(devtools)
+install_github("rsnps", "ropensci")
+```
+
+
+```{r loadgithub, message=FALSE, warning=FALSE}
+library(rsnps)
+```
+
+<section id="usage">
+
+## Usage
+
+
+### Get genotype data for all users at a particular snp.
+
+```{r allgensnp, warning=FALSE, message=FALSE, comment=NA, cache=FALSE}
+allgensnp(snp='rs7412')[1:3]
+allgensnp('rs7412', df=TRUE)[1:10,]
+```
+
+### Get all phenotypes, their variations, and how many users have data available for a given phenotype.
+
+Get all data
+
+```{r allphenotypes1, warning=FALSE, message=FALSE, comment=NA, cache=FALSE}
+allphenotypes(df = TRUE)[1:10,]
+```
+
+Output a list, then call the characterisitc of interest by 'id' or 'characteristic'
+
+```{r allphenotypes2, warning=FALSE, message=FALSE, comment=NA, cache=FALSE}
+datalist <- allphenotypes()
+names(datalist)[1:5] # get list of all characteristics you can call
+datalist[["ADHD"]] # get data.frame for 'ADHD'
+datalist[c("mouth size","SAT Writing")] # get data.frame for 'ADHD'
+```
+
+### Get annotations for a given snp.
+
+Get just the metadata
+
+```{r annotations1, warning=FALSE, message=FALSE, comment=NA, cache=FALSE}
+annotations(snp = 'rs7903146', output = 'metadata')
+```
+
+Just from PLOS journals
+
+```{r annotations2, warning=FALSE, message=FALSE, comment=NA, cache=FALSE}
+annotations(snp = 'rs7903146', output = 'plos')[c(1:10),]
+```
+
+Just from SNPedia
+
+```{r annotations3, warning=FALSE, message=FALSE, comment=NA, cache=FALSE}
+annotations(snp = 'rs7903146', output = 'snpedia')
+```
+
+Get all annotations
+
+```{r annotations4, warning=FALSE, message=FALSE, comment=NA, cache=FALSE}
+annotations(snp = 'rs7903146', output = 'all')[1:10,]
+```
+
+### Download genotype data for a user from 23andme or other repo.
+
+The `fetch_genotypes` call can take a bit to download the file, so we won't run it here in this demo.
+
+```{r fetch_genotypes, warning=FALSE, message=FALSE, comment=NA, eval=FALSE}
+data <- users(df=TRUE)
+head( data[[1]] ) # users with links to genome data
+fetch_genotypes(url = data[[1]][1,"genotypes.download_url"], rows=15)
+```
+
+### Get genotype data for one or multiple users.
+
+```{r genotypes, warning=FALSE, message=FALSE, comment=NA, cache=FALSE}
+genotypes(snp='rs9939609', userid=1)
+genotypes('rs9939609', userid='1,6,8', df=TRUE)
+genotypes('rs9939609', userid='1-2', df=FALSE)
+```
+
+### Get phenotype data for one or multiple users.
+
+```{r phenotypes, warning=FALSE, message=FALSE, comment=NA, cache=FALSE}
+phenotypes(userid=1)$phenotypes[1:3]
+phenotypes(userid='1,6,8', df=TRUE)[[1]][1:10,]
+out <- phenotypes(userid='1-8', df=TRUE)
+lapply(out, head)
+```
+
+### Get all known variations and all users sharing that phenotype for one phenotype(-ID).
+
+```{r phenotypes_byid, warning=FALSE, message=FALSE, comment=NA, cache=FALSE}
+phenotypes_byid(phenotypeid=12, return_ = 'desc')
+phenotypes_byid(phenotypeid=12, return_ = 'knownvars')
+phenotypes_byid(phenotypeid=12, return_ = 'users')[1:10,]
+```
+
+### Get openSNP users.
+
+```{r users, warning=FALSE, message=FALSE, comment=NA, cache=FALSE}
+data <- users(df=FALSE)
+data[1:2]
+```
+
+### Search for SNPs in Linkage Disequilibrium with a set of SNPs
+
+```{r LDSearch, warning=FALSE, message=FALSE, comment=NA, cache=FALSE}
+LDSearch("rs420358")
+```
+
+### Query NCBI's dbSNP for information on a set of SNPs
+
+An example with both merged SNPs, non-SNV SNPs, regular SNPs, SNPs not found, microsatellite
+
+```{r NCBI_snp_query, warning=FALSE, message=FALSE, comment=NA, cache=FALSE}
+snps <- c("rs332", "rs420358", "rs1837253", "rs1209415715", "rs111068718")
+NCBI_snp_query(snps)
+```
+
+<section id="citing">
+
+## Citing
+
+To cite `rsnps` in publications use:
+
+<br>
+
+> Scott Chamberlain and Kevin Ushey (2014). rsnps: Get SNP (Single-Nucleotide Polymorphism) data on the web. R package version 0.1.0. https://github.com/ropensci/rsnps
+
+<section id="license_bugs">
+
+## License and bugs
+
+* License: [MIT](http://opensource.org/licenses/MIT)
+* Report bugs at [our Github repo for rsnps](https://github.com/ropensci/rsnps/issues?state=open)
