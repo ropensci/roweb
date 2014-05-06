@@ -4,6 +4,9 @@ layout: tutorial
 packge_version: 0.3.6
 ---
 
+
+
+
 The `rplos` package interacts with the API services of [PLoS](http://www.plos.org/) (Public Library of Science) Journals. In order to use `rplos`, you need to obtain [your own key](http://api.plos.org/registration/) to their API services. Instruction for obtaining and installing keys so they load automatically when you launch R are on our GitHub Wiki page [Installation and use of API keys](https://github.com/ropensci/rOpenSci/wiki/Installation-and-use-of-API-keys).
 
 This tutorial will go through three use cases to demonstrate the kinds
@@ -18,10 +21,17 @@ of things possible in `rplos`.
 ## Installation
 
 
+
 ```r
 install.packages("rplos")
-library("rplos")
 ```
+
+
+
+```r
+library(rplos)
+```
+
 
 <section id="usage">
 
@@ -51,31 +61,32 @@ Get only full article DOIs
 
 
 ```r
-searchplos(terms = "*:*", fields = "id", toquery = "doc_type:full", start = 0, limit = 20)
+searchplos(terms = "*:*", fields = "id", toquery = "doc_type:full", start = 0, 
+    limit = 20)
 ```
 
 ```
                              id
-1  10.1371/journal.pgen.1001387
-2  10.1371/journal.pone.0058892
-3  10.1371/journal.pone.0015116
-4  10.1371/journal.pgen.1001385
-5  10.1371/journal.pone.0015114
-6  10.1371/journal.pone.0030759
-7  10.1371/journal.pone.0015112
-8  10.1371/journal.pone.0030758
-9  10.1371/journal.pone.0015111
-10 10.1371/journal.pone.0058887
-11 10.1371/journal.pone.0024514
-12 10.1371/journal.pone.0030762
-13 10.1371/journal.pone.0071223
-14 10.1371/journal.pone.0030761
-15 10.1371/journal.pone.0024513
-16 10.1371/journal.pone.0024512
-17 10.1371/journal.pone.0058890
-18 10.1371/journal.pone.0030760
-19 10.1371/journal.pgen.1001384
-20 10.1371/journal.pone.0024511
+1  10.1371/journal.pone.0022062
+2  10.1371/journal.pntd.0000698
+3  10.1371/journal.pone.0053864
+4  10.1371/journal.pone.0069888
+5  10.1371/journal.pone.0025985
+6  10.1371/journal.pone.0073918
+7  10.1371/journal.pntd.0000703
+8  10.1371/journal.pone.0038002
+9  10.1371/journal.pone.0077917
+10 10.1371/journal.pone.0022056
+11 10.1371/journal.pone.0093807
+12 10.1371/journal.pone.0053868
+13 10.1371/journal.pntd.0000700
+14 10.1371/journal.pone.0001838
+15 10.1371/journal.pone.0041875
+16 10.1371/journal.pone.0005899
+17 10.1371/journal.pone.0022055
+18 10.1371/journal.pone.0057881
+19 10.1371/journal.pone.0045998
+20 10.1371/journal.pone.0053894
 ```
 
 
@@ -83,26 +94,27 @@ Get DOIs for only PLoS One articles
 
 
 ```r
-searchplos(terms = "*:*", fields = "id", toquery = "cross_published_journal_key:PLoSONE", start = 0, limit = 15)
+searchplos(terms = "*:*", fields = "id", toquery = "cross_published_journal_key:PLoSONE", 
+    start = 0, limit = 15)
 ```
 
 ```
-                                                    id
-1                    10.1371/journal.pone.0071225/body
-2            10.1371/journal.pone.0071225/introduction
-3  10.1371/journal.pone.0071225/results_and_discussion
-4   10.1371/journal.pone.0071225/materials_and_methods
-5  10.1371/journal.pone.0071225/supporting_information
-6                         10.1371/journal.pone.0058892
-7                   10.1371/journal.pone.0058892/title
-8                10.1371/journal.pone.0058892/abstract
-9              10.1371/journal.pone.0058892/references
-10                   10.1371/journal.pone.0058892/body
-11           10.1371/journal.pone.0058892/introduction
-12 10.1371/journal.pone.0058892/results_and_discussion
-13  10.1371/journal.pone.0058892/materials_and_methods
-14                        10.1371/journal.pone.0015116
-15                  10.1371/journal.pone.0015116/title
+                                        id
+1             10.1371/journal.pone.0022062
+2    10.1371/journal.pone.0053864/abstract
+3        10.1371/journal.pone.0053864/body
+4             10.1371/journal.pone.0053864
+5             10.1371/journal.pone.0069888
+6       10.1371/journal.pone.0053864/title
+7       10.1371/journal.pone.0033995/title
+8    10.1371/journal.pone.0033995/abstract
+9  10.1371/journal.pone.0033995/references
+10       10.1371/journal.pone.0033995/body
+11            10.1371/journal.pone.0025985
+12            10.1371/journal.pone.0073918
+13      10.1371/journal.pone.0073918/title
+14 10.1371/journal.pone.0073918/references
+15       10.1371/journal.pone.0073918/body
 ```
 
 
@@ -110,31 +122,32 @@ Get DOIs for full article in PLoS One
 
 
 ```r
-searchplos(terms = "*:*", fields = "id", toquery = list("cross_published_journal_key:PLoSONE", "doc_type:full"), start = 0, limit = 20)
+searchplos(terms = "*:*", fields = "id", toquery = list("cross_published_journal_key:PLoSONE", 
+    "doc_type:full"), start = 0, limit = 20)
 ```
 
 ```
                              id
-1  10.1371/journal.pone.0058892
-2  10.1371/journal.pone.0015116
-3  10.1371/journal.pone.0015114
-4  10.1371/journal.pone.0030759
-5  10.1371/journal.pone.0015112
-6  10.1371/journal.pone.0030758
-7  10.1371/journal.pone.0015111
-8  10.1371/journal.pone.0058887
-9  10.1371/journal.pone.0024514
-10 10.1371/journal.pone.0030762
-11 10.1371/journal.pone.0071223
-12 10.1371/journal.pone.0030761
-13 10.1371/journal.pone.0024513
-14 10.1371/journal.pone.0024512
-15 10.1371/journal.pone.0058890
-16 10.1371/journal.pone.0030760
-17 10.1371/journal.pone.0024511
-18 10.1371/journal.pone.0021422
-19 10.1371/journal.pone.0062009
-20 10.1371/journal.pone.0030767
+1  10.1371/journal.pone.0022062
+2  10.1371/journal.pone.0053864
+3  10.1371/journal.pone.0069888
+4  10.1371/journal.pone.0025985
+5  10.1371/journal.pone.0073918
+6  10.1371/journal.pone.0038002
+7  10.1371/journal.pone.0077917
+8  10.1371/journal.pone.0022056
+9  10.1371/journal.pone.0093807
+10 10.1371/journal.pone.0053868
+11 10.1371/journal.pone.0001838
+12 10.1371/journal.pone.0041875
+13 10.1371/journal.pone.0005899
+14 10.1371/journal.pone.0022055
+15 10.1371/journal.pone.0057881
+16 10.1371/journal.pone.0045998
+17 10.1371/journal.pone.0053894
+18 10.1371/journal.pone.0009837
+19 10.1371/journal.pone.0001878
+20 10.1371/journal.pone.0065967
 ```
 
 
@@ -153,9 +166,9 @@ lapply(terms, function(x) searchplos(x, limit = 2))
 2 10.1371/journal.pone.0001248
 
 [[2]]
-                            id
-1 10.1371/journal.pbio.0050030
-2 10.1371/journal.pbio.0030245
+                                                       id
+1 10.1371/annotation/c55d5089-ba2f-449d-8696-2bc8395978db
+2 10.1371/annotation/9773af53-a076-4946-a3f1-83914226c10d
 
 [[3]]
                             id
@@ -182,17 +195,17 @@ plosauthor(terms = "Eisen", fields = "author", limit = 10)
 ```
 
 ```
-                                           author
-1                                Jonathan A Eisen
-2                                Jonathan A Eisen
-3                   Garmay Leung, Michael B Eisen
-4                 Richard W Lusk, Michael B Eisen
-5  Leonid Teytelman, Michael B Eisen, Jasper Rine
-6                 Richard W Lusk, Michael B Eisen
-7                 Lars Eisen, Saul Lozano-Fuentes
-8          Jonathan A Eisen, Catriona J MacCallum
-9   Martin Wu, Sourav Chatterji, Jonathan A Eisen
-10                 Peter A Combs, Michael B Eisen
+             author
+1  Jonathan A Eisen
+2  Jonathan A Eisen
+3  Jonathan A Eisen
+4  Jonathan A Eisen
+5  Jonathan A Eisen
+6  Jonathan A Eisen
+7  Jonathan A Eisen
+8  Jonathan A Eisen
+9  Jonathan A Eisen
+10 Jonathan A Eisen
 ```
 
 
@@ -209,13 +222,13 @@ plosabstract(terms = "drosophila", fields = "id,title", limit = 5)
 2 10.1371/journal.pbio.0030246
 3 10.1371/journal.pone.0012421
 4 10.1371/journal.pbio.0030389
-5 10.1371/journal.pbio.1000342
-                                                                      title
-1                                                               All for All
-2                               School Students as Drosophila Experimenters
-3                      Host Range and Specificity of the Drosophila C Virus
-4               New Environments Set the Stage for Changing Tastes in Mates
-5 Variable Transcription Factor Binding: A Mechanism of Evolutionary Change
+5 10.1371/journal.pone.0002817
+                                                                            title
+1                                                                     All for All
+2                                     School Students as Drosophila Experimenters
+3                            Host Range and Specificity of the Drosophila C Virus
+4                     New Environments Set the Stage for Changing Tastes in Mates
+5 High-Resolution, In Vivo Magnetic Resonance Imaging of Drosophila at 18.8 Tesla
 ```
 
 
@@ -228,27 +241,27 @@ plostitle(terms = "drosophila", fields = "title,journal", limit = 10)
 
 ```
                       journal
-1                PLoS Biology
-2                PLoS Biology
+1  PLoS Computational Biology
+2               PLoS Genetics
 3                    PLoS ONE
-4  PLoS Computational Biology
-5                PLoS Biology
-6               PLoS Genetics
+4                PLoS Biology
+5                    PLoS ONE
+6                PLoS Biology
 7                PLoS Biology
-8                PLoS Biology
-9                    PLoS ONE
-10                   PLoS ONE
+8                    PLoS ONE
+9                PLoS Biology
+10               PLoS Biology
                                                    title
-1            School Students as Drosophila Experimenters
-2          Identification of Drosophila MicroRNA Targets
+1             Parametric Alignment of Drosophila Genomes
+2  Phenotypic Plasticity of the Drosophila Transcriptome
 3               A Tripartite Synapse Model in Drosophila
-4             Parametric Alignment of Drosophila Genomes
-5            Expression in Aneuploid Drosophila S2 Cells
-6  Phenotypic Plasticity of the Drosophila Transcriptome
-7       Reinforcement of Gametic Isolation in Drosophila
-8            Combinatorial Coding for Drosophila Neurons
-9                              A DNA Virus of Drosophila
-10           Quantification of Food Intake in Drosophila
+4            Combinatorial Coding for Drosophila Neurons
+5            Quantification of Food Intake in Drosophila
+6       Reinforcement of Gametic Isolation in Drosophila
+7            Expression in Aneuploid Drosophila S2 Cells
+8                              A DNA Virus of Drosophila
+9          Identification of Drosophila MicroRNA Targets
+10           School Students as Drosophila Experimenters
 ```
 
 
@@ -259,24 +272,25 @@ as a histogram, comparing number of matching papers for each word
 
 
 ```r
-out <- plosword(list("monkey", "Helianthus", "sunflower", "protein", "whale"), vis = "TRUE")
+out <- plosword(list("monkey", "Helianthus", "sunflower", "protein", "whale"), 
+    vis = "TRUE")
 out$table
 ```
 
 ```
   No_Articles       Term
-1        6154     monkey
-2         196 Helianthus
-3         509  sunflower
-4       64832    protein
-5         702      whale
+1        7308     monkey
+2         244 Helianthus
+3         667  sunflower
+4       78935    protein
+5         868      whale
 ```
 
 ```r
 out$plot
 ```
 
-![plot of chunk plosword](../assets/tutorial-images/rplos/plosword.png)
+![plot of chunk plosword](../assets/tutorial-images/rplos/plosword.png) 
 
 
 You can also pass in curl options, in this case get verbose information on the curl call.
@@ -287,8 +301,8 @@ plosword("Helianthus", callopts = list(verbose = TRUE))
 ```
 
 ```
-Number of articles with search term
-                                196
+Number of articles with search term 
+                                244 
 ```
 
 
@@ -301,7 +315,7 @@ Number of articles with search term
 plot_throughtime(terms = "phylogeny", limit = 200, gvis = FALSE)
 ```
 
-![plot of chunk throughtime1](../assets/tutorial-images/rplos/throughtime1.png)
+![plot of chunk throughtime1](../assets/tutorial-images/rplos/throughtime1.png) 
 
 
 
@@ -309,7 +323,7 @@ plot_throughtime(terms = "phylogeny", limit = 200, gvis = FALSE)
 plot_throughtime(list("drosophila", "monkey"), 100)
 ```
 
-![plot of chunk throughtime2](../assets/tutorial-images/rplos/throughtime2.png)
+![plot of chunk throughtime2](../assets/tutorial-images/rplos/throughtime2.png) 
 
 
 OR using google visualizations through the googleVis package, check it your self using, e.g.
