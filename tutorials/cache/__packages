@@ -1,4 +1,5 @@
 base
+bitops
 devtools
 geonames
 ggplot2
@@ -9,7 +10,10 @@ mapproj
 maps
 plyr
 rbison
+RCurl
 Rdocumentation
+rentrez
+rfisheries
 rgdal
 rgeos
 rjson
@@ -22,3 +26,4 @@ slidifyLibraries
 sp
 taxize
 testthat
+XML
