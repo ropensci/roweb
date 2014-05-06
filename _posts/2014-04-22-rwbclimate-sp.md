@@ -176,7 +176,7 @@ summary_data <- ddply(spDF, .(cname), summarise, mlat = mean(latitude), mtemp = 
 ```
 
 
-First let's look at a plot of mean temporature vs latititude, and to identify the points we'll plot their common names.
+First let's look at a plot of mean temperature vs latititude, and to identify the points we'll plot their common names.
 
 
 ```r
