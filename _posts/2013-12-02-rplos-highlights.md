@@ -36,7 +36,7 @@ library(rplos)
 
 
 ```r
-out <- highplos(q = "alcohol", hl.fl = "abstract", hl.snippets = 5, limit = 10)
+out <- highplos(q = "alcohol", hl.fl = "abstract", hl.snippets = 5, rows = 10)
 out[[1]]
 ```
 
