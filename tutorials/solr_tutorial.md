@@ -38,10 +38,7 @@ library("solr")
 
 ## Usage
 
-
-### Local setup of Solr and querying using solr R package, on Mac OSX
-
-**A general purpose R interface to [Solr](http://lucene.apache.org/solr/)**
+The `solr` package is a general purpose R interface to [Solr](http://lucene.apache.org/solr/)
 
 This package only deals with exracting data from a Solr endpoint, not writing data (pull request or holla if you're interested in writing solr data).
 
