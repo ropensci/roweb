@@ -179,7 +179,7 @@ vis_gauge(out)
 ## Using date as id variables
 ```
 
-![plot of chunk viz](../assets/tutorial_images/rgauges/viz.png) 
+![plot of chunk viz](../assets/tutorial-images/rgauges/viz.png) 
 
 ```
 ## NULL
