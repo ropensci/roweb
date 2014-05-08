@@ -5,7 +5,7 @@ packge_version: 0.2.0
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
-opts_chunk$set(fig.path="../assets/tutorial_images/rgauges/")
+opts_chunk$set(fig.path="../assets/tutorial-images/rgauges/")
 ```
 
 `rgauges` is an R wrapper to the gaug.es API for website analytics.
