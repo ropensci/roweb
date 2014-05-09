@@ -158,3 +158,5 @@ To cite `solr` in publications use:
 
 * License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our Github repo for solr](https://github.com/solr/rgauges/issues?state=open)
+
+[Back to top](#top)

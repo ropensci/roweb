@@ -710,3 +710,5 @@ To cite `alm` in publications use:
 
 * License: [CC0](http://creativecommons.org/choose/zero/)
 * Report bugs at [our Github repo for alm](https://github.com/ropensci/alm/issues?state=open)
+
+[Back to top](#top)

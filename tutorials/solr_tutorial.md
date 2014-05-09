@@ -68,9 +68,9 @@ solr_search(q='*:*', rows=2, fl='id', base=url, key=key)
 ```
 
 ```
-##                                                    id
-## 1  10.1371/journal.pntd.0002444/materials_and_methods
-## 2 10.1371/journal.pntd.0002444/supporting_information
+##                                          id
+## 1              10.1371/journal.pone.0022949
+## 2 10.1371/journal.pone.0075114/introduction
 ```
 
 **Facet**
@@ -83,18 +83,18 @@ solr_facet(q='*:*', facet.field='journal', facet.query=c('cell','bird'), base=ur
 ```
 ## $facet_queries
 ##   term value
-## 1 cell 89923
-## 2 bird  8981
+## 1 cell 90163
+## 2 bird  9010
 ## 
 ## $facet_fields
 ## $facet_fields$journal
 ##                                  X1     X2
-## 1                          plos one 787953
-## 2                     plos genetics  36537
-## 3                    plos pathogens  32193
-## 4        plos computational biology  26818
+## 1                          plos one 790366
+## 2                     plos genetics  36699
+## 3                    plos pathogens  32254
+## 4        plos computational biology  26944
 ## 5                      plos biology  25086
-## 6  plos neglected tropical diseases  20961
+## 6  plos neglected tropical diseases  21071
 ## 7                     plos medicine  17669
 ## 8              plos clinical trials    521
 ## 9                  plos collections     20
@@ -140,11 +140,11 @@ out$data
 
 ```
 ##                   min    max count missing      sum sumOfSquares     mean
-## counter_total_all   0 301291 20743       0 70514013    1.232e+12 3399.412
-## alm_twitterCount    0   1518 20743       0    82269    1.222e+07    3.966
+## counter_total_all   0 301433 20800       0 70736569    1.236e+12 3400.797
+## alm_twitterCount    0   1518 20800       0    82716    1.227e+07    3.977
 ##                    stddev
-## counter_total_all 6915.26
-## alm_twitterCount    23.94
+## counter_total_all 6919.38
+## alm_twitterCount    23.97
 ```
 
 
@@ -156,38 +156,38 @@ out$facet
 ## $counter_total_all
 ## $counter_total_all$journal
 ##    min    max count missing      sum sumOfSquares  mean stddev
-## 1  806  40519   439       0  2470710    2.270e+10  5628   4482
-## 2  981  44972   569       0  3573282    3.558e+10  6280   4810
-## 3    0 301291 16352       0 44184594    7.151e+11  2702   6036
-## 4 5008   9012     2       0    14020    1.063e+08  7010   2831
-## 5    0 183250   768       0  9208850    2.525e+11 11991  13611
-## 6    0  87489   219       0  2482672    5.826e+10 11336  11754
-## 7  771  83944   396       0  2253630    2.987e+10  5691   6570
-## 8  250 168186   747       0  2609773    4.240e+10  3494   6679
+## 1  135  40559   440       0  2478545    2.281e+10  5633   4489
+## 2    0  45019   572       0  3581769    3.572e+10  6262   4825
+## 3    0 301433 16396       0 44339703    7.182e+11  2704   6041
+## 4 5019   9024     2       0    14043    1.066e+08  7022   2832
+## 5  527  87593   219       0  2488825    5.846e+10 11364  11766
+## 6    0  84691   399       0  2259732    3.010e+10  5663   6594
+## 7 1113 183618   768       0  9229624    2.532e+11 12018  13620
+## 8    0 168274   753       0  2619025    4.250e+10  3478   6663
 ##                        facet_field
 ## 1                   plos pathogens
 ## 2                    plos genetics
 ## 3                         plos one
 ## 4             plos clinical trials
-## 5                     plos biology
-## 6                    plos medicine
-## 7       plos computational biology
+## 5                    plos medicine
+## 6       plos computational biology
+## 7                     plos biology
 ## 8 plos neglected tropical diseases
 ## 
 ## $counter_total_all$volume
 ##     min    max count missing      sum sumOfSquares  mean stddev
-## 1   888 109404   741       0  5364074    1.004e+11  7239   9123
-## 2  1178  87686   482       0  4153585    8.489e+10  8617  10104
-## 3  1405 115245    81       0  1110096    3.953e+10 13705  17435
-## 4   771  85555   178       0  1220104    2.648e+10  6855  10116
-## 5     0 179890  4825       0 14238246    2.031e+11  2951   5778
-## 6     0 171743  2948       0 11063837    1.519e+11  3753   6121
-## 7     0  75771  1539       0  7904151    9.588e+10  5136   5995
-## 8   527 301291  1010       0  6663464    1.993e+11  6597  12409
-## 9     0 183250  2682       0  4826364    1.087e+11  1800   6107
-## 10    0 212364  6164       0 13036254    1.988e+11  2115   5271
-## 11    0  81651    72       0   793484    2.003e+10 11021  12606
-## 12    0  44159    21       0   140354    2.574e+09  6684   9045
+## 1   889 109435   741       0  5369288    1.006e+11  7246   9130
+## 2  1179  87718   482       0  4157166    8.504e+10  8625  10113
+## 3  1407 115372    81       0  1110885    3.960e+10 13715  17452
+## 4     0  85674   185       0  1227906    2.663e+10  6637  10022
+## 5     0 179914  4825       0 14274273    2.036e+11  2958   5784
+## 6     0 171970  2948       0 11086329    1.524e+11  3761   6129
+## 7     0  75835  1539       0  7915144    9.614e+10  5143   6004
+## 8   527 301433  1010       0  6670588    1.996e+11  6605  12418
+## 9     0 183618  2726       0  4885844    1.101e+11  1792   6098
+## 10    0 213152  6170       0 13089929    1.998e+11  2122   5281
+## 11  726  81875    72       0   797708    2.015e+10 11079  12622
+## 12 1363  44516    21       0   151509    2.655e+09  7215   8836
 ##    facet_field
 ## 1            3
 ## 2            2
@@ -206,38 +206,38 @@ out$facet
 ## $alm_twitterCount
 ## $alm_twitterCount$journal
 ##   min  max count missing   sum sumOfSquares   mean stddev
-## 1   0   74   439       0  1583        42115  3.606  9.117
-## 2   0  154   569       0  1786        56674  3.139  9.482
-## 3   0  842 16352       0 58527      6949113  3.579 20.302
+## 1   0   74   440       0  1607        43441  3.652  9.251
+## 2   0  154   572       0  1787        56681  3.124  9.460
+## 3   0  842 16396       0 58909      7002193  3.593 20.352
 ## 4   0    3     2       0     3            9  1.500  2.121
-## 5   0 1518   768       0  7581      3590807  9.871 67.706
-## 6   0  536   219       0  2513       457417 11.475 44.339
-## 7   0  125   396       0  1650        67862  4.167 12.426
-## 8   0  805   747       0  2148       665628  2.876 29.732
+## 5   0  536   219       0  2515       457913 11.484 44.362
+## 6   0  127   399       0  1653        68371  4.143 12.433
+## 7   0 1518   768       0  7603      3593051  9.900 67.723
+## 8   0  806   753       0  2161       667367  2.870 29.651
 ##                        facet_field
 ## 1                   plos pathogens
 ## 2                    plos genetics
 ## 3                         plos one
 ## 4             plos clinical trials
-## 5                     plos biology
-## 6                    plos medicine
-## 7       plos computational biology
+## 5                    plos medicine
+## 6       plos computational biology
+## 7                     plos biology
 ## 8 plos neglected tropical diseases
 ## 
 ## $alm_twitterCount$volume
 ##    min  max count missing   sum sumOfSquares    mean  stddev facet_field
 ## 1    0   29   741       0   362         3332  0.4885   2.065           3
-## 2    0   36   482       0   297         4865  0.6162   3.120           2
+## 2    0   36   482       0   298         4896  0.6183   3.130           2
 ## 3    0   28    81       0   103         1855  1.2716   4.642           1
-## 4    0  536   178       0  3677       509609 20.6573  49.498          10
-## 5    0  788  4825       0 17687      1741423  3.6657  18.643           7
-## 6    0  805  2948       0  3099       847155  1.0512  16.922           6
-## 7    0  111  1539       0  1227        48159  0.7973   5.539           5
-## 8    0  157  1010       0   588        31432  0.5822   5.551           4
-## 9    0  628  2682       0 18138      1848752  6.7629  25.374           9
-## 10   0  842  6164       0 30349      3618121  4.9236  23.724           8
-## 11   0 1518    72       0  4825      2731411 67.0139 184.164          11
-## 12   0  817    21       0  1917       829395 91.2857 180.887          12
+## 4    0  536   185       0  3705       511873 20.0270  48.771          10
+## 5    0  791  4825       0 17702      1749190  3.6688  18.685           7
+## 6    0  806  2948       0  3198       866442  1.0848  17.112           6
+## 7    0  111  1539       0  1229        48169  0.7986   5.539           5
+## 8    0  158  1010       0   591        31751  0.5851   5.579           4
+## 9    0  628  2726       0 18388      1875786  6.7454  25.354           9
+## 10   0  842  6170       0 30375      3618499  4.9230  23.713           8
+## 11   0 1518    72       0  4826      2731478 67.0278 184.162          11
+## 12   0  817    21       0  1939       831639 92.3333 180.638          12
 ```
 
 **More like this**
@@ -252,11 +252,11 @@ out$docs
 
 ```
 ##                             id counter_total_all
-## 1 10.1371/journal.pbio.1001805              6663
-## 2 10.1371/journal.pbio.0020440             16258
-## 3 10.1371/journal.pone.0087217              1801
-## 4 10.1371/journal.pone.0040117              1921
-## 5 10.1371/journal.pone.0072525               822
+## 1 10.1371/journal.pbio.1001805              6710
+## 2 10.1371/journal.pbio.0020440             16259
+## 3 10.1371/journal.pone.0087217              1822
+## 4 10.1371/journal.pone.0040117              1942
+## 5 10.1371/journal.pone.0072525               823
 ```
 
 
@@ -267,43 +267,43 @@ out$mlt
 ```
 ## $`10.1371/journal.pbio.1001805`
 ##                             id counter_total_all
-## 1 10.1371/journal.pone.0082578               771
-## 2 10.1371/journal.pcbi.1002915              4472
-## 3 10.1371/journal.pcbi.1002652              2180
-## 4 10.1371/journal.pone.0087380               464
-## 5 10.1371/journal.pcbi.1003408              3058
+## 1 10.1371/journal.pone.0082578               783
+## 2 10.1371/journal.pcbi.1003408              3132
+## 3 10.1371/journal.pcbi.1002652              2181
+## 4 10.1371/journal.pcbi.1002915              4484
+## 5 10.1371/journal.pone.0087380               471
 ## 
 ## $`10.1371/journal.pbio.0020440`
 ##                             id counter_total_all
-## 1 10.1371/journal.pone.0035964              2859
+## 1 10.1371/journal.pone.0035964              2863
 ## 2 10.1371/journal.pone.0003259              1748
-## 3 10.1371/journal.pone.0068814              4767
-## 4 10.1371/journal.pbio.0050104              2654
-## 5 10.1371/journal.pbio.0020215              4304
+## 3 10.1371/journal.pone.0068814              4782
+## 4 10.1371/journal.pbio.0050104              2655
+## 5 10.1371/journal.pbio.0030105              2822
 ## 
 ## $`10.1371/journal.pone.0087217`
 ##                             id counter_total_all
-## 1 10.1371/journal.pcbi.0020092             13704
-## 2 10.1371/journal.pone.0063375              1117
-## 3 10.1371/journal.pone.0015143             11730
-## 4 10.1371/journal.pone.0034096              2125
+## 1 10.1371/journal.pcbi.0020092             13721
+## 2 10.1371/journal.pone.0063375              1120
+## 3 10.1371/journal.pone.0015143             11745
+## 4 10.1371/journal.pone.0034096              2127
 ## 5 10.1371/journal.pcbi.1000986              2702
 ## 
 ## $`10.1371/journal.pone.0040117`
 ##                             id counter_total_all
-## 1 10.1371/journal.pone.0069352              1171
-## 2 10.1371/journal.pone.0035502              2183
-## 3 10.1371/journal.pone.0014065              3652
-## 4 10.1371/journal.pone.0078369              1387
-## 5 10.1371/journal.pone.0053825              2134
+## 1 10.1371/journal.pone.0069352              1176
+## 2 10.1371/journal.pone.0014065              3658
+## 3 10.1371/journal.pone.0035502              2193
+## 4 10.1371/journal.pone.0078369              1401
+## 5 10.1371/journal.ppat.1003221              7082
 ## 
 ## $`10.1371/journal.pone.0072525`
 ##                             id counter_total_all
-## 1 10.1371/journal.pone.0060766              1063
-## 2 10.1371/journal.pcbi.1002928              6565
-## 3 10.1371/journal.pcbi.0020144             12037
-## 4 10.1371/journal.pcbi.1000350              8392
-## 5 10.1371/journal.pone.0068714              2630
+## 1 10.1371/journal.pone.0060766              1065
+## 2 10.1371/journal.pcbi.1002928              6571
+## 3 10.1371/journal.pcbi.0020144             12041
+## 4 10.1371/journal.pcbi.1000350              8394
+## 5 10.1371/journal.pone.0072862              2562
 ```
 
 **Parsing**
@@ -318,7 +318,7 @@ For example:
 ```
 
 ```
-## [1] "{\"response\":{\"numFound\":13027,\"start\":0,\"docs\":[{},{}]},\"highlighting\":{\"10.1371/journal.pmed.0040151\":{\"abstract\":[\"Background: <em>Alcohol</em> consumption causes an estimated 4% of the global disease burden, prompting\"]},\"10.1371/journal.pone.0027752\":{\"abstract\":[\"Background: The negative influences of <em>alcohol</em> on TB management with regard to delays in seeking\"]}}}\n"
+## [1] "{\"response\":{\"numFound\":13066,\"start\":0,\"docs\":[{},{}]},\"highlighting\":{\"10.1371/journal.pmed.0040151\":{\"abstract\":[\"Background: <em>Alcohol</em> consumption causes an estimated 4% of the global disease burden, prompting\"]},\"10.1371/journal.pone.0027752\":{\"abstract\":[\"Background: The negative influences of <em>alcohol</em> on TB management with regard to delays in seeking\"]}}}\n"
 ## attr(,"class")
 ## [1] "sr_high"
 ## attr(,"wt")
@@ -421,3 +421,5 @@ To cite `solr` in publications use:
 
 * License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our Github repo for solr](https://github.com/solr/rgauges/issues?state=open)
+
+[Back to top](#top)

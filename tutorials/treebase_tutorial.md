@@ -54,8 +54,6 @@ Phylogenetic tree with 19 tips and 6 internal nodes.
 
 Tip labels:
 	Etheostoma_barrenense_A, Etheostoma_rafinesquei_B, Etheostoma_atripinne_A, Etheostoma_atripinne_D, Etheostoma_atripinne_P, Etheostoma_orientale_H, ...
-Node labels:
-[1] ""     "1.00" "0.98" "1.00" "0.98" "0.60"
 
 Unrooted; includes branch lengths.
 ```
@@ -187,3 +185,5 @@ To cite `treebase` in publications use:
 
 * License: [CC0](http://creativecommons.org/choose/zero/)
 * Report bugs at [our Github repo for treebase](https://github.com/ropensci/treebase/issues?state=open)
+
+[Back to top](#top)
