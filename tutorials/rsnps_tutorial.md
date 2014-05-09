@@ -6,7 +6,6 @@ packge_version: 0.1.0
 
 
 
-
 <section id="installation">
 
 ## Installation
@@ -17,7 +16,6 @@ When available on CRAN
 ```r
 install.packages("rsnps")
 ```
-
 
 Or get from Github
 
@@ -30,11 +28,9 @@ install_github("rsnps", "ropensci")
 
 
 
-
 ```r
 library(rsnps)
 ```
-
 
 <section id="usage">
 
@@ -45,7 +41,7 @@ library(rsnps)
 
 
 ```r
-allgensnp(snp = "rs7412")[1:3]
+allgensnp(snp='rs7412')[1:3]
 ```
 
 ```
@@ -140,7 +136,7 @@ allgensnp(snp = "rs7412")[1:3]
 ```
 
 ```r
-allgensnp("rs7412", df = TRUE)[1:10, ]
+allgensnp('rs7412', df=TRUE)[1:10,]
 ```
 
 ```
@@ -168,37 +164,35 @@ allgensnp("rs7412", df = TRUE)[1:10, ]
 10       CC
 ```
 
-
 ### Get all phenotypes, their variations, and how many users have data available for a given phenotype.
 
 Get all data
 
 
 ```r
-allphenotypes(df = TRUE)[1:10, ]
+allphenotypes(df = TRUE)[1:10,]
 ```
 
 ```
    id characteristic                   known_variations number_of_users
-1   1      Eye color                              Brown             432
-2   1      Eye color                        Brown-green             432
-3   1      Eye color                         Blue-green             432
-4   1      Eye color                          Blue-grey             432
-5   1      Eye color                              Green             432
-6   1      Eye color                               Blue             432
-7   1      Eye color                              Hazel             432
-8   1      Eye color                              Mixed             432
-9   1      Eye color                          Gray-blue             432
-10  1      Eye color Blue-grey; broken amber collarette             432
+1   1      Eye color                              Brown             434
+2   1      Eye color                        Brown-green             434
+3   1      Eye color                         Blue-green             434
+4   1      Eye color                          Blue-grey             434
+5   1      Eye color                              Green             434
+6   1      Eye color                               Blue             434
+7   1      Eye color                              Hazel             434
+8   1      Eye color                              Mixed             434
+9   1      Eye color                          Gray-blue             434
+10  1      Eye color Blue-grey; broken amber collarette             434
 ```
-
 
 Output a list, then call the characterisitc of interest by 'id' or 'characteristic'
 
 
 ```r
 datalist <- allphenotypes()
-names(datalist)[1:5]  # get list of all characteristics you can call
+names(datalist)[1:5] # get list of all characteristics you can call
 ```
 
 ```
@@ -206,7 +200,7 @@ names(datalist)[1:5]  # get list of all characteristics you can call
 ```
 
 ```r
-datalist[["ADHD"]]  # get data.frame for 'ADHD'
+datalist[["ADHD"]] # get data.frame for 'ADHD'
 ```
 
 ```
@@ -220,41 +214,41 @@ datalist[["ADHD"]]  # get data.frame for 'ADHD'
 7 29           ADHD Diagnosed as not having but with some signs
 8 29           ADHD                                 Mthfr c677t
   number_of_users
-1             121
-2             121
-3             121
-4             121
-5             121
-6             121
-7             121
-8             121
+1             122
+2             122
+3             122
+4             122
+5             122
+6             122
+7             122
+8             122
 ```
 
 ```r
-datalist[c("mouth size", "SAT Writing")]  # get data.frame for 'ADHD'
+datalist[c("mouth size","SAT Writing")] # get data.frame for 'ADHD'
 ```
 
 ```
 $`mouth size`
    id characteristic known_variations number_of_users
-1 120     mouth size           Medium              51
-2 120     mouth size            Small              51
-3 120     mouth size            Large              51
+1 120     mouth size           Medium              53
+2 120     mouth size            Small              53
+3 120     mouth size            Large              53
 
 $`SAT Writing`
    id characteristic                known_variations number_of_users
-1  41    SAT Writing                             750              43
-2  41    SAT Writing              Tested before 2005              43
-3  41    SAT Writing                             800              43
-4  41    SAT Writing             Country with no sat              43
-5  41    SAT Writing                             N/a              43
-6  41    SAT Writing         Never & have ba & above              43
-7  41    SAT Writing                             720              43
-8  41    SAT Writing Did well - don't remember score              43
-9  41    SAT Writing                             511              43
-10 41    SAT Writing                             700              43
+1  41    SAT Writing                             750              45
+2  41    SAT Writing              Tested before 2005              45
+3  41    SAT Writing                             800              45
+4  41    SAT Writing             Country with no sat              45
+5  41    SAT Writing                             N/a              45
+6  41    SAT Writing         Never & have ba & above              45
+7  41    SAT Writing                             720              45
+8  41    SAT Writing Did well - don't remember score              45
+9  41    SAT Writing                             511              45
+10 41    SAT Writing                             700              45
+11 41    SAT Writing                             760              45
 ```
-
 
 ### Get annotations for a given snp.
 
@@ -262,7 +256,7 @@ Get just the metadata
 
 
 ```r
-annotations(snp = "rs7903146", output = "metadata")
+annotations(snp = 'rs7903146', output = 'metadata')
 ```
 
 ```
@@ -272,12 +266,11 @@ annotations(snp = "rs7903146", output = "metadata")
 3   position 114748339
 ```
 
-
 Just from PLOS journals
 
 
 ```r
-annotations(snp = "rs7903146", output = "plos")[c(1:10), ]
+annotations(snp = 'rs7903146', output = 'plos')[c(1:10),]
 ```
 
 ```
@@ -338,12 +331,11 @@ annotations(snp = "rs7903146", output = "plos")[c(1:10), ]
 10 10.1371/journal.pone.0071730
 ```
 
-
 Just from SNPedia
 
 
 ```r
-annotations(snp = "rs7903146", output = "snpedia")
+annotations(snp = 'rs7903146', output = 'snpedia')
 ```
 
 ```
@@ -357,12 +349,11 @@ annotations(snp = "rs7903146", output = "snpedia")
 3                            2x increased risk for Type-2 diabetes
 ```
 
-
 Get all annotations
 
 
 ```r
-annotations(snp = "rs7903146", output = "all")[1:10, ]
+annotations(snp = 'rs7903146', output = 'all')[1:10,]
 ```
 
 ```
@@ -434,24 +425,22 @@ annotations(snp = "rs7903146", output = "all")[1:10, ]
 10        <NA>    <NA>  <NA>     NA               <NA>                <NA>
 ```
 
-
 ### Download genotype data for a user from 23andme or other repo.
 
 The `fetch_genotypes` call can take a bit to download the file, so we won't run it here in this demo.
 
 
 ```r
-data <- users(df = TRUE)
-head(data[[1]])  # users with links to genome data
-fetch_genotypes(url = data[[1]][1, "genotypes.download_url"], rows = 15)
+data <- users(df=TRUE)
+head( data[[1]] ) # users with links to genome data
+fetch_genotypes(url = data[[1]][1,"genotypes.download_url"], rows=15)
 ```
-
 
 ### Get genotype data for one or multiple users.
 
 
 ```r
-genotypes(snp = "rs9939609", userid = 1)
+genotypes(snp='rs9939609', userid=1)
 ```
 
 ```
@@ -483,7 +472,7 @@ $user$genotypes[[1]]$local_genotype
 ```
 
 ```r
-genotypes("rs9939609", userid = "1,6,8", df = TRUE)
+genotypes('rs9939609', userid='1,6,8', df=TRUE)
 ```
 
 ```
@@ -498,7 +487,7 @@ genotypes("rs9939609", userid = "1,6,8", df = TRUE)
 ```
 
 ```r
-genotypes("rs9939609", userid = "1-2", df = FALSE)
+genotypes('rs9939609', userid='1-2', df=FALSE)
 ```
 
 ```
@@ -556,12 +545,11 @@ genotypes("rs9939609", userid = "1-2", df = FALSE)
 list()
 ```
 
-
 ### Get phenotype data for one or multiple users.
 
 
 ```r
-phenotypes(userid = 1)$phenotypes[1:3]
+phenotypes(userid=1)$phenotypes[1:3]
 ```
 
 ```
@@ -590,7 +578,7 @@ $`Eye color`$variation
 ```
 
 ```r
-phenotypes(userid = "1,6,8", df = TRUE)[[1]][1:10, ]
+phenotypes(userid='1,6,8', df=TRUE)[[1]][1:10,]
 ```
 
 ```
@@ -608,7 +596,7 @@ phenotypes(userid = "1,6,8", df = TRUE)[[1]][1:10, ]
 ```
 
 ```r
-out <- phenotypes(userid = "1-8", df = TRUE)
+out <- phenotypes(userid='1-8', df=TRUE)
 lapply(out, head)
 ```
 
@@ -661,12 +649,11 @@ $Samantha
 6        Nicotine dependence          20 ex-smoker, 7 cigarettes/day
 ```
 
-
 ### Get all known variations and all users sharing that phenotype for one phenotype(-ID).
 
 
 ```r
-phenotypes_byid(phenotypeid = 12, return_ = "desc")
+phenotypes_byid(phenotypeid=12, return_ = 'desc')
 ```
 
 ```
@@ -681,7 +668,7 @@ $description
 ```
 
 ```r
-phenotypes_byid(phenotypeid = 12, return_ = "knownvars")
+phenotypes_byid(phenotypeid=12, return_ = 'knownvars')
 ```
 
 ```
@@ -748,7 +735,7 @@ $known_variations[[20]]
 ```
 
 ```r
-phenotypes_byid(phenotypeid = 12, return_ = "users")[1:10, ]
+phenotypes_byid(phenotypeid=12, return_ = 'users')[1:10,]
 ```
 
 ```
@@ -776,12 +763,11 @@ phenotypes_byid(phenotypeid = 12, return_ = "users")[1:10, ]
 10                                                                                         Brown-black
 ```
 
-
 ### Get openSNP users.
 
 
 ```r
-data <- users(df = FALSE)
+data <- users(df=FALSE)
 data[1:2]
 ```
 
@@ -808,7 +794,6 @@ list()
 list()
 ```
 
-
 ### Search for SNPs in Linkage Disequilibrium with a set of SNPs
 
 
@@ -825,34 +810,42 @@ Done!
 ```
 $rs420358
        Proxy      SNP Distance RSquared DPrime GeneVariant GeneName
-4   rs420358 rs420358       NA    1.000  1.000  INTERGENIC      N/A
-5   rs442418 rs420358       NA    1.000  1.000  INTERGENIC      N/A
-8   rs718223 rs420358       NA    1.000  1.000  INTERGENIC      N/A
-6   rs453604 rs420358       NA    1.000  1.000  INTERGENIC      N/A
-3   rs372946 rs420358       NA    0.943  1.000  INTERGENIC      N/A
-1 rs10889290 rs420358       NA    0.800  1.000  INTERGENIC      N/A
-2 rs10889291 rs420358       NA    0.800  1.000  INTERGENIC      N/A
-7  rs4660403 rs420358       NA    0.800  1.000  INTERGENIC      N/A
+4   rs420358 rs420358        0    1.000  1.000  INTERGENIC      N/A
+5   rs442418 rs420358      122    1.000  1.000  INTERGENIC      N/A
+8   rs718223 rs420358     1168    1.000  1.000  INTERGENIC      N/A
+6   rs453604 rs420358     2947    1.000  1.000  INTERGENIC      N/A
+3   rs372946 rs420358      -70    0.943  1.000  INTERGENIC      N/A
+1 rs10889290 rs420358     3987    0.800  1.000  INTERGENIC      N/A
+2 rs10889291 rs420358     4334    0.800  1.000  INTERGENIC      N/A
+7  rs4660403 rs420358     7021    0.800  1.000  INTERGENIC      N/A
   GeneDescription Major Minor   MAF NObserved Chromosome_NCBI Marker_NCBI
-4             N/A     C     A 0.167       120              NA          NA
-5             N/A     C     T 0.167       120              NA          NA
-8             N/A     A     G 0.167       120              NA          NA
-6             N/A     A     G 0.167       120              NA          NA
-3             N/A     G     C 0.175       120              NA          NA
-1             N/A     G     A 0.200       120              NA          NA
-2             N/A     C     T 0.200       120              NA          NA
-7             N/A     A     G 0.200       120              NA          NA
-  Class_NCBI Gene_NCBI Alleles_NCBI Major_NCBI Minor_NCBI MAF_NCBI BP_NCBI
-4         NA        NA           NA         NA         NA       NA      NA
-5         NA        NA           NA         NA         NA       NA      NA
-8         NA        NA           NA         NA         NA       NA      NA
-6         NA        NA           NA         NA         NA       NA      NA
-3         NA        NA           NA         NA         NA       NA      NA
-1         NA        NA           NA         NA         NA       NA      NA
-2         NA        NA           NA         NA         NA       NA      NA
-7         NA        NA           NA         NA         NA       NA      NA
+4             N/A     C     A 0.167       120               1    rs420358
+5             N/A     C     T 0.167       120               1    rs442418
+8             N/A     A     G 0.167       120               1    rs718223
+6             N/A     A     G 0.167       120               1    rs453604
+3             N/A     G     C 0.175       120               1    rs372946
+1             N/A     G     A 0.200       120               1  rs10889290
+2             N/A     C     T 0.200       120               1  rs10889291
+7             N/A     A     G 0.200       120               1   rs4660403
+  Class_NCBI Gene_NCBI Alleles_NCBI Major_NCBI Minor_NCBI MAF_NCBI
+4        snp      <NA>          G/T          G          T   0.0891
+5        snp      <NA>          A/G          G          A   0.0891
+8        snp      <NA>          A/G          A          G   0.0891
+6        snp      <NA>          A/G          A          G   0.0836
+3        snp      <NA>          C/G          G          C   0.0891
+1        snp      <NA>          A/G          G          A   0.1015
+2        snp      <NA>          C/T          C          T   0.1015
+7        snp      <NA>          A/G          A          G   0.0969
+   BP_NCBI
+4 40341238
+5 40341360
+8 40342406
+6 40344185
+3 40341168
+1 40345225
+2 40345572
+7 40348259
 ```
-
 
 ### Query NCBI's dbSNP for information on a set of SNPs
 
@@ -865,11 +858,17 @@ NCBI_snp_query(snps)
 ```
 
 ```
- [1] Query      Chromosome Marker     Class      Gene       Alleles   
- [7] Major      Minor      MAF        BP        
-<0 rows> (or 0-length row.names)
+        Query Chromosome      Marker          Class Gene   Alleles Major
+1       rs332          7 rs121909001         in-del CFTR     -/TTT  <NA>
+2    rs420358          1    rs420358            snp <NA>       G/T     G
+3   rs1837253          5   rs1837253            snp <NA>       C/T     C
+4 rs111068718       <NA> rs111068718 microsatellite <NA> (GT)21/24  <NA>
+  Minor    MAF        BP
+1  <NA>     NA 117559592
+2     T 0.0891  40341238
+3     T 0.3627 111066173
+4  <NA>     NA        NA
 ```
-
 
 <section id="citing">
 
@@ -887,3 +886,5 @@ To cite `rsnps` in publications use:
 
 * License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our Github repo for rsnps](https://github.com/ropensci/rsnps/issues?state=open)
+
+[Back to top](#top)

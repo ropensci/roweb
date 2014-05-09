@@ -155,3 +155,5 @@ To cite `rentrez` in publications use:
 
 * License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our Github repo for rentrez](https://github.com/ropensci/rentrez/issues?state=open)
+
+[Back to top](#top)

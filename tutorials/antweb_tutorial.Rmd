@@ -98,4 +98,6 @@ To cite `AntWeb` in publications use:
 ## License and bugs
 
 * License: [CC0](http://creativecommons.org/choose/zero/)
-* Report bugs at [our Github repo for AntWeb](https://github.com/AntWeb/rgauges/issues?state=open)
+* Report bugs at [our Github repo for AntWeb](https://github.com/AntWeb/issues?state=open)
+
+[Back to top](#top)

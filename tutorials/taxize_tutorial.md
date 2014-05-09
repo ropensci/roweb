@@ -308,6 +308,7 @@ To cite `taxize` in publications use:
 * License: [CC0](http://creativecommons.org/choose/zero/)
 * Report bugs at [our Github repo for taxize](https://github.com/ropensci/taxize/issues?state=open)
 
+[Back to top](#top)
 
 
 

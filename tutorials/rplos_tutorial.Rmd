@@ -155,3 +155,5 @@ To cite `rplos` in publications use:
 
 * License: [CC0](http://creativecommons.org/choose/zero/)
 * Report bugs at [our Github repo for rplos](https://github.com/ropensci/rplos/issues?state=open)
+
+[Back to top](#top)

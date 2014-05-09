@@ -93,3 +93,5 @@ To cite `rgauges` in publications use:
 
 * License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our Github repo for rgauges](https://github.com/ropensci/rgauges/issues?state=open)
+
+[Back to top](#top)

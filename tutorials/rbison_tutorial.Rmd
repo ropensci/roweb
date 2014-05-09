@@ -229,3 +229,5 @@ To cite `rbison` in publications use:
 
 * License: [CC0](http://creativecommons.org/choose/zero/)
 * Report bugs at [our Github repo for rbison](https://github.com/ropensci/rbison/issues?state=open)
+
+[Back to top](#top)
