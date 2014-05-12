@@ -1,0 +1,97 @@
+---
+title: rgauges tutorial
+layout: tutorial
+packge_version: 0.2.0
+---
+
+```{r, eval=TRUE, echo=FALSE}
+opts_chunk$set(fig.path="../assets/tutorial-images/rgauges/")
+```
+
+`rgauges` is an R wrapper to the gaug.es API for website analytics.
+
+### Gaug.es API docs
+
+See the Gaug.es API documentation here [http://get.gaug.es/documentation/](http://get.gaug.es/documentation/)
+
+### Authentication
+
+Get your own API key in your Gaug.es 'My Account' page and put in your .Rprofile file under the name 'GaugesKey' or some other name (you can specify `keyname` in function calls - but if you put in as 'GaugesKey' you're all set and don't need to bother with the `keyname` parameter).
+
+
+<section id="installation">
+
+## Installation
+
+
+More stable version from CRAN
+
+```{r installcran, messages=FALSE, warnings=FALSE, eval=FALSE}
+install.packages("rgauges")
+```
+
+Development version from Github
+
+```{r installgithub, messages=FALSE, warnings=FALSE, eval=FALSE}
+install.packages("devtools")
+library(devtools)
+install_github("rgauges", "ropensci")
+```
+
+Load
+
+```{r load, messages=FALSE, warnings=FALSE, cache=FALSE}
+library(rgauges)
+```
+
+<section id="usage">
+
+## Usage
+
+
+#### Your info
+
+```{r yourinfo, messages=FALSE, warnings=FALSE, cache=FALSE}
+gs_me()
+```
+
+##### Traffic
+
+```{r traffic, messages=FALSE, warnings=FALSE, cache=FALSE}
+gs_traffic(id='4efd83a6f5a1f5158a000004')
+```
+
+#### Screen/browser information
+
+```{r screenbrowser, messages=FALSE, warnings=FALSE, cache=FALSE}
+gs_reso(id='4efd83a6f5a1f5158a000004')
+```
+
+#### Visualize traffic data
+
+You'll need to load ggplot2
+
+```{r viz, messages=FALSE, warnings=FALSE, cache=FALSE}
+library(ggplot2)
+out <- gs_gauge_detail(id='4efd83a6f5a1f5158a000004')
+vis_gauge(out)
+```
+
+<section id="citing">
+
+## Citing
+
+To cite `rgauges` in publications use:
+
+<br>
+
+> Scott Chamberlain and Karthik Ram (2014). rgauges: R wrapper to Gaug.es API. R package version 0.2.0. https://github.com/ropensci/rgauges
+
+<section id="license_bugs">
+
+## License and bugs
+
+* License: [MIT](http://opensource.org/licenses/MIT)
+* Report bugs at [our Github repo for rgauges](https://github.com/ropensci/rgauges/issues?state=open)
+
+[Back to top](#top)

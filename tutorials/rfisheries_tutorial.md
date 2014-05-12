@@ -6,7 +6,6 @@ packge_version: 0.1
 
 
 
-
 This package provides programmatic access to the [openfisheries](http://openfisheries.org/) [API](http://openfisheries.org/api-info).
 
 Open Fisheries is a platform that aggregates global fishery data and currently offers global fish capture landings from 1950 onwards (more data coming soon). Read more about that effort [here](http://openfisheries.org/about).
@@ -21,7 +20,6 @@ Open Fisheries is a platform that aggregates global fishery data and currently o
 install.packages("rfisheries")
 ```
 
-
 <section id="usage">
 
 ## Usage
@@ -31,7 +29,7 @@ Package currently provides three basic functions. Landings data can be obtained 
 
 ```r
 library(rfisheries)
-head(of_landings())
+head( of_landings() )
 ```
 
 ```
@@ -44,12 +42,11 @@ head(of_landings())
 ## 6 27496847 1955
 ```
 
-
 To get country specific data, provide a iso3c country code
 
 
 ```r
-head(of_landings(country = "USA"))
+head( of_landings(country = "USA") )
 ```
 
 ```
@@ -62,12 +59,11 @@ head(of_landings(country = "USA"))
 ## 6 2621021 1955     USA
 ```
 
-
 To get species specific landings, provide the correct a3 code for the required species.
 
 
 ```r
-head(of_landings(species = "SKJ"))
+head( of_landings(species = "SKJ") )
 ```
 
 ```
@@ -79,7 +75,6 @@ head(of_landings(species = "SKJ"))
 ## 5 213505 1954     SKJ
 ## 6 192035 1955     SKJ
 ```
-
 
 If you don't have know the correct species or country codes, you can get a complete list with the following two functions.
 
@@ -106,7 +101,7 @@ Similarly you can get a full list of country codes
 
 
 ```r
-head(of_country_codes())
+head( of_country_codes() )
 ```
 
 ```
@@ -118,7 +113,6 @@ head(of_country_codes())
 ## 5        Andorra   AND
 ## 6         Angola   AGO
 ```
-
 
 Example: Compare landings from multiple countries
 
@@ -136,7 +130,6 @@ results <- ldply(c_list, function(x) {
 })
 ```
 
-
 You can easily compare these results
 
 
@@ -147,7 +140,6 @@ ggplot(results, aes(year, catch, group = country, color = country)) +
 ```
 
 ![plot of chunk plot](../assets/tutorial-images/rfisheries/plot.png) 
-
 
 Similarly you can get landings data for multiple species. As the API evolves, we'll update the package.
 
@@ -168,3 +160,5 @@ To cite `rfisheries` in publications use:
 
 * License: [CC0](http://creativecommons.org/choose/zero/)
 * Report bugs at [our Github repo for rfisheries](https://github.com/ropensci/rfisheries/issues?state=open)
+
+[Back to top](#top)

@@ -8,10 +8,6 @@ packge_version: 0.6.2
 opts_chunk$set(fig.path="../assets/tutorial-images/rgbif/", fig.width=6, fig.height=4)
 ```
 
-*Note: this vignette demonstrates functions that work with the new GBIF API. See [here](http://ropensci.org/tutorials/rgbif_tutorial.html) for a vignette that works with the old GBIF API.*
-
-### About the package
-
 `rgbif` is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). `rgbif` wraps R code around the [GBIF API][gbifapi] to allow you to talk to GBIF from R.
 
 ********************
@@ -168,3 +164,5 @@ To cite `rgbif` in publications use:
 
 * License: [CC0](http://creativecommons.org/choose/zero/)
 * Report bugs at [our Github repo for rgbif](https://github.com/ropensci/rgbif/issues?state=open)
+
+[Back to top](#top)
