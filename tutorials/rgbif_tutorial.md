@@ -6,11 +6,6 @@ packge_version: 0.6.2
 
 
 
-
-*Note: this vignette demonstrates functions that work with the new GBIF API. See [here](http://ropensci.org/tutorials/rgbif_tutorial.html) for a vignette that works with the old GBIF API.*
-
-### About the package
-
 `rgbif` is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). `rgbif` wraps R code around the [GBIF API][gbifapi] to allow you to talk to GBIF from R.
 
 ********************
@@ -26,14 +21,12 @@ Install rgbif
 install.packages("rgbif")
 ```
 
-
 Load rgbif
 
 
 ```r
 library("rgbif")
 ```
-
 
 ********************
 
@@ -47,73 +40,67 @@ Search by type of record, all observational in this case
 
 
 ```r
-occ_count(basisOfRecord = "OBSERVATION")
+occ_count(basisOfRecord='OBSERVATION')
 ```
 
 ```
-[1] 99347397
+[1] 99391054
 ```
-
 
 Records for **Puma concolor** with lat/long data (georeferened) only
 
 
 ```r
-occ_count(taxonKey = 2435099, georeferenced = TRUE)
+occ_count(taxonKey=2435099, georeferenced=TRUE)
 ```
 
 ```
-[1] 2654
+[1] 2664
 ```
-
 
 All georeferenced records in GBIF
 
 
 ```r
-occ_count(georeferenced = TRUE)
+occ_count(georeferenced=TRUE)
 ```
 
 ```
-[1] 371864727
+[1] 372806248
 ```
-
 
 Records from Denmark
 
 
 ```r
-occ_count(country = "DENMARK")
+occ_count(country='DENMARK')
 ```
 
 ```
-[1] 8640789
+[1] 8642028
 ```
-
 
 Number of records in a particular dataset
 
 
 ```r
-occ_count(datasetKey = "9e7ea106-0bf8-4087-bb61-dfe4f29e0f17")
+occ_count(datasetKey='9e7ea106-0bf8-4087-bb61-dfe4f29e0f17')
 ```
 
 ```
 [1] 4591
 ```
 
-
 All records from 2012
 
 
 ```r
-occ_count(year = 2012)
+occ_count(year=2012)
 ```
 
 ```
-[1] 32180847
+[1] 32203523
 ```
-
 
 ********************
 
@@ -129,7 +116,6 @@ taxrank()
 [5] "family"        "genus"         "species"       "infraspecific"
 ```
 
-
 ********************
 
 ### Search for taxon information
@@ -138,7 +124,7 @@ Search for a genus
 
 
 ```r
-head(name_lookup(query = "Cnaemidophorus", rank = "genus", return = "data"))
+head(name_lookup(query='Cnaemidophorus', rank="genus", return="data"))
 ```
 
 ```
@@ -172,12 +158,11 @@ head(name_lookup(query = "Cnaemidophorus", rank = "genus", return = "data"))
 6 GENUS              0
 ```
 
-
 Search for the class mammalia
 
 
 ```r
-head(name_lookup(query = "mammalia")$data)
+head(name_lookup(query='mammalia')$data)
 ```
 
 ```
@@ -204,12 +189,11 @@ head(name_lookup(query = "mammalia")$data)
 6              0 Animalia  101719444     <NA>        NA
 ```
 
-
 Look up the species Helianthus annuus
 
 
 ```r
-head(name_lookup("Helianthus annuus", rank = "species")$data)
+head(name_lookup('Helianthus annuus', rank="species")$data)
 ```
 
 ```
@@ -243,7 +227,6 @@ head(name_lookup("Helianthus annuus", rank = "species")$data)
 6 Spermatophyta Dicotyledones 111449175 111449177
 ```
 
-
 ********************
 
 ### Get data for a single occurrence. Note that data is returned as a list, with slots for metadata and data, or as a hierarchy, or just data.
@@ -252,7 +235,7 @@ Just data
 
 
 ```r
-occ_get(key = 855998194, return = "data")
+occ_get(key=855998194, return='data')
 ```
 
 ```
@@ -260,12 +243,11 @@ occ_get(key = 855998194, return = "data")
 1 Sciurus vulgaris 8.56e+08           58.41            12.04
 ```
 
-
 Just taxonomic hierarchy
 
 
 ```r
-occ_get(key = 855998194, return = "hier")
+occ_get(key=855998194, return='hier')
 ```
 
 ```
@@ -279,12 +261,11 @@ occ_get(key = 855998194, return = "hier")
 7 Sciurus vulgaris 5219668 species
 ```
 
-
 All data, or leave return parameter blank
 
 
 ```r
-occ_get(key = 855998194, return = "all")
+occ_get(key=855998194, return='all')
 ```
 
 ```
@@ -303,12 +284,11 @@ $data
 1 Sciurus vulgaris 8.56e+08           58.41            12.04
 ```
 
-
 Get many occurrences. `occ_get` is vectorized
 
 
 ```r
-occ_get(key = c(101010, 855998194, 49819470), return = "data")
+occ_get(key=c(101010,855998194,49819470), return='data')
 ```
 
 ```
@@ -317,7 +297,6 @@ occ_get(key = c(101010, 855998194, 49819470), return = "data")
 2       Sciurus vulgaris 855998194           58.41            12.04
 3 Phlogophora meticulosa  49819470           55.72            13.28
 ```
-
 
 ********************
 
@@ -329,14 +308,13 @@ Make a map of **Puma concolor** occurrences
 
 
 ```r
-key <- name_backbone(name = "Puma concolor", kingdom = "plants")$speciesKey
-dat <- occ_search(taxonKey = key, return = "data", limit = 300)
-dat$name <- "Puma concolor"  # so that we just get one symbol type
-gbifmap(input = dat)
+key <- name_backbone(name='Puma concolor', kingdom='plants')$speciesKey
+dat <- occ_search(taxonKey=key, return='data', limit=300)
+dat$name <- "Puma concolor" # so that we just get one symbol type
+gbifmap(input=dat)
 ```
 
 ![plot of chunk gbifmap1](../assets/tutorial-images/rgbif/gbifmap1.png) 
-
 
 [gbifapi]: http://www.gbif.org/developer/summary
 
@@ -356,4 +334,6 @@ To cite `rgbif` in publications use:
 ## License and bugs
 
 * License: [CC0](http://creativecommons.org/choose/zero/)
-* Report bugs at [our Github repo for alm](https://github.com/ropensci/rgbif/issues?state=open)
+* Report bugs at [our Github repo for rgbif](https://github.com/ropensci/rgbif/issues?state=open)
+
+[Back to top](#top)

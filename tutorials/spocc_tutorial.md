@@ -6,7 +6,6 @@ packge_version: 0.1.2
 
 
 
-
 The rOpenSci projects aims to provide programmatic access to scientific data repositories on the web. A vast majority of the packages in our current suite retrieve some form of biodiversity or taxonomic data. Since several of these datasets have been georeferenced, it provides numerous opportunities for visualizing species distributions, building species distribution maps, and for using it analyses such as species distribution models. In an effort to streamline access to these data, we have developed a package called Spocc, which provides a unified API to all the biodiversity sources that we provide. The obvious advantage is that a user can interact with a common API and not worry about the nuances in syntax that differ between packages. As more data sources come online, users can access even more data without significant changes to their code. However, it is important to note that spocc will never replicate the full functionality that exists within specific packages. Therefore users with a strong interest in one of the specific data sources listed below would benefit from familiarising themselves with the inner working of the appropriate packages.
 
 ### Data Sources
@@ -47,7 +46,6 @@ library("devtools")
 devtools::install_github("ropensci/spocc")
 ```
 
-
 <section id="usage">
 
 ## Usage
@@ -59,7 +57,7 @@ The most significant function in spocc is the `occ` (short for occurrence) funct
 
 ```r
 library("spocc")
-df <- occ(query = "Accipiter striatus", from = "gbif")
+df <- occ(query = 'Accipiter striatus', from = 'gbif')
 df
 ```
 
@@ -86,7 +84,6 @@ head(df$gbif$data[[1]])
 ## 5 Accipiter striatus 8.91e+08           30.16           -97.65 gbif
 ## 6 Accipiter striatus 8.91e+08           43.63           -73.07 gbif
 ```
-
 
 The data returned are part of a `S3` class called `occdat`. This class has slots for the five data sources described above. One can easily switch the source by changing the `from` parameter in the function call above.
 
@@ -139,12 +136,11 @@ head(df$gbif$data$Accipiter_striatus)
 ## 6 Accipiter striatus 8.91e+08           43.63           -73.07 gbif
 ```
 
-
 When you get data from multiple providers, the fields returned are slightly different, e.g.:
 
 
 ```r
-df <- occ(query = "Accipiter striatus", from = c("gbif", "ecoengine"))
+df <- occ(query = 'Accipiter striatus', from = c('gbif', 'ecoengine'))
 head(df$gbif$data$Accipiter_striatus)
 ```
 
@@ -193,7 +189,6 @@ head(df$ecoengine$data$Accipiter_striatus)
 ## 6                        Point    -87.79    41.85 ecoengine
 ```
 
-
 We provide a function `occ2df` that pulls out a few key columns needed for making maps:
 
 
@@ -212,111 +207,86 @@ head(occ2df(df))
 ```
 
 
-
 ### Fix names
 
 One problem you often run in to is that there can be various names for the same taxon in any one source. For example:
 
 
 ```r
-df <- occ(query = "Pinus contorta", from = c("gbif", "inat"), limit = 50)
-head(df$gbif$data$Pinus_contorta[, 1:2])
+df <- occ(query='Pinus contorta', from=c('gbif','inat'), limit = 50)
+head(df$gbif$data$Pinus_contorta[,1:2])
 ```
 
 ```
 ##             name       key
 ## 1 Pinus contorta 891034130
 ## 2 Pinus contorta 891051664
-## 3 Pinus contorta 891124025
-## 4 Pinus contorta 856965570
-## 5 Pinus contorta 856964858
-## 6 Pinus contorta 891140827
+## 3 Pinus contorta 899951519
+## 4 Pinus contorta 899960284
+## 5 Pinus contorta 899974349
+## 6 Pinus contorta 891124025
 ```
 
 ```r
-head(df$inat$data$Pinus_contorta[, 1:2])
+head(df$inat$data$Pinus_contorta[,1:2])
 ```
 
 ```
 ##                       name                  Datetime
-## 1      Letharia columbiana 2014-04-22 00:00:00 +0000
-## 2           Pinus contorta 2014-04-25 15:56:39 +0000
-## 3           Pinus contorta 2014-04-24 12:01:03 +0000
-## 4 Pinus contorta murrayana 2014-04-01 00:00:00 +0000
-## 5           Pinus contorta 2014-03-30 00:00:00 +0000
-## 6 Pinus contorta murrayana 2014-03-19 00:00:00 +0000
+## 1                          2013-09-01 00:00:00 +0000
+## 2  Pinus contorta contorta 2014-05-03 00:00:00 +0000
+## 3 Pinus contorta murrayana 2014-05-01 00:00:00 +0000
+## 4           Pinus contorta 2014-05-01 13:40:13 +0000
+## 5      Letharia columbiana 2014-04-22 00:00:00 +0000
+## 6           Pinus contorta 2014-04-25 15:56:39 +0000
 ```
-
 
 This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in `spocc` called `fixnames`, which has a few options in which you can take the shortest names (usually just the plain binomials like _Homo sapiens_), or the original name queried, or a vector of names supplied by the user.
 
 
 ```r
-df <- fixnames(df, how = "shortest")
-```
-
-```
-## Warning: Strings are coming back as factors, this may interfere with
-## fixing sames,consider setting 'options(stringsAsFactors = FALSE)'
-```
-
-```r
-head(df$gbif$data$Pinus_contorta[, 1:2])
+df <- fixnames(df, how = 'shortest')
+head(df$gbif$data$Pinus_contorta[,1:2])
 ```
 
 ```
 ##             name       key
 ## 1 Pinus contorta 891034130
 ## 2 Pinus contorta 891051664
-## 3 Pinus contorta 891124025
-## 4 Pinus contorta 856965570
-## 5 Pinus contorta 856964858
-## 6 Pinus contorta 891140827
+## 3 Pinus contorta 899951519
+## 4 Pinus contorta 899960284
+## 5 Pinus contorta 899974349
+## 6 Pinus contorta 891124025
 ```
 
 ```r
-head(df$inat$data$Pinus_contorta[, 1:2])
+head(df$inat$data$Pinus_contorta[,1:2])
 ```
 
 ```
-##                  name                  Datetime
-## 1 Letharia columbiana 2014-04-22 00:00:00 +0000
-## 2 Letharia columbiana 2014-04-25 15:56:39 +0000
-## 3 Letharia columbiana 2014-04-24 12:01:03 +0000
-## 4 Letharia columbiana 2014-04-01 00:00:00 +0000
-## 5 Letharia columbiana 2014-03-30 00:00:00 +0000
-## 6 Letharia columbiana 2014-03-19 00:00:00 +0000
+##   name                  Datetime
+## 1      2013-09-01 00:00:00 +0000
+## 2      2014-05-03 00:00:00 +0000
+## 3      2014-05-01 00:00:00 +0000
+## 4      2014-05-01 13:40:13 +0000
+## 5      2014-04-22 00:00:00 +0000
+## 6      2014-04-25 15:56:39 +0000
 ```
 
 ```r
 df_comb <- occ2df(df)
-head(df_comb)
+head(df_comb); tail(df_comb)
 ```
 
 ```
-##             name longitude latitude prov
-## 1 Pinus contorta  -122.761    48.14 gbif
-## 2 Pinus contorta  -120.037    38.82 gbif
-## 3 Pinus contorta  -120.040    38.87 gbif
-## 4 Pinus contorta    -3.630    55.73 gbif
-## 5 Pinus contorta    -3.644    55.72 gbif
-## 6 Pinus contorta  -122.271    47.78 gbif
+##     name longitude latitude prov
+## 95          -120.2    39.43 inat
+## 96          -118.9    37.37 inat
+## 97          -120.2    39.43 inat
+## 98          -120.2    39.43 inat
+## 99          -120.2    39.43 inat
+## 100         -119.9    39.30 inat
 ```
-
-```r
-tail(df_comb)
-```
-
-```
-##                    name longitude latitude prov
-## 95  Letharia columbiana    -120.2    39.43 inat
-## 96  Letharia columbiana    -119.9    39.30 inat
-## 97  Letharia columbiana    -120.2    39.43 inat
-## 98  Letharia columbiana    -120.2    39.43 inat
-## 99  Letharia columbiana    -120.2    39.43 inat
-## 100 Letharia columbiana    -123.1    46.90 inat
-```
-
 
 ### Visualization routines
 
@@ -332,12 +302,11 @@ Here is an example of making a leaflet map:
 
 
 ```r
-spp <- c("Danaus plexippus", "Accipiter striatus", "Pinus contorta")
-dat <- occ(query = spp, from = "gbif", gbifopts = list(georeferenced = TRUE))
+spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
+dat <- occ(query = spp, from = 'gbif', gbifopts = list(georeferenced = TRUE))
 data <- occ2df(dat)
 mapleaflet(data = data, dest = ".")
 ```
-
 
 ![](../assets/tutorial-images/spocc/leaflet.png)
 
@@ -347,13 +316,12 @@ You can also create interactive maps via the `mapgist` function. You have to hav
 
 
 ```r
-spp <- c("Danaus plexippus", "Accipiter striatus", "Pinus contorta")
-dat <- occ(query = spp, from = "gbif", gbifopts = list(georeferenced = TRUE))
+spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
+dat <- occ(query = spp, from = 'gbif', gbifopts = list(georeferenced = TRUE))
 dat <- fixnames(dat)
 dat <- occ2df(dat)
 mapgist(data = dat, color = c("#976AAE", "#6B944D", "#BD5945"))
 ```
-
 
 ![](../assets/tutorial-images/spocc/gist.png)
 
@@ -365,11 +333,10 @@ Base plots, or the built in plotting facility in R accessed via `plot()`, is qui
 
 
 ```r
-spnames <- c("Accipiter striatus", "Setophaga caerulescens", "Spinus tristis")
-out <- occ(query = spnames, from = "gbif", gbifopts = list(georeferenced = TRUE))
+spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
+out <- occ(query = spnames, from = 'gbif', gbifopts = list(georeferenced = TRUE))
 plot(out, cex = 1, pch = 10)
 ```
-
 
 ![](../assets/tutorial-images/spocc/baseplots.png)
 
@@ -379,10 +346,9 @@ _ggplot2_
 
 
 ```r
-ecoengine_data <- occ(query = "Lynx rufus californicus", from = "ecoengine")
+ecoengine_data <- occ(query = 'Lynx rufus californicus', from = 'ecoengine')
 mapggplot(ecoengine_data)
 ```
-
 
 ![](../assets/tutorial-images/spocc/ggplot2.png)
 
@@ -410,3 +376,5 @@ To cite `spocc` in publications use:
 
 * License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our Github repo for spocc](https://github.com/ropensci/spocc/issues?state=open)
+
+[Back to top](#top)

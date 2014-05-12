@@ -159,3 +159,5 @@ To cite `rsnps` in publications use:
 
 * License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our Github repo for rsnps](https://github.com/ropensci/rsnps/issues?state=open)
+
+[Back to top](#top)

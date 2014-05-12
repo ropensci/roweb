@@ -43,13 +43,13 @@ noaa_stations(datasetid = "GHCND", locationid = "FIPS:12017", stationid = "GHCND
 ```
 ## $meta
 ## NULL
-## 
+##
 ## $data
 ##                  id                  name datacoverage    mindate
 ## 1 GHCND:USC00084289 INVERNESS 3 SE, FL US            1 1899-02-01
 ##      maxdate
 ## 1 2014-04-22
-## 
+##
 ## attr(,"class")
 ## [1] "noaa_stations"
 ```
@@ -59,7 +59,7 @@ Search for data and get a data.frame or list
 
 
 ```r
-out <- noaa(datasetid = "GHCND", stationid = "GHCND:USW00014895", startdate = "2013-10-01", 
+out <- noaa(datasetid = "GHCND", stationid = "GHCND:USW00014895", startdate = "2013-10-01",
     enddate = "2013-12-01")
 ```
 
@@ -110,7 +110,7 @@ Search for data first, then plot
 
 
 ```r
-out <- noaa(datasetid = "GHCND", stationid = "GHCND:USW00014895", datatypeid = "PRCP", 
+out <- noaa(datasetid = "GHCND", stationid = "GHCND:USW00014895", datatypeid = "PRCP",
     startdate = "2010-05-01", enddate = "2010-10-31", limit = 500)
 ```
 
@@ -122,7 +122,7 @@ Default plot
 noaa_plot(out)
 ```
 
-![plot of chunk unnamed-chunk-3](../assets/tutorial-images/rnoaa/unnamed-chunk-3.png) 
+![plot of chunk unnamed-chunk-3](../assets/tutorial-images/rnoaa/unnamed-chunk-3.png)
 
 
 Create 14 day breaks
@@ -132,7 +132,7 @@ Create 14 day breaks
 noaa_plot(out, breaks = "14 days")
 ```
 
-![plot of chunk unnamed-chunk-4](../assets/tutorial-images/rnoaa/unnamed-chunk-4.png) 
+![plot of chunk unnamed-chunk-4](../assets/tutorial-images/rnoaa/unnamed-chunk-4.png)
 
 
 One month breaks
@@ -142,7 +142,7 @@ One month breaks
 noaa_plot(out, breaks = "1 month", dateformat = "%d/%m")
 ```
 
-![plot of chunk unnamed-chunk-5](../assets/tutorial-images/rnoaa/unnamed-chunk-5.png) 
+![plot of chunk unnamed-chunk-5](../assets/tutorial-images/rnoaa/unnamed-chunk-5.png)
 
 <br>
 Example 2
@@ -151,7 +151,7 @@ Search for data
 
 
 ```r
-out2 <- noaa(datasetid = "GHCND", stationid = "GHCND:USW00014895", datatypeid = "PRCP", 
+out2 <- noaa(datasetid = "GHCND", stationid = "GHCND:USW00014895", datatypeid = "PRCP",
     startdate = "2010-05-01", enddate = "2010-05-03", limit = 100)
 ```
 
@@ -163,7 +163,7 @@ Make a plot, with 6 hour breaks, and date format with only hour
 noaa_plot(out2, breaks = "6 hours", dateformat = "%H")
 ```
 
-![plot of chunk unnamed-chunk-7](../assets/tutorial-images/rnoaa/unnamed-chunk-7.png) 
+![plot of chunk unnamed-chunk-7](../assets/tutorial-images/rnoaa/unnamed-chunk-7.png)
 
 <br>
 Combine many calls to noaa function
@@ -172,10 +172,10 @@ Search for two sets of data
 
 
 ```r
-out1 <- noaa(datasetid = "GHCND", stationid = "GHCND:USW00014895", datatypeid = "PRCP", 
+out1 <- noaa(datasetid = "GHCND", stationid = "GHCND:USW00014895", datatypeid = "PRCP",
     startdate = "2010-03-01", enddate = "2010-05-31", limit = 500)
 
-out2 <- noaa(datasetid = "GHCND", stationid = "GHCND:USW00014895", datatypeid = "PRCP", 
+out2 <- noaa(datasetid = "GHCND", stationid = "GHCND:USW00014895", datatypeid = "PRCP",
     startdate = "2010-09-01", enddate = "2010-10-31", limit = 500)
 ```
 
@@ -220,7 +220,7 @@ Then plot - the default passing in the combined plot plots the data together. In
 noaa_plot(df)
 ```
 
-![plot of chunk unnamed-chunk-10](../assets/tutorial-images/rnoaa/unnamed-chunk-10.png) 
+![plot of chunk unnamed-chunk-10](../assets/tutorial-images/rnoaa/unnamed-chunk-10.png)
 
 
 But we can pass in each separately, which uses `facet_wrap` in `ggplot2` to plot each set of data in its own panel.
@@ -230,7 +230,7 @@ But we can pass in each separately, which uses `facet_wrap` in `ggplot2` to plot
 noaa_plot(out1, out2, breaks = "60 days", dateformat = "%d/%m")
 ```
 
-![plot of chunk unnamed-chunk-11](../assets/tutorial-images/rnoaa/unnamed-chunk-11.png) 
+![plot of chunk unnamed-chunk-11](../assets/tutorial-images/rnoaa/unnamed-chunk-11.png)
 
 
 <section id="citing">
@@ -249,3 +249,5 @@ To cite `rnoaa` in publications use:
 
 * License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our Github repo for rnoaa](https://github.com/ropensci/rnoaa/issues?state=open)
+
+[Back to top](#top)

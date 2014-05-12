@@ -113,3 +113,5 @@ To cite `rfisheries` in publications use:
 
 * License: [CC0](http://creativecommons.org/choose/zero/)
 * Report bugs at [our Github repo for rfisheries](https://github.com/ropensci/rfisheries/issues?state=open)
+
+[Back to top](#top)

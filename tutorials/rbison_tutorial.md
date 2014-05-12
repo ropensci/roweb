@@ -6,7 +6,6 @@ packge_version: 0.3.2
 
 
 
-
 `rbison` is an R package to search and retrieve data from the USGS BISON service. `rbison` wraps R code around the BISON API to allow you to talk to the BISON database from R.
 
 BISON has occurrence data for the US only.
@@ -31,11 +30,9 @@ install.packages("rbison")
 ```
 
 
-
 ```r
 library("rbison")
 ```
-
 
 <section id="usage">
 
@@ -55,7 +52,6 @@ Get data
 out <- bison(species = "Helianthus annuus", count = 2000)
 ```
 
-
 Inspect summary
 
 
@@ -67,7 +63,6 @@ out$summary
 ##   total observation fossil specimen literature unknown living centroid
 ## 1  4388          13    102     1267       1106    1892      8        1
 ```
-
 
 Map occurrences
 
@@ -82,7 +77,6 @@ bisonmap(out)
 
 ![plot of chunk unnamed-chunk-2](../assets/tutorial-images/rbison/unnamed-chunk-2.png) 
 
-
 That one point off the coast of Africa is probably wrong, but the point here is that a world map is drawn if there are points outside the US.
 
 ********************
@@ -93,9 +87,8 @@ Get data
 
 
 ```r
-out <- bison(species = "Bison bison", count = 600)
+out <- bison(species="Bison bison", count=600)
 ```
-
 
 Inspect summary
 
@@ -109,7 +102,6 @@ out$summary
 ## 1   956          32    157      718      49        1
 ```
 
-
 Map occurrences
 
 
@@ -119,7 +111,6 @@ bisonmap(out)
 
 ![plot of chunk six](../assets/tutorial-images/rbison/six.png) 
 
-
 ********************
 
 ###  All points within the contiguous 48 states
@@ -128,9 +119,8 @@ Get data
 
 
 ```r
-out <- bison(species = "Aquila chrysaetos", count = 600)
+out <- bison(species="Aquila chrysaetos", count=600)
 ```
-
 
 Inspect summary
 
@@ -144,7 +134,6 @@ out$summary
 ## 1 52626       50896    105      799        118     708        1
 ```
 
-
 Map occurrences
 
 
@@ -154,7 +143,6 @@ bisonmap(out)
 
 ![plot of chunk nine](../assets/tutorial-images/rbison/nine.png) 
 
-
 ********************
 
 ###  With any data returned from a `bison` call, you can choose to plot county or state level data
@@ -163,21 +151,19 @@ Counties - using last data call for Aquila
 
 
 ```r
-bisonmap(out, tomap = "county")
+bisonmap(out, tomap="county")
 ```
 
 ![plot of chunk ten](../assets/tutorial-images/rbison/ten.png) 
-
 
 States - using last data call for Aquila
 
 
 ```r
-bisonmap(out, tomap = "state")
+bisonmap(out, tomap="state")
 ```
 
 ![plot of chunk eleven](../assets/tutorial-images/rbison/eleven.png) 
-
 
 ********************
 
@@ -189,9 +175,8 @@ Check out [this site](http://www.epa.gov/enviro/html/codes/state.html) to get st
 
 
 ```r
-out <- bison(species = "Helianthus annuus", countyFips = "06037")
+out <- bison(species="Helianthus annuus", countyFips = "06037")
 ```
-
 
 Inspect summary
 
@@ -204,7 +189,6 @@ out$summary
 ##   total observation fossil specimen literature unknown centroid
 ## 1    24           1      3       12          1       7        1
 ```
-
 
 By default, the query only returned 10 records
 
@@ -248,15 +232,13 @@ out$points
 ## 9  sunflower, annual sunflower, common sunflower, wild sunflower Yes
 ## 10 sunflower, annual sunflower, common sunflower, wild sunflower Yes
 ```
-
 
 Or specify county by its actual name - probably much easier.
 
 
 ```r
-out <- bison(species = "Helianthus annuus", county = "Los Angeles")
+out <- bison(species="Helianthus annuus", county = "Los Angeles")
 ```
-
 
 Inspect summary
 
@@ -269,7 +251,6 @@ out$summary
 ##   total observation fossil specimen literature unknown centroid
 ## 1    24           1      3       12          1       7        1
 ```
-
 
 By default, the query only returned 10 records
 
@@ -314,14 +295,12 @@ out$points
 ## 10 sunflower, annual sunflower, common sunflower, wild sunflower Yes
 ```
 
-
 `bison` will help you if you spell the name wrong, or use a partial name. The results are not printed below, but you would get a prompt asking you to pick between the two counties that start with *Los*.
 
 
 ```r
-bison(species = "Helianthus annuus", county = "Los")
+bison(species="Helianthus annuus", county = "Los")
 ```
-
 
 #### Constrain search to a amorphous area.
 
@@ -329,9 +308,8 @@ Check out the Wikipedia page [here](http://en.wikipedia.org/wiki/Well-known_text
 
 
 ```r
-out <- bison(species = "Helianthus annuus", aoi = "POLYGON((-111.06360117772908 38.84001566645886,-110.80542246679359 39.37707771107983,-110.20117441992392 39.17722368276862,-110.20666758398464 38.90844075244811,-110.63513438085685 38.67724220095734,-111.06360117772908 38.84001566645886))")
+out <- bison(species="Helianthus annuus", aoi = "POLYGON((-111.06360117772908 38.84001566645886,-110.80542246679359 39.37707771107983,-110.20117441992392 39.17722368276862,-110.20666758398464 38.90844075244811,-110.63513438085685 38.67724220095734,-111.06360117772908 38.84001566645886))")
 ```
-
 
 Inspect summary
 
@@ -344,7 +322,6 @@ out$summary
 ##   total literature centroid
 ## 1     1          1        1
 ```
-
 
 The data
 
@@ -362,16 +339,14 @@ out$points
 ## 1 sunflower, annual sunflower, common sunflower, wild sunflower Yes
 ```
 
-
 #### Constrain search to a certain aoibbox.
 
 An aoibbox uses the format minx, miny, maxx, maxy.
 
 
 ```r
-out <- bison(species = "Helianthus annuus", aoibbox = "-120.31,35.81,-110.57,40.21")
+out <- bison(species="Helianthus annuus", aoibbox = '-120.31,35.81,-110.57,40.21')
 ```
-
 
 Inspect summary
 
@@ -384,7 +359,6 @@ out$summary
 ##   total observation fossil specimen literature unknown centroid
 ## 1   149           6      8       33         25      77        1
 ```
-
 
 The data, by default, the query only returned 10 records
 
@@ -429,7 +403,6 @@ out$points
 ## 10 sunflower, annual sunflower, common sunflower, wild sunflower Yes
 ```
 
-
 <section id="citing">
 
 ## Citing
@@ -446,3 +419,5 @@ To cite `rbison` in publications use:
 
 * License: [CC0](http://creativecommons.org/choose/zero/)
 * Report bugs at [our Github repo for rbison](https://github.com/ropensci/rbison/issues?state=open)
+
+[Back to top](#top)
