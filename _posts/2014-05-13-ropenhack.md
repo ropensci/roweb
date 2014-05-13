@@ -12,24 +12,24 @@ tags:
 - ropenhack
 ---
 
-The rOpenSci project is a poster child for the fluid collaboration that has become increasingly common these days thanks to platforms like Twitter and GitHub. The time it takes to go from a rough idea to a prototype research software is now in the order of few days to weeks rather than months to years. The origins of this project itself lead back to a series of serendipitous conversations that occurred over Twitter three years ago. Today, we are a rapidly growing community of scientists, students, software developers, and information researchers.
+The rOpenSci project is a poster child for the fluid collaboration that has become increasingly common these days thanks to platforms like Twitter and GitHub. It's been really inspring to see open discussions take shape as rough ideas, which rapidly turn into prototype research software, all now in the order of few days to weeks rather than months to years. The origins of this project itself lead back to a series of serendipitous conversations that occurred over Twitter three years ago. Today, we are a rapidly growing community of scientists, students, software developers, and information researchers.
 
 When we wrote our proposal to the Sloan foundation last year, we budgeted a small meeting (hackathon) for the four core developers and a few members of the advisory board members. But pretty early on into our funding cycle, we realized that such a meeting could be far more impactful, both in terms of building community and prototyping software, if we were a lot more inclusive. Thanks to a series of fortuitous circumstances, we were able to hold exactly such an event last month.
 
-We held [rOpenHack](http://ropensci.github.io/hackathon/), a coding un-conference at [GitHub's HQ](https://foursquare.com/v/github-hq-30/50f75cc0e4b07201af25590d) in San Francisco from March 30th to April 1st. In addition to the core members, we invited several valuable members from the R community and put out an [open call for other to join](http://ropensci.org/blog/2014/02/10/ropensci-hackathon/). All in all, we had ~ 30 people attend in person with a handful of folks contributing remotely. The attendees were a mix of academics, developers (both industry and non-profit) and several independent scientists, with ~ 40% of the participants being women.
+We held [rOpenHack](http://ropensci.github.io/hackathon/), a coding un-conference at [GitHub's HQ](https://foursquare.com/v/github-hq-30/50f75cc0e4b07201af25590d) in San Francisco from March 30th to April 1st. In addition to the core members, we invited several valuable contributors from the R community and put out an [open call for other to join](http://ropensci.org/blog/2014/02/10/ropensci-hackathon/). All in all, we had ~ 30 people attend in person with a handful of folks contributing remotely. The attendees were a mix of academics, developers (both industry and non-profit) and several independent scientists, with ~ 40% of the participants being women.
 
-Since this was our first time planning an event like this, we loosely followed an unconference model (similar to Science Online) and asked participants to propose projects on the [hackathon repo](https://github.com/ropensci/hackathon/issues) in advance of the event. This approach was a really great opportunity for folks to identify projects and fellow participants, and quick gauge where there was the most interest. While we didn't work on every single idea over those two days, we managed to get quite a bit here. Here are some projects where we made a lot of headway:
+Since this was our first time planning an event like this, we loosely followed an unconference model (similar to Science Online) and asked participants to propose projects on the [hackathon repo](https://github.com/ropensci/hackathon/issues) in advance of the event. This approach was a really great opportunity for folks to identify projects and fellow participants, and quick gauge where there was the most interest. While we didn't work on every single idea over those two days, we managed to get quite a bit done. Here are some projects where we made a lot of headway:
 
 
 # What we hacked on
-<!-- 
+
 * Gavin Simpson wrote a package called [`Dependencies`](https://github.com/ropensci/dependencies) to track package dependencies (which is still a challenge in R).
 
 * Ciera Martinez, Ben Marwick, Ed Szocs, Juan Batiz-Benet and Jeff Hollister worked on a  comprehensive [reproducibility guide](https://github.com/ropensci/reproducibility-guide).
 
 * Thomas Kluyver from the IPython project (with help from Jeroen Ooms and Ramnath Vaidyanathan) made great headway in finishing up a full iteration of the R kernel (which works great at this writing)
 
-* Martin Fenner, Gavin Simpson and Carl Boettiger built an rOpenSci cookbook of software recipes but this project is so much more. Once a few remaining bugs are ironed out, it will be an amazingly cool new knitr plugin for [Jekyll along with a Ruby gem wrapping the knitr R package](https://github.com/ropensci/docs).
+* Martin Fenner, Gavin Simpson and Carl Boettiger built an rOpenSci cookbook of software recipes but this project has much wider applications. Once a few remaining bugs are ironed out, it will be an amazingly cool new knitr plugin for [Jekyll along with a Ruby gem wrapping the knitr R package](https://github.com/ropensci/docs).
 
 * [`testdat`](https://github.com/ropensci/testdat) - An R package to run unit tests (check for missing data, missing dates, bad formatting, outliers, non-ascii characters etc) on tabular data (Karthik Ram, Hilary Parker, Aylssa Frazee, Anya Bida, Dave Harris and Winston Chang)
 
@@ -37,17 +37,6 @@ Since this was our first time planning an event like this, we loosely followed a
 
 * [Jure Triglav](http://www.juretriglav.si/) was an awesome remote contributor and built a Ruby gem to [search for citations to R packages](https://github.com/ScienceToolbox/code_citations).</div>
 
-<div class="full_fig"><img src="/assets/blog-images/2014-05-13-ropenhack/hackathon.jpg"></div><div class="col-sm-8 col-sm-offset-2">
- -->
-<ul>
-<li><p>Gavin Simpson wrote a package called <a href="https://github.com/ropensci/dependencies"><code>Dependencies</code></a> to track package dependencies (which is still a challenge in R).</p></li>
-<li><p>Ciera Martinez, Ben Marwick, Ed Szocs, Juan Batiz-Benet and Jeff Hollister worked on a  comprehensive <a href="https://github.com/ropensci/reproducibility-guide">reproducibility guide</a>.</p></li>
-<li><p>Thomas Kluyver from the IPython project (with help from Jeroen Ooms and Ramnath Vaidyanathan) made great headway in finishing up a full iteration of the R kernel (which works great at this writing)</p></li>
-<li><p>Martin Fenner, Gavin Simpson and Carl Boettiger built an rOpenSci cookbook of software recipes but this project is so much more. Once a few remaining bugs are ironed out, it will be an amazingly cool new knitr plugin for <a href="https://github.com/ropensci/docs">Jekyll along with a Ruby gem wrapping the knitr R package</a>.</p></li>
-<li><p><a href="https://github.com/ropensci/testdat"><code>testdat</code></a> - An R package to run unit tests (check for missing data, missing dates, bad formatting, outliers, non-ascii characters etc) on tabular data (Karthik Ram, Hilary Parker, Aylssa Frazee, Anya Bida, Dave Harris and Winston Chang)</p></li>
-<li><p>A <a href="https://github.com/hadley/httr/blob/master/vignettes/api-packages.Rmd">best practices guide</a> for working with APIs in R (<a href="http://had.co.nz/">Hadley Wickham</a></p></li>
-<li><p><a href="http://www.juretriglav.si/">Jure Triglav</a> was an awesome remote contributor and built a Ruby gem to <a href="https://github.com/ScienceToolbox/code_citations">search for citations to R packages</a>.</div></p></li>
-</ul>
 <div class="full_fig"><img src="/assets/blog-images/2014-05-13-ropenhack/hackathon.jpg"></div><div class="col-sm-8 col-sm-offset-2">
 
 
