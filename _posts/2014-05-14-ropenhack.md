@@ -12,7 +12,7 @@ tags:
 - ropenhack
 ---
 
-The rOpenSci project is a poster child for the fluid collaboration that has become increasingly common these days thanks to platforms like Twitter and GitHub. It's been really inspring to see open discussions take shape as rough ideas, which rapidly turn into prototype research software, all now in the order of few days to weeks rather than months to years. The origins of this project itself lead back to a series of serendipitous conversations that occurred over Twitter three years ago. Today, we are a rapidly growing community of scientists, students, software developers, and information researchers.
+The rOpenSci project is a poster child for the fluid collaboration that has become increasingly common these days thanks to platforms like Twitter and GitHub. It has been really inspring to see open discussions take shape as rough ideas, which rapidly turn into prototype research software, all of which are now happening in the order of few days to weeks rather than months to years. The origins of this project itself lead back to a series of serendipitous conversations that occurred over Twitter three years ago. Today we are a rapidly growing community of scientists, students, software developers, and information researchers.
 
 When we wrote our proposal to the Sloan foundation last year, we budgeted a small meeting (hackathon) for the four core developers and a few members of the advisory board members. But pretty early on into our funding cycle, we realized that such a meeting could be far more impactful, both in terms of building community and prototyping software, if we were a lot more inclusive. Thanks to a series of fortuitous circumstances, we were able to hold exactly such an event last month.
 
