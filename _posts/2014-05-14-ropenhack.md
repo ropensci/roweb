@@ -2,7 +2,7 @@
 name: ropenhack-report
 layout: post
 title: rOpenHack report
-date: 2014-05-13
+date: 2014-05-14
 author: Karthik Ram
 tags:
 - R
