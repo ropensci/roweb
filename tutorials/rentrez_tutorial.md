@@ -4,9 +4,7 @@ layout: tutorial
 packge_version: 0.2.4
 ---
 
-```{r, eval=TRUE, echo=FALSE}
-opts_chunk$set(fig.path="../assets/tutorial-images/rentrez/")
-```
+
 
 `rentrez` is an R package that helps users query the NCBI's databases to download genetic and bibliographic data.`rentrez` is now on CRAN, so can be installed by using `install.packages("rentrez")`. The source code is also avaliablefrom the [ROpenSci github repository](https://github.com/ropensci/rentez).
 
@@ -29,7 +27,8 @@ So, here's an example of how I've been using `rentrez` to automate some of that 
 
 ## Installation
 
-```{r install, eval=FALSE}
+
+```r
 install.packages("rentrez")
 ```
 
@@ -42,14 +41,20 @@ install.packages("rentrez")
 
 Reece et al (2010, [doi:10.1016/j.ympev.2010.07.013](http://dx.doi.org/10.1016/j.ympev.2010.07.013)) presented a phylogeny of moray eels using four different genes, but didn't publish the gene trees. I want to get the sequences underlying their analyses, which will be in the NCBI's databases, so I can reproduce their results. To get data associated with this paper from the NCBI I need the PMID (pubmed ID), which I can find using the `rentrez` function `entrez_search` to query the pubmed database with the paper's doi:
 
-```{r load, message=FALSE, warning=FALSE}
+
+```r
 library("rentrez")
 library("XML")
 ```
 
-```{r pubmed_search, message=FALSE, warning=FALSE, comment=NA, cache=FALSE}
+
+```r
 pubmed_search <- entrez_search(db = "pubmed", term = "10.1016/j.ympev.2010.07.013[doi]")
 pubmed_search$ids
+```
+
+```
+[1] "20674752"
 ```
 
 All the functions in `rentrez` create a URL to get data from the NCBI, then fetch the resulting document, usually as an XML file. In most cases the functions will parse the most relevant sections of the XML file out and present them to you as items in a list (`ids` being one item of the `pubmed_search` list in this case).
@@ -58,9 +63,29 @@ All the functions in `rentrez` create a URL to get data from the NCBI, then fetc
 
 OK, now we have the PMID, what data does NCBI have for this paper? The `entrez_link` function lets us find out. In this case the `db` argument can be used to limit the number of data sources to check, but I want to see every data source here so I'll set this paramater to “all”:
 
-```{r entrez_link, message=FALSE, warning=FALSE, comment=NA, cache=FALSE}
+
+```r
 NCBI_data <- entrez_link(dbfrom = "pubmed", id = pubmed_search$ids, db = "all")
 str(NCBI_data)
+```
+
+```
+List of 14
+ $ pubmed_medgen             : chr [1:3] "88651" "504838" "331108"
+ $ pubmed_nuccore            : chr [1:119] "307082467" "307082465" "307082463" "307082461" ...
+ $ pubmed_pmc_refs           : chr [1:3] "3982960" "3784357" "3245230"
+ $ pubmed_popset             : chr [1:4] "307082412" "307075396" "307075338" "307075274"
+ $ pubmed_protein            : chr [1:118] "307082468" "307082466" "307082464" "307082462" ...
+ $ pubmed_pubmed             : chr [1:125] "20674752" "22967094" "20375076" "19053846" ...
+ $ pubmed_pubmed_alsoviewed  : chr [1:2] "20674752" "22967094"
+ $ pubmed_pubmed_citedin     : chr [1:3] "24722193" "22560748" "22216141"
+ $ pubmed_pubmed_combined    : chr [1:6] "20674752" "22967094" "20375076" "19053846" ...
+ $ pubmed_pubmed_five        : chr [1:6] "20674752" "22967094" "20375076" "19053846" ...
+ $ pubmed_pubmed_reviews     : chr "20674752"
+ $ pubmed_pubmed_reviews_five: chr "20674752"
+ $ pubmed_taxonomy_entrez    : chr [1:40] "876649" "876647" "876643" "876642" ...
+ $ file                      :Classes 'XMLInternalDocument', 'XMLAbstractDocument' <externalptr> 
+ - attr(*, "class")= chr [1:2] "elink" "list"
 ```
 
 ## Fetch a summary of a record
@@ -74,15 +99,24 @@ given record represented as the most natural base `R` type. In this case we
 can get summaries for each popset ID, check out the first record to see what
 kind of information they contain then extract the Title fro each record:
 
-```{r entrez_summary, message=FALSE, warning=FALSE, comment=NA, cache=FALSE}
+
+```r
 data_summaries <- entrez_summary(db = "popset", id = NCBI_data$pubmed_popset)
 sapply(data_summaries, "[[", "Title")
+```
+
+```
+[1] "Muraenidae cytochrome oxidase subunit 1 gene, partial cds; mitochondrial."
+[2] "Muraenidae recombination activating protein 2 gene, partial cds."         
+[3] "Muraenidae recombination activating protein 1 gene, partial cds."         
+[4] "Muraenidae cytochrome b gene, partial cds; mitochondrial."                
 ```
 
 ## Fetch data
 Ok, since we might expect nuclear and mitochondrial genes to hav different histories, let's get sequences from each genome (the the COI and RAG1 datasets) using `entrez_fetch`. By specifying `rettype="fasta"` we will get characater vectors in the fasta format:
 
-```{r entrez_fetch, message=FALSE, warning=FALSE, comment=NA, cache=FALSE}
+
+```r
 coi <- entrez_fetch(db = "popset", rettype = 'fasta', id = NCBI_data$pubmed_popset[1])
 rag1 <- entrez_fetch(db = "popset", rettype = 'fasta', id = NCBI_data$pubmed_popset[3])
 write(coi, "~/moray_coi_raw.fasta")
@@ -91,7 +125,8 @@ write(rag1, "~/moray_rag1_raw.fasta")
 
 So I've got the data on hand - that's all the I need `rentrez` for, but I might as well align these sequences and make gene trees for each. I'll just do a quick and diry neighbor-joining tree using `ape` and we can clean up the long OTU names with the help of `stingr`. (I put the fussy work of cleaning the names and rooting the trees into a function `clean_and_root`):
 
-```{r muscle, eval=FALSE}
+
+```r
 library(ape)
 library(stringr)
 clean_and_root <- function(tr, outgroup, resolved = TRUE) {
@@ -117,13 +152,15 @@ Working with WebEnvs
 
 The NCBI provides search history features, which can be useful for dealing with alrge lists of IDs (which will not fit in a single URL) or repeated searches. As an example, we will go searching for COI sequences from all the land snail (Stylommatophora) species we can find in the nucleotide database:
 
-```{r webenvs1, message=FALSE, warning=FALSE, comment=NA, cache=FALSE}
+
+```r
 snail_search <- entrez_search(db = "nuccore", "Gastropoda[Organism] AND COI[Gene]", usehistory = "y")
 ```
 
 Because we set usehistory to “y” the `snail_search` object contains a unique ID for the search (`WebEnv`) and the particular query in that search history (`QueryKey`). Instead of using the hundreds of ids we turned up to make a new URL and fetch the sequences we can use the webhistory features.
 
-```{r webenvs2, message=FALSE, warning=FALSE, comment=NA, cache=FALSE}
+
+```r
 cookie <- snail_search$WebEnv
 qk <- snail_search$QueryKey
 snail_coi <- entrez_fetch(db = "nuccore", WebEnv = cookie, query_key = qk, rettype = "fasta", retmax = 10)
@@ -131,7 +168,8 @@ snail_coi <- entrez_fetch(db = "nuccore", WebEnv = cookie, query_key = qk, retty
 
 In that case we used `retmax` to limit the number of queries we downloaded. There are actually thousands of records. If we wanted to download all of them it would probably be a good idea to downlaod them in batches (both to give the NCBI's severs a break and to make sure a corrupted download doesn't ruin your whole process. Using a for loop in conjunction with the terms `restart` and `retmax` we can download the sequences 50 at a time:
 
-```{r webenvs3, message=FALSE, warning=FALSE, comment=NA, cache=FALSE}
+
+```r
 for (start_rec in seq(0, 200, 50)) {
     fname <- paste("snail_coi_", start_rec, ".fasta", sep = "")
     recs <- entrez_fetch(db = "nuccore", WebEnv = cookie, query_key = qk, rettype = "fasta",
@@ -139,6 +177,14 @@ for (start_rec in seq(0, 200, 50)) {
     write(recs, fname)
     print(paste("wrote records to ", fname, sep = ""))
 }
+```
+
+```
+[1] "wrote records to snail_coi_0.fasta"
+[1] "wrote records to snail_coi_50.fasta"
+[1] "wrote records to snail_coi_100.fasta"
+[1] "wrote records to snail_coi_150.fasta"
+[1] "wrote records to snail_coi_200.fasta"
 ```
 
 <section id="citing">
