@@ -336,7 +336,7 @@ History Data},
 ## License and bugs
 
 * License: [CC0](http://creativecommons.org/choose/zero/)
-* Report bugs at [our Github repo for Ecoengine](https://github.com/ecoengine/issues?state=open)
+* Report bugs at [our Github repo for Ecoengine](https://github.com/ropensci/ecoengine/issues?state=open)
 
 </section>
 
