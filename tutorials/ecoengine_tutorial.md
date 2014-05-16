@@ -743,6 +743,7 @@ unique(source_list$name)
 ## 10        Essig Museum of Entymology
 ```
 
+</section>
 <section id="citing">
 
 To cite package `ecoengine` in publications use:
