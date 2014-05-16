@@ -144,7 +144,7 @@ view_photos(charles_results)
 This will launch your default browser and render a page with thumbnails of all images returned by the search query. You can do this with any `ecoengine` object of type `photos`. Suggestions for improving the photo browser are welcome.
 
 
-![](browse_photos.png)
+![](../assets/tutorial-images/ecoengine/browse_photos.png)
 
 Other photo search examples
 
