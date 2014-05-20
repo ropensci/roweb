@@ -7,7 +7,7 @@ packge_version: 0.1.1
 
 
 
-`rinat` is an R wrapper for iNaturalist APIs for accessing the observations. Detailed documentation of API is available on [iNaturlaist website](http://www.inaturalist.org/pages/api+reference) and is part of our larger species occurence searching package [SPOCC](http://github.com/ropensci/spocc)
+`rinat` is an R wrapper for iNaturalist APIs for accessing the observations. Detailed documentation of the API is available on [iNaturlaist website](http://www.inaturalist.org/pages/api+reference) and is part of our larger species occurence searching package [SPOCC](http://github.com/ropensci/spocc)
 
 <section id="installation">
 
@@ -44,7 +44,7 @@ __Searching__
 
 _Fuzzy search_
 
-You can search for observations by either common or latin name.  It will search the entire iNaturalist entry, so the search below will return all entries that mention Monarch butterflies, not just entries for Monarchs.
+You can search for observations either by common or latin name.  It will search the entire iNaturalist entry, so the search below will return all entries that mention Monarch butterflies, not just entries for Monarchs.
 
 
 ```r
@@ -59,7 +59,7 @@ head(butterflies[, c(4:6)])
 
 
 
-Another use for a fuzzy search is searching for a common name or habitat, e.g. searching for all observations that might happen in a vernal pool.  We can then see all the species names found.
+Another use for a fuzzy search is searching for a common name or habitat, e.g. searching for all observations that might occur in a vernal pool.  We can then see all the species names found.
 
 ```r
 vp_obs <- get_inat_obs(query = "vernal pool")
@@ -109,7 +109,7 @@ __Other functions__
 
 _Get information and observations by project_
 
-You can get all the observations for a project if you know it's ID or name as an intaturalist slug
+You can get all the observations for a project if you know its ID or name as an intaturalist slug
 
 Just get info about a project
 
@@ -174,7 +174,7 @@ head(get_inat_obs_id(m_obs$Id[1]))
 ## NULL
 ## 
 ## $created_at
-## [1] "2014-05-19T19:00:06-07:00"
+## [1] "2014-05-19T21:00:06-05:00"
 ## 
 ## $delta
 ## [1] TRUE
@@ -186,7 +186,7 @@ head(get_inat_obs_id(m_obs$Id[1]))
 
 _Get all observations by user_
 
-If you just want all the observations by a user you can download all their observations by user ID.  A word of warning though, this can be quite large (easily into the 1000's)
+If you just want all the observations by a user you can download them with a user ID.  A word of warning though, this can be quite large (easily into the 1000s)
 
 
 ```r
@@ -318,7 +318,7 @@ place_counts$total
 
 _Stats by user_
 
-Similar statistics can be gotten for users.  The same input parameters can be used, but results are the top five users by species count and observation count.
+Similar statistics can be retrived for users.  The same input parameters can be used, but results returned are the top five users by species count and observation count.
 
 By date
 
