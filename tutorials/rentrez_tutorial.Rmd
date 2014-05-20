@@ -19,8 +19,7 @@ At present the functions provided by rentrez cover the entire Eutils API. Basica
 `rentrez` presumes you already know your way around the Eutils' API, [which is well documented](http://www.ncbi.nlm.nih.gov/books/NBK25500/). Make sure you read the documentation, and in particular, be aware of the NCBI's usage policies and try to limit very large requests to off peak (USA) times.
 
 Examples
---------
-
+-----http://ropensci.org/
 Lately, I've been working on a little meta-analysis of phylogenies. In particualr, we're interested in why sometimes different genes tell different stories about the relationships between species from which the come. In terms of being able to get the individual gene trees I need to do these analyses there are good, rather less good and quite bad papers out there. In the best cases I can just download the trees as nice, parsable newick files from [TreeBase](treebase.org), which has already been [wrapped by ROpenSci](http://github.com/ropensci/treebase). Sometimes I need to print out the trees from a paper and work with pencil and paper, which I can handle. In a few cases people haven't actually published their individual gene trees, if I want to included these papers I need to replicate their work by downloading the gene sequences, aligning them and making new trees.
 
 So, here's an example of how I've been using `rentrez` to automate some of that process. I'm going to use a slightly convaluted process to get all the data, but that's just so I can walk though a bunch of the `rentrez` functions. Let's get started.
