@@ -6,7 +6,8 @@ packge_version: 0.1.1
 
 
 
-`rinat` is an R wrapper for iNaturalist APIs for accessing the observations. The Detailed documentation of API is available on [iNaturlaist website](http://www.inaturalist.org/pages/api+reference) and is part of our larger species occurence searching packages [SPOCC](http://github.com/ropensci/spocc)
+
+`rinat` is an R wrapper for iNaturalist APIs for accessing the observations. Detailed documentation of API is available on [iNaturlaist website](http://www.inaturalist.org/pages/api+reference) and is part of our larger species occurence searching package [SPOCC](http://github.com/ropensci/spocc)
 
 <section id="installation">
 
@@ -18,10 +19,10 @@ Install the development version using `install_github` within Hadley's [devtools
 ```r
 install.packages("devtools")
 require(devtools)
-
 install_github("rinat", "ropensci")
 library(rinat)
 ```
+
 
 
 Load the package
@@ -30,6 +31,7 @@ Load the package
 ```r
 library(rinat)
 ```
+
 
 <section id="usage">
 
@@ -46,9 +48,11 @@ You can search for observations by either common or latin name.  It will search 
 
 
 ```r
-butterflies <- get_inat_obs(query="Monarch Butterfly")
-head(butterflies[,c(4:6)])
+butterflies <- get_inat_obs(query = "Monarch Butterfly")
+head(butterflies[, c(4:6)])
 ```
+
+
 
 
 
@@ -58,16 +62,19 @@ head(butterflies[,c(4:6)])
 Another use for a fuzzy search is searching for a common name or habitat, e.g. searching for all observations that might happen in a vernal pool.  We can then see all the species names found.
 
 ```r
-vp_obs <- get_inat_obs(query="vernal pool")
+vp_obs <- get_inat_obs(query = "vernal pool")
 head(vp_obs$Species.guess)
 ```
 
 ```
-## [1] Juncus bufonius                    Coyote-thistle                    
-## [3] Navarretia leucocephala pauciflora needleleaf navarretia             
-## [5] Wood frog                          Burning bush                      
-## 154 Levels:  Alismataceae Ambystoma Ambystoma maculatum ... Yellow Starthistle (Centaurea solstitialis)
+## [1] "Juncus bufonius"                   
+## [2] "Coyote-thistle"                    
+## [3] "Navarretia leucocephala pauciflora"
+## [4] "needleleaf navarretia"             
+## [5] "Wood frog"                         
+## [6] "Burning bush"
 ```
+
 
 
 _Taxon query_
@@ -76,11 +83,11 @@ To return only records for a specific species or taxonomic group, use the taxon 
 
 ```r
 ## Return just observations in the family Plecoptera
-stone_flies <- get_inat_obs(taxon="Plecoptera")
-
+stone_flies <- get_inat_obs(taxon = "Plecoptera")
 ## Return just Monarch Butterfly records
-just_butterflies <- get_inat_obs(taxon="Danaus plexippus")
+just_butterflies <- get_inat_obs(taxon = "Danaus plexippus")
 ```
+
 
 
 _Bounding box search_
@@ -91,9 +98,10 @@ Search by area
 
 
 ```r
-bounds <- c(38.44047,-125,40.86652,-121.837)
-deer <- get_inat_obs(query="Mule Deer", bounds=bounds)
+bounds <- c(38.44047, -125, 40.86652, -121.837)
+deer <- get_inat_obs(query = "Mule Deer", bounds = bounds)
 ```
+
 
 __Other functions__
 
@@ -107,7 +115,7 @@ Just get info about a project
 
 
 ```r
-vt_crows <- get_inat_obs_project("crows-in-vermont", type="info", raw=FALSE)
+vt_crows <- get_inat_obs_project("crows-in-vermont", type = "info", raw = FALSE)
 ```
 
 ```
@@ -115,11 +123,12 @@ vt_crows <- get_inat_obs_project("crows-in-vermont", type="info", raw=FALSE)
 ## 0
 ```
 
+
 Now get all the observations for that project
 
 
 ```r
-vt_crows_obs <- get_inat_obs_project(vt_crows$id, type="observations")
+vt_crows_obs <- get_inat_obs_project(vt_crows$id, type = "observations")
 ```
 
 ```
@@ -128,7 +137,7 @@ vt_crows_obs <- get_inat_obs_project(vt_crows$id, type="observations")
 ```
 
 ```r
-head(vt_crows_obs[,c(1:4)])
+head(vt_crows_obs[, c(1:4)])
 ```
 
 ```
@@ -143,13 +152,14 @@ head(vt_crows_obs[,c(1:4)])
 
 
 
+
 _Get observation details_
 
 Detailed information about a specific observation can be retrieved by observation ID.  The easiest way to get the ID is from a more general search.
 
 
 ```r
-m_obs <- get_inat_obs(query="Monarch Butterfly")
+m_obs <- get_inat_obs(query = "Monarch Butterfly")
 head(get_inat_obs_id(m_obs$Id[1]))
 ```
 
@@ -161,17 +171,18 @@ head(get_inat_obs_id(m_obs$Id[1]))
 ## [1] 0
 ## 
 ## $community_taxon_id
-## [1] 48662
+## NULL
 ## 
 ## $created_at
-## [1] "2014-05-19T05:29:28-07:00"
+## [1] "2014-05-19T19:00:06-07:00"
 ## 
 ## $delta
-## [1] FALSE
+## [1] TRUE
 ## 
 ## $description
-## [1] ""
+## [1] "Family: Nymphallidae Determined: Robert J. Nuelle, Jr."
 ```
+
 
 _Get all observations by user_
 
@@ -179,26 +190,35 @@ If you just want all the observations by a user you can download all their obser
 
 
 ```r
-m_obs <- get_inat_obs(query="Monarch Butterfly")
-head(get_inat_obs_user(as.character(m_obs$User.login[1]),maxresults=20))[,1:5]
+m_obs <- get_inat_obs(query = "Monarch Butterfly")
+head(get_inat_obs_user(as.character(m_obs$User.login[1]), maxresults = 20))[, 
+    1:5]
 ```
 
 ```
-##       Scientific.name                  Datetime Description
-## 1     Eudocimus albus 2014-05-05 08:42:00 +0000            
-## 2          Ardea alba 2014-05-05 08:42:00 +0000            
-## 3       Egretta thula 2014-05-05 08:42:00 +0000            
-## 4     Tringa flavipes 2014-05-05 08:43:00 +0000            
-## 5   Gallinula galeata 2014-05-05 09:23:00 +0000            
-## 6 Phalaropus tricolor 2014-05-05 09:24:00 +0000            
-##                       Place.guess Latitude
-## 1 Highway 35 ditch, Rockport area    27.99
-## 2 Highway 35 ditch, Rockport area    27.99
-## 3 Highway 35 ditch, Rockport area    27.99
-## 4 Highway 35 ditch, Rockport area    27.99
-## 5    Port Aransas Nature Preserve    27.83
-## 6    Port Aransas Nature Preserve    27.83
+##         Scientific.name                  Datetime
+## 1 Hethemia pistasciaria 2012-03-16 00:00:00 +0000
+## 2                       2013-08-28 00:00:00 +0000
+## 3  Eutrapela clemataria 2012-03-16 00:00:00 +0000
+## 4  Eutrapela clemataria 2013-08-28 00:00:00 +0000
+## 5 Eudeilinia herminiata 2013-08-28 00:00:00 +0000
+## 6  Euchlaena marginaria 2012-03-16 00:00:00 +0000
+##                                                           Description
+## 1 Family: Geometridae Hodges#: 7084 Determined: Robert J. Nuelle, Jr.
+## 2 Family: Geometridae Hodges#: 5274 Determined: Robert J. Nuelle, Jr.
+## 3 Family: Geometridae Hodges#: 6966 Determined: Robert J. Nuelle, Jr.
+## 4 Family: Geometridae Hodges#: 6966 Determined: Robert J. Nuelle, Jr.
+## 5 Family: Geometridae Hodges#: 6253 Determined: Robert J. Nuelle, Jr.
+## 6 Family: Geometridae Hodges#: 6734 Determined: Robert J. Nuelle, Jr.
+##               Place.guess Latitude
+## 1 Jarvis C.C. - Boardwalk    32.59
+## 2 Jarvis C.C. - Boardwalk    32.59
+## 3 Jarvis C.C. - Boardwalk    32.59
+## 4 Jarvis C.C. - Boardwalk    32.59
+## 5 Jarvis C.C. - Boardwalk    32.59
+## 6 Jarvis C.C. - Boardwalk    32.59
 ```
+
 
 _Stats by taxa_
 
@@ -208,7 +228,7 @@ By date
 
 
 ```r
-(counts <- get_inat_taxon_stats(date="2010-06-14"))
+(counts <- get_inat_taxon_stats(date = "2010-06-14"))
 ```
 
 ```
@@ -223,11 +243,11 @@ By date
 ## 4     1    24422 Ptychohyla spinipollex    species               10
 ## 5     1    11935    Tachycineta bicolor    species               10
 ##   taxon.default_name.created_at taxon.default_name.id
-## 1     2010-04-01T15:12:20-04:00                 92809
-## 2     2011-10-22T07:37:44-04:00                211685
-## 3     2008-03-12T23:33:21-04:00                 20375
-## 4     2008-03-17T20:43:27-04:00                 29116
-## 5     2008-03-12T23:10:45-04:00                 14831
+## 1     2010-04-01T14:12:20-05:00                 92809
+## 2     2011-10-22T06:37:44-05:00                211685
+## 3     2008-03-12T22:33:21-05:00                 20375
+## 4     2008-03-17T19:43:27-05:00                 29116
+## 5     2008-03-12T22:10:45-05:00                 14831
 ##   taxon.default_name.is_valid taxon.default_name.lexicon
 ## 1                        TRUE                    English
 ## 2                        TRUE                    English
@@ -241,11 +261,11 @@ By date
 ## 4  Ptychohyla spinipollex                       24422
 ## 5            Tree Swallow                       11935
 ##   taxon.default_name.updated_at
-## 1     2010-04-01T15:12:20-04:00
-## 2     2011-10-22T07:37:44-04:00
-## 3     2008-03-12T23:33:21-04:00
-## 4     2008-03-17T20:43:27-04:00
-## 5     2008-03-12T23:10:45-04:00
+## 1     2010-04-01T14:12:20-05:00
+## 2     2011-10-22T06:37:44-05:00
+## 3     2008-03-12T22:33:21-05:00
+## 4     2008-03-17T19:43:27-05:00
+## 5     2008-03-12T22:10:45-05:00
 ##                                                  taxon.image_url
 ## 1 http://farm4.staticflickr.com/3137/4563715160_60ea310ff4_s.jpg
 ## 2 http://farm5.staticflickr.com/4013/4658689710_1a534b47ef_s.jpg
@@ -273,11 +293,12 @@ By date
 ## [1] 44
 ```
 
+
 By place_ID
 
 
 ```r
-vt_crows <- get_inat_obs_project("crows-in-vermont", type="info", raw=FALSE)
+vt_crows <- get_inat_obs_project("crows-in-vermont", type = "info", raw = FALSE)
 ```
 
 ```
@@ -291,8 +312,9 @@ place_counts$total
 ```
 
 ```
-## [1] 3863
+## [1] 3862
 ```
+
 
 _Stats by user_
 
@@ -302,8 +324,8 @@ By date
 
 
 ```r
-counts <- get_inat_user_stats(date="2010-06-14")
-counts$most_observations$user[,c(1:3)]
+counts <- get_inat_user_stats(date = "2010-06-14")
+counts$most_observations$user[, c(1:3)]
 ```
 
 ```
@@ -335,11 +357,12 @@ counts$most_observations$user[,c(1:3)]
 ## 25 13167                   arleigh     Arleigh Birchler
 ```
 
+
 By place_ID
 
 
 ```r
-vt_crows <- get_inat_obs_project("crows-in-vermont", type="info",raw=FALSE)
+vt_crows <- get_inat_obs_project("crows-in-vermont", type = "info", raw = FALSE)
 ```
 
 ```
@@ -349,7 +372,7 @@ vt_crows <- get_inat_obs_project("crows-in-vermont", type="info",raw=FALSE)
 
 ```r
 place_counts <- get_inat_user_stats(place = vt_crows$place_id)
-head(place_counts$most_species$user[,c(1:3)])
+head(place_counts$most_species$user[, c(1:3)])
 ```
 
 ```
@@ -362,6 +385,7 @@ head(place_counts$most_species$user[,c(1:3)])
 ## 6  3847       rpayne      Ron Payne
 ```
 
+
 ### Mapping
 
 Basic maps can be created as well to quickly visualize search results.  Maps can either be plotted automatically `plot = TRUE` or simply return a ggplot2 object with `plot = FALSE`.  This works well with single species data, but more complicated plots are best made from scratch.
@@ -370,9 +394,10 @@ Map salamanders in the genuse Ambystoma
 
 
 ```r
-m_obs <- get_inat_obs(taxon="Ambystoma maculatum")
-salamander_map <- inat_map(m_obs,plot=FALSE)
+m_obs <- get_inat_obs(taxon = "Ambystoma maculatum")
+salamander_map <- inat_map(m_obs, plot = FALSE)
 ```
+
 
 Now we can modify the returned map
 
@@ -388,6 +413,7 @@ salamander_map +
 ```
 
 <img src="../assets/tutorial-images/rinat/map2.png" title="plot of chunk map2" alt="plot of chunk map2" style="display: block; margin: auto;" />
+
 
 
 <section id="citing">
