@@ -8,7 +8,7 @@ packge_version: 0.1.1
 opts_chunk$set(fig.path="../assets/tutorial-images/rinat/")
 ```
 
-`rinat` is an R wrapper for iNaturalist APIs for accessing the observations. The Detailed documentation of API is available on [iNaturlaist website](http://www.inaturalist.org/pages/api+reference) and is part of our larger species occurence searching packages [SPOCC](http://github.com/ropensci/spocc)
+`rinat` is an R wrapper for iNaturalist APIs for accessing the observations. Detailed documentation of API is available on [iNaturlaist website](http://www.inaturalist.org/pages/api+reference) and is part of our larger species occurence searching package [SPOCC](http://github.com/ropensci/spocc)
 
 <section id="installation">
 
