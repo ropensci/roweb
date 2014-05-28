@@ -1,0 +1,382 @@
+---
+title: bold tutorial
+layout: tutorial
+packge_version: 0.1.0
+---
+
+`bold` is an R package to connect to [BOLD Systems](http://www.boldsystems.org/) via [their API](http://www.boldsystems.org/index.php/resources/api). Functions in `bold` let you search for sequence data, specimen data, sequence + specimen data, and download raw trace files.
+
+<section id="installation">
+
+## Installation
+
+You can install the stable version from CRAN
+
+
+```r
+install.packages("bold")
+```
+
+Or the development version from Github
+
+
+```r
+install.packages("devtools")
+library("devtools")
+install_github("ropensci/bold")
+```
+
+Then load the package into the R sesssion
+
+
+```r
+library("bold")
+```
+
+<section id="usage">
+
+## Usage
+
+### Search for sequence data only
+
+Default is to get a list back (here, searching by taxon name)
+
+
+```r
+bold_seq(taxon='Coelioxys')[1:2]
+```
+
+```
+## [[1]]
+## [[1]]$id
+## [1] "CNPPJ1450-12"
+## 
+## [[1]]$name
+## [1] "Coelioxys sayi"
+## 
+## [[1]]$gene
+## [1] "CNPPJ1450-12"
+## 
+## [[1]]$sequence
+## [1] "TATTATATATATAATTTTTGCAATATGATCAGGAATAATTGGATCTTCCTTAAGAATAATTATTCGAATAGAATTAAGAATT---CCAGGATCATGAATTAGTAATGACCAAATTTATAATTCCTTTATTACAGCGCACGCATTTTTAATAATTTTCTTTTTAGTTATACCGTTTTTAATTGGTGGATTTGGAAATTGACTCACACCTTTAATATTAGGAGCCCCTGATATAGCTTTCCCCCGTATAAATAATATTAGATTTTGATTATTACCCCCCTCATTATTAATATTATTATCAAGAAATTTAATTAACCCAAGACCTGGAACAGGATGAACAGTTTATCCACCACTATCTTCTTATACTTATCATCCTTCTCCTTCTGTAGATCTAGCAATTTTTTCTTTACACTTATCAGGTATTTCTTCTATTATTGGATCAATAAATTTTATTGTAACAATTTTATTAATAAAAAATTATTCAATAAATTATAATCAAATACCTTTATTTCCCTGATCTGTTTTAATTACAACAATTTTATTACTATTATCACTACCTGTATTAGCAGGAGCAATTACAATATTATTATTT---------GATCGAAATTTAAATTCATCATTTTTCGACCCTATAGGAGGAGGAG-----------------------------"
+## 
+## 
+## [[2]]
+## [[2]]$id
+## [1] "GBMIN26386-13"
+## 
+## [[2]]$name
+## [1] "Coelioxys sp. HMG-2011"
+## 
+## [[2]]$gene
+## [1] "GBMIN26386-13"
+## 
+## [[2]]$sequence
+## [1] "CGAATAAATAATATTAGATTTTGATTATTACCCCCATCACTATTATTACTTCTATTAAGTAATTTGATTAAACCAAGACCAGGTACAGGATGAACCGTATACCCTCCCTTATCTTTATATCTTTATCACCCTTCACCATCAGTTGATTTTGCAATTTTTTCTTTACATTTATCAGGAATTTCATCTATTATTGGTTCATTAAATTTTATTGTAACAATTTTAATAATAAAAAATTGATCTTTAAATTATAGACAAATATCATTATTTCCTTGATCAATTTTTATTACTACAATTTTATTATTA"
+```
+
+Search by BOLD ID number
+
+
+```r
+bold_seq(ids='ACRJP618-11')
+```
+
+```
+## [[1]]
+## [[1]]$id
+## [1] "ACRJP618-11"
+## 
+## [[1]]$name
+## [1] "Lepidoptera"
+## 
+## [[1]]$gene
+## [1] "ACRJP618-11"
+## 
+## [[1]]$sequence
+## [1] "------------------------TTGAGCAGGCATAGTAGGAACTTCTCTTAGTCTTATTATTCGAACAGAATTAGGAAATCCAGGATTTTTAATTGGAGATGATCAAATCTACAATACTATTGTTACGGCTCATGCTTTTATTATAATTTTTTTTATAGTTATACCTATTATAATTGGAGGATTTGGTAATTGATTAGTTCCCCTTATACTAGGAGCCCCAGATATAGCTTTCCCTCGAATAAACAATATAAGTTTTTGGCTTCTTCCCCCTTCACTATTACTTTTAATTTCCAGAAGAATTGTTGAAAATGGAGCTGGAACTGGATGAACAGTTTATCCCCCACTGTCATCTAATATTGCCCATAGAGGTACATCAGTAGATTTAGCTATTTTTTCTTTACATTTAGCAGGTATTTCCTCTATTTTAGGAGCGATTAATTTTATTACTACAATTATTAATATACGAATTAACAGTATAAATTATGATCAAATACCACTATTTGTGTGATCAGTAGGAATTACTGCTTTACTCTTATTACTTTCTCTTCCAGTATTAGCAGGTGCTATCACTATATTATTAACGGATCGAAATTTAAATACATCATTTTTTGATCCTGCAGGAGGAGGAGATCCAATTTTATATCAACATTTATTT"
+```
+
+For all parameters you can pass in multiple values, here multiple IDs
+
+
+```r
+bold_seq(ids=c('ACRJP618-11','ACRJP619-11'))
+```
+
+```
+## [[1]]
+## [[1]]$id
+## [1] "ACRJP618-11"
+## 
+## [[1]]$name
+## [1] "Lepidoptera"
+## 
+## [[1]]$gene
+## [1] "ACRJP618-11"
+## 
+## [[1]]$sequence
+## [1] "------------------------TTGAGCAGGCATAGTAGGAACTTCTCTTAGTCTTATTATTCGAACAGAATTAGGAAATCCAGGATTTTTAATTGGAGATGATCAAATCTACAATACTATTGTTACGGCTCATGCTTTTATTATAATTTTTTTTATAGTTATACCTATTATAATTGGAGGATTTGGTAATTGATTAGTTCCCCTTATACTAGGAGCCCCAGATATAGCTTTCCCTCGAATAAACAATATAAGTTTTTGGCTTCTTCCCCCTTCACTATTACTTTTAATTTCCAGAAGAATTGTTGAAAATGGAGCTGGAACTGGATGAACAGTTTATCCCCCACTGTCATCTAATATTGCCCATAGAGGTACATCAGTAGATTTAGCTATTTTTTCTTTACATTTAGCAGGTATTTCCTCTATTTTAGGAGCGATTAATTTTATTACTACAATTATTAATATACGAATTAACAGTATAAATTATGATCAAATACCACTATTTGTGTGATCAGTAGGAATTACTGCTTTACTCTTATTACTTTCTCTTCCAGTATTAGCAGGTGCTATCACTATATTATTAACGGATCGAAATTTAAATACATCATTTTTTGATCCTGCAGGAGGAGGAGATCCAATTTTATATCAACATTTATTT"
+## 
+## 
+## [[2]]
+## [[2]]$id
+## [1] "ACRJP619-11"
+## 
+## [[2]]$name
+## [1] "Lepidoptera"
+## 
+## [[2]]$gene
+## [1] "ACRJP619-11"
+## 
+## [[2]]$sequence
+## [1] "AACTTTATATTTTATTTTTGGTATTTGAGCAGGCATAGTAGGAACTTCTCTTAGTCTTATTATTCGAACAGAATTAGGAAATCCAGGATTTTTAATTGGAGATGATCAAATCTACAATACTATTGTTACGGCTCATGCTTTTATTATAATTTTTTTTATAGTTATACCTATTATAATTGGAGGATTTGGTAATTGATTAGTTCCCCTTATACTAGGAGCCCCAGATATAGCTTTCCCTCGAATAAACAATATAAGTTTTTGGCTTCTTCCCCCTTCACTATTACTTTTAATTTCCAGAAGAATTGTTGAAAATGGAGCTGGAACTGGATGAACAGTTTATCCCCCACTGTCATCTAATATTGCCCATAGAGGTACATCAGTAGATTTAGCTATTTTTTCTTTACATTTAGCAGGTATTTCCTCTATTTTAGGAGCGATTAATTTTATTACTACAATTATTAATATACGAATTAACAGTATAAATTATGATCAAATACCACTATTTGTGTGATCAGTAGGAATTACTGCTTTACTCTTATTACTTTCTCTTCCAGTATTAGCAGGTGCTATCACTATATTATTAACGGATCGAAATTTAAATACATCATTTTTTGATCCTGCAGGAGGAGGAGATCCAATTTTATATCAACATTTATTT"
+```
+
+For the nerds, you can optionally get back the `httr` response object, which gives you a bunch of details on the call you made to the web.
+
+
+```r
+res <- bold_seq(taxon='Coelioxys', response=TRUE)
+res$headers
+```
+
+```
+## $date
+## [1] "Wed, 28 May 2014 22:23:16 GMT"
+## 
+## $server
+## [1] "Apache/2.2.15 (Red Hat)"
+## 
+## $`x-powered-by`
+## [1] "PHP/5.3.15"
+## 
+## $`content-disposition`
+## [1] "attachment; filename=fasta.fas"
+## 
+## $connection
+## [1] "close"
+## 
+## $`transfer-encoding`
+## [1] "chunked"
+## 
+## $`content-type`
+## [1] "application/x-download"
+## 
+## $status
+## [1] "200"
+## 
+## $statusmessage
+## [1] "OK"
+## 
+## attr(,"class")
+## [1] "insensitive" "list"
+```
+
+For all functions in `bold`, not just `bold_seq()`, you can pass in curl options to `httr::GET`. For example, you can print the progress as curl progresses (we need to load `httr` for this):
+
+
+```r
+library("httr")
+bold_seq(ids='ACRJP618-11', callopts = verbose())
+```
+
+
+```r
+## * Adding handle: conn: 0x7fb4c2774a00
+## * Adding handle: send: 0
+## * Adding handle: recv: 0
+## * Curl_addHandleToPipeline: length: 1
+## * - Conn 25 (0x7fb4c2774a00) send_pipe: 1, recv_pipe: 0
+## * About to connect() to www.boldsystems.org port 80 (#25)
+## *   Trying 131.104.104.109...
+## * Connected to www.boldsystems.org (131.104.104.109) port 80 (#25)
+## > GET /index.php/API_Public/sequence?ids=ACRJP618-11 HTTP/1.1
+## Host: www.boldsystems.org
+## Accept: */*
+## Accept-Encoding: gzip
+## user-agent: curl/7.30.0 Rcurl/1.95.4.1 httr/0.3
+##
+## < HTTP/1.1 200 OK
+## < Date: Wed, 28 May 2014 22:21:09 GMT
+## * Server Apache/2.2.15 (Red Hat) is not blacklisted
+## < Server: Apache/2.2.15 (Red Hat)
+## < X-Powered-By: PHP/5.3.15
+## < Content-Disposition: attachment; filename=fasta.fas
+## < Connection: close
+## < Transfer-Encoding: chunked
+## < Content-Type: application/x-download
+## <
+## * Closing connection 25
+## [[1]]
+## [[1]]$id
+## [1] "ACRJP618-11"
+##
+## [[1]]$name
+## [1] "Lepidoptera"
+##
+## [[1]]$gene
+## [1] "ACRJP618-11"
+##
+## [[1]]$sequence
+## [1] "------------------------TTGAGCAGGCATAGTAGGAACTTCTCTTAGTCTTATTATTCGAACAGAATTAGGAAATCCAGGATTTTTAATTGGAGATGATCAAATCTACAATACTATTGTTACGGCTCATGCTTTTATTATAATTTTTTTTATAGTTATACCTATTATAATTGGAGGATTTGGTAATTGATTAGTTCCCCTTATACTAGGAGCCCCAGATATAGCTTTCCCTCGAATAAACAATATAAGTTTTTGGCTTCTTCCCCCTTCACTATTACTTTTAATTTCCAGAAGAATTGTTGAAAATGGAGCTGGAACTGGATGAACAGTTTATCCCCCACTGTCATCTAATATTGCCCATAGAGGTACATCAGTAGATTTAGCTATTTTTTCTTTACATTTAGCAGGTATTTCCTCTATTTTAGGAGCGATTAATTTTATTACTACAATTATTAATATACGAATTAACAGTATAAATTATGATCAAATACCACTATTTGTGTGATCAGTAGGAATTACTGCTTTACTCTTATTACTTTCTCTTCCAGTATTAGCAGGTGCTATCACTATATTATTAACGGATCGAAATTTAAATACATCATTTTTTGATCCTGCAGGAGGAGGAGATCCAATTTTATATCAACATTTATTT"
+```
+
+### Search for specimen data only
+
+By default you download `tsv` format data, which is given back to you as a `data.frame`
+
+
+```r
+res <- bold_specimens(taxon='Osmia')
+head(res[,1:8])
+```
+
+```
+##     processid sampleid recordID catalognum fieldnum
+## 1 GBAH0293-06 AF250940   470890                    
+## 2 GBAH3879-08 EU726628   856410   EU726628         
+## 3 GBAH3880-08 EU726627   856411   EU726627         
+## 4 GBAH3888-08 EU726619   856419   EU726619         
+## 5 GBAH3904-08 EU726603   856435   EU726603         
+## 6 GBAH3909-08 EU726598   856440   EU726598         
+##        institution_storing      bin_uri phylum_taxID
+## 1 Mined from GenBank, NCBI BOLD:AAD6282           20
+## 2 Mined from GenBank, NCBI BOLD:AAA4494           20
+## 3 Mined from GenBank, NCBI BOLD:AAA4494           20
+## 4 Mined from GenBank, NCBI BOLD:AAA4494           20
+## 5 Mined from GenBank, NCBI BOLD:AAA4494           20
+## 6 Mined from GenBank, NCBI BOLD:AAA4494           20
+```
+
+Alternatively, you can get back raw XML data
+
+
+```r
+bold_specimens(taxon='Osmia', format='xml')
+```
+
+
+```r
+## <bold_records xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.boldsystems.org/schemas/BOLD_record.xsd">
+##   <record>
+##     <recordID>470890</recordID>
+##     <processid>GBAH0293-06</processid>
+##     <specimen_identifiers>
+##       <sampleid>AF250940</sampleid>
+##       <institution_storing>Mined from GenBank, NCBI</institution_storing>
+##     </specimen_identifiers>
+##     <bin_uri>BOLD:AAD6282</bin_uri>
+##     <taxonomy>
+##       <phylum>
+##         <taxon>
+##           <taxID>20</taxID>
+##           <name>Arthropoda</name>
+##         </taxon>
+##       </phylum>
+##       <class>
+##         <taxon>
+##           <taxID>82</taxID>
+##           <name>Insecta</name>
+##         </taxon>
+##      </class>
+## ...cutoff
+```
+
+### Search for specimen plus sequence data
+
+By default you get back a data frame with specimen data and sequences together. This data frame is pretty unwieldy, so you can set `sepfasta=TRUE` to get back a list of length two with a data frame (with specimen data) and a list (with sequences)
+
+
+```r
+res <- bold_seqspec(taxon='Osmia', sepfasta=TRUE)
+head(res$data)[1:6]
+```
+
+```
+##     processid sampleid recordID catalognum fieldnum
+## 1 GBAH0293-06 AF250940   470890                    
+## 2 GBAH3879-08 EU726628   856410   EU726628         
+## 3 GBAH3880-08 EU726627   856411   EU726627         
+## 4 GBAH3888-08 EU726619   856419   EU726619         
+## 5 GBAH3904-08 EU726603   856435   EU726603         
+## 6 GBAH3909-08 EU726598   856440   EU726598         
+##        institution_storing
+## 1 Mined from GenBank, NCBI
+## 2 Mined from GenBank, NCBI
+## 3 Mined from GenBank, NCBI
+## 4 Mined from GenBank, NCBI
+## 5 Mined from GenBank, NCBI
+## 6 Mined from GenBank, NCBI
+```
+
+Look at sequences
+
+
+```r
+res$fasta[1:2]
+```
+
+```
+## $`GBAH0293-06`
+## [1] "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------TTAATGTTAGGGATTCCAGATATAGCTTTTCCACGAATAAATAATATTAGATTTTGACTGTTACCTCCATCTTTAATATTATTACTTTTAAGAAATTTTTTAAATCCAAGTCCTGGAACAGGATGAACAGTTTATCCTCCTTTATCATCAAATTTATTTCATTCTTCTCCTTCAGTTGATTTAGCAATTTTTTCTTTACATATTTCAGGTTTATCTTCTATTATAGGTTCATTAAATTTTATTGTTACAATTATTATAATAAAAAATATTTCTTTAAAATATATTCAATTACCTTTATTTTCTTGATCTGTATTTATTACTACTATTCTTTTATTATTTTCTTTACCTGTATTAGCTGGAGCTATTACTATATTATTATTTGATCGAAATTTTAATACATCTTTTTTTGATCCAACAGGAGGGGGAGATCCAATTCTTTATCAACATTTATTTTGATTTTTTGGTCATCCTGAAGTTTATATTTTAATTTTACCTGGATTTGGATTAATTTCTCAAATTATTTCTAATGAAAGAGGAAAAAAAGAAACTTTTGGAAATATTGGTATAATTTATGCTATATTAAGAATTGGACTTTTAGGTTTTATTGTT---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+## 
+## $`GBAH3879-08`
+## [1] "---------------------------------------ATTCTATATATAATTTTTGCTTTATGATCTGGAATAATTGGATCAGCAATA---AGAATTATTATTCGAATAGAATTAAGTATCCCAGGATCATGAATTTCTAAT---GATCAAATTTATAATTCTTTAGTAACTGGTCATGCCTTTTTAATAATTTTTTTTCTTGTCATACCATTTTTAATTGGAGGATTTGGAAATTGATTAATTCCATTAATA---TTAGGAATTCCAGATATAGCTTTTCCTCGAATAAATAATATTAGATTTTGACTTTTACCACCATCCTTAATATTATTACTTTTAAGAAATTTTTTAAATCCAAGACCTGGAACAGGATGAACAATTTATCCACCTTTATCATCAAATTTATTTCATTCTTCTCCTTCAGTTGATTTA---GCAATTTTTTCTTTACATATTTCAGGTTTATCTTCTATTATAGGTTCATTAAATTTTATTGTTACAATTATTATAATAAAAAACATTTCCTTAAAATATATTCAATTATCCTTATTTCCTTGATCTGTATTTATTACTACTATTCTTTTACTTTTTTCTTTACCTGTATTAGCTGGA---GCAATTACTATATTATTATTTGATCGAAATTTTAATACATCTTTTTTTGATCCAACAGGAGGTGGAGATCCAATTCTTTATCAACATTTA------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+```
+
+Or you can index to a specific sequence like
+
+
+```r
+res$fasta['GBAH0293-06']
+```
+
+```
+## $`GBAH0293-06`
+## [1] "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------TTAATGTTAGGGATTCCAGATATAGCTTTTCCACGAATAAATAATATTAGATTTTGACTGTTACCTCCATCTTTAATATTATTACTTTTAAGAAATTTTTTAAATCCAAGTCCTGGAACAGGATGAACAGTTTATCCTCCTTTATCATCAAATTTATTTCATTCTTCTCCTTCAGTTGATTTAGCAATTTTTTCTTTACATATTTCAGGTTTATCTTCTATTATAGGTTCATTAAATTTTATTGTTACAATTATTATAATAAAAAATATTTCTTTAAAATATATTCAATTACCTTTATTTTCTTGATCTGTATTTATTACTACTATTCTTTTATTATTTTCTTTACCTGTATTAGCTGGAGCTATTACTATATTATTATTTGATCGAAATTTTAATACATCTTTTTTTGATCCAACAGGAGGGGGAGATCCAATTCTTTATCAACATTTATTTTGATTTTTTGGTCATCCTGAAGTTTATATTTTAATTTTACCTGGATTTGGATTAATTTCTCAAATTATTTCTAATGAAAGAGGAAAAAAAGAAACTTTTGGAAATATTGGTATAATTTATGCTATATTAAGAATTGGACTTTTAGGTTTTATTGTT---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+```
+
+
+### Get trace files
+
+This function downloads files to your machine - it does not load them into your R session - but prints out where the files are for your information, and gives back the files with full paths so that you can then open them in R or at least browse to them on your machine.
+
+
+```r
+bold_trace(taxon='Osmia')
+```
+
+
+```r
+## Trace file extracted with files:
+##
+## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/HMBCH056-07_F.ab1
+## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/HMBCH056-07_R.ab1
+## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/HMBCH063-07_F.ab1
+## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/HMBCH063-07_R.ab1
+## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/Osm_aur_T505_LCOHym_D04_008_copy.ab1
+## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/Osm_aur_T505_NancyFull_D10_008_copy.ab1
+## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/Osm_ruf_T309_LCOHym_C06_006_copy.ab1
+## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/Osm_ruf_T309_Nancy_C06_006_copy.ab1
+## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/TRACE_FILE_INFO.txt
+```
+
+<section id="citing">
+
+## Citing
+
+To cite `bold` in publications use:
+
+<br>
+
+> Scott Chamberlain (2014). bold: Interface to Bold Systems API. R package version 0.1.0. https://github.com/ropensci/bold
+
+<section id="license_bugs">
+
+## License and bugs
+
+* License: [MIT](http://opensource.org/licenses/MIT)
+* Report bugs at [our Github repo for bold](https://github.com/ropensci/bold/issues?state=open)
+
+[Back to top](#top)
