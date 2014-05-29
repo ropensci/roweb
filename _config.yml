@@ -1,4 +1,4 @@
-permalink: /blog/:year/:month/:day/:title
+permalink: /blog/:categories/:year/:month/:day/:title
 markdown: redcarpet
 
 paginate_path: "blog/page:num"

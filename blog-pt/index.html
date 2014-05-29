@@ -1,0 +1,23 @@
+---
+layout: blog_layout
+title: "rOpenSci Blog"
+---
+  
+  <h2>{{ page.title }}</h2>
+
+      <div class="col-md-3 sidebarr">
+      <span class="label label-blog"><a href="/tags.html">Posts by tag</a></span><br><br>
+      <span class="label label-blog"><a href="/archives.html">Posts by date</a></span><br>
+      <!-- <a href="http://ropensci.org/feed.xml" target="_blank" class="ss-social ss-icon btn" rel="tooltip" data-placement="right" title="Blog posts via RSS Feed">RSS</a> -->
+    </div>
+
+
+<div id='post' class="col-sm-12 col-md-9">
+  <!--   List of posts for landing page -->
+  {% for post in site.categories.pt %}
+      <h3><a href="{{ site.dir }}{{ post.url }}">{{ post.title }}</a></h3>
+      {{ post.author }} &mdash; <i>{{ post.date | date: "%B %e, %Y" }}</i><br>
+      {{ post.content | strip_html | truncatewords:75}}<br>
+      <hr class="gray-line">
+  {% endfor %}
+</div>
