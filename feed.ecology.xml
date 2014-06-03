@@ -8,12 +8,15 @@ layout: rss-feed
 		<description>Posts tagged as 'ecology'</description>
 		<link>http://ropensci.org/feed.ecology.xml</link>
 		{% for post in site.tags.ecology limit:10 %}
-			<item>
-				<title>{{ post.title }}</title>
-				<description>{{ post.content | xml_escape }}</description>
-				<published>{{ post.date }}</published>
-				<link>http://ropensci.org{{ post.url }}</link>
-			</item>
+			{% if post.categories contains 'pt' %}
+			{% else if %}
+				<item>
+					<title>{{ post.title }}</title>
+					<description>{{ post.content | xml_escape }}</description>
+					<published>{{ post.date }}</published>
+					<link>http://ropensci.org{{ post.url }}</link>
+				</item>
+			{% endif %}
 		{% endfor %}
 	</channel>
 </rss>
