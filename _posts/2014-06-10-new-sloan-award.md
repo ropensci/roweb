@@ -1,7 +1,7 @@
 ---
 name: new-round-sloan-funding
 layout: post
-title: rOpenSci awarded $300k grant from the Sloan Foundation
+title: rOpenSci awarded $300k from the Sloan Foundation
 date: 2014-06-10
 author: Karthik Ram
 tags:
