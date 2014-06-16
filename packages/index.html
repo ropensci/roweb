@@ -9,7 +9,7 @@ title: "rOpenSci - Packages"
             <div class="col-md-10 col-md-offset-1">
 
     <h2>rOpenSci packages</h2>
-     <p>This is a complete list of all available rOpenSci packages. Packages are grouped by ones that acquire <a href="#data">data</a>, <a href="#literature">full-text of journal articles</a>, <a href="#altmetrics">altmetrics</a>, <a href="#data-publication">data-publication</a> and <a href="#data-viz">data visualization</a>. Packages with a <span class="label label-success">cran</span> sign are stable versions that you can quickly install from your nearest mirror using <code>install.packages("PACKAGE_NAME")</code>. Others are in various stages of development (bleeding edge packages are not listed here) and you can learn more by following our <a href="https://github.com/ropensci" title="rOpenSci · GitHub">GitHub organization page</a>.</p>
+     <p>This is a complete list of all available rOpenSci packages. Packages are grouped by ones that acquire <a href="#data">data</a>, <a href="#literature">full-text of journal articles</a>, <a href="#altmetrics">altmetrics</a>, <a href="#data-publication">data-publication</a>, <a href="#reproducibility">reproducibility</a> and <a href="#data-viz">data visualization</a>. Packages with a <span class="label label-success">cran</span> sign are stable versions that you can quickly install from your nearest mirror using <code>install.packages("PACKAGE_NAME")</code>. Others are in various stages of development (bleeding edge packages are not listed here) and you can learn more by following our <a href="https://github.com/ropensci" title="rOpenSci · GitHub">GitHub organization page</a>. All of our software packages are open source. Please see package description files for more license details.</p>
 
 
 <section id="data">
@@ -165,6 +165,11 @@ title: "rOpenSci - Packages"
         <td>Grab data from the GeoNames geographical database which covers all countries and contains over eight million placenames</td>
         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/geonames/"><span class="label label-inverse">github</span></a></td>
         </tr>
+        <tr>
+        <td><a href="https://github.com/ropensci/RSelenium">RSelenium</a></td>
+        <td>An R client for Selenium Remote WebDriver</td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/RSelenium/"><span class="label label-inverse">github</span></a></td>
+        </tr>
 
     </tbody>
   </table>
@@ -238,6 +243,8 @@ title: "rOpenSci - Packages"
         <td>Wrapper to <a href="http://datacite.org/">DataCite</a> metadata. <span class="label label-info"> In early devlopment</span></td>
         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rdatacite/"><span class="label label-inverse">github</span></a></td>
         </tr>
+   
+
 
     </tbody>
   </table>
@@ -287,6 +294,7 @@ title: "rOpenSci - Packages"
         <td>R wrapper to the almetrics API platform developed by PLoS <a href="http://alm.plos.org/"></a> API - other publishers have built on this and work out of the box: CrossRef, Copernicus Publishers, and the Public Knowledge Project (PKP)</td>
         <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/alm/"><span class="label label-inverse">github</span></a></td>
         </tr>
+
 
    </tbody>
   </table>
@@ -343,6 +351,40 @@ title: "rOpenSci - Packages"
     </div>
   </div>
   </section>
+
+<!-- Reproducibility packages -->
+
+<section id="reproducibility">
+  <div class="page-header">
+    <h2>Reproducibility  <small>Packages that support some part of the reproducibility pipeline.</small></h2>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+
+       </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://github.com/ropensci/git2r">git2r</a></td>
+        <td>Git bindings from R</td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/git2r/"><span class="label label-inverse">github</span></a></td>
+        </tr>
+
+
+   </tbody>
+  </table>
+    </div>
+  </div>
+  </section>
+
+
 
 <section id="data-viz">
     <div class="page-header">
