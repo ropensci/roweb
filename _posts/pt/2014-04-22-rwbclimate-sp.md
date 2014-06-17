@@ -1,7 +1,7 @@
 ---
 name: rwbclimate-sp
 layout: post
-title: Sobreposição de dados de ocorrência de espécies com dados climáticos 
+title: Sobreposição de dados de ocorrência de espécies com dados climáticos
 date: 2014-04-22
 author: Ted Hart
 categories:
@@ -26,7 +26,7 @@ O primeiro passo é capturar arquivos [KML](https://developers.google.com/kml/do
 
 ```r
 library("rWBclimate")
-# Instale spocc do reposítório do GitHub 
+# Instale spocc do reposítório do GitHub
 # devtools::install_github("spocc", "ropensci")
 library("spocc")
 library("taxize")
@@ -45,12 +45,12 @@ options(kmlpath = "~/kmltmp")
 options(stringsAsFactors = FALSE)
 
 usmex <- c(273:284, 328:365)
-### Baixe os arquivos KML e carregue-os 
+### Baixe os arquivos KML e carregue-os
 usmex.basin <- create_map_df(usmex)
 ```
 
 ```r
-## Baixe os dados de temperatura 
+## Baixe os dados de temperatura
 temp.dat <- get_historical_temp(usmex, "decade")
 temp.dat <- subset(temp.dat, temp.dat$year == 2000)
 
@@ -65,11 +65,11 @@ Neste ponto, acabamos de criar um mapa dos Estados Unidos e México, baixamos a 
 
 splist <- c("Acer saccharum", "Abies balsamea", "Arbutus xalapensis", "Betula alleghaniensis", "Chilopsis linearis", "Conocarpus erectus", "Populus tremuloides", "Larix laricina")
 
-## Obtenha dados do bison e gbif 
+## Obtenha dados do bison e gbif
 splist <- sort(splist)
 out <- occ(query = splist, from = c("bison", "gbif"), limit = 100)
 
-## Elimine erros dos nomes 
+## Elimine erros dos nomes
 out <- fixnames(out, how = "query")
 
 ## Crie um data frame com todos os dados.
@@ -84,9 +84,9 @@ Agora que já baixamos os dados de ocorrência das espécies usando os seus nome
 cname <- ldply(sci2comm(get_tsn(splist), db = "itis", simplify = TRUE), function(x) { return(x[1]) })[, 2]
 ```
 
-```r 
+```r
 ### Agora, vamos criar um vetor de nomes populares para plotar facilmente
-### Mas primeiro, vamos ordenar os nomes de maneira que possamos apenas adicionar os  ### nomes 
+### Mas primeiro, vamos ordenar os nomes de maneira que possamos apenas adicionar os  ### nomes
 out_df <- out_df[order(out_df$name), ]
 ### retire valores NA e 0 das coordenadas
 out_df <- out_df[!is.na(out_df$lat), ]
@@ -98,14 +98,14 @@ Agora temos todos os componentes de que precisamos, ou seja, dados de espécies 
 
 
 ```r
-## Agora apenas crie o mapa base para a temperatura 
+## Agora apenas crie o mapa base para a temperatura
 usmex.map <- ggplot() +
   geom_polygon(data = usmex.map.df, aes(x = long, y = lat, group = group, fill = data, alpha = 0.9)) +
   scale_fill_continuous("Average annual \n temp: 1990-2000", low = "yellow", high = "red") +
   guides(alpha = F) +
   theme_bw(10)
 
-## E sobreponha os dados do gbif 
+## E sobreponha os dados do gbif
 usmex.map <- usmex.map +
   geom_point(data = out_df, aes(y = latitude, x = longitude, group = common, colour = common)) +
   xlim(-125, -59) +
@@ -120,14 +120,14 @@ Agora a questão é: qual é a temperatura em cada ponto para cada um das espéc
 
 
 ```r
-## Crie um data frame de um polígono espacial juntando polígonos kml com temperatura 
+## Crie um data frame de um polígono espacial juntando polígonos kml com temperatura
 ## Dados
 temp_sdf <- kml_to_sp(usmex.basin, df = temp.dat)
 ### Agora podemos transformar os pontos num polígono espacial:
 sp_points <- occ_to_sp(out)
 
 tdat <- vector()
-### Calcule as médias 
+### Calcule as médias
 for (i in 1:length(splist)) {
     tmp_sp <- sp_points[which(sp_points$name == splist[i]), ]
     tmp_t <- over(tmp_sp, temp_sdf)$data
@@ -135,15 +135,15 @@ for (i in 1:length(splist)) {
 }
 ```
 
-O último passo é criar um novo data frame com nossos dados. Infelizmente o tamanho do nosso data frame antigo `out_df` não será o mesmo porque algum dados de latitude e longitude que vieram junto com nossos dados são inválidos, assim todo o data frame será reorganizado. Depois disso, podemos resumi-los com o pacote plyr, obtendo a temperatura média e a latitude para cada espécie. 
+O último passo é criar um novo data frame com nossos dados. Infelizmente o tamanho do nosso data frame antigo `out_df` não será o mesmo porque algum dados de latitude e longitude que vieram junto com nossos dados são inválidos, assim todo o data frame será reorganizado. Depois disso, podemos resumi-los com o pacote plyr, obtendo a temperatura média e a latitude para cada espécie.
 
 ```r
-### Organize o novo data frame 
+### Organize o novo data frame
 spDF <- data.frame(matrix(nrow = dim(sp_points)[1], ncol = 0))
 spDF$species <- sp_points$name
 spDF <- cbind(coordinates(sp_points), spDF)
 
-### Importante. Tenha certeza de que ordenou todos os pontos em ordem alfabética assim ### como fizemos anteriormente 
+### Importante. Tenha certeza de que ordenou todos os pontos em ordem alfabética assim ### como fizemos anteriormente
 spDF <- spDF[order(spDF$species), ]
 
 spDF$cname <- rep(cname, table(sp_points$name))
@@ -170,7 +170,7 @@ ggplot(summary_data, aes(x = mlat, y = mtemp, label = cname)) +
 ![](/assets/blog-images/2014-04-22-rwbclimate-sp/means.png)
 
 
-Isso nos dá uma noção sobre como as médias de cada valor estão relacionadas, mas também podemos olhar a distribuição das temperaturas com boxplots. 
+Isso nos dá uma noção sobre como as médias de cada valor estão relacionadas, mas também podemos olhar a distribuição das temperaturas com boxplots.
 
 ```r
 ggplot(spDF, aes(as.factor(cname), temp)) +
