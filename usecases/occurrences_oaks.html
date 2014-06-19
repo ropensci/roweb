@@ -1,0 +1,64 @@
+---
+title: Comparing occurrence data for valley oaks
+pkg: rgbif
+layout: usecases
+---
+
+<body>
+<p>This example comes from <a href="https://twitter.com/ajpelu">Antonio J. Perez-Luque</a> who <a href="https://twitter.com/ajpelu/status/473951167567757312">shared his plot on Twitter</a>. Antonio compared the occurrences of Valley Oak (<em>Quercus lobata</em>) from <a href="http://www.gbif.org/">GBIF</a> to the distribution of the same species from the <a href="http://esp.cr.usgs.gov/data/little/">Atlas of US Trees</a>. </p>
+
+<h3>Load libraries</h3>
+
+<pre><code class="r">library(&#39;rgbif&#39;)
+library(&#39;raster&#39;)
+library(&#39;sp&#39;)
+library(&#39;maptools&#39;)
+library(&#39;rgeos&#39;)
+library(&#39;scales&#39;)
+</code></pre>
+
+<h3>Get GBIF Data for Quercus lobata</h3>
+
+<pre><code class="r">keyQl &lt;- name_backbone(name=&#39;Quercus lobata&#39;, kingdom=&#39;plants&#39;)$speciesKey
+dat.Ql &lt;- occ_search(taxonKey=keyQl, return=&#39;data&#39;, limit=50000)
+</code></pre>
+
+<h3>Get Distribution map of Q. lobata Atlas of US Trees (Little, E.)</h3>
+
+<p>From <a href="http://esp.cr.usgs.gov/data/little/">http://esp.cr.usgs.gov/data/little/</a>. And save shapefile in same directory</p>
+
+<pre><code class="r">url &lt;- &#39;http://esp.cr.usgs.gov/data/little/querloba.zip&#39;
+tmp &lt;- tempdir()
+download.file(url, destfile = &quot;~/querloba.zip&quot;)
+unzip(&quot;~/querloba.zip&quot;, exdir = &quot;querloba&quot;)
+ql &lt;- readShapePoly(&quot;~/querloba/querloba.shp&quot;)
+</code></pre>
+
+<h3>Get Elevation data of US</h3>
+
+<pre><code class="r">alt.USA &lt;- getData(&#39;alt&#39;, country=&#39;USA&#39;)
+</code></pre>
+
+
+<h3>Create Hillshade of US</h3>
+
+<pre><code class="r">alt.USA &lt;- alt.USA[[1]]
+slope.USA &lt;- terrain(alt.USA, opt=&#39;slope&#39;)
+aspect.USA &lt;- terrain(alt.USA, opt=&#39;aspect&#39;)
+hill.USA &lt;- hillShade(slope.USA, aspect.USA, angle=45, direction=315)
+</code></pre>
+
+<h3>Plot map</h3>
+
+<pre><code class="r">plot(hill.USA, col=grey(0:100/100), legend=FALSE, xlim=c(-125,-116), ylim=c(32,42), main=&#39;Distribution of Quercus lobata&#39;, xlab=&quot;Long&quot;, ylab=&#39;Lat&#39;)
+# add shape from Atlas of US Trees
+plot(ql, add=TRUE, col=alpha(&quot;white&quot;, 0.6), border=FALSE)
+# add Gbif presence points
+points(dat.Ql$decimalLongitude, dat.Ql$decimalLatitude, cex=.7, pch=19, col=alpha(&quot;darkgreen&quot;, 0.8))
+legend(x=-121, y=40.5, &quot;GBIF Data&quot;, pch=19, col=&#39;darkgreen&#39;, bty=&#39;n&#39;, pt.cex=1, cex=.8)
+legend(x=-121, y=41.5, &quot;Atlas of United States Trees \n (Little, E. 1971)&quot;, pt.cex=1.5, cex=.8, pch=19, col=&#39;white&#39;, bty=&#39;n&#39;)
+</code></pre>
+
+<p><img src="../assets/usecases-images/oaks.png"/> </p>
+
+</body>
