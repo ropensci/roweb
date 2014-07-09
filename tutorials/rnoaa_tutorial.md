@@ -27,6 +27,8 @@ library("rnoaa")
 library("plyr")
 ```
 
+You'll also want to grab an API key from NOAA at [http://www.ncdc.noaa.gov/cdo-web/token](http://www.ncdc.noaa.gov/cdo-web/token).
+
 <br>
 
 <section id="usage">
