@@ -1,7 +1,7 @@
 ---
 name: rnoaa_v02
 layout: post
-title: rnoaa v0.2.0 - new data sources, more vignettes, and more
+title: Changes in rnoaa v0.2.0
 date: 2014-07-21
 author: Scott Chamberlain
 tags:
@@ -34,18 +34,18 @@ library("rnoaa")
 
 ## UI changes
 
-We changed almost all function names to have a more intuitive programmatic user interface (or _UI_). 
+We changed almost all function names to have a more intuitive programmatic user interface (or _UI_).
 
-+ We changed all `noaa*()` functions to `ncdc*()` - these work only with NOAA National Climatic Data Center (NCDC) data, so the `ncdc` name makes sense. 
-+ `noaa_seaice()` changed to `seaice()`, which works with NOAA sea ice data. 
-+ `noaa_swdi()` changed to `swdi()`, which works with data from the Severe Weather Data Inventory. 
++ We changed all `noaa*()` functions to `ncdc*()` - these work only with NOAA National Climatic Data Center (NCDC) data, so the `ncdc` name makes sense.
++ `noaa_seaice()` changed to `seaice()`, which works with NOAA sea ice data.
++ `noaa_swdi()` changed to `swdi()`, which works with data from the Severe Weather Data Inventory.
 
 
 ## Two new data sources
 
 ### ERDDAP
 
-We added new functions to interact with [NOAA ERDDAP data](http://coastwatch.pfeg.noaa.gov/erddap/index.html): `erddap_info()`, `erddap_data()`, and `erddap_search()`. As a quick example, let's search for data, get a dataset identifier, then get information on that dataset, then get the data. 
+We added new functions to interact with [NOAA ERDDAP data](http://coastwatch.pfeg.noaa.gov/erddap/index.html): `erddap_info()`, `erddap_data()`, and `erddap_search()`. As a quick example, let's search for data, get a dataset identifier, then get information on that dataset, then get the data.
 
 Search for data
 
@@ -89,8 +89,8 @@ p1996.nc
 ```
 
 ```{r eval=FALSE, results='asis'}
-Dimensions: [rows 4797, cols 3] 
-3 variables: [gust_dir, gust_spd, gust_time] 
+Dimensions: [rows 4797, cols 3]
+3 variables: [gust_dir, gust_spd, gust_time]
 
    gust_dir gust_spd gust_time
 1       153      1.3 827105820
