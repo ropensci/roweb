@@ -3,7 +3,7 @@ name: text-commmunity
 layout: post
 title: A new full text package, and community conversations
 date: 2014-08-08
-author: Scott Chamberlain
+author: Scott Chamberlain and Karthik Ram
 tags:
 - R
 - community
@@ -11,19 +11,17 @@ tags:
 
 ## Community
 
-Community is at the heart of rOpenSci. We couldn't have down most of the work we've done without help from all our contributors and users, some of which are listed [on our website](http://ropensci.org/community/#community).
+Community is at the heart of rOpenSci. We couldn't have accomplished most of our work without help from various [contributors and users](http://ropensci.org/community/#community).
 
-Key to a strong community is good places to hold discussions. Often this takes the form of mailing lists. We've had [a public mailing list](https://groups.google.com/forum/#!forum/ropensci-discuss) for a while now, but have not used it very much. We aim to rectify that by posting more to the community mailing list asking for feedback, testing, etc., and we hope the community can use it more for discussions of our software.
+Most of our discussions with the broader community over the past year have been through twitter or one-on-one conversations. However, we would like to foster more open ended and deeper discussions with our community. To this end, we are resurrecting our [public Google group list](https://groups.google.com/forum/#!forum/ropensci-discuss). We encourage you to sign up and post ideas for packages, solicit feedback on new ideas, and most importantly find other collaborators who share your domain interests. We also plan to use the list to solicit feedback on some of the bigger rOpenSci projects early on in the development phase allowing our community to shape future direction and also collaborate where appropriate.
 
-Sometimes discussions are most appropriate on StackOverflow, especially when the problem is specific to the programming language you're using, not the extension package to that language. Some extension software packages, like `ggplot2`, have their own mailing list, and have a long list of fruitful discussions on it. Other times, you have a bug report for a particular R package, which is often appropriate for the issue tracker for that package.
+The mailing list would be appropriate for a broad array of discussions, including:
 
-The mailing list is appropriate for a broad array of discussions, including:
+* Questions about any of our R packages, including questions like "How do I make this function do XYZ..." to "I'm getting an error with this package or function...". However, we will likely direct more basic R questions back to StackOverflow.
+* Announcements of what you've done with our software or any papers where you might have used them. Sharing your new use cases or publications (even pre publications) is a great way to get others involved.
+* Questions or thoughts about the future of rOpenSci. Do you want to see a package do XYZ in the future? Do you want a new package to do ABc in the future?
 
-* Questions about any of our R packages, including questions like "How do I make this function do XYZ..." to "I'm getting an error with this package/function...".
-* Announcements of what you've done with our software. We'd love to know how you're using our software.
-* Questions/thoughts about the future of rOpenSci. Do you want to see a package do XYZ in the future? Do you want a new package to do ABc in the future?
-
-Sign up for our mailing list, ask questions, and help make this a strong community. The mailing list: https://groups.google.com/forum/#!forum/ropensci-discuss
+Sign up for our mailing list, ask questions, and help make this a strong community. The mailing list: [https://groups.google.com/forum/#!forum/ropensci-discuss](https://groups.google.com/forum/#!forum/ropensci-discuss)
 
 ## Text
 
