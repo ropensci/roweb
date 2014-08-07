@@ -1,18 +1,18 @@
 ---
 title: spocc tutorial
 layout: tutorial
-packge_version: 0.1.2
+packge_version: 0.2.0
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
-opts_chunk$set(fig.path="../assets/tutorial-images/spocc/", fig.width=6, fig.height=4)
+knitr::opts_chunk$set(fig.path="../assets/tutorial-images/spocc/", fig.width=6, fig.height=4)
 ```
 
 The rOpenSci projects aims to provide programmatic access to scientific data repositories on the web. A vast majority of the packages in our current suite retrieve some form of biodiversity or taxonomic data. Since several of these datasets have been georeferenced, it provides numerous opportunities for visualizing species distributions, building species distribution maps, and for using it analyses such as species distribution models. In an effort to streamline access to these data, we have developed a package called Spocc, which provides a unified API to all the biodiversity sources that we provide. The obvious advantage is that a user can interact with a common API and not worry about the nuances in syntax that differ between packages. As more data sources come online, users can access even more data without significant changes to their code. However, it is important to note that spocc will never replicate the full functionality that exists within specific packages. Therefore users with a strong interest in one of the specific data sources listed below would benefit from familiarising themselves with the inner working of the appropriate packages.
 
 ### Data Sources
 
-`spocc` currently interfaces with five major biodiversity repositories. Many of these packages have been part of the rOpenSci su
+`spocc` currently interfaces with six major biodiversity repositories
 
 1. Global Biodiversity Information Facility (`rgbif`)
 [GBIF](http://www.gbif.org/) is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.
@@ -20,11 +20,8 @@ The rOpenSci projects aims to provide programmatic access to scientific data rep
 2. [Berkeley Ecoengine](http://ecoengine.berkeley.edu/) (`ecoengine`)
 The ecoengine is an open API built by the [Berkeley Initiative for Global Change Biology](http://globalchange.berkeley.edu/). The repository provides access to over 3 million specimens from various Berkeley natural history museums. These data span more than a century and provide access to georeferenced specimens, species checklists, photographs, vegetation surveys and resurveys and a variety of measurements from environmental sensors located at reserves across University of California's natural reserve system.
 
-3. __iNaturalist__ (`rinat`)
+3. [iNaturalist](http://www.inaturalist.org/) (`rinat`)
 iNaturalist provides access to crowd sourced citizen science data on species observations.
-
-4. [VertNet](http://vertnet.org/index.php) (`rvertnet`)
-Similar to `rgbif`, ecoengine, and `rbison` (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology). __Note that we don't currenlty support VertNet data in this package, but we should soon__
 
 5. [Biodiversity Information Serving Our Nation](http://bison.usgs.ornl.gov/) (`rbison`)
 Built by the US Geological Survey's core science analytic team, BISON is a portal that provides access to species occurrence data from several participating institutions.
@@ -38,28 +35,14 @@ AntWeb is the world's largest online database of images, specimen records, and n
 __Note:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package.
 
 
-<section id="installation">
-
-## Installation
-
-```{r, install, eval=FALSE}
-library("devtools")
-devtools::install_github("ropensci/spocc")
-```
-
-<section id="usage">
-
-## Usage
-
 ### Data retrieval
 
 The most significant function in spocc is the `occ` (short for occurrence) function. `occ` takes a query, often a species name, and searches across all data sources specified in the `from` argument. For example, one can search for all occurrences of [Sharp-shinned Hawks](http://www.allaboutbirds.org/guide/sharp-shinned_hawk/id) (_Accipiter striatus_) from the GBIF database with the following R call.
 
 ```{r, gbif_simple_eg}
-library("spocc")
-df <- occ(query = 'Accipiter striatus', from = 'gbif')
-df
-head(df$gbif$data[[1]])
+library('spocc')
+(df <- occ(query = 'Accipiter striatus', from = 'gbif'))
+df$gbif
 ```
 
 The data returned are part of a `S3` class called `occdat`. This class has slots for the five data sources described above. One can easily switch the source by changing the `from` parameter in the function call above.
@@ -94,7 +77,7 @@ response -- |
 
 ```
 
-If you only request data from gbif, like `from = 'gbif'`, then the other four source slots are prsent in the response object, but have no data.
+If you only request data from gbif, like `from = 'gbif'`, then the other four source slots are present in the response object, but have no data.
 
 You can quickly get just the data by indexing to the data element, like
 
@@ -106,14 +89,15 @@ When you get data from multiple providers, the fields returned are slightly diff
 
 ```{r difffields}
 df <- occ(query = 'Accipiter striatus', from = c('gbif', 'ecoengine'))
-head(df$gbif$data$Accipiter_striatus)
-head(df$ecoengine$data$Accipiter_striatus)
+df$gbif
+df$ecoengine
 ```
 
 We provide a function `occ2df` that pulls out a few key columns needed for making maps:
 
 ```{r occ2df}
-head(occ2df(df))
+combined <- occ2df(df)
+head(combined); tail(combined)
 ```
 
 
@@ -123,16 +107,14 @@ One problem you often run in to is that there can be various names for the same 
 
 ```{r fixnames1}
 df <- occ(query='Pinus contorta', from=c('gbif','inat'), limit = 50)
-head(df$gbif$data$Pinus_contorta[,1:2])
-head(df$inat$data$Pinus_contorta[,1:2])
+print(df$inat, n=20)
 ```
 
 This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in `spocc` called `fixnames`, which has a few options in which you can take the shortest names (usually just the plain binomials like _Homo sapiens_), or the original name queried, or a vector of names supplied by the user.
 
 ```{r fixnames2}
-df <- fixnames(df, how = 'shortest')
-head(df$gbif$data$Pinus_contorta[,1:2])
-head(df$inat$data$Pinus_contorta[,1:2])
+df <- fixnames(df, how = 'query')
+print(df$inat, n=20)
 df_comb <- occ2df(df)
 head(df_comb); tail(df_comb)
 ```
@@ -151,9 +133,8 @@ Here is an example of making a leaflet map:
 
 ```{r eval = FALSE}
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occ(query = spp, from = 'gbif', gbifopts = list(georeferenced = TRUE))
-data <- occ2df(dat)
-mapleaflet(data = data, dest = ".")
+dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
+mapleaflet(dat, dest = ".")
 ```
 
 ![](../assets/tutorial-images/spocc/leaflet.png)
@@ -164,12 +145,11 @@ You can also create interactive maps via the `mapgist` function. You have to hav
 
 ```{r eval = FALSE}
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occ(query = spp, from = 'gbif', gbifopts = list(georeferenced = TRUE))
+dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
 dat <- fixnames(dat)
-dat <- occ2df(dat)
 mapgist(data = dat, color = c("#976AAE", "#6B944D", "#BD5945"))
 ```
-
+  
 ![](../assets/tutorial-images/spocc/gist.png)
 
 __Static maps__
@@ -180,7 +160,7 @@ Base plots, or the built in plotting facility in R accessed via `plot()`, is qui
 
 ```{r eval=FALSE}
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-out <- occ(query = spnames, from = 'gbif', gbifopts = list(georeferenced = TRUE))
+out <- occ(query = spnames, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
 plot(out, cex = 1, pch = 10)
 ```
 
@@ -213,7 +193,7 @@ To cite `spocc` in publications use:
 
 <br>
 
-> Scott Chamberlain, Karthik Ram and Ted Hart (2014). spocc: R interface to many species occurrence data sources. R package version 0.1.2. https://github.com/ropensci/spocc
+> Scott Chamberlain, Karthik Ram and Ted Hart (2014). spocc: R interface to many species occurrence data sources. R package version 0.2.0. https://github.com/ropensci/spocc
 
 <section id="license_bugs">
 
