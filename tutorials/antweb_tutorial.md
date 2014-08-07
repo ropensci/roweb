@@ -1,7 +1,7 @@
 ---
 title: AntWeb tutorial
 layout: tutorial
-packge_version: 0.6.1
+packge_version: 0.6.6
 ---
 
 
@@ -79,7 +79,7 @@ You can request data on any particular species
 ## [Args]: 
 ## genus = acanthognathus 
 ## species = brevicornis 
-## [Dataset]: [2 x 16] 
+## [Dataset]: [2 x 13] 
 ## [Data preview] :
 ##                                                               url
 ## 1 http://antweb.org/api/v2/?occurrenceId=CAS:ANTWEB:casent0280684
@@ -87,15 +87,12 @@ You can request data on any particular species
 ##   catalogNumber     family  subfamily          genus specificEpithet
 ## 1 casent0280684 formicidae myrmicinae Acanthognathus     brevicornis
 ## 2 casent0637708 formicidae myrmicinae Acanthognathus     brevicornis
-##              scientific_name typeStatus stateProvince country
-## 1 acanthognathus brevicornis                                 
-## 2 acanthognathus brevicornis            Madre de Dios        
-##   dateIdentified                                        habitat
-## 1                                                              
-## 2     2013-09-12 Mixed terra firme forest ex sifted leaf litter
-##   minimumElevationInMeters geojson.type decimal_latitude decimal_longitude
-## 1                                  <NA>             <NA>              <NA>
-## 2                      252        point        -13.14142           -69.623
+##              scientific_name typeStatus stateProvince  country
+## 1 acanthognathus brevicornis                          Colombia
+## 2 acanthognathus brevicornis                                  
+##   dateIdentified habitat minimumElevationInMeters
+## 1                                              NA
+## 2     2013-09-12                               NA
 ```
 
 You can also limit queries to observation records that have been geoferenced
@@ -106,35 +103,7 @@ You can also limit queries to observation records that have been geoferenced
 ```
 
 ```
-## 1 results available for query.
-```
-
-```
-## [Total results on the server]: 1 
-## [Args]: 
-## genus = acanthognathus 
-## species = brevicornis 
-## georeferenced = TRUE 
-## [Dataset]: [1 x 16] 
-## [Data preview] :
-##                                                                url
-## 1  http://antweb.org/api/v2/?occurrenceId=CAS:ANTWEB:casent0637708
-## NA                                                            <NA>
-##    catalogNumber     family  subfamily          genus specificEpithet
-## 1  casent0637708 formicidae myrmicinae Acanthognathus     brevicornis
-## NA          <NA>       <NA>       <NA>           <NA>            <NA>
-##               scientific_name typeStatus stateProvince country
-## 1  acanthognathus brevicornis            Madre de Dios        
-## NA                       <NA>       <NA>          <NA>    <NA>
-##    dateIdentified                                        habitat
-## 1      2013-09-12 Mixed terra firme forest ex sifted leaf litter
-## NA           <NA>                                           <NA>
-##    minimumElevationInMeters geojson.type decimal_latitude
-## 1                       252        point        -13.14142
-## NA                     <NA>         <NA>             <NA>
-##    decimal_longitude
-## 1            -69.623
-## NA              <NA>
+## NULL
 ```
 
 
