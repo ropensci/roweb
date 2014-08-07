@@ -6,10 +6,10 @@ packge_version: 1.3
 
 
 ```{r, eval=TRUE, echo=FALSE}
-opts_chunk$set(fig.path="../assets/tutorial-images/ecoengine/")
+knitr::opts_chunk$set(fig.path="../assets/tutorial-images/ecoengine/")
 ```
 
-The Berkeley Ecoengine ([http://ecoengine.berkeley.edu](http://ecoengine.berkeley.edu)) provides an open API to a wealth of museum data contained in the [Berkeley natural history museums](https://bnhm.berkeley.edu/). This R package provides a programmatic interface to this rich repository of data allowing for the data to be easily analyzed and visualized or brought to bear in other contexts. This vignette provides a brief overview of the package's capabilities. 
+The Berkeley Ecoengine ([http://ecoengine.berkeley.edu](http://ecoengine.berkeley.edu)) provides an open API to a wealth of museum data contained in the [Berkeley natural history museums](https://bnhm.berkeley.edu/). This R package provides a programmatic interface to this rich repository of data allowing for the data to be easily analyzed and visualized or brought to bear in other contexts. This vignette provides a brief overview of the package's capabilities.
 
 The API documentation is available at [http://ecoengine.berkeley.edu/developers/](http://ecoengine.berkeley.edu/developers/). As with most APIs it is possible to query all the available endpoints that are accessible through the API itself. Ecoengine has something similar.
 
@@ -42,9 +42,9 @@ ee_about()
 The data functions in the package include ones that query obervations, checklists, photos, vegetation records, and a variety of measurements from sensors. These data are all formatted as a common `S3` class called `ecoengine`. The class includes 4 slots.
 
 - [`Total results`] A total result count (not necessarily the results in this particular object but the total number available for a particlar query)
-- [`Args`] The arguments  (So a reader can replicate the results or rerun the query using other tools.)  
-- [`Type`] The type (`photos`, `observation`, `checklist`, or `sensor`)  
-- [`data`] The data. Data are most often coerced into a `data.frame`. To access the data simply use `result_object$data`.  
+- [`Args`] The arguments  (So a reader can replicate the results or rerun the query using other tools.)
+- [`Type`] The type (`photos`, `observation`, `checklist`, or `sensor`)
+- [`data`] The data. Data are most often coerced into a `data.frame`. To access the data simply use `result_object$data`.
 
 The default `print` method for the class will summarize the object.
 
@@ -54,7 +54,7 @@ For the sake of speed, results are paginated at `25` results per page. It is pos
 
 ```{r, pagination, eval = TRUE}
 request <- ee_photos(county = "Santa Clara County", quiet = TRUE, progress = FALSE)
-# Use quiet to suppress messages. Use progress = FALSE to suppress progress bars which can clutter up documents. 
+# Use quiet to suppress messages. Use progress = FALSE to suppress progress bars which can clutter up documents.
 ee_pages(request)
 # Now it's simple to parallelize this request
 # You can parallelize across number of cores by passing a vector of pages from 1 through the total available.
@@ -74,7 +74,7 @@ pinus_observations <- ee_observations(scientific_name = "Pinus", page = 1, quiet
 pinus_observations
 ```
 
-For additional fields upon which to query, simply look through the help for `?ee_observations`. In addition to narrowing data by taxonomic group, it's also possible to add a bounding box (add argument `bbox`) or request only data that have been georeferenced (set `georeferenced = TRUE`). 
+For additional fields upon which to query, simply look through the help for `?ee_observations`. In addition to narrowing data by taxonomic group, it's also possible to add a bounding box (add argument `bbox`) or request only data that have been georeferenced (set `georeferenced = TRUE`).
 
 
 ```{r, lynx_data}
@@ -105,7 +105,7 @@ aves <- ee_observations(clss = "aves")
 
 __Mapping observations__
 
-The development version of the package includes a new function `ee_map()` that allows users to generate interactive maps from observation queries using Leaflet.js. 
+The development version of the package includes a new function `ee_map()` that allows users to generate interactive maps from observation queries using Leaflet.js.
 
 ```{r, eval = FALSE}
 lynx_data <- ee_observations(genus = "Lynx", georeferenced = TRUE, page = "all", quiet = TRUE)
@@ -114,7 +114,7 @@ ee_map(lynx_data)
 
 ![Map of Lynx observations across North America](../assets/tutorial-images/ecoengine/map.png)
 
-### Photos  
+### Photos
 
 The ecoengine also contains a large number of photos from various sources. It's easy to query the photo database using similar arguments as above. One can search by taxa, location, source, collection and much more.
 
@@ -134,7 +134,7 @@ charles_results
 # Let's examine a couple of rows of the data
 charles_results$data[1:2, ]
 ```
----  
+---
 
 #### Browsing these photos
 
@@ -156,23 +156,23 @@ all_cdfa <- ee_photos(collection_code = "CDFA", page = "all", progress = FALSE)
 racoons <- ee_photos(scientific_name = "Procyon lotor", quiet = TRUE, progress = FALSE)
 ```
 
----  
+---
 
 
 ### Species checklists
 
-There is a wealth of checklists from all the source locations. To get all available checklists from the engine, run: 
-  
+There is a wealth of checklists from all the source locations. To get all available checklists from the engine, run:
+
 ```{r, checklists}
 all_lists  <- ee_checklists()
 head(all_lists[, c("footprint", "subject")])
-```  
+```
 Currently there are `r nrow(all_lists)` lists available. We can drill deeper into any list to get all the available data. We can also narrow our checklist search to groups of interest (see `unique(all_lists$subject)`). For example, to get the list of Spiders:
 
 ```{r, checklist_spiders}
 spiders  <- ee_checklists(subject = "Spiders")
 spiders
-```  
+```
 
 Now we can drill deep into each list. For this tutorial I'll just retrieve data from the the two lists returned above.
 
@@ -183,15 +183,15 @@ names(spider_details)
 unique(spider_details$scientific_name)
 ```
 
-Our resulting dataset now contains `r length(unique(spider_details$scientific_name))` unique spider species. 
+Our resulting dataset now contains `r length(unique(spider_details$scientific_name))` unique spider species.
 
 
 
 ### Sensors
 
-Sensor data come from the [Keck HydroWatch Center](http://nrs.ucop.edu/research/special_projects/Keck_HydroWatchl.htm). 
+Sensor data come from the [Keck HydroWatch Center](http://nrs.ucop.edu/research/special_projects/Keck_HydroWatchl.htm).
 
-You'll need a sensor's id to query the data for that particular metric and location. The `ee_list_sensors()` function will give you a condensed list with the location, metric, binning method and most importantly the `sensor_id`. You'll need this id for the data retrieval. 
+You'll need a sensor's id to query the data for that particular metric and location. The `ee_list_sensors()` function will give you a condensed list with the location, metric, binning method and most importantly the `sensor_id`. You'll need this id for the data retrieval.
 
 ```{r, sensor_list, eval = FALSE}
 head(ee_list_sensors())
@@ -210,7 +210,7 @@ sensor_ids <- ee_list_sensors()$record
 angelo_hq <- sensor_ids[1]
 results <- ee_sensor_data(angelo_hq, page = 2, progress = FALSE)
 results
-```  
+```
 
 Notice that the query returned `r format(results$results, nsmall = 0)` observations but has only retrieved the `25-50` since we requested records for page 2 (and each page by default retrieves `25` records). You can request `page = "all"` but remember that this will make `r format(ceiling(results$results)/25, nsmall =0)` requests. Now we can examine the data itself.
 
@@ -218,7 +218,7 @@ Notice that the query returned `r format(results$results, nsmall = 0)` observati
 head(results$data)
 ```
 
-We can also aggregate sensor data for any of the above mentioned sensors. We do this using the `ee_sensor_agg()` function. The function requires a sensor id and how the data should be binned. You can specify hours, minutes, seconds, days, weeks, month, and years. If for example you need the data binned every `15` days, simply add `days = 15` to the call. Once every `10` days and `2` hours would be `ee_sensor_agg(sensor_id = 1625, days = 10, hours = 2)` 
+We can also aggregate sensor data for any of the above mentioned sensors. We do this using the `ee_sensor_agg()` function. The function requires a sensor id and how the data should be binned. You can specify hours, minutes, seconds, days, weeks, month, and years. If for example you need the data binned every `15` days, simply add `days = 15` to the call. Once every `10` days and `2` hours would be `ee_sensor_agg(sensor_id = 1625, days = 10, hours = 2)`
 
 ```{r, sensor_aggregations}
 stations <- ee_list_sensors()
@@ -226,7 +226,7 @@ stations <- ee_list_sensors()
 sensor_df <- ee_sensor_agg(sensor_id = stations[1, c("record")], weeks = 2, progress = FALSE)
 sensor_df
 head(sensor_df$data)
-```  
+```
 
 As with other functions, the results are paginated.  Since we only need `85` records in this case:
 
@@ -237,10 +237,10 @@ sensor_df
 
 ```{r, visualization, echo = TRUE, eval = FALSE}
 library(ggplot2)
-ggplot(sensor_df$data, aes(begin_date, mean)) + 
-geom_line(size = 1, color = "steelblue") + geom_point() + 
-theme_gray() + ylab("Solar radiation total kj/m^2") + 
-xlab("Date") + ggtitle("Data from Angelo HQ") 
+ggplot(sensor_df$data, aes(begin_date, mean)) +
+geom_line(size = 1, color = "steelblue") + geom_point() +
+theme_gray() + ylab("Solar radiation total kj/m^2") +
+xlab("Date") + ggtitle("Data from Angelo HQ")
 ```
 
 ```{r, visualization_real, echo = FALSE}
@@ -249,13 +249,13 @@ sensor_plot <- ggplot(sensor_df$data, aes(begin_date, mean)) + geom_line(size = 
 ```
 ![Mean solar radiation at Angelo HQ](../assets/tutorial-images/ecoengine/sensor_plot.png)
 
-### Searching the engine  
+### Searching the engine
 
-The search is elastic by default. One can search for any field in `ee_observations()` across all available resources. For example, 
+The search is elastic by default. One can search for any field in `ee_observations()` across all available resources. For example,
 
 
 ```{r, search, eval = FALSE}
-# The search function runs an automatic elastic search across all resources available through the engine. 
+# The search function runs an automatic elastic search across all resources available through the engine.
 lynx_results <- ee_search(query = "genus:Lynx")
 lynx_results[, -3]
 # This gives you a breakdown of what's available allowing you dig deeper.

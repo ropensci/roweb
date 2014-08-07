@@ -1,3 +1,4 @@
+alm
 base
 bitops
 devtools
@@ -25,6 +26,7 @@ sacbox
 slidify
 slidifyLibraries
 sp
+SSOAP
 taxize
 testthat
 XML
