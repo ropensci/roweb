@@ -5,8 +5,7 @@ packge_version: 0.2.0
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
-library('knitr')
-opts_chunk$set(fig.path="../assets/tutorial-images/rnoaa/", fig.width=6, fig.height=4)
+knitr::opts_chunk$set(fig.path="../assets/tutorial-images/rnoaa/", fig.width=6, fig.height=4)
 ```
 
 <section id="installation">
@@ -43,6 +42,8 @@ library('rnoaa')
 
 ## Usage
 
+## National Climatic Data Center (NCDC) data
+
 ### Get info on a station by specifying a datasetid, locationid, and stationid
 
 ```{r two, message=FALSE, warning=FALSE, cache=FALSE}
@@ -67,6 +68,8 @@ out$data
 out <- ncdc(datasetid='NORMAL_DLY', stationid='GHCND:USW00014895', datatypeid='dly-tmax-normal', startdate = '2010-01-01', enddate = '2010-12-10', limit = 300)
 ncdc_plot(out)
 ```
+
+Note that the x-axis tick text is not readable, but see futher down in tutorial for how to adjust that.
 
 ### More on plotting
 
@@ -138,6 +141,96 @@ But we can pass in each separately, which uses `facet_wrap` in `ggplot2` to plot
 ```{r}
 ncdc_plot(out1, out2, breaks="45 days")
 ```
+
+### ERDDAP data
+
+
+#### Passing the datasetid without fields gives all columns back
+
+```{r oneone}
+out <- erddap_data(datasetid='erdCalCOFIfshsiz')
+nrow(out)
+```
+
+#### Pass time constraints
+
+```{r twotwo}
+head(erddap_data(datasetid='erdCalCOFIfshsiz', 'time>=2001-07-07', 'time<=2001-07-08')[,c(1:4)])
+```
+
+#### Pass in fields (i.e., columns to retrieve) & time constraints
+
+```{r threethree}
+head(erddap_data(datasetid='erdCalCOFIfshsiz', fields=c('longitude','latitude','fish_size','itis_tsn'), 'time>=2001-07-07','time<=2001-07-10'))
+```
+
+```{r}
+head(erddap_data(datasetid='erdCinpKfmBT', fields=c('latitude','longitude',
+   'Aplysia_californica_Mean_Density','Muricea_californica_Mean_Density'),
+   'time>=2007-06-24','time<=2007-07-01'))
+```
+
+#### An example workflow
+
+Search for data
+
+```{r}
+(out <- erddap_search(query='fish size'))
+```
+
+Using a datasetid, search for information on a datasetid
+
+```{r}
+id <- out$info$dataset_id[1]
+erddap_info(datasetid=id)$variables
+```
+
+Get data from the dataset
+
+```{r}
+head(erddap_data(datasetid = id, fields = c('latitude','longitude','scientific_name')))
+```
+
+
+### Severe Weather Data Inventory (SWDI) data
+
+#### Search for nx3tvs data from 5 May 2006 to 6 May 2006
+
+```{r}
+swdi(dataset='nx3tvs', startdate='20060505', enddate='20060506')
+```
+
+#### Use an id
+
+```{r}
+out <- swdi(dataset='warn', startdate='20060506', enddate='20060507', id=533623)
+list(out$meta, head(out$data), head(out$shape))
+```
+
+#### Get all 'plsr' within the bounding box (-91,30,-90,31)
+
+```{r}
+swdi(dataset='plsr', startdate='20060505', enddate='20060510', bbox=c(-91,30,-90,31))
+```
+
+
+### Sea ice data
+
+#### Map all years for April only for North pole
+
+```{r seaice, message=FALSE, warning=FALSE, eval=FALSE}
+urls <- seaiceeurls(mo='Apr', pole='N')[1:10]
+out <- lapply(urls, seaice)
+names(out) <- seq(1979,1988,1)
+df <- ldply(out)
+library('ggplot2')
+ggplot(df, aes(long, lat, group=group)) +
+  geom_polygon(fill="steelblue") +
+  theme_ice() +
+  facet_wrap(~ .id)
+```
+
+![](../assets/tutorial-images/rnoaa/seaice.png)
 
 <section id="citing">
 
