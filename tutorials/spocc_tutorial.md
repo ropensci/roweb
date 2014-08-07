@@ -1,7 +1,7 @@
 ---
 title: spocc tutorial
 layout: tutorial
-packge_version: 0.1.2
+packge_version: 0.2.0
 ---
 
 
@@ -10,7 +10,7 @@ The rOpenSci projects aims to provide programmatic access to scientific data rep
 
 ### Data Sources
 
-`spocc` currently interfaces with five major biodiversity repositories. Many of these packages have been part of the rOpenSci su
+`spocc` currently interfaces with six major biodiversity repositories
 
 1. Global Biodiversity Information Facility (`rgbif`)
 [GBIF](http://www.gbif.org/) is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.
@@ -18,11 +18,8 @@ The rOpenSci projects aims to provide programmatic access to scientific data rep
 2. [Berkeley Ecoengine](http://ecoengine.berkeley.edu/) (`ecoengine`)
 The ecoengine is an open API built by the [Berkeley Initiative for Global Change Biology](http://globalchange.berkeley.edu/). The repository provides access to over 3 million specimens from various Berkeley natural history museums. These data span more than a century and provide access to georeferenced specimens, species checklists, photographs, vegetation surveys and resurveys and a variety of measurements from environmental sensors located at reserves across University of California's natural reserve system.
 
-3. __iNaturalist__ (`rinat`)
+3. [iNaturalist](http://www.inaturalist.org/) (`rinat`)
 iNaturalist provides access to crowd sourced citizen science data on species observations.
-
-4. [VertNet](http://vertnet.org/index.php) (`rvertnet`)
-Similar to `rgbif`, ecoengine, and `rbison` (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology). __Note that we don't currenlty support VertNet data in this package, but we should soon__
 
 5. [Biodiversity Information Serving Our Nation](http://bison.usgs.ornl.gov/) (`rbison`)
 Built by the US Geological Survey's core science analytic team, BISON is a portal that provides access to species occurrence data from several participating institutions.
@@ -36,29 +33,14 @@ AntWeb is the world's largest online database of images, specimen records, and n
 __Note:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package.
 
 
-<section id="installation">
-
-## Installation
-
-
-```r
-library("devtools")
-devtools::install_github("ropensci/spocc")
-```
-
-<section id="usage">
-
-## Usage
-
 ### Data retrieval
 
 The most significant function in spocc is the `occ` (short for occurrence) function. `occ` takes a query, often a species name, and searches across all data sources specified in the `from` argument. For example, one can search for all occurrences of [Sharp-shinned Hawks](http://www.allaboutbirds.org/guide/sharp-shinned_hawk/id) (_Accipiter striatus_) from the GBIF database with the following R call.
 
 
 ```r
-library("spocc")
-df <- occ(query = 'Accipiter striatus', from = 'gbif')
-df
+library('spocc')
+(df <- occ(query = 'Accipiter striatus', from = 'gbif'))
 ```
 
 ```
@@ -72,17 +54,25 @@ df
 ```
 
 ```r
-head(df$gbif$data[[1]])
+df$gbif
 ```
 
 ```
-##                 name      key decimalLatitude decimalLongitude prov
-## 1 Accipiter striatus 8.91e+08           43.13           -72.53 gbif
-## 2 Accipiter striatus 8.91e+08           32.86           -97.20 gbif
-## 3 Accipiter striatus 8.91e+08           37.49          -122.44 gbif
-## 4 Accipiter striatus 8.91e+08           18.27           -71.73 gbif
-## 5 Accipiter striatus 8.91e+08           30.16           -97.65 gbif
-## 6 Accipiter striatus 8.91e+08           43.63           -73.07 gbif
+## Species [Accipiter striatus (25)] 
+## First 10 rows of [Accipiter_striatus]
+## 
+##                  name longitude latitude prov       key
+## 1  Accipiter striatus    -72.53    43.13 gbif 891035349
+## 2  Accipiter striatus    -97.20    32.86 gbif 891038901
+## 3  Accipiter striatus    -97.65    30.16 gbif 891040018
+## 4  Accipiter striatus    -71.73    18.27 gbif 891035119
+## 5  Accipiter striatus   -122.44    37.49 gbif 891040169
+## 6  Accipiter striatus    -76.64    41.86 gbif 891043765
+## 7  Accipiter striatus    -73.07    43.63 gbif 891048899
+## 8  Accipiter striatus    -99.10    26.49 gbif 891049443
+## 9  Accipiter striatus   -117.15    32.70 gbif 891056214
+## 10 Accipiter striatus    -97.88    26.10 gbif 891050439
+## ..                ...       ...      ...  ...       ...
 ```
 
 The data returned are part of a `S3` class called `occdat`. This class has slots for the five data sources described above. One can easily switch the source by changing the `from` parameter in the function call above.
@@ -117,7 +107,7 @@ response -- |
 
 ```
 
-If you only request data from gbif, like `from = 'gbif'`, then the other four source slots are prsent in the response object, but have no data.
+If you only request data from gbif, like `from = 'gbif'`, then the other four source slots are present in the response object, but have no data.
 
 You can quickly get just the data by indexing to the data element, like
 
@@ -130,10 +120,10 @@ head(df$gbif$data$Accipiter_striatus)
 ##                 name      key decimalLatitude decimalLongitude prov
 ## 1 Accipiter striatus 8.91e+08           43.13           -72.53 gbif
 ## 2 Accipiter striatus 8.91e+08           32.86           -97.20 gbif
-## 3 Accipiter striatus 8.91e+08           37.49          -122.44 gbif
+## 3 Accipiter striatus 8.91e+08           30.16           -97.65 gbif
 ## 4 Accipiter striatus 8.91e+08           18.27           -71.73 gbif
-## 5 Accipiter striatus 8.91e+08           30.16           -97.65 gbif
-## 6 Accipiter striatus 8.91e+08           43.63           -73.07 gbif
+## 5 Accipiter striatus 8.91e+08           37.49          -122.44 gbif
+## 6 Accipiter striatus 8.91e+08           41.86           -76.64 gbif
 ```
 
 When you get data from multiple providers, the fields returned are slightly different, e.g.:
@@ -141,69 +131,78 @@ When you get data from multiple providers, the fields returned are slightly diff
 
 ```r
 df <- occ(query = 'Accipiter striatus', from = c('gbif', 'ecoengine'))
-head(df$gbif$data$Accipiter_striatus)
+df$gbif
 ```
 
 ```
-##                 name      key decimalLatitude decimalLongitude prov
-## 1 Accipiter striatus 8.91e+08           43.13           -72.53 gbif
-## 2 Accipiter striatus 8.91e+08           32.86           -97.20 gbif
-## 3 Accipiter striatus 8.91e+08           37.49          -122.44 gbif
-## 4 Accipiter striatus 8.91e+08           18.27           -71.73 gbif
-## 5 Accipiter striatus 8.91e+08           30.16           -97.65 gbif
-## 6 Accipiter striatus 8.91e+08           43.63           -73.07 gbif
+## Species [Accipiter striatus (25)] 
+## First 10 rows of [Accipiter_striatus]
+## 
+##                  name longitude latitude prov       key
+## 1  Accipiter striatus    -72.53    43.13 gbif 891035349
+## 2  Accipiter striatus    -97.20    32.86 gbif 891038901
+## 3  Accipiter striatus    -97.65    30.16 gbif 891040018
+## 4  Accipiter striatus    -71.73    18.27 gbif 891035119
+## 5  Accipiter striatus   -122.44    37.49 gbif 891040169
+## 6  Accipiter striatus    -76.64    41.86 gbif 891043765
+## 7  Accipiter striatus    -73.07    43.63 gbif 891048899
+## 8  Accipiter striatus    -99.10    26.49 gbif 891049443
+## 9  Accipiter striatus   -117.15    32.70 gbif 891056214
+## 10 Accipiter striatus    -97.88    26.10 gbif 891050439
+## ..                ...       ...      ...  ...       ...
 ```
 
 ```r
-head(df$ecoengine$data$Accipiter_striatus)
+df$ecoengine
 ```
 
 ```
-##                                                                   url
-## 1 http://ecoengine.berkeley.edu/api/observations/LACM%3ABirds%3A5893/
-## 2 http://ecoengine.berkeley.edu/api/observations/LACM%3ABirds%3A5883/
-## 3 http://ecoengine.berkeley.edu/api/observations/LACM%3ABirds%3A5884/
-## 4 http://ecoengine.berkeley.edu/api/observations/LACM%3ABirds%3A5885/
-## 5 http://ecoengine.berkeley.edu/api/observations/LACM%3ABirds%3A5886/
-## 6 http://ecoengine.berkeley.edu/api/observations/LACM%3ABirds%3A5887/
-##   observation_type                     name       country state_province
-## 1         specimen Accipiter striatus velox United States      Minnesota
-## 2         specimen Accipiter striatus velox United States     California
-## 3         specimen Accipiter striatus velox United States     California
-## 4         specimen Accipiter striatus velox United States      Minnesota
-## 5         specimen Accipiter striatus velox United States     California
-## 6         specimen Accipiter striatus velox United States       Illinois
-##   begin_date   end_date                                       source
-## 1 1894-09-15 1894-09-15 http://ecoengine.berkeley.edu/api/sources/2/
-## 2 1899-04-11 1899-04-11 http://ecoengine.berkeley.edu/api/sources/2/
-## 3 1914-11-11 1914-11-11 http://ecoengine.berkeley.edu/api/sources/2/
-## 4 1893-09-23 1893-09-23 http://ecoengine.berkeley.edu/api/sources/2/
-## 5 1899-04-17 1899-04-17 http://ecoengine.berkeley.edu/api/sources/2/
-## 6 1908-04-07 1908-04-07 http://ecoengine.berkeley.edu/api/sources/2/
-##   remote_resource geojson.type longitude latitude      prov
-## 1                        Point    -92.11    46.78 ecoengine
-## 2                        Point   -118.13    34.14 ecoengine
-## 3                        Point   -116.15    33.63 ecoengine
-## 4                        Point    -92.11    46.78 ecoengine
-## 5                        Point   -118.13    34.14 ecoengine
-## 6                        Point    -87.79    41.85 ecoengine
+## Species [Accipiter striatus (25)] 
+## First 10 rows of [Accipiter_striatus]
+## 
+##                        name longitude latitude      prov    type
+## 1  Accipiter striatus velox    -81.52    41.08 ecoengine Feature
+## 2  Accipiter striatus velox   -135.27    57.53 ecoengine Feature
+## 3  Accipiter striatus velox   -134.29    57.71 ecoengine Feature
+## 4  Accipiter striatus velox   -134.29    57.71 ecoengine Feature
+## 5  Accipiter striatus velox   -148.24    60.55 ecoengine Feature
+## 6  Accipiter striatus velox   -145.82    61.11 ecoengine Feature
+## 7  Accipiter striatus velox   -148.24    60.55 ecoengine Feature
+## 8  Accipiter striatus velox   -133.77    58.01 ecoengine Feature
+## 9  Accipiter striatus velox   -133.84    58.52 ecoengine Feature
+## 10 Accipiter striatus velox   -133.84    58.52 ecoengine Feature
+## ..                      ...       ...      ...       ...     ...
+## Variables not shown: url (chr), observation_type (chr), country (chr),
+##      state_province (chr), begin_date (time), end_date (time), source
+##      (chr), remote_resource (chr)
 ```
 
 We provide a function `occ2df` that pulls out a few key columns needed for making maps:
 
 
 ```r
-head(occ2df(df))
+combined <- occ2df(df)
+head(combined); tail(combined)
 ```
 
 ```
 ##                 name longitude latitude prov
 ## 1 Accipiter striatus    -72.53    43.13 gbif
 ## 2 Accipiter striatus    -97.20    32.86 gbif
-## 3 Accipiter striatus   -122.44    37.49 gbif
+## 3 Accipiter striatus    -97.65    30.16 gbif
 ## 4 Accipiter striatus    -71.73    18.27 gbif
-## 5 Accipiter striatus    -97.65    30.16 gbif
-## 6 Accipiter striatus    -73.07    43.63 gbif
+## 5 Accipiter striatus   -122.44    37.49 gbif
+## 6 Accipiter striatus    -76.64    41.86 gbif
+```
+
+```
+##                        name longitude latitude      prov
+## 45 Accipiter striatus velox    -72.52    43.62 ecoengine
+## 46 Accipiter striatus velox    -71.57    42.61 ecoengine
+## 47 Accipiter striatus velox    -71.58    42.50 ecoengine
+## 48 Accipiter striatus velox    -71.58    42.50 ecoengine
+## 49 Accipiter striatus velox   -113.75    48.63 ecoengine
+## 50 Accipiter striatus velox    -92.93    36.25 ecoengine
 ```
 
 
@@ -214,63 +213,91 @@ One problem you often run in to is that there can be various names for the same 
 
 ```r
 df <- occ(query='Pinus contorta', from=c('gbif','inat'), limit = 50)
-head(df$gbif$data$Pinus_contorta[,1:2])
+print(df$inat, n=20)
 ```
 
 ```
-##             name       key
-## 1 Pinus contorta 891034130
-## 2 Pinus contorta 891051664
-## 3 Pinus contorta 899951519
-## 4 Pinus contorta 899960284
-## 5 Pinus contorta 899974349
-## 6 Pinus contorta 891124025
-```
-
-```r
-head(df$inat$data$Pinus_contorta[,1:2])
-```
-
-```
-##                       name                  Datetime
-## 1                          2013-09-01 00:00:00 +0000
-## 2  Pinus contorta contorta 2014-05-03 00:00:00 +0000
-## 3 Pinus contorta murrayana 2014-05-01 00:00:00 +0000
-## 4           Pinus contorta 2014-05-01 13:40:13 +0000
-## 5      Letharia columbiana 2014-04-22 00:00:00 +0000
-## 6           Pinus contorta 2014-04-25 15:56:39 +0000
+## Species [Pinus contorta (50)] 
+## First 10 rows of [Pinus_contorta]
+## 
+##                        name longitude latitude prov
+## 1            Pinus contorta    -109.5    40.83 inat
+## 2            Pinus contorta    -120.2    39.43 inat
+## 3            Pinus contorta    -120.3    39.34 inat
+## 4            Pinus contorta    -110.7    43.78 inat
+## 5            Pinus contorta    -110.5    44.72 inat
+## 6            Pinus contorta    -110.8    44.46 inat
+## 7            Pinus contorta    -110.8    44.55 inat
+## 8            Pinus contorta    -110.8    44.59 inat
+## 9            Pinus contorta    -111.1    44.66 inat
+## 10           Pinus contorta    -110.7    44.11 inat
+## 11           Pinus contorta    -118.7    37.46 inat
+## 12           Pinus contorta    -120.2    39.43 inat
+## 13           Pinus contorta    -120.2    39.43 inat
+## 14 Pinus contorta latifolia    -116.1    51.19 inat
+## 15         Letharia vulpina    -116.3    51.36 inat
+## 16           Pinus contorta    -120.5    39.62 inat
+## 17 Pinus contorta murrayana    -120.0    38.67 inat
+## 18           Pinus contorta    -122.1    42.71 inat
+## 19           Pinus contorta    -122.3    47.67 inat
+## 20           Pinus contorta    -122.3    47.66 inat
+## ..                      ...       ...      ...  ...
+## Variables not shown: Datetime (chr), Description (chr), Place.guess (chr),
+##      Tag.list (chr), Common.name (chr), Url (chr), Image.url (chr),
+##      User.login (chr), Id (int), Species.guess (chr), Iconic.taxon.name
+##      (chr), Taxon (int), Id.please (chr), Num.identification.agreements
+##      (int), Num.identification.disagreements (int), Observed.on.string
+##      (chr), Observed.on (chr), Time.observed.at (chr), Time.zone (chr),
+##      Positional.accuracy (int), Geoprivacy (chr), Positioning.method
+##      (chr), Positioning.device (chr), Out.of.range (chr), User (int),
+##      Created.at (chr), Updated.at (chr), Quality.grade (chr), License
+##      (chr)
 ```
 
 This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in `spocc` called `fixnames`, which has a few options in which you can take the shortest names (usually just the plain binomials like _Homo sapiens_), or the original name queried, or a vector of names supplied by the user.
 
 
 ```r
-df <- fixnames(df, how = 'shortest')
-head(df$gbif$data$Pinus_contorta[,1:2])
+df <- fixnames(df, how = 'query')
+print(df$inat, n=20)
 ```
 
 ```
-##             name       key
-## 1 Pinus contorta 891034130
-## 2 Pinus contorta 891051664
-## 3 Pinus contorta 899951519
-## 4 Pinus contorta 899960284
-## 5 Pinus contorta 899974349
-## 6 Pinus contorta 891124025
-```
-
-```r
-head(df$inat$data$Pinus_contorta[,1:2])
-```
-
-```
-##   name                  Datetime
-## 1      2013-09-01 00:00:00 +0000
-## 2      2014-05-03 00:00:00 +0000
-## 3      2014-05-01 00:00:00 +0000
-## 4      2014-05-01 13:40:13 +0000
-## 5      2014-04-22 00:00:00 +0000
-## 6      2014-04-25 15:56:39 +0000
+## Species [Pinus contorta (50)] 
+## First 10 rows of [Pinus_contorta]
+## 
+##              name longitude latitude prov                  Datetime
+## 1  Pinus contorta    -109.5    40.83 inat 2014-08-05 18:53:25 +0000
+## 2  Pinus contorta    -120.2    39.43 inat 2014-07-18 00:00:00 +0000
+## 3  Pinus contorta    -120.3    39.34 inat 2014-08-02 23:05:00 +0000
+## 4  Pinus contorta    -110.7    43.78 inat 2014-08-02 17:40:58 +0000
+## 5  Pinus contorta    -110.5    44.72 inat 2014-08-01 16:29:48 +0000
+## 6  Pinus contorta    -110.8    44.46 inat 2014-07-31 22:09:48 +0000
+## 7  Pinus contorta    -110.8    44.55 inat 2014-07-31 19:46:23 +0000
+## 8  Pinus contorta    -110.8    44.59 inat 2014-07-31 18:50:05 +0000
+## 9  Pinus contorta    -111.1    44.66 inat 2014-07-31 17:56:38 +0000
+## 10 Pinus contorta    -110.7    44.11 inat 2014-08-02 16:21:43 +0000
+## 11 Pinus contorta    -118.7    37.46 inat 2014-07-29 15:22:43 +0000
+## 12 Pinus contorta    -120.2    39.43 inat 2014-06-25 00:00:00 +0000
+## 13 Pinus contorta    -120.2    39.43 inat 2014-07-09 20:49:41 +0000
+## 14 Pinus contorta    -116.1    51.19 inat 2014-07-08 00:00:00 +0000
+## 15 Pinus contorta    -116.3    51.36 inat 2014-07-06 00:00:00 +0000
+## 16 Pinus contorta    -120.5    39.62 inat 2014-06-24 15:39:56 +0000
+## 17 Pinus contorta    -120.0    38.67 inat 2014-06-18 22:28:02 +0000
+## 18 Pinus contorta    -122.1    42.71 inat 2014-06-17 00:54:22 +0000
+## 19 Pinus contorta    -122.3    47.67 inat 2014-06-02 00:00:00 +0000
+## 20 Pinus contorta    -122.3    47.66 inat 2014-04-28 00:00:00 +0000
+## ..            ...       ...      ...  ...                       ...
+## Variables not shown: Description (chr), Place.guess (chr), Tag.list (chr),
+##      Common.name (chr), Url (chr), Image.url (chr), User.login (chr), Id
+##      (int), Species.guess (chr), Iconic.taxon.name (chr), Taxon (int),
+##      Id.please (chr), Num.identification.agreements (int),
+##      Num.identification.disagreements (int), Observed.on.string (chr),
+##      Observed.on (chr), Time.observed.at (chr), Time.zone (chr),
+##      Positional.accuracy (int), Geoprivacy (chr), Positioning.method
+##      (chr), Positioning.device (chr), Out.of.range (chr), User (int),
+##      Created.at (chr), Updated.at (chr), Quality.grade (chr), License
+##      (chr)
 ```
 
 ```r
@@ -279,13 +306,23 @@ head(df_comb); tail(df_comb)
 ```
 
 ```
-##     name longitude latitude prov
-## 95          -120.2    39.43 inat
-## 96          -118.9    37.37 inat
-## 97          -120.2    39.43 inat
-## 98          -120.2    39.43 inat
-## 99          -120.2    39.43 inat
-## 100         -119.9    39.30 inat
+##             name longitude latitude prov
+## 1 Pinus contorta    -122.8    48.14 gbif
+## 2 Pinus contorta    -120.0    38.82 gbif
+## 3 Pinus contorta    -120.3    39.34 gbif
+## 4 Pinus contorta    -120.2    39.20 gbif
+## 5 Pinus contorta    -122.3    47.66 gbif
+## 6 Pinus contorta    -120.2    39.32 gbif
+```
+
+```
+##               name longitude latitude prov
+## 95  Pinus contorta    -120.2    39.20 inat
+## 96  Pinus contorta    -120.2    39.20 inat
+## 97  Pinus contorta    -120.3    39.34 inat
+## 98  Pinus contorta    -122.2    37.90 inat
+## 99  Pinus contorta    -120.3    39.34 inat
+## 100 Pinus contorta    -120.5    39.62 inat
 ```
 
 ### Visualization routines
@@ -303,9 +340,8 @@ Here is an example of making a leaflet map:
 
 ```r
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occ(query = spp, from = 'gbif', gbifopts = list(georeferenced = TRUE))
-data <- occ2df(dat)
-mapleaflet(data = data, dest = ".")
+dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
+mapleaflet(dat, dest = ".")
 ```
 
 ![](../assets/tutorial-images/spocc/leaflet.png)
@@ -317,12 +353,11 @@ You can also create interactive maps via the `mapgist` function. You have to hav
 
 ```r
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occ(query = spp, from = 'gbif', gbifopts = list(georeferenced = TRUE))
+dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
 dat <- fixnames(dat)
-dat <- occ2df(dat)
 mapgist(data = dat, color = c("#976AAE", "#6B944D", "#BD5945"))
 ```
-
+  
 ![](../assets/tutorial-images/spocc/gist.png)
 
 __Static maps__
@@ -334,7 +369,7 @@ Base plots, or the built in plotting facility in R accessed via `plot()`, is qui
 
 ```r
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-out <- occ(query = spnames, from = 'gbif', gbifopts = list(georeferenced = TRUE))
+out <- occ(query = spnames, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
 plot(out, cex = 1, pch = 10)
 ```
 
@@ -368,7 +403,7 @@ To cite `spocc` in publications use:
 
 <br>
 
-> Scott Chamberlain, Karthik Ram and Ted Hart (2014). spocc: R interface to many species occurrence data sources. R package version 0.1.2. https://github.com/ropensci/spocc
+> Scott Chamberlain, Karthik Ram and Ted Hart (2014). spocc: R interface to many species occurrence data sources. R package version 0.2.0. https://github.com/ropensci/spocc
 
 <section id="license_bugs">
 
