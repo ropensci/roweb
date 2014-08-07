@@ -1,7 +1,7 @@
 ---
 title: rgbif tutorial
 layout: tutorial
-packge_version: 0.6.9.99
+packge_version: 0.7.0
 ---
 
 
@@ -44,7 +44,7 @@ occ_count(basisOfRecord='OBSERVATION')
 ```
 
 ```
-[1] 100300628
+[1] 100300629
 ```
 
 Records for **Puma concolor** with lat/long data (georeferened) only. Note that `hasCoordinate` in `occ_search()` is the same as `georeferenced` in `occ_count()`.
@@ -65,7 +65,7 @@ All georeferenced records in GBIF
 occ_count(georeferenced=TRUE)
 ```
 
-[1] 383144587
+[1] 384782982
 
 Records from Denmark
 
@@ -83,7 +83,7 @@ occ_count(country=denmark_code)
 ```
 
 ```
-[1] 8708275
+[1] 8708628
 ```
 
 Number of records in a particular dataset
@@ -105,7 +105,7 @@ occ_count(year=2012)
 ```
 
 ```
-[1] 32993561
+[1] 33026618
 ```
 
 Records for a particular dataset, and only for preserved specimens
@@ -611,7 +611,7 @@ occ_search(taxonKey=key, limit=2)
 ```
 
 ```
-## Records found [19536] 
+## Records found [19592] 
 ## Records returned [2] 
 ## No. unique hierarchies [1] 
 ## No. media records [2] 
@@ -632,7 +632,7 @@ occ_search(taxonKey=key, return='meta')
 
 ```
 ##   offset limit endOfRecords count
-## 1      0    20        FALSE 19536
+## 1      0    20        FALSE 19592
 ```
 
 You can choose what fields to return. This isn't passed on to the API query to GBIF as they don't allow that, but we filter out the columns before we give the data back to you.
@@ -676,7 +676,7 @@ out
 ```
 
 ```
-## Occ. found [2482598 (255927), 2492010 (1436233), 2498387 (416768)] 
+## Occ. found [2482598 (255927), 2492010 (1436233), 2498387 (416772)] 
 ## Occ. returned [2482598 (5), 2492010 (5), 2498387 (5)] 
 ## No. unique hierarchies [2482598 (1), 2492010 (1), 2498387 (1)] 
 ## No. media records [2482598 (5), 2492010 (5), 2498387 (5)] 
@@ -718,13 +718,13 @@ To cite `rgbif` in publications use:
 
 <br>
 
-> Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2014). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 0.6.9.99. https://github.com/ropensci/rgbif
+> Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2014). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 0.7.0. https://github.com/ropensci/rgbif
 
 <section id="license_bugs">
 
 ## License and bugs
 
-* License: [CC0](http://creativecommons.org/choose/zero/)
+* License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our Github repo for rgbif](https://github.com/ropensci/rgbif/issues?state=open)
 
 [Back to top](#top)

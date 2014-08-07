@@ -1,7 +1,7 @@
 ---
 title: rgbif tutorial
 layout: tutorial
-packge_version: 0.6.9.99
+packge_version: 0.7.0
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
@@ -232,13 +232,13 @@ To cite `rgbif` in publications use:
 
 <br>
 
-> Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2014). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 0.6.9.99. https://github.com/ropensci/rgbif
+> Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2014). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 0.7.0. https://github.com/ropensci/rgbif
 
 <section id="license_bugs">
 
 ## License and bugs
 
-* License: [CC0](http://creativecommons.org/choose/zero/)
+* License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our Github repo for rgbif](https://github.com/ropensci/rgbif/issues?state=open)
 
 [Back to top](#top)
