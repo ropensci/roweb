@@ -86,7 +86,7 @@ Install `rplos` (v0.3.6) if you don't have it. See [here](https://github.com/rop
 
 ```{r gather1, message=FALSE, warning=FALSE}
 library(rplos)
-dois <- searchplos(terms="*:*", fields='id', toquery='doc_type:full', start=0, limit=75)$id
+dois <- searchplos(q = "*:*", fl = 'id', fq = 'doc_type:full', start = 0, limit = 75)$id
 ```
 
 First, let's retrieve the metrics.
