@@ -16,10 +16,13 @@ Today we would like to officially announce the rOpenSci Ambassadors program. To 
 
 **What the program entails**
 
-The rOpenSci team will provide you with as much training material as you need (including notes and code), advice on structuring your discussion, guide to building a workshop slide deck and perhaps most importantly, funds to cover refreshments (coffee and snacks, or lunch), or some travel support to help you attend a meeting. If you're excited about organizing such an event, please [get in touch with us](http://ropensci.org/contact.html) or spread the word to your colleagues.
+The rOpenSci team will provide you with as much training material as you need (including notes and code), advice on structuring your discussion, guide to building a workshop slide deck and perhaps most importantly, funds to cover refreshments (coffee and snacks, or lunch), or some travel support to help you attend a meeting.
 
 **Why become an ambassador**
 
-- A shiny Ambassador badge for your community page profile (and one you can use elsewhere).
-- Have food and drinks on us when you give a demo or talk at your institution or we'll support travel to a meeting
-- Satisfaction that you're now fostering 
+- A shiny Ambassador badge for you on our community page (and one you can use elsewhere).
+- Have food and drinks on us when you give a demo or talk at your institution or we'll support travel to a meeting.
+- Satisfaction that you're now fostering. 
+
+
+ If you're excited about organizing such an event, please [get in touch with us](http://ropensci.org/contact.html) or spread the word to your colleagues.
