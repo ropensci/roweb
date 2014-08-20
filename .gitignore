@@ -4,3 +4,4 @@ _site
 ngrok
 .DS_Store
 Makefile
+_posts/cache
