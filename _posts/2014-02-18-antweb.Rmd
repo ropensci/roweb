@@ -14,7 +14,7 @@ tags:
 
 
 <div class="alert alert-info" role="alert">
-This post was updated on August 20th 2014, with <code>AntWeb</code> version <code>0.7.2.99</code>. Please install an updated version to make sure the code works.
+This post was updated on August 20th 2014, with <code>AntWeb</code> version <code>`r packageVersion("AntWeb")`</code>. Please install an updated version to make sure the code works.
 </div>
 
 
@@ -33,19 +33,24 @@ A stable version of our R package [AntWeb](http://ropensci.org/AntWeb.html) is n
 
 A stable version of the package (`0.7`) is now available on CRAN. 
 
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(
+  comment = " ",
+  error = FALSE,
+  cache = TRUE,
+  tidy = FALSE
+)
+```
 
 
-
-
-```r
+```{r install, eval = FALSE}
 install.packages("AntWeb")  
 ```
 
 or you can install the latest development version (the master branch is also always stable & deployable and most up-to-date. Current version is `0.5.3` at the time of this writing).
 
 
-
-```r
+```{r dev, eval = FALSE}
 library(devtools)  
 install_github("ropensci/AntWeb")
 ```
@@ -61,93 +66,22 @@ To obtain data on any taxonomic group, you can make a request using the `aw_data
 __Searching by Genus__  
 
 
-
-```r
+```{r data}
 library(AntWeb)
 # To get data on an ant genus found widely through Central and South America
 data_genus_only <- aw_data(genus = "acanthognathus")
-```
-
-```
-  430 results available for query.
-```
-
-```r
 leaf_cutter_ants  <- aw_data(genus = "acromyrmex")
-```
-
-```
-  713 results available for query.
-```
-
-```r
 unique(leaf_cutter_ants$data$scientific_name)
-```
-
-```
-   [1] "acromyrmex versicolor"   "acromyrmex striatus"    
-   [3] "acromyrmex balzani"      "acromyrmex coronatus"   
-   [5] "acromyrmex crassispinus" "acromyrmex heyeri"      
-   [7] "acromyrmex lundii"       "acromyrmex fracticornis"
-   [9] "acromyrmex niger"        "acromyrmex nigrosetosus"
-  [11] "acromyrmex rugosus"      "acromyrmex subterraneus"
-  [13] "acromyrmex alw01"        "acromyrmex alw02"       
-  [15] "acromyrmex alw03"        "acromyrmex alw04"       
-  [17] "acromyrmex octospinosus" "acromyrmex lobicornis"  
-  [19] "acromyrmex silvestrii"   "acromyrmex landolti"    
-  [21] "acromyrmex ambiguus"     "acromyrmex hystrix"     
-  [23] "acromyrmex laticeps"     "acromyrmex indet"       
-  [25] "acromyrmex echinatior"   "acromyrmex volcanus"    
-  [27] "acromyrmex disciger"     "acromyrmex aspersus"    
-  [29] "acromyrmex pubescens"    "acromyrmex moelleri"    
-  [31] "acromyrmex evenkul"      "acromyrmex hispidus"    
-  [33] "acromyrmex nobilis"      "acromyrmex pulvereus"   
-  [35] "acromyrmex lundi"
 ```
 
 
 __Searching by species__  
 
 
-
-```r
+```{r species}
 # You can request data on any particular species
 acanthognathus_df <- aw_data(scientific_name = "acanthognathus brevicornis")
-```
-
-```
-  2 results available for query.
-```
-
-```r
 head(acanthognathus_df)
-```
-
-```
-  $count
-  [1] 2
-  
-  $call
-  $call$genus
-  [1] "acanthognathus"
-  
-  $call$species
-  [1] "brevicornis"
-  
-  
-  $data
-                                                                url
-  1 http://antweb.org/api/v2/?occurrenceId=CAS:ANTWEB:casent0280684
-  2 http://antweb.org/api/v2/?occurrenceId=CAS:ANTWEB:casent0637708
-    catalogNumber     family  subfamily          genus specificEpithet
-  1 casent0280684 formicidae myrmicinae Acanthognathus     brevicornis
-  2 casent0637708 formicidae myrmicinae Acanthognathus     brevicornis
-               scientific_name typeStatus stateProvince  country
-  1 acanthognathus brevicornis                          Colombia
-  2 acanthognathus brevicornis                                  
-    dateIdentified habitat minimumElevationInMeters
-  1                                              NA
-  2     2013-09-12                               NA
 ```
 
 
@@ -169,15 +103,10 @@ __Image data__
 Most specimens in the database have images associated with them. These include high, medium, and low resolution version of the head, dorsal side, full profile, and the specimen label. For example we can retrieve data on a specimen of _Ecitoninaeeciton burchellii_ with the following call:
 
 
-
-```r
+```{r image}
 # Data and images for Ecitoninaeeciton burchellii
 eb <- aw_code(occurrenceid ="CAS:ANTWEB:casent0003205")
 eb$image_data$high[[2]]
-```
-
-```
-  NULL
 ```
 
 
@@ -185,109 +114,30 @@ eb$image_data$high[[2]]
 If you're primarily interested in ant images and would like to keep up with recent additions to the database, you can also use the `aw_images` function. This function takes two arguments: `since`, the number of days to search backward, and a `type`. Possible options for type are `h` for head, `d` for dorsal, `p` for profile, and `l` for label. If a type is not specified, all available images are retrieved.
 
 
-
-```r
+```{r image2}
 # Retrieve only dorsal images for the last five days
 head(aw_images(since = 5, img_type = "d"))
-```
-
-```
-                                                                     high
-  1 http://www.antweb.org/images/casent0914000/casent0914000_d_1_high.jpg
-  2 http://www.antweb.org/images/antweb1008677/antweb1008677_d_1_high.jpg
-  3 http://www.antweb.org/images/casent0906977/casent0906977_d_1_high.jpg
-  4 http://www.antweb.org/images/casent0914012/casent0914012_d_1_high.jpg
-  5 http://www.antweb.org/images/antweb1008691/antweb1008691_d_1_high.jpg
-  6 http://www.antweb.org/images/casent0906997/casent0906997_d_1_high.jpg
-                                                                     med
-  1 http://www.antweb.org/images/casent0914000/casent0914000_d_1_low.jpg
-  2 http://www.antweb.org/images/antweb1008677/antweb1008677_d_1_low.jpg
-  3 http://www.antweb.org/images/casent0906977/casent0906977_d_1_low.jpg
-  4 http://www.antweb.org/images/casent0914012/casent0914012_d_1_low.jpg
-  5 http://www.antweb.org/images/antweb1008691/antweb1008691_d_1_low.jpg
-  6 http://www.antweb.org/images/casent0906997/casent0906997_d_1_low.jpg
-                                                                     low
-  1 http://www.antweb.org/images/casent0914000/casent0914000_d_1_med.jpg
-  2 http://www.antweb.org/images/antweb1008677/antweb1008677_d_1_med.jpg
-  3 http://www.antweb.org/images/casent0906977/casent0906977_d_1_med.jpg
-  4 http://www.antweb.org/images/casent0914012/casent0914012_d_1_med.jpg
-  5 http://www.antweb.org/images/antweb1008691/antweb1008691_d_1_med.jpg
-  6 http://www.antweb.org/images/casent0906997/casent0906997_d_1_med.jpg
-                                                                     thumbnail
-  1 http://www.antweb.org/images/casent0914000/casent0914000_d_1_thumbview.jpg
-  2 http://www.antweb.org/images/antweb1008677/antweb1008677_d_1_thumbview.jpg
-  3 http://www.antweb.org/images/casent0906977/casent0906977_d_1_thumbview.jpg
-  4 http://www.antweb.org/images/casent0914012/casent0914012_d_1_thumbview.jpg
-  5 http://www.antweb.org/images/antweb1008691/antweb1008691_d_1_thumbview.jpg
-  6 http://www.antweb.org/images/casent0906997/casent0906997_d_1_thumbview.jpg
-    img_type                                                catalog_id
-  1        d http://www.antweb.org/api/v2/?catalogNumber=casent0914000
-  2        d http://www.antweb.org/api/v2/?catalogNumber=antweb1008677
-  3        d http://www.antweb.org/api/v2/?catalogNumber=casent0906977
-  4        d http://www.antweb.org/api/v2/?catalogNumber=casent0914012
-  5        d http://www.antweb.org/api/v2/?catalogNumber=antweb1008691
-  6        d http://www.antweb.org/api/v2/?catalogNumber=casent0906997
-            upload_date
-  1 2014-08-15 15:11:14
-  2 2014-08-20 13:52:13
-  3 2014-08-15 15:11:14
-  4 2014-08-15 15:11:15
-  5 2014-08-20 13:52:13
-  6 2014-08-15 15:11:15
 ```
 
 
 It's also possible to retrieve unique lists of any taxonomic rank using the `aw_unique` function.
 
 
-
-```r
+```{r subfamily}
 subfamily_list <- aw_distinct(rank = "subfamily")
 subfamily_list
 ```
 
-```
-  [Total results on the server]: 67 
-  [Args]: 
-  rank = subfamily 
-  limit = 1000 
-  [Dataset]: [70 x 1] 
-  [Data preview] :
-  [1] "67"   "1000"
-```
 
-
-
-```r
+```{r unique_genus}
 genus_list <- aw_distinct(rank = "genus")
 genus_list
 ```
 
-```
-  [Total results on the server]: 489 
-  [Args]: 
-  rank = genus 
-  limit = 1000 
-  [Dataset]: [492 x 1] 
-  [Data preview] :
-  [1] "489"  "1000"
-```
 
-
-
-```r
+```{r unique_species}
 species_list <- aw_distinct(rank = "species")
 species_list
-```
-
-```
-  [Total results on the server]: 10540 
-  [Args]: 
-  rank = species 
-  limit = 1000 
-  [Dataset]: [1003 x 1] 
-  [Data preview] :
-  [1] "10540" "1000"
 ```
 
 
@@ -295,41 +145,8 @@ species_list
 If you work with existing specimens, you can also query directly by a specimen ID.
 
 
-
-```r
+```{r aw_code}
 (data_by_code <- aw_code(catalogNumber="inb0003695883"))
-```
-
-```
-  [Total results on the server]: 1 
-  [Args]: 
-  catalogNumber = inb0003695883 
-  [Dataset]: [1 x 16] 
-  [Data preview] :
-                                                       specimens.url
-  1  http://antweb.org/api/v2/?occurrenceId=CAS:ANTWEB:inb0003695883
-  NA                                                            <NA>
-     specimens.catalogNumber specimens.family specimens.subfamily
-  1            inb0003695883       formicidae          myrmicinae
-  NA                    <NA>             <NA>                <NA>
-     specimens.genus specimens.specificEpithet specimens.scientific_name
-  1   Acanthognathus                teledectus acanthognathus teledectus
-  NA            <NA>                      <NA>                      <NA>
-     specimens.typeStatus specimens.stateProvince specimens.country
-  1                                       Heredia        Costa Rica
-  NA                 <NA>                    <NA>              <NA>
-     specimens.dateIdentified                       specimens.habitat
-  1                2006-11-02 mature wet forest ex sifted leaf litter
-  NA                     <NA>                                    <NA>
-     specimens.minimumElevationInMeters specimens.geojson.type
-  1                                  50                  point
-  NA                               <NA>                   <NA>
-     decimal_latitude decimal_longitude
-  1         10.413477        -84.023636
-  NA             <NA>              <NA>
-```
-
-```r
 # This will return a list with a metadata data.frame and a image data.frame
 ```
 
@@ -337,16 +154,11 @@ If you work with existing specimens, you can also query directly by a specimen I
 If you have a multiple specimen IDs, as is often the case when working with research data, you can get data on all of them at the same time. The function automatically retuns `NULL` values when no data are found and you can have these removed using `plyr::compact` (this happens automatically when you use a function call like `ldply`.)
 
 
-
-```r
+```{r multiple_codes}
 specimens <- c("casent0908629", "casent0908650", "casent0908637")
 results <- lapply(specimens, function(x) aw_code(x))
 names(results) <- specimens
 length(results)
-```
-
-```
-  [1] 3
 ```
 
 
@@ -355,8 +167,7 @@ length(results)
 As with the previous ecoengine package, you can also visualize location data for any set of species. Adding `georeferenced = TRUE` to a data retrieval call will filter out any data points without location information. Once retrieved the data are mapped with the open source [Leaflet.js](http://leafletjs.com/) and pushed to your default browser. Maps and associated `geoJSON` files are also saved to a location specified (or defaults to your `/tmp` folder). This feature is only available on the development version on GitHub (`0.5.2` or greater; see above on how to install) and will be available from CRAN in version `0.6`
 
 
-
-```r
+```{r map, eval = FALSE}
 acd <- aw_data(genus = "acanthognathus")
 aw_map(acd)
 ```
