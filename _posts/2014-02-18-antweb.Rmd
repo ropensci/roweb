@@ -13,6 +13,16 @@ tags:
 --- 
 
 
+```{r date, echo = FALSE, message = FALSE, warning = FALSE}
+library(lubridate)
+date <- paste0(as.character(month(now(), label = TRUE, abbr = FALSE)), " ", day(now()), ", ", year(now()))
+```
+
+<div class="alert alert-info" role="alert">
+This post was updated on `r date`, with <code>AntWeb</code> version <code>`r packageVersion("AntWeb")`</code>. Please install an updated version to make sure the code works.
+</div>
+
+
 ![](/assets/blog-images/2014-02-18-antweb/casent0003205_h_1_high.jpg)
 
 Data on more than `10,000` species of ants recorded worldwide are available through from [California Academy of Sciences](http://www.calacademy.org/)' [AntWeb](http://www.antweb.org/), a repository that boasts a wealth of natural history data, digital images, and specimen records on ant species from a large community of museum curators.
@@ -174,13 +184,4 @@ aw_map(acd)
 Our newest package on CRAN, [`spocc`](https://github.com/ropensci/spocc) (Species Occurrence Data), currently in review at CRAN, integrates `AntWeb` among other sources. More details on `spocc` in our next blog post.
 
 As always please send [suggestions, bug reports, and ideas](https://github.com/ropensci/AntWeb/issues/new) related to the AntWeb R package directly to our repo. 
-
-```{r date, echo = FALSE, message = FALSE, warning = FALSE}
-library(lubridate)
-date <- paste0(as.character(month(now(), label = TRUE, abbr = FALSE)), " ", day(now()), ", ", year(now()))
-```
-
-<div class="alert alert-info" role="alert">
-This post was updated on `r date`, with <code>AntWeb</code> version <code>`r packageVersion("AntWeb")`</code>. Please install an updated version to make sure the code works.
-</div>
 
