@@ -13,8 +13,13 @@ tags:
 --- 
 
 
+```{r date, echo = FALSE, message = FALSE, warning = FALSE}
+library(lubridate)
+date <- paste0(as.character(month(now(), label = TRUE, abbr = FALSE)), " ", day(now()), ", ", year(now()))
+```
+
 <div class="alert alert-info" role="alert">
-This post was updated on August 20th 2014, with <code>AntWeb</code> version <code>`r packageVersion("AntWeb")`</code>. Please install an updated version to make sure the code works.
+This post was updated on `r date`, with <code>AntWeb</code> version <code>`r packageVersion("AntWeb")`</code>. Please install an updated version to make sure the code works.
 </div>
 
 
