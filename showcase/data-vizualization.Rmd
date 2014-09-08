@@ -1,0 +1,11 @@
+---
+title: Data vizualization
+layout: showcase
+herotitle: Interactive Data Visualization
+---
+
+```{r}
+library('ggplot2')
+head(mtcars)
+```
+

@@ -1,0 +1,22 @@
+{% include header_showcase.html %}
+
+<section class="header-maps-sub v-center" id="hero">
+   <div class="background">&nbsp;</div>
+   <div>
+       <div class="container">
+           <div class="hero-unit hero-unit-bordered">
+               <h1>{{ page.herotitle }}</h1>
+
+           </div>
+       </div>
+   </div>
+</section>
+
+{{ content }}
+
+<div class="container">
+<div id="disqus">
+ {% include disqus.html %}
+</div>
+</div>
+{% include footer.html %}
