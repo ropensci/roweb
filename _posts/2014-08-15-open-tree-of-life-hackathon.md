@@ -10,7 +10,7 @@ tags:
 - Conference
 ---
 
-The [Open Tree of Life project](opentreeoflife.org) aims to synthesize our combined knowledge of how organisms relate to each other, and make the results available to anyone who wants to use them. At present, the project  contains data from more than 4,000 published phylogenies, which combine with other data sources to make [a tree that covers 2.5 million species](http://tree.opentreeoflife.org/). 
+The [Open Tree of Life project](http://opentreeoflife.org) aims to synthesize our combined knowledge of how organisms relate to each other, and make the results available to anyone who wants to use them. At present, the project  contains data from more than 4,000 published phylogenies, which combine with other data sources to make [a tree that covers 2.5 million species](http://tree.opentreeoflife.org/). 
 
 
 In September, the Open Tree of Life team are holding a hackathon to develop tools that use the project's web services to extract, annotate and add data. We are excited to say that [Francois Michonneau](http://francoismichonneau.net/) and [I](http://cartwrig.ht/people/#david-j-winter) will be attending the hackathon, where they plan to work with [Joseph W. Brown](http://www-personal.umich.edu/~josephwb/)  on an R package that allows users to interact with the Open Tree data.
