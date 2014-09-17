@@ -1,7 +1,7 @@
 ---
 title: taxize tutorial
 layout: tutorial
-packge_version: 0.3.0
+packge_version: 0.4.0
 ---
 
 ### About the package
@@ -45,7 +45,7 @@ The correct spellings are *Helianthus annuus* and *Homo sapiens*. Another approa
 
 ```{r tnrs, eval=TRUE, cache=FALSE}
 mynames <- c("Helianthus annuus", "Pinus contort", "Poa anua", "Abis magnifica",
-  	"Rosa california", "Festuca arundinace", "Sorbus occidentalos","Madia sateva")
+    "Rosa california", "Festuca arundinace", "Sorbus occidentalos","Madia sateva")
 tnrs(query = mynames, source = "iPlant_TNRS")[ , -c(5:7)]
 ```
 

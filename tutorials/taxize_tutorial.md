@@ -1,7 +1,7 @@
 ---
 title: taxize tutorial
 layout: tutorial
-packge_version: 0.3.0
+packge_version: 0.4.0
 ---
 
 ### About the package
@@ -26,6 +26,15 @@ install.packages("taxize")
 
 ```r
 library("taxize")
+```
+
+```
+## 
+## 
+## New to taxize? Tutorial at http://ropensci.org/tutorials/taxize_tutorial.html 
+## citation(package='taxize') for the citation for this package 
+## API key names have changed. Use tropicosApiKey, eolApiKey, ubioApiKey, and pmApiKey in your .Rprofile file. 
+## Use suppressPackageStartupMessages() to suppress these startup messages in the future
 ```
 
 Advanced users can also download and install the latest development copy from [GitHub](https://github.com/ropensci/taxize_).
@@ -58,24 +67,24 @@ The correct spellings are *Helianthus annuus* and *Homo sapiens*. Another approa
 
 ```r
 mynames <- c("Helianthus annuus", "Pinus contort", "Poa anua", "Abis magnifica",
-  	"Rosa california", "Festuca arundinace", "Sorbus occidentalos","Madia sateva")
+    "Rosa california", "Festuca arundinace", "Sorbus occidentalos","Madia sateva")
 tnrs(query = mynames, source = "iPlant_TNRS")[ , -c(5:7)]
 ```
 
 ```
-## Calling http://taxosaurus.org/retrieve/3048e3157b053bfd605f0f3b1a4dd79e
+## Calling http://taxosaurus.org/retrieve/c0507837ee55b349ffc3363061c0decb
 ```
 
 ```
 ##         submittedname        acceptedname    sourceid score
-## 7   Helianthus annuus   Helianthus annuus iPlant_TNRS     1
+## 1 Sorbus occidentalos Sorbus occidentalis iPlant_TNRS  0.99
+## 2  Festuca arundinace Festuca arundinacea iPlant_TNRS  0.99
+## 3      Abis magnifica     Abies magnifica iPlant_TNRS  0.96
 ## 4       Pinus contort      Pinus contorta iPlant_TNRS  0.98
 ## 5            Poa anua           Poa annua iPlant_TNRS  0.96
-## 3      Abis magnifica     Abies magnifica iPlant_TNRS  0.96
-## 8     Rosa california    Rosa californica iPlant_TNRS  0.99
-## 2  Festuca arundinace Festuca arundinacea iPlant_TNRS  0.99
-## 1 Sorbus occidentalos Sorbus occidentalis iPlant_TNRS  0.99
 ## 6        Madia sateva        Madia sativa iPlant_TNRS  0.97
+## 7   Helianthus annuus   Helianthus annuus iPlant_TNRS     1
+## 8     Rosa california    Rosa californica iPlant_TNRS  0.99
 ```
 
 It turns out there are a few corrections: e.g., *Madia sateva* should be *Madia sativa*, and *Rosa california* should be *Rosa californica*. Note that this search worked because fuzzy matching was employed to retrieve names that were close, but not exact matches. Fuzzy matching is only available for plants in the TNRS service, so we advise using EOL's Global Names Resolver if you need to resolve animal names.
