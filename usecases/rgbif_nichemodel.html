@@ -34,11 +34,11 @@ predictors <- stack(files)
 <pre><code>nn <- name_lookup("bradypus*", rank = "species")
 nn <- unique(nn$data$nubKey)
 nn <- na.omit(nn)
-df <- occ_search(taxonKey = nn, georeferenced = TRUE, limit = 500, return = "data")
+df <- occ_search(taxonKey = nn, hasCoordinate = TRUE, limit = 500, return = "data")
 df <- df[sapply(df, class) %in% "data.frame"]  # remove those w/o data
 library("plyr")
 df <- ldply(df)
-df2 <- df[, c("longitude", "latitude")]
+df2 <- df[, c("decimalLongitude", "decimalLatitude")]
 </code></pre>
 
 <h3>Plot</h3>

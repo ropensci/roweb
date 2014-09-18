@@ -81,7 +81,7 @@ Another thing we may want to do is collect common names for our taxa.
 
 
 ```r
-tsns <- get_tsn(searchterm = splist, searchtype = "sciname", verbose = FALSE)
+tsns <- get_tsn(searchterm = splist, searchtype = "scientific", verbose = FALSE)
 comnames <- lapply(tsns, getcommonnamesfromtsn)
 ```
 
@@ -208,4 +208,4 @@ gbifmap(df) +
   guides(col = guide_legend(nrow = 2))
 ```
 
-![plot of chunk unnamed-chunk-16](../assets/usecases-images/unnamed-chunk-16.png) 
+![plot of chunk unnamed-chunk-16](../assets/usecases-images/unnamed-chunk-16.png)
