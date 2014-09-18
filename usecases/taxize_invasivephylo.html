@@ -15,6 +15,7 @@ layout: usecases
 <pre><code>library("taxize")
 library("XML")
 library("reshape2")
+library("plyr")
 </code></pre>
 
 <h2>Define a species list</h2>
@@ -24,28 +25,17 @@ library("reshape2")
 
 <h2>Search databases via EOL</h2>
 
-<pre><code>grisout <- eol_invasive(name = spplist, dataset = "gris")
-gris <- do.call(rbind, grisout)
-
-iscout <- eol_invasive(name = spplist, dataset = "isc")
-isc <- do.call(rbind, iscout)
-
+<pre><code>iscout <- eol_invasive(name = spplist, dataset = "isc")
 daisieout <- eol_invasive(name = spplist, dataset = "daisie")
-daisie <- do.call(rbind, daisieout)
-
 i3nout <- eol_invasive(name = spplist, dataset = "i3n")
-i3n <- do.call(rbind, i3nout)
-
 gisdout <- eol_invasive(name = spplist, dataset = "gisd")
-gisd <- do.call(rbind, gisdout)
 </code></pre>
 
 <h2>Combine data sets</h2>
 
-<pre><code>df <- rbind(grisout, iscout, daisieout, i3nout, gisdout)[, -2]
+<pre><code>df <- rbind(iscout, daisieout, i3nout, gisdout)[, -2]
 dat <- dcast(df, searched_name ~ db, value.var = "eol_object_id")
-dat <- ddply(dat, .(searched_name), transform, weedy = ifelse(length(na.omit(c(daisie,
-    gisd, gris, i3n, isc))) &gt; 1, "#024DFD", "#ED6500"))
+dat <- ddply(dat, .(searched_name), transform, weedy = ifelse(length(na.omit(c(daisie, gisd, i3n, isc))) > 1, "#024DFD", "#ED6500"))
 dat$searched_name <- gsub(" ", "_", dat$searched_name)
 </code></pre>
 

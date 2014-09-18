@@ -12,15 +12,12 @@ layout: usecases
 <pre><code>library("taxize")
 </code></pre>
 
-<pre><code>splist <- c("Helianthus annuus", "Pinus contorta", "Collomia grandiflora", "Abies magnifica","Rosa californica", "Datura wrightii", "Mimulus bicolor", "Nicotiana glauca","Madia sativa", "Bartlettia scaposa")
+<pre><code>splist <- c("Helianthus annuus", "Collomia grandiflora", "Rosa californica", "Datura wrightii", "Mimulus bicolor", "Nicotiana glauca","Madia sativa", "Bartlettia scaposa")
 </code></pre>
 
 <h3>Phylomatic is a web service with an API that we can use to get a phylogeny. Fetch phylogeny from phylomatic</h3>
 
-<pre><code>phylogeny <- phylomatic_tree(taxa = splist, taxnames = TRUE,
-    get = "POST", informat = "newick", method = "phylomatic",
-    storedtree = "R20120829", taxaformat = "slashpath",
-    outformat = "newick", clean = "true", parallel = TRUE)
+<pre><code>phylogeny <- phylomatic_tree(splist)
 </code></pre>
 
 <h3>Format tip-labels</h3>

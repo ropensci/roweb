@@ -5,8 +5,6 @@ layout: usecases
 ---
 
 
-
-
 ### Load libraries
 
 
@@ -20,7 +18,7 @@ library("ggplot2")
 
 
 ```r
-splist <- c("Accipiter erythronemius", "Junco hyemalis", "Aix sponsa", "Haliaeetus leucocephalus", 
+splist <- c("Accipiter erythronemius", "Junco hyemalis", "Aix sponsa", "Haliaeetus leucocephalus",
     "Corvus corone", "Threskiornis molucca", "Merops malimbicus")
 ```
 
@@ -40,5 +38,4 @@ out <- lapply(splist, function(x) vertoccurrence(t = x, grp = "bird", num = 500)
 vertmap(out) + theme_grey()
 ```
 
-![plot of chunk vertmap1](../../assets/usecases-images/vertmap1.png) 
-
+![plot of chunk vertmap1](../../assets/usecases-images/vertmap1.png)

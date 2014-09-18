@@ -14,6 +14,7 @@ Load the library
 
 ```r
 library("rWBclimate")
+library("ggplot2")
 ```
 
 
@@ -46,7 +47,7 @@ ggplot(dat, aes(x=fromYear,y=data,group=scenario,colour=scenario)) +
  theme_grey(base_size = 16)
 ```
 
-![plot of chunk rwb1](../../assets/usecases-images/rwb1.png) 
+![plot of chunk rwb1](../../assets/usecases-images/rwb1.png)
 
 
 As you can see the A2 scenario of unchecked growth predicts a higher annual average temperature.  We can look at the same kind of data except this time examining changes in precipitation.
@@ -57,14 +58,14 @@ dat2 <- get_ensemble_precip("GBR", "annualavg", 1900, 2100)
 dat2 <- subset(dat2, dat2$percentile == 50)
 dat2$data <- do.call(c, dat2$data)
 ggplot(dat2, aes(x = fromYear, y = data, group = scenario, colour = scenario)) +
-  geom_point(size=4) + 
-  geom_path() + 
-  xlab("Year") + 
+  geom_point(size=4) +
+  geom_path() +
+  xlab("Year") +
   ylab("Annual Average precipitation in mm") +
   theme_grey(base_size = 16)
 ```
 
-![plot of chunk rwb2](../../assets/usecases-images/rwb2.png) 
+![plot of chunk rwb2](../../assets/usecases-images/rwb2.png)
 
 
 Here the difference between predicted increases in precipitation are less drastic when comparing the two different scenarios.
