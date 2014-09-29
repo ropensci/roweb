@@ -1,7 +1,9 @@
 alm
+ape
 base
 bitops
 devtools
+geiger
 geonames
 ggplot2
 gridExtra
@@ -19,6 +21,7 @@ rfisheries
 rgdal
 rgeos
 rjson
+RNeXML
 roxygen2
 rplos
 rsnps
