@@ -1,7 +1,7 @@
 ---
 name: numfocus-partnership
 layout: post
-title: Fiscal Sponsorship agreement with NumFocus foundation
+title: New fiscal sponsorship agreement with NumFocus foundation
 date: 2014-10-01
 author: Karthik Ram
 tags:
@@ -21,7 +21,7 @@ Carl Boettiger, [Gavin Simpson](http://www.uregina.ca/science/biology/people/fac
 
 **How to contribute**
 
-All contributions to rOpenSci from US organizations and individuals are tax deductible donations. If you would like to support our activities, we are now able to accept donations in a variety of forms including [Paypal](https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=t9jK6SRk96ZcBnK5DdVq-HyGVvcaL9tuA0nA1HtPYBsOj3zKPLUkT-UMNfC&dispatch=5885d80a13c0db1f8e263663d3faee8dbd0a2170b502f343d92a90377a9956d7 "Online Payment, Merchant Account - PayPal"), [BitCoin](https://bitpay.com/invoice?id=HvFM4eRTTscFKzuwK9Pqth) and checks made out to **NumFOCUS** and mailed to:
+All contributions to rOpenSci from US organizations and individuals are tax deductible donations. If you would like to support our activities, we are now able to accept donations in a variety of forms including [Paypal](https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=t9jK6SRk96ZcBnK5DdVq-HyGVvcaL9tuA0nA1HtPYBsOj3zKPLUkT-UMNfC&dispatch=5885d80a13c0db1f8e263663d3faee8dbd0a2170b502f343d92a90377a9956d7 "Online Payment, Merchant Account - PayPal"), [BitCoin](https://bitpay.com/invoice?id=HvFM4eRTTscFKzuwK9Pqth) or checks made out to **NumFOCUS**:
 
 The rOpenSci Project  
 NumFOCUS  
