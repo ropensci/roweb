@@ -30,6 +30,15 @@ tags:
 
 ### Tutorials
 
+### Adding to the community page
+If we have already approved you as a community member, please send us a picture that is at least `250` pixels on each side (or one that can be cropped) by adding the file to:
+
+```
+assets/common-files/img/community/firstname_lastname.png
+```
+
+Include a two sentence blurb in your PR. We'll do the rest to add the appropriate html to the community page.
+
 
 ### Minor typos and display issues
 
