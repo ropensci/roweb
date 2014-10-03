@@ -1,7 +1,25 @@
+# ignore font files
+# -----------------
 *.psd
+*.ttf
+*.eot
+*.woff
+
+
 _site
 /Gemfile.lock
 ngrok
 .DS_Store
 Makefile
 _posts/cache
+# More ignore files
+# Then add to gitignore
+assets/flat-ui/fonts
+assets/flat-ui/lato
+assets/css
+assets/common-files/css
+assets/common-files/fonts
+assets/common-files/icons
+assets/common-files/less
+assets/common-files/talks
+talks/
