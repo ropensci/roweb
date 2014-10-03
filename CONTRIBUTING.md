@@ -9,6 +9,24 @@ Then add appropriate `yml` to your post, including `authorurl` if you are not a 
 - [example 1](https://github.com/ropensci/roweb/blob/master/_posts/2014-06-09-reproducibility.md)
 -  [example 2](https://github.com/ropensci/roweb/blob/master/_posts/2014-08-15-open-tree-of-life-hackathon.md) 
 
+Your `yml` should include the following information:
+
+```
+---
+name: short-title
+layout: post
+title: Full title of your blog post
+date: 2014-08-15
+author: Your Name
+authorurl: url of your website
+tags:
+- R
+- other tags (one per line
+---
+
+```
+
+
 
 **Tutorials**
 
