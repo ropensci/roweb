@@ -4,7 +4,7 @@
 !['ropensci website'](http://ropensci.org/assets/common-files/img/content/blog_header_logo.png)
 
 
-This is repo for rOpenSci's website. To build the site, clone the repo and run:
+This is repo for [rOpenSci's website](http://ropensci.org/). To build the site, clone the repo and run:
 
 ```
 jekyll build
