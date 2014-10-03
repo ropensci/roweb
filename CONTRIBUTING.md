@@ -21,7 +21,7 @@ author: Your Name
 authorurl: url of your website
 tags:
 - R
-- other tags (one per line
+- other tags (one per line)
 ---
 
 ```
