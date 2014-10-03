@@ -22,5 +22,5 @@ and previewing the site at `http://localhost:4000`
 
 __License__
 
-For more information see the LICENSE file. © rOpenSci 2014
+For more information see the [LICENSE](https://github.com/ropensci/roweb/blob/master/LICENSE) file. © rOpenSci 2014
 
