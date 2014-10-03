@@ -16,6 +16,7 @@ _posts/cache
 # More ignore files
 # Then add to gitignore
 assets/flat-ui/fonts
+assets/flat-ui/css/flat-ui.css
 assets/flat-ui/lato
 assets/css
 assets/common-files/css
