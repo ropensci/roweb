@@ -51,7 +51,7 @@ packge_version: 0.1.0
 We only accept tutorials for packages in the rOpenSci suite of packages. In the future we hope to have an at least somewhat automated process...But for now, we move files manually.
 
 ### Adding to the community page
-If we have already approved you as a community member, please send us a picture that is at least `250` pixels on each side (or one that can be cropped) by adding the file to:
+If we have already approved you as a community member, please send us a picture that is at least `250` pixels on each side (or one that can be cropped to that size) by adding the file to:
 
 ```
 assets/common-files/img/community/firstname_lastname.png
