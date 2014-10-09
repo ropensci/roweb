@@ -211,10 +211,31 @@ section, can run that image instead of `rocker/rstudio` in the
 command above.
 
 
-Well, that's just the tip of the iceberg.  In later posts(s), we'll
+## analogsea: DigitalOcean the easy way ##
+
+[Scott](http://scottchamberlain.info/) and [Hadley](http://had.co.nz/) have an excellent R package in the works called
+[analogsea](https://github.com/sckott/analogsea), which makes it really easy to do all kinds of things on
+DigitalOcean without ever leaving your R command line.  Analogsea uses
+Docker behind-the-scenes for a fast and portable installation of R,
+R Studio, and related packages. Launching an RStudio instance on
+DigitalOcean is as easy as
+
+```r
+docklet_create() %>%
+  docklet_rstudio()
+```
+
+Head on over to their [Github page](https://github.com/sckott/analogsea) to checkout the latest developments and
+give your feedback, and watch this space for a full package release soon.
+
+
+-------------------
+
+Well, that's just the tip of the iceberg.  In later posts, we'll
 take a look at more things you can do with Docker, including:
 
-- reproducible-research use cases
+- More fun with analogsea
+- Reproducible research use cases
 - Introducing other pre-built images
 - Writing your own Dockerfiles
 - Linking your local files: using volumes
