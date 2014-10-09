@@ -10,7 +10,7 @@ tags:
 ---
 
 The variety and ever-changing nature of computer software poses a
-significant challenge to reproducible research.  An [Earlier post](http://ropensci.org/blog/2014/06/09/reproducibility/)
+significant challenge to reproducible research.  An [earlier post](http://ropensci.org/blog/2014/06/09/reproducibility/)
 on this blog have discussed detailed efforts to make research more
 reproducible, and highlight substantial barriers to doing this well,
 including:
@@ -159,10 +159,11 @@ has several uses:
 - Scaling up -- running your code on a machine with more memory or processor power than your laptop
 - Accessing RStudio from a browser on portable devices, such as i-pads
 
-For this tutorial we'll use [DigitalOcean](http://digitalocean.cohttp://digitalocean.comm), a simpler alternative to Amazon's EC2 cloud, though
-these instructions would work just as well on most any cloud server running a recent Linux version.
-Follow the instructions on the DigitalOcean website to create an account and log in to a terminal
-on your cloud server. A few quick notes:
+For this tutorial we'll use [DigitalOcean](http://digitalocean.com), a
+simpler alternative to Amazon's EC2 cloud, though these instructions would
+work just as well on most any cloud server running a recent Linux version.
+Follow the instructions on the DigitalOcean website to create an account
+and log in to a terminal on your cloud server. A few quick notes:
 
 - The smallest size 'droplet' costs less than 1 cent per hour and will
   be fine for our purposes.
@@ -197,7 +198,7 @@ using a publicly visible IP address.
 
 ```bash
 docker run -e USER=your_username -e=PASSWORD a_secure_pw \
-  -d -p 8787:8787 --name rstudio cboettig/rstudio
+  -d -p 8787:8787 --name rstudio rocker/rstudio
 ```
 
 Look up your public IP address in the DigtialOcean web panel and append
@@ -206,7 +207,7 @@ be greeted by the RStudio welcome screen and can now log in as before
 using the username and secret password you have specified.
 
 If you created your own image on the Docker Hub in the previous
-section, can run that image instead of `cboettig/rstudio` in the
+section, can run that image instead of `rocker/rstudio` in the
 command above.
 
 
