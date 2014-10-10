@@ -11,31 +11,32 @@ tags:
 
 The variety and ever-changing nature of computer software poses a
 significant challenge to reproducible research.  An [earlier post](http://ropensci.org/blog/2014/06/09/reproducibility/)
-on this blog have discussed detailed efforts to make research more
+on this blog discussed detailed efforts to make research more
 reproducible, and highlight substantial barriers to doing this well,
 including:
 
-- dependencies could still be missed by incompletely documentation
+- dependencies could still be missed by incomplete documentation
 
 - The set of scripts for managing reproducibility are at least as complex
 as the analysis itself
 
-- "Continuous integration" tools that are tricky
+- [Continuous integration](http://en.wikipedia.org/wiki/Continuous_integration) tools, though a major advance for reproducible research, remain tricky
 to configure and limited to short runs
 
 - Though a wide array of tools to solve these challenges now exists, many are difficult to learn and
 some are still too unpolished
 
-Several people in the discussion thread suggested that a new tool known as
-`Docker` might be helpful.  `Docker` is a clever packaging of existing
-and new tools by a startup of the same name which has continually been
+Several people in the discussion thread [suggested](http://disqus.com/embed/comments/?base=default&disqus_version=7ba1eb42&f=ropenscience&t_u=http%3A%2F%2Fropensci.org%2Fblog%2F2014%2F06%2F09%2Freproducibility%2F&t_d=Reproducible%20research%20is%20still%20a%20challenge&t_t=Reproducible%20research%20is%20still%20a%20challenge&s_o=default#) that a new tool known as
+[Docker](https://www.docker.com/) might be helpful.  Docker an [open source project](https://github.com/docker/docker/blob/master/LICENSE)
+providing a clever packaging of [existing and new tools](https://docs.docker.com/faq/#what-does-docker-add-to-just-plain-lxc)
+by a startup of the same name which has continually been
 making Silicon Valley headlines for its rapid growth, adoption, and
-success in raising venture capital. While the hype has focused largely
+success in [raising](http://techcrunch.com/2014/01/21/docker-raises-15m-for-popular-open-source-platform-designed-for-developers-to-build-apps-in-the-cloud/) venture [capital](http://blogs.wsj.com/venturecapital/2014/09/16/sequoia-leads-40-million-round-for-docker-as-app-platform-takes-off/). While the hype has focused largely
 on it's potential to save money through more efficient use of computer
 servers and in deploying web applications, the technology has interesting
 implications for reproducible research as well.
 
-However, before we worrying much about those implications, it is important
+Before we worry much about those implications, it is important
 that any tool be relatively easy to adopt into one's existing workflow,
 and must promise some immediate benefit to users adopting it.  In this post,
 we'll therefore jump right in and see how we can use Docker as an easy
@@ -52,10 +53,10 @@ only runs on 64 bit machines at this time._
 
 #### Windows/Mac Installation ####
 
-On a Mac or Windows machine, you'll need boot2docker
-installed (easy point & click install, ~24 MB).
-([[Mac](https://docs.docker.com/installation/mac/)],
-[[Windows](https://docs.docker.com/installation/windows/)]).
+On a Mac or Windows machine, you'll need [boot2docker](https://github.com/boot2docker/boot2docker)
+installed (easy point & click install, ~24 MB), see
+[[Mac Instructions](https://docs.docker.com/installation/mac/)] or
+[[Windows Instructions](https://docs.docker.com/installation/windows/)].
 Downloading the most recent version is strongly recommended.
 
 Launch boot2docker as described in the documentation linked above.
