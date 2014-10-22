@@ -1,19 +1,18 @@
 ---
-published: false
 name: docker
 layout: post
-title: Introducing Rocker: Docker for R
-author:
-- Carl Boettiger
-- Dirk Eddelbuettel
+title: "Introducing Rocker: Docker for R"
+author: Carl Boettiger & Dirk Eddelbuettel
 tags:
 - R
 - reproducible-research
 ---
 
 
-> You only know two things about Docker. First, it uses Linux
-> containers. Second, the Internet won't shut up about it.
+
+
+> You only know two things about Docker. First, it uses Linux  
+> containers. Second, the Internet won't shut up about it.  
 >
 > -- attributed to Solomon Hykes, Docker CEO
 
@@ -86,6 +85,8 @@ The Rocker project develops the following containers in the core Rocker reposito
   base R container as well an
   [RStudio Server](http://www.rstudio.com/products/rstudio/) instance
 
+We have settled on these three core images after earlier work in repositories
+such as docker-debian-r and docker-ubuntu-r. 
 
 #### Rocker Use Case Containers
 
@@ -100,6 +101,9 @@ Within the Rocker-org organization on GitHub, we are also working on
   instrumented version of R-devel via a recent compiler build
 + [rocker-versioned](https://github.com/rocker-org/rocker-versioned)
   aims to provided containers with 'versioned' previous R releases and matching packages
+
+Other repositories will probably be added as new needs and opportunities are
+identified. 
 
 
 ### Deprecation
@@ -126,11 +130,4 @@ spin. Bug reports, comments, and suggestions are welcome; we suggest you use the
 We are very appreciative of all comments received by early adopters and
 testers. We also would like to thank RStudio for allowing us the
 redistribution of their RStudio Server binary.
-
-
-### Authors
-
-[Dirk Eddelbuettel](http://dirk.eddelbuettel.com) and
-[Carl Boettiger](http://www.carlboettiger.info/)
-
 
