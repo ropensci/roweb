@@ -3,7 +3,9 @@ published: false
 name: docker
 layout: post
 title: Introducing Rocker: Docker for R
-author: Carl Boettiger
+author:
+- Carl Boettiger
+- Dirk Eddelbuettel
 tags:
 - R
 - reproducible-research
