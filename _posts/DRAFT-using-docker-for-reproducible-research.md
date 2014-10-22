@@ -1,8 +1,8 @@
 ---
+published: false
 name: docker
 layout: post
 title: Using Docker for reproducible research
-date: 2014-10-10
 author: Carl Boettiger
 tags:
 - R
