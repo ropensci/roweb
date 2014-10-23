@@ -131,3 +131,5 @@ We are very appreciative of all comments received by early adopters and
 testers. We also would like to thank RStudio for allowing us the
 redistribution of their RStudio Server binary.
 
+_Published concurrently at [rOpenSci blog](http://ropensci.org/blog/)
+and [Dirk's blog](http://dirk.eddelbuettel.com/dirk)_
