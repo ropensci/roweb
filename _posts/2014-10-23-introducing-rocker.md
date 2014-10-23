@@ -92,7 +92,7 @@ such as docker-debian-r and docker-ubuntu-r.
 
 Within the Rocker-org organization on GitHub, we are also working on
 
-+ [hadleyverse](https://registry.hub.docker.com/u/rocker/hadleyverse/) which
++ [Hadleyverse](https://registry.hub.docker.com/u/rocker/hadleyverse/) which
   extends the rstudio container with a number of Hadley packages
 + [rOpenSci](https://registry.hub.docker.com/u/rocker/ropensci/) which
   extends hadleyverse with a number of [rOpenSci](http://ropensci.org/) packages
