@@ -2,7 +2,7 @@
 # Author: Scott Chamberlain, @sckott
 # License: MIT
 
-require 'Nokogiri'
+require 'nokogiri'
 
 module Jekyll
   module RemoveAlerts
