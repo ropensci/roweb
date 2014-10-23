@@ -3,7 +3,8 @@ name: taxize-changes
 layout: post
 title: taxize changes
 date: 2013-11-19
-author: Scott Chamberlain
+authors:
+  - name: Scott Chamberlain
 tags:
 - R
 - taxonomy

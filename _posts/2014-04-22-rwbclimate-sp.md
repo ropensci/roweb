@@ -3,7 +3,8 @@ name: rwbclimate-sp
 layout: post
 title: Overlaying species occurrence data with climate data
 date: 2014-04-22
-author: Ted Hart
+authors:
+  - name: Ted Hart
 tags:
 - R
 - API

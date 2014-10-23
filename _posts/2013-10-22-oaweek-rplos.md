@@ -3,7 +3,8 @@ name: oaweek-rplos
 layout: post
 title: OA week - A simple use case for programmatic access to PLOS full text
 date: 2013-10-22
-author: Scott Chamberlain
+authors:
+  - name: Scott Chamberlain
 tags:
 - R
 - rplos

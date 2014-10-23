@@ -3,8 +3,9 @@ name: nceas-codefest-follow-up
 layout: post
 title: NCEAS Codefest Follow-up
 date: 2014-09-23
-author: Scott Chamberlain and Ted Hart
-authorurl: http://ropensci.org/about/#core
+authors:
+  - name: Scott Chamberlain
+  - name: Ted Hart
 tags:
 - R
 - Conference

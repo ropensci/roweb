@@ -3,7 +3,8 @@ name: ropensci-challenge
 layout: post
 title: The 2013 rOpenSci challenge
 date: 2013-03-14
-author: Karthik Ram
+authors:
+  - name: Karthik Ram
 tags:
 - open science challenge
 ---

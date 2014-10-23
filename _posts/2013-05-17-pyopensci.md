@@ -3,8 +3,9 @@ name: pyopensci
 layout: post
 title: Facilitating Open Science with Python
 date: 2013-05-16
-author: Steve Moss
-authorurl: http://about.me/gawbul
+authors:
+  - name: Steve Moss
+    url: http://about.me/gawbul
 tags:
 - Python
 - pyOpenSci

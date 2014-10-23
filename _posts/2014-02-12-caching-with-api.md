@@ -3,7 +3,8 @@ name: caching-with-api
 layout: post
 title: Caching Encyclopedia of Life API calls
 date: 2014-02-12
-author: Scott Chamberlain
+authors:
+  - name: Scott Chamberlain
 tags:
 - R
 - API

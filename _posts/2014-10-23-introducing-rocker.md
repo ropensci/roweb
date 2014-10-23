@@ -2,7 +2,11 @@
 name: docker
 layout: post
 title: "Introducing Rocker: Docker for R"
-author: Carl Boettiger & Dirk Eddelbuettel
+authors:
+  - name: Carl Boettiger
+    url: http://ropensci.org/about/#core
+  - name: Dirk Eddelbuettel
+    url: http://dirk.eddelbuettel.com/
 tags:
 - R
 - reproducible-research
@@ -86,7 +90,7 @@ The Rocker project develops the following containers in the core Rocker reposito
   [RStudio Server](http://www.rstudio.com/products/rstudio/) instance
 
 We have settled on these three core images after earlier work in repositories
-such as docker-debian-r and docker-ubuntu-r. 
+such as docker-debian-r and docker-ubuntu-r.
 
 #### Rocker Use Case Containers
 
@@ -103,7 +107,7 @@ Within the Rocker-org organization on GitHub, we are also working on
   aims to provided containers with 'versioned' previous R releases and matching packages
 
 Other repositories will probably be added as new needs and opportunities are
-identified. 
+identified.
 
 
 ### Deprecation

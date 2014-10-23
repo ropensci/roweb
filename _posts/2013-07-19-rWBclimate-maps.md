@@ -3,7 +3,8 @@ name: rWBclimate-maps
 layout: post
 title: Making maps of climate change
 date: 2013-07-19
-author: Ted Hart
+authors:
+  - name: Ted Hart
 tags:
 - R
 - API

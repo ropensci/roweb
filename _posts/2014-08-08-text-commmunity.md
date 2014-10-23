@@ -3,8 +3,9 @@ name: text-commmunity
 layout: post
 title: Community conversations and a new package for full text
 date: 2014-08-08
-author: Scott Chamberlain and Karthik Ram
-authorurl: /about/#core
+authors:
+  - name: Scott Chamberlain
+  - name: Karthik Ram
 tags:
 - R
 - community

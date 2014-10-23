@@ -3,7 +3,8 @@ name: style-geojson-polygon
 layout: post
 title: Interactive maps with polygons using R, Geojson, and Github
 date: 2013-10-23
-author: Scott Chamberlain
+authors:
+  - name: Scott Chamberlain
 tags:
 - R
 - rgbif
@@ -13,7 +14,7 @@ tags:
 - maps
 ---
 
-Previously on this blog we have discussed making geojson maps and uploading to Github for interactive visualization [with USGS BISON data][ropost], and [with GBIF data][ropost2], and on [my own personal blog][scottpost]. This is done using a file format called [*geojson*](http://en.wikipedia.org/wiki/GeoJSON), a file format based on JSON (JavaScript Object Notation) in which you can specify geographic data along with any other metadata. 
+Previously on this blog we have discussed making geojson maps and uploading to Github for interactive visualization [with USGS BISON data][ropost], and [with GBIF data][ropost2], and on [my own personal blog][scottpost]. This is done using a file format called [*geojson*](http://en.wikipedia.org/wiki/GeoJSON), a file format based on JSON (JavaScript Object Notation) in which you can specify geographic data along with any other metadata.
 
 In two the previous posts about *geojson*, I described how you could get data from the USGS BISON API using our [rbison package][rbison], and from the GBIF API using the [rgbif package][rgbif], then make a *geojson* file, and send to Github. In both examples, the data were points. What about polygons?  This is a relatively common use case in which an area is defined on a map instead of points - and polygons are supported in geojson.  How do we do this with the R to geojson to Github workflow?
 
@@ -48,7 +49,7 @@ There are various ways of getting a .shp file. I won't go over those here, so we
 
 The first line of code in the next code block uses the function `togeojson` to make a geojson file, which is written locally on your machine (a message tells you where it is located, but you can specify where you want it to go with the `destpath` parameter). Note that the input argument to `togeojson` goes to the directory for `abiemagn/abiemagn.shp`, but for this to work you need the associated other two files, in this case: abiemagn.dbf and abiemagn.shx.
 
-The second line of code uses the `gist` function to upload your .geojson file as a gist on Github. 
+The second line of code uses the `gist` function to upload your .geojson file as a gist on Github.
 
 
 ```r

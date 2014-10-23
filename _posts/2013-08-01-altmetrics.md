@@ -3,7 +3,8 @@ name: altmetrics
 layout: post
 title: Consuming article-level metrics
 date: 2013-08-01
-author: Scott Chamberlain
+authors:
+  - name: Scott Chamberlain
 tags:
 - R
 - ropensci

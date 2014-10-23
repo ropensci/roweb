@@ -3,7 +3,8 @@ name: rplos-highlights
 layout: post
 title: Highlighting text in text mining
 date: 2013-12-02
-author: Scott Chamberlain
+authors:
+  - name: Scott Chamberlain
 tags:
 - R
 - text-mining

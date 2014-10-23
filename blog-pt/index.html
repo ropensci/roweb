@@ -27,7 +27,7 @@ title: "rOpenSci Blog"
   <!--   List of posts for landing page -->
   {% for post in site.categories.pt %}
       <h3><a href="{{ site.dir }}{{ post.url }}">{{ post.title }}</a></h3>
-      {{ post.author }} &mdash; <i>{{ post.date | date: "%B %e, %Y" }}</i><br>
+      {{ post.authors | map: "name" | join: ", " }} &mdash; <i>{{ post.date | date: "%B %e, %Y" }}</i><br>
       {{ post.content | strip_html | truncatewords:75}}<br>
       <hr class="gray-line">
   {% endfor %}

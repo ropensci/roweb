@@ -3,7 +3,8 @@ name: r-metadata
 layout: post
 title: Scholarly metadata in R
 date: 2013-03-15
-author: Scott Chamberlain
+authors:
+  - name: Scott Chamberlain
 tags:
 - R
 - ropensci

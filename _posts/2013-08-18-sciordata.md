@@ -3,7 +3,8 @@ name: sciordata
 layout: post
 title: Working with climate data from the web in R
 date: 2013-08-18
-author: Scott Chamberlain
+authors:
+  - name: Scott Chamberlain
 tags:
 - climate change
 - phenology

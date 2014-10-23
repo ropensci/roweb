@@ -3,7 +3,8 @@ name: data-to-cartodb
 layout: post
 title: Species occurrence data to CartoDB
 date: 2013-11-04
-author: Scott Chamberlain
+authors:
+  - name: Scott Chamberlain
 tags:
 - R
 - rgbif
@@ -44,12 +45,12 @@ library(CartoDB)
 
 ## Get some data from GBIF
 
-Here, we'll get data for Puma concolor, the *hello, world* for biodiversity data. 
+Here, we'll get data for Puma concolor, the *hello, world* for biodiversity data.
 
 
 ```r
 key <- gbif_lookup(name = "Puma concolor", kingdom = "animals")$speciesKey
-data <- occ_search(taxonKey = key, limit = 500, georeferenced = TRUE, country = "US", 
+data <- occ_search(taxonKey = key, limit = 500, georeferenced = TRUE, country = "US",
     return = "data")
 head(data)
 ```
@@ -96,7 +97,7 @@ Now we need to push data to our `pumamap` table using the function `cartodb.row.
 
 ```r
 rows <- apply(data, 1, as.list)
-lapply(rows, function(x) cartodb.row.insert(name = "pumamap", columns = list("name", 
+lapply(rows, function(x) cartodb.row.insert(name = "pumamap", columns = list("name",
     "longitude", "latitude"), values = x))
 ```
 
@@ -126,4 +127,3 @@ cartodb.row.get(name = "pumamap", cartodb_id = 10)
 ##   latitude longitude
 ## 1     32.7    -108.9
 ```
-

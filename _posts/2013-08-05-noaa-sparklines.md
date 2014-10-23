@@ -3,7 +3,8 @@ name: noaa-sparklines
 layout: post
 title: NOAA climate sparklines
 date: 2013-08-05
-author: Scott Chamberlain
+authors:
+  - name: Scott Chamberlain
 tags:
 - R
 - ecology

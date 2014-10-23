@@ -3,7 +3,8 @@ name: ambassadors-program
 layout: post
 title: Announcing our ambassadors program
 date: 2014-08-11
-author: Karthik Ram
+authors:
+  - name: Karthik Ram
 tags:
 - R
 - ropensci
@@ -23,7 +24,7 @@ The rOpenSci team will provide you with as much training material as you need (i
 - A shiny Ambassador badge for you on our community page (and one you can use elsewhere).
 - Have refreshments on us when you give a demo or talk at your institution or we'll support travel (within reason) to a meeting.
 - Free schwag. Currently only stickers but hopefully more.
-- Satisfaction that you're playing an important role in supporting open science. 
+- Satisfaction that you're playing an important role in supporting open science.
 
 
  If you're excited about organizing such an event, please [get in touch with us](http://ropensci.org/contact.html) or spread the word to your colleagues.

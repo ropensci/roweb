@@ -3,8 +3,9 @@ name: goals-for-the-year
 layout: post
 title: What we hope to accomplish with the new funding
 date: 2013-06-14
-author: Core Team
-tags: 
+authors:
+  - name: Core Team
+tags:
 - funding
 - ropensci
 ---
@@ -32,4 +33,3 @@ d) Explore long-term sustainability models for the project. This first year of f
 -  Identify potential future opportunities and ambassadors in other research disciplines.
 
 You can read more in our [full grant proposal](http://figshare.com/articles/rOpenSci_Open_Tools_to_Facilitate_Data_Driven_Science_in_Ecology_and_Evolution/719786). We welcome any comments and suggestions.
-

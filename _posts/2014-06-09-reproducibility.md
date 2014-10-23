@@ -3,8 +3,12 @@ name: reproducible-research-still-a-challenge
 layout: post
 title: Reproducible research is still a challenge
 date: 2014-06-09
-author: Rich FitzJohn, Matt Pennell, Amy Zanne and Will Cornwell
-authorurl: http://richfitz.github.io
+authors:
+  - name: Rich FitzJohn
+    url: http://richfitz.github.io
+  - name: Matt Pennell
+  - name: Amy Zanne
+  - name: Will Cornwell
 tags:
 - R
 - reproducibleresearch

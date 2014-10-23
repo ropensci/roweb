@@ -3,18 +3,19 @@ name: rgbif-changes
 layout: post
 title: rgbif changes in v0.4
 date: 2013-11-21
-author: Scott Chamberlain
+authors:
+  - name: Scott Chamberlain
 tags:
 - R
 - taxonomy
 - API
 ---
 
-The Global Biodiversity Information Facility (GBIF) is a warehouse of species occurrence data - collecting data from a lot of different sources. Our package `rgbif` allows you to interact with GBIF from R. We interact with GBIF via their Application Programming Interface, or API. Our last version on CRAN (v0.3) interacted with the older version of their API - this version interacts with the new version of their API. However, we also retained functions that interact with the old API. 
+The Global Biodiversity Information Facility (GBIF) is a warehouse of species occurrence data - collecting data from a lot of different sources. Our package `rgbif` allows you to interact with GBIF from R. We interact with GBIF via their Application Programming Interface, or API. Our last version on CRAN (v0.3) interacted with the older version of their API - this version interacts with the new version of their API. However, we also retained functions that interact with the old API.
 
-We have strived to have meaningful error messages for various arguments that have been changed, and for functions that were in v0.3, but now work with the new API (e.g. `organizations`, `networks`). 
+We have strived to have meaningful error messages for various arguments that have been changed, and for functions that were in v0.3, but now work with the new API (e.g. `organizations`, `networks`).
 
-GBIF did a large overhaul of the interface, so the possible arguments to use in each function are quite different. Don't hesitate to get in touch if you have a question! They have a set of methods to look up metadata about sources (under [Registry](http://www.gbif.org/developer/registry)), a set of methods for species names (under [Species](http://www.gbif.org/developer/species)), a set of methods for occurrences (under [Occurrences](http://www.gbif.org/developer/occurrence)), and a set of methods for requesting tile map layers (under [Maps](http://www.gbif.org/developer/maps)). In `rgbif` we provide functions for the first three, Registry, Species, and Occurrences. We don't provide R interfaces to their Maps service as it only makes sense to use in a web native workflow. 
+GBIF did a large overhaul of the interface, so the possible arguments to use in each function are quite different. Don't hesitate to get in touch if you have a question! They have a set of methods to look up metadata about sources (under [Registry](http://www.gbif.org/developer/registry)), a set of methods for species names (under [Species](http://www.gbif.org/developer/species)), a set of methods for occurrences (under [Occurrences](http://www.gbif.org/developer/occurrence)), and a set of methods for requesting tile map layers (under [Maps](http://www.gbif.org/developer/maps)). In `rgbif` we provide functions for the first three, Registry, Species, and Occurrences. We don't provide R interfaces to their Maps service as it only makes sense to use in a web native workflow.
 
 Tutorial for old GBIF API: [http://ropensci.org/tutorials/rgbif_tutorial.html](http://ropensci.org/tutorials/rgbif_tutorial.html)
 Tutorial for new GBIF API: [http://ropensci.org/tutorials/rgbif_tutorial_newapi.html](http://ropensci.org/tutorials/rgbif_tutorial_newapi.html)
@@ -106,11 +107,11 @@ dataset_metrics(uuid = "3f8a1297-3259-4700-91fc-acc4170b27ce")$countByRank
 ```
 
 ```
-##    SPECIES      GENUS    VARIETY SUBSPECIES    SECTION      TRIBE 
-##       5924       1223        854        748        324        323 
-##   SUBGENUS     FAMILY  SUBFAMILY SUBSECTION   SUBTRIBE      ORDER 
-##        194        171        147         59         57         55 
-##     SERIES SUPERORDER   SUBCLASS      CLASS 
+##    SPECIES      GENUS    VARIETY SUBSPECIES    SECTION      TRIBE
+##       5924       1223        854        748        324        323
+##   SUBGENUS     FAMILY  SUBFAMILY SUBSECTION   SUBTRIBE      ORDER
+##        194        171        147         59         57         55
+##     SERIES SUPERORDER   SUBCLASS      CLASS
 ##         40         12          6          2
 ```
 
@@ -126,16 +127,16 @@ nodes(data = "identifier", uuid = "1193638d-32d1-43f0-a855-8727c94299d8")
 ## [[1]]
 ## [[1]]$key
 ## [1] 13587
-## 
+##
 ## [[1]]$type
 ## [1] "GBIF_PARTICIPANT"
-## 
+##
 ## [[1]]$identifier
 ## [1] "57"
-## 
+##
 ## [[1]]$createdBy
 ## [1] "registry-migration.gbif.org"
-## 
+##
 ## [[1]]$created
 ## [1] "2013-10-24T09:06:08.312+0000"
 ```
@@ -343,7 +344,7 @@ occ_get(key = c(773433533, 101010, 240713150, 855998194, 49819470), return = "da
 
 ### Get occurrence records
 
-This is the most common function you may use in `rgbif`. 
+This is the most common function you may use in `rgbif`.
 
 
 ```r
@@ -355,17 +356,17 @@ occ_search(taxonKey = key, limit = 2)
 ## $meta
 ## $meta$offset
 ## [1] 0
-## 
+##
 ## $meta$limit
 ## [1] 2
-## 
+##
 ## $meta$endOfRecords
 ## [1] FALSE
-## 
+##
 ## $meta$count
 ## [1] 18190
-## 
-## 
+##
+##
 ## $hierarchy
 ## $hierarchy[[1]]
 ##                   name     key    rank
@@ -376,8 +377,8 @@ occ_search(taxonKey = key, limit = 2)
 ## 5           Asteraceae    3065  family
 ## 6           Helianthus 3119134   genus
 ## 7 Helianthus annuus L. 3119195 species
-## 
-## 
+##
+##
 ## $data
 ##                   name       key longitude latitude
 ## 1 Helianthus annuus L. 773433533   -117.00    32.85
@@ -436,4 +437,3 @@ occ_search(geometry = "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))")$da
 ## 19    37.66
 ## 20    37.66
 ```
-

@@ -29,7 +29,7 @@ title: "rOpenSci Blog"
       <!-- we do nothing -->
       {% else if %}
       <h3><a href="{{ site.dir }}{{ post.url }}">{{ post.title }}</a></h3>
-      {{ post.author }} &mdash; <i>{{ post.date | date: "%B %e, %Y" }}</i><br>
+      {{ post.authors | map: "name" | join: ", " }} &mdash; <i>{{ post.date | date: "%B %e, %Y" }}</i><br>
       {{ post.content | remove_alerts | strip_html | truncatewords:75 }}<br>
       <hr class="gray-line">
       {% endif %}

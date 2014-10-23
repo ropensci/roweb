@@ -3,7 +3,8 @@ name: ropensci-collaboration
 layout: post
 title: Visualizing rOpenSci collaboration
 date: 2013-03-08
-author: Scott Chamberlain
+authors:
+  - name: Scott Chamberlain
 tags:
 - R
 - ropensci

@@ -3,14 +3,15 @@ name: rgbif-update
 layout: post
 title: Changed and new things in the new version of rgbif, v0.5
 date: 2014-02-17
-author: Scott Chamberlain
+authors:
+  - name: Scott Chamberlain
 tags:
 - R
 - API
 - gbif
 ---
 
-`rgbif` is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). `rgbif` wraps R code around the [GBIF API][gbifapi] to allow you to talk to GBIF from R. 
+`rgbif` is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). `rgbif` wraps R code around the [GBIF API][gbifapi] to allow you to talk to GBIF from R.
 
 We just pushed a new verion of `rgbif` to cran - v0.5.0.  Source and binary files are now available on CRAN.  
 
@@ -40,14 +41,14 @@ library(rgbif)
 
 
 ## New functions
-### New function: count_facet 
+### New function: count_facet
 
-Does facetted count searches, as GBIF doesn't allow faceted searches against the count API. In this example, we have a set of species names, and we want counts by each of a set of 20 countries for each species. This function wraps up some code to essentially give you faceted search capability for the count service - of course this is much slower than if it was done server side. 
+Does facetted count searches, as GBIF doesn't allow faceted searches against the count API. In this example, we have a set of species names, and we want counts by each of a set of 20 countries for each species. This function wraps up some code to essentially give you faceted search capability for the count service - of course this is much slower than if it was done server side.
 
 
 ```r
-spplist <- c("Geothlypis trichas", "Tiaris olivacea", "Pterodroma axillaris", 
-    "Calidris ferruginea", "Pterodroma macroptera", "Gallirallus australis", 
+spplist <- c("Geothlypis trichas", "Tiaris olivacea", "Pterodroma axillaris",
+    "Calidris ferruginea", "Pterodroma macroptera", "Gallirallus australis",
     "Falco cenchroides", "Telespiza cantans", "Oreomystis bairdi", "Cistothorus palustris")
 keys <- sapply(spplist, function(x) name_backbone(x, rank = "species")$usageKey)
 library(plyr)
@@ -80,7 +81,7 @@ count_facet(by = "country", countries = 20, removezeros = TRUE)
 ```
 
 
-### New function: elevation 
+### New function: elevation
 
 Gets elevation data for a `data.frame` of lat/long points, or a list of lat/long points. This function uses the Google Elevation API.
 
@@ -124,7 +125,7 @@ head(elevation(dat))
 
 ### New function: installations
 
-Gets metdata on installations via the [installations API](http://www.gbif.org/developer/registry#installations). 
+Gets metdata on installations via the [installations API](http://www.gbif.org/developer/registry#installations).
 
 This example requests data for installations with the query terms 'france' in the metadata. We'll just look at the first result, and just the description and its first contact.
 
@@ -145,28 +146,28 @@ df$results[[1]]$contacts[[1]]
 ```
 ## $key
 ## [1] 18037
-## 
+##
 ## $type
 ## [1] "TECHNICAL_POINT_OF_CONTACT"
-## 
+##
 ## $primary
 ## [1] TRUE
-## 
+##
 ## $firstName
 ## [1] "Jim Whittome"
-## 
+##
 ## $email
 ## [1] "jim.whittome@ualberta.ca"
-## 
+##
 ## $createdBy
 ## [1] "registry-migration.gbif.org"
-## 
+##
 ## $modifiedBy
 ## [1] "registry-migration.gbif.org"
-## 
+##
 ## $created
 ## [1] "2013-02-26T22:15:50.000+0000"
-## 
+##
 ## $modified
 ## [1] "2013-03-18T16:17:46.000+0000"
 ```
@@ -183,28 +184,28 @@ installations(data = "contact", uuid = "2e029a0c-87af-42e6-87d7-f38a50b78201")
 ## [[1]]
 ## [[1]]$key
 ## [1] 19952
-## 
+##
 ## [[1]]$type
 ## [1] "TECHNICAL_POINT_OF_CONTACT"
-## 
+##
 ## [[1]]$primary
 ## [1] TRUE
-## 
+##
 ## [[1]]$firstName
 ## [1] "Biodiversity Informatics Manager"
-## 
+##
 ## [[1]]$email
 ## [1] "bdim@ansp.org"
-## 
+##
 ## [[1]]$createdBy
 ## [1] "registry-migration.gbif.org"
-## 
+##
 ## [[1]]$modifiedBy
 ## [1] "2e029a0c-87af-42e6-87d7-f38a50b78201"
-## 
+##
 ## [[1]]$created
 ## [1] "2013-07-22T18:17:06.000+0000"
-## 
+##
 ## [[1]]$modified
 ## [1] "2014-01-10T20:03:03.867+0000"
 ```

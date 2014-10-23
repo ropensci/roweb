@@ -3,7 +3,8 @@ name: rbison-geojson
 layout: post
 title: From occurrence data to interactive maps on the web
 date: 2013-07-04
-author: Scott Chamberlain
+authors:
+  - name: Scott Chamberlain
 tags:
 - R
 - ropensci

@@ -3,7 +3,8 @@ name: altmetrics-conf
 layout: post
 title: Altmetrics workshop recap
 date: 2013-10-15
-author: Scott Chamberlain
+authors:
+  - name: Scott Chamberlain
 tags:
 - R
 - altmetrics

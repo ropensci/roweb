@@ -3,7 +3,8 @@ name: is-invasive
 layout: post
 title: is.invasive()
 date: 2012-11-26
-author: Scott Chamberlain
+authors:
+  - name: Scott Chamberlain
 tags:
 - R
 - ropensci

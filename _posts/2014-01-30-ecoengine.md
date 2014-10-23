@@ -3,7 +3,8 @@ name: Programmatic interface to data from the Berkeley natural history museum
 layout: post
 title: Introducing the ecoengine package
 date: 2014-01-30
-author: Karthik Ram
+authors:
+  - name: Karthik Ram
 tags:
 - R
 - taxonomy

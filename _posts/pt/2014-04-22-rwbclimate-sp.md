@@ -3,7 +3,8 @@ name: rwbclimate-sp
 layout: post
 title: Sobreposição de dados de ocorrência de espécies com dados climáticos
 date: 2014-04-22
-author: Ted Hart
+authors:
+  - name: Ted Hart
 categories:
 - pt
 tags:

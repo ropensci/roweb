@@ -3,7 +3,8 @@ name: nceas-codefest
 layout: post
 title: NCEAS Codefest
 date: 2014-08-06
-author: Scott Chamberlain
+authors:
+  - name: Scott Chamberlain
 tags:
 - R
 - Conference
@@ -22,4 +23,4 @@ There are some great projects already proposed, including:
 
 If you have other ideas that you want to toss into the bag for the Open Science Codefest, post as a new issue in [the Github repo for the event](https://github.com/NCEAS/open-science-codefest/issues/new).
 
-Ted Hart and I will be at this event representing the rOpenSci core so please come chat with us about ideas for packages or other new collaborations. We're looking forward to contributing to discussions, writing code, and making new connections. 
+Ted Hart and I will be at this event representing the rOpenSci core so please come chat with us about ideas for packages or other new collaborations. We're looking forward to contributing to discussions, writing code, and making new connections.
