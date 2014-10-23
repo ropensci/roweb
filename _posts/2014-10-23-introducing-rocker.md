@@ -23,11 +23,11 @@ tags:
 source](https://github.com/docker/docker/tree/master/LICENSE) application
 and service, which is seeing interest across a number of areas. It
 uses recent Linux kernel features (containers, namespaces) to shield
-processes. While its use (superficially) resembles the use of virtual
+processes. While its use (superficially) resembles the use <!-- s/the use/that of --> of virtual
 machines, it is _much more lightweight_ as it operates at the level of a
 single process (rather than an emulation of an entire OS layer).  This also
 allows it to start almost instantly, require very little resources and
-hence permit an order of magnitude more deployments per host than a
+hence permit <!-- s/permit/permits --> an order of magnitude more deployments per host than a
 virtual machine.
 
 [Docker](http://www.docker.com) offers a standard interface
@@ -47,7 +47,7 @@ containers](https://docs.docker.com/userguide/usingdocker/). A single
 machine can run hundreds of such containers, including multiple containers
 running the same image.
 
-[Docker](http://www.docker.com) introductions and tutorials are available.
+[Docker](http://www.docker.com) introductions and tutorials are available <!-- This reads weirdly. Perhaps rewrite as There are plenty of tutorials and introductory material on Docker on the web yada yada -->.
 The [official online tutorial](https://www.docker.com/tryit/) is a good place to
 start; this post can not go into more detail in order to remain short and introductory.
 
