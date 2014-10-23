@@ -54,7 +54,11 @@ start; this post can not go into more detail in order to remain short and introd
 
 ### So what is Rocker?
 
-![](https://en.gravatar.com/userimage/73204427/563567819bd642c7a9e3af9d8ddb7581.png?size=100)
+<img alt="rocker logo" 
+style="float:left;margin:10px 40px 10px 0;" 
+width="100" height="100" 
+src="https://en.gravatar.com/userimage/73204427/563567819bd642c7a9e3af9d8ddb7581.png?size=100"/> 
+
 
 At its core, Rocker is a project for running [R](http://www.r-project.org) using Docker
 containers. We provide a collection of Dockerfiles and pre-built Docker
