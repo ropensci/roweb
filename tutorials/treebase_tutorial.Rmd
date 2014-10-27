@@ -8,13 +8,13 @@ packge_version: 0.0-7.1
 opts_chunk$set(fig.path="../assets/tutorial-images/treebase/", comment=NA, message=FALSE, warning=FALSE)
 ```
 
-Here are a few introductory examples to illustrate some of the functionality of the package. Thanks in part to new data deposition requirements at journals such as Evolution, Am Nat, and Sys Bio, and
-data management plan requirements from NSF, I hope the package will become increasingly useful for teaching by replicating results and for meta-analyses that can be automatically updated as the repository grows. Additional information and bug-reports welcome via the [treebase page](http://ropensci.org/packages/treebase.html#support).
+Neste post vamos ilustrar a fucionalidade do pacote com alguns exemplos introdutórios. Graças em parte às novas normas de periódicos como Evolution, Am Nat, e Sys Bio que requerem que os dados sejam depositados e
+planos de gerenciamento de dados requeridos pela NSF, esperamos que o pacote seja bastante útil para ensino na medida que replica os resultados ou para meta-análises que podem ser atualizadas automaticamente à medida que o repositório cresça. Informações adicionais e reletórios de erro são bem-invos via [treebase page](http://ropensci.org/packages/treebase.html#support).
 
 
 <section id="installation">
 
-## Installation
+## Instalação
 
 
 ```{r install, eval=FALSE}
@@ -27,12 +27,12 @@ library(treebase)
 
 <section id="usage">
 
-## Usage
+## Usoe
 
-Basic tree and metadata queries
+Busca básica de dados e árvores
 ==========
 
-Downloading trees by different queries: by author, taxa, & study. More options are described in the help file.
+Baixando árvores usando diferentes termos: por autor, taxa, & estudo. Mais opções são descritas no arquivo de ajuda.
 
 ```{r search1, eval=FALSE, message=FALSE, warning=FALSE}
 both <- search_treebase("Ronquist or Hulesenbeck", by=c("author", "author"))
@@ -45,7 +45,7 @@ Near <- search_treebase("Near", "author", branch_lengths=TRUE, max_trees=3)
 Near[1]
 ```
 
-We can query the metadata record directly. For instance, plot the growth of Treebase submissions by publication date
+Podemos fazer uma busca pelos metadados diretamente. Por exemplo, fazer um gráfico do cresciento de submissões para o Treebase em função da data da publicação
 
 ```{r metadata, eval=FALSE, message=FALSE, warning=FALSE}
 all <- download_metadata("", by="all")
@@ -54,9 +54,9 @@ library(ggplot2)
 qplot(dates, main="Treebase growth", xlab="Year", binwidth=.5)
 ```
 
-(The previous query could also take a date range)
+(A busca anterior também aceita um conjunto de datas)
 
-How do the weekly's do on submissions to Treebase? We construct this in a way that gives us back the indices of the matches, so we can then grab those trees directly. Run the scripts yourself to see if they've changed!
+Como qual é ritmo de submissões semanais para o Treebase? Construímos isso de forma que nos retornará os índices dos emparelhamentos, para que possamos pegar as árvores diretamente. Rode os scripts você mesmo para ver se eles mudaram!
 
 ```{r eval=FALSE, message=FALSE, warning=FALSE}
 nature <- sapply(all, function(x) length(grep("Nature", x$publisher))>0)
@@ -65,17 +65,17 @@ sum(nature)
 sum(science)
 ```
 
-Replicating results
+Replicando resultados
 -------------------
 
-A nice paper by Derryberry et al. appeared in Evolution recently on [diversification in ovenbirds and woodcreepers, 0.1111/j.1558-5646.2011.01374.x](http://www.museum.lsu.edu/brumfield/pubs/furnphylogeny2011.pdf). The article mentions that the tree is on Treebase, so let's see if we can replicate their diversification rate analysis: Let's grab the trees by that author and make sure we have the right one:
+Um artigo legal de Derryberry et al. sobre [diversification in ovenbirds and woodcreepers, 0.1111/j.1558-5646.2011.01374.x](http://www.museum.lsu.edu/brumfield/pubs/furnphylogeny2011.pdf) apareceu recentemente na Evolution. O artigo menciona que a árvore está no Treebase, então vejamos se podemos replicar os resultados das análises de taxas de diversificação: Vamos pegar as árvores daqueles autores e conferir se temos as corretas:
 
 ```{r message=FALSE, warning=FALSE}
 search_treebase("Derryberry", "author")[[1]] -> tree
 plot(tree)
 ```
 
-They fit a variety of diversification rate models avialable in the `laser` R package, which they compare using AIC.
+Eles ajustaram vários modelos de taxas de diversificação disponíveis no pacote do R `laser`, e então os compararam com AIC.
 
 ```{r eval=FALSE}
 install.packages("laser")
@@ -99,14 +99,14 @@ aics <- sapply(models, "[[", "aic")
 models[which.min(aics)]
 ```
 
-Yup, their result agrees with our analysis. Using the extensive toolset for diversification rates in R, we could now rather easily check if these results hold up in newer methods such as TreePar, etc.
+Opa! Os resultados deles concordam com as nossas análises. Ussando a grande gama de ferramenteas para analisar taxas de diversificação no R , poderíamos agora facilmente verificar se estes resultados se mantêm os mesmo quando usamos novos métodos disponívels no TreePar, etc.
 
-Meta-Analysis
+Meta-Analise
 -------------
 
-Of course one of the more interesting challenges of having an automated interface is the ability to perform meta-analyses across the set of available phylogenies in treebase. As a simple proof-of-principle, let's check all the phylogenies in treebase to see if they fit a birth-death model or yule model better.
+Claro, um dos mais interessantes desafios em se ter uma interface automatizada é a possilidade de realizar meta-análises que utilizam as filogenias disponíveis no treebase. Como uma simples prova de princípios, vamos verificar todas as filogenias no treebase para ver se elas se ajustam melhor a um modelo de nascimento-morte ou Yule.
 
-We'll create two simple functions to help with this analysis. While these can be provided by the treebase package, I've included them here to illustrate that the real flexibility comes from being able to create custom functions(These are primarily illustrative; I hope users and developers will create their own. In a proper analysis we would want a few additional checks.)
+Criaremos duas funções simples para nos ajudar nesta análise. Enquanto essas foram fornecidas no pacote treebase, inclui-las aqui para ilustrar a flexibilidade de uma função construída (Elas são essencialmente ilustrativas; Usuários e desenvolvedores devem criar suas próprias. Numa análise mais aproprida verificaríamos alguns pontos.)
 
 ```{r eval=FALSE, message=FALSE, warning=FALSE}
 timetree <- function(tree){
@@ -130,7 +130,7 @@ pick_branching_model <- function(tree){
 }
 ```
 
-Return only treebase trees that have branch lengths. This has to download every tree in treebase, so this will take a while. Good thing we don't have to do that by hand.
+Returna somente as árvores do treebase que contêm comprimentos de ramo. Este passo baixa todas as árvores do treebase, então pode demorar um pouco. Ainda bem que não temos de fazer isso manualmente :) .
 
 ```{r eval=FALSE, message=FALSE, warning=FALSE}
 all <- search_treebase("Consensus", "type.tree", branch_lengths=TRUE)
@@ -139,13 +139,13 @@ is_yule <- sapply(tt, pick_branching_model)
 table(is_yule)
 ```
 
-_Note: The output is not shown, but do run on your own!_
+_Note que o resultado não é mostrado, mas roda no fundo!_
 
 <section id="citing">
 
-## Citing
+## Citação
 
-To cite `treebase` in publications use:
+Para citar o `treebase` numa publicação, use:
 
 <br>
 
@@ -153,9 +153,9 @@ To cite `treebase` in publications use:
 
 <section id="license_bugs">
 
-## License and bugs
+## Licença e erros
 
-* License: [CC0](http://creativecommons.org/choose/zero/)
-* Report bugs at [our Github repo for treebase](https://github.com/ropensci/treebase/issues?state=open)
+* Licença: [CC0](http://creativecommons.org/choose/zero/)
+* Relatório de error em [our Github repo for treebase](https://github.com/ropensci/treebase/issues?state=open)
 
 [Back to top](#top)
