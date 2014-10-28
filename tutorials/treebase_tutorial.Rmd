@@ -159,3 +159,4 @@ To cite `treebase` in publications use:
 * Report bugs at [our Github repo for treebase](https://github.com/ropensci/treebase/issues?state=open)
 
 [Back to top](#top)
+
