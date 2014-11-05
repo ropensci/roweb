@@ -2,7 +2,7 @@
 name: open-data-growth
 layout: post
 title: Growth of open data in biology
-date: 2014-08-11
+date: 2014-11-04
 author: Scott Chamberlain
 tags:
 - R
@@ -25,10 +25,9 @@ XXXX
 
 XXXX
 
-## Gaps in open data
-
-XXXX
-
 ### Reproduce this
 
-You can reproduce the data analyzed and visualized here using the gist here:
+You can reproduce or build on the work here using the following:
+
+* Option 1: If you are comfortable with git, simply clone the [dbgrowth repository](https://github.com/ropensci/dbgrowth) to your machine, uncompress the compressed file, `cd` to the directory, and run `R`. Running R should enter _packrat mode_, which will install packages from within the directory, after which point you can reproduce what we have done above.
+* Option 2: Install the `packrat` R package if you don't have it already. Download the compressed file (a _packrat bundle_), then in R, run `packrat::unbundle("<path to tar.gz>", "<path to put the contents>")`, which will uncompress the file, and install packages, and you're ready to go.
