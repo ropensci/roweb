@@ -395,7 +395,7 @@ rbind(neotoma_data %>% mutate(type = "data") %>% arrange(date),
 
 ![plot of chunk unnamed-chunk-20](/assets/blog-images/2014-11-05-open-data-growth/unnamed-chunk-20-1.png)
 
-## Reproduce this
+## Reproduce this analysis
 
 * Option 1: If you are comfortable with git, simply clone the [dbgrowth repository][thecode] to your machine, uncompress the compressed file, `cd` to the directory, and run `R`. Running R should enter _packrat mode_, which will install packages from within the directory, after which point you can reproduce what we have done above.
 * Option 2: Install the `packrat` R package if you don't have it already. Download the compressed file (a _packrat bundle_), then in R, run `packrat::unbundle("<path to tar.gz>", "<path to put the contents>")`, which will uncompress the file, and install packages, and you're ready to go.
