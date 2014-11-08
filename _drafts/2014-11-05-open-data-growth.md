@@ -14,23 +14,11 @@ tags:
 
 ## Why open data growth
 
-At rOpenSci we try to make it easier for people to use open data, and contribute open data to the community. The question often arises: How much open data do we have? Another angle on this topic is: How much is open data growing?
+At rOpenSci we try to make it easier for people to use open data and contribute open data to the community. The question often arises: How much open data do we have? Another angle on this topic is: How much is open data growing?
 
-We work with dozens of data sources in rOpenSci. We asked many of them to share numbers on the amount of data they have, and if possible, growth through time of their data holdings. Many of our partners came through with some data. Note that the below is biased towards those data sources we were able to get data from. In addition, note that much of the data we use below was from fall of 2013 (last year) - so the below is based on somewhat old data, but surely the patterns are likely the same.
+We provide access to dozens of data respositories through our various packages. We asked many of them to share numbers on the amount of data they have, and if possible, growth of their data holdings through time. Many of our partners came through with some data. Note that the below is biased towards those data sources we were able to get data from. In addition, note that much of the data we use below was from fall of 2013 (last year) - so the below is based on somewhat old data, but surely the trends are likely still the same.
 
-We collated data from the different sources, and made some pretty graphs using the data. Here's what we learned:
-
-## Get data
-
-The code here is hidden for your sanity - see [the file][thecode] for the code and to run this yourself.
-
-
-
-
-
-
-
-
+We collated data from the different sources, and made some pretty graphs using the data. Here's what we learned (see last section on how to reproduce this analysis):
 
 
 ## Size of open data
@@ -48,7 +36,7 @@ rbind(df1, df2) %>%
     type = c('Phenology records','Phylogenetic trees','Taxonomic names','Checklist records','Observations','Taxonomic names','Source databases','Titles','Items','Names','Pages','Species occurrence records','Data publishers','Taxonomic names','Data records','Datasets','Articles','Data packages','SNPs','Users','Genotypes','Data records'),
     source = c('NPN','Treebase','ITIS','eBird','eBird','COL','COL','BHL','BHL','BHL','BHL','GBIF','GBIF','Neotoma','Neotoma','Neotoma','PLOS','Dryad','OpenSNP','OpenSNP','OpenSNP','DataCite')
   ) %>%
-  arrange(desc(value)) %>%
+  arrange(type, desc(value)) %>%
   kable(format = "html")
 ```
 
@@ -351,7 +339,7 @@ bhl_names <- bhl_names %>% mutate(type = "names") %>% arrange(date) %>%  mutate(
 bhl_all <- rbind(bhl_titles[,-c(1:4)], bhl_items[,-c(1:4)], bhl_pages[,-c(1:4)], bhl_names[,-c(1:4)])
 bhl_all %>%
   ggplot(aes(date, count)) +
-    geom_line(size=3) +
+    geom_line(size = 2.1) +
     theme_grey(base_size = 18) +
     facet_wrap(~ type, scales = "free")
 ```
