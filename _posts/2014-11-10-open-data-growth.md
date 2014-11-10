@@ -2,7 +2,7 @@
 name: open-data-growth
 layout: post
 title: Growth of open data in biology
-date: 2014-11-05
+date: 2014-11-10
 authors:
   - name: Scott Chamberlain
 tags:
@@ -16,7 +16,7 @@ tags:
 
 At rOpenSci we try to make it easier for people to use open data and contribute open data to the community. The question often arises: How much open data do we have? Another angle on this topic is: How much is open data growing?
 
-We provide access to dozens of data respositories through our various packages. We asked many of them to share numbers on the amount of data they have, and if possible, growth of their data holdings through time. Many of our partners came through with some data. Note that the below is biased towards those data sources we were able to get data from. In addition, note that much of the data we use below was from fall of 2013 (last year) - so the below is based on somewhat old data, but surely the trends are likely still the same.
+We provide access to dozens of data respositories through our various packages. We asked many of them to share numbers on the amount of data they have, and if possible, growth of their data holdings through time. Many of our partners came through with some data. Note that the below is biased towards those data sources we were able to get data from, and those that we were able to get growth through time data. In addition, note that much of the data we use below was from fall of 2013 (last year) - so the below is based on somewhat old data, but surely the trends are likely still the same now.
 
 We collated data from the different sources, and made some pretty graphs using the data. Here's what we learned (see last section on how to reproduce this analysis):
 
@@ -40,124 +40,124 @@ rbind(df1, df2) %>%
   kable(format = "html")
 ```
 
-<table class="table table-bordered table-striped">
+<table>
  <thead>
   <tr>
    <th style="text-align:left;"> source </th>
    <th style="text-align:right;"> value </th>
-   <th style="text-align:left;"> type </th>
+   <th style="text-align:right;"> type </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> GBIF </td>
-   <td style="text-align:right;"> 420222471 </td>
-   <td style="text-align:left;"> Species occurrence records </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> BHL </td>
-   <td style="text-align:right;"> 155891133 </td>
-   <td style="text-align:left;"> Names </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> BHL </td>
-   <td style="text-align:right;"> 43968949 </td>
-   <td style="text-align:left;"> Pages </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> DataCite </td>
-   <td style="text-align:right;"> 3618096 </td>
-   <td style="text-align:left;"> Data records </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> eBird </td>
-   <td style="text-align:right;"> 2923886 </td>
-   <td style="text-align:left;"> Observations </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> NPN </td>
-   <td style="text-align:right;"> 2537095 </td>
-   <td style="text-align:left;"> Phenology records </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Neotoma </td>
-   <td style="text-align:right;"> 2200221 </td>
-   <td style="text-align:left;"> Data records </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> OpenSNP </td>
-   <td style="text-align:right;"> 2140939 </td>
-   <td style="text-align:left;"> SNPs </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> COL </td>
-   <td style="text-align:right;"> 1352112 </td>
-   <td style="text-align:left;"> Taxonomic names </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> ITIS </td>
-   <td style="text-align:right;"> 624282 </td>
-   <td style="text-align:left;"> Taxonomic names </td>
+   <td style="text-align:left;"> PLOS </td>
+   <td style="text-align:right;"> 137358 </td>
+   <td style="text-align:right;"> Articles </td>
   </tr>
   <tr>
    <td style="text-align:left;"> eBird </td>
    <td style="text-align:right;"> 205970 </td>
-   <td style="text-align:left;"> Checklist records </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> BHL </td>
-   <td style="text-align:right;"> 139561 </td>
-   <td style="text-align:left;"> Items </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> PLOS </td>
-   <td style="text-align:right;"> 136330 </td>
-   <td style="text-align:left;"> Articles </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> BHL </td>
-   <td style="text-align:right;"> 77258 </td>
-   <td style="text-align:left;"> Titles </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Neotoma </td>
-   <td style="text-align:right;"> 20115 </td>
-   <td style="text-align:left;"> Taxonomic names </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Neotoma </td>
-   <td style="text-align:right;"> 11588 </td>
-   <td style="text-align:left;"> Datasets </td>
+   <td style="text-align:right;"> Checklist records </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Dryad </td>
    <td style="text-align:right;"> 4186 </td>
-   <td style="text-align:left;"> Data packages </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Treebase </td>
-   <td style="text-align:right;"> 1515 </td>
-   <td style="text-align:left;"> Phylogenetic trees </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> OpenSNP </td>
-   <td style="text-align:right;"> 1230 </td>
-   <td style="text-align:left;"> Users </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> OpenSNP </td>
-   <td style="text-align:right;"> 589 </td>
-   <td style="text-align:left;"> Genotypes </td>
+   <td style="text-align:right;"> Data packages </td>
   </tr>
   <tr>
    <td style="text-align:left;"> GBIF </td>
    <td style="text-align:right;"> 578 </td>
-   <td style="text-align:left;"> Data publishers </td>
+   <td style="text-align:right;"> Data publishers </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> DataCite </td>
+   <td style="text-align:right;"> 3618096 </td>
+   <td style="text-align:right;"> Data records </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Neotoma </td>
+   <td style="text-align:right;"> 2202656 </td>
+   <td style="text-align:right;"> Data records </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Neotoma </td>
+   <td style="text-align:right;"> 11617 </td>
+   <td style="text-align:right;"> Datasets </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> OpenSNP </td>
+   <td style="text-align:right;"> 589 </td>
+   <td style="text-align:right;"> Genotypes </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BHL </td>
+   <td style="text-align:right;"> 139561 </td>
+   <td style="text-align:right;"> Items </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BHL </td>
+   <td style="text-align:right;"> 155891133 </td>
+   <td style="text-align:right;"> Names </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> eBird </td>
+   <td style="text-align:right;"> 2923886 </td>
+   <td style="text-align:right;"> Observations </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BHL </td>
+   <td style="text-align:right;"> 43968949 </td>
+   <td style="text-align:right;"> Pages </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> NPN </td>
+   <td style="text-align:right;"> 2537095 </td>
+   <td style="text-align:right;"> Phenology records </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Treebase </td>
+   <td style="text-align:right;"> 1515 </td>
+   <td style="text-align:right;"> Phylogenetic trees </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> OpenSNP </td>
+   <td style="text-align:right;"> 2140939 </td>
+   <td style="text-align:right;"> SNPs </td>
   </tr>
   <tr>
    <td style="text-align:left;"> COL </td>
    <td style="text-align:right;"> 132 </td>
-   <td style="text-align:left;"> Source databases </td>
+   <td style="text-align:right;"> Source databases </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> GBIF </td>
+   <td style="text-align:right;"> 420222471 </td>
+   <td style="text-align:right;"> Species occurrence records </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> COL </td>
+   <td style="text-align:right;"> 1352112 </td>
+   <td style="text-align:right;"> Taxonomic names </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ITIS </td>
+   <td style="text-align:right;"> 624282 </td>
+   <td style="text-align:right;"> Taxonomic names </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Neotoma </td>
+   <td style="text-align:right;"> 20152 </td>
+   <td style="text-align:right;"> Taxonomic names </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BHL </td>
+   <td style="text-align:right;"> 77258 </td>
+   <td style="text-align:right;"> Titles </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> OpenSNP </td>
+   <td style="text-align:right;"> 1230 </td>
+   <td style="text-align:right;"> Users </td>
   </tr>
 </tbody>
 </table>
@@ -185,7 +185,7 @@ Dryad is a repository of datasets associated with published papers. We do have a
 dryad %>% sort_count %>% gp
 ```
 
-![plot of chunk unnamed-chunk-7](/assets/blog-images/2014-11-05-open-data-growth/unnamed-chunk-7-1.png)
+![plot of chunk unnamed-chunk-7](/assets/blog-images/2014-11-10-open-data-growth/unnamed-chunk-7-1.png)
 
 ### OpenSNP
 
@@ -208,7 +208,7 @@ os_all %>%
     theme(legend.position = "top")
 ```
 
-![plot of chunk unnamed-chunk-8](/assets/blog-images/2014-11-05-open-data-growth/unnamed-chunk-8-1.png)
+![plot of chunk unnamed-chunk-8](/assets/blog-images/2014-11-10-open-data-growth/unnamed-chunk-8-1.png)
 
 ### Datacite
 
@@ -222,7 +222,7 @@ DataCite mints DOIs for datasets, and holds metadata for those datasets provided
 dcite %>% sort_count %>% gp
 ```
 
-![plot of chunk unnamed-chunk-9](/assets/blog-images/2014-11-05-open-data-growth/unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-9](/assets/blog-images/2014-11-10-open-data-growth/unnamed-chunk-9-1.png)
 
 ### US National Phenology Network (USNPN or NPN)
 
@@ -236,7 +236,7 @@ The US National Phenology Network is a project under the USGS. They collect phen
 npn %>% arrange(date) %>% mutate(count = cumsum(Number_Records)) %>% gp
 ```
 
-![plot of chunk unnamed-chunk-10](/assets/blog-images/2014-11-05-open-data-growth/unnamed-chunk-10-1.png)
+![plot of chunk unnamed-chunk-10](/assets/blog-images/2014-11-10-open-data-growth/unnamed-chunk-10-1.png)
 
 ### TreeBASE
 
@@ -250,7 +250,7 @@ TreeBASE is a database of phylogenetic trees, had a total of 1515 trees as of 20
 treebase %>% arrange(date) %>% rename(count = New.Trees.Added) %>% gp
 ```
 
-![plot of chunk unnamed-chunk-11](/assets/blog-images/2014-11-05-open-data-growth/unnamed-chunk-11-1.png)
+![plot of chunk unnamed-chunk-11](/assets/blog-images/2014-11-10-open-data-growth/unnamed-chunk-11-1.png)
 
 ### Integrated Taxonomic Information Service (ITIS)
 
@@ -264,7 +264,7 @@ The ITIS database is under the USGS, and holds taxonomic names for mostly North 
 itis %>% arrange(date) %>% rename(count = total_names) %>% gp
 ```
 
-![plot of chunk unnamed-chunk-12](/assets/blog-images/2014-11-05-open-data-growth/unnamed-chunk-12-1.png)
+![plot of chunk unnamed-chunk-12](/assets/blog-images/2014-11-10-open-data-growth/unnamed-chunk-12-1.png)
 
 ### eBird
 
@@ -278,7 +278,7 @@ eBird is a database of bird occurence records. They don't give access to all the
 ebird_observations %>% arrange(date) %>% mutate(count = cumsum(COUNT.OBS_ID.)) %>% gp
 ```
 
-![plot of chunk unnamed-chunk-13](/assets/blog-images/2014-11-05-open-data-growth/unnamed-chunk-13-1.png)
+![plot of chunk unnamed-chunk-13](/assets/blog-images/2014-11-10-open-data-growth/unnamed-chunk-13-1.png)
 
 ### Catalogue of Life (COL)
 
@@ -294,7 +294,7 @@ __Number of species__
 col %>% arrange(date) %>% rename(count = species) %>% gp
 ```
 
-![plot of chunk unnamed-chunk-14](/assets/blog-images/2014-11-05-open-data-growth/unnamed-chunk-14-1.png)
+![plot of chunk unnamed-chunk-14](/assets/blog-images/2014-11-10-open-data-growth/unnamed-chunk-14-1.png)
 
 __Number of data sources__
 
@@ -303,7 +303,7 @@ __Number of data sources__
 col %>% arrange(date) %>% rename(count = source_databases) %>% gp
 ```
 
-![plot of chunk unnamed-chunk-15](/assets/blog-images/2014-11-05-open-data-growth/unnamed-chunk-15-1.png)
+![plot of chunk unnamed-chunk-15](/assets/blog-images/2014-11-10-open-data-growth/unnamed-chunk-15-1.png)
 
 ### Public Library of Science (PLOS)
 
@@ -321,7 +321,7 @@ plos_years %>%
   gp
 ```
 
-![plot of chunk unnamed-chunk-16](/assets/blog-images/2014-11-05-open-data-growth/unnamed-chunk-16-1.png)
+![plot of chunk unnamed-chunk-16](/assets/blog-images/2014-11-10-open-data-growth/unnamed-chunk-16-1.png)
 
 ### Biodiversity Heritage Library (BHL)
 
@@ -339,12 +339,12 @@ bhl_names <- bhl_names %>% mutate(type = "names") %>% arrange(date) %>%  mutate(
 bhl_all <- rbind(bhl_titles[,-c(1:4)], bhl_items[,-c(1:4)], bhl_pages[,-c(1:4)], bhl_names[,-c(1:4)])
 bhl_all %>%
   ggplot(aes(date, count)) +
-    geom_line(size = 2.1) +
+    geom_line(size=2.1) +
     theme_grey(base_size = 18) +
     facet_wrap(~ type, scales = "free")
 ```
 
-![plot of chunk unnamed-chunk-17](/assets/blog-images/2014-11-05-open-data-growth/unnamed-chunk-17-1.png)
+![plot of chunk unnamed-chunk-17](/assets/blog-images/2014-11-10-open-data-growth/unnamed-chunk-17-1.png)
 
 ### Global Biodiversity Information Facility (GBIF)
 
@@ -363,7 +363,7 @@ gbif_data %>%
   gp + labs(y="Millions of biodiversity records in GBIF")
 ```
 
-![plot of chunk unnamed-chunk-18](/assets/blog-images/2014-11-05-open-data-growth/unnamed-chunk-18-1.png)
+![plot of chunk unnamed-chunk-18](/assets/blog-images/2014-11-10-open-data-growth/unnamed-chunk-18-1.png)
 
 __Number of data publishers__
 
@@ -375,7 +375,7 @@ gbif_publishers %>%
   gp + labs(y="Number of GBIF data publishers")
 ```
 
-![plot of chunk unnamed-chunk-19](/assets/blog-images/2014-11-05-open-data-growth/unnamed-chunk-19-1.png)
+![plot of chunk unnamed-chunk-19](/assets/blog-images/2014-11-10-open-data-growth/unnamed-chunk-19-1.png)
 
 ### Neotoma
 
@@ -393,11 +393,18 @@ rbind(neotoma_data %>% mutate(type = "data") %>% arrange(date),
   gp + facet_grid(type ~ ., scales="free")
 ```
 
-![plot of chunk unnamed-chunk-20](/assets/blog-images/2014-11-05-open-data-growth/unnamed-chunk-20-1.png)
+![plot of chunk unnamed-chunk-20](/assets/blog-images/2014-11-10-open-data-growth/unnamed-chunk-20-1.png)
+
+## So what?
+
+Okay, so a lot of data isn't that meaningful in itself. But, this is open data that can be used to do science, which means there is an increasingly vast amount of open data as the basis for new research, to supplement field based research, etc. The killer feature of all this open data is that it's all available programatically through R packages produced in the rOpenSci community, meaning you can easily and quickly do reproducible science with this data.
 
 ## Reproduce this analysis
 
 * Option 1: If you are comfortable with git, simply clone the [dbgrowth repository][thecode] to your machine, uncompress the compressed file, `cd` to the directory, and run `R`. Running R should enter _packrat mode_, which will install packages from within the directory, after which point you can reproduce what we have done above.
-* Option 2: Install the `packrat` R package if you don't have it already. Download the compressed file (a _packrat bundle_), then in R, run `packrat::unbundle("<path to tar.gz>", "<path to put the contents>")`, which will uncompress the file, and install packages, and you're ready to go.
+* Option 2: Install the `packrat` R package if you don't have it already. Download [this compressed file][bundle] (a _packrat bundle_), then in R, run `packrat::unbundle("<path to tar.gz>", "<path to put the contents>")`, which will uncompress the file, and install packages, and you're ready to go.
+
+Once you have the files, you should be able to run `knitr::knit("dbgrowth.Rmd")` to reproduce this post.
 
 [thecode]: https://github.com/ropensci/dbgrowth
+[bundle]: https://www.dropbox.com/s/226onvf8zw06r0f/dbgrowth-2014-11-10.tar.gz?dl=0
