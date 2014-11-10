@@ -40,7 +40,7 @@ rbind(df1, df2) %>%
   kable(format = "html")
 ```
 
-<table>
+<table class="table table-bordered table-striped">
  <thead>
   <tr>
    <th style="text-align:left;"> source </th>
