@@ -18,6 +18,7 @@ RCurl
 Rdocumentation
 rentrez
 rfisheries
+rgbif
 rgdal
 rgeos
 rjson
@@ -29,6 +30,7 @@ sacbox
 slidify
 slidifyLibraries
 sp
+spocc
 SSOAP
 taxize
 testthat
