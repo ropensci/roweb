@@ -1,22 +1,21 @@
----
-title: alm tutorial
-layout: tutorial
-packge_version: 0.3.1
----
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{alm vignette}
+-->
 
-```{r, echo=FALSE}
-knitr::opts_chunk$set(
-	fig.path="../assets/tutorial-images/alm/", 
+```{r, eval=TRUE, echo=FALSE}
+opts_chunk$set(
 	fig.width=6, 
-	fig.height=4,
-	comment = "#>", 
-	collapse = TRUE,
-	warning = FALSE, 
-	message = FALSE
+	fig.height=5, 
+	fig.pos="h",
+	message=FALSE, 
+	warning=FALSE, 
+	comment="#>"
 )
 ```
 
-> Note: the vignette in the package wasn't updated, but this tutorial is updated and works with `v0.3.1`.
+alm tutorial
+============
 
 ## What are article level metrics? 
 
@@ -54,9 +53,7 @@ Of course you need a different key for each Lagotta instance (e.g., what works f
 
 If you are having trouble with this R package, contact [the maintainer, Scott](mailto:myrmecocystus@gmail.com). If you are having trouble with the API itself, there is a newish discussion forum for the Lagotto service at [http://discuss.lagotto.io/](http://discuss.lagotto.io/). 
 
-<section id="installation">
-
-## Installation
+## Install and load
 
 Stable version from CRAN
 
@@ -77,11 +74,9 @@ Load `alm`
 library(alm)
 ```
 
-<section id="usage">
-
-## Usage
-
 ## Get data
+
+(We'll not print a few columns so the table prints nicely)
 
 ```{r alm1}
 alm_ids(doi="10.1371/journal.pone.0029797")
@@ -255,22 +250,3 @@ url <- "http://alm.labs.crossref.org/api/v5/articles"
 dois <- c("10.1371/journal.pone.0086859", "10.1038/nature12990", "10.5860/choice.51-3037")
 alm_ids(doi=dois, url = url, key=getOption("crossrefalmkey"))
 ```
-
-<section id="citing">
-
-## Citing
-
-To cite `alm` in publications use:
-
-<br>
-
-> Scott Chamberlain, Carl Boettiger, Karthik Ram and Fenner Martin (2014). alm: R Client for the Lagotto Altmetrics API Platform.. R package version 0.3.1. https://github.com/ropensci/alm
-
-<section id="license_bugs">
-
-## License and bugs
-
-* License: [MIT](http://opensource.org/licenses/MIT)
-* Report bugs at [our Github repo for alm](https://github.com/ropensci/alm/issues?state=open)
-
-[Back to top](#top)
