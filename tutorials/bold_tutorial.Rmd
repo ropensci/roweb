@@ -1,10 +1,25 @@
 ---
 title: bold tutorial
 layout: tutorial
-packge_version: 0.1.0
+packge_version: 0.2.0
 ---
 
-`bold` is an R package to connect to [BOLD Systems](http://www.boldsystems.org/) via [their API](http://www.boldsystems.org/index.php/resources/api). Functions in `bold` let you search for sequence data, specimen data, sequence + specimen data, and download raw trace files.
+```{r, echo=FALSE}
+knitr::opts_chunk$set(
+	fig.path="../assets/tutorial-images/bold/",
+	comment = "#>", 
+	collapse = TRUE,
+	warning = FALSE, 
+	message = FALSE
+)
+```
+
+`bold` is an R package to connect to [BOLD Systems](http://www.boldsystems.org/) via their API. Functions in `bold` let you search for sequence data, specimen data, sequence + specimen data, and download raw trace files.
+
+__`bold` info__
+
++ [BOLD home page](http://boldsystems.org/)
++ [BOLD API docs](boldsystems.org/index.php/resources/api)
 
 <section id="installation">
 
@@ -12,19 +27,21 @@ packge_version: 0.1.0
 
 You can install the stable version from CRAN
 
+
 ```{r eval=FALSE}
 install.packages("bold")
 ```
 
 Or the development version from Github
 
+
 ```{r eval=FALSE}
 install.packages("devtools")
-library("devtools")
-install_github("ropensci/bold")
+devtools::install_github("ropensci/bold")
 ```
 
 Then load the package into the R sesssion
+
 
 ```{r}
 library("bold")
@@ -34,164 +51,184 @@ library("bold")
 
 ## Usage
 
+## Search for taxonomic names via names
+
+`bold_tax_name` searches for names with names.
+
+```{r cache=FALSE}
+bold_tax_name(name='Diplura')
+```
+
+```{r cache=FALSE}
+bold_tax_name(name=c('Diplura','Osmia'))
+```
+
+
+### Search for taxonomic names via BOLD identifiers
+
+`bold_tax_id` searches for names with BOLD identifiers.
+
+```{r cache=FALSE}
+bold_tax_id(id=88899)
+```
+
+```{r cache=FALSE}
+bold_tax_id(id=c(88899,125295))
+```
+
+
 ### Search for sequence data only
 
-Default is to get a list back (here, searching by taxon name)
+The BOLD sequence API gives back sequence data, with a bit of metadata.
 
-```{r}
+The default is to get a list back
+
+```{r cache=FALSE}
 bold_seq(taxon='Coelioxys')[1:2]
 ```
 
-Search by BOLD ID number
+You can optionally get back the `httr` response object
 
-```{r}
-bold_seq(ids='ACRJP618-11')
-```
-
-For all parameters you can pass in multiple values, here multiple IDs
-
-```{r}
-bold_seq(ids=c('ACRJP618-11','ACRJP619-11'))
-```
-
-For the nerds, you can optionally get back the `httr` response object, which gives you a bunch of details on the call you made to the web.
-
-```{r}
+```{r cache=FALSE}
 res <- bold_seq(taxon='Coelioxys', response=TRUE)
 res$headers
 ```
 
-For all functions in `bold`, not just `bold_seq()`, you can pass in curl options to `httr::GET`. For example, you can print the progress as curl progresses (we need to load `httr` for this):
+You can do geographic searches
 
-```{r eval=FALSE}
-library("httr")
-bold_seq(ids='ACRJP618-11', callopts = verbose())
+```{r cache=FALSE}
+bold_seq(geo = "USA")
 ```
 
-```{r eval=FALSE}
-## * Adding handle: conn: 0x7fb4c2774a00
-## * Adding handle: send: 0
-## * Adding handle: recv: 0
-## * Curl_addHandleToPipeline: length: 1
-## * - Conn 25 (0x7fb4c2774a00) send_pipe: 1, recv_pipe: 0
-## * About to connect() to www.boldsystems.org port 80 (#25)
-## *   Trying 131.104.104.109...
-## * Connected to www.boldsystems.org (131.104.104.109) port 80 (#25)
-## > GET /index.php/API_Public/sequence?ids=ACRJP618-11 HTTP/1.1
-## Host: www.boldsystems.org
-## Accept: */*
-## Accept-Encoding: gzip
-## user-agent: curl/7.30.0 Rcurl/1.95.4.1 httr/0.3
-##
-## < HTTP/1.1 200 OK
-## < Date: Wed, 28 May 2014 22:21:09 GMT
-## * Server Apache/2.2.15 (Red Hat) is not blacklisted
-## < Server: Apache/2.2.15 (Red Hat)
-## < X-Powered-By: PHP/5.3.15
-## < Content-Disposition: attachment; filename=fasta.fas
-## < Connection: close
-## < Transfer-Encoding: chunked
-## < Content-Type: application/x-download
-## <
-## * Closing connection 25
-## [[1]]
-## [[1]]$id
-## [1] "ACRJP618-11"
-##
-## [[1]]$name
-## [1] "Lepidoptera"
-##
-## [[1]]$gene
-## [1] "ACRJP618-11"
-##
-## [[1]]$sequence
-## [1] "------------------------TTGAGCAGGCATAGTAGGAACTTCTCTTAGTCTTATTATTCGAACAGAATTAGGAAATCCAGGATTTTTAATTGGAGATGATCAAATCTACAATACTATTGTTACGGCTCATGCTTTTATTATAATTTTTTTTATAGTTATACCTATTATAATTGGAGGATTTGGTAATTGATTAGTTCCCCTTATACTAGGAGCCCCAGATATAGCTTTCCCTCGAATAAACAATATAAGTTTTTGGCTTCTTCCCCCTTCACTATTACTTTTAATTTCCAGAAGAATTGTTGAAAATGGAGCTGGAACTGGATGAACAGTTTATCCCCCACTGTCATCTAATATTGCCCATAGAGGTACATCAGTAGATTTAGCTATTTTTTCTTTACATTTAGCAGGTATTTCCTCTATTTTAGGAGCGATTAATTTTATTACTACAATTATTAATATACGAATTAACAGTATAAATTATGATCAAATACCACTATTTGTGTGATCAGTAGGAATTACTGCTTTACTCTTATTACTTTCTCTTCCAGTATTAGCAGGTGCTATCACTATATTATTAACGGATCGAAATTTAAATACATCATTTTTTGATCCTGCAGGAGGAGGAGATCCAATTTTATATCAACATTTATTT"
+And you can search by researcher name
+
+```{r cache=FALSE}
+bold_seq(researchers='Thibaud Decaens')[[1]]
 ```
+
+by taxon IDs
+
+```{r cache=FALSE}
+bold_seq(ids=c('ACRJP618-11','ACRJP619-11'))
+```
+
+by container (containers include project codes and dataset codes)
+
+```{r cache=FALSE}
+bold_seq(container='ACRJP')[[1]]
+```
+
+by bin (a bin is a _Barcode Index Number_)
+
+```{r cache=FALSE}
+bold_seq(bin='BOLD:AAA5125')[[1]]
+```
+
+And there are more ways to query, check out the docs for `?bold_seq`.
+
 
 ### Search for specimen data only
 
-By default you download `tsv` format data, which is given back to you as a `data.frame`
+The BOLD specimen API doesn't give back sequences, only specimen data. By default you download `tsv` format data, which is given back to you as a `data.frame`
 
-```{r}
+```{r cache=FALSE}
 res <- bold_specimens(taxon='Osmia')
 head(res[,1:8])
 ```
 
-Alternatively, you can get back raw XML data
+You can optionally get back the data in `XML` format
 
 ```{r eval=FALSE}
 bold_specimens(taxon='Osmia', format='xml')
 ```
 
-```{r eval=FALSE, tidy=FALSE}
-## <bold_records xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.boldsystems.org/schemas/BOLD_record.xsd">
-##   <record>
-##     <recordID>470890</recordID>
-##     <processid>GBAH0293-06</processid>
-##     <specimen_identifiers>
-##       <sampleid>AF250940</sampleid>
-##       <institution_storing>Mined from GenBank, NCBI</institution_storing>
-##     </specimen_identifiers>
-##     <bin_uri>BOLD:AAD6282</bin_uri>
-##     <taxonomy>
-##       <phylum>
-##         <taxon>
-##           <taxID>20</taxID>
-##           <name>Arthropoda</name>
-##         </taxon>
-##       </phylum>
-##       <class>
-##         <taxon>
-##           <taxID>82</taxID>
-##           <name>Insecta</name>
-##         </taxon>
-##      </class>
-## ...cutoff
+```{r eval=FALSE, results='asis'}
+<?xml version="1.0" encoding="UTF-8"?>
+<bold_records  xsi:noNamespaceSchemaLocation="http://www.boldsystems.org/schemas/BOLDPublic_record.xsd"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <record>
+    <record_id>1470124</record_id>
+    <processid>BOM1525-10</processid>
+    <bin_uri>BOLD:AAN3337</bin_uri>
+    <specimen_identifiers>
+      <sampleid>DHB 1011</sampleid>
+      <catalognum>DHB 1011</catalognum>
+      <fieldnum>DHB1011</fieldnum>
+      <institution_storing>Marjorie Barrick Museum</institution_storing>
+    </specimen_identifiers>
+    <taxonomy>
+```
+
+You can choose to get the `httr` response object back if you'd rather work with the raw data returned from the BOLD API.
+
+```{r}
+res <- bold_specimens(taxon='Osmia', format='xml', response=TRUE)
+res$url
+res$status_code
+res$headers
 ```
 
 ### Search for specimen plus sequence data
 
-By default you get back a data frame with specimen data and sequences together. This data frame is pretty unwieldy, so you can set `sepfasta=TRUE` to get back a list of length two with a data frame (with specimen data) and a list (with sequences)
+The specimen/sequence combined API gives back specimen and sequence data. Like the specimen API, this one gives by default `tsv` format data, which is given back to you as a `data.frame`. Here, we're setting `sepfasta=TRUE` so that the sequence data is given back as a list, and taken out of the `data.frame` returned so the `data.frame` is more manageable.
 
-```{r}
+```{r cache=FALSE}
 res <- bold_seqspec(taxon='Osmia', sepfasta=TRUE)
-head(res$data)[1:6]
-```
-
-Look at sequences
-
-```{r}
 res$fasta[1:2]
 ```
 
 Or you can index to a specific sequence like
 
-```{r}
+```{r cache=FALSE}
 res$fasta['GBAH0293-06']
 ```
 
-
 ### Get trace files
 
-This function downloads files to your machine - it does not load them into your R session - but prints out where the files are for your information, and gives back the files with full paths so that you can then open them in R or at least browse to them on your machine.
+This function downloads files to your machine - it does not load them into your R session - but prints out where the files are for your information.
 
 ```{r eval=FALSE}
-bold_trace(taxon='Osmia')
+bold_trace(taxon='Osmia', quiet=TRUE)
+#> Downloading: 51 MB     
+#> <bold trace files> 
+#> 
+#> .../bold/bold_trace_files/BBHYL361-10[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/BBHYL361-10[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/BBHYL363-10[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/BBHYL363-10[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/BBHYL365-10[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/BBHYL365-10[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBAPB666-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBAPB666-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBAPB667-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBAPB674-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBAPB674-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBAPB685-09[LepF1,C_ANTMR1D]_F.ab1
+#> .../bold/bold_trace_files/FBAPB685-09[RonMWASPdeg_t1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBAPB685-09[RonMWASPdeg_t1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBAPB708-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBAPB708-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBAPB718-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBAPB718-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBAPB739-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBAPB739-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBHAP295-09[LepF1,C_ANTMR1D]_F.ab1
+#> .../bold/bold_trace_files/FBHAP295-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBHAP295-09[RonMWASPdeg_t1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBHAP295-09[RonMWASPdeg_t1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBHAP299-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBHAP299-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBHAP301-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBHAP301-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBHAP328-09[LepF1,C_ANTMR1D]_F.ab1
+#> .../bold/bold_trace_files/FBHAP328-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBHAP328-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBHAP328-09[RonMWASPdeg_t1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBHAP328-09[RonMWASPdeg_t1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBHAP329-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBHAP329-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/SSWLB1482-13[LepF1,LepR1]_R.ab1
 ```
 
-```{r eval=FALSE}
-## Trace file extracted with files:
-##
-## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/HMBCH056-07_F.ab1
-## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/HMBCH056-07_R.ab1
-## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/HMBCH063-07_F.ab1
-## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/HMBCH063-07_R.ab1
-## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/Osm_aur_T505_LCOHym_D04_008_copy.ab1
-## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/Osm_aur_T505_NancyFull_D10_008_copy.ab1
-## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/Osm_ruf_T309_LCOHym_C06_006_copy.ab1
-## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/Osm_ruf_T309_Nancy_C06_006_copy.ab1
-## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/TRACE_FILE_INFO.txt
-```
 
 <section id="citing">
 
@@ -201,7 +238,7 @@ To cite `bold` in publications use:
 
 <br>
 
-> Scott Chamberlain (2014). bold: Interface to Bold Systems API. R package version 0.1.0. https://github.com/ropensci/bold
+> Scott Chamberlain (2014). bold: Interface to Bold Systems API. R package version 0.2.0. https://github.com/ropensci/bold
 
 <section id="license_bugs">
 

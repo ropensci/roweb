@@ -1,16 +1,24 @@
 ---
 title: bold tutorial
 layout: tutorial
-packge_version: 0.1.0
+packge_version: 0.2.0
 ---
 
-`bold` is an R package to connect to [BOLD Systems](http://www.boldsystems.org/) via [their API](http://www.boldsystems.org/index.php/resources/api). Functions in `bold` let you search for sequence data, specimen data, sequence + specimen data, and download raw trace files.
+
+
+`bold` is an R package to connect to BOLD Systems \url{http://www.boldsystems.org/} via their API. Functions in `bold` let you search for sequence data, specimen data, sequence + specimen data, and download raw trace files.
+
+__`bold` info__
+
++ [BOLD home page](http://boldsystems.org/)
++ [BOLD API docs](boldsystems.org/index.php/resources/api)
 
 <section id="installation">
 
 ## Installation
 
 You can install the stable version from CRAN
+
 
 
 ```r
@@ -20,13 +28,14 @@ install.packages("bold")
 Or the development version from Github
 
 
+
 ```r
 install.packages("devtools")
-library("devtools")
-install_github("ropensci/bold")
+devtools::install_github("ropensci/bold")
 ```
 
 Then load the package into the R sesssion
+
 
 
 ```r
@@ -37,219 +46,271 @@ library("bold")
 
 ## Usage
 
+## Search for taxonomic names via names
+
+`bold_tax_name` searches for names with names.
+
+
+```r
+bold_tax_name(name='Diplura')
+#>     input  taxid   taxon tax_rank tax_division parentid       parentname
+#> 1 Diplura 591238 Diplura    order      Animals       82          Insecta
+#> 2 Diplura 603673 Diplura    genus     Protists    53974 Scytosiphonaceae
+#>   taxonrep
+#> 1  Diplura
+#> 2     <NA>
+```
+
+
+```r
+bold_tax_name(name=c('Diplura','Osmia'))
+#>     input  taxid   taxon tax_rank tax_division parentid       parentname
+#> 1 Diplura 591238 Diplura    order      Animals       82          Insecta
+#> 2 Diplura 603673 Diplura    genus     Protists    53974 Scytosiphonaceae
+#> 3   Osmia   4940   Osmia    genus      Animals     4962     Megachilinae
+#>   taxonrep
+#> 1  Diplura
+#> 2     <NA>
+#> 3    Osmia
+```
+
+
+### Search for taxonomic names via BOLD identifiers
+
+`bold_tax_id` searches for names with BOLD identifiers.
+
+
+```r
+bold_tax_id(id=88899)
+#>   input taxid   taxon tax_rank tax_division parentid parentname
+#> 1 88899 88899 Momotus    genus      Animals    88898  Momotidae
+```
+
+
+```r
+bold_tax_id(id=c(88899,125295))
+#>    input  taxid      taxon tax_rank tax_division parentid parentname
+#> 1  88899  88899    Momotus    genus      Animals    88898  Momotidae
+#> 2 125295 125295 Helianthus    genus       Plants   100962 Asteraceae
+```
+
+
 ### Search for sequence data only
 
-Default is to get a list back (here, searching by taxon name)
+The BOLD sequence API gives back sequence data, with a bit of metadata.
+
+The default is to get a list back
 
 
 ```r
 bold_seq(taxon='Coelioxys')[1:2]
+#> [[1]]
+#> [[1]]$id
+#> [1] "BBHYL406-10"
+#> 
+#> [[1]]$name
+#> [1] "Coelioxys moesta"
+#> 
+#> [[1]]$gene
+#> [1] "BBHYL406-10"
+#> 
+#> [[1]]$sequence
+#> [1] "TATAATATATATAATTTTTGCAATATGATCAGGAATAATTGGATCTTCTATAAGTATAATTATTCGAATAGAATTAAGAATCCCAGGATCATGAATTAATAATGATCAAATTTATAACTCTTTTATTACAGCACATGCATTTTTAATAATTTTTTTTTTAGTTATACCTTTTTTAATTGGAGGGTTTGGAAATTGATTAACACCATTAATATTAGGAGCTCCTGATATAGCTTTCCCTCGAATAAATAATATTAGATTTTGATTATTACCCCCATCTTTATTAATATTATTATCAAGAAATTTAATTAATCCAAGACCAGGTACAGGATGAACTGTTTACCCTCCTTTATCCTCATATATATATCATCCTTCACCATCAGTAGATTTAGCTATTTTTTCTTTACACTTATCTGGTATTTCTTCAATTATTGGATCAATAAATTTTATTGTAACAATTTTAATAATAAAAAATTATTCAATAAATTATAATCAAATACCCCTATTTCCATGATCAGTTTTAATTACTACAATTTTATTATTATTATCATTACCGGTATTAGCAGGAGCAATTACAATATTATTATTTGATCGAAATTTAAATTCATCTTTTTTTGATCCTATAGGAGGAGGAGATCCTATTTTATACCAACATTTATTT"
+#> 
+#> 
+#> [[2]]
+#> [[2]]$id
+#> [1] "BCHYM446-13"
+#> 
+#> [[2]]$name
+#> [1] "Coelioxys afra"
+#> 
+#> [[2]]$gene
+#> [1] "BCHYM446-13"
+#> 
+#> [[2]]$sequence
+#> [1] "-------------------------------------------------------------------------------------------------------------------------------------------TTTTTAATAATTTTTTTTTTAGTTATACCATTTTTAATTGGAGGATTTGGAAATTGATTAGTACCTTTAATACTAGGAGCCCCCGATATAGCTTTTCCACGAATAAATAATGTAAGATTTTGACTATTACCTCCCTCAATTTTCTTATTATTATCAAGAACCCTAATTAACCCAAGAGCTGGTACTGGATGAACTGTANCTCCTCCTTTATCCTTATATACATTTCATGCCTCACCTTCCGTTGATTTAGCAATTTTTTCACTTCATTTATCAGGAATTTCATCAATTATTGGATCAATAAATTTTATTGTTACAATCTTAATAATAAAAAATTTTTCTTTAAATTATAGACAAATACCATTATTTTCATGATCAGTTTTAATTACTACAATTTTACTTTTATTATCATTACCAATTTTAGCTGGAGCAATTACTATACTCCTATTTGATCGAAATTTAAATACCTCATTCTTTGACC-----------------------------------------"
 ```
 
-```
-## [[1]]
-## [[1]]$id
-## [1] "CNPPJ1450-12"
-## 
-## [[1]]$name
-## [1] "Coelioxys sayi"
-## 
-## [[1]]$gene
-## [1] "CNPPJ1450-12"
-## 
-## [[1]]$sequence
-## [1] "TATTATATATATAATTTTTGCAATATGATCAGGAATAATTGGATCTTCCTTAAGAATAATTATTCGAATAGAATTAAGAATT---CCAGGATCATGAATTAGTAATGACCAAATTTATAATTCCTTTATTACAGCGCACGCATTTTTAATAATTTTCTTTTTAGTTATACCGTTTTTAATTGGTGGATTTGGAAATTGACTCACACCTTTAATATTAGGAGCCCCTGATATAGCTTTCCCCCGTATAAATAATATTAGATTTTGATTATTACCCCCCTCATTATTAATATTATTATCAAGAAATTTAATTAACCCAAGACCTGGAACAGGATGAACAGTTTATCCACCACTATCTTCTTATACTTATCATCCTTCTCCTTCTGTAGATCTAGCAATTTTTTCTTTACACTTATCAGGTATTTCTTCTATTATTGGATCAATAAATTTTATTGTAACAATTTTATTAATAAAAAATTATTCAATAAATTATAATCAAATACCTTTATTTCCCTGATCTGTTTTAATTACAACAATTTTATTACTATTATCACTACCTGTATTAGCAGGAGCAATTACAATATTATTATTT---------GATCGAAATTTAAATTCATCATTTTTCGACCCTATAGGAGGAGGAG-----------------------------"
-## 
-## 
-## [[2]]
-## [[2]]$id
-## [1] "GBMIN26386-13"
-## 
-## [[2]]$name
-## [1] "Coelioxys sp. HMG-2011"
-## 
-## [[2]]$gene
-## [1] "GBMIN26386-13"
-## 
-## [[2]]$sequence
-## [1] "CGAATAAATAATATTAGATTTTGATTATTACCCCCATCACTATTATTACTTCTATTAAGTAATTTGATTAAACCAAGACCAGGTACAGGATGAACCGTATACCCTCCCTTATCTTTATATCTTTATCACCCTTCACCATCAGTTGATTTTGCAATTTTTTCTTTACATTTATCAGGAATTTCATCTATTATTGGTTCATTAAATTTTATTGTAACAATTTTAATAATAAAAAATTGATCTTTAAATTATAGACAAATATCATTATTTCCTTGATCAATTTTTATTACTACAATTTTATTATTA"
-```
-
-Search by BOLD ID number
-
-
-```r
-bold_seq(ids='ACRJP618-11')
-```
-
-```
-## [[1]]
-## [[1]]$id
-## [1] "ACRJP618-11"
-## 
-## [[1]]$name
-## [1] "Lepidoptera"
-## 
-## [[1]]$gene
-## [1] "ACRJP618-11"
-## 
-## [[1]]$sequence
-## [1] "------------------------TTGAGCAGGCATAGTAGGAACTTCTCTTAGTCTTATTATTCGAACAGAATTAGGAAATCCAGGATTTTTAATTGGAGATGATCAAATCTACAATACTATTGTTACGGCTCATGCTTTTATTATAATTTTTTTTATAGTTATACCTATTATAATTGGAGGATTTGGTAATTGATTAGTTCCCCTTATACTAGGAGCCCCAGATATAGCTTTCCCTCGAATAAACAATATAAGTTTTTGGCTTCTTCCCCCTTCACTATTACTTTTAATTTCCAGAAGAATTGTTGAAAATGGAGCTGGAACTGGATGAACAGTTTATCCCCCACTGTCATCTAATATTGCCCATAGAGGTACATCAGTAGATTTAGCTATTTTTTCTTTACATTTAGCAGGTATTTCCTCTATTTTAGGAGCGATTAATTTTATTACTACAATTATTAATATACGAATTAACAGTATAAATTATGATCAAATACCACTATTTGTGTGATCAGTAGGAATTACTGCTTTACTCTTATTACTTTCTCTTCCAGTATTAGCAGGTGCTATCACTATATTATTAACGGATCGAAATTTAAATACATCATTTTTTGATCCTGCAGGAGGAGGAGATCCAATTTTATATCAACATTTATTT"
-```
-
-For all parameters you can pass in multiple values, here multiple IDs
-
-
-```r
-bold_seq(ids=c('ACRJP618-11','ACRJP619-11'))
-```
-
-```
-## [[1]]
-## [[1]]$id
-## [1] "ACRJP618-11"
-## 
-## [[1]]$name
-## [1] "Lepidoptera"
-## 
-## [[1]]$gene
-## [1] "ACRJP618-11"
-## 
-## [[1]]$sequence
-## [1] "------------------------TTGAGCAGGCATAGTAGGAACTTCTCTTAGTCTTATTATTCGAACAGAATTAGGAAATCCAGGATTTTTAATTGGAGATGATCAAATCTACAATACTATTGTTACGGCTCATGCTTTTATTATAATTTTTTTTATAGTTATACCTATTATAATTGGAGGATTTGGTAATTGATTAGTTCCCCTTATACTAGGAGCCCCAGATATAGCTTTCCCTCGAATAAACAATATAAGTTTTTGGCTTCTTCCCCCTTCACTATTACTTTTAATTTCCAGAAGAATTGTTGAAAATGGAGCTGGAACTGGATGAACAGTTTATCCCCCACTGTCATCTAATATTGCCCATAGAGGTACATCAGTAGATTTAGCTATTTTTTCTTTACATTTAGCAGGTATTTCCTCTATTTTAGGAGCGATTAATTTTATTACTACAATTATTAATATACGAATTAACAGTATAAATTATGATCAAATACCACTATTTGTGTGATCAGTAGGAATTACTGCTTTACTCTTATTACTTTCTCTTCCAGTATTAGCAGGTGCTATCACTATATTATTAACGGATCGAAATTTAAATACATCATTTTTTGATCCTGCAGGAGGAGGAGATCCAATTTTATATCAACATTTATTT"
-## 
-## 
-## [[2]]
-## [[2]]$id
-## [1] "ACRJP619-11"
-## 
-## [[2]]$name
-## [1] "Lepidoptera"
-## 
-## [[2]]$gene
-## [1] "ACRJP619-11"
-## 
-## [[2]]$sequence
-## [1] "AACTTTATATTTTATTTTTGGTATTTGAGCAGGCATAGTAGGAACTTCTCTTAGTCTTATTATTCGAACAGAATTAGGAAATCCAGGATTTTTAATTGGAGATGATCAAATCTACAATACTATTGTTACGGCTCATGCTTTTATTATAATTTTTTTTATAGTTATACCTATTATAATTGGAGGATTTGGTAATTGATTAGTTCCCCTTATACTAGGAGCCCCAGATATAGCTTTCCCTCGAATAAACAATATAAGTTTTTGGCTTCTTCCCCCTTCACTATTACTTTTAATTTCCAGAAGAATTGTTGAAAATGGAGCTGGAACTGGATGAACAGTTTATCCCCCACTGTCATCTAATATTGCCCATAGAGGTACATCAGTAGATTTAGCTATTTTTTCTTTACATTTAGCAGGTATTTCCTCTATTTTAGGAGCGATTAATTTTATTACTACAATTATTAATATACGAATTAACAGTATAAATTATGATCAAATACCACTATTTGTGTGATCAGTAGGAATTACTGCTTTACTCTTATTACTTTCTCTTCCAGTATTAGCAGGTGCTATCACTATATTATTAACGGATCGAAATTTAAATACATCATTTTTTGATCCTGCAGGAGGAGGAGATCCAATTTTATATCAACATTTATTT"
-```
-
-For the nerds, you can optionally get back the `httr` response object, which gives you a bunch of details on the call you made to the web.
+You can optionally get back the `httr` response object
 
 
 ```r
 res <- bold_seq(taxon='Coelioxys', response=TRUE)
 res$headers
+#> $date
+#> [1] "Thu, 13 Nov 2014 02:07:55 GMT"
+#> 
+#> $server
+#> [1] "Apache/2.2.15 (Red Hat)"
+#> 
+#> $`x-powered-by`
+#> [1] "PHP/5.3.15"
+#> 
+#> $`content-disposition`
+#> [1] "attachment; filename=fasta.fas"
+#> 
+#> $connection
+#> [1] "close"
+#> 
+#> $`transfer-encoding`
+#> [1] "chunked"
+#> 
+#> $`content-type`
+#> [1] "application/x-download"
+#> 
+#> attr(,"class")
+#> [1] "insensitive" "list"
 ```
 
-```
-## $date
-## [1] "Wed, 28 May 2014 22:23:16 GMT"
-## 
-## $server
-## [1] "Apache/2.2.15 (Red Hat)"
-## 
-## $`x-powered-by`
-## [1] "PHP/5.3.15"
-## 
-## $`content-disposition`
-## [1] "attachment; filename=fasta.fas"
-## 
-## $connection
-## [1] "close"
-## 
-## $`transfer-encoding`
-## [1] "chunked"
-## 
-## $`content-type`
-## [1] "application/x-download"
-## 
-## $status
-## [1] "200"
-## 
-## $statusmessage
-## [1] "OK"
-## 
-## attr(,"class")
-## [1] "insensitive" "list"
-```
-
-For all functions in `bold`, not just `bold_seq()`, you can pass in curl options to `httr::GET`. For example, you can print the progress as curl progresses (we need to load `httr` for this):
+You can do geographic searches
 
 
 ```r
-library("httr")
-bold_seq(ids='ACRJP618-11', callopts = verbose())
+bold_seq(geo = "USA")
+#> [[1]]
+#> [[1]]$id
+#> [1] "NEONV108-11"
+#> 
+#> [[1]]$name
+#> [1] "Aedes thelcter"
+#> 
+#> [[1]]$gene
+#> [1] "NEONV108-11"
+#> 
+#> [[1]]$sequence
+#> [1] "AACTTTATACTTCATCTTCGGAGTTTGATCAGGAATAGTTGGTACATCATTAAGAATTTTAATTCGTGCTGAATTAAGTCAACCAGGTATATTTATTGGAAATGACCAAATTTATAATGTAATTGTTACAGCTCATGCTTTTATTATAATTTTCTTTATAGTTATACCTATTATAATTGGAGGATTTGGAAATTGACTAGTTCCTCTAATATTAGGAGCCCCAGATATAGCTTTCCCTCGAATAAATAATATAAGTTTTTGAATACTACCTCCCTCATTAACTCTTCTACTTTCAAGTAGTATAGTAGAAAATGGATCAGGAACAGGATGAACAGTTTATCCACCTCTTTCATCTGGAACTGCTCATGCAGGAGCCTCTGTTGATTTAACTATTTTTTCTCTTCATTTAGCCGGAGTTTCATCAATTTTAGGGGCTGTAAATTTTATTACTACTGTAATTAATATACGATCTGCAGGAATTACTCTTGATCGACTACCTTTATTCGTTTGATCTGTAGTAATTACAGCTGTTTTATTACTTCTTTCACTTCCTGTATTAGCTGGAGCTATTACAATACTATTAACTGATCGAAATTTAAATACATCTTTCTTTGATCCAATTGGAGGAGGAGACCCAATTTTATACCAACATTTATTT"
+#> 
+#> 
+#> [[2]]
+#> [[2]]$id
+#> [1] "NEONV109-11"
+#> 
+#> [[2]]$name
+#> [1] "Aedes thelcter"
+#> 
+#> [[2]]$gene
+#> [1] "NEONV109-11"
+#> 
+#> [[2]]$sequence
+#> [1] "AACTTTATACTTCATCTTCGGAGTTTGATCAGGAATAGTTGGTACATCATTAAGAATTTTAATTCGTGCTGAATTAAGTCAACCAGGTATATTTATTGGAAATGACCAAATTTATAATGTAATTGTTACAGCTCATGCTTTTATTATAATTTTCTTTATAGTTATACCTATTATAATTGGAGGATTTGGAAATTGACTAGTTCCTCTAATATTAGGAGCCCCAGATATAGCTTTCCCTCGAATAAATAATATAAGTTTTTGAATACTACCTCCCTCATTAACTCTTCTACTTTCAAGTAGTATAGTAGAAAATGGGTCAGGAACAGGATGAACAGTTTATCCACCTCTTTCATCTGGAACTGCTCATGCAGGAGCCTCTGTTGATTTAACTATTTTTTCTCTTCATTTAGCCGGAGTTTCATCAATTTTAGGGGCTGTAAATTTTATTACTACTGTAATTAATATACGATCTGCAGGAATTACTCTTGATCGACTACCTTTATTCGTTTGATCTGTAGTAATTACAGCTGTTTTATTACTTCTTTCACTTCCTGTATTAGCTGGAGCTATTACAATACTATTAACTGATCGAAATTTAAATACATCTTTCTTTGACCCAATTGGAGGGGGAGACCCAATTTTATACCAACATTTATTT"
 ```
+
+And you can search by researcher name
 
 
 ```r
-## * Adding handle: conn: 0x7fb4c2774a00
-## * Adding handle: send: 0
-## * Adding handle: recv: 0
-## * Curl_addHandleToPipeline: length: 1
-## * - Conn 25 (0x7fb4c2774a00) send_pipe: 1, recv_pipe: 0
-## * About to connect() to www.boldsystems.org port 80 (#25)
-## *   Trying 131.104.104.109...
-## * Connected to www.boldsystems.org (131.104.104.109) port 80 (#25)
-## > GET /index.php/API_Public/sequence?ids=ACRJP618-11 HTTP/1.1
-## Host: www.boldsystems.org
-## Accept: */*
-## Accept-Encoding: gzip
-## user-agent: curl/7.30.0 Rcurl/1.95.4.1 httr/0.3
-##
-## < HTTP/1.1 200 OK
-## < Date: Wed, 28 May 2014 22:21:09 GMT
-## * Server Apache/2.2.15 (Red Hat) is not blacklisted
-## < Server: Apache/2.2.15 (Red Hat)
-## < X-Powered-By: PHP/5.3.15
-## < Content-Disposition: attachment; filename=fasta.fas
-## < Connection: close
-## < Transfer-Encoding: chunked
-## < Content-Type: application/x-download
-## <
-## * Closing connection 25
-## [[1]]
-## [[1]]$id
-## [1] "ACRJP618-11"
-##
-## [[1]]$name
-## [1] "Lepidoptera"
-##
-## [[1]]$gene
-## [1] "ACRJP618-11"
-##
-## [[1]]$sequence
-## [1] "------------------------TTGAGCAGGCATAGTAGGAACTTCTCTTAGTCTTATTATTCGAACAGAATTAGGAAATCCAGGATTTTTAATTGGAGATGATCAAATCTACAATACTATTGTTACGGCTCATGCTTTTATTATAATTTTTTTTATAGTTATACCTATTATAATTGGAGGATTTGGTAATTGATTAGTTCCCCTTATACTAGGAGCCCCAGATATAGCTTTCCCTCGAATAAACAATATAAGTTTTTGGCTTCTTCCCCCTTCACTATTACTTTTAATTTCCAGAAGAATTGTTGAAAATGGAGCTGGAACTGGATGAACAGTTTATCCCCCACTGTCATCTAATATTGCCCATAGAGGTACATCAGTAGATTTAGCTATTTTTTCTTTACATTTAGCAGGTATTTCCTCTATTTTAGGAGCGATTAATTTTATTACTACAATTATTAATATACGAATTAACAGTATAAATTATGATCAAATACCACTATTTGTGTGATCAGTAGGAATTACTGCTTTACTCTTATTACTTTCTCTTCCAGTATTAGCAGGTGCTATCACTATATTATTAACGGATCGAAATTTAAATACATCATTTTTTGATCCTGCAGGAGGAGGAGATCCAATTTTATATCAACATTTATTT"
+bold_seq(researchers='Thibaud Decaens')[[1]]
+#> $id
+#> [1] "COLNO056-09"
+#> 
+#> $name
+#> [1] "Lepidocyrtus"
+#> 
+#> $gene
+#> [1] "COLNO056-09"
+#> 
+#> $sequence
+#> [1] "AACATTGTATTTAATTTTCGGCGCATGGTCTGCCATAGTAGGAACTGCATTTAGTGTATTAATCCGCCTAGAGTTAGGCCAACCAGGAAGCTTCATTGGAGATGATCAAATTTATAATGTTATAGTAACCGCCCACGCTTTTATTATAATTTTTTTCATAGTTATACCAATTATAATTGGTGGGTTCGGTAACTGACTAGTCCCCTTAATAATTGGTGCTCCAGATATAGCCTTCCCACGAATAAATAATATAAGTTTTTGACTACTACCCCCTTCATTAACACTTCTTTTAGCGGGGGGGCTAGTAGAAAGAGGGGCCGGTACGGGATGAACTGTTTACCCTCCGCTAGCAGCGGGGATTGCCCATGCTGGAGCCTCCGTAGATCTTTCTATTTTTAGTCTCCACCTAGCGGGTGCCTCTTCAATTTTGGGGGCTGTAAATTTTATTACAACTATTATTAATATACGAACACCAGGCCTGTCCTGGGACCAGACCCCACTTTTTGTGTGGTCTGTGTTTCTTACAGCAATTTTATTGCTTCTATCCCTTCCAGTTTTAGCTGGTGCTATCACCATACTTTTAACAGACCGTAATTTAAATACCTCTTTCTTCGATCCTGCTGGAGGAGGGGACCCTATTTTGTACCAACATTTATTT"
 ```
+
+by taxon IDs
+
+
+```r
+bold_seq(ids=c('ACRJP618-11','ACRJP619-11'))
+#> [[1]]
+#> [[1]]$id
+#> [1] "ACRJP618-11"
+#> 
+#> [[1]]$name
+#> [1] "Lepidoptera"
+#> 
+#> [[1]]$gene
+#> [1] "ACRJP618-11"
+#> 
+#> [[1]]$sequence
+#> [1] "------------------------TTGAGCAGGCATAGTAGGAACTTCTCTTAGTCTTATTATTCGAACAGAATTAGGAAATCCAGGATTTTTAATTGGAGATGATCAAATCTACAATACTATTGTTACGGCTCATGCTTTTATTATAATTTTTTTTATAGTTATACCTATTATAATTGGAGGATTTGGTAATTGATTAGTTCCCCTTATACTAGGAGCCCCAGATATAGCTTTCCCTCGAATAAACAATATAAGTTTTTGGCTTCTTCCCCCTTCACTATTACTTTTAATTTCCAGAAGAATTGTTGAAAATGGAGCTGGAACTGGATGAACAGTTTATCCCCCACTGTCATCTAATATTGCCCATAGAGGTACATCAGTAGATTTAGCTATTTTTTCTTTACATTTAGCAGGTATTTCCTCTATTTTAGGAGCGATTAATTTTATTACTACAATTATTAATATACGAATTAACAGTATAAATTATGATCAAATACCACTATTTGTGTGATCAGTAGGAATTACTGCTTTACTCTTATTACTTTCTCTTCCAGTATTAGCAGGTGCTATCACTATATTATTAACGGATCGAAATTTAAATACATCATTTTTTGATCCTGCAGGAGGAGGAGATCCAATTTTATATCAACATTTATTT"
+#> 
+#> 
+#> [[2]]
+#> [[2]]$id
+#> [1] "ACRJP619-11"
+#> 
+#> [[2]]$name
+#> [1] "Lepidoptera"
+#> 
+#> [[2]]$gene
+#> [1] "ACRJP619-11"
+#> 
+#> [[2]]$sequence
+#> [1] "AACTTTATATTTTATTTTTGGTATTTGAGCAGGCATAGTAGGAACTTCTCTTAGTCTTATTATTCGAACAGAATTAGGAAATCCAGGATTTTTAATTGGAGATGATCAAATCTACAATACTATTGTTACGGCTCATGCTTTTATTATAATTTTTTTTATAGTTATACCTATTATAATTGGAGGATTTGGTAATTGATTAGTTCCCCTTATACTAGGAGCCCCAGATATAGCTTTCCCTCGAATAAACAATATAAGTTTTTGGCTTCTTCCCCCTTCACTATTACTTTTAATTTCCAGAAGAATTGTTGAAAATGGAGCTGGAACTGGATGAACAGTTTATCCCCCACTGTCATCTAATATTGCCCATAGAGGTACATCAGTAGATTTAGCTATTTTTTCTTTACATTTAGCAGGTATTTCCTCTATTTTAGGAGCGATTAATTTTATTACTACAATTATTAATATACGAATTAACAGTATAAATTATGATCAAATACCACTATTTGTGTGATCAGTAGGAATTACTGCTTTACTCTTATTACTTTCTCTTCCAGTATTAGCAGGTGCTATCACTATATTATTAACGGATCGAAATTTAAATACATCATTTTTTGATCCTGCAGGAGGAGGAGATCCAATTTTATATCAACATTTATTT"
+```
+
+by container (containers include project codes and dataset codes)
+
+
+```r
+bold_seq(container='ACRJP')[[1]]
+#> $id
+#> [1] "ACRJP036-09"
+#> 
+#> $name
+#> [1] "Lepidoptera"
+#> 
+#> $gene
+#> [1] "ACRJP036-09"
+#> 
+#> $sequence
+#> [1] "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------TAAGATTTTGACTTCTTCCCCCCTCTTTAATTTTGCTAATTTCCAGTAGTATTGTAGAAAATGGAACTGGAACTGGATGAACAGTTTACCCTCCTTTATCCTCTAACACAGCTCATAGGGGGGCCTCTGTTGATTTAACTATTTTTTCCCTTCATTTAGCAGGTATTTCTTCTATTTTAGGAGCTATTAACTTCATTACCACAATTATTAATATACGATTAAATAATCTATCATTTGATAAAATACCTTTATTTGTTTGAGCAGTAGGAATTACAGCTTTATTATTACTTTTATCTTTACCAGTCTTAGCTGGAGCTATTACTATATTATTAACCGATCGTAATTTAAACACTTCATTTTTTGATCCTGCGGGAGGTGGTGACCCTATTCTCTACCAACATTTATTT"
+```
+
+by bin (a bin is a _Barcode Index Number_)
+
+
+```r
+bold_seq(bin='BOLD:AAA5125')[[1]]
+#> $id
+#> [1] "ASARD6776-12"
+#> 
+#> $name
+#> [1] "Lepidoptera"
+#> 
+#> $gene
+#> [1] "ASARD6776-12"
+#> 
+#> $sequence
+#> [1] "AACTTTATATTTTATTTTTGGAATTTGAGCAGGTATAGTAGGAACTTCTTTAAGATTACTAATTCGAGCAGAATTAGGTACCCCCGGATCTTTAATTGGAGATGACCAAATTTATAATACCATTGTAACAGCTCATGCTTTTATTATAATTTTTTTTATAGTTATACCTATTATAATTGGAGGATTTGGAAATTGATTAGTACCCCTAATACTAGGAGCTCCTGATATAGCTTTCCCCCGAATAAATAATATAAGATTTTGACTATTACCCCCATCTTTAACCCTTTTAATTTCTAGAAGAATTGTCGAAAATGGAGCTGGAACTGGATGAACAGTTTATCCCCCCCTTTCATCTAATATTGCTCATGGAGGCTCTTCTGTTGATTTAGCTATTTTTTCCCTTCATCTAGCTGGAATCTCATCAATTTTAGGAGCTATTAATTTTATCACAACAATCATTAATATACGACTAAATAATATAATATTTGACCAAATACCTTTATTTGTATGAGCTGTTGGTATTACAGCATTTCTTTTATTGTTATCTTTACCTGTACTAGCTGGAGCTATTACTATACTTTTAACAGATCGAAACTTAAATACATCATTTTTTGACCCAGCAGGAGGAGGAGATCCTATTCTCTATCAACATTTATTT"
+```
+
+And there are more ways to query, check out the docs for `?bold_seq`.
+
 
 ### Search for specimen data only
 
-By default you download `tsv` format data, which is given back to you as a `data.frame`
+The BOLD specimen API doesn't give back sequences, only specimen data. By default you download `tsv` format data, which is given back to you as a `data.frame`
 
 
 ```r
 res <- bold_specimens(taxon='Osmia')
 head(res[,1:8])
+#>      processid         sampleid recordID       catalognum         fieldnum
+#> 1  BBHYL361-10     10BBCHY-3315  1769804     10BBCHY-3315   L#PC2010GR-153
+#> 2  BBHYL363-10     10BBCHY-3317  1769806     10BBCHY-3317   L#PC2010YO-001
+#> 3  BBHYL365-10     10BBCHY-3319  1769808     10BBCHY-3319   L#PC2010YO-150
+#> 4 BCHYM1491-13 BC ZSM HYM 19351  4005340 BC ZSM HYM 19351 BC ZSM HYM 19351
+#> 5  FBAPB666-09 BC ZSM HYM 02141  1289027 BC ZSM HYM 02141 BC ZSM HYM 02141
+#> 6  FBAPB667-09 BC ZSM HYM 02142  1289028 BC ZSM HYM 02142 BC ZSM HYM 02142
+#>                    institution_storing      bin_uri phylum_taxID
+#> 1    Biodiversity Institute of Ontario BOLD:ABZ0288           20
+#> 2    Biodiversity Institute of Ontario BOLD:ABZ0288           20
+#> 3    Biodiversity Institute of Ontario BOLD:AAC8510           20
+#> 4 Bavarian State Collection of Zoology BOLD:AAK6070           20
+#> 5 Bavarian State Collection of Zoology BOLD:AAI1798           20
+#> 6 Bavarian State Collection of Zoology BOLD:AAI1798           20
 ```
 
-```
-##     processid sampleid recordID catalognum fieldnum
-## 1 GBAH0293-06 AF250940   470890                    
-## 2 GBAH3879-08 EU726628   856410   EU726628         
-## 3 GBAH3880-08 EU726627   856411   EU726627         
-## 4 GBAH3888-08 EU726619   856419   EU726619         
-## 5 GBAH3904-08 EU726603   856435   EU726603         
-## 6 GBAH3909-08 EU726598   856440   EU726598         
-##        institution_storing      bin_uri phylum_taxID
-## 1 Mined from GenBank, NCBI BOLD:AAD6282           20
-## 2 Mined from GenBank, NCBI BOLD:AAA4494           20
-## 3 Mined from GenBank, NCBI BOLD:AAA4494           20
-## 4 Mined from GenBank, NCBI BOLD:AAA4494           20
-## 5 Mined from GenBank, NCBI BOLD:AAA4494           20
-## 6 Mined from GenBank, NCBI BOLD:AAA4494           20
-```
-
-Alternatively, you can get back raw XML data
+You can optionally get back the data in `XML` format
 
 
 ```r
@@ -258,71 +319,69 @@ bold_specimens(taxon='Osmia', format='xml')
 
 
 ```r
-## <bold_records xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.boldsystems.org/schemas/BOLD_record.xsd">
-##   <record>
-##     <recordID>470890</recordID>
-##     <processid>GBAH0293-06</processid>
-##     <specimen_identifiers>
-##       <sampleid>AF250940</sampleid>
-##       <institution_storing>Mined from GenBank, NCBI</institution_storing>
-##     </specimen_identifiers>
-##     <bin_uri>BOLD:AAD6282</bin_uri>
-##     <taxonomy>
-##       <phylum>
-##         <taxon>
-##           <taxID>20</taxID>
-##           <name>Arthropoda</name>
-##         </taxon>
-##       </phylum>
-##       <class>
-##         <taxon>
-##           <taxID>82</taxID>
-##           <name>Insecta</name>
-##         </taxon>
-##      </class>
-## ...cutoff
+<?xml version="1.0" encoding="UTF-8"?>
+<bold_records  xsi:noNamespaceSchemaLocation="http://www.boldsystems.org/schemas/BOLDPublic_record.xsd"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <record>
+    <record_id>1470124</record_id>
+    <processid>BOM1525-10</processid>
+    <bin_uri>BOLD:AAN3337</bin_uri>
+    <specimen_identifiers>
+      <sampleid>DHB 1011</sampleid>
+      <catalognum>DHB 1011</catalognum>
+      <fieldnum>DHB1011</fieldnum>
+      <institution_storing>Marjorie Barrick Museum</institution_storing>
+    </specimen_identifiers>
+    <taxonomy>
+```
+
+You can choose to get the `httr` response object back if you'd rather work with the raw data returned from the BOLD API.
+
+
+```r
+res <- bold_specimens(taxon='Osmia', format='xml', response=TRUE)
+res$url
+#> [1] "http://www.boldsystems.org/index.php/API_Public/specimen?taxon=Osmia&specimen_download=xml"
+res$status_code
+#> [1] 200
+res$headers
+#> $date
+#> [1] "Thu, 13 Nov 2014 02:08:54 GMT"
+#> 
+#> $server
+#> [1] "Apache/2.2.15 (Red Hat)"
+#> 
+#> $`x-powered-by`
+#> [1] "PHP/5.3.15"
+#> 
+#> $`content-disposition`
+#> [1] "attachment; filename=bold_data.xml"
+#> 
+#> $connection
+#> [1] "close"
+#> 
+#> $`transfer-encoding`
+#> [1] "chunked"
+#> 
+#> $`content-type`
+#> [1] "application/x-download"
+#> 
+#> attr(,"class")
+#> [1] "insensitive" "list"
 ```
 
 ### Search for specimen plus sequence data
 
-By default you get back a data frame with specimen data and sequences together. This data frame is pretty unwieldy, so you can set `sepfasta=TRUE` to get back a list of length two with a data frame (with specimen data) and a list (with sequences)
+The specimen/sequence combined API gives back specimen and sequence data. Like the specimen API, this one gives by default `tsv` format data, which is given back to you as a `data.frame`. Here, we're setting `sepfasta=TRUE` so that the sequence data is given back as a list, and taken out of the `data.frame` returned so the `data.frame` is more manageable.
 
 
 ```r
 res <- bold_seqspec(taxon='Osmia', sepfasta=TRUE)
-head(res$data)[1:6]
-```
-
-```
-##     processid sampleid recordID catalognum fieldnum
-## 1 GBAH0293-06 AF250940   470890                    
-## 2 GBAH3879-08 EU726628   856410   EU726628         
-## 3 GBAH3880-08 EU726627   856411   EU726627         
-## 4 GBAH3888-08 EU726619   856419   EU726619         
-## 5 GBAH3904-08 EU726603   856435   EU726603         
-## 6 GBAH3909-08 EU726598   856440   EU726598         
-##        institution_storing
-## 1 Mined from GenBank, NCBI
-## 2 Mined from GenBank, NCBI
-## 3 Mined from GenBank, NCBI
-## 4 Mined from GenBank, NCBI
-## 5 Mined from GenBank, NCBI
-## 6 Mined from GenBank, NCBI
-```
-
-Look at sequences
-
-
-```r
 res$fasta[1:2]
-```
-
-```
-## $`GBAH0293-06`
-## [1] "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------TTAATGTTAGGGATTCCAGATATAGCTTTTCCACGAATAAATAATATTAGATTTTGACTGTTACCTCCATCTTTAATATTATTACTTTTAAGAAATTTTTTAAATCCAAGTCCTGGAACAGGATGAACAGTTTATCCTCCTTTATCATCAAATTTATTTCATTCTTCTCCTTCAGTTGATTTAGCAATTTTTTCTTTACATATTTCAGGTTTATCTTCTATTATAGGTTCATTAAATTTTATTGTTACAATTATTATAATAAAAAATATTTCTTTAAAATATATTCAATTACCTTTATTTTCTTGATCTGTATTTATTACTACTATTCTTTTATTATTTTCTTTACCTGTATTAGCTGGAGCTATTACTATATTATTATTTGATCGAAATTTTAATACATCTTTTTTTGATCCAACAGGAGGGGGAGATCCAATTCTTTATCAACATTTATTTTGATTTTTTGGTCATCCTGAAGTTTATATTTTAATTTTACCTGGATTTGGATTAATTTCTCAAATTATTTCTAATGAAAGAGGAAAAAAAGAAACTTTTGGAAATATTGGTATAATTTATGCTATATTAAGAATTGGACTTTTAGGTTTTATTGTT---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
-## 
-## $`GBAH3879-08`
-## [1] "---------------------------------------ATTCTATATATAATTTTTGCTTTATGATCTGGAATAATTGGATCAGCAATA---AGAATTATTATTCGAATAGAATTAAGTATCCCAGGATCATGAATTTCTAAT---GATCAAATTTATAATTCTTTAGTAACTGGTCATGCCTTTTTAATAATTTTTTTTCTTGTCATACCATTTTTAATTGGAGGATTTGGAAATTGATTAATTCCATTAATA---TTAGGAATTCCAGATATAGCTTTTCCTCGAATAAATAATATTAGATTTTGACTTTTACCACCATCCTTAATATTATTACTTTTAAGAAATTTTTTAAATCCAAGACCTGGAACAGGATGAACAATTTATCCACCTTTATCATCAAATTTATTTCATTCTTCTCCTTCAGTTGATTTA---GCAATTTTTTCTTTACATATTTCAGGTTTATCTTCTATTATAGGTTCATTAAATTTTATTGTTACAATTATTATAATAAAAAACATTTCCTTAAAATATATTCAATTATCCTTATTTCCTTGATCTGTATTTATTACTACTATTCTTTTACTTTTTTCTTTACCTGTATTAGCTGGA---GCAATTACTATATTATTATTTGATCGAAATTTTAATACATCTTTTTTTGATCCAACAGGAGGTGGAGATCCAATTCTTTATCAACATTTA------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+#> $`BBHYL361-10`
+#> [1] "AATTTTATATATAATTTTTGCTATATGATCAGGTATAATTGGATCAGCAATAAGAATTATTATTCGTATAGAATTAAGAATTCCCGGTTCATGAATTTCAAATGATCAAACTTATAATTCTTTAGTAACTGCTCATGCCTTTTTAATAATTTTTTTCTTAGTTATACCATTTTTAATTGGAGGATTTGGTAATTGATTAATTCCTTTAATATTAGGAATTCCAGATATAGCTTTCCCCCGAATAAATAATATTAGATTTTGACTTTTACCTCCCTCATTAATATTATTACTTTTAAGAAATTTTCTTAATCCAAGACCAGGTACTGGATGAACTGTTTATCCTCCTCTTTCTTCTCATTTATTTCATTCCTCTCCTTCAATTGATATAGCTATTTTTTCTTTACATATTTCTGGTTTATCTTCTATTATAGGTTCATTAAATTTTATTGTAACAATTATTATAATAAAAAATATTTCTTTAAAACATATTCAATTACCTTTATTTCCATGATCTGTATTTATTACTACTATTTTATTACTTCTTTCTTTACCTGTTTTAGCAGGAGCTATTACTATATTATTATTTGATCGAAATTTTAATACTTCATTTTTTGATCCTACAGGAGGAGGAGATCCAATTCTTTATCAACATTTATTT"
+#> 
+#> $`BBHYL363-10`
+#> [1] "AATTTTATATATAATTTTTGCTATATGATCAGGTATAATTGGATCAGCAATAAGAATTATTATTCGTATAGAATTAAGAATTCCCGGTTCATGAATTTCAAATGATCAAACTTATAATTCTTTAGTAACTGCTCATGCCTTTTTAATAATTTTTTTCTTAGTTATACCATTTTTAATTGGAGGATTTGGTAATTGATTAATTCCTTTAATATTAGGAATTCCAGATATAGCTTTCCCCCGAATAAATAATATTAGATTTTGACTTTTACCTCCCTCATTAATATTATTACTTTTAAGAAATTTTCTTAATCCAAGACCAGGTACTGGATGAACTGTTTATCCTCCTCTTTCTTCTCATTTATTTCATTCCTCTCCTTCAATTGATATAGCTATTTTTTCTTTACATATTTCTGGTTTATCTTCTATTATAGGTTCATTAAATTTTATTGTAACAATTATTATAATAAAAAATATTTCTTTAAAACATATTCAATTACCTTTATTTCCATGATCTGTATTTATTACTACTATTTTATTACTTCTTTCTTTACCTGTTTTAGCAGGAGCTATTACTATATTATTATTTGATCGAAATTTTAATACTTCATTTTTTGATCCTACAGGAGGAGGAGATCCAATTCTTTATCAACATTTATTT"
 ```
 
 Or you can index to a specific sequence like
@@ -330,37 +389,58 @@ Or you can index to a specific sequence like
 
 ```r
 res$fasta['GBAH0293-06']
+#> $`GBAH0293-06`
+#> [1] "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------TTAATGTTAGGGATTCCAGATATAGCTTTTCCACGAATAAATAATATTAGATTTTGACTGTTACCTCCATCTTTAATATTATTACTTTTAAGAAATTTTTTAAATCCAAGTCCTGGAACAGGATGAACAGTTTATCCTCCTTTATCATCAAATTTATTTCATTCTTCTCCTTCAGTTGATTTAGCAATTTTTTCTTTACATATTTCAGGTTTATCTTCTATTATAGGTTCATTAAATTTTATTGTTACAATTATTATAATAAAAAATATTTCTTTAAAATATATTCAATTACCTTTATTTTCTTGATCTGTATTTATTACTACTATTCTTTTATTATTTTCTTTACCTGTATTAGCTGGAGCTATTACTATATTATTATTTGATCGAAATTTTAATACATCTTTTTTTGATCCAACAGGAGGGGGAGATCCAATTCTTTATCAACATTTATTTTGATTTTTTGGTCATCCTGAAGTTTATATTTTAATTTTACCTGGATTTGGATTAATTTCTCAAATTATTTCTAATGAAAGAGGAAAAAAAGAAACTTTTGGAAATATTGGTATAATTTATGCTATATTAAGAATTGGACTTTTAGGTTTTATTGTT---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
 ```
-
-```
-## $`GBAH0293-06`
-## [1] "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------TTAATGTTAGGGATTCCAGATATAGCTTTTCCACGAATAAATAATATTAGATTTTGACTGTTACCTCCATCTTTAATATTATTACTTTTAAGAAATTTTTTAAATCCAAGTCCTGGAACAGGATGAACAGTTTATCCTCCTTTATCATCAAATTTATTTCATTCTTCTCCTTCAGTTGATTTAGCAATTTTTTCTTTACATATTTCAGGTTTATCTTCTATTATAGGTTCATTAAATTTTATTGTTACAATTATTATAATAAAAAATATTTCTTTAAAATATATTCAATTACCTTTATTTTCTTGATCTGTATTTATTACTACTATTCTTTTATTATTTTCTTTACCTGTATTAGCTGGAGCTATTACTATATTATTATTTGATCGAAATTTTAATACATCTTTTTTTGATCCAACAGGAGGGGGAGATCCAATTCTTTATCAACATTTATTTTGATTTTTTGGTCATCCTGAAGTTTATATTTTAATTTTACCTGGATTTGGATTAATTTCTCAAATTATTTCTAATGAAAGAGGAAAAAAAGAAACTTTTGGAAATATTGGTATAATTTATGCTATATTAAGAATTGGACTTTTAGGTTTTATTGTT---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
-```
-
 
 ### Get trace files
 
-This function downloads files to your machine - it does not load them into your R session - but prints out where the files are for your information, and gives back the files with full paths so that you can then open them in R or at least browse to them on your machine.
+This function downloads files to your machine - it does not load them into your R session - but prints out where the files are for your information.
 
 
 ```r
-bold_trace(taxon='Osmia')
+bold_trace(taxon='Osmia', quiet=TRUE)
+#> Downloading: 51 MB     
+#> <bold trace files> 
+#> 
+#> .../bold/bold_trace_files/BBHYL361-10[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/BBHYL361-10[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/BBHYL363-10[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/BBHYL363-10[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/BBHYL365-10[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/BBHYL365-10[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBAPB666-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBAPB666-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBAPB667-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBAPB674-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBAPB674-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBAPB685-09[LepF1,C_ANTMR1D]_F.ab1
+#> .../bold/bold_trace_files/FBAPB685-09[RonMWASPdeg_t1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBAPB685-09[RonMWASPdeg_t1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBAPB708-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBAPB708-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBAPB718-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBAPB718-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBAPB739-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBAPB739-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBHAP295-09[LepF1,C_ANTMR1D]_F.ab1
+#> .../bold/bold_trace_files/FBHAP295-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBHAP295-09[RonMWASPdeg_t1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBHAP295-09[RonMWASPdeg_t1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBHAP299-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBHAP299-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBHAP301-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBHAP301-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBHAP328-09[LepF1,C_ANTMR1D]_F.ab1
+#> .../bold/bold_trace_files/FBHAP328-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBHAP328-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBHAP328-09[RonMWASPdeg_t1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBHAP328-09[RonMWASPdeg_t1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/FBHAP329-09[LepF1,LepR1]_F.ab1
+#> .../bold/bold_trace_files/FBHAP329-09[LepF1,LepR1]_R.ab1
+#> .../bold/bold_trace_files/SSWLB1482-13[LepF1,LepR1]_R.ab1
 ```
 
-
-```r
-## Trace file extracted with files:
-##
-## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/HMBCH056-07_F.ab1
-## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/HMBCH056-07_R.ab1
-## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/HMBCH063-07_F.ab1
-## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/HMBCH063-07_R.ab1
-## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/Osm_aur_T505_LCOHym_D04_008_copy.ab1
-## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/Osm_aur_T505_NancyFull_D10_008_copy.ab1
-## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/Osm_ruf_T309_LCOHym_C06_006_copy.ab1
-## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/Osm_ruf_T309_Nancy_C06_006_copy.ab1
-## /Users/sacmac/github/ropensci/bold/inst/vign/bold_trace_files/TRACE_FILE_INFO.txt
-```
 
 <section id="citing">
 
@@ -370,7 +450,7 @@ To cite `bold` in publications use:
 
 <br>
 
-> Scott Chamberlain (2014). bold: Interface to Bold Systems API. R package version 0.1.0. https://github.com/ropensci/bold
+> Scott Chamberlain (2014). bold: Interface to Bold Systems API. R package version 0.2.0. https://github.com/ropensci/bold
 
 <section id="license_bugs">
 
