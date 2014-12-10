@@ -88,7 +88,7 @@ library("httr")
 > Add headers to modify requests, including authentication, setting content-type, accept type, etc.
 
 * `httr`: `add_headers()` 
-* `RCurl`: `???`
+* `RCurl`: `httpheader`
 
 ```{r}
 ```
@@ -97,8 +97,8 @@ library("httr")
 
 > Set authentication details for a resource.
 
-* `httr`: `authenticate()`, `_`
-* `RCurl`: `???`
+* `httr`: `authenticate()`, `oauth2.0_token()`, `oauth_app()`, `oauth_endpoint()`
+* `RCurl`: various things
 
 ```{r}
 ```
