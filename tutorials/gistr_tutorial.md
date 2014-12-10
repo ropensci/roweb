@@ -29,7 +29,7 @@ library("gistr")
 
 There are two ways to authorise gistr to work with your GitHub account:
 
-* Generate a personal access token (PAT) at [https://help.github.com/articles/creating-an-access-token-for-command-line-use](https://help.github.com/articles/creating-an-access-token-for-command-line-use) and record it in the `GITHUB_PAT` envar.
+* Generate a personal access token (PAT) at [https://help.github.com/articles/creating-an-access-token-for-command-line-use](https://help.github.com/articles/creating-an-access-token-for-command-line-use) and record it in the `GITHUB_PAT` envar. If you're not sure how to do this, make a `.Renviron` file in your home directory (if it doesn't already exist), and put an entry in like `GITHUB_PAT=adfadf9asd7fas9fsaf98asfassf` (that's not a real key). Remember to restart your R session. 
 * Interactively login into your GitHub account and authorise with OAuth.
 
 Using the PAT is recommended.
