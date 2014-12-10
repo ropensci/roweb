@@ -6,13 +6,13 @@ packge_version: 0.2.2
 
 ```{r, eval=TRUE, echo=FALSE}
 knitr::opts_chunk$set(
-      fig.path="../assets/tutorial-images/spocc/", 
-      fig.width=6, 
+      fig.path="../assets/tutorial-images/spocc/",
+      fig.width=6,
       fig.height=4,
-      comment = "#>", 
-      warning = FALSE, 
+      comment = "#>",
+      warning = FALSE,
       message = FALSE,
-      cache = TRUE
+      cache = FALSE
 )
 ```
 
@@ -42,6 +42,28 @@ AntWeb is the world's largest online database of images, specimen records, and n
 
 __Note:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package.
 
+<section id="installation">
+
+## Installation
+
+Stable version from CRAN
+
+```{r eval=FALSE}
+install.packages("spocc")
+```
+
+Or dev version from GitHub
+
+```{r eval=FALSE}
+install.packages("devtools")
+install_github("ropensci/spocc")
+```
+
+</section>
+
+<section id="usage">
+
+## Usage
 
 ### Data retrieval
 
@@ -194,6 +216,7 @@ mapggplot(ecoengine_data)
 * We're helping on a new package `rMaps` to make interactive maps using various Javascript mapping libraries, which will give access to a variety of awesome interactive maps. We will integrate `rMaps` once it's on CRAN.
 * We'll add a function to make interactive maps using RStudio's Shiny in a future version.
 
+</section>
 
 <section id="citing">
 
@@ -203,7 +226,7 @@ To cite `spocc` in publications use:
 
 <br>
 
-> Scott Chamberlain, Karthik Ram and Ted Hart (2014). spocc: R interface to many species occurrence data sources. R package version 0.2.0. https://github.com/ropensci/spocc
+> Scott Chamberlain, Karthik Ram and Ted Hart (2014). spocc: R interface to many species occurrence data sources. R package version 0.2.2. https://github.com/ropensci/spocc
 
 <section id="license_bugs">
 
