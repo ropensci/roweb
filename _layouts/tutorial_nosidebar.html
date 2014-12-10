@@ -1,0 +1,18 @@
+
+{% include header_with_chat.html %}
+<section class="blog-3">
+    <div class="container" id="top">
+      <div class="title">
+          <h3>{{page.title}}</h3>
+      </div>
+      <div class="col-sm-9">
+        {{ content }}
+      </div>
+    </div>
+        </div>
+    </div>
+</section>
+<div id="disqus">
+  {% include disqus.html %}
+</div>
+ {% include footer.html %}
