@@ -13,7 +13,7 @@ Key to the success of rOpenSci is our community and we want to hear more regular
 
 We tentatively plan on doing community calls once per month. The format of rOpenSci community calls could be of various types. We could have community members show off software they've been working on, or users demo use cases. Instead, we could focus more on conversations. For this first call, we'll be doing a combination of demonstration and discussion. We would like to experiment with the call format over the next few months before we decide on one or more approaches that work best.  
 
-For our first community call, [Ciera Martinez][ciera] will join us, who will tell us about the recent [NESCENT reproducible science hackathon for curriculum and workflow development](https://github.com/Reproducible-Science-Curriculum/Reproducible-Science-Hackathon-Dec-08-2014) that she organized ([see also this NESCENT page](http://www.nescent.org/cal/calendar_detail.php?id=1125), and search `#rrhack` on Twitter for tweets about the event). We'll use screen share so she can not only describe, but show off the tools they've built (given that the internets are all working that day).
+For our first community call, [Ciera Martinez][ciera] will join us, who will tell us about the recent [NESCENT reproducible science hackathon for curriculum and workflow development](https://github.com/Reproducible-Science-Curriculum/Reproducible-Science-Hackathon-Dec-08-2014) that she organized ([see also this NESCENT page](http://www.nescent.org/cal/calendar_detail.php?id=1125), and search `#rrhack` on Twitter for tweets about the event). We'll use screen share so she can not only describe, but show off the tools they've built.
 
 The 1st meeting agenda:
 
