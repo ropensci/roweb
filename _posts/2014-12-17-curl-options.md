@@ -2,7 +2,7 @@
 name: curl-options
 layout: post
 title: Curling - accessing web resources from R
-date: 2014-12-16
+date: 2014-12-17
 authors:
   - name: Scott Chamberlain
 tags:
@@ -86,7 +86,7 @@ with_verbose(
   GET("http://www.google.com/search")
 )
 #> Response [http://www.google.com/webhp]
-#>   Date: 2014-12-17 07:49
+#>   Date: 2014-12-17 07:54
 #>   Status: 200
 #>   Content-Type: text/html; charset=ISO-8859-1
 #>   Size: 19.3 kB
@@ -350,7 +350,7 @@ Set cookies
 ```r
 GET("http://httpbin.org/cookies", set_cookies(a = 1, b = 2))
 #> Response [http://httpbin.org/cookies]
-#>   Date: 2014-12-17 07:49
+#>   Date: 2014-12-17 07:54
 #>   Status: 200
 #>   Content-Type: application/json
 #>   Size: 50 B
@@ -416,7 +416,7 @@ Get the default user agent set if using `httr`
 ```r
 GET("http://httpbin.org/user-agent")
 #> Response [http://httpbin.org/user-agent]
-#>   Date: 2014-12-17 07:49
+#>   Date: 2014-12-17 07:54
 #>   Status: 200
 #>   Content-Type: application/json
 #>   Size: 59 B
@@ -430,7 +430,7 @@ Set a user agent string
 ```r
 GET("http://httpbin.org/user-agent", user_agent("its me!"))
 #> Response [http://httpbin.org/user-agent]
-#>   Date: 2014-12-17 07:49
+#>   Date: 2014-12-17 07:54
 #>   Status: 200
 #>   Content-Type: application/json
 #>   Size: 29 B

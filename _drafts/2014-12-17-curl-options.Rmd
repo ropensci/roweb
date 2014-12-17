@@ -2,7 +2,7 @@
 name: curl-options
 layout: post
 title: Curling - accessing web resources from R
-date: 2014-12-16
+date: 2014-12-17
 authors:
   - name: Scott Chamberlain
 tags:
@@ -11,7 +11,14 @@ tags:
 - curl
 ---
 
-
+```{r echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE
+)
+```
 
 rOpenSci specializes in creating R libraries for accessing data resources on the web from R. Most times you request data from the web in R with our packages, you should have no problem. However, you evenutally will run into problems. In addition, there are advanced things you can do modifying requests to web resources that fall in the _advanced stuff_ category.
 
@@ -40,23 +47,20 @@ curl https://www.google.com
 
 > Note: `RCurl` is a dependency, so you'll get it when you install `httr`
 
-
-```r
+```{r eval=FALSE}
 install.packages("httr")
 ```
 
 There are some new features in `httr` dev version you may want. If so, do:
 
-
-```r
+```{r eval=FALSE}
 install.packages("devtools")
 devtools::install_github("hadley/httr")
 ```
 
 Load `httr`
 
-
-```r
+```{r}
 library("httr")
 ```
 
@@ -64,15 +68,13 @@ library("httr")
 
 With `httr` you can either set globally for an R session like
 
-
-```r
+```{r eval=FALSE}
 set_config(timeout(seconds = 2))
 ```
 
 Or use `with_config()`
 
-
-```r
+```{r eval=FALSE}
 with_config(verbose(), {
   GET("http://www.google.com/search")
 })
@@ -80,37 +82,21 @@ with_config(verbose(), {
 
 Or extensions to `with_*`, like for `verbose` output
 
-
-```r
+```{r}
 with_verbose(
   GET("http://www.google.com/search")
 )
-#> Response [http://www.google.com/webhp]
-#>   Date: 2014-12-17 07:49
-#>   Status: 200
-#>   Content-Type: text/html; charset=ISO-8859-1
-#>   Size: 19.3 kB
-#> <!doctype html><html itemscope="" itemtype="http://schema.org/WebPage" l...
-#> function _gjh(){!_gjuc()&&window.google&&google.x&&google.x({id:"GJH"},f...
-#> if (!iesg){document.f&&document.f.q.focus();document.gbqf&&document.gbqf...
-#> }
-#> })();</script><div id="mngb">   <div id=gbar><nobr><b class=gb1>Search</...
-#> a.i.Z,window.gbar.elr&&a.i.$(window.gbar.elr()),window.gbar.elc&&window....
-#> });})();</script> </div> </span><br clear="all" id="lgpd"><div id="lga">...
-#> });})();</script></div></div><span id="footer"><div style="font-size:10p...
 ```
 
 Or pass into each function call
 
-
-```r
+```{r eval=FALSE}
 GET("http://www.google.com/search", query=list(q="httr"), timeout(seconds = 0.5))
 ```
 
 With `RCurl` you can set options for a function call by passing curl options to the `.opts` parameter
 
-
-```r
+```{r eval=FALSE}
 getForm("http://www.google.com/search?q=RCurl", btnG="Search", .opts = list(timeout.ms = 20))
 ```
 
@@ -120,15 +106,13 @@ For all examples below I'll use `httr`, and pass in config options to function c
 
 In most of our packages we allow you to pass in any curl options, either via `...` or a named parameter. We are increasingly making our packages consistent, but they may not all have this ability yet. For example, using the `rgbif` package, an R client for [GBIF][gbif]:
 
-
-```r
+```{r eval=FALSE}
 install.packages("rgbif")
 ```
 
 verbose output
 
-
-```r
+```{r}
 library("rgbif")
 res <- occ_search(geometry=c(-125.0,38.4,-121.8,40.9), limit=20, config=verbose())
 #> -> GET /v1/occurrence/search?geometry=POLYGON%28%28-125%2038.4%2C%20-121.8%2038.4%2C%20-121.8%2040.9%2C%20-125%2040.9%2C%20-125%2038.4%29%29&limit=20&offset=0 HTTP/1.1
@@ -154,27 +138,18 @@ res <- occ_search(geometry=c(-125.0,38.4,-121.8,40.9), limit=20, config=verbose(
 
 Print progress
 
-
-```r
+```{r eval=FALSE}
 res <- occ_search(geometry=c(-125.0,38.4,-121.8,40.9), limit=20, config=progress())
 #> |===================================================================| 100%
 ```
 
 You can also combine curl options - use `c()` in this case to combine them
 
-
-```r
+```{r}
 c(verbose(), progress())
-#> Config: 
-#> List of 4
-#>  $ debugfunction   :function (...)  
-#>  $ verbose         :TRUE
-#>  $ noprogress      :FALSE
-#>  $ progressfunction:function (...)
 ```
 
-
-```r
+```{r eval=FALSE}
 res <- occ_search(geometry=c(-125.0,38.4,-121.8,40.9), limit=20, config=c(verbose(), progress()))
 #> -> GET /v1/occurrence/search?geometry=POLYGON%28%28-125%2038.4%2C%20-121.8%2038.4%2C%20-121.8%2040.9%2C%20-125%2040.9%2C%20-125%2038.4%29%29&limit=20&offset=0 HTTP/1.1
 #> -> User-Agent: curl/7.37.1 Rcurl/1.95.4.5 httr/0.6.0
@@ -207,8 +182,7 @@ res <- occ_search(geometry=c(-125.0,38.4,-121.8,40.9), limit=20, config=c(verbos
 
 > Note: For this section and those following, I'll mention an `RCurl` equivalent if there is one.
 
-
-```r
+```{r eval=FALSE}
 GET("http://www.google.com/search", timeout(0.01))
 #> Error in function (type, msg, asError = TRUE)  :
 #>   Connection timed out after 16 milliseconds
@@ -225,8 +199,7 @@ GET("http://www.google.com/search", timeout(0.01))
 
 Just do a `HEAD` request so we don't have to deal with big output
 
-
-```r
+```{r eval=FALSE}
 HEAD("http://www.google.com/search", verbose())
 #> -> HEAD / HTTP/1.1
 #> -> User-Agent: curl/7.37.1 Rcurl/1.95.4.5 httr/0.6.0
@@ -258,12 +231,9 @@ HEAD("http://www.google.com/search", verbose())
 * `httr`: `add_headers()`
 * `RCurl`: `httpheader`
 
-
-```r
+```{r}
 res <- HEAD("http://www.google.com/search", add_headers(Accept = "application/json"))
 res$request$opts$httpheader
-#>             Accept 
-#> "application/json"
 ```
 
 > Note: there are shortcuts for `add_headers(Accept = "application/json")` and add_headers(Accept = "application/xml"): `accept_json()`, and `accept_xml()`
@@ -279,20 +249,13 @@ res$request$opts$httpheader
 
 `authenticate()` for basic username/password authentication
 
-
-```r
+```{r}
 authenticate(user = "foo", password = "bar")
-#> Config: 
-#> List of 2
-#>  $ httpauth:1
-#>   ..- attr(*, "names")="basic"
-#>  $ userpwd :"foo:bar"
 ```
 
 To use an API key, this depends on the data provider. They may request it one or either of the header (in multiple different ways)
 
-
-```r
+```{r eval=FALSE}
 HEAD("http://www.google.com/search", add_headers(Authorization = "Bearer 234kqhrlj2342"))
 # or
 HEAD("http://www.google.com/search", add_headers("token" = "234kqhrlj2342"))
@@ -300,8 +263,7 @@ HEAD("http://www.google.com/search", add_headers("token" = "234kqhrlj2342"))
 
 or as a query parameter (which is passed in the URL string)
 
-
-```r
+```{r eval=FALSE}
 HEAD("http://www.google.com/search", query = list(api_key = "<your key>"))
 ```
 
@@ -309,29 +271,25 @@ Another authentication options is OAuth workflows. `OAuth2` is probably more com
 
 * Find OAuth settings for github http://developer.github.com/v3/oauth/
 
-
-```r
+```{r eval=FALSE}
 endpts <- oauth_endpoint(authorize = "authorize", access = "access_token", base_url = "https://github.com/login/oauth")
 ```
 
 * Register an application at https://github.com/settings/applications. Use any URL you would like for the homepage URL (http://github.com is fine) and http://localhost:1410 as the callback url. Insert your client ID and secret below - if secret is omitted, it will look it up in the GITHUB_CONSUMER_SECRET environmental variable.
 
-
-```r
+```{r eval=FALSE}
 myapp <- oauth_app(appname = "github", key = "<key>", secret = "<secret>")
 ```
 
 * Get OAuth credentials
 
-
-```r
+```{r eval=FALSE}
 github_token <- oauth2.0_token(endpts, myapp)
 ```
 
 * Use API
 
-
-```r
+```{r eval=FALSE}
 gtoken <- config(token = github_token)
 req <- GET("https://api.github.com/rate_limit", gtoken)
 content(req)
@@ -346,32 +304,15 @@ content(req)
 
 Set cookies
 
-
-```r
+```{r}
 GET("http://httpbin.org/cookies", set_cookies(a = 1, b = 2))
-#> Response [http://httpbin.org/cookies]
-#>   Date: 2014-12-17 07:49
-#>   Status: 200
-#>   Content-Type: application/json
-#>   Size: 50 B
-#> {
-#>   "cookies": {
-#>     "a": "1", 
-#>     "b": "2"
-#>   }
 ```
 
 If there are cookies in a response, you can access them easily with `cookies()`
 
-
-```r
+```{r}
 res <- GET("http://httpbin.org/cookies/set", query = list(a = 1, b = 2))
 cookies(res)
-#> $b
-#> [1] 2
-#> 
-#> $a
-#> [1] 1
 ```
 
 ## progress
@@ -381,8 +322,7 @@ cookies(res)
 * `httr`: `progress()`
 * `RCurl`: `progressfunction`
 
-
-```r
+```{r eval=FALSE}
 res <- GET("http://httpbin.org", progress())
 #> |==================================| 100%
 ```
@@ -396,8 +336,7 @@ res <- GET("http://httpbin.org", progress())
 * `httr`: `use_proxy()`
 * `RCurl`: See various curl options that start with `proxy`
 
-
-```r
+```{r eval=FALSE}
 GET("http://www.google.com/search", use_proxy(url = "125.39.66.66", port = 80, username = "username", password = "password"))
 ```
 
@@ -412,30 +351,14 @@ GET("http://www.google.com/search", use_proxy(url = "125.39.66.66", port = 80, u
 
 Get the default user agent set if using `httr`
 
-
-```r
+```{r}
 GET("http://httpbin.org/user-agent")
-#> Response [http://httpbin.org/user-agent]
-#>   Date: 2014-12-17 07:49
-#>   Status: 200
-#>   Content-Type: application/json
-#>   Size: 59 B
-#> {
-#>   "user-agent": "curl/7.37.1 Rcurl/1.95.4.5 httr/0.6.0"
 ```
 
 Set a user agent string
 
-
-```r
+```{r}
 GET("http://httpbin.org/user-agent", user_agent("its me!"))
-#> Response [http://httpbin.org/user-agent]
-#>   Date: 2014-12-17 07:49
-#>   Status: 200
-#>   Content-Type: application/json
-#>   Size: 29 B
-#> {
-#>   "user-agent": "its me!"
 ```
 
 * _Why use this?_ This is set by default in a http request, as you can see in the first example above for user agent. Some web APIs require that you set a specific user agent. For example, the [GitHub API](https://developer.github.com/v3/#user-agent-required) requires that you include a user agent string in the header of each request that is your username or the name of your application so they can contact you if there is a problem.
