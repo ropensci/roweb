@@ -11,9 +11,17 @@ title: "rOpenSci - Packages"
     <h2>rOpenSci packages</h2>
      <p>This is a complete list of all available rOpenSci packages. Packages are grouped by ones that acquire <a href="#data">data</a>, <a href="#literature">full-text of journal articles</a>, <a href="#altmetrics">altmetrics</a>, <a href="#data-publication">data-publication</a>, <a href="#reproducibility">reproducibility</a> and <a href="#data-viz">data visualization</a>. Packages with a <span class="label label-success">cran</span> sign are stable versions that you can quickly install from your nearest mirror using <code>install.packages("PACKAGE_NAME")</code>. Others are in various stages of development (bleeding edge packages are not listed here) and you can learn more by following our <a href="https://github.com/ropensci" title="rOpenSci · GitHub">GitHub organization page</a>. All of our software packages are open source. Please see package description files for more information on specific licenses. We also have a <a href="http://ropensci.org/status/" title="rOpenSci package status">package status dashboard</a>.</p>
 
+<br>
 
-<section id="data">
-<h2>Data  <small>Packages that interface with data repositories</small></h2>
+<a href="#data_publication">Data Publication</a> | <a href="#data_access">Data Access</a> | <a href="#literature">Literature</a> | <a href="#altmetrics">Altmetrics</a> | <a href="#reproducibility">Reproducibility</a> | <a href="#databases">Databases</a> | <a href="#data_viz">Data Vizualization</a>
+
+<!-- Data Publication Packages -->
+
+<section id="data_publication">
+  <div class="page-header">
+    <h2>Data Publication  <small>Packages that not only retrieve data but also allows for data submission.</small></h2>
+  </div>
+
   <div class="row">
     <div class="col-sm-12 table-responsive">
   <table class="table table-bordered table-striped">
@@ -26,261 +34,283 @@ title: "rOpenSci - Packages"
     </thead>
     <tbody>
       <tr>
-        <td><a href="../tutorials/spocc_tutorial.html">spocc</a></td>
-        <td>Collect and map species occurrence data from GBIF, iNaturalist, Ecoengine, AntWeb, eBird, and USGS's BISON.</td>
-        <td><span class="label label-success" >cran</span> <a href="https://github.com/ropensci/spocc/"><span class="label label-inverse">github</span> </td>
+        <td><a href="https://github.com/DataONEorg/rdataone">dataone</a></td>
+        <td>Search across repositories, and read and write data and metadata from the <a href="http://www.dataone.org/">DataONE</a> federation of data repositories from R. Includes repositories such as the <a href="http://knb.ecoinformatics.org">KNB</a> and <a href="http://datadryad.org/">Dryad</a>.</td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/DataONEorg/rdataone/"><span class="label label-inverse">github</span></a></td>
       </tr>
-
       <tr>
-        <td><a href="../tutorials/antweb_tutorial.html">AntWeb</a></td>
+        <td><a href="https://github.com/ropensci/dvn" id="dvn">dvn</a></td>
+        <td>Programmatic interface to the DataVerse Network.</td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/dvn/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/EML" id="EML">EML</a></td>
+        <td>An R package for reading, writing, integrating and publishing data using the <a href="http://en.wikipedia.org/wiki/Ecological_Metadata_Language" title="Ecological Metadata Language - Wikipedia, the free encyclopedia">Ecological Metadata Language (EML)</a> format.</td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/EML/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rfigshare" id="rfigshare">rfigshare</a></td>
+        <td>Push data, figures, and text to, and search and retrieve data from, <a href="http://figshare.com/">Figshare</a> from R</td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rfigshare/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/RNexML" id="RNeXML">RNeXML</a></td>
+        <td>Semantically rich NeXML I/O in R - next generation XML for Phylogenetic data.</td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rNeXML/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+     </tbody>
+  </table>
+    </div>
+  </div>
+  </section>
+
+<!-- Data Access Packages -->
+
+<section id="data_access">
+<h2>Data Access <small>Packages that interface with data repositories</small></h2>
+  <div class="row">
+    <div class="col-sm-12 table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="../tutorials/antweb_tutorial.html" id="AntWeb">AntWeb</a></td>
         <td>Access data from the world's largest ant database. Maintained and developed by the California Academy of Science</td>
         <td><span class="label label-success" >cran</span> <a href="https://github.com/ropensci/AntWeb/"><span class="label label-inverse">github</span> </td>
       </tr>
-
-
       <tr>
-        <td><a href="../tutorials/ecoengine_tutorial.html">ecoengine</a></td>
+        <td><a href="https://github.com/ropensci/rbefdata" id="BEFdata">BEFdata</a></td>
+        <td>Connects to instances of <a href="https://github.com/befdata/befdata">BEFdata portals</a> for collaborative data management (e.g BEF-China and FUNdiv)</td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rbefdata/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+       <td><a href="../tutorials/bold_tutorial.html" id="bold">bold</a></td>
+       <td>R client for <a href="http://www.boldsystems.org/">BOLD Systems (Barcode Of Life Database)</a>.</td>
+       <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/bold/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/ckanr" id="ckanr">ckanr</a></td>
+        <td>R client for <a href="http://docs.ckan.org/en/latest/api/index.html">CKAN RESTful API</a>. <span class="label label-info"> In early development</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/ckanr/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/chromer" id="chromer">chromer</a></td>
+        <td>Interact with the chromosome counts database (CCDB) at <a href="http://ccdb.tau.ac.il">http://ccdb.tau.ac.il</a> <span class="label label-info"> In early development</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/chromer/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/clifro" id="clifro">clifro</a></td>
+        <td>An R client for New Zealand's National Climate Database</td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/clifro/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="../tutorials/ecoengine_tutorial.html" id="ecoengine">ecoengine</a></td>
         <td>Retrieve 3+ MM records, checklists and photos from <a href="http://ecoengine.berkeley.edu/" title="Berkeley Ecoinformatics Engine">Berkeley's ecoengine</a></td>
         <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/ecoengine/"><span class="label label-inverse">github</span></a> </td>
       </tr>
-
-
-
-       <tr>
-        <td><a href="../tutorials/rebird_tutorial.html">rebird</a></td>
-        <td>Search and acquire occurrence records of bird sightings collated in the <a href="http://ebird.org/content/ebird/" title="eBird">eBird database</a></td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rebird/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-        <tr>
-         <td><a href="https://github.com/ropensci/rAvis">rAvis</a></td>
-         <td>Download occurrence data for bird species, and associated metadata from <a href="http://proyectoavis.com/cgi-bin/portada.cgi">ProyectoAvis</a>, a citizen science bird project in Spain.</td>
-         <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rAvis/"><span class="label label-inverse">github</span></a></td>
-       </tr>
-
       <tr>
-        <td><a href="https://github.com/ropensci/rbefdata">BEFdata</a></td>
-        <td>Connects to instances of <a href="https://github.com/befdata/befdata">BEFdata portals</a> for collaborative data management (e.g BEF-China and FUNdiv)</td>
-        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rbefdata/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
+       <td><a href="https://github.com/ropensci/ecoretriever" id="ecoretriever">ecoretriever</a></td>
+       <td>R client wrapping the Python <a href="http://ecodataretriever.org/">Ecoretriever software</a>.</td>
+       <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/ecoretriever/"><span class="label label-inverse">github</span></a></td>
       </tr>
-        <tr>
-        <td><a href="../tutorials/rfisheries_tutorial.html">rfisheries</a></td>
-        <td>Search and retrieve data from the <a href="http://openfisheries.org/">OpenFisheries.org</a>, currently providing access to global capture fishing landings from the Food and Agriculture Organization (FAO) of the United Nations</td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rfisheries/"><span class="label label-inverse">github</span></a> </td>
-        </tr>
-
       <tr>
-        <td><a href="https://github.com/ropensci/rmendeley">RMendeley</a></td>
-        <td><b>This package is now deprecated.</b> Programmatic interface to the Mendeley network - push up data to Mendeley as well as search and retrieve data from your private data and public Mendeley records. <span class="label label-warning">Updates pending upcoming API changes.</span></td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/RMendeley/"><span class="label label-inverse">github</span></a></td>
-      </tr>
-
-      <tr>
-        <td><a href="https://github.com/ropensci/rWBclimate">rWBClimate</a></td>
-        <td>Programmatic interface to the World Bank climate data used in the World Bank <a href="http://sdwebx.worldbank.org/climateportal/index.cfm">climate knowledge portal</a>.</td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rWBclimate/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-      <tr>
-        <td><a href="../tutorials/treebase_tutorial.html">treebase</a></td>
-        <td>Programmatic interface to <a href="http://treebase.org/">Treebase</a> - a database of phylogenetic trees</td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/treebase/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-      <tr>
-        <td><a href="https://github.com/ropensci/rfishbase">rfishbase</a></td>
-        <td>Access any fish data from <a href="http://fishbase.org/">Fishbase.org</a>, including occurrence records, habitat data, and more</td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rfishbase/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-      <tr>
-        <td><a href="https://github.com/ropensci/rnpn">rnpn</a></td>
-        <td>Access phenological data from <a href="https://www.usanpn.org/">US National Phenology Network</a> for plants and animals</td>
-        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rnpn/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-       <tr>
-        <td><a href="https://github.com/ropensci/rbhl">rbhl</a></td>
-        <td>Access full text and metadata on scanned and OCR text for biodiversity literature from <a href="http://www.biodiversitylibrary.org/">Biodiversity Heritage Library</a></td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rbhl/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-        <tr>
-        <td><a href="../tutorials/rgbif_tutorial.html">rgbif</a></td>
-        <td>Access more than 400 million species occurrence records from across the globe in one place, from the <a href="http://www.gbif.org/">Global Biodiversity Information Facility</a></td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/sckott/rgbif/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-      <tr>
-        <td><a href="../tutorials/taxize_tutorial.html">taxize</a></td>
-        <td>Get taxonomic identifiers from many different databases; taxonomic synonyms; taxonomic hierarchies; retrieve common names, and more. Access to a dozen different sources</td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/taxize/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-      <tr>
-        <td><a href="../tutorials/rsnps_tutorial.html">rsnps</a></td>
-        <td>Search and retrieve Single Nucleotide Polymorphism data from <a href="https://opensnp.org/">openSNP</a>, a repository of direct-to-customer genetic test results</td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rsnps/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-      <tr>
-        <td><a href="https://github.com/ropensci/rvertnet">rvertnet</a></td>
-        <td>Access to specimen records for vertebrates across many museums though <a href="http://vertnet.org/">VertNet</a></td>
-        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rvertnet/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-      <tr>
-        <td><a href="https://github.com/ropensci/rentrez">rentrez</a></td>
-        <td>rentrez provides functions that work with the NCBI eutils to search or download data from various NCBI databases</td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rentrez/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-      <tr>
-        <td><a href="https://github.com/ropensci/neotoma">neotoma</a></td>
-        <td>Search for sites and download data for use in analytical workflows of paleoecological research using the Neotoma Paleoecological Database</td>
-        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/neotoma/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-      <tr>
-        <td><a href="https://github.com/ropensci/paleobioDB">paleobioDB</a></td>
-        <td>Access data from the <a href="http://paleobiodb.org/">Paleobiology Database</a>, a warehouse of paleobiology database</td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/paleobioDB/"><span class="label label-inverse">github</span></a> </td>
-        </tr>
-
-      <tr>
-        <td><a href="../tutorials/rnoaa_tutorial.html">rnoaa</a></td>
-        <td>Access climate data from <a href="http://www.ncdc.noaa.gov/cdo-web/webservices">NOAA</a>, including temperature and precipitation, as well as sea ice cover data, and extreme weather events</td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rnoaa/"><span class="label label-inverse">github</span></a> </td>
-        </tr>
-
-       <tr>
-        <td><a href="https://github.com/ropensci/rdryad">rdryad</a></td>
-        <td>Get data from <a href="http://datadryad.org/">Dryad</a> a repository of data associated with published scholarly papers. <span class="label label-warning">Development pending upcoming API changes.</span></td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rdryad/"><span class="label label-inverse">github</span></a></td>
-      </tr>
-
-       <tr>
-        <td><a href="https://github.com/ropensci/gender">gender</a></td>
+        <td><a href="https://github.com/ropensci/gender" id="gender">gender</a></td>
         <td>gender is an R package to encode gender based on names and dates of birth</td>
         <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/gender/"><span class="label label-inverse">github</span></a></td>
       </tr>
-       <tr>
-        <td><a href="https://github.com/ropensci/geonames">geonames</a></td>
+      <tr>
+        <td><a href="https://github.com/ropensci/geonames" id="geonames">geonames</a></td>
         <td>Grab data from the GeoNames geographical database which covers all countries and contains over eight million placenames</td>
         <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/geonames/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-        <td><a href="https://github.com/ropensci/RSelenium">RSelenium</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/historydata" id="historydata">historydata</a></td>
+        <td>An R package with datasets of interest to historians. It is primarily intended for pedagogic purposes in teaching historians how to use R.</a>. <span class="label label-info"> In early development</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/historydata/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/musemeta" id="musemeta">musemeta</a></td>
+        <td>R Client for Scraping Museum Metadata, including The Metropolitan Museum of Art, the Canadian Science & Technology Museum Corporation, the National Gallery of Art, and the Getty Museum, and more to come. <span class="label label-info"> In early development</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/musemeta/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/neotoma" id="neotoma">neotoma</a></td>
+        <td>Search for sites and download data for use in analytical workflows of paleoecological research using the Neotoma Paleoecological Database</td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/neotoma/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/paleobioDB" id="paleobioDB">paleobioDB</a></td>
+        <td>Access data from the <a href="http://paleobiodb.org/">Paleobiology Database</a>, a warehouse of paleobiology database</td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/paleobioDB/"><span class="label label-inverse">github</span></a> </td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/pangaear" id="pangaear">pangaear</a></td>
+        <td>An R client to interact with the <a href="http://www.pangaea.de/">Pangaea database</a>. <span class="label label-info"> In early development</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/pangaear/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/pleiades" id="pleiades">pleiades</a></td>
+        <td>Search for and retrieve metadata and spatial location data on archeological places and names from <a href="http://pleiades.stoa.org/home">Pleiades</a>. <span class="label label-info"> In early development</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/pleiades/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+
+      <tr>
+         <td><a href="https://github.com/ropensci/rAvis" id="rAvis">rAvis</a></td>
+         <td>Download occurrence data for bird species, and associated metadata from <a href="http://proyectoavis.com/cgi-bin/portada.cgi">ProyectoAvis</a>, a citizen science bird project in Spain.</td>
+         <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rAvis/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rbhl" id="rbhl">rbhl</a></td>
+        <td>Access full text and metadata on scanned and OCR text for biodiversity literature from <a href="http://www.biodiversitylibrary.org/">Biodiversity Heritage Library</a></td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rbhl/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+       <td><a href="../tutorials/rbison_tutorial.html" id="rbison">rbison</a></td>
+       <td>R client for USGS's <a href="http://bison.usgs.ornl.gov/">BISON (Biodiversity Information Serving Our Nation)</a>.</td>
+       <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rbison/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/RCryptsy" id="RCryptsy">RCryptsy</a></td>
+        <td>Allows data to be pulled from the Cryptsy exchange into R via the Cryptsy Public API. For more infomation about Cryptsy see <a href="https://www.cryptsy.com">https://www.cryptsy.com</a> <span class="label label-info"> In early development</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/RCryptsy/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rdpla" id="rdpla">rdpla</a></td>
+        <td>An R client to interact with <a href="http://dp.la/">Digital Public Library of America (DPLA)</a> metadata. <span class="label label-info"> In early development</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rdpla/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rdryad" id="rdryad">rdryad</a></td>
+        <td>Get data from <a href="http://datadryad.org/">Dryad</a> a repository of data associated with published scholarly papers. <span class="label label-warning">Development pending upcoming API changes.</span></td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rdryad/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="../tutorials/rebird_tutorial.html" id="rebird">rebird</a></td>
+        <td>Search and acquire occurrence records of bird sightings collated in the <a href="http://ebird.org/content/ebird/" title="eBird">eBird database</a></td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rebird/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rentrez" id="rentrez">rentrez</a></td>
+        <td>rentrez provides functions that work with the NCBI eutils to search or download data from various NCBI databases</td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rentrez/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+       <td><a href="https://github.com/ropensci/reol" id="reol">reol</a></td>
+       <td>R client to the <a href="http://eol.org/">Encyclopedia of Life</a> a website and database of data/images/descriptions of species.</td>
+       <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/reol/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rerddap" id="rerddap">rerddap</a></td>
+        <td>General purpose R client for working with ERDDAP servers. <a href="http://coastwatch.pfeg.noaa.gov/erddap/index.html">More infomation on ERDDAP</a>. ERDDAP is a specific case of <a href="https://en.wikipedia.org/wiki/OPeNDAP">OPeNDAP</a>. <span class="label label-info"> In early development</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rerddap/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/reuropeana" id="reuropeana">reuropeana</a></td>
+        <td>An R client to interact with <a href="http://europeana.eu/">Europeana</a> metadata. <span class="label label-info"> In early development</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/reuropeana/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rfishbase" id="rfishbase">rfishbase</a></td>
+        <td>Access any fish data from <a href="http://fishbase.org/">Fishbase.org</a>, including occurrence records, habitat data, and more</td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rfishbase/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="../tutorials/rfisheries_tutorial.html" id="rfisheries">rfisheries</a></td>
+        <td>Search and retrieve data from the <a href="http://openfisheries.org/">OpenFisheries.org</a>, currently providing access to global capture fishing landings from the Food and Agriculture Organization (FAO) of the United Nations</td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rfisheries/"><span class="label label-inverse">github</span></a> </td>
+      </tr>
+      <tr>
+        <td><a href="../tutorials/rgbif_tutorial.html" id="rgbif">rgbif</a></td>
+        <!-- &nbsp;<a href="#rgbif" id="rgbif">#</a> -->
+        <td>Access more than 400 million species occurrence records from across the globe in one place, from the <a href="http://www.gbif.org/">Global Biodiversity Information Facility</a></td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/sckott/rgbif/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rglobi" id="rglobi">rglobi</a></td>
+        <td>R interface to the aggregated biotic interaction data of <a href="http://globalbioticinteractions.org">GloBI</a> <span class="label label-info"> In early development</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rglobi/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+       <td><a href="../tutorials/rinat_tutorial.html" id="rinat">rinat</a></td>
+       <td>A programmatic interface to the API provided by <a href="http://www.inaturalist.org/">iNaturalist</a>.</td>
+       <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rinat/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rmendeley" id="RMendeley">RMendeley</a></td>
+        <td><b>This package is now deprecated.</b> Programmatic interface to the Mendeley network - push up data to Mendeley as well as search and retrieve data from your private data and public Mendeley records. <span class="label label-warning">Updates pending upcoming API changes.</span></td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/RMendeley/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="../tutorials/rnoaa_tutorial.html" id="rnoaa">rnoaa</a></td>
+        <td>Access climate data from <a href="http://www.ncdc.noaa.gov/cdo-web/webservices">NOAA</a>, including temperature and precipitation, as well as sea ice cover data, and extreme weather events</td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rnoaa/"><span class="label label-inverse">github</span></a> </td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rnbn" id="rnbn">rnbn</a></td>
+        <td>Acess to the United Kingdom's <a href="http://www.nbn.org.uk/">National Biodiversity Network</a> data.</td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rnbn/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rnpn" id="rnpn">rnpn</a></td>
+        <td>Access phenological data from <a href="https://www.usanpn.org/">US National Phenology Network</a> for plants and animals</td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rnpn/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/RSelenium" id="RSelenium">RSelenium</a></td>
         <td>An R client for Selenium Remote WebDriver</td>
         <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/RSelenium/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-          <td><a href="https://github.com/ropensci/clifro">clifro</a></td>
-          <td>An R client for New Zealand's National Climate Database</td>
-          <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/clifro/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-         <td><a href="https://github.com/ropensci/reol">reol</a></td>
-         <td>R client to the <a href="http://eol.org/">Encyclopedia of Life</a> a website and database of data/images/descriptions of species.</td>
-         <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/reol/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-         <td><a href="../tutorials/rinat_tutorial.html">rinat</a></td>
-         <td>A programmatic interface to the API provided by <a href="http://www.inaturalist.org/">iNaturalist</a>.</td>
-         <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rinat/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-         <td><a href="../tutorials/rbison_tutorial.html">rbison</a></td>
-         <td>R client for USGS's <a href="http://bison.usgs.ornl.gov/">BISON (Biodiversity Information Serving Our Nation)</a>.</td>
-         <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rbison/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-         <td><a href="../tutorials/bold_tutorial.html">bold</a></td>
-         <td>R client for <a href="http://www.boldsystems.org/">BOLD Systems (Barcode Of Life Database)</a>.</td>
-         <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/bold/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-         <td><a href="https://github.com/ropensci/ecoretriever">ecoretriever</a></td>
-         <td>R client wrapping the Python <a href="http://ecodataretriever.org/">Ecoretriever software</a>.</td>
-         <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/ecoretriever/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-         <td><a href="https://github.com/ropensci/traits">traits</a></td>
-         <td>A high level R package to acquire species trait data from many sources, including Polytraits, BETTYdb, NCBI, Phylomatic, and more. <span class="label label-info"> In early development</span></td>
-         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/traits/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-         <td><a href="https://github.com/ropensci/pangaear">pangaear</a></td>
-         <td>An R client to interact with the <a href="http://www.pangaea.de/">Pangaea database</a>. <span class="label label-info"> In early development</span></td>
-         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/pangaear/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-         <td><a href="https://github.com/ropensci/rnbn">rnbn</a></td>
-         <td>Acess to the United Kingdom's <a href="http://www.nbn.org.uk/">National Biodiversity Network</a> data.</td>
-         <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rnbn/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-         <td><a href="https://github.com/ropensci/pleiades">pleiades</a></td>
-         <td>Search for and retrieve metadata and spatial location data on archeological places and names from <a href="http://pleiades.stoa.org/home">Pleiades</a>. <span class="label label-info"> In early development</span></td>
-         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/pleiades/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-         <td><a href="https://github.com/ropensci/musemeta">musemeta</a></td>
-         <td>R Client for Scraping Museum Metadata, including The Metropolitan Museum of Art, the Canadian Science & Technology Museum Corporation, the National Gallery of Art, and the Getty Museum, and more to come. <span class="label label-info"> In early development</span></td>
-         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/musemeta/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-         <td><a href="https://github.com/ropensci/rdpla">rdpla</a></td>
-         <td>An R client to interact with <a href="http://dp.la/">Digital Public Library of America (DPLA)</a> metadata. <span class="label label-info"> In early development</span></td>
-         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rdpla/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-         <td><a href="https://github.com/ropensci/reuropeana">reuropeana</a></td>
-         <td>An R client to interact with <a href="http://europeana.eu/">Europeana</a> metadata. <span class="label label-info"> In early development</span></td>
-         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/reuropeana/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-         <td><a href="https://github.com/ropensci/historydata">historydata</a></td>
-         <td>An R package with datasets of interest to historians. It is primarily intended for pedagogic purposes in teaching historians how to use R.</a>. <span class="label label-info"> In early development</span></td>
-         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/historydata/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-         <td><a href="https://github.com/ropensci/usaboundaries">USAboundaries</a></td>
-         <td>Historical boundaries of the United States. Map the United States (or the colonies that became the United States) on any date from 1629 to 2000. Contains both county and state/territory level polygons.</td>
-         <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/usaboundaries/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-          <td><a href="https://github.com/ropensci/chromer">chromer</a></td>
-          <td>Interact with the chromosome counts database (CCDB) at <a href="http://ccdb.tau.ac.il">http://ccdb.tau.ac.il</a> <span class="label label-info"> In early development</span></td>
-          <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/chromer/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-          <td><a href="https://github.com/ropensci/rglobi">rglobi</a></td>
-          <td>R interface to the aggregated biotic interaction data of <a href="http://globalbioticinteractions.org">GloBI</a> <span class="label label-info"> In early development</span></td>
-          <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rglobi/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-          <td><a href="https://github.com/ropensci/RStars">RStars</a></td>
-          <td>Access to the Digital Universe Data set at <a href="http://star-api.herokuapp.com/">http://star-api.herokuapp.com/</a> <span class="label label-info"> In early development</span></td>
-          <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/RStars/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-          <td><a href="https://github.com/ropensci/RCryptsy">RCryptsy</a></td>
-          <td>Allows data to be pulled from the Cryptsy exchange into R via the Cryptsy Public API. For more infomation about Cryptsy see <a href="https://www.cryptsy.com">https://www.cryptsy.com</a> <span class="label label-info"> In early development</span></td>
-          <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/RCryptsy/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-          <td><a href="https://github.com/ropensci/ckanr">ckanr</a></td>
-          <td>R client for <a href="http://docs.ckan.org/en/latest/api/index.html">CKAN RESTful API</a>. <span class="label label-info"> In early development</span></td>
-          <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/ckanr/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-        <tr>
-          <td><a href="https://github.com/ropensci/rerddap">rerddap</a></td>
-          <td>General purpose R client for working with ERDDAP servers. <a href="http://coastwatch.pfeg.noaa.gov/erddap/index.html">More infomation on ERDDAP</a>. ERDDAP is a specific case of <a href="https://en.wikipedia.org/wiki/OPeNDAP">OPeNDAP</a>. <span class="label label-info"> In early development</span></td>
-          <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rerddap/"><span class="label label-inverse">github</span></a></td>
-        </tr>
+      </tr>
+      <tr>
+        <td><a href="../tutorials/rsnps_tutorial.html" id="rsnps">rsnps</a></td>
+        <td>Search and retrieve Single Nucleotide Polymorphism data from <a href="https://opensnp.org/">openSNP</a>, a repository of direct-to-customer genetic test results</td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rsnps/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/RStars" id="RStars">RStars</a></td>
+        <td>Access to the Digital Universe Data set at <a href="http://star-api.herokuapp.com/">http://star-api.herokuapp.com/</a> <span class="label label-info"> In early development</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/RStars/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rvertnet" id="rvertnet">rvertnet</a></td>
+        <td>Access to specimen records for vertebrates across many museums though <a href="http://vertnet.org/">VertNet</a></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rvertnet/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rWBclimate" id="rWBClimate">rWBClimate</a></td>
+        <td>Programmatic interface to the World Bank climate data used in the World Bank <a href="http://sdwebx.worldbank.org/climateportal/index.cfm">climate knowledge portal</a>.</td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rWBclimate/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="../tutorials/spocc_tutorial.html" id="spocc">spocc</a></td>
+        <td>Collect and map species occurrence data from GBIF, iNaturalist, Ecoengine, AntWeb, eBird, and USGS's BISON.</td>
+        <td><span class="label label-success" >cran</span> <a href="https://github.com/ropensci/spocc/"><span class="label label-inverse">github</span> </td>
+      </tr>
+      <tr>
+        <td><a href="../tutorials/taxize_tutorial.html" id="taxize">taxize</a></td>
+        <td>Get taxonomic identifiers from many different databases; taxonomic synonyms; taxonomic hierarchies; retrieve common names, and more. Access to a dozen different sources</td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/taxize/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/traits" id="traits">traits</a></td>
+        <td>A high level R package to acquire species trait data from many sources, including Polytraits, BETTYdb, NCBI, Phylomatic, and more. <span class="label label-info"> In early development</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/traits/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="../tutorials/treebase_tutorial.html" id="treebase">treebase</a></td>
+        <td>Programmatic interface to <a href="http://treebase.org/">Treebase</a> - a database of phylogenetic trees</td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/treebase/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+       <td><a href="https://github.com/ropensci/usaboundaries" id="USAboundaries">USAboundaries</a></td>
+       <td>Historical boundaries of the United States. Map the United States (or the colonies that became the United States) on any date from 1629 to 2000. Contains both county and state/territory level polygons.</td>
+       <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/usaboundaries/"><span class="label label-inverse">github</span></a></td>
+      </tr>
     </tbody>
   </table>
 </div>
@@ -307,89 +337,75 @@ title: "rOpenSci - Packages"
     </thead>
     <tbody>
       <tr>
-        <td><a href="../tutorials/rplos_tutorial.html">rplos</a></td>
-        <td>Connects to the full-text API of the <a href="http://www.plos.org/">Public Library of Science (PLOS)</a>. They provide a powerful search engine by exposing Solr search endpoints</td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rplos/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-       <tr>
-        <td><a href="../tutorials/arxiv_tutorial.html">aRxiv</a></td>
+        <td><a href="../tutorials/arxiv_tutorial.html" id="aRxiv">aRxiv</a></td>
         <td>Access to the aRxiv preprint repository</td>
         <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/aRxiv/"><span class="label label-inverse">github</span></a>  </td>
-        </tr>
-
-       <tr>
-        <td><a href="https://github.com/ropensci/rebi">rebi</a></td>
-        <td>Access to the European PubMed Central database of papers and metadata</td>
-        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rebi/"><span class="label label-inverse">github</span></a>  </td>
-        </tr>
-
-      <tr>
-        <td><a href="https://github.com/ropensci/rspringer">rspringer</a></td>
-        <td>Full-text access to Springer journals. <span class="label label-warning">Development pending upcoming API changes.</span></td>
-        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rspringer/"><span class="label label-inverse">github</span></a> </td>
-        </tr>
-
-        <tr>
-        <td><a href="https://github.com/ropensci/rpensoft">rpensoft</a></td>
-        <td>Access to <a href="http://www.pensoft.net/">Pensoft</a> journals full text and metadata. <span class="label label-warning">No further development - See package <code>fulltext</code> for full text data access.</span></td>
-        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rpensoft/"><span class="label label-inverse">github</span></a>  </td>
-        </tr>
-
-      <tr>
-        <td><a href="https://github.com/ropensci/rhindawi">rhindawi</a></td>
-        <td>R interface to the Hindawi Journals metadata and corpus. <span class="label label-warning">No further development - See package <code>fulltext</code> for full text data access.</span></td>
-        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rhindawi/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-      <tr>
-        <td><a href="https://github.com/ropensci/rorcid">rorcid</a></td>
-        <td>A programmatic interface the Orcid.org <a href="http://support.orcid.org/knowledgebase/articles/116874-orcid-api-guide"></a> API <span class="label label-info">In early development</span></td>
-        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rorcid/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-      <tr>
-        <td><a href="https://github.com/ropensci/elife">elife</a></td>
-        <td>R interface to the <a href="http://elifesciences.org/" title="eLife | The open-access journal for outstanding advances in life science and biomedicine, backed by the funders of research">eLife</a> API <a href="http://dev.elifesciences.org/"></a><span class="label label-warning">Deprecated - eLife is shutting their API down soon. See the package <code>fulltext</code> for eLife access</span></td>
-        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/elife/"><span class="label label-inverse">github</span></a> </td>
-        </tr>
-
-      <tr>
-        <td><a href="https://github.com/ropensci/rdatacite">rdatacite</a></td>
-        <td>Wrapper to <a href="http://datacite.org/">DataCite</a> metadata. <span class="label label-info"> In early development</span></td>
-        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rdatacite/"><span class="label label-inverse">github</span></a></td>
       </tr>
-
       <tr>
-        <td><a href="https://github.com/ropensci/bmc">bmc</a></td>
+        <td><a href="https://github.com/ropensci/bmc" id="bmc">bmc</a></td>
         <td> An R interface to <a href="http://datacite.org/">Biomed Central (BMC)</a> search API and full text XML. <span class="label label-info"> In early development</span></td>
         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/bmc/"><span class="label label-inverse">github</span></a></td>
       </tr>
-
       <tr>
-        <td><a href="https://github.com/ropensci/rcrossref">rcrossref</a></td>
-        <td> An R interface to <a href="https://github.com/CrossRef/rest-api-doc/blob/master/rest_api.md">Crossref</a> metadata search API.</td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rcrossref/"><span class="label label-inverse">github</span></a></td>
+        <td><a href="https://github.com/ropensci/elife" id="elife">elife</a></td>
+        <td>R interface to the <a href="http://elifesciences.org/" title="eLife | The open-access journal for outstanding advances in life science and biomedicine, backed by the funders of research">eLife</a> API <a href="http://dev.elifesciences.org/"></a><span class="label label-warning">Deprecated - eLife is shutting their API down soon. See the package <code>fulltext</code> for eLife access</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/elife/"><span class="label label-inverse">github</span></a> </td>
       </tr>
-
       <tr>
-        <td><a href="https://github.com/ropensci/rmetadata">rmetadata</a></td>
-        <td> A high level R interface to many different scholarly metadata sources, which will include Crossref, any OAI-PMH provider, Digital Public Library of America, Hathi Trust, Europeana, and more. <span class="label label-info"> In early development</span></td>
-        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rmetadata/"><span class="label label-inverse">github</span></a></td>
-      </tr>
-
-      <tr>
-        <td><a href="https://github.com/ropensci/fulltext">fulltext</a></td>
+        <td><a href="https://github.com/ropensci/fulltext" id="fulltext">fulltext</a></td>
         <td> An high level R interface to many different sources for full text (or nearly) scholarly texts, including PLOS, PMC, PeerJ, eLife, arXiv, and many more. <span class="label label-info"> In early development</span></td>
         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/fulltext/"><span class="label label-inverse">github</span></a></td>
       </tr>
       <tr>
-        <td><a href="https://github.com/ropensci/IEEER">IEEER</a></td>
+        <td><a href="https://github.com/ropensci/IEEER" id="IEEER">IEEER</a></td>
         <td> Interface to the IEEE Xplore Gateway. <span class="label label-info"> In early development</span></td>
         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/IEEER/"><span class="label label-inverse">github</span></a></td>
       </tr>
-
-
+      <tr>
+        <td><a href="https://github.com/ropensci/rcrossref" id="rcrossref">rcrossref</a></td>
+        <td> An R interface to <a href="https://github.com/CrossRef/rest-api-doc/blob/master/rest_api.md">Crossref</a> metadata search API.</td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rcrossref/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rdatacite" id="rdatacite">rdatacite</a></td>
+        <td>Wrapper to <a href="http://datacite.org/">DataCite</a> metadata. <span class="label label-info"> In early development</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rdatacite/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rebi" id="rebi">rebi</a></td>
+        <td>Access to the European PubMed Central database of papers and metadata</td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rebi/"><span class="label label-inverse">github</span></a>  </td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rhindawi" id="rhindawi">rhindawi</a></td>
+        <td>R interface to the Hindawi Journals metadata and corpus. <span class="label label-warning">No further development - See package <code>fulltext</code> for full text data access.</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rhindawi/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rmetadata" id="rmetadata">rmetadata</a></td>
+        <td> A high level R interface to many different scholarly metadata sources, which will include Crossref, any OAI-PMH provider, Digital Public Library of America, Hathi Trust, Europeana, and more. <span class="label label-info"> In early development</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rmetadata/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rorcid" id="rorcid">rorcid</a></td>
+        <td>A programmatic interface the Orcid.org <a href="http://support.orcid.org/knowledgebase/articles/116874-orcid-api-guide"></a> API <span class="label label-info">In early development</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rorcid/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rpensoft" id="rpensoft">rpensoft</a></td>
+        <td>Access to <a href="http://www.pensoft.net/">Pensoft</a> journals full text and metadata. <span class="label label-warning">No further development - See package <code>fulltext</code> for full text data access.</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rpensoft/"><span class="label label-inverse">github</span></a>  </td>
+      </tr>
+      <tr>
+        <td><a href="../tutorials/rplos_tutorial.html" id="rplos">rplos</a></td>
+        <td>Connects to the full-text API of the <a href="http://www.plos.org/">Public Library of Science (PLOS)</a>. They provide a powerful search engine by exposing Solr search endpoints</td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rplos/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rspringer" id="rspringer">rspringer</a></td>
+        <td>Full-text access to Springer journals. <span class="label label-warning">Development pending upcoming API changes.</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rspringer/"><span class="label label-inverse">github</span></a> </td>
+      </tr>
     </tbody>
   </table>
 </div>   </div>
@@ -411,96 +427,35 @@ title: "rOpenSci - Packages"
         <th>Package</th>
         <th>Description</th>
         <th>Details</th>
-
        </tr>
     </thead>
     <tbody>
       <tr>
+        <td><a href="../tutorials/alm_tutorial.html" id="alm">alm</a></td>
+        <td>R wrapper to the almetrics API platform developed by PLoS <a href="http://alm.plos.org/"></a> API - other publishers have built on this and work out of the box: CrossRef, Copernicus Publishers, and the Public Knowledge Project (PKP)</td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/alm/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/citeulike" id="Citeulike">Citeulike</a></td>
+        <td>R interface to <a href="http://www.citeulike.org/" title="CiteULike: Everyone's library">CiteULike</a>. <span class="label label-important">Not in active development.</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/citeulike/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="../tutorials/rAltmetric_tutorial.html" id="rAltmetric">rAltmetric</a></td>
+        <td>Programmatic interface to article-level metrics data from <a href="http://altmetric.com/">Altmetric.com</a></td>
+        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rAltmetric/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
         <td><a href="http://ropensci.github.com/rImpactStory/">rImpactStory</a></td>
         <td>Programmatic interface to <a href="http://impactstory.org/">ImpactStory</a> <span class="label label-warning">Package deprecated.</span></td>
         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rImpactStory/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-      <tr>
-        <td><a href="../tutorials/rAltmetric_tutorial.html">rAltmetric</a></td>
-        <td>Programmatic interface to article-level metrics data from <a href="http://altmetric.com/">Altmetric.com</a></td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rAltmetric/"><span class="label label-inverse">github</span></a></td>
-
       </tr>
-      <tr>
-        <td><a href="https://github.com/ropensci/citeulike">Citeulike</a></td>
-        <td>R interface to <a href="http://www.citeulike.org/" title="CiteULike: Everyone's library">CiteULike</a>. <span class="label label-important">Not in active development.</span></td>
-        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/citeulike/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-      <tr>
-        <td><a href="../tutorials/alm_tutorial.html">alm</a></td>
-        <td>R wrapper to the almetrics API platform developed by PLoS <a href="http://alm.plos.org/"></a> API - other publishers have built on this and work out of the box: CrossRef, Copernicus Publishers, and the Public Knowledge Project (PKP)</td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/alm/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-
    </tbody>
   </table>
     </div>
   </div>
 
 </section>
-
-<!-- Miscellaneous Packages -->
-
-<section id="data-publication">
-  <div class="page-header">
-    <h2>Data Publication  <small>Packages that not only retrieve data but also allows for data submission.</small></h2>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-12 table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>Package</th>
-        <th>Description</th>
-        <th>Details</th>
-
-       </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a href="https://github.com/ropensci/rfigshare">rfigshare</a></td>
-        <td>Push data, figures, and text to, and search and retrieve data from, <a href="http://figshare.com/">Figshare</a> from R</td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rfigshare/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-      <tr>
-        <td><a href="https://github.com/ropensci/dvn">dvn</a></td>
-        <td>Programmatic interface to the DataVerse Network.</td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/dvn/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-        <tr>
-        <td><a href="https://github.com/ropensci/EML">EML</a></td>
-        <td>An R package for reading, writing, integrating and publishing data using the <a href="http://en.wikipedia.org/wiki/Ecological_Metadata_Language" title="Ecological Metadata Language - Wikipedia, the free encyclopedia">Ecological Metadata Language (EML)</a> format.</td>
-        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/EML/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-        <tr>
-        <td><a href="https://github.com/ropensci/RNexML">RNeXML</a></td>
-        <td>Semantically rich NeXML I/O in R - next generation XML for Phylogenetic data.</td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/rNeXML/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-        <tr>
-        <td><a href="https://github.com/DataONEorg/rdataone">dataone</a></td>
-        <td>Search across repositories, and read and write data and metadata from the <a href="http://www.dataone.org/">DataONE</a> federation of data repositories from R. Includes repositories such as the <a href="http://knb.ecoinformatics.org">KNB</a> and <a href="http://datadryad.org/">Dryad</a>.</td>
-        <td><span class="label label-success">cran</span> <a href="https://github.com/DataONEorg/rdataone/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-   </tbody>
-  </table>
-    </div>
-  </div>
-  </section>
 
 <!-- Reproducibility packages -->
 
@@ -517,29 +472,24 @@ title: "rOpenSci - Packages"
         <th>Package</th>
         <th>Description</th>
         <th>Details</th>
-
        </tr>
     </thead>
     <tbody>
       <tr>
-        <td><a href="https://github.com/ropensci/git2r">git2r</a></td>
-        <td>Git bindings from R</td>
-        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/git2r/"><span class="label label-inverse">github</span></a></td>
-      </tr>
-
-      <tr>
-        <td><a href="https://github.com/ropensci/testdat">testdat</a></td>
-        <td>A test suite to ensure that tabular data are correctly formatted.</td>
-        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/testdat/"><span class="label label-inverse">github</span></a></td>
-      </tr>
-
-      <tr>
-        <td><a href="https://github.com/ropensci/gistr">gistr</a></td>
+        <td><a href="https://github.com/ropensci/gistr" id="gistr">gistr</a></td>
         <td><code>gistr</code> is a light interface to GitHub's gists for R. </td>
         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/gistr/"><span class="label label-inverse">github</span></a></td>
       </tr>
-
-
+      <tr>
+        <td><a href="https://github.com/ropensci/git2r" id="git2r">git2r</a></td>
+        <td>Git bindings from R</td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/git2r/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/testdat" id="testdat">testdat</a></td>
+        <td>A test suite to ensure that tabular data are correctly formatted.</td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/testdat/"><span class="label label-inverse">github</span></a></td>
+      </tr>
    </tbody>
   </table>
     </div>
@@ -559,18 +509,16 @@ title: "rOpenSci - Packages"
         <th>Package</th>
         <th>Description</th>
         <th>Details</th>
-
        </tr>
     </thead>
     <tbody>
       <tr>
-        <td><a href="https://github.com/ropensci/elastic">elastic</a></td>
+        <td><a href="https://github.com/ropensci/elastic" id="elastic">elastic</a></td>
         <td>An R client for <a href="http://www.elasticsearch.org/">Elasticsearch</a> <span class="label label-info">In early development</span></td>
         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/elastic/"><span class="label label-inverse">github</span></a> </td>
       </tr>
-
       <tr>
-        <td><a href="../tutorials/solr_tutorial.html">solr</a></td>
+        <td><a href="../tutorials/solr_tutorial.html" id="solr">solr</a></td>
         <td>An R client for <a href="http://lucene.apache.org/solr/">Apache Solr</a></td>
         <td><span class="label label-success">cran</span> <a href="https://github.com/ropensci/solr/"><span class="label label-inverse">github</span></a> </td>
       </tr>
@@ -581,7 +529,7 @@ title: "rOpenSci - Packages"
 </section>
 
 
-<section id="data-viz">
+<section id="data_viz">
     <div class="page-header">
     <h2>Data Visualization  <small></small></h2>
   </div>
@@ -593,28 +541,24 @@ title: "rOpenSci - Packages"
         <th>Package</th>
         <th>Description</th>
         <th>Details</th>
-
        </tr>
     </thead>
     <tbody>
       <tr>
-        <td><a href="https://github.com/ropensci/plotly">plotly</a></td>
+        <td><a href="https://github.com/ropensci/plotly" id="plotly">plotly</a></td>
         <td>Programmatic interface to the Plot.ly API - construct plots with <code>ggplot2</code> and push to <a href="https://plot.ly" title="plotly | Analyze and visualize data, together">Plot.ly</a> for an interactive plot with a few lines of code</td>
         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/plotly/"><span class="label label-inverse">github</span></a> </td>
-        </tr>
-
-        <tr>
-        <td><a href="https://github.com/ropensci/rMaps">rMaps</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/rMaps" id="rMaps">rMaps</a></td>
         <td>Generate interactive Javascript maps from R, using <a href="https://www.mapbox.com/" title="Mapbox | Design and publish beautiful maps">Mapbox</a>, <a href="http://leafletjs.com/" title="Leaflet - a JavaScript library for mobile-friendly maps">Leaflet</a>, <a href="http://sztanko.github.io/crosslet/" title="Crosslet">CrossLet</a>, <a href="http://datamaps.github.io/" title="DataMaps">DataMaps</a>, and more - and share maps on the interwebs</td>
         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rmaps/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
-          <tr>
-        <td><a href="https://github.com/ropensci/togeojson">togeojson</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/togeojson" id="togeojson">togeojson</a></td>
         <td>A package to convert many data formats to <code>geoJSON</code> or Bostock's <code>topoJSON</code></td>
         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/togeojson/"><span class="label label-inverse">github</span></a></td>
-        </tr>
-
+      </tr>
    </tbody>
   </table>
   <br>
