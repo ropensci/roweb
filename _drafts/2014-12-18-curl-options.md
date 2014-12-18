@@ -1,8 +1,8 @@
 ---
 name: curl-options
 layout: post
-title: Curling - accessing web resources from R
-date: 2014-12-17
+title: Curling - exploring web request options
+date: 2014-12-18
 authors:
   - name: Scott Chamberlain
 tags:
