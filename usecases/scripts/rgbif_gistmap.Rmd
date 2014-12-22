@@ -17,8 +17,8 @@ install.packages("rgbif")
 ### Load packages
 
 ```{r message=FALSE, warning=FALSE}
-library(rgbif)
-library(plyr)
+library("rgbif")
+library("plyr")
 ```
 
 ### Define a species list, and search for GBIF keys using `gbif_lookup`
