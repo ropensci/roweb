@@ -1,11 +1,15 @@
 ---
 title: rnoaa tutorial
 layout: tutorial
-packge_version: 0.2.0
+packge_version: 0.3.3
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
-knitr::opts_chunk$set(fig.path="../assets/tutorial-images/rnoaa/", fig.width=6, fig.height=4)
+knitr::opts_chunk$set(
+  fig.path="../assets/tutorial-images/rnoaa/", 
+  fig.width=6, 
+  fig.height=4
+)
 ```
 
 <section id="installation">
@@ -142,81 +146,84 @@ But we can pass in each separately, which uses `facet_wrap` in `ggplot2` to plot
 ncdc_plot(out1, out2, breaks="45 days")
 ```
 
-### ERDDAP data
+## ERDDAP data
 
 
-#### Passing the datasetid without fields gives all columns back
+### Passing the datasetid without fields gives all columns back
 
 ```{r oneone}
-out <- erddap_data(datasetid='erdCalCOFIfshsiz')
-nrow(out)
+erddap_table('erdCalCOFIfshsiz')
 ```
 
-#### Pass time constraints
+### Pass time constraints
 
 ```{r twotwo}
-head(erddap_data(datasetid='erdCalCOFIfshsiz', 'time>=2001-07-07', 'time<=2001-07-08')[,c(1:4)])
+erddap_table('erdCalCOFIfshsiz', 'time>=2001-07-07', 'time<=2001-07-08')
 ```
 
-#### Pass in fields (i.e., columns to retrieve) & time constraints
+### Pass in fields (i.e., columns to retrieve) & time constraints
 
 ```{r threethree}
-head(erddap_data(datasetid='erdCalCOFIfshsiz', fields=c('longitude','latitude','fish_size','itis_tsn'), 'time>=2001-07-07','time<=2001-07-10'))
+erddap_table('erdCalCOFIfshsiz', fields=c('longitude','latitude','fish_size','itis_tsn'), 'time>=2001-07-07','time<=2001-07-10')
 ```
 
 ```{r}
-head(erddap_data(datasetid='erdCinpKfmBT', fields=c('latitude','longitude',
+erddap_table('erdCinpKfmBT', fields=c('latitude','longitude',
    'Aplysia_californica_Mean_Density','Muricea_californica_Mean_Density'),
-   'time>=2007-06-24','time<=2007-07-01'))
+   'time>=2007-06-24','time<=2007-07-01')
 ```
 
-#### An example workflow
+### An example workflow
 
 Search for data
 
 ```{r}
-(out <- erddap_search(query='fish size'))
+(out <- erddap_search('size'))
 ```
 
-Using a datasetid, search for information on a datasetid
+Or, list datasets
 
 ```{r}
-id <- out$info$dataset_id[1]
-erddap_info(datasetid=id)$variables
+tdp <- erddap_datasets('table')
+```
+
+```{r}
+id <- as.character(tdp$Dataset.ID[8])
+erddap_info(id)$variables
 ```
 
 Get data from the dataset
 
 ```{r}
-head(erddap_data(datasetid = id, fields = c('latitude','longitude','scientific_name')))
+erddap_table(id, fields = c('latitude','longitude'))
 ```
 
 
-### Severe Weather Data Inventory (SWDI) data
+## Severe Weather Data Inventory (SWDI) data
 
-#### Search for nx3tvs data from 5 May 2006 to 6 May 2006
+### Search for nx3tvs data from 5 May 2006 to 6 May 2006
 
 ```{r}
 swdi(dataset='nx3tvs', startdate='20060505', enddate='20060506')
 ```
 
-#### Use an id
+### Use an id
 
 ```{r}
 out <- swdi(dataset='warn', startdate='20060506', enddate='20060507', id=533623)
 list(out$meta, head(out$data), head(out$shape))
 ```
 
-#### Get all 'plsr' within the bounding box (-91,30,-90,31)
+### Get all 'plsr' within the bounding box (-91,30,-90,31)
 
 ```{r}
 swdi(dataset='plsr', startdate='20060505', enddate='20060510', bbox=c(-91,30,-90,31))
 ```
 
 
-### Sea ice data
+## Sea ice data
 
-#### Map all years for April only for North pole
+### Map all years for April only for North pole
 
 ```{r seaice, message=FALSE, warning=FALSE, eval=FALSE}
 urls <- seaiceeurls(mo='Apr', pole='N')[1:10]
@@ -230,7 +237,58 @@ ggplot(df, aes(long, lat, group=group)) +
   facet_wrap(~ .id)
 ```
 
-![](../assets/tutorial-images/rnoaa/seaice.png)
+![seaice](../assets/tutorial-images/rnoaa/seaice.png)
+
+
+## IBTrACS storm data
+
+Get NOAA wind storm tabular data, metadata, or shp files from International Best Track Archive for Climate Stewardship (IBTrACS). See http://www.ncdc.noaa.gov/ibtracs/index.php?name=numbering for more.
+
+### Metadata
+
+There are two datasets stored in the package. By default `storm_meta()` gives metadata describing columns of the datasets returned.
+
+```{r}
+head( storm_meta() )
+```
+
+Or you can get back a dataset of storm names, including storm ids and their names.
+
+```{r}
+head( storm_meta("storm_names") )
+```
+
+### Tabular data
+
+You can get tabular data for basins, storms, or years, (or all data). `storm_data()` and the next function `storm_shp()` figure out what files to get, and gets them from an ftp server, and saves them to your machine. Do let us know if you have any problems with paths on your machine, and we'll fix 'em. The result from `storm_data()` is a `dplyr`-like data.frame with a easy summary that makes large datasets easy to view. 
+
+First, by basin (one of EP, NA, NI, SA, SI, SP, or WP)
+
+```{r eval=FALSE}
+storm_data(year=1941)
+#> <path>~/.rnoaa/storms/year/Year.1941.ibtracs_all.v03r06.csv
+#> 
+#> <NOAA Storm Data>
+#> Size: 1766 X 195
+#> 
+#>       serial_num season num basin sub_basin      name            iso_time nature latitude
+#> 1  1940215S18149   1941   1    SP        EA NOT NAMED 1940-08-01 12:00:00     NR     -999
+#> 2  1940215S18149   1941   1    SP        EA NOT NAMED 1940-08-01 18:00:00     NR     -999
+#> 3  1940215S18149   1941   1    SP        EA NOT NAMED 1940-08-02 00:00:00     NR     -999
+#> 4  1940215S18149   1941   1    SP        EA NOT NAMED 1940-08-02 06:00:00     NR     -999
+#> 5  1940215S18149   1941   1    SP        EA NOT NAMED 1940-08-02 12:00:00     NR     -999
+#> 6  1940215S18149   1941   1    SP        EA NOT NAMED 1940-08-02 18:00:00     NR     -999
+#> 7  1940215S18149   1941   1    SP        EA NOT NAMED 1940-08-03 00:00:00     NR     -999
+#> 8  1940215S18149   1941   1    SP        EA NOT NAMED 1940-08-03 06:00:00     NR     -999
+#> 9  1940215S18149   1941   1    SP        EA NOT NAMED 1940-08-03 12:00:00     NR     -999
+#> 10 1940215S18149   1941   1    SP        EA NOT NAMED 1940-08-03 18:00:00     NR     -999
+#> ..           ...    ... ...   ...       ...       ...                 ...    ...      ...
+#> Variables not shown: longitude (dbl), wind.wmo. (dbl), pres.wmo. (dbl), center (chr),
+#>      wind.wmo..percentile (dbl), pres.wmo..percentile (dbl), track_type (chr),
+#>      latitude_for_mapping (dbl), longitude_for_mapping (dbl), current.basin (chr), hurdat_atl_lat
+#>      (dbl), hurdat_atl_lon (dbl), hurdat_atl_grade (dbl), hurdat_atl_wind (dbl), hurdat_atl_pres
+#>      (dbl), td9636_lat (dbl), td9636_lon (dbl), td9636_grade (dbl), td9636_wind (dbl),
+```
 
 <section id="citing">
 
@@ -240,7 +298,7 @@ To cite `rnoaa` in publications use:
 
 <br>
 
-> Hart Edmund, Scott Chamberlain and Karthik Ram (2014). rnoaa: NOAA climate data from R. R package version 0.2.0. https://github.com/ropensci/rnoaa
+> Scott Chamberlain, Hart Edmund, and Karthik Ram (2014). rnoaa: NOAA climate data from R. R package version 0.3.3. https://github.com/ropensci/rnoaa
 
 <section id="license_bugs">
 
