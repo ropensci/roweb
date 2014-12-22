@@ -1,0 +1,31 @@
+```{r}
+library(ggplot2)
+library(plyr)
+library(reshape)
+library(data.table)
+
+rodat <- na.omit(read.csv("data/ropkgs_2014-12-01.csv")[,-1])
+rodat <- rodat %>%
+  tbl_df %>%
+  filter(!package %in% c('RMETAR','rtematres','ritis','rImpactStory'))
+
+rodat <- 
+  ldply(split(rodat, rodat$package), function(z){
+    tmp <- sort_df(z, "week")
+    tmp$cumsum <- cumsum(tmp$V1)
+    tmp
+  })[,-1]
+```
+
+```{r}
+ggplot(rodat, aes(x=week, y=cumsum, group=package)) + 
+  geom_line(size = 1) + 
+  theme_bw(base_size = 14) +
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        panel.border = element_rect(size = 2), 
+        axis.ticks.x = element_blank(), 
+        axis.text.x  = element_blank()) +
+  ylab("Cumulative Downloads") + 
+  xlab("October 2012 to Apr 2014")
+```

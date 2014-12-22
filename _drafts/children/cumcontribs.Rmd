@@ -1,0 +1,42 @@
+```{r}
+library("plyr")
+library("dplyr")
+library("ggplot2")
+library("reshape")
+library("scales")
+```
+
+```{r}
+fromdate <- as.Date("2013-05-01")
+todate <- as.Date("2014-10-30")
+```
+
+```{r}
+# cumulative contributors
+dat <- read.csv("data/github_commits_2014-12-01.csv")[,-1]
+dat$date <- as.Date(dat$date)
+non_core_dat <- tbl_df(dat) %>%
+  filter(!author %in% c("emhart","sckott","karthik","cboettig"))
+
+firstdates <- non_core_dat %>%
+  select(-pkg) %>%
+  group_by(author) %>%
+  arrange(date) %>%
+  filter(rank(date, ties.method="first")==1) %>%
+  ungroup() %>%
+  mutate(count = 1) %>%
+  arrange(date) %>%
+  mutate(cumsum = cumsum(count))
+
+ggplot(firstdates, aes(date, cumsum)) +
+  geom_line(size = 1) +
+  theme_bw(base_size = 12) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = "none",
+        axis.ticks.x = element_blank(),
+        panel.border = element_rect(size = 2)) +
+  annotate("rect", xmin=fromdate, xmax=todate, ymin=0, ymax=Inf, alpha=0.2, fill="blue") +
+  scale_x_date(labels = date_format("%Y/%m")) +
+  labs(x='October 2010 to December 2014', y='Cumulative New Contributors')
+```
