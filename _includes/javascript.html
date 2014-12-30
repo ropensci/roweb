@@ -12,6 +12,27 @@
             <script src="{{ site.url }}/assets/common-files/js/froogaloop.min.js"></script>
             <script src="{{ site.url }}/assets/common-files/js/startup-kit.js"></script>
 
+            <script src="{{ site.url }}/assets/common-files/js/zero/ZeroClipboard.js"></script>
+            <script src="{{ site.url }}/assets/common-files/js/zero/ZeroClipboard.swf"></script>
+
+            <script type="text/javascript">
+                var client = new ZeroClipboard( $("button#my-button") );
+                client.on( "ready", function( readyEvent ) {
+                  client.on( "aftercopy", function( event ) {
+                    // `this` === `client`
+                    // `event.target` === the element that was clicked
+                    event.target.style.display = "none";
+                    alert("Copied text to clipboard: " + event.data["text/plain"] );
+                  } );
+                } );
+            </script>
+
+            <script type="text/javascript">
+                $(function () {
+                    $("[rel='tooltip']").tooltip();
+                });
+            </script>
+
     <!-- Equations using MathJax -->
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
