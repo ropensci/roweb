@@ -11,6 +11,8 @@ tags:
 - community
 ---
 
+__UPDATE:__ Use the new discussion forum at http://discuss.ropensci.org/
+
 ## Community
 
 Community is at the heart of rOpenSci. We couldn't have accomplished most of our work without help from various [contributors and users](http://ropensci.org/community/#community).
