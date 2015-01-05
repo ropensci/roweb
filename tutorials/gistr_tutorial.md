@@ -9,8 +9,13 @@ packge_version: 0.1
 
 <section id="installation">
 
-The package is not on CRAN yet - perhaps some day in the future, we don't know. For now, get it from GitHub:
+Stable version from CRAN
 
+```r
+install.packages("gistr")
+```
+
+Development version from GitHub:
 
 ```r
 install.packages("devtools")
