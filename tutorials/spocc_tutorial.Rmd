@@ -1,7 +1,7 @@
 ---
 title: spocc tutorial
 layout: tutorial
-packge_version: 0.2.2
+packge_version: 0.2.4
 ---
 
 ```{r, eval=TRUE, echo=FALSE}

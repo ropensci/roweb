@@ -1,7 +1,7 @@
 ---
 title: spocc tutorial
 layout: tutorial
-packge_version: 0.2.2
+packge_version: 0.2.4
 ---
 
 
@@ -83,20 +83,20 @@ df$gbif$data[[1]][1:6,1:10]
 ```
 
 ```
-#>                 name longitude latitude                      issues prov
-#> 1 Accipiter striatus -71.72514 18.26982         cdround,cudc,gass84 gbif
-#> 2 Accipiter striatus -72.52547 43.13234         cdround,cudc,gass84 gbif
-#> 3 Accipiter striatus -99.84577 20.62069 cdround,cudc,gass84,mdatunl gbif
-#> 4 Accipiter striatus -97.00035 33.07049         cdround,cudc,gass84 gbif
-#> 5 Accipiter striatus -97.19930 32.86027         cdround,cudc,gass84 gbif
-#> 6 Accipiter striatus -97.65347 30.15791         cdround,cudc,gass84 gbif
+#>                 name  longitude latitude              issues prov
+#> 1 Accipiter striatus  -71.72514 18.26982 cdround,cudc,gass84 gbif
+#> 2 Accipiter striatus  -72.52547 43.13234 cdround,cudc,gass84 gbif
+#> 3 Accipiter striatus  -97.00035 33.07049 cdround,cudc,gass84 gbif
+#> 4 Accipiter striatus  -97.19930 32.86027 cdround,cudc,gass84 gbif
+#> 5 Accipiter striatus  -97.65347 30.15791 cdround,cudc,gass84 gbif
+#> 6 Accipiter striatus -122.43980 37.48967 cdround,cudc,gass84 gbif
 #>          key                           datasetKey
 #> 1  891035119 50c9509d-22c7-4a22-a47d-8c48425ef4a7
 #> 2  891035349 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 3 1038292911 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 4 1024205119 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 5  891038901 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 6  891040018 50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#> 3 1024205119 50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#> 4  891038901 50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#> 5  891040018 50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#> 6  891040169 50c9509d-22c7-4a22-a47d-8c48425ef4a7
 #>                       publishingOrgKey publishingCountry    protocol
 #> 1 28eb1a3f-1c15-4a95-931a-4af90ecb574d                US DWC_ARCHIVE
 #> 2 28eb1a3f-1c15-4a95-931a-4af90ecb574d                US DWC_ARCHIVE
@@ -148,20 +148,20 @@ df$gbif$data$Accipiter_striatus[1:6,1:10]
 ```
 
 ```
-#>                 name longitude latitude                      issues prov
-#> 1 Accipiter striatus -71.72514 18.26982         cdround,cudc,gass84 gbif
-#> 2 Accipiter striatus -72.52547 43.13234         cdround,cudc,gass84 gbif
-#> 3 Accipiter striatus -99.84577 20.62069 cdround,cudc,gass84,mdatunl gbif
-#> 4 Accipiter striatus -97.00035 33.07049         cdround,cudc,gass84 gbif
-#> 5 Accipiter striatus -97.19930 32.86027         cdround,cudc,gass84 gbif
-#> 6 Accipiter striatus -97.65347 30.15791         cdround,cudc,gass84 gbif
+#>                 name  longitude latitude              issues prov
+#> 1 Accipiter striatus  -71.72514 18.26982 cdround,cudc,gass84 gbif
+#> 2 Accipiter striatus  -72.52547 43.13234 cdround,cudc,gass84 gbif
+#> 3 Accipiter striatus  -97.00035 33.07049 cdround,cudc,gass84 gbif
+#> 4 Accipiter striatus  -97.19930 32.86027 cdround,cudc,gass84 gbif
+#> 5 Accipiter striatus  -97.65347 30.15791 cdround,cudc,gass84 gbif
+#> 6 Accipiter striatus -122.43980 37.48967 cdround,cudc,gass84 gbif
 #>          key                           datasetKey
 #> 1  891035119 50c9509d-22c7-4a22-a47d-8c48425ef4a7
 #> 2  891035349 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 3 1038292911 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 4 1024205119 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 5  891038901 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 6  891040018 50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#> 3 1024205119 50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#> 4  891038901 50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#> 5  891040018 50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#> 6  891040169 50c9509d-22c7-4a22-a47d-8c48425ef4a7
 #>                       publishingOrgKey publishingCountry    protocol
 #> 1 28eb1a3f-1c15-4a95-931a-4af90ecb574d                US DWC_ARCHIVE
 #> 2 28eb1a3f-1c15-4a95-931a-4af90ecb574d                US DWC_ARCHIVE
@@ -180,20 +180,20 @@ head(df$gbif$data$Accipiter_striatus)[1:6,1:10]
 ```
 
 ```
-#>                 name longitude latitude                      issues prov
-#> 1 Accipiter striatus -71.72514 18.26982         cdround,cudc,gass84 gbif
-#> 2 Accipiter striatus -72.52547 43.13234         cdround,cudc,gass84 gbif
-#> 3 Accipiter striatus -99.84577 20.62069 cdround,cudc,gass84,mdatunl gbif
-#> 4 Accipiter striatus -97.00035 33.07049         cdround,cudc,gass84 gbif
-#> 5 Accipiter striatus -97.19930 32.86027         cdround,cudc,gass84 gbif
-#> 6 Accipiter striatus -97.65347 30.15791         cdround,cudc,gass84 gbif
+#>                 name  longitude latitude              issues prov
+#> 1 Accipiter striatus  -71.72514 18.26982 cdround,cudc,gass84 gbif
+#> 2 Accipiter striatus  -72.52547 43.13234 cdround,cudc,gass84 gbif
+#> 3 Accipiter striatus  -97.00035 33.07049 cdround,cudc,gass84 gbif
+#> 4 Accipiter striatus  -97.19930 32.86027 cdround,cudc,gass84 gbif
+#> 5 Accipiter striatus  -97.65347 30.15791 cdround,cudc,gass84 gbif
+#> 6 Accipiter striatus -122.43980 37.48967 cdround,cudc,gass84 gbif
 #>          key                           datasetKey
 #> 1  891035119 50c9509d-22c7-4a22-a47d-8c48425ef4a7
 #> 2  891035349 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 3 1038292911 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 4 1024205119 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 5  891038901 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 6  891040018 50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#> 3 1024205119 50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#> 4  891038901 50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#> 5  891040018 50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#> 6  891040169 50c9509d-22c7-4a22-a47d-8c48425ef4a7
 #>                       publishingOrgKey publishingCountry    protocol
 #> 1 28eb1a3f-1c15-4a95-931a-4af90ecb574d                US DWC_ARCHIVE
 #> 2 28eb1a3f-1c15-4a95-931a-4af90ecb574d                US DWC_ARCHIVE
@@ -209,40 +209,40 @@ head(df$ecoengine$data$Accipiter_striatus)
 
 ```
 #>   longitude latitude    type
-#> 1 -120.5460 39.31858 Feature
-#> 2 -114.6225 35.04310 Feature
-#> 3 -115.4017 37.64413 Feature
-#> 4  -71.1495 42.47010 Feature
-#> 5 -106.3249 41.31006 Feature
-#> 6 -117.3132 34.51040 Feature
-#>                                                                   url
-#> 1 https://ecoengine.berkeley.edu/api/observations/MVZ%3ABird%3A24206/
-#> 2  https://ecoengine.berkeley.edu/api/observations/MVZ%3ABird%3A4380/
-#> 3 https://ecoengine.berkeley.edu/api/observations/MVZ%3ABird%3A65783/
-#> 4 https://ecoengine.berkeley.edu/api/observations/MVZ%3ABird%3A41296/
-#> 5 https://ecoengine.berkeley.edu/api/observations/MVZ%3ABird%3A77818/
-#> 6 https://ecoengine.berkeley.edu/api/observations/MVZ%3ABird%3A32223/
+#> 1 -114.7319 33.43263 Feature
+#> 2 -117.1825 34.05557 Feature
+#> 3 -116.0942 33.89977 Feature
+#> 4 -114.7200 33.43213 Feature
+#> 5 -114.7319 33.43263 Feature
+#> 6 -114.4021 34.46531 Feature
+#>                                                                    url
+#> 1  https://ecoengine.berkeley.edu/api/observations/MVZ%3ABird%3A27600/
+#> 2  https://ecoengine.berkeley.edu/api/observations/MVZ%3ABird%3A70432/
+#> 3  https://ecoengine.berkeley.edu/api/observations/MVZ%3ABird%3A94154/
+#> 4  https://ecoengine.berkeley.edu/api/observations/MVZ%3ABird%3A26439/
+#> 5  https://ecoengine.berkeley.edu/api/observations/MVZ%3ABird%3A27599/
+#> 6 https://ecoengine.berkeley.edu/api/observations/MVZ%3ABird%3A144638/
 #>   observation_type                     name       country state_province
 #> 1         specimen Accipiter striatus velox United States     California
-#> 2         specimen Accipiter striatus velox United States        Arizona
-#> 3         specimen Accipiter striatus velox United States         Nevada
-#> 4         specimen Accipiter striatus velox United States  Massachusetts
-#> 5         specimen Accipiter striatus velox United States        Wyoming
+#> 2         specimen Accipiter striatus velox United States     California
+#> 3         specimen Accipiter striatus velox United States     California
+#> 4         specimen Accipiter striatus velox United States     California
+#> 5         specimen Accipiter striatus velox United States     California
 #> 6         specimen Accipiter striatus velox United States     California
 #>   begin_date   end_date                                        source
-#> 1 1913-10-15 1913-10-15 https://ecoengine.berkeley.edu/api/sources/1/
-#> 2 1861-01-04 1861-01-04 https://ecoengine.berkeley.edu/api/sources/1/
-#> 3 1934-09-25 1934-09-25 https://ecoengine.berkeley.edu/api/sources/1/
-#> 4 1904-05-04 1904-05-04 https://ecoengine.berkeley.edu/api/sources/1/
-#> 5 1939-09-10 1939-09-10 https://ecoengine.berkeley.edu/api/sources/1/
-#> 6 1904-12-24 1904-12-24 https://ecoengine.berkeley.edu/api/sources/1/
-#>                                     remote_resource last_modified
-#> 1 http://arctos.database.museum/guid/MVZ:Bird:24206    2014-05-29
-#> 2  http://arctos.database.museum/guid/MVZ:Bird:4380    2014-05-29
-#> 3 http://arctos.database.museum/guid/MVZ:Bird:65783    2014-05-29
-#> 4 http://arctos.database.museum/guid/MVZ:Bird:41296    2014-05-29
-#> 5 http://arctos.database.museum/guid/MVZ:Bird:77818    2014-05-29
-#> 6 http://arctos.database.museum/guid/MVZ:Bird:32223    2014-05-29
+#> 1 1916-10-15 1916-10-15 https://ecoengine.berkeley.edu/api/sources/1/
+#> 2 1929-12-21 1929-12-21 https://ecoengine.berkeley.edu/api/sources/1/
+#> 3 1945-10-09 1945-10-09 https://ecoengine.berkeley.edu/api/sources/1/
+#> 4 1915-12-31 1915-12-31 https://ecoengine.berkeley.edu/api/sources/1/
+#> 5 1916-10-13 1916-10-13 https://ecoengine.berkeley.edu/api/sources/1/
+#> 6 1926-12-25 1926-12-25 https://ecoengine.berkeley.edu/api/sources/1/
+#>                                      remote_resource last_modified
+#> 1  http://arctos.database.museum/guid/MVZ:Bird:27600    2014-05-29
+#> 2  http://arctos.database.museum/guid/MVZ:Bird:70432    2014-05-29
+#> 3  http://arctos.database.museum/guid/MVZ:Bird:94154    2014-05-29
+#> 4  http://arctos.database.museum/guid/MVZ:Bird:26439    2014-05-29
+#> 5  http://arctos.database.museum/guid/MVZ:Bird:27599    2014-05-29
+#> 6 http://arctos.database.museum/guid/MVZ:Bird:144638    2014-05-29
 #>        prov
 #> 1 ecoengine
 #> 2 ecoengine
@@ -260,13 +260,13 @@ head(occ2df(df))
 ```
 
 ```
-#>                 name longitude latitude prov
-#> 1 Accipiter striatus -71.72514 18.26982 gbif
-#> 2 Accipiter striatus -72.52547 43.13234 gbif
-#> 3 Accipiter striatus -99.84577 20.62069 gbif
-#> 4 Accipiter striatus -97.00035 33.07049 gbif
-#> 5 Accipiter striatus -97.19930 32.86027 gbif
-#> 6 Accipiter striatus -97.65347 30.15791 gbif
+#>                 name  longitude latitude prov
+#> 1 Accipiter striatus  -71.72514 18.26982 gbif
+#> 2 Accipiter striatus  -72.52547 43.13234 gbif
+#> 3 Accipiter striatus  -97.00035 33.07049 gbif
+#> 4 Accipiter striatus  -97.19930 32.86027 gbif
+#> 5 Accipiter striatus  -97.65347 30.15791 gbif
+#> 6 Accipiter striatus -122.43980 37.48967 gbif
 ```
 
 
@@ -281,27 +281,27 @@ head(df$gbif$data$Pinus_contorta)[1:6,1:10]
 ```
 
 ```
-#>             name  longitude latitude               issues prov        key
-#> 1 Pinus contorta -122.76134 48.14143  cdround,cudc,gass84 gbif  891034130
-#> 2 Pinus contorta -120.03696 38.81988  cdround,cudc,gass84 gbif  891051664
-#> 3 Pinus contorta   10.56331 63.42737 cdround,elmms,gass84 gbif 1042048234
-#> 4 Pinus contorta -120.34922 39.34460  cdround,cudc,gass84 gbif  899951519
-#> 5 Pinus contorta   10.34419 63.40627 cdround,elmms,gass84 gbif 1042055418
-#> 6 Pinus contorta   10.47552 63.42876 cdround,elmms,gass84 gbif 1042047708
+#>             name  longitude latitude              issues prov        key
+#> 1 Pinus contorta   16.66390 56.63950  cudc,depunl,gass84 gbif 1051515518
+#> 2 Pinus contorta   11.78660 58.16500  cudc,depunl,gass84 gbif 1052933649
+#> 3 Pinus contorta -122.76134 48.14143 cdround,cudc,gass84 gbif  891034130
+#> 4 Pinus contorta    7.00799 62.90425      cdround,gass84 gbif 1049839040
+#> 5 Pinus contorta    6.99736 62.90644      cdround,gass84 gbif 1049839028
+#> 6 Pinus contorta    7.00741 62.90722      cdround,gass84 gbif 1049839566
 #>                             datasetKey
-#> 1 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 2 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 3 d29d79fd-2dc4-4ef5-89b8-cdf66994de0d
-#> 4 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 5 d29d79fd-2dc4-4ef5-89b8-cdf66994de0d
-#> 6 d29d79fd-2dc4-4ef5-89b8-cdf66994de0d
+#> 1 38b4c89f-584c-41bb-bd8f-cd1def33e92f
+#> 2 38b4c89f-584c-41bb-bd8f-cd1def33e92f
+#> 3 50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#> 4 b124e1e0-4755-430f-9eab-894f25a9b59c
+#> 5 b124e1e0-4755-430f-9eab-894f25a9b59c
+#> 6 b124e1e0-4755-430f-9eab-894f25a9b59c
 #>                       publishingOrgKey publishingCountry    protocol
-#> 1 28eb1a3f-1c15-4a95-931a-4af90ecb574d                US DWC_ARCHIVE
-#> 2 28eb1a3f-1c15-4a95-931a-4af90ecb574d                US DWC_ARCHIVE
-#> 3 f314b0b0-e3dc-11d9-8d81-b8a03c50a862                NO DWC_ARCHIVE
-#> 4 28eb1a3f-1c15-4a95-931a-4af90ecb574d                US DWC_ARCHIVE
-#> 5 f314b0b0-e3dc-11d9-8d81-b8a03c50a862                NO DWC_ARCHIVE
-#> 6 f314b0b0-e3dc-11d9-8d81-b8a03c50a862                NO DWC_ARCHIVE
+#> 1 b8323864-602a-4a7d-9127-bb903054e97d                SE DWC_ARCHIVE
+#> 2 b8323864-602a-4a7d-9127-bb903054e97d                SE DWC_ARCHIVE
+#> 3 28eb1a3f-1c15-4a95-931a-4af90ecb574d                US DWC_ARCHIVE
+#> 4 d3978a37-635a-4ae3-bb85-7b4d41bc0b88                NO DWC_ARCHIVE
+#> 5 d3978a37-635a-4ae3-bb85-7b4d41bc0b88                NO DWC_ARCHIVE
+#> 6 d3978a37-635a-4ae3-bb85-7b4d41bc0b88                NO DWC_ARCHIVE
 ```
 
 ```r
@@ -309,47 +309,47 @@ head(df$inat$data$Pinus_contorta)[1:6,1:10]
 ```
 
 ```
-#>                  name                  Datetime
-#> 1 Hypogymnia inactiva 2014-12-06 00:00:00 -0800
-#> 2      Pinus contorta 2014-12-07 12:07:42 -0800
-#> 3      Pinus contorta                          
-#> 4      Pinus contorta 2014-12-03 00:00:00 -0800
-#> 5      Pinus contorta 2014-11-28 12:56:49 -0800
-#> 6      Pinus contorta 2014-11-19 00:00:00 -0800
-#>                                                                                      Description
-#> 1 Growing on fallen branch off of Pinus contorta, mingled with other lichens (usnea, rag lichen)
-#> 2                                                                                               
-#> 3                                                                                               
-#> 4                                                                              Two Needle Bundle
-#> 5                                                                                               
-#> 6                                                                                               
-#>                                              Place.guess latitude
-#> 1                    The Gnomestead, 20th Ave Olympia WA 47.06267
-#> 2                                                        47.58946
-#> 3                                 Union Bay Natural Area       NA
-#> 4                               Ravenna park seattle, Wa 47.67246
-#> 5 Yosemite National Park, Yosemite National Park, CA, US 37.76523
-#> 6                     Union Bay Natural Area, Seattle WA 47.65627
-#>   longitude Tag.list    Common.name
-#> 1 -122.9352                        
-#> 2 -122.7307          Lodgepole Pine
-#> 3        NA          Lodgepole Pine
-#> 4 -122.3080          Lodgepole Pine
-#> 5 -119.6098          Lodgepole Pine
-#> 6 -122.2956          Lodgepole Pine
-#>                                               Url
-#> 1 http://www.inaturalist.org/observations/1122347
-#> 2 http://www.inaturalist.org/observations/1120729
-#> 3 http://www.inaturalist.org/observations/1116250
-#> 4 http://www.inaturalist.org/observations/1113543
-#> 5 http://www.inaturalist.org/observations/1101330
-#> 6 http://www.inaturalist.org/observations/1094943
+#>                       name                  Datetime
+#> 1 Pinus contorta murrayana 2013-09-01 00:00:00 -0700
+#> 2           Pinus contorta 2014-11-12 00:00:00 -0800
+#> 3           Pinus contorta 2015-01-06 00:00:00 -0800
+#> 4                    Pinus 2015-01-04 00:00:00 -0800
+#> 5           Pinus contorta 2015-01-02 00:00:00 -0800
+#> 6  Pinus contorta contorta 2015-01-03 13:05:03 -0800
+#>                                                     Description
+#> 1 Two needles in a bundle. First and second-year cones on tree.
+#> 2                            Abundant and coning at ~ 1.5m tall
+#> 3                                                              
+#> 4                             2 needles - possibly P. contorta.
+#> 5                                   Dominant tree in the forest
+#> 6                                                              
+#>                                 Place.guess  latitude longitude
+#> 1                    White River Campground  46.90153 -121.5883
+#> 2  Ohau Moraines Wetland Complex, Qualiburn -44.36059  169.8420
+#> 3                          South Lake Tahoe  38.93993 -119.9772
+#> 4                      Mt Owen NZ Peru Hill -41.58870  172.5216
+#> 5                 Yellowstone National Park  44.72325 -110.6941
+#> 6                                            57.05046 -135.2125
+#>                                                  Tag.list
+#> 1 Pinus contorta var. murrayana, Lodgepole Pine, Pinaceae
+#> 2                                                        
+#> 3                                                        
+#> 4                                                        
+#> 5                                                        
+#> 6                                                        
+#>             Common.name                                             Url
+#> 1 Sierra lodgepole pine http://www.inaturalist.org/observations/1187881
+#> 2        Lodgepole Pine http://www.inaturalist.org/observations/1177041
+#> 3        Lodgepole Pine http://www.inaturalist.org/observations/1166595
+#> 4                 Pines http://www.inaturalist.org/observations/1164971
+#> 5        Lodgepole Pine http://www.inaturalist.org/observations/1163493
+#> 6            shore pine http://www.inaturalist.org/observations/1159375
 #>                                                            Image.url
-#> 1 http://static.inaturalist.org/photos/1410523/medium.JPG?1418109817
-#> 2                                                                   
-#> 3 http://static.inaturalist.org/photos/1402633/medium.jpg?1417906794
-#> 4 http://static.inaturalist.org/photos/1399482/medium.JPG?1417815274
-#> 5 http://static.inaturalist.org/photos/1384391/medium.jpg?1417239528
+#> 1 http://static.inaturalist.org/photos/1500595/medium.jpg?1421881175
+#> 2 http://static.inaturalist.org/photos/1485394/medium.JPG?1421280082
+#> 3 http://static.inaturalist.org/photos/1470905/medium.jpg?1420703987
+#> 4 http://static.inaturalist.org/photos/1468654/medium.JPG?1420600802
+#> 5 http://static.inaturalist.org/photos/1466432/medium.jpg?1420514213
 #> 6
 ```
 
@@ -363,12 +363,12 @@ head(df$gbif$data$Pinus_contorta[,1:2])
 
 ```
 #>             name  longitude
-#> 1 Pinus contorta -122.76134
-#> 2 Pinus contorta -120.03696
-#> 3 Pinus contorta   10.56331
-#> 4 Pinus contorta -120.34922
-#> 5 Pinus contorta   10.34419
-#> 6 Pinus contorta   10.47552
+#> 1 Pinus contorta   16.66390
+#> 2 Pinus contorta   11.78660
+#> 3 Pinus contorta -122.76134
+#> 4 Pinus contorta    7.00799
+#> 5 Pinus contorta    6.99736
+#> 6 Pinus contorta    7.00741
 ```
 
 ```r
@@ -376,13 +376,13 @@ head(df$inat$data$Pinus_contorta[,1:2])
 ```
 
 ```
-#>                  name                  Datetime
-#> 1 Hypogymnia inactiva 2014-12-06 00:00:00 -0800
-#> 2 Hypogymnia inactiva 2014-12-07 12:07:42 -0800
-#> 3 Hypogymnia inactiva                          
-#> 4 Hypogymnia inactiva 2014-12-03 00:00:00 -0800
-#> 5 Hypogymnia inactiva 2014-11-28 12:56:49 -0800
-#> 6 Hypogymnia inactiva 2014-11-19 00:00:00 -0800
+#>    name                  Datetime
+#> 1 Pinus 2013-09-01 00:00:00 -0700
+#> 2 Pinus 2014-11-12 00:00:00 -0800
+#> 3 Pinus 2015-01-06 00:00:00 -0800
+#> 4 Pinus 2015-01-04 00:00:00 -0800
+#> 5 Pinus 2015-01-02 00:00:00 -0800
+#> 6 Pinus 2015-01-03 13:05:03 -0800
 ```
 
 ```r
@@ -392,22 +392,22 @@ head(df_comb); tail(df_comb)
 
 ```
 #>             name  longitude latitude prov
-#> 1 Pinus contorta -122.76134 48.14143 gbif
-#> 2 Pinus contorta -120.03696 38.81988 gbif
-#> 3 Pinus contorta   10.56331 63.42737 gbif
-#> 4 Pinus contorta -120.34922 39.34460 gbif
-#> 5 Pinus contorta   10.34419 63.40627 gbif
-#> 6 Pinus contorta   10.47552 63.42876 gbif
+#> 1 Pinus contorta   16.66390 56.63950 gbif
+#> 2 Pinus contorta   11.78660 58.16500 gbif
+#> 3 Pinus contorta -122.76134 48.14143 gbif
+#> 4 Pinus contorta    7.00799 62.90425 gbif
+#> 5 Pinus contorta    6.99736 62.90644 gbif
+#> 6 Pinus contorta    7.00741 62.90722 gbif
 ```
 
 ```
-#>                    name longitude latitude prov
-#> 95  Hypogymnia inactiva        NA       NA inat
-#> 96  Hypogymnia inactiva        NA       NA inat
-#> 97  Hypogymnia inactiva        NA       NA inat
-#> 98  Hypogymnia inactiva        NA       NA inat
-#> 99  Hypogymnia inactiva -118.8853 37.55475 inat
-#> 100 Hypogymnia inactiva -119.4130 37.84096 inat
+#>      name longitude latitude prov
+#> 95  Pinus -105.5724 40.33658 inat
+#> 96  Pinus -120.3218 39.31776 inat
+#> 97  Pinus -120.3219 39.31777 inat
+#> 98  Pinus -120.3219 39.31778 inat
+#> 99  Pinus -120.3220 39.31781 inat
+#> 100 Pinus -120.3216 39.31756 inat
 ```
 
 ### Visualization routines
