@@ -1613,6 +1613,51 @@ color: #1ABC9C;
     font-size: 30px;
   }
 }
+
+/**
+ * Content 12 stylesheet
+ * */
+.content-unconf {
+  position: relative;
+}
+.content-unconf .wide {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+}
+.content-unconf .btn-wide {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: normal;
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color:#ecf0f1;
+  /*background: #2980b9;*/
+  background: #4ea1d8;
+  font-weight: 300;
+  -webkit-transition: 0.25s color, 0.25s background-color;
+  -moz-transition: 0.25s color, 0.25s background-color;
+  -o-transition: 0.25s color, 0.25s background-color;
+  transition: 0.25s color, 0.25s background-color;
+}
+.content-unconf .btn-wide:hover,
+.content-unconf .btn-wide:focus,
+.content-unconf .btn-wide.active {
+  color: #ffffff;
+}
+.content-unconf .btn-wide:hover,
+.content-unconf .btn-wide:active {
+  background: #e74c3c;
+}
+@media (max-width: 767px) {
+  .content-unconf .btn-wide {
+    font-size: 28px;
+  }
+}
+
+
 /**
  * Footer 6 stylesheet
  * */
