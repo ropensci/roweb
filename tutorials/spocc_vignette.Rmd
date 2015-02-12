@@ -1,21 +1,20 @@
-<!--
-%\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{Introduction to the spocc package}
--->
+---
+title: spocc tutorial
+layout: tutorial
+packge_version: 0.2.4
+---
 
-```{r echo=FALSE, eval=FALSE}
+```{r, eval=TRUE, echo=FALSE}
 knitr::opts_chunk$set(
-  comment = "#>", 
-  warning = FALSE, 
-  message = FALSE,
-  cache = TRUE
+      fig.path="../assets/tutorial-images/spocc/",
+      fig.width=6,
+      fig.height=4,
+      comment = "#>",
+      warning = FALSE,
+      message = FALSE,
+      cache = FALSE
 )
 ```
-
-Species occurrence data (spocc), version 0.2.2
-==========
-
-### Introduction
 
 The rOpenSci projects aims to provide programmatic access to scientific data repositories on the web. A vast majority of the packages in our current suite retrieve some form of biodiversity or taxonomic data. Since several of these datasets have been georeferenced, it provides numerous opportunities for visualizing species distributions, building species distribution maps, and for using it analyses such as species distribution models. In an effort to streamline access to these data, we have developed a package called Spocc, which provides a unified API to all the biodiversity sources that we provide. The obvious advantage is that a user can interact with a common API and not worry about the nuances in syntax that differ between packages. As more data sources come online, users can access even more data without significant changes to their code. However, it is important to note that spocc will never replicate the full functionality that exists within specific packages. Therefore users with a strong interest in one of the specific data sources listed below would benefit from familiarising themselves with the inner working of the appropriate packages.
 
@@ -29,11 +28,8 @@ The rOpenSci projects aims to provide programmatic access to scientific data rep
 2. [Berkeley Ecoengine](http://ecoengine.berkeley.edu/) (`ecoengine`)
 The ecoengine is an open API built by the [Berkeley Initiative for Global Change Biology](http://globalchange.berkeley.edu/). The repository provides access to over 3 million specimens from various Berkeley natural history museums. These data span more than a century and provide access to georeferenced specimens, species checklists, photographs, vegetation surveys and resurveys and a variety of measurements from environmental sensors located at reserves across University of California's natural reserve system.
 
-3. __iNaturalist__ (`rinat`)
+3. [iNaturalist](http://www.inaturalist.org/) (`rinat`)
 iNaturalist provides access to crowd sourced citizen science data on species observations.
-
-4. [VertNet](http://vertnet.org/) (`rvertnet`)
-Similar to `rgbif`, ecoengine, and `rbison` (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology). __Note that we don't currenlty support VertNet data in this package, but we should soon__
 
 5. [Biodiversity Information Serving Our Nation](http://bison.usgs.ornl.gov/) (`rbison`)
 Built by the US Geological Survey's core science analytic team, BISON is a portal that provides access to species occurrence data from several participating institutions.
@@ -44,8 +40,30 @@ ebird is a database developed and maintained by the Cornell Lab of Ornithology a
 7. [AntWeb](http://antweb.org) (`AntWeb`)
 AntWeb is the world's largest online database of images, specimen records, and natural history information on ants. It is community driven and open to contribution from anyone with specimen records, natural history comments, or images.
 
-__Note:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package. See `?spocc_duplicates`, after installation, for more.
+__Note:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package.
 
+<section id="installation">
+
+## Installation
+
+Stable version from CRAN
+
+```{r eval=FALSE}
+install.packages("spocc")
+```
+
+Or dev version from GitHub
+
+```{r eval=FALSE}
+install.packages("devtools")
+install_github("ropensci/spocc")
+```
+
+</section>
+
+<section id="usage">
+
+## Usage
 
 ### Data retrieval
 
@@ -147,12 +165,11 @@ Here is an example of making a leaflet map:
 
 ```{r eval = FALSE}
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
-data <- occ2df(dat)
-mapleaflet(data = data, dest = ".")
+dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE), limit=50)
+mapleaflet(dat = dat, dest = ".")
 ```
 
-![](img/leaflet.png)
+![](../assets/tutorial-images/spocc/leaflet.png)
 
 _Geojson map as a Github gist_
 
@@ -160,12 +177,12 @@ You can also create interactive maps via the `mapgist` function. You have to hav
 
 ```{r eval = FALSE}
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
-dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
+dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE), limit=50)
 dat <- fixnames(dat)
 mapgist(dat, color = c("#976AAE", "#6B944D", "#BD5945"))
 ```
 
-![](img/gist.png)
+![](../assets/tutorial-images/spocc/gist.png)
 
 __Static maps__
 
@@ -175,11 +192,11 @@ Base plots, or the built in plotting facility in R accessed via `plot()`, is qui
 
 ```{r eval=FALSE}
 spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-out <- occ(query = spnames, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
+out <- occ(query = spnames, from = 'gbif', gbifopts = list(hasCoordinate = TRUE), limit=50)
 plot(out, cex = 1, pch = 10)
 ```
 
-![](img/baseplots.png)
+![](../assets/tutorial-images/spocc/baseplots.png)
 
 _ggplot2_
 
@@ -190,10 +207,31 @@ ecoengine_data <- occ(query = 'Lynx rufus californicus', from = 'ecoengine')
 mapggplot(ecoengine_data)
 ```
 
-![](img/ggplot2.png)
+![](../assets/tutorial-images/spocc/ggplot2.png)
 
 ### Upcoming features
 
 * As soon as we have an updated `rvertnet` package, we'll add the ability to query VertNet data from `spocc`.
 * We're helping on a new package `rMaps` to make interactive maps using various Javascript mapping libraries, which will give access to a variety of awesome interactive maps. We will integrate `rMaps` once it's on CRAN.
 * We'll add a function to make interactive maps using RStudio's Shiny in a future version.
+
+</section>
+
+<section id="citing">
+
+## Citing
+
+To cite `spocc` in publications use:
+
+<br>
+
+> Scott Chamberlain, Karthik Ram and Ted Hart (2014). spocc: R interface to many species occurrence data sources. R package version 0.2.2. https://github.com/ropensci/spocc
+
+<section id="license_bugs">
+
+## License and bugs
+
+* License: [MIT](http://opensource.org/licenses/MIT)
+* Report bugs at [our Github repo for spocc](https://github.com/ropensci/spocc/issues?state=open)
+
+[Back to top](#top)
