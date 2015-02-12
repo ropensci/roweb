@@ -426,8 +426,7 @@ Here is an example of making a leaflet map:
 ```r
 spp <- c('Danaus plexippus','Accipiter striatus','Pinus contorta')
 dat <- occ(query = spp, from = 'gbif', gbifopts = list(hasCoordinate = TRUE))
-data <- occ2df(dat)
-mapleaflet(data = data, dest = ".")
+mapleaflet(dat = dat, dest = ".")
 ```
 
 ![](../assets/tutorial-images/spocc/leaflet.png)
