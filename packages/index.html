@@ -13,7 +13,7 @@ title: "rOpenSci - Packages"
 
 <br>
 
-<a href="#data_publication">Data Publication</a> | <a href="#data_access">Data Access</a> | <a href="#literature">Literature</a> | <a href="#altmetrics">Altmetrics</a> | <a href="#reproducibility">Reproducibility</a> | <a href="#databases">Databases</a> | <a href="#data_viz">Data Vizualization</a>
+<a href="#data_publication">Data Publication</a> | <a href="#data_access">Data Access</a> | <a href="#literature">Literature</a> | <a href="#altmetrics">Altmetrics</a> | <a href="#reproducibility">Reproducibility</a> | <a href="#databases">Databases</a> | <a href="#data_viz">Data Vizualization</a> | <a href="#geospatial">Geospatial</a>
 
 <!-- Data Publication Packages -->
 
@@ -241,6 +241,11 @@ title: "rOpenSci - Packages"
         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rglobi/"><span class="label label-inverse">github</span></a></td>
       </tr>
       <tr>
+        <td><a href="https://github.com/ropensci/rif" id="rif">rif</a></td>
+        <td>R client for <a href="http://neuinfo.org/">Neuroscience Information Network</a> <span class="label label-info"> In early development</span></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rif"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
        <td><a href="../tutorials/rinat_tutorial.html" id="rinat">rinat</a></td>
        <td>A programmatic interface to the API provided by <a href="http://www.inaturalist.org/">iNaturalist</a>.</td>
        <td><a href="http://cran.r-project.org/web/packages/rinat/"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rinat/"><span class="label label-inverse">github</span></a></td>
@@ -349,6 +354,11 @@ title: "rOpenSci - Packages"
         <td><a href="https://github.com/ropensci/bmc" id="bmc">bmc</a></td>
         <td> An R interface to <a href="http://datacite.org/">Biomed Central (BMC)</a> search API and full text XML. <span class="label label-info"> In early development</span></td>
         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/bmc/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/csl" id="csl">csl</a></td>
+        <td>Explore CSL styles and locales.</td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/csl/"><span class="label label-inverse">github</span></a></td>
       </tr>
       <tr>
         <td><a href="https://github.com/ropensci/elife" id="elife">elife</a></td>
@@ -503,7 +513,7 @@ title: "rOpenSci - Packages"
 
 <section id="databases">
     <div class="page-header">
-      <h2>Databases <small></small></h2>
+      <h2>Databases <small>Packages for interfacing with databases.</small></h2>
     </div>
   <div class="row">
     <div class="col-sm-12  table-responsive">
@@ -522,6 +532,11 @@ title: "rOpenSci - Packages"
         <td><a href="http://cran.r-project.org/web/packages/elastic"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/elastic/"><span class="label label-inverse">github</span></a> </td>
       </tr>
       <tr>
+        <td><a href="https://github.com/ropensci/etseed" id="etseed">etseed</a></td>
+        <td>R client for <a href="https://github.com/coreos/etcd">etcd</a>, a key-value store from the folks at CoreOS</td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/etseed/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
         <td><a href="../tutorials/solr_tutorial.html" id="solr">solr</a></td>
         <td>An R client for <a href="http://lucene.apache.org/solr/">Apache Solr</a></td>
         <td><a href="http://cran.r-project.org/web/packages/solr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/solr/"><span class="label label-inverse">github</span></a> </td>
@@ -535,7 +550,7 @@ title: "rOpenSci - Packages"
 
 <section id="data_viz">
     <div class="page-header">
-    <h2>Data Visualization  <small></small></h2>
+    <h2>Data Visualization  <small>Packages primarily for data vizualization.</small></h2>
   </div>
   <div class="row">
     <div class="col-sm-12  table-responsive">
@@ -558,10 +573,36 @@ title: "rOpenSci - Packages"
         <td>Generate interactive Javascript maps from R, using <a href="https://www.mapbox.com/" title="Mapbox | Design and publish beautiful maps">Mapbox</a>, <a href="http://leafletjs.com/" title="Leaflet - a JavaScript library for mobile-friendly maps">Leaflet</a>, <a href="http://sztanko.github.io/crosslet/" title="Crosslet">CrossLet</a>, <a href="http://datamaps.github.io/" title="DataMaps">DataMaps</a>, and more - and share maps on the interwebs</td>
         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/rmaps/"><span class="label label-inverse">github</span></a></td>
       </tr>
+</tbody>
+</table>
+ </div>
+</div>
+</section>
+
+<section id="geospatial">
+  <div class="page-header">
+    <h2>Geospatial <small>Spatial data I/O and mapping.</small></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-12  table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+       </tr>
+    </thead>
+    <tbody>
       <tr>
         <td><a href="https://github.com/ropensci/geojsonio" id="geojsonio">geojsonio</a></td>
         <td>A package to convert many data formats to <code>geoJSON</code> or Bostock's <code>topoJSON</code></td>
         <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/geojsonio/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropensci/wellknown" id="wellknown">wellknown</a></td>
+        <td>Convert WKT to GeoJSON and vice versa. Inspired by Python's <a href="https://github.com/geomet/geomet">geomet</a>.</td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/wellknown/"><span class="label label-inverse">github</span></a> </td>
       </tr>
    </tbody>
   </table>
