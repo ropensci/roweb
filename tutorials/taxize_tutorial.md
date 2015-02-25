@@ -81,7 +81,7 @@ tnrs(query = mynames, source = "iPlant_TNRS")[ , -c(5:7)]
 
 It turns out there are a few corrections: e.g., *Madia sateva* should be *Madia sativa*, and *Rosa california* should be *Rosa californica*. Note that this search worked because fuzzy matching was employed to retrieve names that were close, but not exact matches. Fuzzy matching is only available for plants in the TNRS service, so we advise using the [Global Names Resolver][gnr] if you need to resolve animal names.
 
-taxize takes the approach that the user should be able to make decisions about what resource to trust, rather than making the decision. Both the EOL GNR and the TNRS services provide data from a variety of data sources. The user may trust a specific data source, thus may want to use the names from that data source. In the future, we may provide the ability for taxize to suggest the best match from a variety of sources.
+taxize takes the approach that the user should be able to make decisions about what resource to trust, rather than making the decision. Both the GNR and the TNRS services provide data from a variety of data sources. The user may trust a specific data source, thus may want to use the names from that data source. In the future, we may provide the ability for taxize to suggest the best match from a variety of sources.
 
 Another common use case is when there are many synonyms for a species. In this example, we have three synonyms of the currently accepted name for a species.
 
