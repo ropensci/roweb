@@ -44,7 +44,7 @@ library("taxize")
 
 ## Resolve taxonomic name
 
-This is a common task in biology. We often have a list of species names and we want to know a) if we have the most up to date names, b) if our names are spelled correctly, and c) the scientific name for a common name. One way to resolve names is via the Global Names Resolver (GNR) service provided by the [Encyclopedia of Life][eol]. Here, we are searching for two misspelled names:
+This is a common task in biology. We often have a list of species names and we want to know a) if we have the most up to date names, b) if our names are spelled correctly, and c) the scientific name for a common name. One way to resolve names is via the [Global Names Resolver (GNR) service][gnr]. Here, we are searching for two misspelled names:
 
 ```{r resolvenames, eval=TRUE, cache=FALSE}
 temp <- gnr_resolve(names = c("Helianthos annus", "Homo saapiens"))
@@ -59,7 +59,7 @@ mynames <- c("Helianthus annuus", "Pinus contort", "Poa anua", "Abis magnifica",
 tnrs(query = mynames, source = "iPlant_TNRS")[ , -c(5:7)]
 ```
 
-It turns out there are a few corrections: e.g., *Madia sateva* should be *Madia sativa*, and *Rosa california* should be *Rosa californica*. Note that this search worked because fuzzy matching was employed to retrieve names that were close, but not exact matches. Fuzzy matching is only available for plants in the TNRS service, so we advise using EOL's Global Names Resolver if you need to resolve animal names.
+It turns out there are a few corrections: e.g., *Madia sateva* should be *Madia sativa*, and *Rosa california* should be *Rosa californica*. Note that this search worked because fuzzy matching was employed to retrieve names that were close, but not exact matches. Fuzzy matching is only available for plants in the TNRS service, so we advise using the [Global Names Resolver][gnr] if you need to resolve animal names.
 
 taxize takes the approach that the user should be able to make decisions about what resource to trust, rather than making the decision. Both the EOL GNR and the TNRS services provide data from a variety of data sources. The user may trust a specific data source, thus may want to use the names from that data source. In the future, we may provide the ability for taxize to suggest the best match from a variety of sources.
 
@@ -252,6 +252,7 @@ To cite `taxize` in publications use:
 [Back to top](#top)
 
 [eol]: http://eol.org/
+[gnr]: http://resolver.globalnames.org/
 [taxosaurus]: http://api.phylotastic.org/tnrs
 [ncbi]: http://www.ncbi.nlm.nih.gov/
 [itis]: http://www.itis.gov/
