@@ -1,9 +1,8 @@
 ---
 title: rinat tutorial
 layout: tutorial
-packge_version: 0.1.1
+packge_version: 0.1.4
 ---
-
 
 
 
@@ -13,25 +12,27 @@ packge_version: 0.1.1
 
 ## Installation
 
-Install the development version using `install_github` within Hadley's [devtools](https://github.com/hadley/devtools) package.
+Stable version from CRAN
+
+
+```r
+install.packages("rinat")
+```
+
+Or development version from CRAN
 
 
 ```r
 install.packages("devtools")
-require(devtools)
-install_github("rinat", "ropensci")
-library(rinat)
+devtools::install_github("rinat", "ropensci")
 ```
-
-
 
 Load the package
 
 
 ```r
-library(rinat)
+library("rinat")
 ```
-
 
 <section id="usage">
 
@@ -49,32 +50,28 @@ You can search for observations either by common or latin name.  It will search 
 
 ```r
 butterflies <- get_inat_obs(query = "Monarch Butterfly")
-head(butterflies[, c(4:6)])
+head(butterflies[,c(4:6)])
 ```
 
 
 
 
-
-
+```r
+library("ggplot2")
+```
 
 
 Another use for a fuzzy search is searching for a common name or habitat, e.g. searching for all observations that might occur in a vernal pool.  We can then see all the species names found.
 
 ```r
 vp_obs <- get_inat_obs(query = "vernal pool")
-head(vp_obs$Species.guess)
+head(vp_obs$species_guess)
 ```
 
 ```
-## [1] "Juncus bufonius"                   
-## [2] "Coyote-thistle"                    
-## [3] "Navarretia leucocephala pauciflora"
-## [4] "needleleaf navarretia"             
-## [5] "Wood frog"                         
-## [6] "Burning bush"
+#> [1] "Lasthenia glaberrima" "Mitrula elegans"      "green frog"          
+#> [4] "Pickerel Frog"        "Pickerel Frog"        "green frog"
 ```
-
 
 
 _Taxon query_
@@ -84,10 +81,10 @@ To return only records for a specific species or taxonomic group, use the taxon 
 ```r
 ## Return just observations in the family Plecoptera
 stone_flies <- get_inat_obs(taxon = "Plecoptera")
+
 ## Return just Monarch Butterfly records
 just_butterflies <- get_inat_obs(taxon = "Danaus plexippus")
 ```
-
 
 
 _Bounding box search_
@@ -98,10 +95,9 @@ Search by area
 
 
 ```r
-bounds <- c(38.44047, -125, 40.86652, -121.837)
+bounds <- c(38.44047,-125,40.86652, -121.837)
 deer <- get_inat_obs(query = "Mule Deer", bounds = bounds)
 ```
-
 
 __Other functions__
 
@@ -119,37 +115,35 @@ vt_crows <- get_inat_obs_project("crows-in-vermont", type = "info", raw = FALSE)
 ```
 
 ```
-## 25  Records
-## 0
+#> 25  Records
+#> 0
 ```
-
 
 Now get all the observations for that project
 
 
 ```r
-vt_crows_obs <- get_inat_obs_project(vt_crows$id, type = "observations")
+vt_crows_obs <- get_inat_obs_project(vt_crows$id, type="observations")
 ```
 
 ```
-## 25  Records
-## 0-100
+#> 25  Records
+#> 0-100
 ```
 
 ```r
-head(vt_crows_obs[, c(1:4)])
+head(vt_crows_obs[,c(1:4)])
 ```
 
 ```
-##       Id Species.guess       Scientific.name   Common.name
-## 1 192132 American Crow Corvus brachyrhynchos American Crow
-## 2 192169 American Crow Corvus brachyrhynchos American Crow
-## 3 192191 American Crow Corvus brachyrhynchos American Crow
-## 4 183154 American Crow Corvus brachyrhynchos American Crow
-## 5 183364 American Crow Corvus brachyrhynchos American Crow
-## 6 183130 American Crow Corvus brachyrhynchos American Crow
+#>       Id Species.guess       Scientific.name   Common.name
+#> 1 192132 American Crow Corvus brachyrhynchos American Crow
+#> 2 192169 American Crow Corvus brachyrhynchos American Crow
+#> 3 192191 American Crow Corvus brachyrhynchos American Crow
+#> 4 183154 American Crow Corvus brachyrhynchos American Crow
+#> 5 183364 American Crow Corvus brachyrhynchos American Crow
+#> 6 183130 American Crow Corvus brachyrhynchos American Crow
 ```
-
 
 
 
@@ -160,29 +154,28 @@ Detailed information about a specific observation can be retrieved by observatio
 
 ```r
 m_obs <- get_inat_obs(query = "Monarch Butterfly")
-head(get_inat_obs_id(m_obs$Id[1]))
+head(get_inat_obs_id(m_obs$id[1]))
 ```
 
 ```
-## $captive
-## [1] FALSE
-## 
-## $comments_count
-## [1] 0
-## 
-## $community_taxon_id
-## NULL
-## 
-## $created_at
-## [1] "2014-05-19T21:00:06-05:00"
-## 
-## $delta
-## [1] TRUE
-## 
-## $description
-## [1] "Family: Nymphallidae Determined: Robert J. Nuelle, Jr."
+#> $id
+#> [1] 1265521
+#> 
+#> $taxon_id
+#> [1] 48662
+#> 
+#> $user_id
+#> [1] 5327
+#> 
+#> $observed_on
+#> [1] "2007-09-03"
+#> 
+#> $description
+#> [1] ""
+#> 
+#> $latitude
+#> [1] "38.332463"
 ```
-
 
 _Get all observations by user_
 
@@ -190,35 +183,26 @@ If you just want all the observations by a user you can download them with a use
 
 
 ```r
-m_obs <- get_inat_obs(query = "Monarch Butterfly")
-head(get_inat_obs_user(as.character(m_obs$User.login[1]), maxresults = 20))[, 
-    1:5]
+m_obs <- get_inat_obs(query="Monarch Butterfly")
+head(get_inat_obs_user(as.character(m_obs$user_login[1]),maxresults=20))[,1:5]
 ```
 
 ```
-##         Scientific.name                  Datetime
-## 1 Hethemia pistasciaria 2012-03-16 00:00:00 +0000
-## 2                       2013-08-28 00:00:00 +0000
-## 3  Eutrapela clemataria 2012-03-16 00:00:00 +0000
-## 4  Eutrapela clemataria 2013-08-28 00:00:00 +0000
-## 5 Eudeilinia herminiata 2013-08-28 00:00:00 +0000
-## 6  Euchlaena marginaria 2012-03-16 00:00:00 +0000
-##                                                           Description
-## 1 Family: Geometridae Hodges#: 7084 Determined: Robert J. Nuelle, Jr.
-## 2 Family: Geometridae Hodges#: 5274 Determined: Robert J. Nuelle, Jr.
-## 3 Family: Geometridae Hodges#: 6966 Determined: Robert J. Nuelle, Jr.
-## 4 Family: Geometridae Hodges#: 6966 Determined: Robert J. Nuelle, Jr.
-## 5 Family: Geometridae Hodges#: 6253 Determined: Robert J. Nuelle, Jr.
-## 6 Family: Geometridae Hodges#: 6734 Determined: Robert J. Nuelle, Jr.
-##               Place.guess Latitude
-## 1 Jarvis C.C. - Boardwalk    32.59
-## 2 Jarvis C.C. - Boardwalk    32.59
-## 3 Jarvis C.C. - Boardwalk    32.59
-## 4 Jarvis C.C. - Boardwalk    32.59
-## 5 Jarvis C.C. - Boardwalk    32.59
-## 6 Jarvis C.C. - Boardwalk    32.59
+#>        scientific_name                  datetime          description
+#> 1   Hericium erinaceus 2015-02-03 00:00:00 -0800                     
+#> 2            Pleurotus 2015-01-22 00:00:00 -0800                     
+#> 3 Sarcoscypha coccinea 2015-01-10 00:00:00 -0800                     
+#> 4              Ramaria 2015-01-10 00:00:00 -0800                     
+#> 5   Hygrocybe coccinea 2015-01-10 00:00:00 -0800                     
+#> 6              Amanita 2015-01-10 00:00:00 -0800 Maybe yellow-veiled.
+#>                     place_guess latitude
+#> 1        Jack London State Park 38.34700
+#> 2   Hood Mountain Regional Park 38.48759
+#> 3 Point Reyes National Seashore 38.05419
+#> 4         Salt Point State Park 38.58397
+#> 5         Salt Point State Park 38.58397
+#> 6         Salt Point State Park 38.58397
 ```
-
 
 _Stats by taxa_
 
@@ -232,78 +216,77 @@ By date
 ```
 
 ```
-## $total
-## [1] 49
-## 
-## $species_counts
-##   count taxon.id             taxon.name taxon.rank taxon.rank_level
-## 1     1    58564        Boloria bellona    species               10
-## 2     1    81746   Necrophila americana    species               10
-## 3     1    17009          Sayornis saya    species               10
-## 4     1    24422 Ptychohyla spinipollex    species               10
-## 5     1    11935    Tachycineta bicolor    species               10
-##   taxon.default_name.created_at taxon.default_name.id
-## 1     2010-04-01T14:12:20-05:00                 92809
-## 2     2011-10-22T06:37:44-05:00                211685
-## 3     2008-03-12T22:33:21-05:00                 20375
-## 4     2008-03-17T19:43:27-05:00                 29116
-## 5     2008-03-12T22:10:45-05:00                 14831
-##   taxon.default_name.is_valid taxon.default_name.lexicon
-## 1                        TRUE                    English
-## 2                        TRUE                    English
-## 3                        TRUE                    English
-## 4                        TRUE           Scientific Names
-## 5                        TRUE                    English
-##   taxon.default_name.name taxon.default_name.taxon_id
-## 1       meadow fritillary                       58564
-## 2 American Carrion Beetle                       81746
-## 3            Say's Phoebe                       17009
-## 4  Ptychohyla spinipollex                       24422
-## 5            Tree Swallow                       11935
-##   taxon.default_name.updated_at
-## 1     2010-04-01T14:12:20-05:00
-## 2     2011-10-22T06:37:44-05:00
-## 3     2008-03-12T22:33:21-05:00
-## 4     2008-03-17T19:43:27-05:00
-## 5     2008-03-12T22:10:45-05:00
-##                                                  taxon.image_url
-## 1 http://farm4.staticflickr.com/3137/4563715160_60ea310ff4_s.jpg
-## 2 http://farm5.staticflickr.com/4013/4658689710_1a534b47ef_s.jpg
-## 3 http://farm4.staticflickr.com/3382/3333991507_7fa8dfa600_s.jpg
-## 4 http://farm5.staticflickr.com/4093/4769499547_523a426857_s.jpg
-## 5   http://farm1.staticflickr.com/177/435466650_1ea6cb197e_s.jpg
-##   taxon.iconic_taxon_name taxon.conservation_status_name
-## 1                 Insecta                           <NA>
-## 2                 Insecta                           <NA>
-## 3                    Aves                  least_concern
-## 4                Amphibia                     endangered
-## 5                    Aves                  least_concern
-## 
-## $rank_counts
-## $rank_counts$subspecies
-## [1] 1
-## 
-## $rank_counts$variety
-## [1] 1
-## 
-## $rank_counts$genus
-## [1] 3
-## 
-## $rank_counts$species
-## [1] 44
+#> $total
+#> [1] 65
+#> 
+#> $species_counts
+#>   count taxon.id           taxon.name taxon.rank taxon.rank_level
+#> 1     2    17008      Sayornis phoebe    species               10
+#> 2     1    11935  Tachycineta bicolor    species               10
+#> 3     1    51752     Brodiaea elegans    species               10
+#> 4     1    52851     Arnica discoidea    species               10
+#> 5     1    81746 Necrophila americana    species               10
+#>   taxon.default_name.taxon_id taxon.default_name.lexicon
+#> 1                       17008                    English
+#> 2                       11935                    English
+#> 3                       51752                    English
+#> 4                       52851                    English
+#> 5                       81746                    English
+#>   taxon.default_name.is_valid taxon.default_name.id
+#> 1                        TRUE                 20369
+#> 2                        TRUE                 14831
+#> 3                        TRUE                 82256
+#> 4                        TRUE                148530
+#> 5                        TRUE                211685
+#>   taxon.default_name.position taxon.default_name.name
+#> 1                           0          Eastern Phoebe
+#> 2                           0            Tree Swallow
+#> 3                           0        harvest brodiaea
+#> 4                           0          rayless arnica
+#> 5                           0 American Carrion Beetle
+#>   taxon.default_name.created_at taxon.default_name.updated_at
+#> 1 2008-03-12T20:33:20.000-07:00 2008-03-12T20:33:20.000-07:00
+#> 2 2008-03-12T20:10:45.000-07:00 2008-03-12T20:10:45.000-07:00
+#> 3 2009-06-08T00:00:11.000-07:00 2009-06-08T00:00:11.000-07:00
+#> 4 2011-05-17T20:21:12.000-07:00 2011-05-17T20:21:12.000-07:00
+#> 5 2011-10-22T04:37:44.842-07:00 2011-10-22T04:37:44.842-07:00
+#>                                                  taxon.image_url
+#> 1 http://farm6.staticflickr.com/5009/5346970195_d0eac9966b_s.jpg
+#> 2   http://farm1.staticflickr.com/177/435466650_1ea6cb197e_s.jpg
+#> 3 http://farm4.staticflickr.com/3269/2709963753_b800de8900_s.jpg
+#> 4         http://static.inaturalist.org/photos/122558/square.jpg
+#> 5 http://farm5.staticflickr.com/4013/4658689710_1a534b47ef_s.jpg
+#>   taxon.iconic_taxon_name taxon.conservation_status_name
+#> 1                    Aves                  least_concern
+#> 2                    Aves                  least_concern
+#> 3                 Plantae                           <NA>
+#> 4                 Plantae                           <NA>
+#> 5                 Insecta                           <NA>
+#> 
+#> $rank_counts
+#> $rank_counts$subspecies
+#> [1] 2
+#> 
+#> $rank_counts$variety
+#> [1] 1
+#> 
+#> $rank_counts$genus
+#> [1] 4
+#> 
+#> $rank_counts$species
+#> [1] 58
 ```
-
 
 By place_ID
 
 
 ```r
-vt_crows <- get_inat_obs_project("crows-in-vermont", type = "info", raw = FALSE)
+vt_crows <- get_inat_obs_project("crows-in-vermont", type="info", raw = FALSE)
 ```
 
 ```
-## 25  Records
-## 0
+#> 25  Records
+#> 0
 ```
 
 ```r
@@ -312,9 +295,8 @@ place_counts$total
 ```
 
 ```
-## [1] 3862
+#> [1] 4730
 ```
-
 
 _Stats by user_
 
@@ -325,94 +307,117 @@ By date
 
 ```r
 counts <- get_inat_user_stats(date = "2010-06-14")
-counts$most_observations$user[, c(1:3)]
+counts$most_observations$user[,c(1:3)]
 ```
 
 ```
-##       id                     login                 name
-## 1   9706                greglasley          Greg Lasley
-## 2  10285                   finatic            BJ Stacey
-## 3    357                 annetanne                     
-## 4   3403                    davidr              David R
-## 5  10946                 cgcbosque                 <NA>
-## 6  18056                  plantman                 <NA>
-## 7    873                  tapbirds            Scott Cox
-## 8    382                   tsoleau                     
-## 9   2619                  asnyder5                 <NA>
-## 10  1000                      muir            Matt Muir
-## 11  3926                 pmikejack                     
-## 12 31399                sacagewea2          Sue Wetmore
-## 13  9560        dianaterryhibbitts Diana-Terry Hibbitts
-## 14  4857           c_michael_hogan      c michael hogan
-## 15 11831                   halbyte                     
-## 16 13467            paulalongshore          Paula~Koala
-## 17  5239                  marcellc                     
-## 18   129 captain_fantastica_malone                     
-## 19 20727                 ciovarnat       Ignacio Vargas
-## 20 10612                     zieak       Ryan McFarland
-## 21 16823                  jnstuart      James N. Stuart
-## 22  2048                    josiah      Josiah Townsend
-## 23    10                       jam                     
-## 24 10299                summermule            L Pittman
-## 25 13167                   arleigh     Arleigh Birchler
+#>       id                    login
+#> 1   9706               greglasley
+#> 2    357                annetanne
+#> 3  10285                  finatic
+#> 4  10946                cgcbosque
+#> 5  64596 juancarlosgarciamorales1
+#> 6  18056                 plantman
+#> 7  38530              kevinhintsa
+#> 8    382                  tsoleau
+#> 9    873                 tapbirds
+#> 10  3403                   davidr
+#> 11 70352                wonder_al
+#> 12  2619                 asnyder5
+#> 13  1000                     muir
+#> 14 12158            erikamitchell
+#> 15 57533      banks_peninsula_tui
+#> 16 31399               sacagewea2
+#> 17  9560       dianaterryhibbitts
+#> 18 11831                  halbyte
+#> 19  5239                 marcellc
+#> 20 10612                    zieak
+#> 21 20727                ciovarnat
+#> 22 16823                 jnstuart
+#> 23   129               field_daze
+#> 24 38442             robertgeorge
+#> 25  2048                   josiah
+#> 26    10                      jam
+#> 27 48178                 asemerdj
+#> 28  3926                pmikejack
+#> 29  4857          c_michael_hogan
+#> 30 65504                scottking
+#> 31   206                lfelliott
+#> 32 13467           paulalongshore
+#> 33 10299               summermule
+#> 34 13167                  arleigh
+#> 35  2839                    hari2
+#>                                                                     user_icon_url
+#> 1    http://www.inaturalist.org/attachments/users/icons/9706-thumb.jpg?1412292583
+#> 2     http://www.inaturalist.org/attachments/users/icons/357-thumb.jpg?1362061338
+#> 3   http://www.inaturalist.org/attachments/users/icons/10285-thumb.jpg?1350000458
+#> 4                                                                            <NA>
+#> 5   http://www.inaturalist.org/attachments/users/icons/64596-thumb.jpg?1416786295
+#> 6                                                                            <NA>
+#> 7   http://www.inaturalist.org/attachments/users/icons/38530-thumb.jpg?1400990725
+#> 8                http://www.inaturalist.org/attachments/users/icons/382-thumb.jpg
+#> 9                http://www.inaturalist.org/attachments/users/icons/873-thumb.jpg
+#> 10   http://www.inaturalist.org/attachments/users/icons/3403-thumb.jpg?1394954695
+#> 11  http://www.inaturalist.org/attachments/users/icons/70352-thumb.jpg?1421399985
+#> 12                                                                           <NA>
+#> 13              http://www.inaturalist.org/attachments/users/icons/1000-thumb.jpg
+#> 14 http://www.inaturalist.org/attachments/users/icons/12158-thumb.jpeg?1357418870
+#> 15 http://www.inaturalist.org/attachments/users/icons/57533-thumb.jpeg?1413332307
+#> 16  http://www.inaturalist.org/attachments/users/icons/31399-thumb.jpg?1398521627
+#> 17  http://www.inaturalist.org/attachments/users/icons/9560-thumb.jpeg?1351261191
+#> 18                                                                           <NA>
+#> 19              http://www.inaturalist.org/attachments/users/icons/5239-thumb.jpg
+#> 20  http://www.inaturalist.org/attachments/users/icons/10612-thumb.jpg?1375105310
+#> 21  http://www.inaturalist.org/attachments/users/icons/20727-thumb.jpg?1398894069
+#> 22  http://www.inaturalist.org/attachments/users/icons/16823-thumb.jpg?1383090510
+#> 23               http://www.inaturalist.org/attachments/users/icons/129-thumb.jpg
+#> 24  http://www.inaturalist.org/attachments/users/icons/38442-thumb.jpg?1400160213
+#> 25              http://www.inaturalist.org/attachments/users/icons/2048-thumb.jpg
+#> 26                                                                           <NA>
+#> 27  http://www.inaturalist.org/attachments/users/icons/48178-thumb.jpg?1416364944
+#> 28              http://www.inaturalist.org/attachments/users/icons/3926-thumb.jpg
+#> 29              http://www.inaturalist.org/attachments/users/icons/4857-thumb.jpg
+#> 30  http://www.inaturalist.org/attachments/users/icons/65504-thumb.jpg?1417720839
+#> 31               http://www.inaturalist.org/attachments/users/icons/206-thumb.jpg
+#> 32 http://www.inaturalist.org/attachments/users/icons/13467-thumb.jpeg?1361747141
+#> 33  http://www.inaturalist.org/attachments/users/icons/10299-thumb.jpg?1350591832
+#> 34  http://www.inaturalist.org/attachments/users/icons/13167-thumb.jpg?1361106538
+#> 35   http://www.inaturalist.org/attachments/users/icons/2839-thumb.jpg?1398943785
 ```
-
 
 By place_ID
 
 
 ```r
-vt_crows <- get_inat_obs_project("crows-in-vermont", type = "info", raw = FALSE)
+vt_crows <- get_inat_obs_project("crows-in-vermont", type = "info",raw = FALSE)
 ```
 
 ```
-## 25  Records
-## 0
+#> 25  Records
+#> 0
 ```
 
 ```r
 place_counts <- get_inat_user_stats(place = vt_crows$place_id)
-head(place_counts$most_species$user[, c(1:3)])
+head(place_counts$most_species$user[,c(1:3)])
 ```
 
 ```
-##      id        login           name
-## 1 12610 susanelliott  Susan Elliott
-## 2 11792    kylejones     Kyle Jones
-## 3 12045     larry522 Larry Clarfeld
-## 4   317  kpmcfarland Kent McFarland
-## 5  2179      charlie   Charlie Hohn
-## 6  3847       rpayne      Ron Payne
+#>      id         login
+#> 1 12610  susanelliott
+#> 2 11792     kylejones
+#> 3 12158 erikamitchell
+#> 4 12045      larry522
+#> 5   317   kpmcfarland
+#> 6  2179       charlie
+#>                                                                    user_icon_url
+#> 1  http://www.inaturalist.org/attachments/users/icons/12610-thumb.jpg?1390441055
+#> 2  http://www.inaturalist.org/attachments/users/icons/11792-thumb.jpg?1394793142
+#> 3 http://www.inaturalist.org/attachments/users/icons/12158-thumb.jpeg?1357418870
+#> 4  http://www.inaturalist.org/attachments/users/icons/12045-thumb.jpg?1357252118
+#> 5    http://www.inaturalist.org/attachments/users/icons/317-thumb.jpg?1373935791
+#> 6   http://www.inaturalist.org/attachments/users/icons/2179-thumb.jpg?1416962625
 ```
-
-
-### Mapping
-
-Basic maps can be created as well to quickly visualize search results.  Maps can either be plotted automatically `plot = TRUE` or simply return a ggplot2 object with `plot = FALSE`.  This works well with single species data, but more complicated plots are best made from scratch.
-
-Map salamanders in the genuse Ambystoma
-
-
-```r
-m_obs <- get_inat_obs(taxon = "Ambystoma maculatum")
-salamander_map <- inat_map(m_obs, plot = FALSE)
-```
-
-
-Now we can modify the returned map
-
-
-```r
-salamander_map +
-  borders("state") +
-  theme_grey(base_size = 18)
-```
-
-```
-## Warning: Removed 3 rows containing missing values (geom_point).
-```
-
-<img src="../assets/tutorial-images/rinat/map2.png" title="plot of chunk map2" alt="plot of chunk map2" style="display: block; margin: auto;" />
 
 
 
@@ -424,7 +429,7 @@ To cite `rinat` in publications use:
 
 <br>
 
-> Vijay Barve and Edmund Hart (2014). rinat: Access iNaturalist data through APIs. R package version 0.1.1.
+> Vijay Barve and Edmund Hart (2014). rinat: Access iNaturalist data through APIs. R package version 0.1.4.
 
 <section id="license_bugs">
 

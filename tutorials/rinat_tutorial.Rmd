@@ -1,11 +1,16 @@
 ---
 title: rinat tutorial
 layout: tutorial
-packge_version: 0.1.1
+packge_version: 0.1.4
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
-opts_chunk$set(fig.path="../assets/tutorial-images/rinat/")
+knitr::opts_chunk$set(
+  fig.path="../assets/tutorial-images/rinat/",
+  comment = "#>", 
+  warning = FALSE, 
+  message = FALSE
+)
 ```
 
 `rinat` is an R wrapper for iNaturalist APIs for accessing the observations. Detailed documentation of the API is available on [iNaturlaist website](http://www.inaturalist.org/pages/api+reference) and is part of our larger species occurence searching package [SPOCC](http://github.com/ropensci/spocc)
@@ -14,21 +19,23 @@ opts_chunk$set(fig.path="../assets/tutorial-images/rinat/")
 
 ## Installation
 
-Install the development version using `install_github` within Hadley's [devtools](https://github.com/hadley/devtools) package.
+Stable version from CRAN
 
-```{r install, eval=FALSE}
-install.packages("devtools")
-require(devtools)
-
-install_github("rinat", "ropensci")
-library(rinat)
+```{r eval=FALSE}
+install.packages("rinat")
 ```
 
+Or development version from CRAN
+
+```{r eval=FALSE}
+install.packages("devtools")
+devtools::install_github("rinat", "ropensci")
+```
 
 Load the package
 
-```{r load}
-library(rinat)
+```{r}
+library("rinat")
 ```
 
 <section id="usage">
@@ -51,15 +58,15 @@ head(butterflies[,c(4:6)])
 
 
 
-```{r load_lib,message = FALSE, warning = FALSE, echo = FALSE}
-library(ggplot2)
+```{r message = FALSE}
+library("ggplot2")
 ```
 
 
 Another use for a fuzzy search is searching for a common name or habitat, e.g. searching for all observations that might occur in a vernal pool.  We can then see all the species names found.
 ```{r}
 vp_obs <- get_inat_obs(query = "vernal pool")
-head(vp_obs$Species.guess)
+head(vp_obs$species_guess)
 ```
 
 
@@ -115,7 +122,7 @@ Detailed information about a specific observation can be retrieved by observatio
 
 ```{r}
 m_obs <- get_inat_obs(query = "Monarch Butterfly")
-head(get_inat_obs_id(m_obs$Id[1]))
+head(get_inat_obs_id(m_obs$id[1]))
 ```
 
 _Get all observations by user_
@@ -124,7 +131,7 @@ If you just want all the observations by a user you can download them with a use
 
 ```{r}
 m_obs <- get_inat_obs(query="Monarch Butterfly")
-head(get_inat_obs_user(as.character(m_obs$User.login[1]),maxresults=20))[,1:5]
+head(get_inat_obs_user(as.character(m_obs$user_login[1]),maxresults=20))[,1:5]
 ```
 
 _Stats by taxa_
@@ -164,24 +171,6 @@ place_counts <- get_inat_user_stats(place = vt_crows$place_id)
 head(place_counts$most_species$user[,c(1:3)])
 ```
 
-### Mapping
-
-Basic maps can be created as well to quickly visualize search results.  Maps can either be plotted automatically `plot = TRUE` or simply return a ggplot2 object with `plot = FALSE`.  This works well with single species data, but more complicated plots are best made from scratch.
-
-Map salamanders in the genuse Ambystoma
-
-```{r map1}
-m_obs <- get_inat_obs(taxon = "Ambystoma maculatum")
-salamander_map <- inat_map(m_obs, plot = FALSE)
-```
-
-Now we can modify the returned map
-
-```{r map2, fig.align='center', fig.height = 5, fig.width = 7, tidy = FALSE}
-salamander_map +
-  borders("state") +
-  theme_grey(base_size = 18)
-```
 
 
 <section id="citing">
@@ -192,7 +181,7 @@ To cite `rinat` in publications use:
 
 <br>
 
-> Vijay Barve and Edmund Hart (2014). rinat: Access iNaturalist data through APIs. R package version 0.1.1.
+> Vijay Barve and Edmund Hart (2014). rinat: Access iNaturalist data through APIs. R package version 0.1.4.
 
 <section id="license_bugs">
 
