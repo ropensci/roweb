@@ -1,7 +1,7 @@
 ---
 title: rcrossref tutorial
 layout: tutorial
-packge_version: 0.2.0
+packge_version: 0.3.0
 ---
 
 ```{r, echo=FALSE}
@@ -17,8 +17,6 @@ knitr::opts_chunk$set(
 <section id="installation">
 
 ## Installation
-
-Install stable version from CRAN (as of 2014-11-28 this package isn't on CRAN yet, but should be in the next few days)
 
 ```{r eval=FALSE}
 install.packages("rcrossref")
@@ -38,15 +36,9 @@ library("rcrossref")
 
 ## Usage
 
-### Citation search
+## Citation search
 
-Look up a citation using [OpenURL](http://www.crossref.org/openurl/)
-
-```{r}
-cr_citation(doi="10.1371/journal.pone.0042793")
-```
-
-Or use CrossRef's [DOI Content Negotiation](http://www.crosscite.org/cn/) service, where you can citations back in various formats, including `apa`
+CrossRef's [DOI Content Negotiation](http://www.crosscite.org/cn/) service, where you can citations back in various formats, including `apa`
 
 ```{r}
 cr_cn(dois = "10.1371/journal.pone.0112608", format = "text", style = "apa")
@@ -70,17 +62,17 @@ cat(cr_cn(dois = "10.1126/science.169.3946.635", format = "bibtex"))
 cr_cn(dois = "10.6084/m9.figshare.97218", format = "bibentry")
 ```
 
-### Citation count
+## Citation count
 
-Citation count, using [OpenURL](http://www.crossref.org/openurl/)
+Citation count, using OpenURL
 
 ```{r}
 cr_citation_count(doi="10.1371/journal.pone.0042793")
 ```
 
-### Search Crossref metadata API
+## Search Crossref metadata API
 
-There are two functions that use an older Crossre API at [http://search.labs.crossref.org/dois](http://search.labs.crossref.org/dois): `cr_search()` and `cr_search_free()`. You can of course use them, but the newer Crossref API available through various functions (`cr_agency()`, `cr_fundref()`, `cr_journals()`, `cr_licenses()`, `cr_members()`, `cr_prefixes()`, and `cr_works()`) is more powerful and will recieve more support going forward. The following functions (of the newer set just mentioend) all use the [CrossRef API](https://github.com/CrossRef/rest-api-doc/blob/master/rest_api.md).
+There are two functions that use an older Crossre API: `cr_search()` and `cr_search_free()`. You can of course use them, but the newer Crossref API available through various functions (`cr_agency()`, `cr_fundref()`, `cr_journals()`, `cr_licenses()`, `cr_members()`, `cr_prefixes()`, and `cr_works()`) is more powerful and will recieve more support going forward. The following functions (of the newer set just mentioend) all use the [CrossRef API](https://github.com/CrossRef/rest-api-doc/blob/master/rest_api.md).
 
 ### Look up funder information
 
@@ -143,7 +135,7 @@ cr_r(2)
 Search by author
 
 ```{r}
-cr_search(query = c("renear", "palmer"), rows = 3, sort = "year")[,-6]
+cr_search(query = c("renear", "palmer"), rows = 3, sort = "year")[1:2,-6]
 ```
 
 Search by DOI
@@ -161,44 +153,6 @@ queries <- c("Piwowar sharing data PLOS one", "Priem Scientometrics 2.0 social w
 cr_search_free(queries)[,-4]
 ```
 
-## pmid2doi & doi2pmid
-
-DOIs to PMIDs
-
-```{r}
-doi2pmid("10.1016/0006-2944(75)90147-7")
-```
-
-You can pass in more than 1 DOI
-
-```{r}
-doi2pmid(c("10.1016/0006-2944(75)90147-7","10.1186/gb-2008-9-5-r89"))
-```
-
-Optionally simplify result to vector
-
-```{r}
-doi2pmid(c("10.1016/0006-2944(75)90147-7","10.1186/gb-2008-9-5-r89"), TRUE)
-```
-
-PMIDs to DOIs
-
-```{r}
-pmid2doi(18507872)
-```
-
-Pass in more than 1 PMID
-
-```{r}
-pmid2doi(c(1,2,3))
-```
-
-Optionally simplify
-
-```{r}
-pmid2doi(18507872, TRUE)
-```
-
 <section id="citing">
 
 ## Citing
@@ -207,8 +161,8 @@ To cite `rcrossref` in publications use:
 
 <br>
 
-> Carl Boettiger, Ted Hart, Scott Chamberlain and Karthik Ram (2014). rcrossref:
-  R Client for Various CrossRef APIs. R package version 0.2.0.
+> Scott Chamberlain, Carl Boettiger, Ted Hart, and Karthik Ram (2014). rcrossref:
+  R Client for Various CrossRef APIs. R package version 0.3.0
   https://github.com/ropensci/rcrossref
 
 <section id="license_bugs">
