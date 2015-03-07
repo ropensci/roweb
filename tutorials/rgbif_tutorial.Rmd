@@ -1,17 +1,17 @@
 ---
 title: rgbif tutorial
 layout: tutorial
-packge_version: 0.7.7
+packge_version: 0.7.9
 ---
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(
-	fig.path="../assets/tutorial-images/rgbif/", 
-	fig.width=6, 
+	fig.path="../assets/tutorial-images/rgbif/",
+	fig.width=6,
 	fig.height=4,
-	comment = "#>", 
+	comment = "#>",
 	collapse = TRUE,
-	warning = FALSE, 
+	warning = FALSE,
 	message = FALSE
 )
 ```
@@ -230,19 +230,20 @@ keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5)
 ```
 
+
 ********************
 
 ## Maps
 
 Static map using the ggplot2 package. Make a map of *Puma concolor* occurrences.
 
-```{r gbifmap1, comment=NA, warning=FALSE, message=FALSE, cache=FALSE}
+```{r gbifmap1}
 key <- name_backbone(name='Puma concolor')$speciesKey
 dat <- occ_search(taxonKey=key, return='data', limit=300)
 gbifmap(input=dat)
 ```
 
-[gbifapi]: http://data.gbif.org/tutorial/services
+[gbifapi]: http://www.gbif.org/developer/summary
 
 
 <section id="citing">
@@ -253,7 +254,7 @@ To cite `rgbif` in publications use:
 
 <br>
 
-> Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2014). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 0.7.7. https://github.com/ropensci/rgbif
+> Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2014). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 0.7.9 https://github.com/ropensci/rgbif
 
 <section id="license_bugs">
 
