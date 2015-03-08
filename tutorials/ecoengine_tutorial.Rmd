@@ -1,7 +1,7 @@
 ---
 title: Guide to using the ecoengine R package
 layout: tutorial
-packge_version: 1.3
+packge_version: 1.9
 ---
 
 
@@ -28,7 +28,7 @@ devtools::install_github("ropensci/ecoengine")
 </section>
 <section id="usage">
 
-```{r, about_ee_dont, eval = FALSE, tidy = TRUE}
+```{r, about_ee_dont, eval = FALSE}
 library(ecoengine)
 ee_about()
 ```
@@ -128,7 +128,7 @@ The database currently holds `r format(photos$results, nsmall = 0)` photos. Phot
 
 #### Searching photos by author
 
-```{r, photos_by_author, tidy = TRUE, width.cutoff = 60, background = '#F7F7F7'}
+```{r, photos_by_author, width.cutoff = 60, background = '#F7F7F7'}
 charles_results <- ee_photos(author = "Charles Webber", quiet = TRUE, progress = FALSE)
 charles_results
 # Let's examine a couple of rows of the data
@@ -204,10 +204,14 @@ head(ee_list_sensors())
 Let's download solar radiation for the Angelo reserve HQ (sensor_id = `1625`).
 
 ```{r, sensor_data}
+library(dplyr)
 # First we can grab the list of sensor ids
-sensor_ids <- ee_list_sensors()$record
+full_sensor_list %>% 
+    select(properties.station_name, properties.record) %>%
+    head
+
 # In this case we just need data for sensor with id 1625
-angelo_hq <- sensor_ids[1]
+angelo_hq <- full_sensor_list[1, ]$properties.record
 results <- ee_sensor_data(angelo_hq, page = 2, progress = FALSE)
 results
 ```
@@ -221,9 +225,10 @@ head(results$data)
 We can also aggregate sensor data for any of the above mentioned sensors. We do this using the `ee_sensor_agg()` function. The function requires a sensor id and how the data should be binned. You can specify hours, minutes, seconds, days, weeks, month, and years. If for example you need the data binned every `15` days, simply add `days = 15` to the call. Once every `10` days and `2` hours would be `ee_sensor_agg(sensor_id = 1625, days = 10, hours = 2)`
 
 ```{r, sensor_aggregations}
-stations <- ee_list_sensors()
+stations <- full_sensor_list %>% 
+            select(station_name = properties.station_name, record = properties.record)
 # This gives you a list to choose from
-sensor_df <- ee_sensor_agg(sensor_id = stations[1, c("record")], weeks = 2, progress = FALSE)
+sensor_df <- ee_sensor_agg(sensor_id = stations[1, ]$record, weeks = 2, progress = FALSE)
 sensor_df
 head(sensor_df$data)
 ```
