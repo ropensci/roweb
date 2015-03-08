@@ -7,7 +7,7 @@ packge_version: 1.9
 
 
 
-The Berkeley Ecoengine ([http://ecoengine.berkeley.edu](http://ecoengine.berkeley.edu)) provides an open API to a wealth of museum data contained in the [Berkeley natural history museums](https://bnhm.berkeley.edu/). This R package provides a programmatic interface to this rich repository of data allowing for the data to be easily analyzed and visualized or brought to bear in other contexts. This vignette provides a brief overview of the package's capabilities.
+The Berkeley Ecoengine ([http://ecoengine.berkeley.edu](http://ecoengine.berkeley.edu)) provides an open API to a wealth of museum data contained in the [Berkeley natural history museums](https://bnhm.berkeley.edu/). This R package provides a programmatic interface to this rich repository of data allowing for the data to be easily analyzed and visualized or brought to bear in other contexts. This vignette provides a brief overview of the packages capabilities.
 
 The API documentation is available at [http://ecoengine.berkeley.edu/developers/](http://ecoengine.berkeley.edu/developers/). As with most APIs it is possible to query all the available endpoints that are accessible through the API itself. Ecoengine has something similar.
 
@@ -21,6 +21,7 @@ install.packages("ecoengine")
 # or install the development version
 devtools::install_github("ropensci/ecoengine")
 ```
+
 </section>
 <section id="usage">
 
@@ -707,6 +708,7 @@ unique(source_list$name)
 ## 9                    CAS Herpetology
 ## 10                         CalPhotos
 ```
+
 </section>
 <section id="citing">
 
