@@ -243,7 +243,7 @@ npn %>% arrange(date) %>% mutate(count = cumsum(Number_Records)) %>% gp
 * Website: http://treebase.org/
 * R package: `treebase`
 
-TreeBASE is a database of phylogenetic trees, had a total of 1515 trees as of 2013, and has been growing at a good pace.
+TreeBASE is a database of phylogenetic trees, had a total of 1515 new trees added in 2013, and has been growing at a good pace. Note that these aren't numbers of total phylogenetic trees, but _new trees added each year_ - we couldn't get our hands on total number of trees by year. The current number of total trees as of 2015-03-10 is 12,817.
 
 
 ```r
