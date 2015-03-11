@@ -13,7 +13,7 @@ tags:
 ---
 
 There are two things that make R such a wonderful programming environment - the vast number of packages to access, process and interpret
-data, and the enthusiastic individuals and subcommunities (of which ROpenSci is a great example). One, of course, flows from the other:
+data, and the enthusiastic individuals and subcommunities (of which rOpenSci is a great example). One, of course, flows from the other:
 R programmers write R packages to provide language users with more features, which makes everyone's jobs easier and (hopefully!)
 attracts more users and more contributions.
 
