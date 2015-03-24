@@ -1,0 +1,7 @@
+machine:
+  services:
+    - docker
+test:
+  override:
+    - docker run -v $(pwd):/src -w /src ropensci/roweb jekyll build
+
