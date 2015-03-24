@@ -37,3 +37,9 @@ RewriteRule ^scio14$ "http\:\/\/ucbpsych\.qualtrics\.com\/SE\/\?SID\=SV_0IcJSWln
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([0-9a-zA-Z\_\-]+)$ $1.html
+
+
+<FilesMatch ".*\.(js|JS|css|CSS|jpg|JPG|gif|GIF|png|PNG|swf|SWF|xsl|XSL|svg|eot|ttf|woff)$">
+  Order Allow,Deny
+  Allow from all
+</FilesMatch>
