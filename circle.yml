@@ -4,5 +4,5 @@ machine:
 test:
   override:
     - docker --version
-    - bundle exec jekyll build
+    - docker run ropensci/roweb jekyll build 
 
