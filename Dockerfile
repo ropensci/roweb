@@ -11,6 +11,7 @@ RUN apt-get update \
 VOLUME /src
 WORKDIR /src
 COPY Gemfile /src/Gemfile
+COPY Gemfile.lock /src/Gemfile.lock
 RUN bundle install
 EXPOSE 4000
 
