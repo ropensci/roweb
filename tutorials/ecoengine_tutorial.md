@@ -1,7 +1,7 @@
 ---
 title: Guide to using the ecoengine R package
 layout: tutorial
-packge_version: 1.9.1
+packge_version: 1.9.2
 ---
 
 
@@ -367,18 +367,6 @@ Now we can drill deep into each list. For this tutorial I'll just retrieve data 
 
 ```r
 library(plyr)
-```
-
-```
-## 
-## Attaching package: 'plyr'
-## 
-## The following object is masked from 'package:lubridate':
-## 
-##     here
-```
-
-```r
 spider_details <- ldply(spiders$url, checklist_details)
 names(spider_details)
 ```
@@ -587,7 +575,7 @@ A BibTeX entry for LaTeX users is
 History Data},
     author = {Karthik Ram},
     year = {2014},
-    note = {R package version 1.3},
+    note = {R package version 1.9.2},
     url = {http://CRAN.R-project.org/package=ecoengine},
   }
  ```
