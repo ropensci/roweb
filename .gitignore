@@ -8,7 +8,6 @@
 
 _site
 internal_notes.md
-/Gemfile.lock
 ngrok
 .DS_Store
 Makefile
