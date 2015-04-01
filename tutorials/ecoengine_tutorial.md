@@ -1,7 +1,7 @@
 ---
 title: Guide to using the ecoengine R package
 layout: tutorial
-packge_version: 1.9
+packge_version: 1.9.1
 ---
 
 
@@ -45,6 +45,7 @@ ee_about()
 ## 9                             actions
 ## 10                          meta-data
 ## 11                          meta-data
+## 12                          meta-data
 ##                                                endpoint
 ## 1    https://ecoengine.berkeley.edu/api/vtmplots_trees/
 ## 2          https://ecoengine.berkeley.edu/api/vtmplots/
@@ -55,8 +56,9 @@ ee_about()
 ## 7      https://ecoengine.berkeley.edu/api/observations/
 ## 8            https://ecoengine.berkeley.edu/api/photos/
 ## 9            https://ecoengine.berkeley.edu/api/search/
-## 10       https://ecoengine.berkeley.edu/api/footprints/
-## 11          https://ecoengine.berkeley.edu/api/sources/
+## 10           https://ecoengine.berkeley.edu/api/layers/
+## 11           https://ecoengine.berkeley.edu/api/rstore/
+## 12          https://ecoengine.berkeley.edu/api/sources/
 ```
 
 ## The ecoengine class
@@ -95,7 +97,7 @@ ee_pages(request)
 
 
 
-The database contains over 2 million records (2863164 total). Many of these have already been georeferenced. There are two ways to obtain observations. One is to query the database directly based on a partial or exact taxonomic match. For example
+The database contains over 2 million records (3386177 total). Many of these have already been georeferenced. There are two ways to obtain observations. One is to query the database directly based on a partial or exact taxonomic match. For example
 
 
 ```r
@@ -104,7 +106,7 @@ pinus_observations
 ```
 
 ```
-## [Total results on the server]: 43363 
+## [Total results on the server]: 58875 
 ## [Args]: 
 ## country = United States 
 ## scientific_name = Pinus 
@@ -126,7 +128,7 @@ lynx_data
 ```
 
 ```
-## [Total results on the server]: 701 
+## [Total results on the server]: 725 
 ## [Args]: 
 ## country = United States 
 ## genus = Lynx 
@@ -135,7 +137,7 @@ lynx_data
 ## page_size = 1000 
 ## page = 1 
 ## [Type]: FeatureCollection 
-## [Number of results retrieved]: 701
+## [Number of results retrieved]: 725
 ```
 
 ```r
@@ -145,7 +147,7 @@ lynx_data <- ee_observations(genus = "Lynx", georeferenced = TRUE, page = "all",
 ```
 
 ```
-## Search contains 701 observations (downloading 1 of 1 pages)
+## Search contains 725 observations (downloading 1 of 1 pages)
 ```
 
 ```r
@@ -153,7 +155,7 @@ lynx_data
 ```
 
 ```
-## [Total results on the server]: 701 
+## [Total results on the server]: 725 
 ## [Args]: 
 ## country = United States 
 ## genus = Lynx 
@@ -162,7 +164,7 @@ lynx_data
 ## page_size = 1000 
 ## page = all 
 ## [Type]: FeatureCollection 
-## [Number of results retrieved]: 701
+## [Number of results retrieved]: 725
 ```
 
 __Other search examples__
@@ -207,7 +209,7 @@ photos
 ```
 
 ```
-## [Total results on the server]: 60863 
+## [Total results on the server]: 72454 
 ## [Args]: 
 ## page_size = 1000 
 ## georeferenced = 0 
@@ -215,7 +217,7 @@ photos
 ## [Type]: photos 
 ## [Number of results retrieved]: 1000
 ```
-The database currently holds 60863 photos. Photos can be searched by state province, county, genus, scientific name, authors along with date bounds. For additional options see `?ee_photos`.
+The database currently holds 72454 photos. Photos can be searched by state province, county, genus, scientific name, authors along with date bounds. For additional options see `?ee_photos`.
 
 
 #### Searching photos by author
@@ -227,7 +229,7 @@ charles_results
 ```
 
 ```
-## [Total results on the server]: 3656 
+## [Total results on the server]: 4907 
 ## [Args]: 
 ## page_size = 1000 
 ## authors = Charles Webber 
@@ -243,36 +245,36 @@ charles_results$data[1:2, ]
 ```
 
 ```
-##          authors                               locality          county
-## 1 Charles Webber    Yosemite National Park, Badger Pass Mariposa County
-## 2 Charles Webber Yosemite National Park, Yosemite Falls Mariposa County
-##   photog_notes
-## 1      Tan Oak
-## 2         <NA>
 ##                                                                                url
 ## 1 https://ecoengine.berkeley.edu/api/photos/CalPhotos%3A8076%2B3101%2B2933%2B0025/
 ## 2 https://ecoengine.berkeley.edu/api/photos/CalPhotos%3A8076%2B3101%2B0667%2B0107/
-##   begin_date end_date geojson.type   longitude  latitude
-## 1       <NA>     <NA>        Point -119.657387 37.663724
-## 2       <NA>     <NA>        Point -119.597389 37.753851
-##                          record
-## 1 CalPhotos:8076+3101+2933+0025
-## 2 CalPhotos:8076+3101+0667+0107
-##                                                   remote_resource
-## 1 http://calphotos.berkeley.edu/cgi/img_query?seq_num=21272&one=T
-## 2 http://calphotos.berkeley.edu/cgi/img_query?seq_num=14468&one=T
-##   collection_code              scientific_name
-## 1      CalAcademy Notholithocarpus densiflorus
-## 2      CalAcademy     Rhododendron occidentale
+##                          record        authors
+## 1 CalPhotos:8076+3101+2933+0025 Charles Webber
+## 2 CalPhotos:8076+3101+0667+0107 Charles Webber
+##                                 locality          county photog_notes
+## 1    Yosemite National Park, Badger Pass Mariposa County      Tan Oak
+## 2 Yosemite National Park, Yosemite Falls Mariposa County         <NA>
+##   begin_date end_date collection_code              scientific_name
+## 1       <NA>     <NA>      CalAcademy Notholithocarpus densiflorus
+## 2       <NA>     <NA>      CalAcademy     Rhododendron occidentale
 ##                                                                                          url
 ## 1 https://ecoengine.berkeley.edu/api/observations/CalPhotos%3A8076%2B3101%2B2933%2B0025%3A1/
 ## 2 https://ecoengine.berkeley.edu/api/observations/CalPhotos%3A8076%2B3101%2B0667%2B0107%3A1/
+##           license
+## 1 CC BY-NC-SA 3.0
+## 2 CC BY-NC-SA 3.0
 ##                                                             media_url
 ## 1 http://calphotos.berkeley.edu/imgs/512x768/8076_3101/2933/0025.jpeg
 ## 2 http://calphotos.berkeley.edu/imgs/512x768/8076_3101/0667/0107.jpeg
-##                                          source
-## 1 https://ecoengine.berkeley.edu/api/sources/9/
-## 2 https://ecoengine.berkeley.edu/api/sources/9/
+##                                                   remote_resource
+## 1 http://calphotos.berkeley.edu/cgi/img_query?seq_num=21272&one=T
+## 2 http://calphotos.berkeley.edu/cgi/img_query?seq_num=14468&one=T
+##                                          source geojson.type   longitude
+## 1 https://ecoengine.berkeley.edu/api/sources/9/        Point -119.657387
+## 2 https://ecoengine.berkeley.edu/api/sources/9/        Point -119.597389
+##    latitude
+## 1 37.663724
+## 2 37.753851
 ```
 ---
 
@@ -365,6 +367,18 @@ Now we can drill deep into each list. For this tutorial I'll just retrieve data 
 
 ```r
 library(plyr)
+```
+
+```
+## 
+## Attaching package: 'plyr'
+## 
+## The following object is masked from 'package:lubridate':
+## 
+##     here
+```
+
+```r
 spider_details <- ldply(spiders$url, checklist_details)
 names(spider_details)
 ```
@@ -411,179 +425,6 @@ unique(spider_details$scientific_name)
 Our resulting dataset now contains 33 unique spider species.
 
 
-
-### Sensors
-
-Sensor data come from the [Keck HydroWatch Center](http://nrs.ucop.edu/research/special_projects/Keck_HydroWatchl.htm).
-
-You'll need a sensor's id to query the data for that particular metric and location. The `ee_list_sensors()` function will give you a condensed list with the location, metric, binning method and most importantly the `sensor_id`. You'll need this id for the data retrieval.
-
-
-```r
-head(ee_list_sensors())
-```
-
-
-```
-##   properties.station_name properties.units    properties.variable
-## 1        Angelo Meadow WS   degree celcius             Air Temp C
-## 2           Cahto Peak WS   degree celcius             Air Temp C
-## 3            Angelo HQ WS   degree celcius             Air Temp C
-## 4   Angelo HQ SF Eel Gage   degree celcius             Air Temp C
-## 5            Angelo HQ WS         millibar Barometric Pressure mb
-## 6        Angelo Meadow WS         millibar Barometric Pressure mb
-##              properties.method_name record
-## 1 Conversion to 30-minute timesteps      1
-## 2 Conversion to 30-minute timesteps      2
-## 3 Conversion to 30-minute timesteps      3
-## 4 Conversion to 30-minute timesteps      4
-## 5 Conversion to 30-minute timesteps      5
-## 6 Conversion to 30-minute timesteps      6
-```
-
-Let's download solar radiation for the Angelo reserve HQ (sensor_id = `1625`).
-
-
-```r
-library(dplyr)
-# First we can grab the list of sensor ids
-full_sensor_list %>% 
-    select(properties.station_name, properties.record) %>%
-    head
-```
-
-```
-##   properties.station_name properties.record
-## 1        Angelo Meadow WS              1602
-## 2           Cahto Peak WS              1603
-## 3            Angelo HQ WS              1604
-## 4   Angelo HQ SF Eel Gage              1606
-## 5            Angelo HQ WS              1607
-## 6        Angelo Meadow WS              1608
-```
-
-```r
-# In this case we just need data for sensor with id 1625
-angelo_hq <- full_sensor_list[1, ]$properties.record
-results <- ee_sensor_data(angelo_hq, page = 2, progress = FALSE)
-```
-
-```
-## Search contains 98527 records (downloading 1 page(s) of 99)
-```
-
-```r
-results
-```
-
-```
-## [Total results on the server]: 98527 
-## [Args]: 
-## page_size = 1000 
-## sensor_id = 1602 
-## page = 2 
-## [Type]: sensor 
-## [Number of results retrieved]: 1000
-```
-
-Notice that the query returned 98527 observations but has only retrieved the `25-50` since we requested records for page 2 (and each page by default retrieves `25` records). You can request `page = "all"` but remember that this will make 3941.08 requests. Now we can examine the data itself.
-
-
-```r
-head(results$data)
-```
-
-```
-##            local_date  value
-## 1 2008-05-23 13:30:00 17.580
-## 2 2008-05-23 14:00:00 17.925
-## 3 2008-05-23 14:30:00 18.505
-## 4 2008-05-23 15:00:00 18.505
-## 5 2008-05-23 15:30:00 17.925
-## 6 2008-05-23 16:00:00 17.690
-```
-
-We can also aggregate sensor data for any of the above mentioned sensors. We do this using the `ee_sensor_agg()` function. The function requires a sensor id and how the data should be binned. You can specify hours, minutes, seconds, days, weeks, month, and years. If for example you need the data binned every `15` days, simply add `days = 15` to the call. Once every `10` days and `2` hours would be `ee_sensor_agg(sensor_id = 1625, days = 10, hours = 2)`
-
-
-```r
-stations <- full_sensor_list %>% 
-            select(station_name = properties.station_name, record = properties.record)
-# This gives you a list to choose from
-sensor_df <- ee_sensor_agg(sensor_id = stations[1, ]$record, weeks = 2, progress = FALSE)
-```
-
-```
-## Search contains 147 records (downloading 1 page(s) of 1)
-```
-
-```r
-sensor_df
-```
-
-```
-## [Total results on the server]: 147 
-## [Args]: 
-## page_size = 1000 
-## interval = 2W 
-## page = 1 
-## [Type]: sensor 
-## [Number of results retrieved]: 147
-```
-
-```r
-head(sensor_df$data)
-```
-
-```
-## Source: local data frame [6 x 6]
-## 
-##   begin_date     mean     min    max       sum count
-## 1 2008-05-11 10.80444 -2.0180 28.080  5888.423   545
-## 2 2008-05-25 15.45394  2.8230 36.110 10385.045   672
-## 3 2008-06-08 11.72593  1.7975 24.250  7879.823   672
-## 4 2008-06-22 17.45442  3.5065 33.855 11729.369   672
-## 5 2008-07-06 17.07472  4.3950 31.805 11474.215   672
-## 6 2008-07-20 20.73330  6.7875 40.720 13932.778   672
-```
-
-As with other functions, the results are paginated.  Since we only need `85` records in this case:
-
-
-```r
-sensor_df <- ee_sensor_agg(sensor_id = 1625, weeks = 2, page = "all", progress = FALSE)
-```
-
-```
-## Search contains 94 records (downloading 1 page(s) of 1)
-```
-
-```r
-sensor_df
-```
-
-```
-## [Total results on the server]: 94 
-## [Args]: 
-## page_size = 1000 
-## interval = 2W 
-## page = all 
-## [Type]: sensor 
-## [Number of results retrieved]: 94
-```
-
-
-```r
-library(ggplot2)
-ggplot(sensor_df$data, aes(begin_date, mean)) +
-geom_line(size = 1, color = "steelblue") + geom_point() +
-theme_gray() + ylab("Solar radiation total kj/m^2") +
-xlab("Date") + ggtitle("Data from Angelo HQ")
-```
-
-
-![Mean solar radiation at Angelo HQ](../assets/tutorial-images/ecoengine/sensor_plot.png)
-
 ### Searching the engine
 
 The search is elastic by default. One can search for any field in `ee_observations()` across all available resources. For example,
@@ -599,34 +440,54 @@ lynx_results[, -3]
 
 
 ```
-##                                         field results
-## kingdom                              animalia     787
-## state_province.2                   California     469
-## state_province.21                      Nevada     105
-## state_province.3                       Alaska      82
-## state_province.4             British Columbia      47
-## state_province.5                      Arizona      36
-## state_province.6          Baja California Sur      25
-## state_province.7              Baja California      16
-## state_province.8                   New Mexico      14
-## state_province.9                       Oregon      13
-## state_province.10                   Zacatecas      11
-## clss                                 mammalia     898
-## resource                         Observations     900
-## family                                felidae     898
-## scientific_name.2     Lynx rufus californicus     391
-## scientific_name.21 Lynx canadensis canadensis     137
-## scientific_name.3          Lynx rufus baileyi     135
-## scientific_name.4       Lynx rufus pallescens     119
-## scientific_name.5        Lynx rufus fasciatus      30
-## scientific_name.6     Lynx rufus peninsularis      27
-## scientific_name.7                  Lynx rufus      18
-## scientific_name.8            Lynx rufus rufus      14
-## scientific_name.9       Lynx rufus escuinapae      13
-## scientific_name.10            Lynx rufus ssp.       4
-## phylum                               chordata     900
-## genus                                    lynx     900
-## order                               carnivora     898
+##                                          field results
+## state_province.2                    California     282
+## state_province.21                       Nevada      70
+## state_province.3                        Alaska      51
+## state_province.4              British Columbia      34
+## state_province.5                       Arizona      24
+## state_province.6                       Montana      14
+## state_province.7           Baja California Sur      13
+## state_province.8               Baja California      12
+## state_province.9                     Zacatecas      10
+## state_province.10                   New Mexico       8
+## kingdom                               animalia     562
+## genus                                     lynx     578
+## resource                          Observations     578
+## family                                 felidae     563
+## scientific_name.2      Lynx rufus californicus     232
+## scientific_name.21          Lynx rufus baileyi      93
+## scientific_name.3   Lynx canadensis canadensis      93
+## scientific_name.4        Lynx rufus pallescens      76
+## scientific_name.5                   Lynx rufus      16
+## scientific_name.6      Lynx rufus peninsularis      15
+## scientific_name.7              Lynx canadensis      13
+## scientific_name.8             Lynx rufus rufus      11
+## scientific_name.9         Lynx rufus fasciatus      11
+## scientific_name.10       Lynx rufus escuinapae      10
+## country.2                        United States     495
+## country.21                              Mexico      45
+## country.3                               Canada      34
+## country.4                                 None       4
+## clss                                  mammalia     562
+## order                                carnivora     561
+## phylum                                chordata     559
+## georeferenced.2                           true     525
+## georeferenced.21                         false      53
+## observation_type.2                    specimen     557
+## observation_type.21                      photo      16
+## observation_type.3                      fossil       4
+## observation_type.4                   checklist       1
+## decade.2                             1931-1940     132
+## decade.21                            1921-1930      91
+## decade.3                             1911-1920      74
+## decade.4                             1901-1910      66
+## decade.5                             1971-1980      62
+## decade.6                             1941-1950      46
+## decade.7                             1961-1970      35
+## decade.8                             1951-1960      34
+## decade.9                             2001-2010       9
+## decade.10                            1991-2000       4
 ```
 
 Similarly it's possible to search through the observations in a detailed manner as well.
@@ -637,7 +498,7 @@ all_lynx_data <- ee_search_obs(query  = "Lynx", page = "all", progress = FALSE)
 ```
 
 ```
-## Search contains 992 observations (downloading 1 of 1 pages)
+## Search contains 644 observations (downloading 1 of 1 pages)
 ```
 
 ```r
@@ -645,13 +506,13 @@ all_lynx_data
 ```
 
 ```
-## [Total results on the server]: 992 
+## [Total results on the server]: 644 
 ## [Args]: 
 ## q = Lynx 
 ## page_size = 1000 
 ## page = all 
 ## [Type]: observations 
-## [Number of results retrieved]: 992
+## [Number of results retrieved]: 644
 ```
 
 ---
@@ -697,16 +558,16 @@ unique(source_list$name)
 
 ```
 ##                                 name
-## 1                      VTM plot data
-## 2              MVZ Herp Observations
-## 3                      BIGCB Sensors
-## 4  Consortium of California Herbaria
-## 5               VTM plot coordinates
-## 6         UCMP Vertebrate Collection
-## 7              VTM plot data brushes
-## 8          MVZ Hildebrand Collection
-## 9                    CAS Herpetology
-## 10                         CalPhotos
+## 1               UCANR Drought images
+## 2         LACM Vertebrate Collection
+## 3                         CAS Botany
+## 4                    CAS Entomology 
+## 5                MVZ Herp Collection
+## 6               VTM plot coordinates
+## 7                    CAS Herpetology
+## 8                      VTM plot data
+## 9                    CAS Ornithology
+## 10 Consortium of California Herbaria
 ```
 
 </section>
