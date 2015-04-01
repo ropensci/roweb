@@ -3,7 +3,6 @@ machine:
     - docker
 test:
   override:
-    - docker run -v $(pwd):/src -w /src ropensci/roweb pwd && ls
-    - jekyll build
-
+    - docker --version
+    - bundle exec jekyll build
 
