@@ -1,5 +1,5 @@
 FROM ruby:2.1
-MAINTAINER graham@grahamc.com
+MAINTAINER Carl Boettiger cboettig@ropensci.org
 
 RUN apt-get update \
   && apt-get install -y \
