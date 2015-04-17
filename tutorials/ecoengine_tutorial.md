@@ -22,7 +22,7 @@ install.packages("ecoengine")
 devtools::install_github("ropensci/ecoengine")
 ```
 
-</section>
+
 <section id="usage">
 
 
@@ -558,7 +558,7 @@ unique(source_list$name)
 ## 10 Consortium of California Herbaria
 ```
 
-</section>
+
 <section id="citing">
 
 To cite package `ecoengine` in publications use:
@@ -580,7 +580,7 @@ History Data},
   }
  ```
 
-</section>
+
 
 
 <section id="license_bugs">
@@ -590,6 +590,6 @@ History Data},
 * License: [CC0](http://creativecommons.org/choose/zero/)
 * Report bugs at [our Github repo for Ecoengine](https://github.com/ropensci/ecoengine/issues?state=open)
 
-</section>
+
 
 [Back to top](#top)
