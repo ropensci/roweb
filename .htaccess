@@ -4,36 +4,6 @@ RewriteOptions inherit
 RewriteEngine on
 ErrorDocument 404 /404.html
 
-RewriteCond %{HTTP_HOST} ^.*$
-RewriteRule ^chat$ "https\:\/\/www\.hipchat\.com\/gKjRCVjNO" [R=301,L]
-
-RewriteCond %{HTTP_HOST} ^ropensci\.org$ [OR]
-RewriteCond %{HTTP_HOST} ^www\.ropensci\.org$
-RewriteRule ^survey$ "http\:\/\/ucbpsych\.qualtrics\.com\/SE\/\?SID\=SV_9Bv7mGKUl27iKDr" [R=301,L]
-
-RewriteCond %{HTTP_HOST} ^ropensci\.org$ [OR]
-RewriteCond %{HTTP_HOST} ^www\.ropensci\.org$
-RewriteRule ^survey\-zsl$ "http\:\/\/ucbpsych\.qualtrics\.com\/SE\/\?SID\=SV_8xkR5cl9tK07As5" [R=301,L]
-
-RewriteCond %{HTTP_HOST} ^ropensci\.org$ [OR]
-RewriteCond %{HTTP_HOST} ^www\.ropensci\.org$
-RewriteRule ^quebec_survey$ "http\:\/\/ucbpsych\.qualtrics\.com\/SE\/\?SID\=SV_9vimpyUktsV7iEl" [R=301,L]
-
-RewriteCond %{HTTP_HOST} ^ropensci\.org$ [OR]
-RewriteCond %{HTTP_HOST} ^www\.ropensci\.org$
-RewriteRule ^duke\-02\-2014$ "http\:\/\/ucbpsych\.qualtrics\.com\/SE\/\?SID\=SV_3KjgFiie73SEhXD" [R=301,L]
-
-RewriteCond %{HTTP_HOST} ^.*$
-RewriteRule ^unc\-02\-2014$ "http\:\/\/ucbpsych\.qualtrics\.com\/SE\/\?SID\=SV_8vr4OEGuV2L7BNb" [R=301,L]
-
-RewriteCond %{HTTP_HOST} ^ropensci\.org$ [OR]
-RewriteCond %{HTTP_HOST} ^www\.ropensci\.org$
-RewriteRule ^unc\-02\-2014$ "http\:\/\/ucbpsych\.qualtrics\.com\/SE\/\?SID\=SV_8vr4OEGuV2L7BNb" [R=301,L]
-
-RewriteCond %{HTTP_HOST} ^ropensci\.org$ [OR]
-RewriteCond %{HTTP_HOST} ^www\.ropensci\.org$
-RewriteRule ^scio14$ "http\:\/\/ucbpsych\.qualtrics\.com\/SE\/\?SID\=SV_0IcJSWlnH5MvB89" [R=301,L]
-
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([0-9a-zA-Z\_\-]+)$ $1.html
