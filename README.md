@@ -4,9 +4,11 @@
 !['ropensci website'](http://ropensci.org/assets/common-files/img/content/blog_header_logo.png)
 
 
-This is repo for [rOpenSci's website](http://ropensci.org/). To build the site, clone the repo and run:
+This is repo for [rOpenSci's website](http://ropensci.org/). To build the site, clone the repo and run. If you don't have the appropriate gems,  you will have to bundle install before running jekyll.
+
 
 ```
+# To build the site
 jekyll build
 ```
 
