@@ -1,20 +1,19 @@
 ---
 title: elastic tutorial
 layout: tutorial
-packge_version: 0.3
+packge_version: 0.4
 ---
-
 
 ```{r, eval=TRUE, echo=FALSE}
 knitr::opts_chunk$set(
-	fig.path="../assets/tutorial-images/elastic/",
+	fig.path = "../assets/tutorial-images/elastic/",
 	warning = FALSE,
 	message = FALSE,
 	comment = "#>"
 )
 ```
 
-`elastic` is an R client for [Elasticsearch](http://www.elasticsearch.org/). This vignette is an introduction to the package, while other vignettes dive into the details of various topics.
+`elastic` is an R client for [Elasticsearch](https://www.elastic.co/products/elasticsearch). This tutorial is an introduction to the package.
 
 <section id="installation">
 
@@ -44,22 +43,22 @@ library("elastic")
 
 ## Elasticsearch info
 
-+ [Elasticsearch home page](http://elasticsearch.org)
-+ [API docs](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/index.html)
++ [Elasticsearch home page](https://www.elastic.co/products/elasticsearch)
++ [API docs](http://www.elastic.co/guide/en/elasticsearch/reference/current/index.html)
 
 ## Install Elasticsearch
 
-* [Elasticsearch installation help](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_installation.html)
+* [Elasticsearch installation help](http://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html)
 
 __Unix (linux/osx)__
 
-Replace `1.4.1` with the version you are working with.
+Replace `1.5.2` with the version you are working with.
 
-+ Download zip or tar file from Elasticsearch [see here for download](http://www.elasticsearch.org/overview/elkdownloads/), e.g., `curl -L -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.1.tar.gz`
-+ Uncompress it: `tar -xvf elasticsearch-1.4.1.tar.gz`
-+ Move it: `sudo mv /path/to/elasticsearch-1.4.1 /usr/local`
++ Download zip or tar file from Elasticsearch [see here for download](https://www.elastic.co/downloads/elasticsearch), e.g., `curl -L -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.5.2.tar.gz`
++ Uncompress it: `tar -xvf elasticsearch-1.5.2.tar.gz`
++ Move it: `sudo mv /path/to/elasticsearch-1.5.2 /usr/local`
 + Navigate to /usr/local: `cd /usr/local`
-+ Add shortcut: `sudo ln -s elasticsearch-1.4.1 elasticsearch`
++ Add shortcut: `sudo ln -s elasticsearch-1.5.2 elasticsearch`
 
 On OSX, you can install via Homebrew: `brew install elasticsearch`
 
@@ -84,7 +83,7 @@ The function `connect()` is used before doing anything else to set the connectio
 connect()
 ```
 
-On package load, your base url and port are set to `http://127.0.0.1` and `9200`, respectively. You can of course override these settings per session or for all sessions.
+On package load, your base url and port are set to `http://127.0.0.1` and `9200`, respectively. You can of course override these settings per session or for all sessions. 
 
 ## Get some data
 
@@ -154,6 +153,25 @@ Search the `plos` index, and the `article` document type, sort by title, and que
 
 ```{r}
 Search(index="plos", type="article", sort="title", q="antibody", size=1)$hits$hits
+```
+
+## URL based search
+
+A new function in `v0.4` is `Search_uri()`, where the search is defined entirely in the URL itself. 
+This is especially useful for cases in which `POST` requests are forbidden, e.g, on a server that 
+prevents `POST` requests for security reasons (which the function `Search()` uses)
+
+Basic search
+
+```{r}
+Search_uri(index = "plos", size = 1)$hits$hits
+```
+
+Sorting
+
+```{r}
+res <- Search_uri(index = "shakespeare", type = "act", sort = "speaker:desc", fields = 'speaker')
+sapply(res$hits$hits, "[[", c("fields", "speaker"))
 ```
 
 ### A bool query
@@ -243,6 +261,19 @@ res <- Search(index = 'shakespeare', q="a*", scroll="1m", search_type = "scan")
 length(scroll(scroll_id = res$`_scroll_id`)$hits$hits)
 ```
 
+## Bulk load from R objects
+
+A new feature in `v0.4` is loading data into Elasticsearch via the bulk API (faster than via the 
+normal route) from R objects (data.frame, or list). E.g.:
+
+Using a pretty large data.frame, at 53K rows, load `ggplot2` package first
+
+```{r}
+library("ggplot2")
+res <- invisible(docs_bulk(diamonds, "diam"))
+Search(index = "diam")$hits$total
+```
+
 ## Get documents
 
 Get document with `id=1`
@@ -294,7 +325,7 @@ jsonlite::fromJSON(out)
 
 ## Citing
 
-> Scott Chamberlain (2015). elastic: General Purpose Interface to Elasticsearch. R package version 0.3.0.
+> Scott Chamberlain (2015). elastic: General Purpose Interface to Elasticsearch. R package version 0.4.0.
   http://CRAN.R-project.org/package=elastic
 
 </section>

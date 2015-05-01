@@ -1,13 +1,12 @@
 ---
 title: elastic tutorial
 layout: tutorial
-packge_version: 0.3
+packge_version: 0.4
 ---
 
 
 
-
-`elastic` is an R client for [Elasticsearch](http://www.elasticsearch.org/). This vignette is an introduction to the package, while other vignettes dive into the details of various topics.
+`elastic` is an R client for [Elasticsearch](https://www.elastic.co/products/elasticsearch). This tutorial is an introduction to the package.
 
 <section id="installation">
 
@@ -40,22 +39,22 @@ library("elastic")
 
 ## Elasticsearch info
 
-+ [Elasticsearch home page](http://elasticsearch.org)
-+ [API docs](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/index.html)
++ [Elasticsearch home page](https://www.elastic.co/products/elasticsearch)
++ [API docs](http://www.elastic.co/guide/en/elasticsearch/reference/current/index.html)
 
 ## Install Elasticsearch
 
-* [Elasticsearch installation help](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_installation.html)
+* [Elasticsearch installation help](http://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html)
 
 __Unix (linux/osx)__
 
-Replace `1.4.1` with the version you are working with.
+Replace `1.5.2` with the version you are working with.
 
-+ Download zip or tar file from Elasticsearch [see here for download](http://www.elasticsearch.org/overview/elkdownloads/), e.g., `curl -L -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.1.tar.gz`
-+ Uncompress it: `tar -xvf elasticsearch-1.4.1.tar.gz`
-+ Move it: `sudo mv /path/to/elasticsearch-1.4.1 /usr/local`
++ Download zip or tar file from Elasticsearch [see here for download](https://www.elastic.co/downloads/elasticsearch), e.g., `curl -L -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.5.2.tar.gz`
++ Uncompress it: `tar -xvf elasticsearch-1.5.2.tar.gz`
++ Move it: `sudo mv /path/to/elasticsearch-1.5.2 /usr/local`
 + Navigate to /usr/local: `cd /usr/local`
-+ Add shortcut: `sudo ln -s elasticsearch-1.4.1 elasticsearch`
++ Add shortcut: `sudo ln -s elasticsearch-1.5.2 elasticsearch`
 
 On OSX, you can install via Homebrew: `brew install elasticsearch`
 
@@ -82,20 +81,19 @@ connect()
 ```
 
 ```
-#> uri:       http://127.0.0.1 
+#> url:       http://127.0.0.1 
 #> port:      9200 
 #> username:  NULL 
 #> password:  NULL 
-#> api key:   NULL 
 #> elasticsearch details:   
-#>       status:                  200 
-#>       name:                    Hellfire 
-#>       Elasticsearch version:   1.4.0 
-#>       ES version timestamp:    2014-11-05T14:26:12Z 
-#>       lucene version:          4.10.2
+#>    status:                  200 
+#>    name:                    Allatou 
+#>    Elasticsearch version:   1.5.2 
+#>    ES version timestamp:    2015-04-27T09:21:06Z 
+#>    lucene version:          4.10.4
 ```
 
-On package load, your base url and port are set to `http://127.0.0.1` and `9200`, respectively. You can of course override these settings per session or for all sessions.
+On package load, your base url and port are set to `http://127.0.0.1` and `9200`, respectively. You can of course override these settings per session or for all sessions. 
 
 ## Get some data
 
@@ -179,7 +177,7 @@ Search(index="plos", size=1)$hits$hits
 #> [1] "4"
 #> 
 #> [[1]]$`_version`
-#> [1] 2
+#> [1] 1
 #> 
 #> [[1]]$`_score`
 #> [1] 1
@@ -211,7 +209,7 @@ Search(index="plos", type="article", sort="title", q="antibody", size=1)$hits$hi
 #> [1] "568"
 #> 
 #> [[1]]$`_version`
-#> [1] 2
+#> [1] 1
 #> 
 #> [[1]]$`_score`
 #> NULL
@@ -227,6 +225,81 @@ Search(index="plos", type="article", sort="title", q="antibody", size=1)$hits$hi
 #> [[1]]$sort
 #> [[1]]$sort[[1]]
 #> [1] "1"
+```
+
+## URL based search
+
+A new function in `v0.4` is `Search_uri()`, where the search is defined entirely in the URL itself. 
+This is especially useful for cases in which `POST` requests are forbidden, e.g, on a server that 
+prevents `POST` requests for security reasons (which the function `Search()` uses)
+
+Basic search
+
+
+```r
+Search_uri(index = "plos", size = 1)$hits$hits
+```
+
+```
+#> [[1]]
+#> [[1]]$`_index`
+#> [1] "plos"
+#> 
+#> [[1]]$`_type`
+#> [1] "article"
+#> 
+#> [[1]]$`_id`
+#> [1] "4"
+#> 
+#> [[1]]$`_version`
+#> [1] 1
+#> 
+#> [[1]]$`_score`
+#> [1] 1
+#> 
+#> [[1]]$`_source`
+#> [[1]]$`_source`$id
+#> [1] "10.1371/journal.pone.0107758"
+#> 
+#> [[1]]$`_source`$title
+#> [1] "Lactobacilli Inactivate Chlamydia trachomatis through Lactic Acid but Not H2O2"
+```
+
+Sorting
+
+
+```r
+res <- Search_uri(index = "shakespeare", type = "act", sort = "speaker:desc", fields = 'speaker')
+sapply(res$hits$hits, "[[", c("fields", "speaker"))
+```
+
+```
+#> [[1]]
+#> [1] "ARCHBISHOP OF YORK"
+#> 
+#> [[2]]
+#> [1] "VERNON"
+#> 
+#> [[3]]
+#> [1] "PLANTAGENET"
+#> 
+#> [[4]]
+#> [1] "PETO"
+#> 
+#> [[5]]
+#> [1] "KING HENRY IV"
+#> 
+#> [[6]]
+#> [1] "HOTSPUR"
+#> 
+#> [[7]]
+#> [1] "FALSTAFF"
+#> 
+#> [[8]]
+#> [1] "CHARLES"
+#> 
+#> [[9]]
+#> [1] ""
 ```
 
 ### A bool query
@@ -306,7 +379,7 @@ Search('plos', body=body)$hits$total
 ```
 
 ```
-#> [1] 482
+#> [1] 488
 ```
 
 ### Highlighting
@@ -330,7 +403,7 @@ out$hits$total
 ```
 
 ```
-#> [1] 57
+#> [1] 58
 ```
 
 
@@ -339,9 +412,9 @@ sapply(out$hits$hits, function(x) x$highlight$title[[1]])[8:10]
 ```
 
 ```
-#> [1] "c-FLIP Protects Eosinophils from TNF-α-Mediated <em>Cell</em> Death In Vivo"                          
-#> [2] "DUSP1 Is a Novel Target for Enhancing Pancreatic Cancer <em>Cell</em> Sensitivity to Gemcitabine"     
-#> [3] "Carbon Ion Radiation Inhibits Glioma and Endothelial <em>Cell</em> Migration Induced by Secreted VEGF"
+#> [1] "DUSP1 Is a Novel Target for Enhancing Pancreatic Cancer <em>Cell</em> Sensitivity to Gemcitabine"                       
+#> [2] "Carbon Ion Radiation Inhibits Glioma and Endothelial <em>Cell</em> Migration Induced by Secreted VEGF"                  
+#> [3] "Dynamic Visualization of Dendritic <em>Cell</em>-Antigen Interactions in the Skin Following Transcutaneous Immunization"
 ```
 
 ### Scrolling search - instead of paging
@@ -365,6 +438,27 @@ length(scroll(scroll_id = res$`_scroll_id`)$hits$hits)
 #> [1] 50
 ```
 
+## Bulk load from R objects
+
+A new feature in `v0.4` is loading data into Elasticsearch via the bulk API (faster than via the 
+normal route) from R objects (data.frame, or list). E.g.:
+
+Using a pretty large data.frame, at 53K rows, load `ggplot2` package first
+
+
+```r
+library("ggplot2")
+res <- invisible(docs_bulk(diamonds, "diam"))
+```
+
+```r
+Search(index = "diam")$hits$total
+```
+
+```
+#> [1] 46600
+```
+
 ## Get documents
 
 Get document with `id=1`
@@ -385,7 +479,7 @@ docs_get(index='plos', type='article', id=1)
 #> [1] "1"
 #> 
 #> $`_version`
-#> [1] 2
+#> [1] 1
 #> 
 #> $found
 #> [1] TRUE
@@ -416,7 +510,7 @@ docs_get(index='plos', type='article', id=1, fields='id')
 #> [1] "1"
 #> 
 #> $`_version`
-#> [1] 2
+#> [1] 1
 #> 
 #> $found
 #> [1] TRUE
@@ -449,7 +543,7 @@ docs_mget(index="plos", type="article", id=3:4)
 #> [1] "3"
 #> 
 #> $docs[[1]]$`_version`
-#> [1] 2
+#> [1] 1
 #> 
 #> $docs[[1]]$found
 #> [1] TRUE
@@ -474,7 +568,7 @@ docs_mget(index="plos", type="article", id=3:4)
 #> [1] "4"
 #> 
 #> $docs[[2]]$`_version`
-#> [1] 2
+#> [1] 1
 #> 
 #> $docs[[2]]$found
 #> [1] TRUE
@@ -505,7 +599,7 @@ docs_mget(index_type_id=list(c("plos","article",1), c("gbif","record",1)))$docs[
 #> [1] "1"
 #> 
 #> $`_version`
-#> [1] 2
+#> [1] 1
 #> 
 #> $found
 #> [1] TRUE
@@ -530,7 +624,7 @@ For example:
 ```
 
 ```
-#> [1] "{\"docs\":[{\"_index\":\"plos\",\"_type\":\"article\",\"_id\":\"5\",\"_version\":2,\"found\":true,\"_source\":{\"id\":\"10.1371/journal.pone.0085123\",\"title\":\"MiR-21 Is under Control of STAT5 but Is Dispensable for Mammary Development and Lactation\"}},{\"_index\":\"plos\",\"_type\":\"article\",\"_id\":\"6\",\"_version\":2,\"found\":true,\"_source\":{\"id\":\"10.1371/journal.pone.0098600\",\"title\":\"Correction: Designing Mixed Species Tree Plantations for the Tropics: Balancing Ecological Attributes of Species with Landholder Preferences in the Philippines\"}}]}"
+#> [1] "{\"docs\":[{\"_index\":\"plos\",\"_type\":\"article\",\"_id\":\"5\",\"_version\":1,\"found\":true,\"_source\":{\"id\":\"10.1371/journal.pone.0085123\",\"title\":\"MiR-21 Is under Control of STAT5 but Is Dispensable for Mammary Development and Lactation\"}},{\"_index\":\"plos\",\"_type\":\"article\",\"_id\":\"6\",\"_version\":1,\"found\":true,\"_source\":{\"id\":\"10.1371/journal.pone.0098600\",\"title\":\"Correction: Designing Mixed Species Tree Plantations for the Tropics: Balancing Ecological Attributes of Species with Landholder Preferences in the Philippines\"}}]}"
 #> attr(,"class")
 #> [1] "elastic_mget"
 ```
@@ -545,8 +639,8 @@ jsonlite::fromJSON(out)
 ```
 #> $docs
 #>   _index   _type _id _version found                   _source.id
-#> 1   plos article   5        2  TRUE 10.1371/journal.pone.0085123
-#> 2   plos article   6        2  TRUE 10.1371/journal.pone.0098600
+#> 1   plos article   5        1  TRUE 10.1371/journal.pone.0085123
+#> 2   plos article   6        1  TRUE 10.1371/journal.pone.0098600
 #>                                                                                                                                                     _source.title
 #> 1                                                                       MiR-21 Is under Control of STAT5 but Is Dispensable for Mammary Development and Lactation
 #> 2 Correction: Designing Mixed Species Tree Plantations for the Tropics: Balancing Ecological Attributes of Species with Landholder Preferences in the Philippines
@@ -559,7 +653,7 @@ jsonlite::fromJSON(out)
 
 ## Citing
 
-> Scott Chamberlain (2015). elastic: General Purpose Interface to Elasticsearch. R package version 0.3.0.
+> Scott Chamberlain (2015). elastic: General Purpose Interface to Elasticsearch. R package version 0.4.0.
   http://CRAN.R-project.org/package=elastic
 
 </section>

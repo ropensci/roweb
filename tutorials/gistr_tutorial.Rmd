@@ -1,7 +1,7 @@
 ---
 title: gistr vignette
 layout: tutorial
-packge_version: 0.1
+packge_version: 0.2
 ---
 
 
@@ -34,7 +34,7 @@ library("gistr")
 
 There are two ways to authorise gistr to work with your GitHub account:
 
-* Generate a personal access token (PAT) at [https://help.github.com/articles/creating-an-access-token-for-command-line-use](https://help.github.com/articles/creating-an-access-token-for-command-line-use) and record it in the `GITHUB_PAT` envar. If you're not sure how to do this, make a `.Renviron` file in your home directory (if it doesn't already exist), and put an entry in like `GITHUB_PAT=adfadf9asd7fas9fsaf98asfassf` (that's not a real key). Remember to restart your R session. 
+* Generate a personal access token (PAT) at [https://help.github.com/articles/creating-an-access-token-for-command-line-use](https://help.github.com/articles/creating-an-access-token-for-command-line-use) and record it in the `GITHUB_PAT` envar. If you're not sure how to do this, make a `.Renviron` file in your home directory (if it doesn't already exist), and put an entry in like `GITHUB_PAT=adfadf9asd7fas9fsaf98asfassf` (that's not a real key). Remember to restart your R session.
 * Interactively login into your GitHub account and authorise with OAuth.
 
 Using the PAT is recommended.
@@ -52,7 +52,7 @@ In `gistr` you can use pipes, introduced perhaps first in R in the package `magr
 ```{r eval=FALSE}
 gists(what = "minepublic")[[1]] %>% # List my public gists, and index 1st
   add_files("~/alm_othersources.md") %>% # Add new file to that gist
-  edit() # Edit sends a PATCH command to Gists API to add file to your gist
+  update() # update sends a PATCH command to Gists API to add file to your gist
 ```
 
 And a non-piping workflow that does the same exact thing:
@@ -60,13 +60,13 @@ And a non-piping workflow that does the same exact thing:
 ```{r eval=FALSE}
 g <- gists(what = "minepublic")[[1]]
 g <- add_files(g, "~/alm_othersources.md")
-edit(g)
+update(g)
 ```
 
 Or you could string them all together in one line (but it's rather difficult to follow what's going on because you have to read from the inside out)
 
 ```{r eval=FALSE}
-edit(add_files(gists(what = "minepublic")[[1]], "~/alm_othersources.md"))
+update(add_files(gists(what = "minepublic")[[1]], "~/alm_othersources.md"))
 ```
 
 ## Rate limit information
@@ -103,6 +103,21 @@ gists('minepublic', per_page = 2)
 gist(id = 'f1403260eb92f5dfa7e1')
 ```
 
+## Easily play with gist data
+
+A new function in `v0.2` is `tabl()` (weirdly named to avoid collision with `base::table()`), 
+which attempts to parse data on gists into data.frame's for easy manipulation. 
+
+Here, we play with commit data on each of 30 gists
+
+```{r}
+library("dplyr")
+x <- sapply(c(gists(), gists()), commits)
+tabl(x) %>%
+  select(id, login, change_status.total, url) %>% 
+  filter(change_status.total > 70)
+```
+
 ## Create gist
 
 You can pass in files
@@ -124,20 +139,20 @@ gist_create(files=stuffpath, description='a new cool gist', browse = FALSE)
 Or, wrap `gist_create()` around some code in your R session/IDE, like so, with just the function name, and a `{'` at the start and a `}'` at the end.
 
 ```{r}
-gist_create(code={'
+gist_create(code = {'
 x <- letters
 numbers <- runif(8)
 numbers
 
 [1] 0.3229318 0.5933054 0.7778408 0.3898947 0.1309717 0.7501378 0.3206379 0.3379005
-'}, browse=FALSE)
+'}, browse = FALSE)
 ```
 
 You can also knit an input file before posting as a gist:
 
 ```{r eval=FALSE}
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
-gist_create(file, description='a new cool gist', knit=TRUE)
+gist_create(file, description = 'a new cool gist', knit=TRUE)
 #> <gist>4162b9c53479fbc298db
 #>   URL: https://gist.github.com/4162b9c53479fbc298db
 #>   Description: a new cool gist
@@ -149,10 +164,10 @@ gist_create(file, description='a new cool gist', knit=TRUE)
 Or code blocks before (note that code blocks without knitr block demarcations will result in unexecuted code):
 
 ```{r eval=FALSE}
-gist_create(code={'
+gist_create(code = {'
 x <- letters
 (numbers <- runif(8))
-'}, knit=TRUE)
+'}, knit = TRUE)
 #> <gist>ec45c396dee4aa492139
 #>   URL: https://gist.github.com/ec45c396dee4aa492139
 #>   Description:
@@ -167,7 +182,8 @@ knit a local file
 
 ```{r}
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
-run(file, knitopts = list(quiet=TRUE)) %>% gist_create(browse = FALSE)
+run(file, knitopts = list(quiet = TRUE)) %>% 
+  gist_create(browse = FALSE)
 ```
 
 ```{r echo=FALSE}
@@ -186,7 +202,54 @@ x <- letters
 knit a file from a gist, has to get file first (result not shown)
 
 ```{r eval=FALSE}
-gists('minepublic')[[1]] %>% run() %>% edit()
+gists('minepublic')[[1]] %>% 
+  run() %>% 
+  update()
+```
+
+## Include source file in the created gist
+
+```{r eval=FALSE}
+file <- system.file("examples", "stuff.Rmd", package = "gistr")
+gist_create(file, knit = TRUE, include_source = TRUE)
+```
+
+## Inject image links with IMGUR
+
+```{r eval=FALSE}
+file <- system.file("examples", "plots.Rmd", package = "gistr")
+gist_create(file, knit = TRUE, imgur_inject = TRUE)
+```
+
+![inject_imgur](../assets/tutorial-images/gistr/gistr_imgur.png)
+
+## Create gists from R objects
+
+First, `gist_create_obj()` was made a separate function from `gist_create()` because there was 
+a bunch of different parameters, and it was too complicated to cobmine. Behavior of this function 
+is a bit dumb at this point, e.g., if a data.frame is pushed up to a gist, you'd expect a 
+markdown table probably - but that doesn't quite work yet, sorry :) For other formats (e.g., 
+lists), it's not clear what to show in a gist. 
+
+__data.frame__
+
+by default makes pretty table in markdown format
+
+```{r}
+row.names(mtcars) <- NULL
+gist_create_obj(mtcars)
+```
+
+or just push up json
+
+```{r}
+gist_create_obj(mtcars, pretty = FALSE)
+```
+
+__list__
+
+```{r}
+gist_create_obj(apply(mtcars, 1, as.list))
 ```
 
 ## List commits on a gist
@@ -209,20 +272,20 @@ Unstar
 gist('7ddb9810fc99c84c65ec') %>% unstar()
 ```
 
-## Edit a gist
+## Update a gist
 
 Add files
 
 First, path to file
 
 ```{r}
-file <- system.file("examples", "alm_othersources.md", package = "gistr")
+file <- system.file("examples", "alm.md", package = "gistr")
 ```
 
 ```{r}
 gists(what = "minepublic")[[1]] %>%
   add_files(file) %>%
-  edit()
+  update()
 ```
 
 Delete files
@@ -230,7 +293,7 @@ Delete files
 ```{r}
 gists(what = "minepublic")[[1]] %>%
   delete_files(file) %>%
-  edit()
+  update()
 ```
 
 ## Open a gist in your default browser
@@ -299,23 +362,8 @@ And here's that gist: [https://gist.github.com/sckott/017214637bcfeb198070](http
 
 ## Citing
 
-```r
-To cite package ‘gistr’ in publications use:
-
-  Ramnath Vaidyanathan, Karthik Ram and Scott Chamberlain (2014). gistr: Work with
-  GitHub Gists from R. R package version 0.1.0. https://github.com/ropensci/gistr
-
-A BibTeX entry for LaTeX users is
-
-  @Manual{,
-    title = {gistr: Work with GitHub Gists from R},
-    author = {Ramnath Vaidyanathan and Karthik Ram and Scott Chamberlain},
-    year = {2014},
-    note = {R package version 0.1.0},
-    url = {https://github.com/ropensci/gistr},
-  }
-
- ```
+> Ramnath Vaidyanathan, Karthik Ram and Scott Chamberlain (2015). gistr: Work with
+  GitHub Gists from R. R package version 0.2.0. https://github.com/ropensci/gistr
 
 </section>
 
