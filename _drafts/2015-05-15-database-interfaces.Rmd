@@ -24,13 +24,22 @@ knitr::opts_chunk$set(
 
 There are many different databases. The most familiar are row-column SQL databases like MySQL, SQLite, or PostgreSQL. Another type of database is the key-value store, which as a concept is very simple: you save a value specified by a key, and you can retrieve a value by its key. One more type is the document database, which instead of storing rows and columns, stores blobs of text or even binary files. The key-value and document types fall under the NoSQL umbrella. As there are mature R clients for many SQL databases, and [dplyr](https://github.com/hadley/dplyr) is a great generic interface to SQL backends  (see [`dplyr` vignettes](http://cran.rstudio.com/web/packages/dplyr/) for an intro), we won't delve into SQL clients here.
 
-What is the difference among SQL, NoSQL, key-value, etc.? A diagram may be helpful:
+What is the difference among SQL between NoSQL (key-value, document)? A diagram may be helpful:
 
 ![diagram](databases_diagram/databases_diagram.jpg)
 
 NoSQL is often interpreted as _Not only SQL_ - meaning a database that is called a NoSQL database may contain some notion of row-column storage, but other details diverge from traditional SQL databases. See [Wikipedia](http://en.wikipedia.org/wiki/NoSQL) for more information.
 
-Current rOpenSci database tools:
+If you aren't already using databases, why care about databases? We'll answer this through a number of use cases:
+
+* Use case 1: Let's say you are producing a lot of data in your lab - millions of rows of data. Storing all this data in `.xls` or `.csv` files would definitely get cumbersome. If the data is traditional row-column spreadsheet data, a SQL database is perfect, perhaps PostgreSQL. Putting your data in a database allows the data to scale up easily while maintaining speedy data access, many tables can be linked together if needed, and more. Of course if you're data will always fit in memory of the machine you're working on, a database may be too much complexity. 
+* Use case 2: You already have data in a database, whether SQL or NoSQL. Of course the it makes sense to interface with the database from R instead of e.g., exporting files from the database, then into R. 
+* Use case 3: A data provider gives dumps of data that you need for your research/work problem. You download the data and it's hundreds of `.csv` files. It sure would be nice to be able to efficiently search this data. Simple searches like _return all records with variable X < 10_ are ideal for a SQL database. If instead the files are blobs of XML, JSON, or something else non-tabular, a document database is ideal.
+* Use case 4: You need to perform more complicated searches than SQL can support. Some NoSQL databases have very powerful search engines, e.g., Elasticsearch.
+* Use case 5: Sometimes you just need to cache stuff. Caching is a good use case for key-value stores. Let's say you are requesting data from a database online, and you want to make a derivative data thing from the original data, but you don't want to lose the original data. Simply storing the original data on disk in files is easy and does the job. Sometimes though, you may need something more structured. Redis and etcd are two key-value stores we make clients for and can make caching easy. Another use for caching is to avoid repeating time-consuming queries or queries that may cost money.  
+* Use case 6: Indexable serialization. Related to the previous discussion of caching, this is caching, but better. That is, instead of dumping an R object to a cache, then retrieving the entire object later, NoSQL DB's make it easy to serialize an R object, and retrieve only what you need. See Rich FitzJohn's  [storr](http://htmlpreview.github.io/?https://raw.githubusercontent.com/richfitz/storr/master/inst/doc/storr.html#lists-and-indexable-serialisation) for an example of this. 
+
+rOpenSci has an increasing suite of database tools:
 
 * [elastic](https://github.com/ropensci/elastic) (document database) (on CRAN)
 * [sofa](https://github.com/ropensci/sofa) (document database)
@@ -41,12 +50,7 @@ Current rOpenSci database tools:
 * [ckanr](https://github.com/ropensci/ckanr) (SQL database as a service, open source)
 * [nodbi](https://github.com/ropensci/nodbi) (DBI, but for NoSQL DB's)
 
-If you aren't already using databases, why care about databases? We'll answer this through a number of use cases:
-
-* Use case 1: Let's say you are producing a lot of data in your lab - millions of rows of data. Storing all this data in `.xls` or `.csv` files would definitely get cumbersome. If the data is traditional row-column spreadsheet data, a SQL database is perfect, perhaps PostgreSQL. Putting your data in a database allows the data to scale up easily while maintaining speedy data access, many tables can be linked together if needed, and more. Of course if you're data will always fit in memory of the machine you're working on, a database may be too much complexity. 
-* Use case 2: You already have data in a database, whether SQL or NoSQL. Of course the it makes sense to interface with the database from R instead of e.g., exporting files from the database, then into R. 
-* Use case 3: A data provider gives dumps of data that you need for your research/work problem. You download the data and it's hundreds of `.csv` files. It sure would be nice to be able to efficiently search this data. Simple searches like _return all records with variable X < 10_ are ideal for a SQL database. If instead the files are blobs of XML, JSON, or something else non-tabular, a document database is ideal. * * Use case 4: You need to perform more complicated searches than SQL can support. Some NoSQL databases have very powerful search engines, e.g., Elasticsearch.
-* Use case 5: Sometimes you just need to cache stuff. Caching is a good use case for key-value stores. Let's say you are requesting data from a database online, and you want to make a derivative data thing from the original data, but you don't want to lose the original data. Simply storing the original data on disk in files is easy and does the job. Sometimes though, you may need something more structured. Redis and etcd are two key-value stores we make clients for and can make caching easy. Another use for caching is to avoid repeating time-consuming queries or queries that may cost money.  
+Some of these packages (e.g., `rrlite`, `nodbi`) can be thought of as infrastructure, just like clients for PostgreSQL or SQLite, for which other R packages can be created - or that can be used to interface with a database. Other packages (e.g., `ckanr`) are more likely to be useful to end users for retrieving data for a project. Let us know if you have any feedback on these packages, and/or if you think there's anything else we should be thinking about making in this space. 
 
 ## Get devtools
 
@@ -177,7 +181,7 @@ solr_search(q = '*:*', fl = c('id', 'journal', 'publication_date'), base = 'http
 
 [etseed](https://github.com/ropensci/etseed) is an R client for the [etcd](https://github.com/coreos/etcd) key-value store, developed by the folks at [coreos](https://coreos.com/), written in [Go](https://golang.org/).
 
-This package is still in early days, and isn't exactly the fastest option in the bunch here - bought changes in `etcd` should help. 
+This package is still in early days, and isn't exactly the fastest option in the bunch here - but changes in `etcd` should help. 
 
 ```{r eval=FALSE}
 devtools::install_github("ropensci/etseed")
@@ -215,7 +219,7 @@ devtools::install_github("ropensci/rrlite")
 library("rrlite")
 ```
 
-No need to start up a server as with some of the other clients since rlite is a serverless engine. 
+This package is may be more interesting than other R Redis clients because there is no need to start up a server since rlite is a serverless engine. 
 
 ### Example
 
