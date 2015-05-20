@@ -17,7 +17,7 @@ tags:
 
 There are many different databases. The most familiar are row-column SQL databases like MySQL, SQLite, or PostgreSQL. Another type of database is the key-value store, which as a concept is very simple: you save a value specified by a key, and you can retrieve a value by its key. One more type is the document database, which instead of storing rows and columns, stores blobs of text or even binary files. The key-value and document types fall under the NoSQL umbrella. As there are mature R clients for many SQL databases, and [dplyr](https://github.com/hadley/dplyr) is a great generic interface to SQL backends  (see [`dplyr` vignettes](http://cran.rstudio.com/web/packages/dplyr/) for an intro), we won't delve into SQL clients here.
 
-What is the difference among SQL between NoSQL (key-value, document)? A diagram may be helpful:
+What is the difference between SQL and NoSQL (key-value, document)? A diagram may be helpful:
 
 ![diagram](databases_diagram/databases_diagram.jpg)
 
@@ -26,7 +26,7 @@ NoSQL is often interpreted as _Not only SQL_ - meaning a database that is called
 If you aren't already using databases, why care about databases? We'll answer this through a number of use cases:
 
 * Use case 1: Let's say you are producing a lot of data in your lab - millions of rows of data. Storing all this data in `.xls` or `.csv` files would definitely get cumbersome. If the data is traditional row-column spreadsheet data, a SQL database is perfect, perhaps PostgreSQL. Putting your data in a database allows the data to scale up easily while maintaining speedy data access, many tables can be linked together if needed, and more. Of course if you're data will always fit in memory of the machine you're working on, a database may be too much complexity. 
-* Use case 2: You already have data in a database, whether SQL or NoSQL. Of course the it makes sense to interface with the database from R instead of e.g., exporting files from the database, then into R. 
+* Use case 2: You already have data in a database, whether SQL or NoSQL. Of course it makes sense to interface with the database from R instead of e.g., exporting files from the database, then into R.
 * Use case 3: A data provider gives dumps of data that you need for your research/work problem. You download the data and it's hundreds of `.csv` files. It sure would be nice to be able to efficiently search this data. Simple searches like _return all records with variable X < 10_ are ideal for a SQL database. If instead the files are blobs of XML, JSON, or something else non-tabular, a document database is ideal.
 * Use case 4: You need to perform more complicated searches than SQL can support. Some NoSQL databases have very powerful search engines, e.g., Elasticsearch.
 * Use case 5: Sometimes you just need to cache stuff. Caching is a good use case for key-value stores. Let's say you are requesting data from a database online, and you want to make a derivative data thing from the original data, but you don't want to lose the original data. Simply storing the original data on disk in files is easy and does the job. Sometimes though, you may need something more structured. Redis and etcd are two key-value stores we make clients for and can make caching easy. Another use for caching is to avoid repeating time-consuming queries or queries that may cost money.  
@@ -43,7 +43,21 @@ rOpenSci has an increasing suite of database tools:
 * [ckanr](https://github.com/ropensci/ckanr) (SQL database as a service, open source)
 * [nodbi](https://github.com/ropensci/nodbi) (DBI, but for NoSQL DB's)
 
-Some of these packages (e.g., `rrlite`, `nodbi`) can be thought of as infrastructure, just like clients for PostgreSQL or SQLite, for which other R packages can be created - or that can be used to interface with a database. Other packages (e.g., `ckanr`) are more likely to be useful to end users for retrieving data for a project. Let us know if you have any feedback on these packages, and/or if you think there's anything else we should be thinking about making in this space. 
+Some of these packages (e.g., `rrlite`, `nodbi`) can be thought of as infrastructure, just like clients for PostgreSQL or SQLite, for which other R packages can be created - or that can be used to interface with a database. Other packages (e.g., `ckanr`) are more likely to be useful to end users for retrieving data for a project. 
+
+If you're wondering what database to use: 
+
+- You may want a SQL database if: you have tabular data, and the schema is not going to change
+- You may want a NoSQL key-value database if: you want to shove objects into something, and then retrieve later by a key
+- You may want a NoSQL document database if: 
+  - you need to store unstructured blobs, even including binary attachments
+  - you need a richer query interface than a SQL database can provide
+  
+SQL databases have many advantages - one important advantage is that SQL syntax is widely used, and there are probably clients in every concievable language for interacting with SQL databases. However, NoSQL can be a better fit in many cases, overriding this SQL syntax familiarity.
+
+There is another type of NoSQL database, the graph database, including [Neo4j][neo4j] and [Titan][titan]. We didn't talk much about them here, but they can be useful when you have naturally graph like data. A science project using a graph database is [Open Tree of Life][opentree]. There is an R client for Neo4J: [RNeo4j](https://github.com/nicolewhite/RNeo4j).
+
+Let us know if you have any feedback on these packages, and/or if you think there's anything else we should be thinking about making in this space. Now on to some examples of rOpenSci packages. 
 
 ## Get devtools
 
@@ -68,7 +82,7 @@ install.packages("elastic")
 library("elastic")
 ```
 
-`elastic` is a powerful document database with a built in query engine. It speaks JSON by default, has a nice HTTP API, which we use to communicate with `elastic` from R. What's great about `elastic` over e.g., `Solr` is that you don't have to worry about specifying a schema for your data. You can simply put data in, and then query on that data. Of course you can [specify configuration settings](http://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration.html).
+`elastic` is a powerful document database with a built in query engine. It speaks JSON, has a nice HTTP API, which we use to communicate with `elastic` from R. What's great about `elastic` over e.g., `Solr` is that you don't have to worry about specifying a schema for your data. You can simply put data in, and then query on that data. You can [specify configuration settings](http://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration.html).
 
 ### Example
 
@@ -79,6 +93,117 @@ In a quick example, here's going from a data.frame in R, putting data into `elas
 library("ggplot2")
 invisible(connect())
 res <- docs_bulk(diamonds, "diam")
+#> 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |=                                                                |   2%
+  |                                                                       
+  |==                                                               |   4%
+  |                                                                       
+  |====                                                             |   6%
+  |                                                                       
+  |=====                                                            |   7%
+  |                                                                       
+  |======                                                           |   9%
+  |                                                                       
+  |=======                                                          |  11%
+  |                                                                       
+  |========                                                         |  13%
+  |                                                                       
+  |==========                                                       |  15%
+  |                                                                       
+  |===========                                                      |  17%
+  |                                                                       
+  |============                                                     |  19%
+  |                                                                       
+  |=============                                                    |  20%
+  |                                                                       
+  |==============                                                   |  22%
+  |                                                                       
+  |================                                                 |  24%
+  |                                                                       
+  |=================                                                |  26%
+  |                                                                       
+  |==================                                               |  28%
+  |                                                                       
+  |===================                                              |  30%
+  |                                                                       
+  |====================                                             |  31%
+  |                                                                       
+  |======================                                           |  33%
+  |                                                                       
+  |=======================                                          |  35%
+  |                                                                       
+  |========================                                         |  37%
+  |                                                                       
+  |=========================                                        |  39%
+  |                                                                       
+  |==========================                                       |  41%
+  |                                                                       
+  |============================                                     |  43%
+  |                                                                       
+  |=============================                                    |  44%
+  |                                                                       
+  |==============================                                   |  46%
+  |                                                                       
+  |===============================                                  |  48%
+  |                                                                       
+  |================================                                 |  50%
+  |                                                                       
+  |==================================                               |  52%
+  |                                                                       
+  |===================================                              |  54%
+  |                                                                       
+  |====================================                             |  56%
+  |                                                                       
+  |=====================================                            |  57%
+  |                                                                       
+  |=======================================                          |  59%
+  |                                                                       
+  |========================================                         |  61%
+  |                                                                       
+  |=========================================                        |  63%
+  |                                                                       
+  |==========================================                       |  65%
+  |                                                                       
+  |===========================================                      |  67%
+  |                                                                       
+  |=============================================                    |  69%
+  |                                                                       
+  |==============================================                   |  70%
+  |                                                                       
+  |===============================================                  |  72%
+  |                                                                       
+  |================================================                 |  74%
+  |                                                                       
+  |=================================================                |  76%
+  |                                                                       
+  |===================================================              |  78%
+  |                                                                       
+  |====================================================             |  80%
+  |                                                                       
+  |=====================================================            |  81%
+  |                                                                       
+  |======================================================           |  83%
+  |                                                                       
+  |=======================================================          |  85%
+  |                                                                       
+  |=========================================================        |  87%
+  |                                                                       
+  |==========================================================       |  89%
+  |                                                                       
+  |===========================================================      |  91%
+  |                                                                       
+  |============================================================     |  93%
+  |                                                                       
+  |=============================================================    |  94%
+  |                                                                       
+  |===============================================================  |  96%
+  |                                                                       
+  |================================================================ |  98%
+  |                                                                       
+  |=================================================================| 100%
 ```
 
 About 54K records in Elasticsearch for the dataset.
@@ -246,10 +371,10 @@ create(key = "/mykey", value = "this is awesome")
 #> [1] "this is awesome"
 #> 
 #> $node$modifiedIndex
-#> [1] 1297
+#> [1] 1298
 #> 
 #> $node$createdIndex
-#> [1] 1297
+#> [1] 1298
 #> 
 #> 
 #> $prevNode
@@ -260,10 +385,10 @@ create(key = "/mykey", value = "this is awesome")
 #> [1] "this is awesome"
 #> 
 #> $prevNode$modifiedIndex
-#> [1] 1296
+#> [1] 1297
 #> 
 #> $prevNode$createdIndex
-#> [1] 1296
+#> [1] 1297
 ```
 
 Fetch the value given a key
@@ -282,10 +407,10 @@ key(key = "/mykey")
 #> [1] "this is awesome"
 #> 
 #> $node$modifiedIndex
-#> [1] 1297
+#> [1] 1298
 #> 
 #> $node$createdIndex
-#> [1] 1297
+#> [1] 1298
 ```
 
 ### rrlite
@@ -313,10 +438,10 @@ Here, we initialize, then put 20 values into rlite, assigned to the key `foo`, t
 r <- RedisAPI::rdb(rrlite::hirlite)
 r$set("foo", runif(20))
 r$get("foo")
-#>  [1] 0.89953157 0.04157455 0.12772861 0.97869546 0.82429348 0.66767489
-#>  [7] 0.36370034 0.54260628 0.72054476 0.71914702 0.22165409 0.44068732
-#> [13] 0.41427637 0.54649680 0.99833782 0.27442640 0.39985762 0.10180355
-#> [19] 0.14285677 0.19784008
+#>  [1] 0.25526455 0.23438433 0.46849646 0.13422684 0.96874694 0.11462521
+#>  [7] 0.33967156 0.03048852 0.81463387 0.21972398 0.93062752 0.82536203
+#> [13] 0.94681694 0.87470995 0.62951402 0.94589249 0.01350121 0.61573869
+#> [19] 0.55596882 0.92319057
 ```
 
 This is a good candidate for using within other R packages for more sophisticated caching than simply writing to disk, and is especially easy since you users aren't required to spin up a server as with normal Redis, or other DB's like CouchDB, MongoDB, etc. 
@@ -479,7 +604,7 @@ More information on CKAN: [http://docs.ckan.org/en/latest/contents.html](http://
 * CouchDB
 * Elasticsearch
 
-`nodbi` is still in early development, but that means it's a good time to give your input. What are use cases you can think of for this package?  What database do you think should be added as a backend?
+`nodbi` is in early development, so expect changes - but that also means it's a good time to give your input. What are use cases you can think of for this package?  What database do you think should be added as a backend?
 
 
 ```r
@@ -502,7 +627,7 @@ mongod
 
 ```r
 (src <- src_mongo())
-#> MongoDB 3.0.2 (uptime: 242s)
+#> MongoDB 3.0.2 (uptime: 59s)
 #> URL: Scotts-MBP/test
 ```
 
@@ -545,3 +670,6 @@ identical(diamonds, res)
 * [DataCarpentry SQL tutorial][dcsql]
 
 [dcsql]: https://github.com/datacarpentry/R-ecology/blob/gh-pages/06-r-and-sql.Rmd
+[neo4j]: http://neo4j.com/
+[titan]: https://github.com/thinkaurelius/titan/
+[opentree]: http://opentreeoflife.github.io/
