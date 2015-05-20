@@ -2,7 +2,7 @@
 name: database-interfaces
 layout: post
 title: Database interfaces
-date: 2015-05-15
+date: 2015-05-20
 authors:
   - name: Scott Chamberlain
 tags:
@@ -195,7 +195,7 @@ solr_search(q = '*:*', fl = c('id', 'journal', 'publication_date'), base = 'http
 
 [etseed](https://github.com/ropensci/etseed) is an R client for the [etcd](https://github.com/coreos/etcd) key-value store, developed by the folks at [coreos](https://coreos.com/), written in [Go](https://golang.org/).
 
-This package is still in early days, and isn't exactly the fastest option in the bunch here - but changes in `etcd` should help. 
+This package is still in early days, and isn't exactly the fastest option in the bunch here - but upcoming changes (including allowing bulk writing and retrieval) in `etcd` should help. 
 
 ```{r eval=FALSE}
 devtools::install_github("ropensci/etseed")
@@ -233,7 +233,7 @@ devtools::install_github("ropensci/rrlite")
 library("rrlite")
 ```
 
-This package is may be more interesting than other R Redis clients because there is no need to start up a server since rlite is a serverless engine. 
+This package may be more interesting than other R Redis clients because there is no need to start up a server since rlite is a serverless engine.
 
 ### Example
 
@@ -245,7 +245,7 @@ r$set("foo", runif(20))
 r$get("foo")
 ```
 
-This is a good candidate for using within other R packages for more sophisticated caching than simply writing to disk, and is especially easy since you users aren't required to spin up a server as with normal Redis, or other DB's like CouchDB, MongoDB, etc. 
+This is a good candidate for using within other R packages for more sophisticated caching than simply writing to disk, and is especially easy since users aren't required to spin up a server as with normal Redis, or other DB's like CouchDB, MongoDB, etc. 
 
 ## rerddap
 
@@ -261,7 +261,7 @@ install.packages("rerddap")
 library("rerddap")
 ```
 
-ERDDAP is a server built on top of [OPenDAP](http://www.opendap.org/). NOAA serve many differen datasets through ERDDAP servers. Through ERDDAP, you can get gridded data (see `griddap()`), which lets you query from gridded datasets, or table data (see `tabledap()`) which lets you query from tabular datasets. ERDDAP is open source, so anyone can use it to serve data. 
+ERDDAP is a server built on top of [OPenDAP](http://www.opendap.org/). NOAA serve many differen datasets through ERDDAP servers. Through ERDDAP, you can get gridded data (see `griddap()`), which lets you query from gridded datasets (see `griddap()`), or tablular datasets (see `tabledap()`). ERDDAP is open source, so anyone can use it to serve data. 
 
 `rerddap` by default grabs NetCDF files, a binary compressed file type that should be faster to download, and take up less disk space, than other formats (e.g., `csv`). However, this means that you need a client library for NetCDF files - but not to worry, we use `ncdf` by default (for which there are CRAN binaries for all platforms), but you can choose to use `ncdf4` (binaries only for some platforms).
 
@@ -291,13 +291,13 @@ griddap('noaa_esrl_027d_0fb5_5d38',
 
 There are many different ERDDAP servers, see the function `servers()` for help.
 
-More information on ERDDAP: []()
+More information on ERDDAP: [http://upwell.pfeg.noaa.gov/erddap/information.html](http://upwell.pfeg.noaa.gov/erddap/information.html)
 
 ## ckanr
 
 [ckanr](https://github.com/ropensci/ckanr) - A general purpose R client for any CKAN server.
 
-[CKAN](http://ckan.org/) is similar to ERDDAP in being an open source system to store and provide data via web services (and web interface, but we don't need that here). CKAN bills themself as a _open-source data portal platform_.
+[CKAN](http://ckan.org/) is similar to ERDDAP in being an open source system to store and provide data via web services (and web interface, but we don't need that here). CKAN bills itself as an _open-source data portal platform_.
 
 ```{r eval=FALSE}
 devtools::install_github("ropensci/ckanr")
@@ -309,7 +309,7 @@ library("ckanr")
 
 ### Example
 
-> Examples use the CKAN server at http://data.techno-science.ca
+> Examples use the CKAN server at [http://data.techno-science.ca](http://data.techno-science.ca)
 
 Show changes in a CKAN server
 
@@ -337,7 +337,7 @@ More information on CKAN: [http://docs.ckan.org/en/latest/contents.html](http://
 * CouchDB
 * Elasticsearch
 
-`nodbi` is in early development, so expect changes - but that also means it's a good time to give your input. What are use cases you can think of for this package?  What database do you think should be added as a backend?
+`nodbi` is in early development, so expect changes - but that also means it's a good time to give your input. What use cases you can think of for this package?  What database do you think should be added as a backend?
 
 ```{r eval=FALSE}
 devtools::install_github("ropensci/nodbi")
@@ -382,9 +382,6 @@ Data is identical:
 identical(diamonds, res)
 ```
 
-## Further reading
-
-* [DataCarpentry SQL tutorial][dcsql]
 
 [dcsql]: https://github.com/datacarpentry/R-ecology/blob/gh-pages/06-r-and-sql.Rmd
 [neo4j]: http://neo4j.com/

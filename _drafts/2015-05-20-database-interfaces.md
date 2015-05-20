@@ -2,7 +2,7 @@
 name: database-interfaces
 layout: post
 title: Database interfaces
-date: 2015-05-15
+date: 2015-05-20
 authors:
   - name: Scott Chamberlain
 tags:
@@ -93,6 +93,7 @@ In a quick example, here's going from a data.frame in R, putting data into `elas
 library("ggplot2")
 invisible(connect())
 res <- docs_bulk(diamonds, "diam")
+#>   |                                                                         |                                                                 |   0%  |                                                                         |=                                                                |   2%  |                                                                         |==                                                               |   4%  |                                                                         |====                                                             |   6%  |                                                                         |=====                                                            |   7%  |                                                                         |======                                                           |   9%  |                                                                         |=======                                                          |  11%  |                                                                         |========                                                         |  13%  |                                                                         |==========                                                       |  15%  |                                                                         |===========                                                      |  17%  |                                                                         |============                                                     |  19%  |                                                                         |=============                                                    |  20%  |                                                                         |==============                                                   |  22%  |                                                                         |================                                                 |  24%  |                                                                         |=================                                                |  26%  |                                                                         |==================                                               |  28%  |                                                                         |===================                                              |  30%  |                                                                         |====================                                             |  31%  |                                                                         |======================                                           |  33%  |                                                                         |=======================                                          |  35%  |                                                                         |========================                                         |  37%  |                                                                         |=========================                                        |  39%  |                                                                         |==========================                                       |  41%  |                                                                         |============================                                     |  43%  |                                                                         |=============================                                    |  44%  |                                                                         |==============================                                   |  46%  |                                                                         |===============================                                  |  48%  |                                                                         |================================                                 |  50%  |                                                                         |==================================                               |  52%  |                                                                         |===================================                              |  54%  |                                                                         |====================================                             |  56%  |                                                                         |=====================================                            |  57%  |                                                                         |=======================================                          |  59%  |                                                                         |========================================                         |  61%  |                                                                         |=========================================                        |  63%  |                                                                         |==========================================                       |  65%  |                                                                         |===========================================                      |  67%  |                                                                         |=============================================                    |  69%  |                                                                         |==============================================                   |  70%  |                                                                         |===============================================                  |  72%  |                                                                         |================================================                 |  74%  |                                                                         |=================================================                |  76%  |                                                                         |===================================================              |  78%  |                                                                         |====================================================             |  80%  |                                                                         |=====================================================            |  81%  |                                                                         |======================================================           |  83%  |                                                                         |=======================================================          |  85%  |                                                                         |=========================================================        |  87%  |                                                                         |==========================================================       |  89%  |                                                                         |===========================================================      |  91%  |                                                                         |============================================================     |  93%  |                                                                         |=============================================================    |  94%  |                                                                         |===============================================================  |  96%  |                                                                         |================================================================ |  98%  |                                                                         |=================================================================| 100%
 ```
 
 About 54K records in Elasticsearch for the dataset.
@@ -228,7 +229,7 @@ solr_search(q = '*:*', fl = c('id', 'journal', 'publication_date'), base = 'http
 
 [etseed](https://github.com/ropensci/etseed) is an R client for the [etcd](https://github.com/coreos/etcd) key-value store, developed by the folks at [coreos](https://coreos.com/), written in [Go](https://golang.org/).
 
-This package is still in early days, and isn't exactly the fastest option in the bunch here - but changes in `etcd` should help. 
+This package is still in early days, and isn't exactly the fastest option in the bunch here - but upcoming changes (including allowing bulk writing and retrieval) in `etcd` should help. 
 
 
 ```r
@@ -260,10 +261,10 @@ create(key = "/mykey", value = "this is awesome")
 #> [1] "this is awesome"
 #> 
 #> $node$modifiedIndex
-#> [1] 1298
+#> [1] 1299
 #> 
 #> $node$createdIndex
-#> [1] 1298
+#> [1] 1299
 #> 
 #> 
 #> $prevNode
@@ -274,10 +275,10 @@ create(key = "/mykey", value = "this is awesome")
 #> [1] "this is awesome"
 #> 
 #> $prevNode$modifiedIndex
-#> [1] 1297
+#> [1] 1298
 #> 
 #> $prevNode$createdIndex
-#> [1] 1297
+#> [1] 1298
 ```
 
 Fetch the value given a key
@@ -296,10 +297,10 @@ key(key = "/mykey")
 #> [1] "this is awesome"
 #> 
 #> $node$modifiedIndex
-#> [1] 1298
+#> [1] 1299
 #> 
 #> $node$createdIndex
-#> [1] 1298
+#> [1] 1299
 ```
 
 ### rrlite
@@ -316,7 +317,7 @@ devtools::install_github("ropensci/rrlite")
 library("rrlite")
 ```
 
-This package is may be more interesting than other R Redis clients because there is no need to start up a server since rlite is a serverless engine. 
+This package may be more interesting than other R Redis clients because there is no need to start up a server since rlite is a serverless engine.
 
 ### Example
 
@@ -327,13 +328,13 @@ Here, we initialize, then put 20 values into rlite, assigned to the key `foo`, t
 r <- RedisAPI::rdb(rrlite::hirlite)
 r$set("foo", runif(20))
 r$get("foo")
-#>  [1] 0.25526455 0.23438433 0.46849646 0.13422684 0.96874694 0.11462521
-#>  [7] 0.33967156 0.03048852 0.81463387 0.21972398 0.93062752 0.82536203
-#> [13] 0.94681694 0.87470995 0.62951402 0.94589249 0.01350121 0.61573869
-#> [19] 0.55596882 0.92319057
+#>  [1] 0.51670270 0.08039860 0.34762872 0.30276370 0.15985876 0.66062207
+#>  [7] 0.26802708 0.97451274 0.94458185 0.04604044 0.93153133 0.91241321
+#> [13] 0.64395377 0.12517230 0.31826622 0.34425757 0.79364064 0.91926051
+#> [19] 0.47487029 0.11644076
 ```
 
-This is a good candidate for using within other R packages for more sophisticated caching than simply writing to disk, and is especially easy since you users aren't required to spin up a server as with normal Redis, or other DB's like CouchDB, MongoDB, etc. 
+This is a good candidate for using within other R packages for more sophisticated caching than simply writing to disk, and is especially easy since users aren't required to spin up a server as with normal Redis, or other DB's like CouchDB, MongoDB, etc. 
 
 ## rerddap
 
@@ -351,7 +352,7 @@ install.packages("rerddap")
 library("rerddap")
 ```
 
-ERDDAP is a server built on top of [OPenDAP](http://www.opendap.org/). NOAA serve many differen datasets through ERDDAP servers. Through ERDDAP, you can get gridded data (see `griddap()`), which lets you query from gridded datasets, or table data (see `tabledap()`) which lets you query from tabular datasets. ERDDAP is open source, so anyone can use it to serve data. 
+ERDDAP is a server built on top of [OPenDAP](http://www.opendap.org/). NOAA serve many differen datasets through ERDDAP servers. Through ERDDAP, you can get gridded data (see `griddap()`), which lets you query from gridded datasets (see `griddap()`), or tablular datasets (see `tabledap()`). ERDDAP is open source, so anyone can use it to serve data. 
 
 `rerddap` by default grabs NetCDF files, a binary compressed file type that should be faster to download, and take up less disk space, than other formats (e.g., `csv`). However, this means that you need a client library for NetCDF files - but not to worry, we use `ncdf` by default (for which there are CRAN binaries for all platforms), but you can choose to use `ncdf4` (binaries only for some platforms).
 
@@ -363,20 +364,13 @@ In this example, we search for gridded datasets
 ```r
 ed_search(query = 'size', which = "grid")
 #> 6 results, showing first 20 
-#>                                                                                                   title
-#> 4                                                       NOAA Global Coral Bleaching Monitoring Products
-#> 13        USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][eta_rho][xi_rho]
-#> 14            USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][eta_u][xi_u]
-#> 15            USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][eta_v][xi_v]
-#> 16 USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][s_rho][eta_rho][xi_rho]
-#> 17  USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][Nbed][eta_rho][xi_rho]
-#>             dataset_id
-#> 4             NOAA_DHW
-#> 13 whoi_ed12_89ce_9592
-#> 14 whoi_61c3_0b5d_cd61
-#> 15 whoi_62d0_9d64_c8ff
-#> 16 whoi_7dd7_db97_4bbe
-#> 17 whoi_a4fb_2c9c_16a7
+#>                                                                                                   title          dataset_id
+#> 11                                                      NOAA Global Coral Bleaching Monitoring Products            NOAA_DHW
+#> 13 USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][s_rho][eta_rho][xi_rho] whoi_7dd7_db97_4bbe
+#> 14  USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][Nbed][eta_rho][xi_rho] whoi_a4fb_2c9c_16a7
+#> 15        USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][eta_rho][xi_rho] whoi_ed12_89ce_9592
+#> 16            USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][eta_u][xi_u] whoi_61c3_0b5d_cd61
+#> 17            USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][eta_v][xi_v] whoi_62d0_9d64_c8ff
 ```
 
 Get more information on a single dataset of interest
@@ -423,13 +417,13 @@ griddap('noaa_esrl_027d_0fb5_5d38',
 
 There are many different ERDDAP servers, see the function `servers()` for help.
 
-More information on ERDDAP: []()
+More information on ERDDAP: [http://upwell.pfeg.noaa.gov/erddap/information.html](http://upwell.pfeg.noaa.gov/erddap/information.html)
 
 ## ckanr
 
 [ckanr](https://github.com/ropensci/ckanr) - A general purpose R client for any CKAN server.
 
-[CKAN](http://ckan.org/) is similar to ERDDAP in being an open source system to store and provide data via web services (and web interface, but we don't need that here). CKAN bills themself as a _open-source data portal platform_.
+[CKAN](http://ckan.org/) is similar to ERDDAP in being an open source system to store and provide data via web services (and web interface, but we don't need that here). CKAN bills itself as an _open-source data portal platform_.
 
 
 ```r
@@ -443,7 +437,7 @@ library("ckanr")
 
 ### Example
 
-> Examples use the CKAN server at http://data.techno-science.ca
+> Examples use the CKAN server at [http://data.techno-science.ca](http://data.techno-science.ca)
 
 Show changes in a CKAN server
 
@@ -468,12 +462,9 @@ Search for data packages
 
 ```r
 package_search(q = '*:*', rows = 2, as = "table")$results[, 1:7]
-#>                      license_title maintainer relationships_as_object
-#> 1 Open Government Licence - Canada                               NULL
-#> 2 Open Government Licence - Canada                               NULL
-#>   private maintainer_email         revision_timestamp
-#> 1   FALSE                  2014-10-28T21:18:27.068320
-#> 2   FALSE                  2014-10-28T21:18:58.958555
+#>                      license_title maintainer relationships_as_object private maintainer_email         revision_timestamp
+#> 1 Open Government Licence - Canada                               NULL   FALSE                  2014-10-28T21:18:27.068320
+#> 2 Open Government Licence - Canada                               NULL   FALSE                  2014-10-28T21:18:58.958555
 #>                                     id
 #> 1 f4406699-3e11-4856-be48-b55da98b3c14
 #> 2 0a801729-aa94-4d76-a5e0-7b487303f4e5
@@ -493,7 +484,7 @@ More information on CKAN: [http://docs.ckan.org/en/latest/contents.html](http://
 * CouchDB
 * Elasticsearch
 
-`nodbi` is in early development, so expect changes - but that also means it's a good time to give your input. What are use cases you can think of for this package?  What database do you think should be added as a backend?
+`nodbi` is in early development, so expect changes - but that also means it's a good time to give your input. What use cases you can think of for this package?  What database do you think should be added as a backend?
 
 
 ```r
@@ -516,7 +507,7 @@ mongod
 
 ```r
 (src <- src_mongo())
-#> MongoDB 3.0.2 (uptime: 59s)
+#> MongoDB 3.0.2 (uptime: 230s)
 #> URL: Scotts-MBP/test
 ```
 
@@ -554,9 +545,6 @@ identical(diamonds, res)
 #> [1] TRUE
 ```
 
-## Further reading
-
-* [DataCarpentry SQL tutorial][dcsql]
 
 [dcsql]: https://github.com/datacarpentry/R-ecology/blob/gh-pages/06-r-and-sql.Rmd
 [neo4j]: http://neo4j.com/
