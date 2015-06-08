@@ -1,7 +1,7 @@
 ---
 title: rgbif tutorial
 layout: tutorial
-packge_version: 0.7.9
+packge_version: 0.8.4
 ---
 
 ```{r, echo=FALSE}
@@ -24,7 +24,13 @@ knitr::opts_chunk$set(
 
 ## Installation
 
-Install rgbif from Github as the CRAN version fails with some functions due to changes in the GBIF API.
+Install `rgbif` from CRAN for more stable version
+
+```{r eval=FALSE}
+install.packages("rgbif")
+```
+
+Or from Github for the development version
 
 ```{r eval=FALSE}
 devtools::install_github("ropensci/rgbif")
@@ -32,7 +38,7 @@ devtools::install_github("ropensci/rgbif")
 
 Load rgbif
 
-```{r load, comment=NA, warning=FALSE, message=FALSE}
+```{r load}
 library("rgbif")
 ```
 
@@ -150,7 +156,7 @@ The function `name_usage()` works with lots of different name endpoints in GBIF,
 ```{r}
 library("plyr")
 out <- name_usage(key=3119195, language="FRENCH", data='vernacularNames')
-compact(lapply(out$results, function(x) if(x$language=="FRENCH") x else NULL))[1:2]
+head(out$data)
 ```
 
 The function `name_backbone()` is used to search against the GBIF backbone taxonomy
@@ -191,7 +197,7 @@ occ_get(key=766766824, return='all')
 Get many occurrences. `occ_get` is vectorized
 
 ```{r occ_get4}
-occ_get(key=c(766766824,101010,240713150,855998194,49819470), return='data')
+occ_get(key=c(766766824, 101010, 240713150, 855998194), return='data')
 ```
 
 
@@ -254,7 +260,7 @@ To cite `rgbif` in publications use:
 
 <br>
 
-> Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2014). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 0.7.9 https://github.com/ropensci/rgbif
+> Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2015). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 0.8.4 https://github.com/ropensci/rgbif
 
 <section id="license_bugs">
 
