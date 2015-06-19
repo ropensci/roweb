@@ -1,7 +1,7 @@
 ---
 title: taxize tutorial
 layout: tutorial
-packge_version: 0.5.2
+packge_version: 0.6.0
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
@@ -241,6 +241,8 @@ To cite `taxize` in publications use:
 <br>
 
 > Scott Chamberlain and Eduard Szocs (2013). taxize - taxonomic search and retrieval in R. F1000Research, 2:191. URL: http://f1000research.com/articles/2-191/v2.
+
+> Scott Chamberlain, Eduard Szocs, Carl Boettiger, Karthik Ram, Ignasi Bartomeus, and John Baumgartner (2015) taxize: Taxonomic information from around the web. R package version 0.6.0. https://github.com/ropensci/taxize
 
 <section id="license_bugs">
 

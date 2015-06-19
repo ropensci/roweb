@@ -1,7 +1,7 @@
 ---
 title: taxize tutorial
 layout: tutorial
-packge_version: 0.5.2
+packge_version: 0.6.0
 ---
 
 
@@ -131,30 +131,32 @@ classification(specieslist, db = 'itis')
 #> $`Abies procera`
 #>               name          rank     id
 #> 1          Plantae       Kingdom 202422
-#> 2   Viridaeplantae    Subkingdom 846492
+#> 2    Viridiplantae    Subkingdom 954898
 #> 3     Streptophyta  Infrakingdom 846494
-#> 4     Tracheophyta      Division 846496
-#> 5  Spermatophytina   Subdivision 846504
-#> 6     Gymnospermae Infradivision 846506
+#> 4      Embryophyta Superdivision 954900
+#> 5     Tracheophyta      Division 846496
+#> 6  Spermatophytina   Subdivision 846504
 #> 7        Pinopsida         Class 500009
-#> 8          Pinales         Order 500028
-#> 9         Pinaceae        Family  18030
-#> 10           Abies         Genus  18031
-#> 11   Abies procera       Species 181835
+#> 8          Pinidae      Subclass 954916
+#> 9          Pinales         Order 500028
+#> 10        Pinaceae        Family  18030
+#> 11           Abies         Genus  18031
+#> 12   Abies procera       Species 181835
 #> 
 #> $`Pinus contorta`
 #>               name          rank     id
 #> 1          Plantae       Kingdom 202422
-#> 2   Viridaeplantae    Subkingdom 846492
+#> 2    Viridiplantae    Subkingdom 954898
 #> 3     Streptophyta  Infrakingdom 846494
-#> 4     Tracheophyta      Division 846496
-#> 5  Spermatophytina   Subdivision 846504
-#> 6     Gymnospermae Infradivision 846506
+#> 4      Embryophyta Superdivision 954900
+#> 5     Tracheophyta      Division 846496
+#> 6  Spermatophytina   Subdivision 846504
 #> 7        Pinopsida         Class 500009
-#> 8          Pinales         Order 500028
-#> 9         Pinaceae        Family  18030
-#> 10           Pinus         Genus  18035
-#> 11  Pinus contorta       Species 183327
+#> 8          Pinidae      Subclass 954916
+#> 9          Pinales         Order 500028
+#> 10        Pinaceae        Family  18030
+#> 11           Pinus         Genus  18035
+#> 12  Pinus contorta       Species 183327
 #> 
 #> attr(,"class")
 #> [1] "classification"
@@ -190,9 +192,12 @@ get_uid(sciname = "Pinus")
 ```
 
 ```
-#>      UID     Rank    Division
-#> 1 139271 subgenus seed plants
-#> 2   3337    genus seed plants
+#>   status     rank    division scientificname commonname    uid genus
+#> 1 active subgenus seed plants          Pinus hard pines 139271      
+#> 2 active    genus seed plants          Pinus              3337      
+#>   species subsp modificationdate
+#> 1               2010/12/13 00:00
+#> 2               2004/09/10 00:00
 ```
 
 ```
@@ -314,10 +319,10 @@ get_nbnid_("Poa annua", rows = 1:10)
 #> 4  NHMSYS0021060390           Poales   Order  Recommended
 #> 5  NBNSYS0000002551       Poa glauca Species  Recommended
 #> 6  NBNSYS0000002547       Poa alpina Species  Recommended
-#> 7  NBNSYS0000160753          Poaceae  Family  Recommended
-#> 8  NHMSYS0000456981       Poa rigida Species      Synonym
-#> 9  NBNSYS0000002545       Poa exilis Species Undetermined
-#> 10 NBNSYS0000002551       Poa caesia Species      Synonym
+#> 7  NBNSYS0000002551       Poa caesia Species      Synonym
+#> 8  NBNSYS0000002545       Poa exilis Species Undetermined
+#> 9  NBNSYS0000160753          Poaceae  Family  Recommended
+#> 10 NHMSYS0000456981       Poa rigida Species      Synonym
 ```
 
 ## Coerce numerics/alphanumerics to taxon IDs
@@ -329,6 +334,51 @@ For example, adfafd
 
 ```r
 as.gbifid(get_gbifid("Poa annua")) # already a uid, returns the same
+```
+
+```
+#>     gbifid        phylum  order  family         canonicalname       rank
+#> 1  2704179 Magnoliophyta Poales Poaceae             Poa annua    SPECIES
+#> 2  7262139 Magnoliophyta Poales Poaceae       Poa annua annua SUBSPECIES
+#> 3  6313731 Magnoliophyta Poales Poaceae       Poa annua varia SUBSPECIES
+#> 4  6313730 Magnoliophyta Poales Poaceae      Poa annua exilis SUBSPECIES
+#> 5  5947756 Magnoliophyta Poales Poaceae      Poa annua supina SUBSPECIES
+#> 6  4128735 Magnoliophyta Poales Poaceae  Poa annua raniglumis SUBSPECIES
+#> 7  4128771 Magnoliophyta Poales Poaceae   Poa annua notabilis SUBSPECIES
+#> 8  6431931 Magnoliophyta Poales Poaceae  Poa annua raniglumis    VARIETY
+#> 9  6431930 Magnoliophyta Poales Poaceae       Poa annua annua    VARIETY
+#> 10 5947873 Magnoliophyta Poales Poaceae  Poa annua hypsophila    VARIETY
+#> 11 6313732 Magnoliophyta Poales Poaceae      Poa annua supina    VARIETY
+#> 12 6313765 Magnoliophyta Poales Poaceae     Poa annua reptans    VARIETY
+#> 13 5947510 Magnoliophyta Poales Poaceae     Poa annua stricta    VARIETY
+#> 14 5947556 Magnoliophyta Poales Poaceae Poa annua sikkimensis    VARIETY
+#> 15 5947757 Magnoliophyta Poales Poaceae       Poa annua varia    VARIETY
+#> 16 5947582 Magnoliophyta Poales Poaceae      Poa annua exilis    VARIETY
+#> 17 5947584 Magnoliophyta Poales Poaceae Poa annua remotiflora    VARIETY
+#> 18 5947754 Magnoliophyta Poales Poaceae      Poa annua exigua    VARIETY
+#> 19 5947585 Magnoliophyta Poales Poaceae  Poa annua tommasinii    VARIETY
+#> 20 5947583 Magnoliophyta Poales Poaceae   Poa annua maroccana    VARIETY
+#>         class
+#> 1  Liliopsida
+#> 2  Liliopsida
+#> 3  Liliopsida
+#> 4  Liliopsida
+#> 5  Liliopsida
+#> 6  Liliopsida
+#> 7  Liliopsida
+#> 8  Liliopsida
+#> 9  Liliopsida
+#> 10 Liliopsida
+#> 11 Liliopsida
+#> 12 Liliopsida
+#> 13 Liliopsida
+#> 14 Liliopsida
+#> 15 Liliopsida
+#> 16 Liliopsida
+#> 17 Liliopsida
+#> 18 Liliopsida
+#> 19 Liliopsida
+#> 20 Liliopsida
 ```
 
 ```
@@ -394,7 +444,7 @@ system.time( replicate(3, as.gbifid(c("2704179","2435099","3171445"), check=TRUE
 
 ```
 #>    user  system elapsed 
-#>   0.230   0.010   2.152
+#>   0.200   0.006   1.819
 ```
 
 ```r
@@ -403,7 +453,7 @@ system.time( replicate(3, as.gbifid(c("2704179","2435099","3171445"), check=FALS
 
 ```
 #>    user  system elapsed 
-#>   0.001   0.000   0.001
+#>   0.001   0.000   0.000
 ```
 
 ## What taxa are downstream of my taxon of interest?
@@ -416,16 +466,8 @@ downstream("Apis", downto = "Species", db = "col")
 ```
 
 ```
-#> $Apis
-#>   childtaxa_id     childtaxa_name childtaxa_rank
-#> 1      6971712 Apis andreniformis        Species
-#> 2      6971713        Apis cerana        Species
-#> 3      6971714       Apis dorsata        Species
-#> 4      6971715        Apis florea        Species
-#> 5      6971716 Apis koschevnikovi        Species
-#> 6      6845885     Apis mellifera        Species
-#> 7      6971717   Apis nigrocincta        Species
-#> 
+#> Apis 
+#>   NA 
 #> attr(,"class")
 #> [1] "downstream"
 #> attr(,"db")
@@ -466,16 +508,7 @@ children(get_colid("Apis"))
 ```
 
 ```
-#> $`20126217`
-#>   childtaxa_id     childtaxa_name childtaxa_rank
-#> 1      6971712 Apis andreniformis        Species
-#> 2      6971713        Apis cerana        Species
-#> 3      6971714       Apis dorsata        Species
-#> 4      6971715        Apis florea        Species
-#> 5      6971716 Apis koschevnikovi        Species
-#> 6      6845885     Apis mellifera        Species
-#> 7      6971717   Apis nigrocincta        Species
-#> 
+#> [1] NA
 #> attr(,"class")
 #> [1] "children"
 #> attr(,"db")
@@ -599,6 +632,8 @@ To cite `taxize` in publications use:
 <br>
 
 > Scott Chamberlain and Eduard Szocs (2013). taxize - taxonomic search and retrieval in R. F1000Research, 2:191. URL: http://f1000research.com/articles/2-191/v2.
+
+> Scott Chamberlain, Eduard Szocs, Carl Boettiger, Karthik Ram, Ignasi Bartomeus, and John Baumgartner (2015) taxize: Taxonomic information from around the web. R package version 0.6.0. https://github.com/ropensci/taxize
 
 <section id="license_bugs">
 

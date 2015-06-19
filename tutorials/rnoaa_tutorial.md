@@ -1,7 +1,7 @@
 ---
 title: rnoaa tutorial
 layout: tutorial
-packge_version: 0.3.3
+packge_version: 0.4.0
 ---
 
 
@@ -9,7 +9,6 @@ packge_version: 0.3.3
 <section id="installation">
 
 ## Installation
-
 
 Install and load `rnoaa` into the R session. Stable version from CRAN
 
@@ -23,21 +22,13 @@ Or development version from Github:
 
 ```r
 install.packages("devtools")
-devtools::install_github("rnoaa", "ropensci")
+devtools::install_github("ropensci/rnoaa")
 ```
 
 
 ```r
 library('rnoaa')
 library('plyr')
-```
-
-__Note__ that NOAA buoy data requires `netcdf`, and the `ncdf4` R package, which doesn't work well on Windows. Thus, we put functions to interact with that data into a different branch `buoy`. Install that version by doing
-
-
-```r
-devtools::install_github("rnoaa", "ropensci", ref="buoy")
-library('rnoaa')
 ```
 
 <section id="usage">
@@ -58,10 +49,10 @@ ncdc_stations(datasetid='GHCND', locationid='FIPS:12017', stationid='GHCND:USC00
 ## NULL
 ## 
 ## $data
-##                  id elevation                  name elevationUnit
-## 1 GHCND:USC00084289      12.2 INVERNESS 3 SE, FL US        METERS
-##   datacoverage longitude    mindate latitude    maxdate
-## 1            1  -82.3126 1899-02-01  28.8029 2014-12-20
+##   elevation    mindate    maxdate latitude                  name
+## 1      12.2 1899-02-01 2015-06-17  28.8029 INVERNESS 3 SE, FL US
+##   datacoverage                id elevationUnit longitude
+## 1            1 GHCND:USC00084289        METERS  -82.3126
 ## 
 ## attr(,"class")
 ## [1] "ncdc_stations"
@@ -82,32 +73,32 @@ out$data
 ```
 
 ```
-##              station value        datatype                date fl_c
-## 1  GHCND:AQW00061705   869 DLY-TMAX-NORMAL 2010-05-01T00:00:00    C
-## 2  GHCND:CAW00064757   607 DLY-TMAX-NORMAL 2010-05-01T00:00:00    Q
-## 3  GHCND:CQC00914080   840 DLY-TMAX-NORMAL 2010-05-01T00:00:00    R
-## 4  GHCND:CQC00914801   858 DLY-TMAX-NORMAL 2010-05-01T00:00:00    R
-## 5  GHCND:FMC00914395   876 DLY-TMAX-NORMAL 2010-05-01T00:00:00    P
-## 6  GHCND:FMC00914419   885 DLY-TMAX-NORMAL 2010-05-01T00:00:00    P
-## 7  GHCND:FMC00914446   885 DLY-TMAX-NORMAL 2010-05-01T00:00:00    P
-## 8  GHCND:FMC00914482   868 DLY-TMAX-NORMAL 2010-05-01T00:00:00    R
-## 9  GHCND:FMC00914720   899 DLY-TMAX-NORMAL 2010-05-01T00:00:00    R
-## 10 GHCND:FMC00914761   897 DLY-TMAX-NORMAL 2010-05-01T00:00:00    P
-## 11 GHCND:FMC00914831   870 DLY-TMAX-NORMAL 2010-05-01T00:00:00    P
-## 12 GHCND:FMC00914892   883 DLY-TMAX-NORMAL 2010-05-01T00:00:00    P
-## 13 GHCND:FMC00914898   875 DLY-TMAX-NORMAL 2010-05-01T00:00:00    P
-## 14 GHCND:FMC00914911   885 DLY-TMAX-NORMAL 2010-05-01T00:00:00    P
-## 15 GHCND:FMW00040308   888 DLY-TMAX-NORMAL 2010-05-01T00:00:00    S
-## 16 GHCND:FMW00040504   879 DLY-TMAX-NORMAL 2010-05-01T00:00:00    C
-## 17 GHCND:FMW00040505   867 DLY-TMAX-NORMAL 2010-05-01T00:00:00    S
-## 18 GHCND:GQC00914025   852 DLY-TMAX-NORMAL 2010-05-01T00:00:00    P
-## 19 GHCND:GQW00041415   877 DLY-TMAX-NORMAL 2010-05-01T00:00:00    C
-## 20 GHCND:JQW00021603   852 DLY-TMAX-NORMAL 2010-05-01T00:00:00    P
-## 21 GHCND:PSC00914519   883 DLY-TMAX-NORMAL 2010-05-01T00:00:00    P
-## 22 GHCND:PSC00914712   840 DLY-TMAX-NORMAL 2010-05-01T00:00:00    P
-## 23 GHCND:PSW00040309   879 DLY-TMAX-NORMAL 2010-05-01T00:00:00    S
-## 24 GHCND:RMW00040604   867 DLY-TMAX-NORMAL 2010-05-01T00:00:00    S
-## 25 GHCND:RMW00040710   863 DLY-TMAX-NORMAL 2010-05-01T00:00:00    C
+##                   date        datatype           station value fl_c
+## 1  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:AQW00061705   869    C
+## 2  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:CAW00064757   607    Q
+## 3  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:CQC00914080   840    R
+## 4  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:CQC00914801   858    R
+## 5  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914395   876    P
+## 6  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914419   885    P
+## 7  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914446   885    P
+## 8  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914482   868    R
+## 9  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914720   899    R
+## 10 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914761   897    P
+## 11 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914831   870    P
+## 12 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914892   883    P
+## 13 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914898   875    P
+## 14 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914911   885    P
+## 15 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMW00040308   888    S
+## 16 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMW00040504   879    C
+## 17 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMW00040505   867    S
+## 18 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:GQC00914025   852    P
+## 19 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:GQW00041415   877    C
+## 20 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:JQW00021603   852    P
+## 21 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:PSC00914519   883    P
+## 22 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:PSC00914712   840    P
+## 23 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:PSW00040309   879    S
+## 24 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:RMW00040604   867    S
+## 25 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:RMW00040710   863    C
 ```
 
 ### Plot data, super simple, but it's a start
@@ -140,7 +131,7 @@ Default plot
 ncdc_plot(out)
 ```
 
-![plot of chunk unnamed-chunk-3](../assets/tutorial-images/rnoaa/unnamed-chunk-3-1.png) 
+![plot of chunk unnamed-chunk-5](../assets/tutorial-images/rnoaa/unnamed-chunk-5-1.png) 
 
 Create 14 day breaks
 
@@ -149,7 +140,7 @@ Create 14 day breaks
 ncdc_plot(out, breaks="14 days")
 ```
 
-![plot of chunk unnamed-chunk-4](../assets/tutorial-images/rnoaa/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-6](../assets/tutorial-images/rnoaa/unnamed-chunk-6-1.png) 
 
 One month breaks
 
@@ -158,7 +149,7 @@ One month breaks
 ncdc_plot(out, breaks="1 month", dateformat="%d/%m")
 ```
 
-![plot of chunk unnamed-chunk-5](../assets/tutorial-images/rnoaa/unnamed-chunk-5-1.png) 
+![plot of chunk unnamed-chunk-7](../assets/tutorial-images/rnoaa/unnamed-chunk-7-1.png) 
 
 #### Example 2
 
@@ -176,7 +167,7 @@ Make a plot, with 6 hour breaks, and date format with only hour
 ncdc_plot(out2, breaks="6 hours", dateformat="%H")
 ```
 
-![plot of chunk unnamed-chunk-7](../assets/tutorial-images/rnoaa/unnamed-chunk-7-1.png) 
+![plot of chunk unnamed-chunk-9](../assets/tutorial-images/rnoaa/unnamed-chunk-9-1.png) 
 
 ### Combine many calls to noaa function
 
@@ -198,13 +189,13 @@ head(df[[1]]); tail(df[[1]])
 ```
 
 ```
-##             station value datatype                date fl_m fl_q fl_so
-## 1 GHCND:USW00014895     0     PRCP 2010-03-01T00:00:00    T          0
-## 2 GHCND:USW00014895     0     PRCP 2010-03-02T00:00:00    T          0
-## 3 GHCND:USW00014895     0     PRCP 2010-03-03T00:00:00    T          0
-## 4 GHCND:USW00014895     0     PRCP 2010-03-04T00:00:00               0
-## 5 GHCND:USW00014895     0     PRCP 2010-03-05T00:00:00               0
-## 6 GHCND:USW00014895     0     PRCP 2010-03-06T00:00:00               0
+##                  date datatype           station value fl_m fl_q fl_so
+## 1 2010-03-01T00:00:00     PRCP GHCND:USW00014895     0    T          0
+## 2 2010-03-02T00:00:00     PRCP GHCND:USW00014895     0    T          0
+## 3 2010-03-03T00:00:00     PRCP GHCND:USW00014895     0    T          0
+## 4 2010-03-04T00:00:00     PRCP GHCND:USW00014895     0               0
+## 5 2010-03-05T00:00:00     PRCP GHCND:USW00014895     0               0
+## 6 2010-03-06T00:00:00     PRCP GHCND:USW00014895     0               0
 ##   fl_t
 ## 1 2400
 ## 2 2400
@@ -215,13 +206,13 @@ head(df[[1]]); tail(df[[1]])
 ```
 
 ```
-##               station value datatype                date fl_m fl_q fl_so
-## 148 GHCND:USW00014895   221     PRCP 2010-10-26T00:00:00               0
-## 149 GHCND:USW00014895     0     PRCP 2010-10-27T00:00:00               0
-## 150 GHCND:USW00014895     0     PRCP 2010-10-28T00:00:00    T          0
-## 151 GHCND:USW00014895     0     PRCP 2010-10-29T00:00:00    T          0
-## 152 GHCND:USW00014895     0     PRCP 2010-10-30T00:00:00               0
-## 153 GHCND:USW00014895     0     PRCP 2010-10-31T00:00:00               0
+##                    date datatype           station value fl_m fl_q fl_so
+## 148 2010-10-26T00:00:00     PRCP GHCND:USW00014895   221               0
+## 149 2010-10-27T00:00:00     PRCP GHCND:USW00014895     0               0
+## 150 2010-10-28T00:00:00     PRCP GHCND:USW00014895     0    T          0
+## 151 2010-10-29T00:00:00     PRCP GHCND:USW00014895     0    T          0
+## 152 2010-10-30T00:00:00     PRCP GHCND:USW00014895     0               0
+## 153 2010-10-31T00:00:00     PRCP GHCND:USW00014895     0               0
 ##     fl_t
 ## 148 2400
 ## 149 2400
@@ -238,7 +229,7 @@ Then plot - the default passing in the combined plot plots the data together. In
 ncdc_plot(df)
 ```
 
-![plot of chunk unnamed-chunk-10](../assets/tutorial-images/rnoaa/unnamed-chunk-10-1.png) 
+![plot of chunk unnamed-chunk-12](../assets/tutorial-images/rnoaa/unnamed-chunk-12-1.png) 
 
 But we can pass in each separately, which uses `facet_wrap` in `ggplot2` to plot each set of data in its own panel.
 
@@ -247,241 +238,11 @@ But we can pass in each separately, which uses `facet_wrap` in `ggplot2` to plot
 ncdc_plot(out1, out2, breaks="45 days")
 ```
 
-![plot of chunk unnamed-chunk-11](../assets/tutorial-images/rnoaa/unnamed-chunk-11-1.png) 
+![plot of chunk unnamed-chunk-13](../assets/tutorial-images/rnoaa/unnamed-chunk-13-1.png) 
 
 ## ERDDAP data
 
-
-### Passing the datasetid without fields gives all columns back
-
-
-```r
-erddap_table('erdCalCOFIfshsiz')
-```
-
-```
-## <NOAA ERDDAP tabledap> erdCalCOFIfshsiz
-##    Path: [/Users/sacmac/.rnoaa/erddap/f18cc75d8bf5ca831a96f42486a7bd5d.csv]
-##    Last updated: [2014-12-19 15:47:55]
-##    File size:    [4.6 MB]
-##    Dimensions:   [20939 X 24]
-## 
-##    cruise               ship ship_code order_occupied   tow_type net_type
-## 2  199104 DAVID STARR JORDAN        JD              1 MOCNESS_1m       M1
-## 3  199104 DAVID STARR JORDAN        JD              2 MOCNESS_1m       M1
-## 4  199104 DAVID STARR JORDAN        JD              2 MOCNESS_1m       M1
-## 5  199104 DAVID STARR JORDAN        JD              2 MOCNESS_1m       M1
-## 6  199104 DAVID STARR JORDAN        JD              4 MOCNESS_1m       M1
-## 7  199104 DAVID STARR JORDAN        JD              5 MOCNESS_1m       M1
-## 8  199104 DAVID STARR JORDAN        JD              6 MOCNESS_1m       M1
-## 9  199104 DAVID STARR JORDAN        JD              7 MOCNESS_1m       M1
-## 10 199104 DAVID STARR JORDAN        JD             11 MOCNESS_1m       M1
-## 11 199104 DAVID STARR JORDAN        JD             32 MOCNESS_1m       M1
-## ..    ...                ...       ...            ...        ...      ...
-## Variables not shown: tow_number (int), net_location (chr),
-##      standard_haul_factor (dbl), volume_sampled (chr), percent_sorted
-##      (chr), sample_quality (dbl), latitude (chr), longitude (chr), line
-##      (dbl), station (dbl), time (chr), scientific_name (chr), common_name
-##      (chr), itis_tsn (int), calcofi_species_code (int), fish_size (chr),
-##      fish_count (dbl), fish_1000m3 (chr)
-```
-
-### Pass time constraints
-
-
-```r
-erddap_table('erdCalCOFIfshsiz', 'time>=2001-07-07', 'time<=2001-07-08')
-```
-
-```
-## <NOAA ERDDAP tabledap> erdCalCOFIfshsiz
-##    Path: [/Users/sacmac/.rnoaa/erddap/9e5119eb5c8ed63b9619be1367b0344c.csv]
-##    Last updated: [2014-12-19 18:07:32]
-##    File size:    [0.05 MB]
-##    Dimensions:   [217 X 24]
-## 
-##    cruise               ship ship_code order_occupied    tow_type net_type
-## 2  200106 DAVID STARR JORDAN        JD             43 MOCNESS_10m       M2
-## 3  200106 DAVID STARR JORDAN        JD             43 MOCNESS_10m       M2
-## 4  200106 DAVID STARR JORDAN        JD             43 MOCNESS_10m       M2
-## 5  200106 DAVID STARR JORDAN        JD             43 MOCNESS_10m       M2
-## 6  200106 DAVID STARR JORDAN        JD             43 MOCNESS_10m       M2
-## 7  200106 DAVID STARR JORDAN        JD             43 MOCNESS_10m       M2
-## 8  200106 DAVID STARR JORDAN        JD             43 MOCNESS_10m       M2
-## 9  200106 DAVID STARR JORDAN        JD             43 MOCNESS_10m       M2
-## 10 200106 DAVID STARR JORDAN        JD             43 MOCNESS_10m       M2
-## 11 200106 DAVID STARR JORDAN        JD             43 MOCNESS_10m       M2
-## ..    ...                ...       ...            ...         ...      ...
-## Variables not shown: tow_number (int), net_location (chr),
-##      standard_haul_factor (dbl), volume_sampled (chr), percent_sorted
-##      (chr), sample_quality (dbl), latitude (chr), longitude (chr), line
-##      (dbl), station (dbl), time (chr), scientific_name (chr), common_name
-##      (chr), itis_tsn (int), calcofi_species_code (int), fish_size (chr),
-##      fish_count (dbl), fish_1000m3 (chr)
-```
-
-### Pass in fields (i.e., columns to retrieve) & time constraints
-
-
-```r
-erddap_table('erdCalCOFIfshsiz', fields=c('longitude','latitude','fish_size','itis_tsn'), 'time>=2001-07-07','time<=2001-07-10')
-```
-
-```
-## <NOAA ERDDAP tabledap> erdCalCOFIfshsiz
-##    Path: [/Users/sacmac/.rnoaa/erddap/7b04d4ddfe4ad3540ec6213129fa050c.csv]
-##    Last updated: [2014-12-19 18:07:47]
-##    File size:    [0.02 MB]
-##    Dimensions:   [558 X 4]
-## 
-##     longitude  latitude fish_size itis_tsn
-## 2     -118.26    33.255      22.9   623745
-## 3     -118.26    33.255      22.9   623745
-## 4  -118.10667 32.738335      31.5   623625
-## 5  -118.10667 32.738335      48.3   623625
-## 6  -118.10667 32.738335      15.5   162221
-## 7  -118.10667 32.738335      16.3   162221
-## 8  -118.10667 32.738335      17.8   162221
-## 9  -118.10667 32.738335      18.2   162221
-## 10 -118.10667 32.738335      19.2   162221
-## 11 -118.10667 32.738335      20.0   162221
-## ..        ...       ...       ...      ...
-```
-
-
-```r
-erddap_table('erdCinpKfmBT', fields=c('latitude','longitude',
-   'Aplysia_californica_Mean_Density','Muricea_californica_Mean_Density'),
-   'time>=2007-06-24','time<=2007-07-01')
-```
-
-```
-## <NOAA ERDDAP tabledap> erdCinpKfmBT
-##    Path: [/Users/sacmac/.rnoaa/erddap/681451f3fee8ee9e426012609975a89e.csv]
-##    Last updated: [2014-12-19 18:08:22]
-##    File size:    [1.49 KB]
-##    Dimensions:   [37 X 4]
-## 
-##            latitude         longitude Aplysia_californica_Mean_Density
-## 2              34.0 -119.416666666667                      0.009722223
-## 3              34.0 -119.383333333333                              0.0
-## 4              34.0 -119.366666666667                              0.0
-## 5              34.0 -119.383333333333                             0.16
-## 6              34.0 -119.416666666667                             0.03
-## 7  34.0166666666667           -119.35                              0.0
-## 8              34.0           -119.35                      0.008333334
-## 9              33.0 -118.533333333333                              NaN
-## 10            32.95 -118.533333333333                              NaN
-## 11             32.8            -118.4                              NaN
-## ..              ...               ...                              ...
-## Variables not shown: Muricea_californica_Mean_Density (chr)
-```
-
-### An example workflow
-
-Search for data
-
-
-```r
-(out <- erddap_search('size'))
-```
-
-```
-## 6 results, showing first 20 
-##                                                            title
-## 6                NOAA Global Coral Bleaching Monitoring Products
-## 7             Coawst 4 use, Best Time Series [time][eta_u][xi_u]
-## 8             Coawst 4 use, Best Time Series [time][eta_v][xi_v]
-## 9  Coawst 4 use, Best Time Series [time][s_rho][eta_rho][xi_rho]
-## 10  Coawst 4 use, Best Time Series [time][Nbed][eta_rho][xi_rho]
-## 12        Coawst 4 use, Best Time Series [time][eta_rho][xi_rho]
-##             dataset_id
-## 6             NOAA_DHW
-## 7  whoi_61c3_0b5d_cd61
-## 8  whoi_62d0_9d64_c8ff
-## 9  whoi_7dd7_db97_4bbe
-## 10 whoi_a4fb_2c9c_16a7
-## 12 whoi_ed12_89ce_9592
-```
-
-Or, list datasets
-
-
-```r
-tdp <- erddap_datasets('table')
-```
-
-
-```r
-id <- as.character(tdp$Dataset.ID[8])
-erddap_info(id)$variables
-```
-
-```
-##               variable_name data_type     actual_range
-## 1                      cndc     float                 
-## 2             cndc_adjusted     float                 
-## 3       cndc_adjusted_error     float                 
-## 4          cndc_adjusted_qc     float                 
-## 5                   cndc_qc     float                 
-## 6                      doxy     float                 
-## 7             doxy_adjusted     float                 
-## 8       doxy_adjusted_error     float                 
-## 9          doxy_adjusted_qc     float                 
-## 10                  doxy_qc     float                 
-## 11                       id       int                 
-## 12                 latitude     float      -90.0, 90.0
-## 13                longitude     float       0.0, 360.0
-## 14                     pres     float                 
-## 15            pres_adjusted     float                 
-## 16      pres_adjusted_error     float                 
-## 17         pres_adjusted_qc     float                 
-## 18                  pres_qc     float                 
-## 19                     psal     float                 
-## 20            psal_adjusted     float                 
-## 21      psal_adjusted_error     float                 
-## 22         psal_adjusted_qc     float                 
-## 23                  psal_qc     float                 
-## 24                     temp     float                 
-## 25            temp_adjusted     float                 
-## 26      temp_adjusted_error     float                 
-## 27         temp_adjusted_qc     float                 
-## 28                temp_doxy     float                 
-## 29       temp_doxy_adjusted     float                 
-## 30 temp_doxy_adjusted_error     float                 
-## 31    temp_doxy_adjusted_qc     float                 
-## 32             temp_doxy_qc     float                 
-## 33                  temp_qc     float                 
-## 34                     time    double 8.1048066E8, NaN
-```
-
-Get data from the dataset
-
-
-```r
-erddap_table(id, fields = c('latitude','longitude'))
-```
-
-```
-## <NOAA ERDDAP tabledap> apdrcArgoAll
-##    Path: [/Users/sacmac/.rnoaa/erddap/7b238871e478bf43df2e1f703e6e85e5.csv]
-##    Last updated: [2014-12-19 18:15:39]
-##    File size:    [0.07 MB]
-##    Dimensions:   [5000 X 2]
-## 
-##    latitude longitude
-## 2    49.868   215.335
-## 3    50.023    215.47
-## 4    50.115   215.676
-## 5    50.156   215.676
-## 6    50.132   215.601
-## 7      50.1   215.544
-## 8    50.158   215.582
-## 9    50.278   215.585
-## 10   50.417   215.702
-## 11   50.548   215.779
-## ..      ...       ...
-```
+> ERDDAP data is now avialable through the `rerddap` package
 
 
 ## Severe Weather Data Inventory (SWDI) data
@@ -496,10 +257,10 @@ swdi(dataset='nx3tvs', startdate='20060505', enddate='20060506')
 ```
 ## $meta
 ## $meta$totalCount
-## [1] 25
+## numeric(0)
 ## 
 ## $meta$totalTimeInSeconds
-## [1] 0.02
+## [1] 0.004
 ## 
 ## 
 ## $data
@@ -599,10 +360,10 @@ list(out$meta, head(out$data), head(out$shape))
 ```
 ## [[1]]
 ## [[1]]$totalCount
-## [1] 25
+## numeric(0)
 ## 
 ## [[1]]$totalTimeInSeconds
-## [1] 1.085
+## [1] 0.098
 ## 
 ## 
 ## [[2]]
@@ -641,10 +402,10 @@ swdi(dataset='plsr', startdate='20060505', enddate='20060510', bbox=c(-91,30,-90
 ```
 ## $meta
 ## $meta$totalCount
-## [1] 5
+## numeric(0)
 ## 
 ## $meta$totalTimeInSeconds
-## [1] 0.255
+## [1] 0.001
 ## 
 ## 
 ## $data
@@ -750,7 +511,7 @@ head( storm_meta("storm_names") )
 
 ### Tabular data
 
-You can get tabular data for basins, storms, or years, (or all data). `storm_data()` and the next function `storm_shp()` figure out what files to get, and gets them from an ftp server, and saves them to your machine. Do let us know if you have any problems with paths on your machine, and we'll fix 'em. The result from `storm_data()` is a `dplyr`-like data.frame with a easy summary that makes large datasets easy to view. 
+You can get tabular data for basins, storms, or years, (or all data). `storm_data()` and the next function `storm_shp()` figure out what files to get, and gets them from an ftp server, and saves them to your machine. Do let us know if you have any problems with paths on your machine, and we'll fix 'em. The result from `storm_data()` is a `dplyr`-like data.frame with a easy summary that makes large datasets easy to view.
 
 First, by basin (one of EP, NA, NI, SA, SI, SP, or WP)
 
@@ -758,10 +519,10 @@ First, by basin (one of EP, NA, NI, SA, SI, SP, or WP)
 ```r
 storm_data(year=1941)
 #> <path>~/.rnoaa/storms/year/Year.1941.ibtracs_all.v03r06.csv
-#> 
+#>
 #> <NOAA Storm Data>
 #> Size: 1766 X 195
-#> 
+#>
 #>       serial_num season num basin sub_basin      name            iso_time nature latitude
 #> 1  1940215S18149   1941   1    SP        EA NOT NAMED 1940-08-01 12:00:00     NR     -999
 #> 2  1940215S18149   1941   1    SP        EA NOT NAMED 1940-08-01 18:00:00     NR     -999
@@ -781,6 +542,66 @@ storm_data(year=1941)
 #>      (dbl), td9636_lat (dbl), td9636_lon (dbl), td9636_grade (dbl), td9636_wind (dbl),
 ```
 
+## Buoy data
+
+## Find out what buoys are available in a dataset
+
+
+```r
+head(buoys(dataset = "cwind"))
+```
+
+```
+##      id
+## 1 41001
+## 2 41002
+## 3 41004
+## 4 41006
+## 5 41008
+## 6 41009
+##                                                                       url
+## 1 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41001/catalog.html
+## 2 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41002/catalog.html
+## 3 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41004/catalog.html
+## 4 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41006/catalog.html
+## 5 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41008/catalog.html
+## 6 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41009/catalog.html
+```
+
+## Get buoy data
+
+With `buoy` you can get data for a particular dataset, buoy id, year, and datatype. 
+
+Get data for a buoy, specifying year and datatype
+
+
+```r
+buoy(dataset = 'cwind', buoyid = 41001, year = 2008, datatype = "cc")
+```
+
+```
+## Dimensions (rows/cols): [1585 X 5] 
+## 2 variables: [wind_dir, wind_spd] 
+## 
+##                    time latitude longitude wind_dir wind_spd
+## 1  2008-05-28T16:00:00Z   34.704   -72.734      230      8.6
+## 2  2008-05-28T16:10:00Z   34.704   -72.734      230      8.7
+## 3  2008-05-28T16:20:00Z   34.704   -72.734      229      8.5
+## 4  2008-05-28T16:30:00Z   34.704   -72.734      231      8.8
+## 5  2008-05-28T16:40:00Z   34.704   -72.734      236      8.5
+## 6  2008-05-28T16:50:00Z   34.704   -72.734      235      8.9
+## 7  2008-05-28T17:00:00Z   34.704   -72.734      233      8.2
+## 8  2008-05-28T17:10:00Z   34.704   -72.734      233      8.2
+## 9  2008-05-28T17:20:00Z   34.704   -72.734      231      8.3
+## 10 2008-05-28T17:30:00Z   34.704   -72.734      232      7.8
+## ..                  ...      ...       ...      ...      ...
+```
+
+
+## More data
+
+There are more NOAA data sources in `noaa`. Check out the various vignettes in the package. 
+
 <section id="citing">
 
 ## Citing
@@ -789,7 +610,7 @@ To cite `rnoaa` in publications use:
 
 <br>
 
-> Scott Chamberlain, Hart Edmund, and Karthik Ram (2014). rnoaa: NOAA climate data from R. R package version 0.3.3. https://github.com/ropensci/rnoaa
+> Scott Chamberlain, Hart Edmund, and Karthik Ram (2015). rnoaa: NOAA climate data from R. R package version 0.4.0. https://github.com/ropensci/rnoaa
 
 <section id="license_bugs">
 

@@ -1,14 +1,14 @@
 ---
 title: rnoaa tutorial
 layout: tutorial
-packge_version: 0.3.3
+packge_version: 0.4.0
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
 knitr::opts_chunk$set(
-  fig.path="../assets/tutorial-images/rnoaa/", 
-  fig.width=6, 
-  fig.height=4
+  fig.path = "../assets/tutorial-images/rnoaa/",
+  fig.width = 6,
+  fig.height = 4
 )
 ```
 
@@ -16,30 +16,22 @@ knitr::opts_chunk$set(
 
 ## Installation
 
-
 Install and load `rnoaa` into the R session. Stable version from CRAN
 
-```{r installcran, eval=FALSE}
+```{r eval=FALSE}
 install.packages("rnoaa")
 ```
 
 Or development version from Github:
 
-```{r installgh, eval=FALSE}
+```{r eval=FALSE}
 install.packages("devtools")
-devtools::install_github("rnoaa", "ropensci")
+devtools::install_github("ropensci/rnoaa")
 ```
 
-```{r load, message=FALSE, warning=FALSE}
+```{r load}
 library('rnoaa')
 library('plyr')
-```
-
-__Note__ that NOAA buoy data requires `netcdf`, and the `ncdf4` R package, which doesn't work well on Windows. Thus, we put functions to interact with that data into a different branch `buoy`. Install that version by doing
-
-```{r installbuoy, eval=FALSE}
-devtools::install_github("rnoaa", "ropensci", ref="buoy")
-library('rnoaa')
 ```
 
 <section id="usage">
@@ -148,55 +140,7 @@ ncdc_plot(out1, out2, breaks="45 days")
 
 ## ERDDAP data
 
-
-### Passing the datasetid without fields gives all columns back
-
-```{r oneone}
-erddap_table('erdCalCOFIfshsiz')
-```
-
-### Pass time constraints
-
-```{r twotwo}
-erddap_table('erdCalCOFIfshsiz', 'time>=2001-07-07', 'time<=2001-07-08')
-```
-
-### Pass in fields (i.e., columns to retrieve) & time constraints
-
-```{r threethree}
-erddap_table('erdCalCOFIfshsiz', fields=c('longitude','latitude','fish_size','itis_tsn'), 'time>=2001-07-07','time<=2001-07-10')
-```
-
-```{r}
-erddap_table('erdCinpKfmBT', fields=c('latitude','longitude',
-   'Aplysia_californica_Mean_Density','Muricea_californica_Mean_Density'),
-   'time>=2007-06-24','time<=2007-07-01')
-```
-
-### An example workflow
-
-Search for data
-
-```{r}
-(out <- erddap_search('size'))
-```
-
-Or, list datasets
-
-```{r}
-tdp <- erddap_datasets('table')
-```
-
-```{r}
-id <- as.character(tdp$Dataset.ID[8])
-erddap_info(id)$variables
-```
-
-Get data from the dataset
-
-```{r}
-erddap_table(id, fields = c('latitude','longitude'))
-```
+> ERDDAP data is now avialable through the `rerddap` package
 
 
 ## Severe Weather Data Inventory (SWDI) data
@@ -260,17 +204,17 @@ head( storm_meta("storm_names") )
 
 ### Tabular data
 
-You can get tabular data for basins, storms, or years, (or all data). `storm_data()` and the next function `storm_shp()` figure out what files to get, and gets them from an ftp server, and saves them to your machine. Do let us know if you have any problems with paths on your machine, and we'll fix 'em. The result from `storm_data()` is a `dplyr`-like data.frame with a easy summary that makes large datasets easy to view. 
+You can get tabular data for basins, storms, or years, (or all data). `storm_data()` and the next function `storm_shp()` figure out what files to get, and gets them from an ftp server, and saves them to your machine. Do let us know if you have any problems with paths on your machine, and we'll fix 'em. The result from `storm_data()` is a `dplyr`-like data.frame with a easy summary that makes large datasets easy to view.
 
 First, by basin (one of EP, NA, NI, SA, SI, SP, or WP)
 
 ```{r eval=FALSE}
 storm_data(year=1941)
 #> <path>~/.rnoaa/storms/year/Year.1941.ibtracs_all.v03r06.csv
-#> 
+#>
 #> <NOAA Storm Data>
 #> Size: 1766 X 195
-#> 
+#>
 #>       serial_num season num basin sub_basin      name            iso_time nature latitude
 #> 1  1940215S18149   1941   1    SP        EA NOT NAMED 1940-08-01 12:00:00     NR     -999
 #> 2  1940215S18149   1941   1    SP        EA NOT NAMED 1940-08-01 18:00:00     NR     -999
@@ -290,6 +234,29 @@ storm_data(year=1941)
 #>      (dbl), td9636_lat (dbl), td9636_lon (dbl), td9636_grade (dbl), td9636_wind (dbl),
 ```
 
+## Buoy data
+
+## Find out what buoys are available in a dataset
+
+```{r}
+head(buoys(dataset = "cwind"))
+```
+
+## Get buoy data
+
+With `buoy` you can get data for a particular dataset, buoy id, year, and datatype. 
+
+Get data for a buoy, specifying year and datatype
+
+```{r}
+buoy(dataset = 'cwind', buoyid = 41001, year = 2008, datatype = "cc")
+```
+
+
+## More data
+
+There are more NOAA data sources in `noaa`. Check out the various vignettes in the package. 
+
 <section id="citing">
 
 ## Citing
@@ -298,7 +265,7 @@ To cite `rnoaa` in publications use:
 
 <br>
 
-> Scott Chamberlain, Hart Edmund, and Karthik Ram (2014). rnoaa: NOAA climate data from R. R package version 0.3.3. https://github.com/ropensci/rnoaa
+> Scott Chamberlain, Hart Edmund, and Karthik Ram (2015). rnoaa: NOAA climate data from R. R package version 0.4.0. https://github.com/ropensci/rnoaa
 
 <section id="license_bugs">
 
