@@ -1,7 +1,7 @@
 ---
 title: elastic tutorial
 layout: tutorial
-packge_version: 0.4
+packge_version: 0.5.0
 ---
 
 
@@ -48,13 +48,13 @@ library("elastic")
 
 __Unix (linux/osx)__
 
-Replace `1.5.2` with the version you are working with.
+Replace `1.6.0` with the version you are working with.
 
-+ Download zip or tar file from Elasticsearch [see here for download](https://www.elastic.co/downloads/elasticsearch), e.g., `curl -L -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.5.2.tar.gz`
-+ Uncompress it: `tar -xvf elasticsearch-1.5.2.tar.gz`
-+ Move it: `sudo mv /path/to/elasticsearch-1.5.2 /usr/local`
++ Download zip or tar file from Elasticsearch [see here for download](https://www.elastic.co/downloads/elasticsearch), e.g., `curl -L -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.6.0.tar.gz`
++ Uncompress it: `tar -xvf elasticsearch-1.6.0.tar.gz`
++ Move it: `sudo mv /path/to/elasticsearch-1.6.0 /usr/local`
 + Navigate to /usr/local: `cd /usr/local`
-+ Add shortcut: `sudo ln -s elasticsearch-1.5.2 elasticsearch`
++ Add shortcut: `sudo ln -s elasticsearch-1.6.0 elasticsearch`
 
 On OSX, you can install via Homebrew: `brew install elasticsearch`
 
@@ -87,13 +87,13 @@ connect()
 #> password:  NULL 
 #> elasticsearch details:   
 #>    status:                  200 
-#>    name:                    Allatou 
-#>    Elasticsearch version:   1.5.2 
-#>    ES version timestamp:    2015-04-27T09:21:06Z 
+#>    name:                    Artie 
+#>    Elasticsearch version:   1.6.0 
+#>    ES version timestamp:    2015-06-09T13:36:34Z 
 #>    lucene version:          4.10.4
 ```
 
-On package load, your base url and port are set to `http://127.0.0.1` and `9200`, respectively. You can of course override these settings per session or for all sessions. 
+On package load, your base url and port are set to `http://127.0.0.1` and `9200`, respectively. You can of course override these settings per session or for all sessions.
 
 ## Get some data
 
@@ -229,8 +229,8 @@ Search(index="plos", type="article", sort="title", q="antibody", size=1)$hits$hi
 
 ## URL based search
 
-A new function in `v0.4` is `Search_uri()`, where the search is defined entirely in the URL itself. 
-This is especially useful for cases in which `POST` requests are forbidden, e.g, on a server that 
+A new function in `v0.4` is `Search_uri()`, where the search is defined entirely in the URL itself.
+This is especially useful for cases in which `POST` requests are forbidden, e.g, on a server that
 prevents `POST` requests for security reasons (which the function `Search()` uses)
 
 Basic search
@@ -440,7 +440,7 @@ length(scroll(scroll_id = res$`_scroll_id`)$hits$hits)
 
 ## Bulk load from R objects
 
-A new feature in `v0.4` is loading data into Elasticsearch via the bulk API (faster than via the 
+A new feature in `v0.4` is loading data into Elasticsearch via the bulk API (faster than via the
 normal route) from R objects (data.frame, or list). E.g.:
 
 Using a pretty large data.frame, at 53K rows, load `ggplot2` package first
@@ -451,12 +451,13 @@ library("ggplot2")
 res <- invisible(docs_bulk(diamonds, "diam"))
 ```
 
+
 ```r
 Search(index = "diam")$hits$total
 ```
 
 ```
-#> [1] 46600
+#> [1] 102340
 ```
 
 ## Get documents
@@ -653,7 +654,7 @@ jsonlite::fromJSON(out)
 
 ## Citing
 
-> Scott Chamberlain (2015). elastic: General Purpose Interface to Elasticsearch. R package version 0.4.0.
+> Scott Chamberlain (2015). elastic: General Purpose Interface to Elasticsearch. R package version 0.5.0.
   http://CRAN.R-project.org/package=elastic
 
 </section>

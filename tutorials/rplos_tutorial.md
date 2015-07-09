@@ -1,7 +1,7 @@
 ---
 title: rplos tutorial
 layout: tutorial
-packge_version: 0.4.6
+packge_version: 0.5.0
 ---
 
 
@@ -47,7 +47,7 @@ searchplos(q= "Helianthus", fl= "id", limit = 5)
 ```
 #> $meta
 #>   numFound start maxScore
-#> 1      304     0       NA
+#> 1      348     0       NA
 #> 
 #> $data
 #>                             id
@@ -68,15 +68,15 @@ searchplos(q="*:*", fl='id', fq='doc_type:full', start=0, limit=5)
 ```
 #> $meta
 #>   numFound start maxScore
-#> 1   145025     0       NA
+#> 1   159574     0       NA
 #> 
 #> $data
-#>                                                        id
-#> 1                            10.1371/journal.ppat.0020033
-#> 2 10.1371/annotation/856f0890-9d85-4719-8e54-c27530ac94f4
-#> 3 10.1371/annotation/8551e3d5-fdd5-413b-a253-170ba13b7525
-#> 4 10.1371/annotation/851be907-9f62-420c-92b8-c31681c3bcbe
-#> 5 10.1371/annotation/850ee20f-2641-46ac-b0c6-ef4ae79b6de6
+#>                             id
+#> 1 10.1371/journal.pone.0031384
+#> 2 10.1371/journal.pone.0031385
+#> 3 10.1371/journal.pone.0107441
+#> 4 10.1371/journal.pone.0000339
+#> 5 10.1371/journal.pone.0046739
 ```
 
 Get DOIs for only PLoS One articles
@@ -89,15 +89,15 @@ searchplos(q="*:*", fl='id', fq='cross_published_journal_key:PLoSONE', start=0, 
 ```
 #> $meta
 #>   numFound start maxScore
-#> 1  1035164     0       NA
+#> 1  1148921     0       NA
 #> 
 #> $data
-#>                                                                   id
-#> 1            10.1371/annotation/856f0890-9d85-4719-8e54-c27530ac94f4
-#> 2      10.1371/annotation/856f0890-9d85-4719-8e54-c27530ac94f4/title
-#> 3   10.1371/annotation/856f0890-9d85-4719-8e54-c27530ac94f4/abstract
-#> 4 10.1371/annotation/856f0890-9d85-4719-8e54-c27530ac94f4/references
-#> 5       10.1371/annotation/856f0890-9d85-4719-8e54-c27530ac94f4/body
+#>                                          id
+#> 1        10.1371/journal.pone.0123754/title
+#> 2     10.1371/journal.pone.0123754/abstract
+#> 3   10.1371/journal.pone.0123754/references
+#> 4         10.1371/journal.pone.0123754/body
+#> 5 10.1371/journal.pone.0123754/introduction
 ```
 
 Get DOIs for full article in PLoS One
@@ -112,15 +112,15 @@ searchplos(q="*:*", fl='id',
 ```
 #> $meta
 #>   numFound start maxScore
-#> 1   121480     0       NA
+#> 1   134656     0       NA
 #> 
 #> $data
-#>                                                        id
-#> 1 10.1371/annotation/856f0890-9d85-4719-8e54-c27530ac94f4
-#> 2 10.1371/annotation/8551e3d5-fdd5-413b-a253-170ba13b7525
-#> 3 10.1371/annotation/851be907-9f62-420c-92b8-c31681c3bcbe
-#> 4 10.1371/annotation/8501cd33-6c9e-437c-9ea1-f96fbb4140d6
-#> 5 10.1371/annotation/98e70cd9-f5d7-4937-bdbc-c68bde86e8cf
+#>                             id
+#> 1 10.1371/journal.pone.0031384
+#> 2 10.1371/journal.pone.0031385
+#> 3 10.1371/journal.pone.0107441
+#> 4 10.1371/journal.pone.0000339
+#> 5 10.1371/journal.pone.0046739
 ```
 
 Search for many terms
@@ -135,7 +135,7 @@ lapply(q, function(x) searchplos(x, limit=2))
 #> [[1]]
 #> [[1]]$meta
 #>   numFound start maxScore
-#> 1    25462     0       NA
+#> 1    28002     0       NA
 #> 
 #> [[1]]$data
 #>                             id
@@ -146,7 +146,7 @@ lapply(q, function(x) searchplos(x, limit=2))
 #> [[2]]
 #> [[2]]$meta
 #>   numFound start maxScore
-#> 1    42866     0       NA
+#> 1    46684     0       NA
 #> 
 #> [[2]]$data
 #>                                                        id
@@ -157,7 +157,7 @@ lapply(q, function(x) searchplos(x, limit=2))
 #> [[3]]
 #> [[3]]$meta
 #>   numFound start maxScore
-#> 1   123989     0       NA
+#> 1   135561     0       NA
 #> 
 #> [[3]]$data
 #>                             id
@@ -185,7 +185,7 @@ plosauthor(q = "Eisen", fl = "author", limit = 5)
 ```
 #> $meta
 #>   numFound start maxScore
-#> 1      750     0       NA
+#> 1      764     0       NA
 #> 
 #> $data
 #>             author
@@ -206,7 +206,7 @@ plosabstract(q = 'drosophila', fl='id,title', limit = 5)
 ```
 #> $meta
 #>   numFound start maxScore
-#> 1     2537     0       NA
+#> 1     2676     0       NA
 #> 
 #> $data
 #>                             id
@@ -233,15 +233,15 @@ plostitle(q='drosophila', fl='title,journal', limit=5)
 ```
 #> $meta
 #>   numFound start maxScore
-#> 1     1628     0       NA
+#> 1     1722     0       NA
 #> 
 #> $data
 #>        journal                                         title
-#> 1     PLoS ONE      A Tripartite Synapse Model in Drosophila
+#> 1 PLoS Biology Identification of Drosophila MicroRNA Targets
 #> 2     PLoS ONE                     A DNA Virus of Drosophila
-#> 3 PLoS Biology   Combinatorial Coding for Drosophila Neurons
-#> 4 PLoS Biology   School Students as Drosophila Experimenters
-#> 5 PLoS Biology Identification of Drosophila MicroRNA Targets
+#> 3 PLoS Biology   School Students as Drosophila Experimenters
+#> 4 PLoS Biology   Expression in Aneuploid Drosophila S2 Cells
+#> 5     PLoS ONE   Quantification of Food Intake in Drosophila
 ```
 
 ### Search for terms and visualize results as a histogram OR as a plot through time
@@ -258,11 +258,11 @@ out$table
 
 ```
 #>   No_Articles       Term
-#> 1        8477     monkey
-#> 2         304 Helianthus
-#> 3         845  sunflower
-#> 4       93612    protein
-#> 5        1057      whale
+#> 1        9139     monkey
+#> 2         348 Helianthus
+#> 3         944  sunflower
+#> 4      101494    protein
+#> 5        1146      whale
 ```
 
 
@@ -281,7 +281,7 @@ plosword('Helianthus', callopts=list(verbose=TRUE))
 
 ```
 #> Number of articles with search term 
-#>                                 304
+#>                                 348
 ```
 
 ### Visualize terms
@@ -297,7 +297,7 @@ plot_throughtime(terms = "phylogeny", limit = 200) + geom_line(size=2, color='bl
 
 ### Faceted search
 
-In addition to `searchplos()` and related searching functions, there are a few slightly different ways to search: faceting and highlighted searches. Faceting allows you to ask, e.g., how many articles are published in each of the PLOS journals. Highlighting allows you to ask, e.g., highlight terms that I search for in the text results given back, which can make downstream processing easier, and help visualize search results (see `highbrow()` below). 
+In addition to `searchplos()` and related searching functions, there are a few slightly different ways to search: faceting and highlighted searches. Faceting allows you to ask, e.g., how many articles are published in each of the PLOS journals. Highlighting allows you to ask, e.g., highlight terms that I search for in the text results given back, which can make downstream processing easier, and help visualize search results (see `highbrow()` below).
 
 Facet by journal
 
@@ -312,17 +312,17 @@ facetplos(q='*:*', facet.field='journal')
 #> 
 #> $facet_fields
 #> $facet_fields$journal
-#>                                  X1     X2
-#> 1                          plos one 976309
-#> 2                     plos genetics  42509
-#> 3                    plos pathogens  37019
-#> 4        plos computational biology  31041
-#> 5  plos neglected tropical diseases  26926
-#> 6                      plos biology  26749
-#> 7                     plos medicine  18800
-#> 8              plos clinical trials    521
-#> 9                      plos medicin      9
-#> 10                 plos collections      5
+#>                                  X1      X2
+#> 1                          plos one 1090088
+#> 2                     plos genetics   45276
+#> 3                    plos pathogens   39556
+#> 4        plos computational biology   32898
+#> 5  plos neglected tropical diseases   29735
+#> 6                      plos biology   27505
+#> 7                     plos medicine   19194
+#> 8              plos clinical trials     521
+#> 9                  plos collections      15
+#> 10                     plos medicin       9
 #> 
 #> 
 #> $facet_dates
@@ -342,21 +342,21 @@ facetplos(q='*:*', facet.field='journal', facet.query='cell,bird')
 ```
 #> $facet_queries
 #>        term value
-#> 1 cell,bird    18
+#> 1 cell,bird    21
 #> 
 #> $facet_fields
 #> $facet_fields$journal
-#>                                  X1     X2
-#> 1                          plos one 976309
-#> 2                     plos genetics  42509
-#> 3                    plos pathogens  37019
-#> 4        plos computational biology  31041
-#> 5  plos neglected tropical diseases  26926
-#> 6                      plos biology  26749
-#> 7                     plos medicine  18800
-#> 8              plos clinical trials    521
-#> 9                      plos medicin      9
-#> 10                 plos collections      5
+#>                                  X1      X2
+#> 1                          plos one 1090088
+#> 2                     plos genetics   45276
+#> 3                    plos pathogens   39556
+#> 4        plos computational biology   32898
+#> 5  plos neglected tropical diseases   29735
+#> 6                      plos biology   27505
+#> 7                     plos medicine   19194
+#> 8              plos clinical trials     521
+#> 9                  plos collections      15
+#> 10                     plos medicin       9
 #> 
 #> 
 #> $facet_dates
@@ -384,12 +384,12 @@ facetplos(q='*:*', url=url, facet.date='publication_date',
 #> $facet_dates
 #> $facet_dates$publication_date
 #>                   date value
-#> 1 2015-03-02T00:00:00Z   908
-#> 2 2015-03-03T00:00:00Z  1794
-#> 3 2015-03-04T00:00:00Z  2305
-#> 4 2015-03-05T00:00:00Z  2170
-#> 5 2015-03-06T00:00:00Z  1015
-#> 6 2015-03-07T00:00:00Z     0
+#> 1 2015-07-04T00:00:00Z     0
+#> 2 2015-07-05T00:00:00Z  2981
+#> 3 2015-07-06T00:00:00Z  3471
+#> 4 2015-07-07T00:00:00Z  1397
+#> 5 2015-07-08T00:00:00Z   907
+#> 6 2015-07-09T00:00:00Z     0
 #> 
 #> 
 #> $facet_ranges
@@ -485,7 +485,7 @@ To cite `rplos` in publications use:
 
 <br>
 
-> Scott Chamberlain, Carl Boettiger and Karthik Ram (2014). rplos: Interface to PLoS Journals search API. R package version 0.4.6 https://github.com/ropensci/rplos
+> Scott Chamberlain, Carl Boettiger and Karthik Ram (2015). rplos: Interface to PLOS Journals search API. R package version 0.5.0 https://github.com/ropensci/rplos
 
 <section id="license_bugs">
 

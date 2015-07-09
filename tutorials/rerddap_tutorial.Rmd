@@ -1,7 +1,7 @@
 ---
 title: rerddap tutorial
 layout: tutorial
-packge_version: 0.1.0
+packge_version: 0.2.0
 ---
 
 ```{r echo=FALSE}
@@ -166,7 +166,7 @@ To cite `rerddap` in publications use:
 <br>
 
 >  Scott Chamberlain (2015). rerddap: General Purpose Client for 'ERDDAP' Servers. R
-  package version 0.1.0. https://github.com/ropensci/rerddap
+  package version 0.2.0. https://github.com/ropensci/rerddap
 
 <section id="license_bugs">
 

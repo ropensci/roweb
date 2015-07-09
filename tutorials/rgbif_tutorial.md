@@ -1,7 +1,7 @@
 ---
 title: rgbif tutorial
 layout: tutorial
-packge_version: 0.8.4
+packge_version: 0.8.6
 ---
 
 
@@ -48,7 +48,7 @@ Search by type of record, all observational in this case
 
 ```r
 occ_count(basisOfRecord='OBSERVATION')
-#> [1] 102957816
+#> [1] 100714174
 ```
 
 Records for **Puma concolor** with lat/long data (georeferened) only. Note that `hasCoordinate` in `occ_search()` is the same as `georeferenced` in `occ_count()`.
@@ -64,7 +64,7 @@ All georeferenced records in GBIF
 
 ```r
 occ_count(georeferenced=TRUE)
-#> [1] 471955780
+#> [1] 471046624
 ```
 
 Records from Denmark
@@ -73,7 +73,7 @@ Records from Denmark
 ```r
 denmark_code <- isocodes[grep("Denmark", isocodes$name), "code"]
 occ_count(country=denmark_code)
-#> [1] 9618301
+#> [1] 9617238
 ```
 
 Number of records in a particular dataset
@@ -89,7 +89,7 @@ All records from 2012
 
 ```r
 occ_count(year=2012)
-#> [1] 37866053
+#> [1] 37859737
 ```
 
 Records for a particular dataset, and only for preserved specimens
@@ -130,7 +130,7 @@ names(out)
 ```r
 out$meta
 #>   offset limit endOfRecords  count
-#> 1      0   100        FALSE 120067
+#> 1      0   100        FALSE 120041
 ```
 
 
@@ -366,69 +366,76 @@ Look up the species Helianthus annuus
 
 ```r
 head(name_lookup('Helianthus annuus', rank="species", return = 'data'))
-#>         key       scientificName                           datasetKey
-#> 1 116845199 Helianthus annuus L. cbb6498e-8927-405a-916b-576d00a6289b
-#> 2   3119195 Helianthus annuus L. d7dddbf4-2cf0-4f39-9b2a-bb099caae36c
-#> 3 125790787 Helianthus annuus L. 16c3f9cb-4b19-4553-ac8e-ebb90003aa02
-#> 4 106239436    Helianthus annuus fab88965-e69d-4491-a04d-e3198b626e52
-#> 5 111449704 Helianthus annuus L. 1c1f2cfc-8370-414f-9202-9f00ccf51413
-#> 6 110853779 Helianthus annuus L. 1ec61203-14fa-4fbd-8ee5-a4a80257b45a
-#>    nubKey parentKey     parent       kingdom     order     family
-#> 1 3119195 143073503 Helianthus       Plantae Asterales Asteraceae
-#> 2 3119195   3119134 Helianthus       Plantae Asterales Asteraceae
-#> 3 3119195 125809269 Helianthus          <NA> Asterales Asteraceae
-#> 4      NA 106239325 Helianthus Viridiplantae Asterales Asteraceae
-#> 5 3119195 111449703 Helianthus       Plantae      <NA> Compositae
-#> 6 3119195 116128567 Helianthus       Plantae Asterales Compositae
-#>        genus           species kingdomKey  orderKey familyKey  genusKey
-#> 1 Helianthus Helianthus annuus  116668764 143071754 143071759 143073503
-#> 2 Helianthus Helianthus annuus          6       414      3065   3119134
-#> 3 Helianthus Helianthus annuus         NA 137012188 125799038 125809269
-#> 4 Helianthus Helianthus annuus  106147210 106237428 106237535 106239325
-#> 5 Helianthus              <NA>  111449174        NA 111442813 111449703
-#> 6 Helianthus Helianthus annuus  116127234 116128510 116128511 116128567
-#>   speciesKey     canonicalName authorship   nameType    rank
-#> 1  116845199 Helianthus annuus         L. WELLFORMED SPECIES
-#> 2    3119195 Helianthus annuus         L. WELLFORMED SPECIES
-#> 3  125790787 Helianthus annuus         L. WELLFORMED SPECIES
-#> 4  106239436 Helianthus annuus            WELLFORMED SPECIES
-#> 5         NA Helianthus annuus         L. WELLFORMED SPECIES
-#> 6  110853779 Helianthus annuus         L. WELLFORMED SPECIES
-#>   numDescendants numOccurrences   taxonID    habitats nomenclaturalStatus
-#> 1              0              0     57622        <NA>                  NA
-#> 2             36              0 107290518 TERRESTRIAL                  NA
-#> 3              0              0    112763        <NA>                  NA
-#> 4              2              0      4232        <NA>                  NA
-#> 5              1              0    417215        <NA>                  NA
-#> 6              0              0    418387        <NA>                  NA
-#>   threatStatuses synonym basionymKey
-#> 1             NA   FALSE          NA
-#> 2             NA   FALSE     3119205
-#> 3             NA   FALSE          NA
-#> 4             NA   FALSE          NA
-#> 5             NA   FALSE          NA
-#> 6             NA   FALSE          NA
+#>         key                             scientificName
+#> 1 116845199                       Helianthus annuus L.
+#> 2   3119195                       Helianthus annuus L.
+#> 3 125790787                       Helianthus annuus L.
+#> 4 106239436                          Helianthus annuus
+#> 5 111449704                       Helianthus annuus L.
+#> 6 125587214 'Helianthus annuus' fasciation phytoplasma
+#>                             datasetKey  nubKey parentKey
+#> 1 cbb6498e-8927-405a-916b-576d00a6289b 3119195 143073503
+#> 2 d7dddbf4-2cf0-4f39-9b2a-bb099caae36c 3119195   3119134
+#> 3 16c3f9cb-4b19-4553-ac8e-ebb90003aa02 3119195 125809269
+#> 4 fab88965-e69d-4491-a04d-e3198b626e52      NA 106239325
+#> 5 1c1f2cfc-8370-414f-9202-9f00ccf51413 3119195 111449703
+#> 6 fab88965-e69d-4491-a04d-e3198b626e52      NA 106573315
+#>                      parent       kingdom             order
+#> 1                Helianthus       Plantae         Asterales
+#> 2                Helianthus       Plantae         Asterales
+#> 3                Helianthus          <NA>         Asterales
+#> 4                Helianthus Viridiplantae         Asterales
+#> 5                Helianthus       Plantae              <NA>
+#> 6 unclassified phytoplasmas          <NA> Acholeplasmatales
+#>               family      genus           species kingdomKey  orderKey
+#> 1         Asteraceae Helianthus Helianthus annuus  116668764 143071754
+#> 2         Asteraceae Helianthus Helianthus annuus          6       414
+#> 3         Asteraceae Helianthus Helianthus annuus         NA 137012188
+#> 4         Asteraceae Helianthus Helianthus annuus  106147210 106237428
+#> 5         Compositae Helianthus              <NA>  111449174        NA
+#> 6 Acholeplasmataceae Candidatus Helianthus annuus         NA 106013100
+#>   familyKey  genusKey speciesKey     canonicalName authorship   nameType
+#> 1 143071759 143073503  116845199 Helianthus annuus         L. WELLFORMED
+#> 2      3065   3119134    3119195 Helianthus annuus         L. WELLFORMED
+#> 3 125799038 125809269  125790787 Helianthus annuus         L. WELLFORMED
+#> 4 106237535 106239325  106239436 Helianthus annuus            WELLFORMED
+#> 5 111442813 111449703         NA Helianthus annuus         L. WELLFORMED
+#> 6 106039581 106155719  125587214 Helianthus annuus               SCINAME
+#>      rank numDescendants numOccurrences   taxonID    habitats
+#> 1 SPECIES              0              0     57622        <NA>
+#> 2 SPECIES             36              0 107290518 TERRESTRIAL
+#> 3 SPECIES              0              0    112763        <NA>
+#> 4 SPECIES              2              0      4232        <NA>
+#> 5 SPECIES              1              0    417215        <NA>
+#> 6 SPECIES              0              0   1301613        <NA>
+#>   nomenclaturalStatus threatStatuses synonym basionymKey
+#> 1                  NA             NA   FALSE          NA
+#> 2                  NA             NA   FALSE     3119205
+#> 3                  NA             NA   FALSE          NA
+#> 4                  NA             NA   FALSE          NA
+#> 5                  NA             NA   FALSE          NA
+#> 6                  NA             NA   FALSE          NA
 #>                                    basionym        phylum phylumKey
 #> 1                                      <NA>          <NA>        NA
 #> 2 Helianthus lenticularis Douglas ex Lindl. Magnoliophyta        49
 #> 3                                      <NA>          <NA>        NA
 #> 4                                      <NA>  Streptophyta 106171079
 #> 5                                      <NA> Spermatophyta 111449175
-#> 6                                      <NA> Magnoliophyta 116127951
+#> 6                                      <NA>   Tenericutes 106355900
 #>    classKey         publishedIn                             accordingTo
 #> 1        NA                <NA>                                    <NA>
 #> 2       220 Sp. pl. 2:904. 1753 Integrated Taxonomic Information System
 #> 3        NA                <NA>                                    <NA>
 #> 4        NA                <NA>                                    <NA>
 #> 5 111449177                <NA>                                    <NA>
-#> 6 116128467                <NA>                                    <NA>
+#> 6 106136190                <NA>                                    <NA>
 #>   taxonomicStatus extinct         class
 #> 1            <NA>      NA          <NA>
 #> 2        ACCEPTED   FALSE Magnoliopsida
 #> 3            <NA>      NA          <NA>
 #> 4            <NA>      NA          <NA>
 #> 5        ACCEPTED      NA Dicotyledones
-#> 6            <NA>      NA Magnoliopsida
+#> 6            <NA>      NA    Mollicutes
 ```
 
 The function `name_usage()` works with lots of different name endpoints in GBIF, listed at [http://www.gbif.org/developer/species#nameUsages]().
@@ -518,13 +525,13 @@ The function `name_suggest()` is optimized for speed, and gives back suggested n
 
 ```r
 head( name_suggest(q='Puma concolor') )
-#>       key             canonicalName       rank
-#> 1 2435099             Puma concolor    SPECIES
-#> 2 7193927    Puma concolor concolor SUBSPECIES
-#> 3 6164590     Puma concolor couguar SUBSPECIES
-#> 4 6164623    Puma concolor cabrerae SUBSPECIES
-#> 5 6164589    Puma concolor anthonyi SUBSPECIES
-#> 6 6164591 Puma concolor kaibabensis SUBSPECIES
+#>       key               canonicalName       rank
+#> 1 2435099               Puma concolor    SPECIES
+#> 2 6164589      Puma concolor anthonyi SUBSPECIES
+#> 3 6164624 Puma concolor costaricensis SUBSPECIES
+#> 4 6164590       Puma concolor couguar SUBSPECIES
+#> 5 6164591   Puma concolor kaibabensis SUBSPECIES
+#> 6 6164599        Puma concolor azteca SUBSPECIES
 ```
 
 
@@ -604,7 +611,7 @@ By default `occ_search()` returns a `dplyr` like output summary in which the dat
 
 ```r
 occ_search(scientificName = "Ursus americanus", limit = 20)
-#> Records found [7195] 
+#> Records found [7218] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
 #> No. media records [20] 
@@ -612,16 +619,16 @@ occ_search(scientificName = "Ursus americanus", limit = 20)
 #> First 10 rows of data
 #> 
 #>                name        key decimalLatitude decimalLongitude
-#> 1  Ursus americanus 1065588899        35.73304        -82.42028
-#> 2  Ursus americanus 1065590124        38.36662        -79.68283
+#> 1  Ursus americanus 1065590124        38.36662        -79.68283
+#> 2  Ursus americanus 1065588899        35.73304        -82.42028
 #> 3  Ursus americanus 1065611122        43.94883        -72.77432
-#> 4  Ursus americanus 1088923534        36.93018        -78.25027
-#> 5  Ursus americanus 1088932238        32.65219       -108.53674
-#> 6  Ursus americanus 1088932273        32.65237       -108.53691
-#> 7  Ursus americanus 1088908315        43.86464        -72.34617
-#> 8  Ursus americanus 1088964797        29.27042       -103.30058
-#> 9  Ursus americanus 1088961422        49.72317        -96.03215
-#> 10 Ursus americanus 1088962169        43.57600        -72.56047
+#> 4  Ursus americanus 1098894889        23.69470        -99.14630
+#> 5  Ursus americanus 1088923534        36.93018        -78.25027
+#> 6  Ursus americanus 1088932238        32.65219       -108.53674
+#> 7  Ursus americanus 1088932273        32.65237       -108.53691
+#> 8  Ursus americanus 1088908315        43.86464        -72.34617
+#> 9  Ursus americanus 1088950245        44.41015        -72.18191
+#> 10 Ursus americanus 1088957781        41.32353        -74.89245
 #> ..              ...        ...             ...              ...
 #> Variables not shown: issues (chr), datasetKey (chr), publishingOrgKey
 #>      (chr), publishingCountry (chr), protocol (chr), lastCrawled (chr),
@@ -634,13 +641,14 @@ occ_search(scientificName = "Ursus americanus", limit = 20)
 #>      (int), month (int), day (int), eventDate (chr), modified (chr),
 #>      lastInterpreted (chr), references (chr), identifiers (chr), facts
 #>      (chr), relations (chr), geodeticDatum (chr), class (chr), countryCode
-#>      (chr), country (chr), verbatimEventDate (chr), verbatimLocality
-#>      (chr), http...unknown.org.occurrenceDetails (chr), rights (chr),
-#>      rightsHolder (chr), occurrenceID (chr), collectionCode (chr), taxonID
-#>      (chr), gbifID (chr), institutionCode (chr), catalogNumber (chr),
-#>      datasetName (chr), recordedBy (chr), eventTime (chr), identifier
-#>      (chr), identificationID (chr), occurrenceRemarks (chr),
-#>      informationWithheld (chr)
+#>      (chr), country (chr), rightsHolder (chr), identifier (chr),
+#>      verbatimEventDate (chr), datasetName (chr), gbifID (chr),
+#>      collectionCode (chr), occurrenceID (chr), taxonID (chr),
+#>      catalogNumber (chr), recordedBy (chr),
+#>      http...unknown.org.occurrenceDetails (chr), institutionCode (chr),
+#>      rights (chr), eventTime (chr), occurrenceRemarks (chr),
+#>      identificationID (chr), verbatimLocality (chr), infraspecificEpithet
+#>      (chr), informationWithheld (chr)
 ```
 
 Or to be more precise, you can search for names first, make sure you have the right name, then pass the GBIF key to the `occ_search()` function:
@@ -649,24 +657,24 @@ Or to be more precise, you can search for names first, make sure you have the ri
 ```r
 key <- name_suggest(q='Helianthus annuus', rank='species')$key[1]
 occ_search(taxonKey=key, limit=20)
-#> Records found [20511] 
+#> Records found [20650] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
-#> No. media records [15] 
+#> No. media records [19] 
 #> Args [taxonKey=3119195, limit=20, offset=0, fields=all] 
 #> First 10 rows of data
 #> 
 #>                 name        key decimalLatitude decimalLongitude
-#> 1  Helianthus annuus 1088900309        33.95239       -117.32011
-#> 2  Helianthus annuus 1088933055        25.66564       -100.30348
+#> 1  Helianthus annuus 1095851641         0.00000          0.00000
+#> 2  Helianthus annuus 1088900309        33.95239       -117.32011
 #> 3  Helianthus annuus 1088909392        24.72449        -99.54020
-#> 4  Helianthus annuus 1088944416        26.20518        -98.26725
+#> 4  Helianthus annuus 1088933055        25.66564       -100.30348
 #> 5  Helianthus annuus 1088937716        25.81691       -100.05940
-#> 6  Helianthus annuus 1090389390        59.96150         17.71060
-#> 7  Helianthus annuus 1092894334        34.16052       -119.03794
-#> 8  Helianthus annuus 1092901911        30.27181        -97.83409
-#> 9  Helianthus annuus 1092889365        32.71840       -114.75603
-#> 10 Helianthus annuus 1092889645         1.27617        103.79136
+#> 6  Helianthus annuus 1088944416        26.20518        -98.26725
+#> 7  Helianthus annuus 1092901911        30.27181        -97.83409
+#> 8  Helianthus annuus 1098903927        29.17958       -102.99551
+#> 9  Helianthus annuus 1092894334        34.16052       -119.03794
+#> 10 Helianthus annuus 1092889365        32.71840       -114.75603
 #> ..               ...        ...             ...              ...
 #> Variables not shown: issues (chr), datasetKey (chr), publishingOrgKey
 #>      (chr), publishingCountry (chr), protocol (chr), lastCrawled (chr),
@@ -675,21 +683,21 @@ occ_search(taxonKey=key, limit=20)
 #>      (int), familyKey (int), genusKey (int), speciesKey (int),
 #>      scientificName (chr), kingdom (chr), phylum (chr), order (chr),
 #>      family (chr), genus (chr), species (chr), genericName (chr),
-#>      specificEpithet (chr), taxonRank (chr), year (int), month (int), day
-#>      (int), eventDate (chr), modified (chr), lastInterpreted (chr),
-#>      references (chr), identifiers (chr), facts (chr), relations (chr),
-#>      geodeticDatum (chr), class (chr), countryCode (chr), country (chr),
-#>      verbatimEventDate (chr), verbatimLocality (chr),
-#>      http...unknown.org.occurrenceDetails (chr), rights (chr),
-#>      rightsHolder (chr), occurrenceID (chr), collectionCode (chr), taxonID
-#>      (chr), occurrenceRemarks (chr), gbifID (chr), institutionCode (chr),
-#>      catalogNumber (chr), datasetName (chr), recordedBy (chr), eventTime
-#>      (chr), identifier (chr), dateIdentified (chr), identificationID
-#>      (chr), coordinateAccuracy (dbl), elevation (dbl), elevationAccuracy
-#>      (dbl), depth (dbl), depthAccuracy (dbl), stateProvince (chr), county
-#>      (chr), locality (chr), identifiedBy (chr), informationWithheld (chr),
-#>      recordNumber (chr), verbatimElevation (chr), georeferenceSources
-#>      (chr)
+#>      specificEpithet (chr), taxonRank (chr), dateIdentified (chr),
+#>      elevation (dbl), elevationAccuracy (dbl), stateProvince (chr), year
+#>      (int), month (int), day (int), eventDate (chr), lastInterpreted
+#>      (chr), identifiers (chr), facts (chr), relations (chr), geodeticDatum
+#>      (chr), class (chr), countryCode (chr), country (chr), rightsHolder
+#>      (chr), recordNumber (chr), identifier (chr), locality (chr),
+#>      municipality (chr), datasetName (chr), gbifID (chr), collectionCode
+#>      (chr), language (chr), occurrenceID (chr), type (chr), catalogNumber
+#>      (chr), recordedBy (chr), institutionCode (chr), rights (chr),
+#>      ownerInstitutionCode (chr), occurrenceRemarks (chr), identifiedBy
+#>      (chr), modified (chr), references (chr), verbatimEventDate (chr),
+#>      verbatimLocality (chr), taxonID (chr),
+#>      http...unknown.org.occurrenceDetails (chr), eventTime (chr),
+#>      identificationID (chr), informationWithheld (chr), coordinateAccuracy
+#>      (dbl), depth (dbl), depthAccuracy (dbl), county (chr)
 ```
 
 Like many functions in `rgbif`, you can choose what to return with the `return` parameter, here, just returning the metadata:
@@ -698,7 +706,7 @@ Like many functions in `rgbif`, you can choose what to return with the `return` 
 ```r
 occ_search(taxonKey=key, return='meta')
 #>   offset limit endOfRecords count
-#> 1    300   200        FALSE 20511
+#> 1    300   200        FALSE 20650
 ```
 
 You can choose what fields to return. This isn't passed on to the API query to GBIF as they don't allow that, but we filter out the columns before we give the data back to you.
@@ -706,7 +714,7 @@ You can choose what fields to return. This isn't passed on to the API query to G
 
 ```r
 occ_search(scientificName = "Ursus americanus", fields=c('name','basisOfRecord','protocol'), limit = 20)
-#> Records found [7195] 
+#> Records found [7218] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
 #> No. media records [20] 
@@ -735,19 +743,19 @@ Most parameters are vectorized, so you can pass in more than one value:
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5)
-#> Occ. found [2482598 (355713), 2492010 (1942446), 2498387 (592229)] 
+#> Occ. found [2482598 (355723), 2492010 (1942477), 2498387 (592249)] 
 #> Occ. returned [2482598 (5), 2492010 (5), 2498387 (5)] 
 #> No. unique hierarchies [2482598 (1), 2492010 (1), 2498387 (1)] 
-#> No. media records [2482598 (5), 2492010 (5), 2498387 (5)] 
+#> No. media records [2482598 (5), 2492010 (5), 2498387 (4)] 
 #> Args [taxonKey=2482598,2492010,2498387, limit=5, offset=0, fields=all] 
 #> First 10 rows of data from 2482598
 #> 
 #>                  name        key decimalLatitude decimalLongitude
-#> 1 Cyanocitta stelleri 1065588252        36.54670        -105.1335
-#> 2 Cyanocitta stelleri 1052604494        37.76975        -122.4715
-#> 3 Cyanocitta stelleri 1065588175        39.11113        -121.3083
-#> 4 Cyanocitta stelleri 1065588311        37.26200        -122.3271
-#> 5 Cyanocitta stelleri 1065590449        37.50713        -122.4818
+#> 1 Cyanocitta stelleri 1052604494        37.76975        -122.4715
+#> 2 Cyanocitta stelleri 1065588311        37.26200        -122.3271
+#> 3 Cyanocitta stelleri 1065588252        36.54670        -105.1335
+#> 4 Cyanocitta stelleri 1065597471        39.11136        -120.1687
+#> 5 Cyanocitta stelleri 1065601214        37.41080        -122.2617
 #> Variables not shown: issues (chr), datasetKey (chr), publishingOrgKey
 #>      (chr), publishingCountry (chr), protocol (chr), lastCrawled (chr),
 #>      lastParsed (chr), extensions (chr), basisOfRecord (chr), taxonKey
@@ -759,15 +767,78 @@ occ_search(taxonKey=keys, limit=5)
 #>      (int), month (int), day (int), eventDate (chr), modified (chr),
 #>      lastInterpreted (chr), references (chr), identifiers (chr), facts
 #>      (chr), relations (chr), geodeticDatum (chr), class (chr), countryCode
-#>      (chr), country (chr), gbifID (chr), verbatimEventDate (chr),
-#>      institutionCode (chr), datasetName (chr), catalogNumber (chr),
-#>      verbatimLocality (chr), recordedBy (chr),
-#>      http...unknown.org.occurrenceDetails (chr), rights (chr),
-#>      rightsHolder (chr), occurrenceID (chr), identifier (chr),
-#>      collectionCode (chr), taxonID (chr), identificationID (chr),
-#>      occurrenceRemarks (chr), eventTime (chr)
+#>      (chr), country (chr), rightsHolder (chr), identifier (chr),
+#>      verbatimEventDate (chr), datasetName (chr), verbatimLocality (chr),
+#>      gbifID (chr), collectionCode (chr), occurrenceID (chr), taxonID
+#>      (chr), catalogNumber (chr), recordedBy (chr),
+#>      http...unknown.org.occurrenceDetails (chr), institutionCode (chr),
+#>      rights (chr), eventTime (chr), occurrenceRemarks (chr),
+#>      identificationID (chr)
 ```
 
+## Downloads
+
+GBIF provides access to their downloads API. This is the same service that you use when you go to [their website]() to search for records then download a zip file.
+
+First, we can search for data, for _Ursus arctos_ (`taxonkey` = 2433433)
+
+
+```r
+(res <- occ_download('taxonKey = 2433433'))
+```
+
+Then we can check on the download progress
+
+
+```r
+occ_download_meta(res)
+#> <<gbif download metadata>>
+#>   Status: RUNNING
+#> Download key: 0007658-150615163101818
+#>   Created: 2015-07-09T14:48:40.705+0000
+#>   Modified: 2015-07-09T14:48:40.788+0000
+#>   Download link: http://api.gbif.org/v1/occurrence/download/request/0007658-150615163101818.zip
+#>   Total records: 0
+#>   Request:
+#>     type:  equals
+#>     predicates:
+```
+
+We can see that status is `Running`, so we wait a while longer. And when it's ready, download the data
+
+
+```r
+res <- occ_download_get(res, overwrite = TRUE)
+#> <<gbif downloaded get>>
+#>   Path: ./0007658-150615163101818.zip
+#>   File size: 3.1 MB
+```
+
+And then import into R, and manipulate
+
+
+```r
+suppressPackageStartupMessages(library("dplyr"))
+df <- tbl_df(occ_download_import(res))
+df %>%
+  filter(nchar(lifeStage) != 0, !is.na(decimalLatitude)) %>%
+  select(decimalLatitude, decimalLongitude, lifeStage)
+
+#> Source: local data frame [53 x 3]
+#>
+#>    decimalLatitude decimalLongitude lifeStage
+#> 1         44.65373       -110.54160  JUVENILE
+#> 2         63.18333       -139.60000     ADULT
+#> 3         70.48056       -157.41667     ADULT
+#> 4         52.66667       -117.86667     ADULT
+#> 5         59.48333       -139.81667     ADULT
+#> 6         69.93456       -148.68292     ADULT
+#> 7         69.01667       -161.93333  JUVENILE
+#> 8         59.89000       -151.68167     ADULT
+#> 9         59.64154       -139.40070     ADULT
+#> 10        44.61667        -79.41667     ADULT
+#> ..             ...              ...       ...
+```
 
 ********************
 
@@ -784,9 +855,6 @@ gbifmap(input=dat)
 
 ![plot of chunk gbifmap1](../assets/tutorial-images/rgbif/gbifmap1-1.png) 
 
-[gbifapi]: http://www.gbif.org/developer/summary
-
-
 <section id="citing">
 
 ## Citing
@@ -795,7 +863,7 @@ To cite `rgbif` in publications use:
 
 <br>
 
-> Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2015). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 0.8.4 https://github.com/ropensci/rgbif
+> Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2015). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 0.8.6 https://github.com/ropensci/rgbif
 
 <section id="license_bugs">
 
@@ -805,3 +873,5 @@ To cite `rgbif` in publications use:
 * Report bugs at [our Github repo for rgbif](https://github.com/ropensci/rgbif/issues?state=open)
 
 [Back to top](#top)
+
+[gbifapi]: http://www.gbif.org/developer/summary

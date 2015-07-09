@@ -1,7 +1,7 @@
 ---
 title: gistr vignette
 layout: tutorial
-packge_version: 0.2
+packge_version: 0.3
 ---
 
 
@@ -9,7 +9,14 @@ packge_version: 0.2
 
 <section id="installation">
 
-The package is not on CRAN yet - perhaps some day in the future, we don't know. For now, get it from GitHub:
+You can install from CRAN
+
+
+```r
+install.packages("gistr")
+```
+
+Or the development version from GitHub
 
 
 ```r
@@ -29,7 +36,7 @@ library("gistr")
 
 There are two ways to authorise gistr to work with your GitHub account:
 
-* Generate a personal access token (PAT) at [https://help.github.com/articles/creating-an-access-token-for-command-line-use](https://help.github.com/articles/creating-an-access-token-for-command-line-use) and record it in the `GITHUB_PAT` envar. If you're not sure how to do this, make a `.Renviron` file in your home directory (if it doesn't already exist), and put an entry in like `GITHUB_PAT=adfadf9asd7fas9fsaf98asfassf` (that's not a real key). Remember to restart your R session.
+* Generate a personal access token (PAT) at [https://help.github.com/articles/creating-an-access-token-for-command-line-use](https://help.github.com/articles/creating-an-access-token-for-command-line-use) and record it in the `GITHUB_PAT` envar.
 * Interactively login into your GitHub account and authorise with OAuth.
 
 Using the PAT is recommended.
@@ -79,8 +86,8 @@ rate_limit()
 
 ```
 #> Rate limit: 5000
-#> Remaining:  4923
-#> Resets in:  38 minutes
+#> Remaining:  4996
+#> Resets in:  43 minutes
 ```
 
 
@@ -95,20 +102,20 @@ gists(per_page = 2)
 
 ```
 #> [[1]]
-#> <gist>2942433e3dbfe01e69f9
-#>   URL: https://gist.github.com/2942433e3dbfe01e69f9
-#>   Description: screenshot android
+#> <gist>6ff1cf71e63c640808c2
+#>   URL: https://gist.github.com/6ff1cf71e63c640808c2
+#>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T14:06:14Z / 2015-06-30T14:06:15Z
-#>   Files: screenshot 
+#>   Created/Edited: 2015-07-09T15:19:48Z / 2015-07-09T15:19:48Z
+#>   Files: config.json
 #>   Truncated?: FALSE
 #> 
 #> [[2]]
-#> <gist>109e827dca15e3ebc444
-#>   URL: https://gist.github.com/109e827dca15e3ebc444
+#> <gist>b50eaf3c875e81a082d1
+#>   URL: https://gist.github.com/b50eaf3c875e81a082d1
 #>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T14:06:11Z / 2015-06-30T14:06:11Z
+#>   Created/Edited: 2015-07-09T15:19:42Z / 2015-07-09T15:19:42Z
 #>   Files: config.json
 #>   Truncated?: FALSE
 ```
@@ -117,25 +124,25 @@ Since a certain date/time
 
 
 ```r
-gists(since='2014-05-26T00:00:00Z', per_page = 2)
+gists(since = '2014-05-26T00:00:00Z', per_page = 2)
 ```
 
 ```
 #> [[1]]
-#> <gist>2942433e3dbfe01e69f9
-#>   URL: https://gist.github.com/2942433e3dbfe01e69f9
-#>   Description: screenshot android
+#> <gist>6ff1cf71e63c640808c2
+#>   URL: https://gist.github.com/6ff1cf71e63c640808c2
+#>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T14:06:14Z / 2015-06-30T14:06:15Z
-#>   Files: screenshot 
+#>   Created/Edited: 2015-07-09T15:19:48Z / 2015-07-09T15:19:48Z
+#>   Files: config.json
 #>   Truncated?: FALSE
 #> 
 #> [[2]]
-#> <gist>109e827dca15e3ebc444
-#>   URL: https://gist.github.com/109e827dca15e3ebc444
+#> <gist>b50eaf3c875e81a082d1
+#>   URL: https://gist.github.com/b50eaf3c875e81a082d1
 #>   Description: Bootstrap Customizer Config
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T14:06:11Z / 2015-06-30T14:06:11Z
+#>   Created/Edited: 2015-07-09T15:19:42Z / 2015-07-09T15:19:42Z
 #>   Files: config.json
 #>   Truncated?: FALSE
 ```
@@ -149,22 +156,22 @@ gists('minepublic', per_page = 2)
 
 ```
 #> [[1]]
-#> <gist>a9005601f4c95f4c74c0
-#>   URL: https://gist.github.com/a9005601f4c95f4c74c0
-#>   Description: 
+#> <gist>2427d0cd92bc2ca8dc73
+#>   URL: https://gist.github.com/2427d0cd92bc2ca8dc73
+#>   Description: gist gist gist
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T13:57:01Z / 2015-06-30T13:57:04Z
-#>   Files: alm.md, code.R
-#>   Truncated?: FALSE, FALSE
-#> 
-#> [[2]]
-#> <gist>7358f7874a7b7b92ac1d
-#>   URL: https://gist.github.com/7358f7874a7b7b92ac1d
-#>   Description: a new cool gist
-#>   Public: TRUE
-#>   Created/Edited: 2015-06-30T13:57:00Z / 2015-06-30T13:57:00Z
+#>   Created/Edited: 2015-07-09T11:04:42Z / 2015-07-09T11:04:42Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
+#> 
+#> [[2]]
+#> <gist>a2fc9d52e9e4ce4e20dd
+#>   URL: https://gist.github.com/a2fc9d52e9e4ce4e20dd
+#>   Description: gist gist gist
+#>   Public: TRUE
+#>   Created/Edited: 2015-07-09T11:03:16Z / 2015-07-09T11:03:17Z
+#>   Files: stuff.md, zoo.json
+#>   Truncated?: FALSE, FALSE
 ```
 
 
@@ -187,8 +194,8 @@ gist(id = 'f1403260eb92f5dfa7e1')
 
 ## Easily play with gist data
 
-A new function in `v0.2` is `tabl()` (weirdly named to avoid collision with `base::table()`), 
-which attempts to parse data on gists into data.frame's for easy manipulation. 
+A new function in `v0.2` is `tabl()` (weirdly named to avoid collision with `base::table()`),
+which attempts to parse data on gists into data.frame's for easy manipulation.
 
 Here, we play with commit data on each of 30 gists
 
@@ -197,24 +204,24 @@ Here, we play with commit data on each of 30 gists
 library("dplyr")
 x <- sapply(c(gists(), gists()), commits)
 tabl(x) %>%
-  select(id, login, change_status.total, url) %>% 
+  select(id, login, change_status.total, url) %>%
   filter(change_status.total > 70)
 ```
 
 ```
-#> Source: local data frame [30 x 4]
+#> Source: local data frame [36 x 4]
 #> 
 #>         id                 login change_status.total
-#> 1   148100 invalid-email-address                 388
-#> 2   148100 invalid-email-address                 408
-#> 3   148100 invalid-email-address                 429
-#> 4   148100 invalid-email-address                 403
-#> 5  4321565                 gloer                 254
-#> 6   148100 invalid-email-address                 390
+#> 1  5064599          brainsapiens                 345
+#> 2   148100 invalid-email-address                 412
+#> 3   148100 invalid-email-address                 401
+#> 4   148100 invalid-email-address                 433
+#> 5   148100 invalid-email-address                 401
+#> 6  1038301            jim-minter                 125
 #> 7   148100 invalid-email-address                 433
 #> 8   148100 invalid-email-address                 433
-#> 9   148100 invalid-email-address                 388
-#> 10  148100 invalid-email-address                 366
+#> 9       NA                    NA                  90
+#> 10      NA                    NA                 158
 #> ..     ...                   ...                 ...
 #> Variables not shown: url (chr)
 ```
@@ -232,20 +239,20 @@ stuffpath <- system.file("examples", "stuff.md", package = "gistr")
 
 
 ```r
-gist_create(files=stuffpath, description='a new cool gist')
+gist_create(files = stuffpath, description='a new cool gist')
 ```
 
 
 ```r
-gist_create(files=stuffpath, description='a new cool gist', browse = FALSE)
+gist_create(files = stuffpath, description = 'a new cool gist', browse = FALSE)
 ```
 
 ```
-#> <gist>653ddba9927b229d9642
-#>   URL: https://gist.github.com/653ddba9927b229d9642
+#> <gist>5d2733f57be3543dafe3
+#>   URL: https://gist.github.com/5d2733f57be3543dafe3
 #>   Description: a new cool gist
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T14:06:54Z / 2015-06-30T14:06:54Z
+#>   Created/Edited: 2015-07-09T15:20:14Z / 2015-07-09T15:20:14Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
 ```
@@ -264,11 +271,11 @@ numbers
 ```
 
 ```
-#> <gist>2ab960365f7bf47b4d3a
-#>   URL: https://gist.github.com/2ab960365f7bf47b4d3a
+#> <gist>4c074778e8f43fe34ed4
+#>   URL: https://gist.github.com/4c074778e8f43fe34ed4
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T14:06:54Z / 2015-06-30T14:06:54Z
+#>   Created/Edited: 2015-07-09T15:20:14Z / 2015-07-09T15:20:14Z
 #>   Files: code.R
 #>   Truncated?: FALSE
 ```
@@ -310,16 +317,16 @@ knit a local file
 
 ```r
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
-run(file, knitopts = list(quiet = TRUE)) %>% 
+run(file, knitopts = list(quiet = TRUE)) %>%
   gist_create(browse = FALSE)
 ```
 
 ```
-#> <gist>691824180de410f43549
-#>   URL: https://gist.github.com/691824180de410f43549
+#> <gist>5d1b024b9e6d9f1019c2
+#>   URL: https://gist.github.com/5d1b024b9e6d9f1019c2
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T14:06:55Z / 2015-06-30T14:06:55Z
+#>   Created/Edited: 2015-07-09T15:20:14Z / 2015-07-09T15:20:14Z
 #>   Files: stuff.md
 #>   Truncated?: FALSE
 ```
@@ -340,8 +347,8 @@ knit a file from a gist, has to get file first (result not shown)
 
 
 ```r
-gists('minepublic')[[1]] %>% 
-  run() %>% 
+gists('minepublic')[[1]] %>%
+  run() %>%
   update()
 ```
 
@@ -365,11 +372,11 @@ gist_create(file, knit = TRUE, imgur_inject = TRUE)
 
 ## Create gists from R objects
 
-First, `gist_create_obj()` was made a separate function from `gist_create()` because there was 
-a bunch of different parameters, and it was too complicated to cobmine. Behavior of this function 
-is a bit dumb at this point, e.g., if a data.frame is pushed up to a gist, you'd expect a 
-markdown table probably - but that doesn't quite work yet, sorry :) For other formats (e.g., 
-lists), it's not clear what to show in a gist. 
+First, `gist_create_obj()` was made a separate function from `gist_create()` because there was
+a bunch of different parameters, and it was too complicated to cobmine. Behavior of this function
+is a bit dumb at this point, e.g., if a data.frame is pushed up to a gist, you'd expect a
+markdown table probably - but that doesn't quite work yet, sorry :) For other formats (e.g.,
+lists), it's not clear what to show in a gist.
 
 __data.frame__
 
@@ -382,11 +389,11 @@ gist_create_obj(mtcars)
 ```
 
 ```
-#> <gist>ebdbc4ff3c705370ad86
-#>   URL: https://gist.github.com/ebdbc4ff3c705370ad86
+#> <gist>eb8e2a7318441e978b31
+#>   URL: https://gist.github.com/eb8e2a7318441e978b31
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T14:06:56Z / 2015-06-30T14:06:56Z
+#>   Created/Edited: 2015-07-09T15:20:16Z / 2015-07-09T15:20:16Z
 #>   Files: file.txt
 #>   Truncated?: FALSE
 ```
@@ -399,11 +406,11 @@ gist_create_obj(mtcars, pretty = FALSE)
 ```
 
 ```
-#> <gist>f17856c674b72910e4dc
-#>   URL: https://gist.github.com/f17856c674b72910e4dc
+#> <gist>fdbb77870162a53e1084
+#>   URL: https://gist.github.com/fdbb77870162a53e1084
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T14:06:56Z / 2015-06-30T14:06:56Z
+#>   Created/Edited: 2015-07-09T15:20:16Z / 2015-07-09T15:20:16Z
 #>   Files: file.txt
 #>   Truncated?: FALSE
 ```
@@ -416,11 +423,11 @@ gist_create_obj(apply(mtcars, 1, as.list))
 ```
 
 ```
-#> <gist>c6a81950d19323cc408f
-#>   URL: https://gist.github.com/c6a81950d19323cc408f
+#> <gist>ab391646dea1e914d757
+#>   URL: https://gist.github.com/ab391646dea1e914d757
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T14:06:57Z / 2015-06-30T14:06:57Z
+#>   Created/Edited: 2015-07-09T15:20:17Z / 2015-07-09T15:20:17Z
 #>   Files: file.txt
 #>   Truncated?: FALSE
 ```
@@ -435,9 +442,9 @@ gists()[[1]] %>% commits()
 ```
 #> [[1]]
 #> <commit>
-#>   Version: 3f70f3135ec2b3aa507be03975a6d721fb489880
+#>   Version: 43352a6bc4076b09347a38830d3dd26b2e6f145c
 #>   User: sckott
-#>   Commited: 2015-06-30T14:06:57Z
+#>   Commited: 2015-07-09T15:20:17Z
 #>   Commits [total, additions, deletions]: [1,1,0]
 ```
 
@@ -455,7 +462,7 @@ gist('7ddb9810fc99c84c65ec') %>% star()
 #>   URL: https://gist.github.com/7ddb9810fc99c84c65ec
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-06-27T17:50:37Z / 2015-06-30T13:57:03Z
+#>   Created/Edited: 2014-06-27T17:50:37Z / 2015-07-03T01:19:29Z
 #>   Files: code.R, manifest.yml, rrt_manifest.yml
 #>   Truncated?: FALSE, FALSE, FALSE
 ```
@@ -472,7 +479,7 @@ gist('7ddb9810fc99c84c65ec') %>% unstar()
 #>   URL: https://gist.github.com/7ddb9810fc99c84c65ec
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2014-06-27T17:50:37Z / 2015-06-30T14:06:58Z
+#>   Created/Edited: 2014-06-27T17:50:37Z / 2015-07-03T01:19:29Z
 #>   Files: code.R, manifest.yml, rrt_manifest.yml
 #>   Truncated?: FALSE, FALSE, FALSE
 ```
@@ -496,11 +503,11 @@ gists(what = "minepublic")[[1]] %>%
 ```
 
 ```
-#> <gist>c6a81950d19323cc408f
-#>   URL: https://gist.github.com/c6a81950d19323cc408f
+#> <gist>ab391646dea1e914d757
+#>   URL: https://gist.github.com/ab391646dea1e914d757
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T14:06:57Z / 2015-06-30T14:06:59Z
+#>   Created/Edited: 2015-07-09T15:20:17Z / 2015-07-09T15:20:19Z
 #>   Files: alm.md, file.txt
 #>   Truncated?: FALSE, FALSE
 ```
@@ -515,11 +522,11 @@ gists(what = "minepublic")[[1]] %>%
 ```
 
 ```
-#> <gist>c6a81950d19323cc408f
-#>   URL: https://gist.github.com/c6a81950d19323cc408f
+#> <gist>ab391646dea1e914d757
+#>   URL: https://gist.github.com/ab391646dea1e914d757
 #>   Description: 
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T14:06:57Z / 2015-06-30T14:06:59Z
+#>   Created/Edited: 2015-07-09T15:20:17Z / 2015-07-09T15:20:20Z
 #>   Files: file.txt
 #>   Truncated?: FALSE
 ```
@@ -541,7 +548,7 @@ gists()[[1]] %>% embed()
 ```
 
 ```
-#> [1] "<script src=\"https://gist.github.com/sckott/c6a81950d19323cc408f.js\"></script>"
+#> [1] "<script src=\"https://gist.github.com/sckott/ab391646dea1e914d757.js\"></script>"
 ```
 
 ### List forks
@@ -550,7 +557,7 @@ Returns a list of `gist` objects, just like `gists()`
 
 
 ```r
-gist(id='1642874') %>% forks(per_page=2)
+gist(id = '1642874') %>% forks(per_page = 2)
 ```
 
 ```
@@ -584,12 +591,12 @@ g <- gists()
 ```
 
 ```
-#> <gist>b66eb1cd190bea6e108a
-#>   URL: https://gist.github.com/b66eb1cd190bea6e108a
-#>   Description: Bootstrap Customizer Config
+#> <gist>9253803d418cd3417f97
+#>   URL: https://gist.github.com/9253803d418cd3417f97
+#>   Description: Format any number to #.##
 #>   Public: TRUE
-#>   Created/Edited: 2015-06-30T14:07:00Z / 2015-06-30T14:07:00Z
-#>   Files: config.json
+#>   Created/Edited: 2015-07-09T15:20:21Z / 2015-07-09T15:20:21Z
+#>   Files: NumberFormat.php
 #>   Truncated?: FALSE
 ```
 
@@ -628,7 +635,7 @@ And here's that gist: [https://gist.github.com/sckott/017214637bcfeb198070](http
 ## Citing
 
 > Ramnath Vaidyanathan, Karthik Ram and Scott Chamberlain (2015). gistr: Work with
-  GitHub Gists from R. R package version 0.2.0. https://github.com/ropensci/gistr
+  GitHub Gists from R. R package version 0.3.0. https://github.com/ropensci/gistr
 
 </section>
 

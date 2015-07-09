@@ -1,7 +1,7 @@
 ---
 title: musemeta tutorial
 layout: tutorial
-packge_version: 0.0.2
+packge_version: 0.0.5
 ---
 
 
@@ -15,6 +15,7 @@ Currently `musemeta` can get data from:
 * The [National Gallery of Art](http://www.nga.gov/content/ngaweb.html) (NGA) (see function `nga()`)
 * The [Getty Museum](http://www.getty.edu/) (see function `getty()`)
 * The [Art Institute of Chicago](http://www.artic.edu/) (see function `aic()`)
+* The [Asian Art Museum of San Francisco](http://www.asianart.org/) (see function `aam()`)
 
 Other sources of museum metadata will be added...check back later & see [issues](https://github.com/ropensci/musemeta/issues).
 
@@ -51,7 +52,7 @@ library("musemeta")
 ### MET data
 
 To get actual metadata for an object, you can use `met()` or `scrapi_get()` functions. The latter gets much more data, and uses a REST API, while the former scrapes the html directly, and can be more fragile with any changes in the html on the site.
-
+<br>
 #### Scraping site directly
 
 Data for a single object
@@ -64,9 +65,9 @@ met(559490)
 ```
 #> <Museum metadata> Siphon nozzle
 #>   Period: New Kingdom, Ramesside
-#>   Dynasty: Dynasty 19–20
-#>   Date: ca. 1295–1070 B.C.
-#>   Geography: From Egypt, Memphite Region, Lisht North, Cemetery, MMA 1913–1914
+#>   Dynasty: Dynasty 19 20
+#>   Date: ca. 1295 1070 B.C.
+#>   Geography: From Egypt, Memphite Region, Lisht North, Cemetery, MMA excavations, 1913 14
 #>   Medium: Bronze
 #>   Dimensions: l. 5.4 cm (2 1/8 in)
 #>   Credit Line: Rogers Fund and Edward S. Harkness Gift, 1922
@@ -103,7 +104,7 @@ met(559490)$values[1:2]
 #> [1] "Dynasty"
 #> 
 #> [[2]]$value
-#> [1] "Dynasty 19–20"
+#> [1] "Dynasty 19 20"
 ```
 
 A different object
@@ -141,6 +142,7 @@ lapply(c(479283, 228901, 436876), met)
 #>   Medium: Papyrus and ink
 #>   Dimensions: Framed: 11 1/4 x 15 in. (28.5 x 38.1 cm)
 #>   Classification: Papyrus
+#>   Credit Line: Rogers Fund, 1914
 #>   Accession Number: 14.1.616
 #> 
 #> [[2]]
@@ -149,10 +151,12 @@ lapply(c(479283, 228901, 436876), met)
 #>   Culture: German
 #>   Dimensions: 1 1/4 x 6 1/4in. (3.2 x 15.9cm)
 #>   Classification: Textiles-Laces
+#>   Credit Line: Gift of Helen E. Ionides, 1963
 #>   Accession Number: 63.80.18
 #> 
 #> [[3]]
-#> <Museum metadata> Marion Lenbach (1892–1947), the Artist's Daughter
+#> <Museum metadata> Marion Lenbach (1892 1947), the Artist's Daughter
+#>   Artist: Franz von Lenbach (German, Schrobenhausen 1836 1904 Munich)
 #>   Date: 1900
 #>   Medium: Oil on canvas
 #>   Dimensions: 58 7/8 x 41 1/2 in. (149.5 x 105.4 cm)
@@ -173,14 +177,17 @@ scrapi_info(123, fields=c('title','primaryArtistNameOnly','medium'))
 ```
 
 ```
-#> $title
-#> [1] "Andiron"
+#> $timelineList
+#> $timelineList[[1]]
+#> $timelineList[[1]]$name
+#> [1] "The United States, 1600-1800 A.D."
 #> 
-#> $primaryArtistNameOnly
-#> [1] "Richard Wittingham"
+#> $timelineList[[1]]$count
+#> [1] 0
 #> 
-#> $medium
-#> [1] "Brass"
+#> $timelineList[[1]]$orderId
+#> [1] 0
+...
 ```
 
 Search for objects
@@ -192,76 +199,16 @@ scrapi_search(query='mirror')
 
 ```
 #> $links
-#>  [1] "http://scrapi.org/object/207785" "http://scrapi.org/object/156225"
-#>  [3] "http://scrapi.org/object/425550" "http://scrapi.org/object/436839"
-#>  [5] "http://scrapi.org/object/60142"  "http://scrapi.org/object/54118" 
-#>  [7] "http://scrapi.org/object/421877" "http://scrapi.org/object/421892"
-#>  [9] "http://scrapi.org/object/414082" "http://scrapi.org/object/414085"
-#> [11] "http://scrapi.org/object/413260" "http://scrapi.org/object/425547"
-#> [13] "http://scrapi.org/object/421538" "http://scrapi.org/object/421541"
-#> [15] "http://scrapi.org/object/421542" "http://scrapi.org/object/421543"
-#> [17] "http://scrapi.org/object/412623" "http://scrapi.org/object/50397" 
-#> [19] "http://scrapi.org/object/49591"  "http://scrapi.org/object/36624" 
-#> [21] "http://scrapi.org/object/54864"  "http://scrapi.org/object/284630"
-#> [23] "http://scrapi.org/object/267055" "http://scrapi.org/object/468197"
-#> [25] "http://scrapi.org/object/44848"  "http://scrapi.org/object/255880"
-#> [27] "http://scrapi.org/object/284629" "http://scrapi.org/object/487410"
-#> [29] "http://scrapi.org/object/449949" "http://scrapi.org/object/467733"
-#> [31] "http://scrapi.org/object/427562" "http://scrapi.org/object/452364"
-#> [33] "http://scrapi.org/object/544234" "http://scrapi.org/object/198323"
-#> [35] "http://scrapi.org/object/38968"  "http://scrapi.org/object/247562"
-#> [37] "http://scrapi.org/object/248153" "http://scrapi.org/object/345749"
-#> [39] "http://scrapi.org/object/415292" "http://scrapi.org/object/415290"
-#> [41] "http://scrapi.org/object/461607" "http://scrapi.org/object/38424" 
-#> [43] "http://scrapi.org/object/45522"  "http://scrapi.org/object/52475" 
-#> [45] "http://scrapi.org/object/247479" "http://scrapi.org/object/247869"
-#> [47] "http://scrapi.org/object/244558" "http://scrapi.org/object/244297"
-#> [49] "http://scrapi.org/object/253556" "http://scrapi.org/object/253640"
-#> [51] "http://scrapi.org/object/256949" "http://scrapi.org/object/255391"
-#> [53] "http://scrapi.org/object/255617" "http://scrapi.org/object/249227"
-#> [55] "http://scrapi.org/object/317748" "http://scrapi.org/object/307734"
-#> [57] "http://scrapi.org/object/346681" "http://scrapi.org/object/452809"
-#> [59] "http://scrapi.org/object/452852" "http://scrapi.org/object/452948"
-#> [61] "http://scrapi.org/object/471283" "http://scrapi.org/object/386624"
-#> [63] "http://scrapi.org/object/427560" "http://scrapi.org/object/434964"
-#> [65] "http://scrapi.org/object/434966" "http://scrapi.org/object/431176"
-#> [67] "http://scrapi.org/object/431179" "http://scrapi.org/object/431181"
-#> [69] "http://scrapi.org/object/459206" "http://scrapi.org/object/464248"
-#> [71] "http://scrapi.org/object/550263" "http://scrapi.org/object/17566" 
-#> [73] "http://scrapi.org/object/193593" "http://scrapi.org/object/53937" 
-#> [75] "http://scrapi.org/object/207520" "http://scrapi.org/object/203757"
-#> [77] "http://scrapi.org/object/55068"  "http://scrapi.org/object/63333" 
-#> [79] "http://scrapi.org/object/255960" "http://scrapi.org/object/251169"
-#> [81] "http://scrapi.org/object/421876" "http://scrapi.org/object/423650"
-#> [83] "http://scrapi.org/object/271708" "http://scrapi.org/object/415261"
-#> [85] "http://scrapi.org/object/417966" "http://scrapi.org/object/412628"
-#> [87] "http://scrapi.org/object/413175" "http://scrapi.org/object/427581"
-#> [89] "http://scrapi.org/object/427585" "http://scrapi.org/object/456956"
-#> 
-#> $ids
-#>  [1] "207785" "156225" "425550" "436839" "60142"  "54118"  "421877"
-#>  [8] "421892" "414082" "414085" "413260" "425547" "421538" "421541"
-#> [15] "421542" "421543" "412623" "50397"  "49591"  "36624"  "54864" 
-#> [22] "284630" "267055" "468197" "44848"  "255880" "284629" "487410"
-#> [29] "449949" "467733" "427562" "452364" "544234" "198323" "38968" 
-#> [36] "247562" "248153" "345749" "415292" "415290" "461607" "38424" 
-#> [43] "45522"  "52475"  "247479" "247869" "244558" "244297" "253556"
-#> [50] "253640" "256949" "255391" "255617" "249227" "317748" "307734"
-#> [57] "346681" "452809" "452852" "452948" "471283" "386624" "427560"
-#> [64] "434964" "434966" "431176" "431179" "431181" "459206" "464248"
-#> [71] "550263" "17566"  "193593" "53937"  "207520" "203757" "55068" 
-#> [78] "63333"  "255960" "251169" "421876" "423650" "271708" "415261"
-#> [85] "417966" "412628" "413175" "427581" "427585" "456956"
-#> 
-#> $paging
-#> $paging$first
-#> [1] "http://scrapi.org/search/mirror?page=1"
-#> 
-#> $paging$`next`
-#> [1] "http://scrapi.org/search/mirror?page=2"
-#> 
-#> $paging$last
-#> [1] "http://scrapi.org/search/mirror?page=29"
+#>  [1] "http://scrapi.org/object/207785" "http://scrapi.org/object/50444" 
+#>  [3] "http://scrapi.org/object/313256" "http://scrapi.org/object/467733"
+#>  [5] "http://scrapi.org/object/49591"  "http://scrapi.org/object/267055"
+#>  [7] "http://scrapi.org/object/156225" "http://scrapi.org/object/545128"
+#>  [9] "http://scrapi.org/object/452364" "http://scrapi.org/object/460423"
+#> [11] "http://scrapi.org/object/244558" "http://scrapi.org/object/436839"
+#> [13] "http://scrapi.org/object/452852" "http://scrapi.org/object/248153"
+#> [15] "http://scrapi.org/object/54118"  "http://scrapi.org/object/60142" 
+#> [17] "http://scrapi.org/object/3977"   "http://scrapi.org/object/255391"
+...
 ```
 
 Get an object, with a scrapi.org url
@@ -314,80 +261,15 @@ cstmc_changes(limit = 1)
 ```
 #> [[1]]
 #> [[1]]$user_id
-#> [1] "b50449ea-1dcc-4d52-b620-fc95bf56034b"
+#> [1] "27778230-2e90-4818-9f00-bbf778c8fa09"
 #> 
 #> [[1]]$timestamp
-#> [1] "2014-11-06T18:58:08.001743"
+#> [1] "2015-03-30T15:06:55.500589"
 #> 
 #> [[1]]$object_id
-#> [1] "cc6a523c-cecf-4a95-836b-295a11ce2bce"
+#> [1] "f4406699-3e11-4856-be48-b55da98b3c14"
 #> 
-#> [[1]]$revision_id
-#> [1] "5d11079e-fc05-4121-9fd5-fe086f5e5f33"
-#> 
-#> [[1]]$data
-#> [[1]]$data$package
-#> [[1]]$data$package$maintainer
-#> [1] ""
-#> 
-#> [[1]]$data$package$name
-#> [1] "test"
-#> 
-#> [[1]]$data$package$metadata_modified
-#> [1] "2014-11-06T18:55:54.772675"
-#> 
-#> [[1]]$data$package$author
-#> [1] ""
-#> 
-#> [[1]]$data$package$url
-#> [1] ""
-#> 
-#> [[1]]$data$package$notes
-#> [1] ""
-#> 
-#> [[1]]$data$package$owner_org
-#> [1] "fafa260d-e2bf-46cd-9c35-34c1dfa46c57"
-#> 
-#> [[1]]$data$package$private
-#> [1] FALSE
-#> 
-#> [[1]]$data$package$maintainer_email
-#> [1] ""
-#> 
-#> [[1]]$data$package$author_email
-#> [1] ""
-#> 
-#> [[1]]$data$package$state
-#> [1] "deleted"
-#> 
-#> [[1]]$data$package$version
-#> [1] ""
-#> 
-#> [[1]]$data$package$creator_user_id
-#> [1] "b50449ea-1dcc-4d52-b620-fc95bf56034b"
-#> 
-#> [[1]]$data$package$id
-#> [1] "cc6a523c-cecf-4a95-836b-295a11ce2bce"
-#> 
-#> [[1]]$data$package$title
-#> [1] "test"
-#> 
-#> [[1]]$data$package$revision_id
-#> [1] "5d11079e-fc05-4121-9fd5-fe086f5e5f33"
-#> 
-#> [[1]]$data$package$type
-#> [1] "dataset"
-#> 
-#> [[1]]$data$package$license_id
-#> [1] "notspecified"
-#> 
-#> 
-#> 
-#> [[1]]$id
-#> [1] "59c308c8-68b2-4b92-bc57-129378d31882"
-#> 
-#> [[1]]$activity_type
-#> [1] "deleted package"
+...
 ```
 
 List datasets
@@ -408,27 +290,7 @@ cstmc_datasets(as = "table")
 #>  [8] "artifact-data-energy-electric"                              
 #>  [9] "artifact-data-exploration-and-survey"                       
 #> [10] "artifact-data-fisheries"                                    
-#> [11] "artifact-data-forestry"                                     
-#> [12] "artifact-data-horology"                                     
-#> [13] "artifact-data-industrial-technology"                        
-#> [14] "artifact-data-lighting-technology"                          
-#> [15] "artifact-data-location-canada-agriculture-and-food-museum"  
-#> [16] "artifact-data-location-canada-aviation-and-space-museum"    
-#> [17] "artifact-data-location-canada-science-and-technology-museum"
-#> [18] "artifact-data-marine-transportation"                        
-#> [19] "artifact-data-mathematics"                                  
-#> [20] "artifact-data-medical-technology"                           
-#> [21] "artifact-data-meteorology"                                  
-#> [22] "artifact-data-metrology"                                    
-#> [23] "artifact-data-mining-and-metallurgy"                        
-#> [24] "artifact-data-motorized-ground-transportation"              
-#> [25] "artifact-data-non-motorized-ground-transportation"          
-#> [26] "artifact-data-on-loan"                                      
-#> [27] "artifact-data-photography"                                  
-#> [28] "artifact-data-physics"                                      
-#> [29] "artifact-data-printing"                                     
-#> [30] "artifact-data-railway-transportation"                       
-#> [31] "artifact-dataset-fire-fighting"
+...
 ```
 
 Search for packages
@@ -442,27 +304,27 @@ lapply(out$results$resources, function(x) x[,1:3])
 ```
 #> [[1]]
 #>                      resource_group_id cache_last_updated
-#> 1 cce39b19-e07c-4c51-941b-242afd3f1c4a                 NA
-#> 2 cce39b19-e07c-4c51-941b-242afd3f1c4a                 NA
-#> 3 cce39b19-e07c-4c51-941b-242afd3f1c4a                 NA
-#> 4 cce39b19-e07c-4c51-941b-242afd3f1c4a                 NA
+#> 1 4cff3cdf-7174-46f1-b2cf-da84a2478583                 NA
+#> 2 4cff3cdf-7174-46f1-b2cf-da84a2478583                 NA
+#> 3 4cff3cdf-7174-46f1-b2cf-da84a2478583                 NA
+#> 4 4cff3cdf-7174-46f1-b2cf-da84a2478583                 NA
 #>           revision_timestamp
-#> 1 2014-10-28T20:14:43.878106
-#> 2 2014-11-04T03:04:24.281137
-#> 3 2014-11-05T21:46:30.031396
-#> 4 2014-11-05T21:48:27.302007
+#> 1 2015-03-30T15:06:55.217106
+#> 2 2014-11-04T02:23:51.866763
+#> 3 2014-11-05T19:05:31.328801
+#> 4 2014-11-05T19:09:35.883635
 #> 
 #> [[2]]
 #>                      resource_group_id cache_last_updated
-#> 1 02de4923-4b61-4078-9bf7-71cada759cbc                 NA
-#> 2 02de4923-4b61-4078-9bf7-71cada759cbc                 NA
-#> 3 02de4923-4b61-4078-9bf7-71cada759cbc                 NA
-#> 4 02de4923-4b61-4078-9bf7-71cada759cbc                 NA
+#> 1 9d1467e6-4e87-4ebf-bd73-35326fd46491                 NA
+#> 2 9d1467e6-4e87-4ebf-bd73-35326fd46491                 NA
+#> 3 9d1467e6-4e87-4ebf-bd73-35326fd46491                 NA
+#> 4 9d1467e6-4e87-4ebf-bd73-35326fd46491                 NA
 #>           revision_timestamp
-#> 1 2014-10-28T15:25:38.337754
-#> 2 2014-11-03T18:08:49.560921
-#> 3 2014-11-05T18:44:23.555560
-#> 4 2014-11-05T18:45:18.003557
+#> 1 2015-01-09T23:33:13.972143
+#> 2 2014-10-31T22:37:58.762911
+#> 3 2014-11-05T18:23:00.789562
+#> 4 2014-11-05T18:25:16.764967
 ```
 
 ### National Gallery of Art (NGA)
@@ -525,8 +387,7 @@ lapply(c(143679,27773,28487), nga)
 #>   Description:
 #>      created: 1878/1879
 #>      medium: pen and brown ink with graphite on heavy wove paper
-#>      dimensions: , sheet: 22 x 30.2 cm (8 11/16 x 11 7/8 in.)
-#> image (6.4 cm of sheet width is folded under): 22 x 23.8 cm (8 11/16 x 9 3/8 in.)
+#>      dimensions: , sheet: 22 x 30.2 cm (8 11/16 x 11 7/8 in.)  image (6.4 cm of sheet width is folded under): 22 x 23.8 cm (8 11/16 x 9 3/8 in.)
 #>      credit: Joseph F. McCrindle Collection
 #>      accession: 2009.70.110
 #>   Exhibition history:
@@ -544,8 +405,7 @@ lapply(c(143679,27773,28487), nga)
 #>   Description:
 #>      created: c. 1938
 #>      medium: watercolor, graphite, and pen and ink on paper
-#>      dimensions: overall: 35.5 x 28 cm (14 x 11 in.)
-#> Original IAD Object: 42" high
+#>      dimensions: overall: 35.5 x 28 cm (14 x 11 in.)  Original IAD Object: 42" high
 #>      credit: Index of American Design
 #>      accession: 1943.8.15682
 #>   Exhibition history:
@@ -598,13 +458,13 @@ getty(id=140725)
 #>      Previous number: L.2001.12
 #>      Classification/Object Type: Drawings / Drawing
 #>   Exhibition history:
-#>      Dutch Drawings of the Golden Age (May 28 to August 25, 2002): The J. Paul Getty Museum at the Getty Center (Los Angeles), May 28,
+#>      Dutch Drawings of the Golden Age (May 28 to August 25, 2002): The J. Paul Getty Museum at the Getty Center (Los Angeles), May 28,
 #>           2002 - August 25, 2002
-#>      Visions of Grandeur: Drawing in the Baroque Age (June 1 to September 12, 2004): The J. Paul Getty Museum at the Getty Center (Los Angeles), June 1,
+#>      Visions of Grandeur: Drawing in the Baroque Age (June 1 to September 12, 2004): The J. Paul Getty Museum at the Getty Center (Los Angeles), June 1,
 #>           2004 - September 12, 2004
-#>      Paper Art: Finished Drawings in Holland 1590-1800 (September 6 to November 20, 2005): The J. Paul Getty Museum at the Getty Center (Los Angeles), September
+#>      Paper Art: Finished Drawings in Holland 1590-1800 (September 6 to November 20, 2005): The J. Paul Getty Museum at the Getty Center (Los Angeles), September
 #>           6, 2005 - November 20, 2005
-#>      Drawing Life: The Dutch Visual Tradition (November 24, 2009 to February 28, 2010): The J. Paul Getty Museum at the Getty Center (Los Angeles), November
+#>      Drawing Life: The Dutch Visual Tradition (November 24, 2009 to February 28, 2010): The J. Paul Getty Museum at the Getty Center (Los Angeles), November
 #>           24, 2009 - February 28, 2010
 ```
 
@@ -635,13 +495,13 @@ lapply(c(140725,8197), getty)
 #>      Previous number: L.2001.12
 #>      Classification/Object Type: Drawings / Drawing
 #>   Exhibition history:
-#>      Dutch Drawings of the Golden Age (May 28 to August 25, 2002): The J. Paul Getty Museum at the Getty Center (Los Angeles), May 28,
+#>      Dutch Drawings of the Golden Age (May 28 to August 25, 2002): The J. Paul Getty Museum at the Getty Center (Los Angeles), May 28,
 #>           2002 - August 25, 2002
-#>      Visions of Grandeur: Drawing in the Baroque Age (June 1 to September 12, 2004): The J. Paul Getty Museum at the Getty Center (Los Angeles), June 1,
+#>      Visions of Grandeur: Drawing in the Baroque Age (June 1 to September 12, 2004): The J. Paul Getty Museum at the Getty Center (Los Angeles), June 1,
 #>           2004 - September 12, 2004
-#>      Paper Art: Finished Drawings in Holland 1590-1800 (September 6 to November 20, 2005): The J. Paul Getty Museum at the Getty Center (Los Angeles), September
+#>      Paper Art: Finished Drawings in Holland 1590-1800 (September 6 to November 20, 2005): The J. Paul Getty Museum at the Getty Center (Los Angeles), September
 #>           6, 2005 - November 20, 2005
-#>      Drawing Life: The Dutch Visual Tradition (November 24, 2009 to February 28, 2010): The J. Paul Getty Museum at the Getty Center (Los Angeles), November
+#>      Drawing Life: The Dutch Visual Tradition (November 24, 2009 to February 28, 2010): The J. Paul Getty Museum at the Getty Center (Los Angeles), November
 #>           24, 2009 - February 28, 2010
 #> 
 #> [[2]]
@@ -729,7 +589,7 @@ lapply(c(41033,210804), aic)
 #> <AIC metadata> 210804
 #>    Artist:
 #>       Name: William H. Bell , American
-#>       Years: 1830–1910
+#>       Years: 1830 1910
 #>    Link: http://www.artic.edu/aic/collections/artwork/210804
 #>    Title: The "Vermillion Cliff," a typical plateau edge, as seen from Jacobs
 #>       Pool, Arizona. From its top a plateau stretches to the right,
@@ -758,8 +618,8 @@ To cite `musemeta` in publications use:
 
 <br>
 
->  Scott Chamberlain (2014). musemeta: R Client for Scraping Museum Metadata. R
-  package version 0.0.2. https://github.com/ropensci/musemeta
+>  Scott Chamberlain (2015). musemeta: R Client for Scraping Museum Metadata. R
+  package version 0.0.5. https://github.com/ropensci/musemeta
 
 <section id="license_bugs">
 

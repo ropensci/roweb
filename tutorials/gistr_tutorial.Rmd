@@ -1,13 +1,13 @@
 ---
 title: gistr vignette
 layout: tutorial
-packge_version: 0.2
+packge_version: 0.3
 ---
 
 
 ```{r, eval=TRUE, echo=FALSE}
 knitr::opts_chunk$set(
-	fig.path="../assets/tutorial-images/gistr/",
+	fig.path = "../assets/tutorial-images/gistr/",
 	warning = FALSE,
 	message = FALSE,
 	comment = "#>"
@@ -16,7 +16,13 @@ knitr::opts_chunk$set(
 
 <section id="installation">
 
-The package is not on CRAN yet - perhaps some day in the future, we don't know. For now, get it from GitHub:
+You can install from CRAN
+
+```{r eval=FALSE}
+install.packages("gistr")
+```
+
+Or the development version from GitHub
 
 ```{r eval=FALSE}
 install.packages("devtools")
@@ -34,7 +40,7 @@ library("gistr")
 
 There are two ways to authorise gistr to work with your GitHub account:
 
-* Generate a personal access token (PAT) at [https://help.github.com/articles/creating-an-access-token-for-command-line-use](https://help.github.com/articles/creating-an-access-token-for-command-line-use) and record it in the `GITHUB_PAT` envar. If you're not sure how to do this, make a `.Renviron` file in your home directory (if it doesn't already exist), and put an entry in like `GITHUB_PAT=adfadf9asd7fas9fsaf98asfassf` (that's not a real key). Remember to restart your R session.
+* Generate a personal access token (PAT) at [https://help.github.com/articles/creating-an-access-token-for-command-line-use](https://help.github.com/articles/creating-an-access-token-for-command-line-use) and record it in the `GITHUB_PAT` envar.
 * Interactively login into your GitHub account and authorise with OAuth.
 
 Using the PAT is recommended.
@@ -89,7 +95,7 @@ gists(per_page = 2)
 Since a certain date/time
 
 ```{r}
-gists(since='2014-05-26T00:00:00Z', per_page = 2)
+gists(since = '2014-05-26T00:00:00Z', per_page = 2)
 ```
 
 Request different types of gists, one of public, minepublic, mineall, or starred.
@@ -107,8 +113,8 @@ gist(id = 'f1403260eb92f5dfa7e1')
 
 ## Easily play with gist data
 
-A new function in `v0.2` is `tabl()` (weirdly named to avoid collision with `base::table()`), 
-which attempts to parse data on gists into data.frame's for easy manipulation. 
+A new function in `v0.2` is `tabl()` (weirdly named to avoid collision with `base::table()`),
+which attempts to parse data on gists into data.frame's for easy manipulation.
 
 Here, we play with commit data on each of 30 gists
 
@@ -116,7 +122,7 @@ Here, we play with commit data on each of 30 gists
 library("dplyr")
 x <- sapply(c(gists(), gists()), commits)
 tabl(x) %>%
-  select(id, login, change_status.total, url) %>% 
+  select(id, login, change_status.total, url) %>%
   filter(change_status.total > 70)
 ```
 
@@ -131,11 +137,11 @@ stuffpath <- system.file("examples", "stuff.md", package = "gistr")
 ```
 
 ```{r eval=FALSE}
-gist_create(files=stuffpath, description='a new cool gist')
+gist_create(files = stuffpath, description='a new cool gist')
 ```
 
 ```{r}
-gist_create(files=stuffpath, description='a new cool gist', browse = FALSE)
+gist_create(files = stuffpath, description = 'a new cool gist', browse = FALSE)
 ```
 
 Or, wrap `gist_create()` around some code in your R session/IDE, like so, with just the function name, and a `{'` at the start and a `}'` at the end.
@@ -184,7 +190,7 @@ knit a local file
 
 ```{r}
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
-run(file, knitopts = list(quiet = TRUE)) %>% 
+run(file, knitopts = list(quiet = TRUE)) %>%
   gist_create(browse = FALSE)
 ```
 
@@ -204,8 +210,8 @@ x <- letters
 knit a file from a gist, has to get file first (result not shown)
 
 ```{r eval=FALSE}
-gists('minepublic')[[1]] %>% 
-  run() %>% 
+gists('minepublic')[[1]] %>%
+  run() %>%
   update()
 ```
 
@@ -227,11 +233,11 @@ gist_create(file, knit = TRUE, imgur_inject = TRUE)
 
 ## Create gists from R objects
 
-First, `gist_create_obj()` was made a separate function from `gist_create()` because there was 
-a bunch of different parameters, and it was too complicated to cobmine. Behavior of this function 
-is a bit dumb at this point, e.g., if a data.frame is pushed up to a gist, you'd expect a 
-markdown table probably - but that doesn't quite work yet, sorry :) For other formats (e.g., 
-lists), it's not clear what to show in a gist. 
+First, `gist_create_obj()` was made a separate function from `gist_create()` because there was
+a bunch of different parameters, and it was too complicated to cobmine. Behavior of this function
+is a bit dumb at this point, e.g., if a data.frame is pushed up to a gist, you'd expect a
+markdown table probably - but that doesn't quite work yet, sorry :) For other formats (e.g.,
+lists), it's not clear what to show in a gist.
 
 __data.frame__
 
@@ -317,7 +323,7 @@ gists()[[1]] %>% embed()
 Returns a list of `gist` objects, just like `gists()`
 
 ```{r}
-gist(id='1642874') %>% forks(per_page=2)
+gist(id = '1642874') %>% forks(per_page = 2)
 ```
 
 ## Fork a gist
@@ -365,7 +371,7 @@ And here's that gist: [https://gist.github.com/sckott/017214637bcfeb198070](http
 ## Citing
 
 > Ramnath Vaidyanathan, Karthik Ram and Scott Chamberlain (2015). gistr: Work with
-  GitHub Gists from R. R package version 0.2.0. https://github.com/ropensci/gistr
+  GitHub Gists from R. R package version 0.3.0. https://github.com/ropensci/gistr
 
 </section>
 

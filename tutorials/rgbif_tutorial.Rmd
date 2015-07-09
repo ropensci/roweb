@@ -1,7 +1,7 @@
 ---
 title: rgbif tutorial
 layout: tutorial
-packge_version: 0.8.4
+packge_version: 0.8.6
 ---
 
 ```{r, echo=FALSE}
@@ -236,6 +236,65 @@ keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5)
 ```
 
+## Downloads
+
+GBIF provides access to their downloads API. This is the same service that you use when you go to [their website]() to search for records then download a zip file.
+
+First, we can search for data, for _Ursus arctos_ (`taxonkey` = 2433433)
+
+```{r eval=FALSE}
+(res <- occ_download('taxonKey = 2433433'))
+```
+
+Then we can check on the download progress
+
+```{r eval=FALSE}
+occ_download_meta(res)
+#> <<gbif download metadata>>
+#>   Status: RUNNING
+#> Download key: 0007658-150615163101818
+#>   Created: 2015-07-09T14:48:40.705+0000
+#>   Modified: 2015-07-09T14:48:40.788+0000
+#>   Download link: http://api.gbif.org/v1/occurrence/download/request/0007658-150615163101818.zip
+#>   Total records: 0
+#>   Request:
+#>     type:  equals
+#>     predicates:
+```
+
+We can see that status is `Running`, so we wait a while longer. And when it's ready, download the data
+
+```{r eval=FALSE}
+res <- occ_download_get(res, overwrite = TRUE)
+#> <<gbif downloaded get>>
+#>   Path: ./0007658-150615163101818.zip
+#>   File size: 3.1 MB
+```
+
+And then import into R, and manipulate
+
+```{r eval=FALSE}
+suppressPackageStartupMessages(library("dplyr"))
+df <- tbl_df(occ_download_import(res))
+df %>%
+  filter(nchar(lifeStage) != 0, !is.na(decimalLatitude)) %>%
+  select(decimalLatitude, decimalLongitude, lifeStage)
+
+#> Source: local data frame [53 x 3]
+#>
+#>    decimalLatitude decimalLongitude lifeStage
+#> 1         44.65373       -110.54160  JUVENILE
+#> 2         63.18333       -139.60000     ADULT
+#> 3         70.48056       -157.41667     ADULT
+#> 4         52.66667       -117.86667     ADULT
+#> 5         59.48333       -139.81667     ADULT
+#> 6         69.93456       -148.68292     ADULT
+#> 7         69.01667       -161.93333  JUVENILE
+#> 8         59.89000       -151.68167     ADULT
+#> 9         59.64154       -139.40070     ADULT
+#> 10        44.61667        -79.41667     ADULT
+#> ..             ...              ...       ...
+```
 
 ********************
 
@@ -260,7 +319,7 @@ To cite `rgbif` in publications use:
 
 <br>
 
-> Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2015). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 0.8.4 https://github.com/ropensci/rgbif
+> Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2015). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 0.8.6 https://github.com/ropensci/rgbif
 
 <section id="license_bugs">
 

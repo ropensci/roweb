@@ -1,7 +1,7 @@
 ---
 title: rerddap tutorial
 layout: tutorial
-packge_version: 0.1.0
+packge_version: 0.2.0
 ---
 
 
@@ -61,41 +61,41 @@ ed_search(query = 'size', which = "table")
 #> 1                                                                          CalCOFI Fish Sizes
 #> 2                                                                        CalCOFI Larvae Sizes
 #> 3                Channel Islands, Kelp Forest Monitoring, Size and Frequency, Natural Habitat
-#> 4                                                  OBIS - ARGOS Satellite Tracking of Animals
-#> 5                                                         CalCOFI Larvae Counts Positive Tows
-#> 6                                                                                CalCOFI Tows
-#> 7                             NWFSC Observer Fixed Gear Data, off West Coast of US, 2002-2006
-#> 8                                  NWFSC Observer Trawl Data, off West Coast of US, 2002-2006
+#> 4                                                         CalCOFI Larvae Counts Positive Tows
+#> 5                                                                                CalCOFI Tows
+#> 7                                                  OBIS - ARGOS Satellite Tracking of Animals
+#> 8                                                     GLOBEC NEP MOCNESS Plankton (MOC1) Data
 #> 9                                                 GLOBEC NEP Vertical Plankton Tow (VPT) Data
-#> 10                                                    GLOBEC NEP MOCNESS Plankton (MOC1) Data
-#> 12 AN EXPERIMENTAL DATASET: Underway Sea Surface Temperature and Salinity Aboard the Oleander
+#> 10 AN EXPERIMENTAL DATASET: Underway Sea Surface Temperature and Salinity Aboard the Oleander
+#> 11                            NWFSC Observer Fixed Gear Data, off West Coast of US, 2002-2006
+#> 12                                 NWFSC Observer Trawl Data, off West Coast of US, 2002-2006
 #>             dataset_id
 #> 1     erdCalCOFIfshsiz
 #> 2     erdCalCOFIlrvsiz
 #> 3       erdCinpKfmSFNH
-#> 4            aadcArgos
-#> 5  erdCalCOFIlrvcntpos
-#> 6       erdCalCOFItows
-#> 7   nwioosObsFixed2002
-#> 8   nwioosObsTrawl2002
+#> 4  erdCalCOFIlrvcntpos
+#> 5       erdCalCOFItows
+#> 7            aadcArgos
+#> 8        erdGlobecMoc1
 #> 9         erdGlobecVpt
-#> 10       erdGlobecMoc1
-#> 12            nodcPJJU
+#> 10            nodcPJJU
+#> 11  nwioosObsFixed2002
+#> 12  nwioosObsTrawl2002
 ```
 
 
 ```r
 ed_search(query = 'size', which = "grid")
 #> 6 results, showing first 20 
-#>                                                            title
-#> 11               NOAA Global Coral Bleaching Monitoring Products
-#> 13        Coawst 4 use, Best Time Series [time][eta_rho][xi_rho]
-#> 14            Coawst 4 use, Best Time Series [time][eta_u][xi_u]
-#> 15            Coawst 4 use, Best Time Series [time][eta_v][xi_v]
-#> 16 Coawst 4 use, Best Time Series [time][s_rho][eta_rho][xi_rho]
-#> 17  Coawst 4 use, Best Time Series [time][Nbed][eta_rho][xi_rho]
+#>                                                                                                   title
+#> 6                                                       NOAA Global Coral Bleaching Monitoring Products
+#> 13        USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][eta_rho][xi_rho]
+#> 14            USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][eta_u][xi_u]
+#> 15            USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][eta_v][xi_v]
+#> 16 USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][s_rho][eta_rho][xi_rho]
+#> 17  USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][Nbed][eta_rho][xi_rho]
 #>             dataset_id
-#> 11            NOAA_DHW
+#> 6             NOAA_DHW
 #> 13 whoi_ed12_89ce_9592
 #> 14 whoi_61c3_0b5d_cd61
 #> 15 whoi_62d0_9d64_c8ff
@@ -112,7 +112,7 @@ Then you can get information on a single dataset
 info('whoi_62d0_9d64_c8ff')
 #> <ERDDAP info> whoi_62d0_9d64_c8ff 
 #>  Dimensions (range):  
-#>      time: (2012-06-25T01:00:00Z, 2015-05-14T00:00:00Z) 
+#>      time: (2012-06-25T01:00:00Z, 2015-07-10T00:00:00Z) 
 #>      eta_v: (0, 334) 
 #>      xi_v: (0, 895) 
 #>  Variables:  
@@ -152,7 +152,7 @@ Then query for gridded data using the `griddap()` function
 ))
 #> <ERDDAP griddap> noaa_esrl_027d_0fb5_5d38
 #>    Path: [~/.rerddap/648ed11e8b911b65e39eb63c8df339df.nc]
-#>    Last updated: [2015-05-09 08:31:10]
+#>    Last updated: [2015-07-09 07:23:59]
 #>    File size:    [0 mb]
 #>    Dimensions (dims/vars):   [3 X 1]
 #>    Dim names: time, latitude, longitude
@@ -243,7 +243,7 @@ res$data
 (dat <- tabledap(out, 'time>=2001-07-07', 'time<=2001-07-10', fields = c('longitude', 'latitude', 'fish_size', 'itis_tsn', 'scientific_name')))
 #> <ERDDAP tabledap> erdCalCOFIfshsiz
 #>    Path: [~/.rerddap/f013f9ee09bdb4184928d533e575e948.csv]
-#>    Last updated: [2015-05-09 08:31:21]
+#>    Last updated: [2015-07-09 07:24:00]
 #>    File size:    [0.03 mb]
 #>    Dimensions:   [558 X 5]
 #> 
@@ -306,7 +306,7 @@ To cite `rerddap` in publications use:
 <br>
 
 >  Scott Chamberlain (2015). rerddap: General Purpose Client for 'ERDDAP' Servers. R
-  package version 0.1.0. https://github.com/ropensci/rerddap
+  package version 0.2.0. https://github.com/ropensci/rerddap
 
 <section id="license_bugs">
 

@@ -1,0 +1,3905 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-17 19:00:00",
+        "key": "1065591841"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.48672,37.73617]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-22 21:19:39",
+        "key": "1065595693"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.46232,37.50425]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-05 05:42:15",
+        "key": "1065600003"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [172.63299,-43.5798]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-03 23:00:00",
+        "key": "1088973506"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.90139,9.35917]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-12 23:00:00",
+        "key": "1065589693"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.11853,37.69251]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-16 04:19:13",
+        "key": "1065591145"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [172.55988,-43.59999]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-08 23:00:00",
+        "key": "1088897393"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-104.89459,21.50417]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-10 16:00:00",
+        "key": "1065588639"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.35576,34.06319]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-03 22:21:07",
+        "key": "1065592704"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [172.71853,-43.48934]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-21 23:00:00",
+        "key": "1065596195"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-99.22157,18.92421]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-29 23:00:00",
+        "key": "1065614595"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.20592,33.8213]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-16 23:00:00",
+        "key": "1088897731"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-99.49129,18.91027]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-04 23:44:30",
+        "key": "1052605095"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.02905,36.95339]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-12 23:00:00",
+        "key": "1065589139"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.09106,37.70121]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-13 23:00:00",
+        "key": "1065591218"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.47334,37.79972]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-24 17:56:34",
+        "key": "1065596894"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.36148,34.02013]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-10 23:29:09",
+        "key": "1065589225"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-116.91665,32.85853]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-13 23:00:00",
+        "key": "1065591164"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.47287,37.79973]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-24 23:00:00",
+        "key": "1065597731"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.28485,33.7106]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-25 00:29:41",
+        "key": "1065602834"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.64051,37.89675]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-05 23:00:00",
+        "key": "1088973132"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-90.64609,18.84643]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-05 00:08:05",
+        "key": "1052605672"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-120.22886,34.47474]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-28 06:25:54",
+        "key": "1065600638"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [172.63185,-43.58]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-22 16:05:32",
+        "key": "1065595429"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.47438,37.79579]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-18 20:52:00",
+        "key": "1065594142"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.34827,33.78313]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-04 22:06:30",
+        "key": "1052605074"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.05777,36.95273]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-15 23:00:00",
+        "key": "1088916239"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.39989,34.00764]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-13 23:00:00",
+        "key": "1088916256"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.39989,34.00764]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-02 18:47:00",
+        "key": "1052604003"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.60348,29.75794]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-01 23:00:00",
+        "key": "1088897180"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-99.48166,18.91959]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-21 20:00:00",
+        "key": "1065595613"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-95.7171,29.11229]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-07 20:07:00",
+        "key": "1065591354"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.07042,26.36561]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-20 23:00:00",
+        "key": "1065594784"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.28802,34.01759]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-26 08:28:48",
+        "key": "1065599421"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.11392,34.17399]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-31 23:00:00",
+        "key": "1065602760"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.3566,34.06428]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-20 23:00:00",
+        "key": "1088906198"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-98.6878,18.99354]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-05 23:00:00",
+        "key": "1088916234"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.39989,34.00764]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-11 23:00:00",
+        "key": "1065614205"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.56325,34.22034]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-09 23:00:00",
+        "key": "1065609888"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.24276,34.04839]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-26 23:36:36",
+        "key": "1088905920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.08779,37.43159]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-20 23:00:00",
+        "key": "1088906224"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-98.6878,18.99354]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-02 23:00:00",
+        "key": "1065604395"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.05498,34.14156]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-21 23:00:00",
+        "key": "1088902062"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.07315,33.99575]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-16 22:00:00",
+        "key": "1065613347"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.19728,37.70728]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-18 16:46:42",
+        "key": "1065614566"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.2127,32.85624]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-08 15:55:31",
+        "key": "1065609839"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-99.10606,18.98802]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-02 23:00:00",
+        "key": "1065614568"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.08153,33.85439]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-14 01:37:13",
+        "key": "1065611403"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.14929,32.73234]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-27 02:20:15",
+        "key": "1088910620"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [170.50914,-45.89526]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-27 23:00:00",
+        "key": "1088914718"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [172.96538,-43.80824]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-13 23:00:00",
+        "key": "1065611870"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.46464,37.79669]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-10 23:00:00",
+        "key": "1088898559"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.31492,33.71685]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-01-31 23:41:39",
+        "key": "1088975708"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-121.89407,36.6031]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-20 21:34:20",
+        "key": "1088900246"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.47843,37.79503]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-20 23:00:00",
+        "key": "1088900686"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [172.59103,-43.56082]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-07 23:00:00",
+        "key": "1092893750"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-46.13523,-22.74866]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-07 23:00:00",
+        "key": "1065613629"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-98.7497,19.01192]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-23 03:04:33",
+        "key": "1088903530"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [172.57944,-43.55482]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-14 16:57:23",
+        "key": "1088922398"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-95.41985,29.04259]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-27 02:43:35",
+        "key": "1088910593"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [170.50879,-45.89502]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-08 20:15:29",
+        "key": "1065610972"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-95.41985,29.04259]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-15 23:00:00",
+        "key": "1065614154"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-66.111,18.35745]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-03 23:00:00",
+        "key": "1088916244"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.39989,34.00764]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-15 23:00:00",
+        "key": "1088920499"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-96.7216,17.07877]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-26 23:00:00",
+        "key": "1088930065"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.28683,33.88431]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-09 23:00:00",
+        "key": "1088915322"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [174.02916,-39.06457]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-22 22:53:50",
+        "key": "1088926090"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.28811,34.01787]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-13 23:00:00",
+        "key": "1088918498"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-98.48184,29.44239]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-16 23:00:00",
+        "key": "1088921443"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-121.81473,37.09714]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-30 22:00:00",
+        "key": "1088934144"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-100.09182,20.40135]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-29 16:59:21",
+        "key": "1088934568"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-95.41985,29.04259]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-22 23:00:00",
+        "key": "1088926911"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-100.07559,20.38326]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-05 22:27:20",
+        "key": "1088911314"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.46616,37.76664]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-22 23:00:00",
+        "key": "1088926958"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-100.08246,20.39228]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-12 15:14:10",
+        "key": "1088916899"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-74.35141,4.38184]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-25 22:54:23",
+        "key": "1088928900"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-100.976,25.55024]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-17 23:00:00",
+        "key": "1088922081"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.21393,34.2005]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-22 23:00:00",
+        "key": "1088926918"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-100.08246,20.39228]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-25 22:56:39",
+        "key": "1088928878"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-100.976,25.55024]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-04 21:44:51",
+        "key": "1088910723"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.28798,37.45904]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-15 23:00:00",
+        "key": "1088923567"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.2865,33.88435]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-03 23:00:00",
+        "key": "1088910821"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-121.97516,37.0562]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-07 19:00:00",
+        "key": "1088912890"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.47128,37.76924]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-30 01:02:58",
+        "key": "1088933844"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.14412,32.73438]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-19 21:07:04",
+        "key": "1088922761"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.47637,37.7242]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-25 17:35:29",
+        "key": "1088929156"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-95.41985,29.04259]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-04 23:00:00",
+        "key": "1088916276"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.39989,34.00764]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-21 19:17:00",
+        "key": "1088924446"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.7061,38.44624]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-22 21:20:00",
+        "key": "1088928490"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.39989,34.00764]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-26 23:00:00",
+        "key": "1088945968"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-121.94305,37.91898]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-22 23:00:00",
+        "key": "1088926969"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-100.09482,20.39614]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-26 05:58:52",
+        "key": "1088928784"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [172.62915,-43.56039]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-23 23:47:00",
+        "key": "1088930766"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.37291,36.51191]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-08 23:00:00",
+        "key": "1088914607"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [172.58861,-43.53444]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-23 23:00:00",
+        "key": "1088927522"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-99.80398,20.68678]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-27 17:39:33",
+        "key": "1088930583"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-121.9428,37.91897]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-04 23:00:00",
+        "key": "1088911555"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [172.46631,-43.64287]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-02-28 23:00:00",
+        "key": "1088918165"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [172.60214,-43.56194]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-01 23:11:53",
+        "key": "1088909935"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.14917,32.73237]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Danaus plexippus",
+        "prov": "gbif",
+        "date": "2015-03-22 23:00:00",
+        "key": "1088926939"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-100.07559,20.39614]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-12-31 23:00:00",
+        "key": "1064538129"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [0,0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-01-22 17:48:59",
+        "key": "1065595652"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-71.19554,42.31845]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-01-20 23:00:00",
+        "key": "1065595128"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-104.8812,21.46585]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-01-11 20:50:25",
+        "key": "1065588599"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.17209,40.34]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-01-23 14:30:00",
+        "key": "1065595954"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-78.15051,37.95521]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-01-25 16:57:47",
+        "key": "1065597283"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-97.80459,30.41678]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-02-18 23:00:00",
+        "key": "1088899680"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-135.32701,57.0542]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-02-05 23:00:00",
+        "key": "1065606041"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-99.47894,27.44924]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-02-08 16:56:07",
+        "key": "1088903248"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-109.91977,23.53768]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-02-14 17:39:56",
+        "key": "1065611998"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.20175,37.8837]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-03-02 23:00:00",
+        "key": "1088909953"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-97.26692,32.80895]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-03-25 00:20:06",
+        "key": "1088942891"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.97175,34.11594]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-03-05 23:00:00",
+        "key": "1088920774"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.96453,20.70447]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-03-04 23:00:00",
+        "key": "1088911416"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-97.52512,30.4902]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-03-21 23:00:00",
+        "key": "1092892286"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-100.07687,19.81274]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-03-02 23:00:00",
+        "key": "1088910044"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.01403,36.87812]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-03-27 19:37:26",
+        "key": "1088930114"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-97.55965,32.6578]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-03-27 23:00:00",
+        "key": "1088955862"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.82681,20.68918]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-03-08 00:56:09",
+        "key": "1088913214"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-135.32945,57.05224]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-04-10 22:13:27",
+        "key": "1088943933"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.21397,37.25408]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-04-13 16:29:55",
+        "key": "1088947499"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.38967,37.40914]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-04-09 22:00:00",
+        "key": "1088944035"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.24215,37.34885]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-04-03 16:45:00",
+        "key": "1088938477"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-99.1409,18.92223]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-04-04 15:36:13",
+        "key": "1088940282"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.30315,40.4457]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-04-04 22:00:00",
+        "key": "1088940354"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.33155,44.71449]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-04-10 18:03:53",
+        "key": "1088943945"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-99.1142,19.36022]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-04-11 00:26:54",
+        "key": "1088944225"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-121.60789,38.57309]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-04-21 16:17:49",
+        "key": "1088954899"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-115.46444,36.09287]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-04-13 22:00:00",
+        "key": "1088949300"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-97.26019,32.81614]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-05-02 14:56:37",
+        "key": "1088966537"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-97.76737,30.39388]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-05-08 22:00:00",
+        "key": "1088974426"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-98.26503,19.30953]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2015-06-17 21:40:19",
+        "key": "1098914223"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-71.12554,42.38041]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-01-29 23:00:00",
+        "key": "891040169"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4398,37.48967]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-01-30 21:10:36",
+        "key": "891040018"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-97.65347,30.15791]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-01-26 14:25:43",
+        "key": "1024205119"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-97.00035,33.07049]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-01-19 23:00:00",
+        "key": "891035349"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-72.52547,43.13234]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-01-10 23:00:00",
+        "key": "1037859379"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-76.37695,42.42883]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-01-25 23:00:00",
+        "key": "891038901"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-97.1993,32.86027]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-01-11 23:00:00",
+        "key": "1088944364"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-121.10669,36.55823]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-01-18 23:00:00",
+        "key": "891035119"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-71.72514,18.26982]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-01-18 23:00:00",
+        "key": "1038292911"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-99.84577,20.62069]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-01-06 23:00:00",
+        "key": "1037859368"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-76.33708,42.25353]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-02-06 23:00:00",
+        "key": "891043765"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-76.64497,41.85597]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-02-14 23:00:00",
+        "key": "891048899"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.0672,43.63152]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-02-23 23:00:00",
+        "key": "1051294345"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-105.06426,40.45222]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-02-20 23:00:00",
+        "key": "891049443"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-99.09873,26.49104]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-02-22 23:00:00",
+        "key": "891050439"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-97.88279,26.10227]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-02-28 00:09:22",
+        "key": "891056214"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.14734,32.70358]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-02-10 23:00:00",
+        "key": "1037859646"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-76.47434,42.43843]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-02-10 23:00:00",
+        "key": "1024272838"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-119.25619,34.23091]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-03-19 23:00:00",
+        "key": "1051526700"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.59945,4.39542]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-03-24 23:00:00",
+        "key": "1037859382"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-76.51531,42.44265]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-03-02 23:00:00",
+        "key": "891054792"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.23675,44.31464]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-03-01 23:00:00",
+        "key": "1064537256"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.0145,32.7387]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-03-27 23:00:00",
+        "key": "899956839"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.49871,37.64891]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-04-20 16:00:00",
+        "key": "899971462"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.34683,37.93759]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-04-03 22:00:00",
+        "key": "899964993"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-96.83717,33.01561]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-05-18 19:45:25",
+        "key": "911495136"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.86153,40.58172]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-05-03 22:00:00",
+        "key": "899979866"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.14431,44.37817]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-07-19 22:00:00",
+        "key": "1024209933"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-121.67872,36.8284]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-08-25 22:00:00",
+        "key": "1064629590"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-86.33769,44.66359]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-09-11 22:00:00",
+        "key": "1024225340"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-72.58777,44.19217]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-09-11 22:00:00",
+        "key": "1024225446"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-72.58654,44.20547]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-10-23 13:43:39",
+        "key": "1038338235"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-78.57066,37.41933]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-10-14 22:00:00",
+        "key": "1038345646"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-104.03748,20.64926]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-10-01 15:01:43",
+        "key": "1024333194"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.39993,37.26098]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-10-13 22:00:00",
+        "key": "1038334409"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-99.15598,19.22898]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-10-19 22:00:00",
+        "key": "1064538033"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.1895,32.7987]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-11-25 23:00:00",
+        "key": "1052580002"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.78262,38.57424]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-11-26 15:16:39",
+        "key": "1052591991"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.82781,41.51972]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-11-19 23:00:00",
+        "key": "1052575057"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-76.64518,41.8559]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-11-09 20:43:00",
+        "key": "1092908480"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.73242,33.35835]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-12-07 14:49:00",
+        "key": "1052597559"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-97.72934,30.5498]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-12-29 18:35:27",
+        "key": "1052601112"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-115.17335,36.28641]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-12-23 23:00:00",
+        "key": "1052602396"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.98919,20.66634]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-11-30 23:00:00",
+        "key": "1064538169"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [0,0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-12-28 19:35:47",
+        "key": "1052600578"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-98.41431,30.82107]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-12-07 15:07:03",
+        "key": "1052592244"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-97.79722,30.44796]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-12-21 19:33:41",
+        "key": "1065584768"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-106.42717,23.23284]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-12-06 21:18:37",
+        "key": "1052587336"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-72.21063,43.80838]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2014-12-03 23:00:00",
+        "key": "1052597173"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-84.6487,39.30948]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2013-01-19 23:00:00",
+        "key": "969488739"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-116.191,32.6199]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2013-01-05 23:00:00",
+        "key": "966146750"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-77.9036,40.8245]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2013-01-22 23:00:00",
+        "key": "939656608"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.111,37.3728]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2013-01-21 23:00:00",
+        "key": "941088852"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.848,40.6711]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2013-01-17 23:00:00",
+        "key": "891043784"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.05494,43.6055]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2012-12-31 23:00:00",
+        "key": "933994275"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-77.7458,39.4174]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2012-12-31 23:00:00",
+        "key": "934002805"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-84.3867,40.1585]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2012-12-31 23:00:00",
+        "key": "934008476"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-97.7772,30.4676]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2012-12-31 23:00:00",
+        "key": "934009282"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-85.5204,41.3271]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2012-12-31 23:00:00",
+        "key": "934074159"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-74.428,40.4344]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2012-12-31 23:00:00",
+        "key": "934079150"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-70.1221,41.7139]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2013-01-01 23:00:00",
+        "key": "934108647"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-74.7822,40.6175]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2012-12-31 23:00:00",
+        "key": "934130538"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-90.0764,40.308]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2012-12-31 23:00:00",
+        "key": "934138042"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-97.7772,30.4676]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2012-12-31 23:00:00",
+        "key": "934209498"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-120.445,46.6043]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2012-12-31 23:00:00",
+        "key": "934231878"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-77.0956,38.9488]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2012-12-31 23:00:00",
+        "key": "934232612"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.636,35.6121]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2012-12-31 23:00:00",
+        "key": "934251065"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-104.854,39.6394]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Accipiter striatus",
+        "prov": "gbif",
+        "date": "2013-01-01 23:00:00",
+        "key": "934272410"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.6452,43.6186]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-01-17 23:00:00",
+        "key": "1052933649"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.7866,58.165]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-01-01 23:00:00",
+        "key": "1088897277"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-110.69412,44.72325]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-01-03 23:00:00",
+        "key": "1051515518"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.6639,56.6395]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-02-14 23:00:00",
+        "key": "1058422905"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.8489,59.1244]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-02-19 23:00:00",
+        "key": "1092518927"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.38997,62.56203]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-02-19 23:00:00",
+        "key": "1092518920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.39,62.56203]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-02-15 23:00:00",
+        "key": "1065763672"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [14.4853,61.2339]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-02-19 23:00:00",
+        "key": "1092518647"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.3902,62.56215]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-03-20 23:00:00",
+        "key": "1092521114"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.83222,62.79622]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-03-06 23:00:00",
+        "key": "1062253710"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [14.842,58.3812]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-03-14 23:00:00",
+        "key": "1063808184"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [15.8171,58.5319]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-03-20 23:00:00",
+        "key": "1092521117"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.87088,62.79315]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-03-06 23:00:00",
+        "key": "1062031421"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [14.842,58.3812]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-03-26 23:00:00",
+        "key": "1092521035"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.77592,63.65105]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-03-05 00:59:20",
+        "key": "1088911520"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [176.48329,-38.92225]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-04-10 22:00:00",
+        "key": "1065490883"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.6305,56.5892]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-04-18 22:00:00",
+        "key": "1065764678"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.7832,60.5759]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-04-08 22:00:00",
+        "key": "1065064927"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.6216,56.5794]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-05-23 22:00:00",
+        "key": "1090387398"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [15.8062,58.5305]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-05-23 23:19:41",
+        "key": "1092897144"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-135.63865,57.05332]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-05-28 21:10:48",
+        "key": "1098897830"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-120.23286,39.32146]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-06-01 19:39:39",
+        "key": "1092907405"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-120.24001,39.42962]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-06-07 17:53:26",
+        "key": "1098903025"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-119.53836,37.90141]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-06-20 18:32:17",
+        "key": "1098916678"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-120.24143,39.43126]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2015-06-20 18:32:45",
+        "key": "1098916712"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-120.24143,39.43124]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-01-11 23:00:00",
+        "key": "1049839566"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.00741,62.90722]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-01-11 23:00:00",
+        "key": "1049839040"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.00799,62.90425]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-01-16 23:00:00",
+        "key": "891034130"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.76134,48.14143]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-01-11 23:00:00",
+        "key": "1049839595"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.00704,62.90429]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-01-11 23:00:00",
+        "key": "1049839028"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [6.99736,62.90644]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-01-11 23:00:00",
+        "key": "1049839409"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.00506,62.90447]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-02-14 23:00:00",
+        "key": "1042048234"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [10.5633,63.4274]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-02-21 23:00:00",
+        "key": "891051664"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-120.03696,38.81988]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-03-18 23:00:00",
+        "key": "899951519"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-120.34922,39.3446]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-03-01 23:00:00",
+        "key": "1042047708"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [10.4755,63.4288]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-03-14 23:00:00",
+        "key": "1049851462"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [10.34196,63.41975]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-03-01 23:00:00",
+        "key": "1042041038"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [10.6008,63.4243]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-03-14 23:00:00",
+        "key": "1049851181"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [10.66074,59.50172]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-03-12 23:00:00",
+        "key": "1050073423"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [10.54668,62.57442]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-03-07 23:00:00",
+        "key": "1042055418"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [10.3442,63.4063]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-04-26 22:00:00",
+        "key": "1049911995"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [10.42964,63.28168]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-04-22 22:00:00",
+        "key": "1064672178"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.58641,52.29216]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-03-31 22:00:00",
+        "key": "899960284"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-120.21947,39.19913]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-04-24 17:01:03",
+        "key": "899974349"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.29476,47.65622]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-05-16 22:00:00",
+        "key": "931646616"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.6176,58.8867]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-05-11 22:25:25",
+        "key": "910497271"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-120.2324,39.32187]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-05-10 22:00:00",
+        "key": "1038324482"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [171.68668,-43.17933]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-05-23 02:26:42",
+        "key": "923914106"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-119.24235,37.93683]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-04-30 22:00:00",
+        "key": "1052568751"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-121.8158,46.74968]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-06-24 14:39:56",
+        "key": "1024183883"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-120.48873,39.61539]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-06-20 22:00:00",
+        "key": "1036400610"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-120.02598,38.865209999078]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-06-18 21:28:02",
+        "key": "923919615"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-119.99385,38.67234]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-06-24 22:00:00",
+        "key": "1049882253"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5.65855,62.39898]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-06-24 18:12:51",
+        "key": "923922270"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-120.17662,39.34514]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-06-03 22:00:00",
+        "key": "932006430"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.5678,56.6955]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-13 22:00:00",
+        "key": "932583487"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [19.7413,66.0246]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-31 21:09:48",
+        "key": "1024202751"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-110.82566,44.46348]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-03 22:00:00",
+        "key": "932298602"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.3495,63.4362]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-11 22:00:00",
+        "key": "997847728"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [12.3552,60.8251]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-13 22:00:00",
+        "key": "1064444336"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.301,66.371]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-31 17:50:05",
+        "key": "1024202754"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-110.83112,44.5935]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-27 22:00:00",
+        "key": "1038772929"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-134.69333,60.18726]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-12 22:00:00",
+        "key": "1036549197"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [19.9832,65.9034]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-02 22:00:00",
+        "key": "1037440858"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.4544,62.9162]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-09 19:49:41",
+        "key": "1024187137"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-120.24087,39.42747]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-31 16:56:38",
+        "key": "1024202743"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.09551,44.65815]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-01 22:00:00",
+        "key": "932244529"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.3303,62.7229]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-30 22:00:00",
+        "key": "1038769463"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-134.99579,60.68839]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-01 22:00:00",
+        "key": "932244712"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.3185,62.7315]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-27 22:00:00",
+        "key": "1038772930"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-134.69333,60.18726]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-31 18:46:23",
+        "key": "1024202741"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-110.80695,44.54999]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-12 22:00:00",
+        "key": "1046476488"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [19.8309,65.9031]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-15 22:00:00",
+        "key": "932601705"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [19.4487,65.8005]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-30 22:00:00",
+        "key": "1038769798"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-135.02858,60.66176]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-07-20 22:00:00",
+        "key": "932534672"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.6646,59.0137]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-08-09 23:12:00",
+        "key": "1024207079"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-120.13016,38.80451]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-08-09 22:00:00",
+        "key": "997973378"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [22.6293,66.4974]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-08-07 22:00:00",
+        "key": "1052571415"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-121.23557,43.70482]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-08-01 15:29:48",
+        "key": "1024202781"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-110.49718,44.71509]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-08-22 22:00:00",
+        "key": "1024216318"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-120.24021,39.42493]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-08-24 00:25:16",
+        "key": "1024217715"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-119.41295,37.84096]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-08-23 22:00:00",
+        "key": "1095048559"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.3655,62.5838]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-08-17 22:00:00",
+        "key": "997994767"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [14.611,61.6334]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-08-31 00:05:49",
+        "key": "1024219968"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.88528,37.55475]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-09-13 22:00:00",
+        "key": "1092482302"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [14.97604,68.59153]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-09-10 22:00:00",
+        "key": "1065583083"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-110.73309,43.69655]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-09-13 22:00:00",
+        "key": "1092481993"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [14.97636,68.59141]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-09-25 22:00:00",
+        "key": "1037005066"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [15.0195,56.197]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-10-14 22:29:06",
+        "key": "1088895357"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-135.34172,57.05863]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-10-14 22:29:37",
+        "key": "1038341574"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-135.34411,57.0596]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-10-07 22:00:00",
+        "key": "1092521748"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.47872,61.43932]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-10-15 22:00:00",
+        "key": "1092494173"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [12.66829,61.11649]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-10-14 22:29:39",
+        "key": "1038341622"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-135.34178,57.05868]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-10-15 22:00:00",
+        "key": "1092494145"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [12.67125,61.11638]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-11-08 23:00:00",
+        "key": "1092502405"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.1944,62.93179]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2014-11-11 23:00:00",
+        "key": "1065589859"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [169.84198,-44.36059]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2013-02-11 23:00:00",
+        "key": "856964858"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-3.64374,55.71668]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2013-02-10 18:19:00",
+        "key": "891124025"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-120.04017,38.86617]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2013-02-25 23:00:00",
+        "key": "856965570"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-3.6299,55.72854]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinus contorta",
+        "prov": "gbif",
+        "date": "2013-04-01 22:00:00",
+        "key": "1049749771"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.97024,61.08209]
+      }
+    }
+  ]
+}

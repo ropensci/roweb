@@ -1,14 +1,17 @@
 ---
 title: rnoaa tutorial
 layout: tutorial
-packge_version: 0.4.0
+packge_version: 0.4.2
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
 knitr::opts_chunk$set(
   fig.path = "../assets/tutorial-images/rnoaa/",
   fig.width = 6,
-  fig.height = 4
+  fig.height = 4,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE
 )
 ```
 
@@ -30,8 +33,8 @@ devtools::install_github("ropensci/rnoaa")
 ```
 
 ```{r load}
-library('rnoaa')
 library('plyr')
+library('rnoaa')
 ```
 
 <section id="usage">
@@ -244,7 +247,7 @@ head(buoys(dataset = "cwind"))
 
 ## Get buoy data
 
-With `buoy` you can get data for a particular dataset, buoy id, year, and datatype. 
+With `buoy` you can get data for a particular dataset, buoy id, year, and datatype.
 
 Get data for a buoy, specifying year and datatype
 
@@ -255,7 +258,7 @@ buoy(dataset = 'cwind', buoyid = 41001, year = 2008, datatype = "cc")
 
 ## More data
 
-There are more NOAA data sources in `noaa`. Check out the various vignettes in the package. 
+There are more NOAA data sources in `noaa`. Check out the various vignettes in the package.
 
 <section id="citing">
 
@@ -265,7 +268,7 @@ To cite `rnoaa` in publications use:
 
 <br>
 
-> Scott Chamberlain, Hart Edmund, and Karthik Ram (2015). rnoaa: NOAA climate data from R. R package version 0.4.0. https://github.com/ropensci/rnoaa
+> Scott Chamberlain, Hart Edmund, and Karthik Ram (2015). rnoaa: NOAA climate data from R. R package version 0.4.2. https://github.com/ropensci/rnoaa
 
 <section id="license_bugs">
 
