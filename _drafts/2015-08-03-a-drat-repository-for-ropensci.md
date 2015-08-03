@@ -36,7 +36,7 @@ install.packages("taxize", repos = c("http://packages.ropensci.org", "http://cra
 
 ## Design
 
-Our goal in creating a CRAN-style package repository (yes, it's confusing that we use the word "repository" to describe both an individual package source in a GitHub _repo_ as well as a collection of package binaries on a CRAN-like _repo_... sorry) was to provide users with a way to install the latest development versions of rOpenSci packages that offerred an easier and more seamless alternative to the widely use method of `devtools::install_github()`.  This would be particularly useful for updating all packages at once, or installing development versions that depended on other versions of packages not yet released to CRAN. As an added benefit, we also wanted a system that would allow us to compute anonmyzed download statistics, analgous to what RStudio provides for it's CRAN mirror.  Getting this all to work required the introduction of a few additional technologies.
+Our goal in creating a CRAN-style package repository (yes, it's confusing that we use the word "repository" to describe both an individual package source in a GitHub _repo_ as well as a collection of package binaries on a CRAN-like _repo_... sorry) was to provide users with a way to install the latest development versions of rOpenSci packages that offerred an easier and more seamless alternative to the widely used method of `devtools::install_github()`.  This would be particularly useful for updating all packages at once, or installing development versions that depended on other versions of packages not yet released to CRAN. As an added benefit, we also wanted a system that would allow us to compute anonmyzed download statistics, analogous to what RStudio provides for it's CRAN mirror.  Getting this all to work required the introduction of a few additional technologies.
 
 
 ### `drat` and `drat.builder`
@@ -54,8 +54,9 @@ out <- ro_pkgs()
 good <- out$packages$status == "good"
 installable <- out$packages$installable
 pkgs <- out$packages$name[installable & good]
-
 ```
+
+
 
 ### the magic of continuous integration: CircleCI
 
@@ -81,5 +82,5 @@ Amazon's S3 logs are rather raw and require some good ol data tidying work to tr
 
 This project is still in it's early days, and as ever, we welcome feedback, problems or ideas on the [issues tracker](https://github.com/ropensci/drat/issues).
 
-Now go ahead and install or update some packages from the shiny new [https://packages.ropensci.org](https://packages.ropensci.org)!
+Now go ahead and install or update some packages from the shiny new [http://packages.ropensci.org](http://packages.ropensci.org)!
 
