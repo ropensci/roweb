@@ -9,11 +9,11 @@ packge_version: 0.1
 
 `fulltext` is a package to facilitate text mining. It focuses on open access journals. This package makes it easier to search for articles, download those articles in full text if available, convert pdf format to plain text, and extract text chunks for vizualization/analysis. We are planning to add bits for analysis in future versions. The steps in bullet form:
 
-* Search
-* Retrieve
-* Convert
-* Text
-* Extract
+* Search - search for articles
+* Retrieve - get full text
+* Convert - convert from format X to Y
+* Text - if needed, get text from pdfs/etc.
+* Extract - pull out the bits of articles that you want
 
 <section id="installation">
 
