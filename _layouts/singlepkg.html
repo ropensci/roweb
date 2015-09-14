@@ -1,0 +1,34 @@
+
+{% include header_with_chat.html %}
+
+<section class="blog-3">
+
+  <div class="container" id="top">
+    <div class="title">
+        <h3>{{page.title}}</h3>
+    </div>
+
+    <div class="row">
+        <div class="row row-offcanvas row-offcanvas-left">
+          <div class="col-sm-3">
+            <div class="col-xs-8 col-sm-8 sidebar-offcanvas" id="sidebar" role="navigation">
+              <ul class="nav">
+                <li class="active">Status: <span class="label label-success" rel="tooltip" data-placement="right" title="Good: use it, all is good; Hiatus: on a break, ask us; Deprecated: package essentially gone">{{ page.status }}</span></li>
+                <li>License: {{ page.license }}</li>
+                <li>CRAN version: {{ page.cran_version }}</li>
+                <li>Dev version: {{ page.dev_version }}</li>
+                <li>Downloads: {{ page.downloads }}</li>
+                <li>Tutorial: <a href="{{ page.tutorial }}"><span class="label label-success"><i class="fa fa-link"></i></span></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-sm-9">
+            {{ content }}
+          </div>
+        </div>
+    </div>
+
+</section>
+
+{% include footer.html %}
