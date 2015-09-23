@@ -20,7 +20,7 @@ title: Full title of your blog post
 date: 2014-08-15
 authors: 
   - name: Your Name
-  - url: url of your website
+    url: url of your website
 tags:
 - R
 - other tags (one per line)
