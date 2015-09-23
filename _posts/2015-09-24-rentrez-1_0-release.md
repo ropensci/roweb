@@ -2,7 +2,7 @@
 name: rentrez-1_0-release
 layout: post
 title: Rentrez 1.0 released 
-date: 2015-09-23
+date: 2015-09-24
 authors: 
   - name: David Winter
     url: http://cartwrig.ht/people/#david-j-winter
