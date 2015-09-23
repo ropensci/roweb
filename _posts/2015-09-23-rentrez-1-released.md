@@ -67,17 +67,18 @@ extract_from_esummary(snp_summs, "chr")
 Or with multiple elements
 
 ```r
-summary_table <- extract_from_esummary(snp_summs, c("chr", "fxn_class"))
-knitr::kable(t(summary_table))
+summary_table <- extract_from_esummary(snp_summs, c("chr", "global_maf", "fxn_class"))
+t(summary_table)
 ```
 
-|chr |fxn_class               |
-|:---|:-----------------------|
-|17  |intron-variant          |
-|1   |intron-variant          |
-|2   |downstream-variant-500B |
-|2   |                        |
-|11  |utr-variant-3-prime     |
+```
+##          chr  global_maf      fxn_class                
+## 11079657 "17" "A=0.4295/2151" "intron-variant"         
+## 2786098  "1"  "T=0.1569/786"  "intron-variant"         
+## 1031772  "2"  "G=0.2131/1067" "downstream-variant-500B"
+## 1031771  "2"  "T=0.2582/1293" ""                       
+## 545659   "11" "C=0.3419/1712" "utr-variant-3-prime"
+```
 
 ###`entrez_link` can find external links
 
