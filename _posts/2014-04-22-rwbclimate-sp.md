@@ -11,7 +11,7 @@ tags:
 - species
 - occurrence
 - climate change
-- climate data
+- climate
 ---
 
 

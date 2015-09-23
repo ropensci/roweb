@@ -12,7 +12,7 @@ authors:
 tags:
 - R
 - reproducibleresearch
-- dataarchiving
+- archiving
 - openscience
 ---
 

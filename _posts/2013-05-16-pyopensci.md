@@ -8,7 +8,6 @@ authors:
     url: http://about.me/gawbul
 tags:
 - Python
-- pyOpenSci
 - API
 ---
 *A guest blog post by Steve Moss*

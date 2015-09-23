@@ -7,7 +7,7 @@ authors:
   - name: Scott Chamberlain
 tags:
 - R
-- text-mining
+- textmining
 - API
 - PLOS
 ---

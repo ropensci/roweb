@@ -8,10 +8,8 @@ authors:
 tags:
 - R
 - ropensci
-- raltmetric
-- rimpactstory
-- alm
-- plos
+- altmetrics
+- PLOS
 ---
 
 We recently had a paper come out in [a special issue](http://www.niso.org/publications/isq/2013/v25no2) on *article-level metrics* in the journal Information Standards Quarterly. Our paper basically compared article-level metrics provided by different aggregators. The other papers covered various article-level metrics topics from folks at PLOS, Mendeley, and more. Get our paper [here](http://www.niso.org/publications/isq/2013/v25no2/chamberlain).

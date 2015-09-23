@@ -9,7 +9,7 @@ authors:
     url: http://dirk.eddelbuettel.com/
 tags:
 - R
-- reproducible-research
+- reproducibleresearch
 ---
 
 

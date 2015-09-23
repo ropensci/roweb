@@ -8,7 +8,7 @@ authors:
 tags:
 - R
 - ropensci
-- package
+- packages
 - biodiversity
 ---
 

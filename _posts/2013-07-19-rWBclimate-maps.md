@@ -8,7 +8,7 @@ authors:
 tags:
 - R
 - API
-- climate data
+- climate
 - maps
 ---
 
