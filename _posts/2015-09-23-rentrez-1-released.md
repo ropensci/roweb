@@ -5,7 +5,7 @@ title: Rentrez 1.0 released
 date: 2015-09-23
 authors: 
   - name: David Winter
-  - url: http://cartwrig.ht/people/#david-j-winter
+    url: http://cartwrig.ht/people/#david-j-winter
 tags:
 - R
 - CRAN
