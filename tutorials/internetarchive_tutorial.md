@@ -35,7 +35,6 @@ library("internetarchive")
 library("dplyr")
 ```
 
-</section>
 <section id="usage">
 
 ## Basic search and browse
@@ -206,7 +205,6 @@ Notice that `ia_download()` returns a modified version of the data frame that wa
 
 If the `overwrite =` argument is `FALSE`, then you can pass the same data frame of files to `ia_download()` and it will download only the files that it has not already downloaded.
 
-</section>
 
 <section id="citing">
 
@@ -214,7 +212,6 @@ If the `overwrite =` argument is `FALSE`, then you can pass the same data frame 
 
 > Lincoln Mullen (2015). internetarchive: An API Client for the Internet Archive. R package version 0.1.2. https://github.com/ropensci/internetarchive
 
-</section>
 
 <section id="license_bugs">
 
@@ -223,6 +220,5 @@ If the `overwrite =` argument is `FALSE`, then you can pass the same data frame 
 * License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our GitHub repo for internetarchive](https://github.com/ropensci/internetarchive/issues?state=open)
 
-</section>
 
 [Back to top](#top)

@@ -159,7 +159,6 @@ In the previous examples, we've suppressed messages for more concise output, but
 res <- searchbyterm(class = "Aves", state = "California", limit = 10, verbose = TRUE)
 ```
 
-</section>
 
 <section id="citing">
 

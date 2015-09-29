@@ -34,7 +34,6 @@ Then load the package
 library("elastic")
 ```
 
-</section>
 <section id="usage">
 
 ## Elasticsearch info
@@ -647,7 +646,6 @@ jsonlite::fromJSON(out)
 #> 2 Correction: Designing Mixed Species Tree Plantations for the Tropics: Balancing Ecological Attributes of Species with Landholder Preferences in the Philippines
 ```
 
-</section>
 
 
 <section id="citing">
@@ -657,7 +655,6 @@ jsonlite::fromJSON(out)
 > Scott Chamberlain (2015). elastic: General Purpose Interface to Elasticsearch. R package version 0.5.0.
   http://CRAN.R-project.org/package=elastic
 
-</section>
 
 
 <section id="license_bugs">
@@ -667,6 +664,5 @@ jsonlite::fromJSON(out)
 * License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our GitHub repo for elastic](https://github.com/ropensci/elastic/issues?state=open)
 
-</section>
 
 [Back to top](#top)

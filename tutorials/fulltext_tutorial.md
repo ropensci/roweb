@@ -17,6 +17,8 @@ packge_version: 0.1
 
 <section id="installation">
 
+## Installation
+
 You can install from CRAN
 
 
@@ -38,8 +40,6 @@ Load the package
 ```r
 library("fulltext")
 ```
-
-</section>
 
 <section id="usage">
 
@@ -433,16 +433,12 @@ x %>% chunks(c("doi", "history")) %>% tabularize()
 #> 8 10.1371/journal.pcbi.1003594       2014-01-09       2014-03-14
 ```
 
-</section>
-
 
 <section id="citing">
 
 ## Citing
 
 > Chamberlain Scott (2015). fulltext: Full Text of Scholarly Articles Across Many Data Sources. R package version 0.1.0. https://github.com/ropensci/fulltext
-
-</section>
 
 
 <section id="license_bugs">
@@ -451,7 +447,5 @@ x %>% chunks(c("doi", "history")) %>% tabularize()
 
 * License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our GitHub repo for fulltext](https://github.com/ropensci/fulltext/issues?state=open)
-
-</section>
 
 [Back to top](#top)

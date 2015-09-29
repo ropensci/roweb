@@ -61,7 +61,6 @@ install.packages("devtools")
 install_github("ropensci/spocc")
 ```
 
-</section>
 
 <section id="usage">
 
@@ -235,7 +234,6 @@ map_ggplot(ecoengine_data, map = "county")
 
 ![ggplotmap](../assets/tutorial-images/spocc/ggplot2.png)
 
-</section>
 
 <section id="citing">
 

@@ -38,7 +38,6 @@ Then install musemeta
 devtools::install_github("ropensci/musemeta")
 ```
 
-</section>
 
 <section id="usage">
 
@@ -608,7 +607,6 @@ lapply(c(41033,210804), aic)
 ```
 
 
-</section>
 
 <section id="citing">
 

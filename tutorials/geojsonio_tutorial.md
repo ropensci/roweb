@@ -80,7 +80,6 @@ devtools::install_github("ropensci/geojsonio")
 library("geojsonio")
 ```
 
-</section>
 <section id="usage">
 
 ## GeoJSON
@@ -291,7 +290,6 @@ Or use `as.location()` first
 out <- topojson_read(loc)
 ```
 
-</section>
 
 
 <section id="citing">
@@ -301,7 +299,6 @@ out <- topojson_read(loc)
 > Scott Chamberlain and Andy Teucher (2015). geojsonio: Convert Data from and to 'geoJSON' or 'topoJSON'. R package
   version 0.1.0
 
-</section>
 
 
 <section id="license_bugs">
@@ -311,6 +308,5 @@ out <- topojson_read(loc)
 * License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our GitHub repo for geojsonio](https://github.com/ropensci/geojsonio/issues?state=open)
 
-</section>
 
 [Back to top](#top)

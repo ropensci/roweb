@@ -43,7 +43,6 @@ Load the package
 library("fulltext")
 ```
 
-</section>
 
 <section id="usage">
 
@@ -145,7 +144,6 @@ x %>% chunks(c("doi","categories"))
 x %>% chunks(c("doi", "history")) %>% tabularize()
 ```
 
-</section>
 
 
 <section id="citing">
@@ -154,7 +152,6 @@ x %>% chunks(c("doi", "history")) %>% tabularize()
 
 > Chamberlain Scott (2015). fulltext: Full Text of Scholarly Articles Across Many Data Sources. R package version 0.1.0. https://github.com/ropensci/fulltext
 
-</section>
 
 
 <section id="license_bugs">
@@ -164,6 +161,5 @@ x %>% chunks(c("doi", "history")) %>% tabularize()
 * License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our GitHub repo for fulltext](https://github.com/ropensci/fulltext/issues?state=open)
 
-</section>
 
 [Back to top](#top)

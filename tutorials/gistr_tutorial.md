@@ -24,7 +24,6 @@ install.packages("devtools")
 devtools::install_github("ropensci/gistr")
 ```
 
-</section>
 <section id="usage">
 
 
@@ -627,7 +626,6 @@ And here's that gist: [https://gist.github.com/sckott/017214637bcfeb198070](http
 
 ![gistmap](../assets/tutorial-images/gistr/gistr_ss.png)
 
-</section>
 
 
 <section id="citing">
@@ -637,7 +635,6 @@ And here's that gist: [https://gist.github.com/sckott/017214637bcfeb198070](http
 > Ramnath Vaidyanathan, Karthik Ram and Scott Chamberlain (2015). gistr: Work with
   GitHub Gists from R. R package version 0.3.0. https://github.com/ropensci/gistr
 
-</section>
 
 
 <section id="license_bugs">
@@ -647,6 +644,5 @@ And here's that gist: [https://gist.github.com/sckott/017214637bcfeb198070](http
 * License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our GitHub repo for gistr](https://github.com/ropensci/gistr/issues?state=open)
 
-</section>
 
 [Back to top](#top)
