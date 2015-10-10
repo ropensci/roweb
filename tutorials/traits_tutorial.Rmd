@@ -1,7 +1,7 @@
 ---
 title: traits tutorial
 layout: tutorial
-packge_version: 0.1.0
+packge_version: 0.1.2
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
@@ -58,7 +58,6 @@ salix %>%
             min = round(min(.mean, na.rm = TRUE), 2),
             max = round(max(.mean, na.rm = TRUE), 2),
             n = length(n))
-
 ```
 
 ### NCBI sequence data
@@ -107,7 +106,7 @@ eol_invasive_(c('Lymantria dispar','Cygnus olor','Hydrilla verticillata','Pinus 
 Searching for _Mesoplodon bidens_, page id `328566`
 
 ```{r cache=FALSE}
-res <- traitbank(trait = 328566)
+res <- traitbank(pageid = 328566)
 res$graph %>%
   select(dwc.measurementtype..id, dwc.measurementtype.rdfs.label.en, dwc.measurementvalue) %>%
   filter(!is.na(dwc.measurementvalue))

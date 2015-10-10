@@ -1,7 +1,7 @@
 ---
 title: traits tutorial
 layout: tutorial
-packge_version: 0.1.0
+packge_version: 0.1.2
 ---
 
 
@@ -47,6 +47,7 @@ Get trait data for Willow (_Salix_ spp.)
 ## Source: local data frame [14 x 30]
 ## 
 ##    access_level       author citation_id citation_year  city    commonname
+##           (int)        (chr)       (int)         (int) (chr)         (chr)
 ## 1             4       Merilo         430          2005 Saare basket willow
 ## 2             4       Merilo         430          2005 Saare basket willow
 ## 3             4       Merilo         430          2005 Saare basket willow
@@ -79,6 +80,26 @@ Summarise data from the output `data.frame`
 
 ```r
 library("dplyr")
+```
+
+```
+## 
+## Attaching package: 'dplyr'
+## 
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+## 
+## The following object is masked from 'package:sacbox':
+## 
+##     slice
+## 
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+```
+
+```r
 salix %>%
   group_by(scientificname, trait) %>%
   mutate(.mean = as.numeric(mean)) %>%
@@ -90,13 +111,14 @@ salix %>%
 
 ```
 ## Source: local data frame [4 x 6]
-## Groups: scientificname
+## Groups: scientificname [?]
 ## 
-##                    scientificname trait  mean   min   max n
-## 1                           Salix Vcmax 65.00 65.00 65.00 1
-## 2                Salix dasyclados Vcmax 46.08 34.30 56.68 4
-## 3 Salix sachalinensis × miyabeana Vcmax 79.28 79.28 79.28 1
-## 4                 Salix viminalis Vcmax 43.04 19.99 61.29 8
+##                    scientificname trait  mean   min   max     n
+##                             (chr) (chr) (dbl) (dbl) (dbl) (int)
+## 1                           Salix Vcmax 65.00 65.00 65.00     1
+## 2                Salix dasyclados Vcmax 46.08 34.30 56.68     4
+## 3 Salix sachalinensis × miyabeana Vcmax 79.28 79.28 79.28     1
+## 4                 Salix viminalis Vcmax 43.04 19.99 61.29     8
 ```
 
 ### NCBI sequence data
@@ -258,7 +280,7 @@ Searching for _Mesoplodon bidens_, page id `328566`
 
 
 ```r
-res <- traitbank(trait = 328566)
+res <- traitbank(pageid = 328566)
 res$graph %>%
   select(dwc.measurementtype..id, dwc.measurementtype.rdfs.label.en, dwc.measurementvalue) %>%
   filter(!is.na(dwc.measurementvalue))
@@ -268,6 +290,7 @@ res$graph %>%
 ## Source: local data frame [59 x 3]
 ## 
 ##                 dwc.measurementtype..id dwc.measurementtype.rdfs.label.en
+##                                   (chr)                             (chr)
 ## 1      http://iucn.org/population_trend                  population trend
 ## 2  http://rs.tdwg.org/dwc/terms/habitat                           habitat
 ## 3  http://rs.tdwg.org/dwc/terms/habitat                           habitat
@@ -294,18 +317,19 @@ coral_species()
 ```
 ## Source: local data frame [1,547 x 2]
 ## 
-##                          name id
-## 1         Acanthastrea brevis  3
-## 2       Acanthastrea echinata  4
-## 3      Acanthastrea hemprichi  6
-## 4  Acanthastrea ishigakiensis  8
-## 5      Acanthastrea regularis 12
-## 6   Acanthastrea rotundoflora 13
-## 7    Acanthastrea subechinata 14
-## 8      Acropora abrolhosensis 16
-## 9       Acropora abrotanoides 17
-## 10           Acropora aculeus 18
-## ..                        ... ..
+##                          name    id
+##                         (chr) (chr)
+## 1         Acanthastrea brevis     3
+## 2       Acanthastrea echinata     4
+## 3      Acanthastrea hemprichi     6
+## 4  Acanthastrea ishigakiensis     8
+## 5      Acanthastrea regularis    12
+## 6   Acanthastrea rotundoflora    13
+## 7    Acanthastrea subechinata    14
+## 8      Acropora abrolhosensis    16
+## 9       Acropora abrotanoides    17
+## 10           Acropora aculeus    18
+## ..                        ...   ...
 ```
 
 Get data by taxon
@@ -316,26 +340,27 @@ coral_taxa(80)
 ```
 
 ```
-## Source: local data frame [3,084 x 25]
+## Source: local data frame [3,539 x 25]
 ## 
 ##    observation_id access user_id specie_id         specie_name location_id
-## 1          109330      1       2        80 Acropora hyacinthus           1
-## 2           88793      1      14        80 Acropora hyacinthus           0
-## 3          115791      1      10        80 Acropora hyacinthus           1
-## 4          115792      1      10        80 Acropora hyacinthus           1
-## 5            5694      1       2        80 Acropora hyacinthus           1
-## 6            5696      1       2        80 Acropora hyacinthus           1
-## 7            5741      1       1        80 Acropora hyacinthus           1
-## 8            5751      1       1        80 Acropora hyacinthus           1
-## 9            5787      1       1        80 Acropora hyacinthus           1
-## 10           5766      1       1        80 Acropora hyacinthus           1
+##             (int)  (int)   (int)     (int)               (chr)       (int)
+## 1            5781      1       1        80 Acropora hyacinthus           1
+## 2          119211      1      49        80 Acropora hyacinthus           1
+## 3           90294      1      15        80 Acropora hyacinthus         341
+## 4           90294      1      15        80 Acropora hyacinthus         341
+## 5           90294      1      15        80 Acropora hyacinthus         341
+## 6           90294      1      15        80 Acropora hyacinthus         341
+## 7           90294      1      15        80 Acropora hyacinthus         341
+## 8           90295      1      15        80 Acropora hyacinthus         343
+## 9           90295      1      15        80 Acropora hyacinthus         343
+## 10          90295      1      15        80 Acropora hyacinthus         343
 ## ..            ...    ...     ...       ...                 ...         ...
 ## Variables not shown: location_name (chr), latitude (dbl), longitude (dbl),
 ##   resource_id (int), resource_secondary_id (int), measurement_id (int),
 ##   trait_id (int), trait_name (chr), standard_id (int), standard_unit
 ##   (chr), methodology_id (int), methodology_name (chr), value (chr),
-##   value_type (chr), precision (lgl), precision_type (lgl), precision_upper
-##   (lgl), replicates (lgl), notes (lgl)
+##   value_type (chr), precision (dbl), precision_type (chr), precision_upper
+##   (dbl), replicates (int), notes (chr)
 ```
 
 Get data by trait
@@ -346,26 +371,16 @@ coral_traits(105)
 ```
 
 ```
-## Source: local data frame [1,491 x 25]
+## Source: local data frame [0 x 25]
 ## 
-##    observation_id access user_id specie_id                specie_name
-## 1             155      1       8         3        Acanthastrea brevis
-## 2             236      1       1         4      Acanthastrea echinata
-## 3             364      1       8         6     Acanthastrea hemprichi
-## 4             495      1       1         8 Acanthastrea ishigakiensis
-## 5             738      1       8        12     Acanthastrea regularis
-## 6             804      1       8        13  Acanthastrea rotundoflora
-## 7             865      1       1        14   Acanthastrea subechinata
-## 8             981      1       8        16     Acropora abrolhosensis
-## 9            1061      1       8        17      Acropora abrotanoides
-## 10          90549      1       8        18           Acropora aculeus
-## ..            ...    ...     ...       ...                        ...
-## Variables not shown: location_id (int), location_name (chr), latitude
-##   (lgl), longitude (lgl), resource_id (int), resource_secondary_id (lgl),
-##   measurement_id (int), trait_id (int), trait_name (chr), standard_id
-##   (int), standard_unit (chr), methodology_id (lgl), methodology_name
-##   (lgl), value (chr), value_type (chr), precision (lgl), precision_type
-##   (lgl), precision_upper (lgl), replicates (lgl), notes (chr)
+## Variables not shown: observation_id (lgl), access (lgl), user_id (lgl),
+##   specie_id (lgl), specie_name (lgl), location_id (lgl), location_name
+##   (lgl), latitude (lgl), longitude (lgl), resource_id (lgl),
+##   resource_secondary_id (lgl), measurement_id (lgl), trait_id (lgl),
+##   trait_name (lgl), standard_id (lgl), standard_unit (lgl), methodology_id
+##   (lgl), methodology_name (lgl), value (lgl), value_type (lgl), precision
+##   (lgl), precision_type (lgl), precision_upper (lgl), replicates (lgl),
+##   notes (lgl)
 ```
 
 ### Flora Europaea
