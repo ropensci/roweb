@@ -80,26 +80,6 @@ Summarise data from the output `data.frame`
 
 ```r
 library("dplyr")
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-## 
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-## 
-## The following object is masked from 'package:sacbox':
-## 
-##     slice
-## 
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 salix %>%
   group_by(scientificname, trait) %>%
   mutate(.mean = as.numeric(mean)) %>%
@@ -253,7 +233,8 @@ Another example, with more species, and from
 
 
 ```r
-eol_invasive_(c('Lymantria dispar','Cygnus olor','Hydrilla verticillata','Pinus concolor'),
+eol_invasive_(c('Lymantria dispar','Cygnus olor',
+                'Hydrilla verticillata','Pinus concolor'),
               dataset = 'i3n')
 ```
 
@@ -274,7 +255,10 @@ eol_invasive_(c('Lymantria dispar','Cygnus olor','Hydrilla verticillata','Pinus 
 ## 4 i3n
 ```
 
-### EOL's traitbank trait data
+### EOL's Traitbank data
+
+Note that EOL's Traitbank does not allow us to search by trait. 
+The only interface we have is to search by taxon page ID.
 
 Searching for _Mesoplodon bidens_, page id `328566`
 
@@ -282,7 +266,9 @@ Searching for _Mesoplodon bidens_, page id `328566`
 ```r
 res <- traitbank(pageid = 328566)
 res$graph %>%
-  select(dwc.measurementtype..id, dwc.measurementtype.rdfs.label.en, dwc.measurementvalue) %>%
+  select(dwc.measurementtype..id, 
+         dwc.measurementtype.rdfs.label.en, 
+         dwc.measurementvalue) %>%
   filter(!is.na(dwc.measurementvalue))
 ```
 
@@ -387,8 +373,8 @@ coral_traits(105)
 
 
 ```r
-sp <- c("Lavandula stoechas", "Carpobrotus edulis", "Rhododendron ponticum",
-        "Alkanna lutea", "Anchusa arvensis")
+sp <- c("Lavandula stoechas", "Carpobrotus edulis", 
+        "Rhododendron ponticum", "Alkanna lutea", "Anchusa arvensis")
 sapply(sp, fe_native, simplify = FALSE)
 ```
 
@@ -636,7 +622,7 @@ To cite `traits` in publications use:
 
 <br>
 
-> Scott Chamberlain, Zachary Foster, Ignasi Bartomeus and David LeBauer (2015). traits: Species Trait Data from Around the Web. R package version 0.1.0. https://github.com/ropensci/traits
+> Scott Chamberlain, Zachary Foster, Ignasi Bartomeus, David LeBauer, and David Harris (2015). traits: Species Trait Data from Around the Web. R package version 0.1.2. https://github.com/ropensci/traits
 
 <section id="license_bugs">
 
