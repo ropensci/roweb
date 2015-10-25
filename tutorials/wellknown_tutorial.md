@@ -1,7 +1,7 @@
 ---
 title: wellknown tutorial
 layout: tutorial
-packge_version: 0.0.6.920
+packge_version: 0.1.0
 ---
 
 
@@ -46,7 +46,7 @@ The above currently accept (depending on the fxn) `numeric`, `list`, and `data.f
 
 ## Installation
 
-Stable version from CRAN (not available yet)
+Stable version from CRAN
 
 
 ```r
@@ -57,7 +57,6 @@ Development version from GitHub
 
 
 ```r
-install.packages("devtools")
 devtools::install_github("ropensci/wellknown")
 ```
 
@@ -202,7 +201,7 @@ wkt2geojson(str)
 #> [1] "Point"
 #> 
 #> $geometry$coordinates
-#> [1] -116.4   45.2
+#> [1] "-116.4000000000000057" "45.2000000000000028"  
 #> 
 ...
 ```
@@ -216,7 +215,7 @@ wkt2geojson(str, feature = FALSE)
 #> [1] "Point"
 #> 
 #> $coordinates
-#> [1] -116.4   45.2
+#> [1] "-116.4000000000000057" "45.2000000000000028"  
 #> 
 #> attr(,"class")
 #> [1] "geojson"
@@ -233,10 +232,10 @@ wkt2geojson(str, feature = FALSE)
 #> 
 #> $coordinates
 #> $coordinates[[1]]
-#> [1] 100.000   3.101
+#> [1] "100.0000000000000000" "3.1010000000000000"  
 #> 
 #> $coordinates[[2]]
-#> [1] 101.0   2.1
+#> [1] "101.0000000000000000" "2.1000000000000001"  
 #> 
 ...
 ```
@@ -253,10 +252,10 @@ wkt2geojson(str, feature = FALSE)
 #> $coordinates
 #> $coordinates[[1]]
 #> $coordinates[[1]][[1]]
-#> [1] 100.0   0.1
+#> [1] "100.0000000000000000" "0.1000000000000000"  
 #> 
 #> $coordinates[[1]][[2]]
-#> [1] 101.1   0.3
+#> [1] "101.0999999999999943" "0.3000000000000000"  
 ...
 ```
 
@@ -274,7 +273,7 @@ wkt2geojson(str, feature = FALSE)
 #> $coordinates[[1]]
 #> $coordinates[[1]][[1]]
 #> $coordinates[[1]][[1]][[1]]
-#> [1] 40 40
+#> [1] "40.0000000000000000" "40.0000000000000000"
 #> 
 #> $coordinates[[1]][[1]][[2]]
 ...
@@ -290,10 +289,10 @@ wkt2geojson("LINESTRING (0 -1, -2 -3, -4 5)", feature = FALSE)
 #> 
 #> $coordinates
 #> $coordinates[[1]]
-#> [1]  0 -1
+#> [1] "0.0000000000000000"  "-1.0000000000000000"
 #> 
 #> $coordinates[[2]]
-#> [1] -2 -3
+#> [1] "-2.0000000000000000" "-3.0000000000000000"
 #> 
 ...
 ```
@@ -331,13 +330,13 @@ To cite `wellknown` in publications use:
 <br>
 
 > Scott Chamberlain (2015). wellknown: Convert Between 'WKT' to 'GeoJSON'. R package
-  version 0.0.6.900. https://github.com/ropensci/wellknown
+  version 0.1.0. https://github.com/ropensci/wellknown
 
 <section id="license_bugs">
 
 ## License and bugs
 
 * License: [MIT](http://opensource.org/licenses/MIT)
-* Report bugs at [our Github repo for bold](https://github.com/ropensci/wellknown/issues?state=open)
+* Report bugs at [our Github repo for wellknown](https://github.com/ropensci/wellknown/issues?state=open)
 
 [Back to top](#top)

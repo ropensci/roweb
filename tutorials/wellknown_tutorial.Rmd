@@ -1,7 +1,7 @@
 ---
 title: wellknown tutorial
 layout: tutorial
-packge_version: 0.0.6.920
+packge_version: 0.1.0
 ---
 
 ```{r echo=FALSE}
@@ -79,7 +79,7 @@ The above currently accept (depending on the fxn) `numeric`, `list`, and `data.f
 
 ## Installation
 
-Stable version from CRAN (not available yet)
+Stable version from CRAN
 
 ```{r eval=FALSE}
 install.packages("wellknown")
@@ -88,7 +88,6 @@ install.packages("wellknown")
 Development version from GitHub
 
 ```{r eval=FALSE}
-install.packages("devtools")
 devtools::install_github("ropensci/wellknown")
 ```
 
@@ -271,7 +270,7 @@ To cite `wellknown` in publications use:
 <br>
 
 > Scott Chamberlain (2015). wellknown: Convert Between 'WKT' to 'GeoJSON'. R package
-  version 0.0.6.900. https://github.com/ropensci/wellknown
+  version 0.1.0. https://github.com/ropensci/wellknown
 
 <section id="license_bugs">
 
