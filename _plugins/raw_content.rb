@@ -1,5 +1,5 @@
 # Generator to make raw content avialable as post.raw_content
-# 
+#
 # Jekyll overwrites the post.content markdown data with the rendered html data
 # Consequently liquid filters/etc only have access to HTML versions of the content
 # in post.content.  This stores a copy as raw, which can be used for other purposes.
@@ -10,9 +10,11 @@
 module Jekyll
   class RawContent < Generator
     def generate(site)
-      site.posts.each do |post|
-        post.data['raw_content'] = post.content
-      end
+      # puts site.posts[0].content
+      # site.posts['data'] = site.posts['raw_content']
+      # site.posts.each do |post|
+      #   post.data['raw_content'] = post.content
+      # end
       site.pages.each do |page|
         page.data['raw_content'] = page.content
       end

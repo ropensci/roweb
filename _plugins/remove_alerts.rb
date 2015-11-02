@@ -2,15 +2,15 @@
 # Author: Scott Chamberlain, @sckott
 # License: MIT
 
-require 'nokogiri'
+# require 'nokogiri'
 
-module Jekyll
-  module RemoveAlerts
-    def remove_alerts(input)
-      res = Nokogiri::HTML(input)
-      res.xpath('//div[@role="alert"]').remove
-      res
-    end
-  end
-end
-Liquid::Template.register_filter(Jekyll::RemoveAlerts)
+# module Jekyll
+#   module RemoveAlerts
+#     def remove_alerts(input)
+#       res = Nokogiri::HTML(input)
+#       res.xpath('//div[@role="alert"]').remove
+#       res
+#     end
+#   end
+# end
+# Liquid::Template.register_filter(Jekyll::RemoveAlerts)
