@@ -9,7 +9,7 @@ redcarpet:
 deploy: false
 encoding: utf-8
 
-gems: [jekyll-paginate]
+gems: ['jekyll-paginate']
 
 exclude: ['*.Rmd']
 
