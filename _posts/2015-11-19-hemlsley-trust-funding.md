@@ -1,5 +1,5 @@
 ---
-name: New $2.9M grant for rOpenSci
+name: hemlsley-trust-funding
 layout: post
 title: rOpenSci Announces $2.9M Award from the Helmsley Charitable Trust
 date: 2015-11-19
