@@ -27,10 +27,13 @@ The rOpenSci projects aims to provide programmatic access to scientific data rep
 1. Global Biodiversity Information Facility (`rgbif`)
 [GBIF](http://www.gbif.org/) is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.
 
-2. [Berkeley Ecoengine](http://ecoengine.berkeley.edu/) (`ecoengine`)
+2. [iDigBio](https://www.idigbio.org/)
+Integrated Digitized Biocollections (iDigBio) is the U.S. National Resource for Advancing Digitization of Biodiversity Collections (ADBC) funded by the National Science Foundation. Through ADBC, data and images for millions of biological specimens are being made available in electronic format for the research community, government agencies, students, educators, and the general public. Data are available via a specimen portal and the iDigBio Search APIs.
+
+3. [Berkeley Ecoengine](http://ecoengine.berkeley.edu/) (`ecoengine`)
 The ecoengine is an open API built by the [Berkeley Initiative for Global Change Biology](http://globalchange.berkeley.edu/). The repository provides access to over 3 million specimens from various Berkeley natural history museums. These data span more than a century and provide access to georeferenced specimens, species checklists, photographs, vegetation surveys and resurveys and a variety of measurements from environmental sensors located at reserves across University of California's natural reserve system.
 
-3. [iNaturalist](http://www.inaturalist.org/) (`rinat`)
+4. [iNaturalist](http://www.inaturalist.org/) (`rinat`)
 iNaturalist provides access to crowd sourced citizen science data on species observations.
 
 5. [Biodiversity Information Serving Our Nation](http://bison.usgs.ornl.gov/) (`rbison`)
