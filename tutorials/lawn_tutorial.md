@@ -1,7 +1,7 @@
 ---
 title: lawn tutorial
 layout: tutorial
-packge_version: 0.1.0
+packge_version: 0.1.4
 ---
 
 
@@ -53,22 +53,10 @@ Point
 
 ```r
 lawn_point(c(-74.5, 40))
-#> $type
-#> [1] "Feature"
-#> 
-#> $geometry
-#> $geometry$type
-#> [1] "Point"
-#> 
-#> $geometry$coordinates
-#> [1] -74.5  40.0
-#> 
-#> 
-#> $properties
-#> named list()
-#> 
-#> attr(,"class")
-#> [1] "point"
+#> <Point>
+#>   Bounding box: -74.5 40.0 -74.5 40.0
+#>   Coordinates: -74.5 40.0
+#>   Properties: NULL
 ```
 
 Polygon
@@ -83,31 +71,10 @@ rings <- list(list(
   c(-2.275543, 53.464547)
 ))
 lawn_polygon(rings)
-#> $type
-#> [1] "Feature"
-#> 
-#> $geometry
-#> $geometry$type
-#> [1] "Polygon"
-#> 
-#> $geometry$coordinates
-#> , , 1
-#> 
-#>           [,1]      [,2]      [,3]      [,4]      [,5]
-#> [1,] -2.275543 -2.275543 -2.215118 -2.215118 -2.275543
-#> 
-#> , , 2
-#> 
-#>          [,1]     [,2]     [,3]     [,4]     [,5]
-#> [1,] 53.46455 53.48927 53.48927 53.46455 53.46455
-#> 
-#> 
-#> 
-#> $properties
-#> named list()
-#> 
-#> attr(,"class")
-#> [1] "polygon"
+#> <Polygon>
+#>   Bounding box: -2.3 53.5 -2.2 53.5
+#>   No. points: 5
+#>   Properties: NULL
 ```
 
 ### count
@@ -117,19 +84,11 @@ Count number of points within polygons
 
 ```r
 lawn_count(polygons = lawn_data$polygons_count, points = lawn_data$points_count)
-#> $type
-#> [1] "FeatureCollection"
-#> 
-#> $features
-#>      type pt_count geometry.type
-#> 1 Feature        2       Polygon
-#> 2 Feature        0       Polygon
-#>                                                                                           geometry.coordinates
-#> 1 -112.07239, -112.07239, -112.02810, -112.02810, -112.07239, 46.58659, 46.61761, 46.61761, 46.58659, 46.58659
-#> 2 -112.02398, -112.02398, -111.96613, -111.96613, -112.02398, 46.57043, 46.61502, 46.61502, 46.57043, 46.57043
-#> 
-#> attr(,"class")
-#> [1] "featurecollection"
+#> <FeatureCollection>
+#>   Bounding box: -112.1 46.6 -112.0 46.6
+#>   No. features: 2
+#>   No. points: 20
+#>   Properties: NULL
 ```
 
 ### average
@@ -141,19 +100,11 @@ Average value of a field for a set of points within a set of polygons
 lawn_average(polygons = lawn_data$polygons_average,
              points = lawn_data$points_average,
              field = 'population')
-#> $type
-#> [1] "FeatureCollection"
-#> 
-#> $features
-#>      type average geometry.type
-#> 1 Feature     300       Polygon
-#> 2 Feature     250       Polygon
-#>                                                                                 geometry.coordinates
-#> 1 10.66635, 10.66635, 10.76248, 10.76248, 10.66635, 59.89066, 59.93678, 59.93678, 59.89066, 59.89066
-#> 2 10.76454, 10.76454, 10.86617, 10.86617, 10.76454, 59.88928, 59.93713, 59.93713, 59.88928, 59.88928
-#> 
-#> attr(,"class")
-#> [1] "featurecollection"
+#> <FeatureCollection>
+#>   Bounding box: 10.7 59.9 10.9 59.9
+#>   No. features: 2
+#>   No. points: 20
+#>   Properties: NULL
 ```
 
 ### distance
@@ -193,34 +144,21 @@ lawn_distance(from, to)
 
 ```r
 lawn_random(n = 2)
-#> $type
-#> [1] "FeatureCollection"
-#> 
-#> $features
-#>      type geometry.type geometry.coordinates
-#> 1 Feature         Point   21.97757, 13.12265
-#> 2 Feature         Point -110.93869, 47.96132
-#> 
-#> attr(,"class")
-#> [1] "featurecollection"
+#> <FeatureCollection>
+#>   Bounding box: -95.9 -27.5 127.6 49.4
+#>   No. features: 2
+#>   No. points: 4
+#>   Properties: NULL
 ```
 
 
 ```r
 lawn_random(n = 5)
-#> $type
-#> [1] "FeatureCollection"
-#> 
-#> $features
-#>      type geometry.type    geometry.coordinates
-#> 1 Feature         Point -80.2474412, -0.2338901
-#> 2 Feature         Point    -104.75440, 61.34878
-#> 3 Feature         Point     42.43227, -33.78958
-#> 4 Feature         Point   -127.35324, -67.36504
-#> 5 Feature         Point      67.95762, 30.22066
-#> 
-#> attr(,"class")
-#> [1] "featurecollection"
+#> <FeatureCollection>
+#>   Bounding box: -155.2 -88.4 88.1 7.9
+#>   No. features: 5
+#>   No. points: 10
+#>   Properties: NULL
 ```
 
 ### random features with geojson-random
@@ -230,7 +168,7 @@ Positions
 
 ```r
 gr_position()
-#> [1] -147.818105    7.749464
+#> [1] -23.04592 -51.32943
 ```
 
 Points
@@ -238,16 +176,11 @@ Points
 
 ```r
 gr_point(2)
-#> $type
-#> [1] "FeatureCollection"
-#> 
-#> $features
-#>      type geometry.type geometry.coordinates
-#> 1 Feature         Point  -18.84722, 50.56293
-#> 2 Feature         Point   -12.84356, 5.76044
-#> 
-#> attr(,"class")
-#> [1] "featurecollection"
+#> <FeatureCollection>
+#>   Bounding box: -1.4 24.6 174.8 65.0
+#>   No. features: 2
+#>   No. points: 4
+#>   Properties: NULL
 ```
 
 Polygons
@@ -255,17 +188,11 @@ Polygons
 
 ```r
 gr_polygon(n = 1, vertices = 5, max_radial_length = 5)
-#> $type
-#> [1] "FeatureCollection"
-#> 
-#> $features
-#>      type geometry.type
-#> 1 Feature       Polygon
-#>                                                                                                                       geometry.coordinates
-#> 1 -140.46534, -138.80870, -139.98371, -143.68460, -142.29049, -140.46534, -79.26876, -82.57643, -82.05062, -80.50215, -79.34784, -79.26876
-#> 
-#> attr(,"class")
-#> [1] "featurecollection"
+#> <FeatureCollection>
+#>   Bounding box: -74.6 -16.2 -68.8 -8.2
+#>   No. features: 1
+#>   No. points: 12
+#>   Properties: NULL
 ```
 
 ### sample from a FeatureCollection
@@ -274,46 +201,31 @@ gr_polygon(n = 1, vertices = 5, max_radial_length = 5)
 ```r
 dat <- lawn_data$points_average
 lawn_sample(dat, 1)
-#> $type
-#> [1] "FeatureCollection"
-#> 
-#> $features
-#>      type population geometry.type geometry.coordinates
-#> 1 Feature        200         Point   10.80643, 59.90891
-#> 
-#> attr(,"class")
-#> [1] "featurecollection"
+#> <FeatureCollection>
+#>   Bounding box: 10.8 59.9 10.8 59.9
+#>   No. features: 1
+#>   No. points: 2
+#>   Properties: NULL
 ```
 
 
 ```r
 lawn_sample(dat, 2)
-#> $type
-#> [1] "FeatureCollection"
-#> 
-#> $features
-#>      type population geometry.type geometry.coordinates
-#> 1 Feature        100         Point   10.74600, 59.90857
-#> 2 Feature        200         Point   10.80643, 59.90891
-#> 
-#> attr(,"class")
-#> [1] "featurecollection"
+#> <FeatureCollection>
+#>   Bounding box: 10.7 59.9 10.8 59.9
+#>   No. features: 2
+#>   No. points: 4
+#>   Properties: NULL
 ```
 
 
 ```r
 lawn_sample(dat, 3)
-#> $type
-#> [1] "FeatureCollection"
-#> 
-#> $features
-#>      type population geometry.type geometry.coordinates
-#> 1 Feature        300         Point   10.79544, 59.93162
-#> 2 Feature        600         Point   10.71579, 59.90478
-#> 3 Feature        200         Point   10.72403, 59.92681
-#> 
-#> attr(,"class")
-#> [1] "featurecollection"
+#> <FeatureCollection>
+#>   Bounding box: 10.7 59.9 10.8 59.9
+#>   No. features: 3
+#>   No. points: 6
+#>   Properties: NULL
 ```
 
 ### extent
@@ -329,16 +241,11 @@ lawn_extent(lawn_data$points_average)
 
 ```r
 lawn_within(lawn_data$points_within, lawn_data$polygons_within)
-#> $type
-#> [1] "FeatureCollection"
-#> 
-#> $features
-#>      type geometry.type geometry.coordinates
-#> 1 Feature         Point   -46.6318, -23.5523
-#> 2 Feature         Point     -46.643, -23.557
-#> 
-#> attr(,"class")
-#> [1] "featurecollection"
+#> <FeatureCollection>
+#>   Bounding box: -46.6 -23.6 -46.6 -23.6
+#>   No. features: 2
+#>   No. points: 4
+#>   Properties: NULL
 ```
 
 ### buffer
@@ -360,17 +267,11 @@ dat <- '{
    }
 }'
 lawn_buffer(dat, 1, "miles")
-#> $type
-#> [1] "FeatureCollection"
-#> 
-#> $features
-#>      type geometry.type
-#> 1 Feature       Polygon
-#>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           geometry.coordinates
-#> 1 -112.07239, -112.07522, -112.07793, -112.08044, -112.08263, -112.08443, -112.08577, -112.08660, -112.08687, -112.08687, -112.08660, -112.08577, -112.08443, -112.08263, -112.08044, -112.07793, -112.07522, -112.07239, -112.02810, -112.02528, -112.02256, -112.02006, -112.01786, -112.01606, -112.01472, -112.01390, -112.01362, -112.01362, -112.01390, -112.01472, -112.01606, -112.01786, -112.02006, -112.02256, -112.02528, -112.02810, -112.07239, 46.57211, 46.57239, 46.57321, 46.57455, 46.57635, 46.57854, 46.58105, 46.58377, 46.58659, 46.61761, 46.62044, 46.62315, 46.62566, 46.62785, 46.62965, 46.63099, 46.63181, 46.63209, 46.63209, 46.63181, 46.63099, 46.62965, 46.62785, 46.62566, 46.62315, 46.62044, 46.61761, 46.58659, 46.58377, 46.58105, 46.57854, 46.57635, 46.57455, 46.57321, 46.57239, 46.57211, 46.57211
-#> 
-#> attr(,"class")
-#> [1] "featurecollection"
+#> <FeatureCollection>
+#>   Bounding box: -112.1 46.6 -112.0 46.6
+#>   No. features: 1
+#>   No. points: 74
+#>   Properties: NULL
 ```
 
 ### lint input geojson
@@ -474,13 +375,13 @@ To cite `lawn` in publications use:
 <br>
 
 > Scott Chamberlain and Jeff Hollister (2015). lawn: R Client for Turf.js for Geospatial
-  Analysis. R package version 0.1.0. https://github.com/ropensci/lawn
+  Analysis. R package version 0.1.4. https://github.com/ropensci/lawn
 
 <section id="license_bugs">
 
 ## License and bugs
 
 * License: [MIT](http://opensource.org/licenses/MIT)
-* Report bugs at [our Github repo for bold](https://github.com/ropensci/lawn/issues?state=open)
+* Report bugs at [our Github repo for lawn](https://github.com/ropensci/lawn/issues?state=open)
 
 [Back to top](#top)

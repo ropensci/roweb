@@ -1,7 +1,7 @@
 ---
 title: fulltext vignette
 layout: tutorial
-packge_version: 0.1
+packge_version: 0.1.4
 ---
 
 
@@ -16,8 +16,6 @@ packge_version: 0.1
 * Extract - pull out the bits of articles that you want
 
 <section id="installation">
-
-## Installation
 
 You can install from CRAN
 
@@ -41,6 +39,7 @@ Load the package
 library("fulltext")
 ```
 
+
 <section id="usage">
 
 ## Search for articles
@@ -56,9 +55,9 @@ Search for the term _ecology_ in PLOS journals.
 #> Query:
 #>   [ecology] 
 #> Found:
-#>   [PLoS: 28561; BMC: 0; Crossref: 0; Entrez: 0; arxiv: 0; biorxiv: 0] 
+#>   [PLoS: 30831; BMC: 0; Crossref: 0; Entrez: 0; arxiv: 0; biorxiv: 0; Europe PMC: 0] 
 #> Returned:
-#>   [PLoS: 10; BMC: 0; Crossref: 0; Entrez: 0; arxiv: 0; biorxiv: 0]
+#>   [PLoS: 10; BMC: 0; Crossref: 0; Entrez: 0; arxiv: 0; biorxiv: 0; Europe PMC: 0]
 ```
 
 Each publisher/search-engine has a slot with metadata and data
@@ -70,7 +69,7 @@ res1$plos
 
 ```
 #> Query: [ecology] 
-#> Records found, returned: [28561, 10] 
+#> Records found, returned: [30831, 10] 
 #> License: [CC-BY] 
 #>                                                         id
 #> 1                             10.1371/journal.pone.0059813
@@ -79,10 +78,10 @@ res1$plos
 #> 4                             10.1371/journal.pone.0080763
 #> 5                             10.1371/journal.pone.0102437
 #> 6                             10.1371/journal.pone.0017342
-#> 7                             10.1371/journal.pone.0091497
-#> 8                             10.1371/journal.pone.0092931
-#> 9  10.1371/annotation/28ac6052-4f87-4b88-a817-0cd5743e83d6
-#> 10                            10.1371/journal.pcbi.1003594
+#> 7                             10.1371/journal.pone.0140306
+#> 8                             10.1371/journal.pone.0091497
+#> 9                             10.1371/journal.pone.0092931
+#> 10 10.1371/annotation/28ac6052-4f87-4b88-a817-0cd5743e83d6
 ```
 
 ## Get full text
@@ -95,12 +94,13 @@ Using the results from `ft_search()` we can grab full text of some articles
 ```
 
 ```
+#> <fulltext text>
 #> [Docs] 8 
 #> [Source] R session  
 #> [IDs] 10.1371/journal.pone.0059813 10.1371/journal.pone.0001248
 #>      10.1371/journal.pone.0080763 10.1371/journal.pone.0102437
-#>      10.1371/journal.pone.0017342 10.1371/journal.pone.0091497
-#>      10.1371/journal.pone.0092931 10.1371/journal.pcbi.1003594 ...
+#>      10.1371/journal.pone.0017342 10.1371/journal.pone.0140306
+#>      10.1371/journal.pone.0091497 10.1371/journal.pone.0092931 ...
 ```
 
 Dig in to the PLOS data
@@ -117,8 +117,8 @@ out$plos
 #> $dois
 #> [1] "10.1371/journal.pone.0059813" "10.1371/journal.pone.0001248"
 #> [3] "10.1371/journal.pone.0080763" "10.1371/journal.pone.0102437"
-#> [5] "10.1371/journal.pone.0017342" "10.1371/journal.pone.0091497"
-#> [7] "10.1371/journal.pone.0092931" "10.1371/journal.pcbi.1003594"
+#> [5] "10.1371/journal.pone.0017342" "10.1371/journal.pone.0140306"
+#> [7] "10.1371/journal.pone.0091497" "10.1371/journal.pone.0092931"
 #> 
 #> $data
 #> $data$backend
@@ -129,11 +129,11 @@ out$plos
 #> 
 #> $data$data
 #> 8 full-text articles retrieved 
-#> Min. Length: 3828 - Max. Length: 104702 
+#> Min. Length: 3828 - Max. Length: 98949 
 #> DOIs: 10.1371/journal.pone.0059813 10.1371/journal.pone.0001248
 #>   10.1371/journal.pone.0080763 10.1371/journal.pone.0102437
-#>   10.1371/journal.pone.0017342 10.1371/journal.pone.0091497
-#>   10.1371/journal.pone.0092931 10.1371/journal.pcbi.1003594 ... 
+#>   10.1371/journal.pone.0017342 10.1371/journal.pone.0140306
+#>   10.1371/journal.pone.0091497 10.1371/journal.pone.0092931 ... 
 #> 
 #> NOTE: extract xml strings like output['<doi>']
 #> 
@@ -141,11 +141,8 @@ out$plos
 #> $opts$doi
 #> [1] "10.1371/journal.pone.0059813" "10.1371/journal.pone.0001248"
 #> [3] "10.1371/journal.pone.0080763" "10.1371/journal.pone.0102437"
-#> [5] "10.1371/journal.pone.0017342" "10.1371/journal.pone.0091497"
-#> [7] "10.1371/journal.pone.0092931" "10.1371/journal.pcbi.1003594"
-#> 
-#> $opts$callopts
-#> list()
+#> [5] "10.1371/journal.pone.0017342" "10.1371/journal.pone.0140306"
+#> [7] "10.1371/journal.pone.0091497" "10.1371/journal.pone.0092931"
 ```
 
 Dig in further to get to one of the articles in XML format
@@ -201,6 +198,8 @@ res2$arxiv$data
 #> $path$`cond-mat/9309029`
 #> [1] "~/.fulltext/cond-mat_9309029.pdf"
 #> 
+#> attr(,"format")
+#> [1] "xml"
 #> 
 #> $data
 #> $data[[1]]
@@ -240,12 +239,13 @@ res <- ft_search(query = "ecology", from = "plos")
 ```
 
 ```
+#> <fulltext text>
 #> [Docs] 8 
 #> [Source] R session  
 #> [IDs] 10.1371/journal.pone.0059813 10.1371/journal.pone.0001248
 #>      10.1371/journal.pone.0080763 10.1371/journal.pone.0102437
-#>      10.1371/journal.pone.0017342 10.1371/journal.pone.0091497
-#>      10.1371/journal.pone.0092931 10.1371/journal.pcbi.1003594 ...
+#>      10.1371/journal.pone.0017342 10.1371/journal.pone.0140306
+#>      10.1371/journal.pone.0091497 10.1371/journal.pone.0092931 ...
 ```
 
 Extract DOIs
@@ -282,6 +282,11 @@ x %>% chunks("doi")
 #> [1] "10.1371/journal.pone.0017342"
 #> 
 #> 
+#> $plos$`10.1371/journal.pone.0140306`
+#> $plos$`10.1371/journal.pone.0140306`$doi
+#> [1] "10.1371/journal.pone.0140306"
+#> 
+#> 
 #> $plos$`10.1371/journal.pone.0091497`
 #> $plos$`10.1371/journal.pone.0091497`$doi
 #> [1] "10.1371/journal.pone.0091497"
@@ -290,11 +295,6 @@ x %>% chunks("doi")
 #> $plos$`10.1371/journal.pone.0092931`
 #> $plos$`10.1371/journal.pone.0092931`$doi
 #> [1] "10.1371/journal.pone.0092931"
-#> 
-#> 
-#> $plos$`10.1371/journal.pcbi.1003594`
-#> $plos$`10.1371/journal.pcbi.1003594`$doi
-#> [1] "10.1371/journal.pcbi.1003594"
 ```
 
 Extract DOIs and categories
@@ -387,6 +387,14 @@ x %>% chunks(c("doi","categories"))
 #> [19] "Mathematics"         
 #> 
 #> 
+#> $plos$`10.1371/journal.pone.0140306`
+#> $plos$`10.1371/journal.pone.0140306`$doi
+#> [1] "10.1371/journal.pone.0140306"
+#> 
+#> $plos$`10.1371/journal.pone.0140306`$categories
+#> [1] "Correction"
+#> 
+#> 
 #> $plos$`10.1371/journal.pone.0091497`
 #> $plos$`10.1371/journal.pone.0091497`$doi
 #> [1] "10.1371/journal.pone.0091497"
@@ -401,16 +409,6 @@ x %>% chunks(c("doi","categories"))
 #> 
 #> $plos$`10.1371/journal.pone.0092931`$categories
 #> [1] "Correction"
-#> 
-#> 
-#> $plos$`10.1371/journal.pcbi.1003594`
-#> $plos$`10.1371/journal.pcbi.1003594`$doi
-#> [1] "10.1371/journal.pcbi.1003594"
-#> 
-#> $plos$`10.1371/journal.pcbi.1003594`$categories
-#> [1] "Research Article"          "Biology and life sciences"
-#> [3] "Computational biology"     "Microbiology"             
-#> [5] "Theoretical biology"
 ```
 
 `tabularize` attempts to help you put the data that comes out of `chunks()` in to a `data.frame`, that we all know and love.
@@ -428,9 +426,9 @@ x %>% chunks(c("doi", "history")) %>% tabularize()
 #> 3 10.1371/journal.pone.0080763       2013-08-15       2013-10-16
 #> 4 10.1371/journal.pone.0102437       2013-11-27       2014-06-19
 #> 5 10.1371/journal.pone.0017342       2010-08-24       2011-01-31
-#> 6 10.1371/journal.pone.0091497             <NA>             <NA>
-#> 7 10.1371/journal.pone.0092931             <NA>             <NA>
-#> 8 10.1371/journal.pcbi.1003594       2014-01-09       2014-03-14
+#> 6 10.1371/journal.pone.0140306             <NA>             <NA>
+#> 7 10.1371/journal.pone.0091497             <NA>             <NA>
+#> 8 10.1371/journal.pone.0092931             <NA>             <NA>
 ```
 
 
@@ -438,7 +436,8 @@ x %>% chunks(c("doi", "history")) %>% tabularize()
 
 ## Citing
 
-> Chamberlain Scott (2015). fulltext: Full Text of Scholarly Articles Across Many Data Sources. R package version 0.1.0. https://github.com/ropensci/fulltext
+> Chamberlain Scott (2015). fulltext: Full Text of Scholarly Articles Across Many Data Sources. R package version 0.1.4. https://github.com/ropensci/fulltext
+
 
 
 <section id="license_bugs">
@@ -447,5 +446,6 @@ x %>% chunks(c("doi", "history")) %>% tabularize()
 
 * License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our GitHub repo for fulltext](https://github.com/ropensci/fulltext/issues?state=open)
+
 
 [Back to top](#top)

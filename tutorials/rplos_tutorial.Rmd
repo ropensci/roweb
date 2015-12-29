@@ -1,7 +1,7 @@
 ---
 title: rplos tutorial
 layout: tutorial
-packge_version: 0.5.0
+packge_version: 0.5.4
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
@@ -206,7 +206,7 @@ To cite `rplos` in publications use:
 
 <br>
 
-> Scott Chamberlain, Carl Boettiger and Karthik Ram (2015). rplos: Interface to PLOS Journals search API. R package version 0.5.0 https://github.com/ropensci/rplos
+> Scott Chamberlain, Carl Boettiger and Karthik Ram (2015). rplos: Interface to PLOS Journals search API. R package version 0.5.4 https://github.com/ropensci/rplos
 
 <section id="license_bugs">
 

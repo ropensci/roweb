@@ -35,3 +35,4 @@ SSOAP
 taxize
 testthat
 XML
+dplyr

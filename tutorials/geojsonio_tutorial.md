@@ -1,7 +1,7 @@
 ---
 title: geojsonio tutorial
 layout: tutorial
-packge_version: 0.1
+packge_version: 0.1.4
 ---
 
 
@@ -19,44 +19,18 @@ Each of the above functions have methods for various objects/classes, including 
 
 Additional functions:
 
-* `map_gist()` - push up a geojson or topojson file as a GitHub gist (renders as an interactive map)
+* `map_gist()` - push up a geojson or topojson file as a GitHub gist (renders as an interactive map) - See the _maps with geojsonio_ vignette.
+* `map_leaf()` - create a local interactive map with the `leaflet` package - See the _maps with geojsonio_ vignette.
 
 <section id="installation">
 
 ## Installation
 
-A note about installing `rgdal` and `rgeos` - these two packages are built on top of C libraries, and their installation often causes trouble for Mac and Linux users because no binaries are provided on CRAN for those platforms. Other dependencies in `geojsonio` should install easily automatically when you install `geojsonio`. Change to the version of `rgdal` and `GDAL` you have):
-
-_Mac_
-
-Install `GDAL` on the command line first, e.g., usingn `homebrew`
-
-```
-brew install gdal
-```
-
-Then install `rgdal` and `rgeos`
+Install rgdal - in case you can't get it installed from binary , here's what works on a Mac (change to the version of `rgdal` and `GDAL` you have).
 
 
 ```r
-install.packages("rgdal", type = "source", configure.args = "--with-gdal-config=/Library/Frameworks/GDAL.framework/Versions/1.11/unix/bin/gdal-config --with-proj-include=/Library/Frameworks/PROJ.framework/unix/include --with-proj-lib=/Library/Frameworks/PROJ.framework/unix/lib")
-install.packages("rgeos", type = "source")
-```
-
-_Linux_
-
-Get deps first
-
-```
-sudo apt-get install libgdal1-dev libgdal-dev libgeos-c1 libproj-dev
-```
-
-Then install `rgdal` and `rgeos`
-
-
-```r
-install.packages("rgdal", type = "source")
-install.packages("rgeos", type = "source")
+install.packages("http://cran.r-project.org/src/contrib/rgdal_0.9-1.tar.gz", repos = NULL, type="source", configure.args = "--with-gdal-config=/Library/Frameworks/GDAL.framework/Versions/1.11/unix/bin/gdal-config --with-proj-include=/Library/Frameworks/PROJ.framework/unix/include --with-proj-lib=/Library/Frameworks/PROJ.framework/unix/lib")
 ```
 
 __Install geojsonio__
@@ -120,7 +94,9 @@ as __json__
 
 
 ```r
-geojson_json(us_cities[1:2, ], lat = 'lat', lon = 'long')
+library('maps')
+data(us.cities)
+geojson_json(us.cities[1:2, ], lat = 'lat', lon = 'long')
 #> {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[-99.74,32.45]},"properties":{"name":"Abilene TX","country.etc":"TX","pop":"113888","capital":"0"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-81.52,41.08]},"properties":{"name":"Akron OH","country.etc":"OH","pop":"206634","capital":"0"}}]}
 ```
 
@@ -128,7 +104,7 @@ as a __list__
 
 
 ```r
-geojson_list(us_cities[1:2, ], lat = 'lat', lon = 'long')
+geojson_list(us.cities[1:2, ], lat = 'lat', lon = 'long')
 #> $type
 #> [1] "FeatureCollection"
 #> 
@@ -147,10 +123,10 @@ From `SpatialPolygons` class
 
 ```r
 library('sp')
-poly1 <- Polygons(list(Polygon(cbind(c(-100, -90, -85, -100),
-  c(40, 50, 45, 40)))), "1")
-poly2 <- Polygons(list(Polygon(cbind(c(-90, -80, -75, -90),
-  c(30, 40, 35, 30)))), "2")
+poly1 <- Polygons(list(Polygon(cbind(c(-100,-90,-85,-100),
+  c(40,50,45,40)))), "1")
+poly2 <- Polygons(list(Polygon(cbind(c(-90,-80,-75,-90),
+  c(30,40,35,30)))), "2")
 sp_poly <- SpatialPolygons(list(poly1, poly2), 1:2)
 ```
 
@@ -215,52 +191,29 @@ geojson_list(s)
 ...
 ```
 
-### Combine objects
-
-`geo_list` + `geo_list`
-
-> Note: `geo_list` is the output type from `geojson_list()`, it's just a list with a class attached so we know it's geojson :)
-
-
-```r
-vec <- c(-99.74, 32.45)
-a <- geojson_list(vec)
-vecs <- list(c(100.0, 0.0), c(101.0, 0.0), c(100.0, 0.0))
-b <- geojson_list(vecs, geometry = "polygon")
-a + b
-#> $type
-#> [1] "FeatureCollection"
-#> 
-#> $features
-#> $features[[1]]
-#> $features[[1]]$type
-#> [1] "Feature"
-#> 
-#> $features[[1]]$geometry
-#> $features[[1]]$geometry$type
-...
-```
-
-`json` + `json`
-
-
-```r
-c <- geojson_json(c(-99.74, 32.45))
-vecs <- list(c(100.0, 0.0), c(101.0, 0.0), c(101.0, 1.0), c(100.0, 1.0), c(100.0, 0.0))
-d <- geojson_json(vecs, geometry = "polygon")
-c + d
-#> {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[-99.74,32.45]},"properties":{}},{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[100,0],[101,0],[101,1],[100,1],[100,0]]]},"properties":[]}]}
-```
-
 ### Write geojson
 
 
 ```r
-geojson_write(us_cities[1:2, ], lat = 'lat', lon = 'long')
+library('maps')
+data(us.cities)
+geojson_write(us.cities[1:2, ], lat = 'lat', lon = 'long')
 #> <geojson>
 #>   Path:       myfile.geojson
 #>   From class: data.frame
 ```
+
+### Read geojson
+
+
+```r
+library("sp")
+file <- system.file("examples", "california.geojson", package = "geojsonio")
+out <- geojson_read(file, what = "sp")
+plot(out)
+```
+
+![plot of chunk unnamed-chunk-17](../assets/tutorial-images/geojsonio/unnamed-chunk-17-1.png) 
 
 ## Topojson
 
@@ -271,7 +224,24 @@ Read from a file
 
 ```r
 file <- system.file("examples", "us_states.topojson", package = "geojsonio")
-out <- geojson_read(file)
+out <- topojson_read(file, verbose = FALSE)
+summary(out)
+#> Object of class SpatialPolygonsDataFrame
+#> Coordinates:
+#>          min       max
+#> x -171.79111 -66.96466
+#> y   18.91619  71.35776
+#> Is projected: NA 
+#> proj4string : [NA]
+#> Data attributes:
+#>           id       name   
+#>  Alabama   : 1   NA's:51  
+#>  Alaska    : 1            
+#>  Arizona   : 1            
+#>  Arkansas  : 1            
+#>  California: 1            
+#>  Colorado  : 1            
+#>  (Other)   :45
 ```
 
 Read from a URL
@@ -279,7 +249,7 @@ Read from a URL
 
 ```r
 url <- "https://raw.githubusercontent.com/shawnbot/d3-cartogram/master/data/us-states.topojson"
-out <- topojson_read(url)
+out <- topojson_read(url, verbose = FALSE)
 ```
 
 Or use `as.location()` first
@@ -287,17 +257,18 @@ Or use `as.location()` first
 
 ```r
 (loc <- as.location(file))
-out <- topojson_read(loc)
+#> <location> 
+#>    Type:  file 
+#>    Location:  /Library/Frameworks/R.framework/Versions/3.2/Resources/library/geojsonio/examples/us_states.topojson
+out <- topojson_read(loc, verbose = FALSE)
 ```
-
 
 
 <section id="citing">
 
 ## Citing
 
-> Scott Chamberlain and Andy Teucher (2015). geojsonio: Convert Data from and to 'geoJSON' or 'topoJSON'. R package
-  version 0.1.0
+> Scott Chamberlain and Andy Teucher (2015). geojsonio: Convert Data from and to 'geoJSON' or 'topoJSON'. R package version 0.1.4
 
 
 

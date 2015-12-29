@@ -1,41 +1,47 @@
 ---
 title: spocc tutorial
 layout: tutorial
-packge_version: 0.3.0
+packge_version: 0.4.0
 ---
 
 
 
-The rOpenSci projects aims to provide programmatic access to scientific data repositories on the web. A vast majority of the packages in our current suite retrieve some form of biodiversity or taxonomic data. Since several of these datasets have been georeferenced, it provides numerous opportunities for visualizing species distributions, building species distribution maps, and for using it analyses such as species distribution models. In an effort to streamline access to these data, we have developed a package called Spocc, which provides a unified API to all the biodiversity sources that we provide. The obvious advantage is that a user can interact with a common API and not worry about the nuances in syntax that differ between packages. As more data sources come online, users can access even more data without significant changes to their code. However, it is important to note that spocc will never replicate the full functionality that exists within specific packages. Therefore users with a strong interest in one of the specific data sources listed below would benefit from familiarising themselves with the inner working of the appropriate packages.
+The rOpenSci projects aims to provide programmatic access to scientific data repositories on the web. A vast majority of the packages in our current suite retrieve some form of biodiversity or taxonomic data. Since several of these datasets have been georeferenced, it provides numerous opportunities for visualizing species distributions, building species distribution maps, and for using it analyses such as species distribution models. In an effort to streamline access to these data, we have developed a package called `spocc`, which provides a unified API to all the biodiversity sources that we provide. The obvious advantage is that a user can interact with a common API and not worry about the nuances in syntax that differ between packages. As more data sources come online, users can access even more data without significant changes to their code. However, it is important to note that spocc will never replicate the full functionality that exists within specific packages. Therefore users with a strong interest in one of the specific data sources listed below would benefit from familiarising themselves with the inner working of the appropriate packages.
 
 > `spocc` utilities for cleaning data and mapping have been moved to `spoccutils`
 
 ### Data Sources
 
-`spocc` currently interfaces with six major biodiversity repositories
+`spocc` currently interfaces with nine major biodiversity repositories
 
-1. Global Biodiversity Information Facility (`rgbif`)
-[GBIF](http://www.gbif.org/) is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.
+1. [Global Biodiversity Information Facility (GBIF)](http://www.gbif.org/) (via `rgbif`)
+GBIF is a government funded open data repository with several partner organizations with the express goal of providing access to data on Earth's biodiversity. The data are made available by a network of member nodes, coordinating information from various participant organizations and government agencies.
 
-2. [iDigBio](https://www.idigbio.org/)
-Integrated Digitized Biocollections (iDigBio) is the U.S. National Resource for Advancing Digitization of Biodiversity Collections (ADBC) funded by the National Science Foundation. Through ADBC, data and images for millions of biological specimens are being made available in electronic format for the research community, government agencies, students, educators, and the general public. Data are available via a specimen portal and the iDigBio Search APIs.
-
-3. [Berkeley Ecoengine](http://ecoengine.berkeley.edu/) (`ecoengine`)
+2. [Berkeley Ecoengine](http://ecoengine.berkeley.edu/) (via `ecoengine`)
 The ecoengine is an open API built by the [Berkeley Initiative for Global Change Biology](http://globalchange.berkeley.edu/). The repository provides access to over 3 million specimens from various Berkeley natural history museums. These data span more than a century and provide access to georeferenced specimens, species checklists, photographs, vegetation surveys and resurveys and a variety of measurements from environmental sensors located at reserves across University of California's natural reserve system.
 
-4. [iNaturalist](http://www.inaturalist.org/) (`rinat`)
+3. [iNaturalist](http://www.inaturalist.org/)
 iNaturalist provides access to crowd sourced citizen science data on species observations.
 
-5. [Biodiversity Information Serving Our Nation](http://bison.usgs.ornl.gov/) (`rbison`)
+4. [VertNet](http://vertnet.org/) (via `rvertnet`)
+Similar to `rgbif`, ecoengine, and `rbison` (see below), VertNet provides access to more than 80 million vertebrate records spanning a large number of institutions and museums primarly covering four major disciplines (mammology, herpetology, ornithology, and icthyology). __Note that we don't currenlty support VertNet data in this package, but we should soon__
+
+5. [Biodiversity Information Serving Our Nation](http://bison.usgs.ornl.gov/) (via `rbison`)
 Built by the US Geological Survey's core science analytic team, BISON is a portal that provides access to species occurrence data from several participating institutions.
 
-6. [eBird](http://ebird.org/content/ebird/) (`rebird`)
+6. [eBird](http://ebird.org/content/ebird/) (via `rebird`)
 ebird is a database developed and maintained by the Cornell Lab of Ornithology and the National Audubon Society. It provides real-time access to checklist data, data on bird abundance and distribution, and communtiy reports from birders.
 
-7. [AntWeb](http://antweb.org) (`AntWeb`)
+7. [AntWeb](http://antweb.org) (via `AntWeb`)
 AntWeb is the world's largest online database of images, specimen records, and natural history information on ants. It is community driven and open to contribution from anyone with specimen records, natural history comments, or images.
 
-__Note:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurrence data obtained from aggregators such as BISON and iDigBio may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package.
+8. [iDigBio](https://www.idigbio.org/) (via `ridigbio`)
+iDigBio facilitates the digitization of biological and paleobiological specimens and their associated data, and houses specimen data, as well as providing their specimen data via RESTful web services.
+
+9. [OBIS](http://www.iobis.org/)
+OBIS (Ocean Biogeographic Information System) allows users to search marine species datasets from all of the world's oceans.
+
+__Important Note:__ It's important to keep in mind that several data providers interface with many of the above mentioned repositories. This means that occurence data obtained from BISON may be duplicates of data that are also available through GBIF. We do not have a way to resolve these duplicates or overlaps at this time but it is an issue we are hoping to resolve in future versions of the package. See `?spocc_duplicates`, after installation, for more.
 
 <section id="installation">
 
@@ -57,6 +63,10 @@ install_github("ropensci/spocc")
 ```
 
 
+```r
+library('spocc')
+```
+
 <section id="usage">
 
 ## Usage
@@ -68,17 +78,17 @@ The most significant function in spocc is the `occ` (short for occurrence) funct
 
 ```r
 library('spocc')
-(df <- occ(query = 'Accipiter striatus', from = 'gbif', limit = 100))
+(df <- occ(query = 'Accipiter striatus', from = 'gbif'))
 ```
 
 ```
 #> Searched: gbif
-#> Occurrences - Found: 447,905, Returned: 100
+#> Occurrences - Found: 528,945, Returned: 500
 #> Search type: Scientific
-#>   gbif: Accipiter striatus (100)
+#>   gbif: Accipiter striatus (500)
 ```
 
-The data returned are part of a `S3` class called `occdat`. This class has slots for the five data sources described above. One can easily switch the source by changing the `from` parameter in the function call above.
+The data returned are part of a `S3` class called `occdat`. This class has slots for each of the data sources described above. One can easily switch the source by changing the `from` parameter in the function call above.
 
 Within each data source is the set of species queried. In the above example, we only asked for occurrence data for one species, but we could have asked for any number. Let's say we asked for data for two species: _Accipiter striatus_, and _Pinus contorta_. Then the structure of the response would be
 
@@ -92,44 +102,68 @@ response -- |
                               | -- Accipiter_striatus
                               | -- Pinus_contorta
 
-            | -- inat ------- |
-                              | -- Accipiter_striatus
-                              | -- Pinus_contorta
-
-            | -- bison ------ |
-                              | -- Accipiter_striatus
-                              | -- Pinus_contorta
-
-            | -- ebird ------ |
-                              | -- Accipiter_striatus
-                              | -- Pinus_contorta
-
-            | -- antweb ----- |
-                              | -- Accipiter_striatus
-                              | -- Pinus_contorta
+            ... and so on for each data source
 
 ```
 
 If you only request data from gbif, like `from = 'gbif'`, then the other four source slots are present in the response object, but have no data.
 
-You can quickly get just the data by indexing to the data element, like
+You can quickly get just the GBIF data by indexing to it, like
 
 
 ```r
-df$gbif$data$Accipiter_striatus[1:4,1:5]
+df$gbif
 ```
 
 ```
-#>                 name  longitude latitude                        issues
-#> 1 Accipiter striatus    0.00000  0.00000 cucdmis,gass84,mdatunl,zerocd
-#> 2 Accipiter striatus  -71.19554 42.31845           cdround,cudc,gass84
-#> 3 Accipiter striatus         NA       NA                              
-#> 4 Accipiter striatus -104.88120 21.46585           cdround,cudc,gass84
-#>   prov
-#> 1 gbif
-#> 2 gbif
-#> 3 gbif
-#> 4 gbif
+#> Species [Accipiter striatus (500)] 
+#> First 10 rows of [Accipiter_striatus]
+#> 
+#>                  name  longitude latitude prov
+#> 1  Accipiter striatus  -97.64102 30.55880 gbif
+#> 2  Accipiter striatus -104.83266 21.47117 gbif
+#> 3  Accipiter striatus    0.00000  0.00000 gbif
+#> 4  Accipiter striatus  -71.06930 42.34816 gbif
+#> 5  Accipiter striatus  -97.25801 32.89462 gbif
+#> 6  Accipiter striatus  -72.54554 41.22175 gbif
+#> 7  Accipiter striatus -104.97779 39.71702 gbif
+#> 8  Accipiter striatus  -75.17209 40.34000 gbif
+#> 9  Accipiter striatus  -78.11608 37.98438 gbif
+#> 10 Accipiter striatus  -99.47478 27.48211 gbif
+#> ..                ...        ...      ...  ...
+#> Variables not shown: issues (chr), key (int), datasetKey (chr),
+#>      publishingOrgKey (chr), publishingCountry (chr), protocol (chr),
+#>      lastCrawled (chr), lastParsed (chr), extensions (chr), basisOfRecord
+#>      (chr), taxonKey (int), kingdomKey (int), phylumKey (int), classKey
+#>      (int), orderKey (int), familyKey (int), genusKey (int), speciesKey
+#>      (int), scientificName (chr), kingdom (chr), phylum (chr), order
+#>      (chr), family (chr), genus (chr), species (chr), genericName (chr),
+#>      specificEpithet (chr), taxonRank (chr), dateIdentified (chr), year
+#>      (int), month (int), day (int), eventDate (time), modified (chr),
+#>      lastInterpreted (chr), references (chr), identifiers (chr), facts
+#>      (chr), relations (chr), geodeticDatum (chr), class (chr), countryCode
+#>      (chr), country (chr), rightsHolder (chr), identifier (chr),
+#>      informationWithheld (chr), verbatimEventDate (chr), datasetName
+#>      (chr), gbifID (chr), collectionCode (chr), verbatimLocality (chr),
+#>      occurrenceID (chr), taxonID (chr), catalogNumber (chr), recordedBy
+#>      (chr), http...unknown.org.occurrenceDetails (chr), institutionCode
+#>      (chr), rights (chr), eventTime (chr), identificationID (chr), sex
+#>      (chr), establishmentMeans (chr), continent (chr), stateProvince
+#>      (chr), institutionID (chr), county (chr), language (chr), type (chr),
+#>      preparations (chr), occurrenceStatus (chr), nomenclaturalCode (chr),
+#>      higherGeography (chr), endDayOfYear (chr), locality (chr),
+#>      disposition (chr), otherCatalogNumbers (chr), startDayOfYear (chr),
+#>      occurrenceRemarks (chr), accessRights (chr), higherClassification
+#>      (chr), elevation (dbl), elevationAccuracy (dbl),
+#>      http...unknown.org.organismID (chr), identificationVerificationStatus
+#>      (chr), locationAccordingTo (chr), identifiedBy (chr),
+#>      georeferencedDate (chr), georeferencedBy (chr), georeferenceProtocol
+#>      (chr), georeferenceVerificationStatus (chr), verbatimCoordinateSystem
+#>      (chr), previousIdentifications (chr), identificationQualifier (chr),
+#>      samplingProtocol (chr), georeferenceSources (chr), dynamicProperties
+#>      (chr), infraspecificEpithet (chr), georeferenceRemarks (chr),
+#>      collectionID (chr), habitat (chr), vernacularName (chr), recordNumber
+#>      (chr)
 ```
 
 When you get data from multiple providers, the fields returned are slightly different, e.g.:
@@ -142,23 +176,23 @@ head(df$gbif$data$Accipiter_striatus)[1:6,1:10]
 
 ```
 #>                 name  longitude latitude                        issues
-#> 1 Accipiter striatus    0.00000  0.00000 cucdmis,gass84,mdatunl,zerocd
-#> 2 Accipiter striatus  -71.19554 42.31845           cdround,cudc,gass84
-#> 3 Accipiter striatus         NA       NA                              
-#> 4 Accipiter striatus -104.88120 21.46585           cdround,cudc,gass84
-#> 5 Accipiter striatus  -75.17209 40.34000           cdround,cudc,gass84
-#> 6 Accipiter striatus  -78.15051 37.95521           cdround,cudc,gass84
+#> 1 Accipiter striatus  -97.64102 30.55880           cdround,cudc,gass84
+#> 2 Accipiter striatus -104.83266 21.47117           cdround,cudc,gass84
+#> 3 Accipiter striatus    0.00000  0.00000 cucdmis,gass84,mdatunl,zerocd
+#> 4 Accipiter striatus  -71.06930 42.34816           cdround,cudc,gass84
+#> 5 Accipiter striatus  -97.25801 32.89462           cdround,cudc,gass84
+#> 6 Accipiter striatus  -72.54554 41.22175           cdround,cudc,gass84
 #>   prov        key                           datasetKey
-#> 1 gbif 1064538129 84b26828-f762-11e1-a439-00145eb45e9a
-#> 2 gbif 1065595652 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 3 gbif 1065586305 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 4 gbif 1065595128 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 5 gbif 1065588599 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 6 gbif 1065595954 50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#> 1 gbif 1065597283 50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#> 2 gbif 1065595128 50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#> 3 gbif 1064538129 84b26828-f762-11e1-a439-00145eb45e9a
+#> 4 gbif 1065595652 50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#> 5 gbif 1052607342 50c9509d-22c7-4a22-a47d-8c48425ef4a7
+#> 6 gbif 1065586305 50c9509d-22c7-4a22-a47d-8c48425ef4a7
 #>                       publishingOrgKey publishingCountry    protocol
-#> 1 8a471700-4ce8-11db-b80e-b8a03c50a862                US DWC_ARCHIVE
+#> 1 28eb1a3f-1c15-4a95-931a-4af90ecb574d                US DWC_ARCHIVE
 #> 2 28eb1a3f-1c15-4a95-931a-4af90ecb574d                US DWC_ARCHIVE
-#> 3 28eb1a3f-1c15-4a95-931a-4af90ecb574d                US DWC_ARCHIVE
+#> 3 8a471700-4ce8-11db-b80e-b8a03c50a862                US DWC_ARCHIVE
 #> 4 28eb1a3f-1c15-4a95-931a-4af90ecb574d                US DWC_ARCHIVE
 #> 5 28eb1a3f-1c15-4a95-931a-4af90ecb574d                US DWC_ARCHIVE
 #> 6 28eb1a3f-1c15-4a95-931a-4af90ecb574d                US DWC_ARCHIVE
@@ -169,27 +203,13 @@ head(df$ecoengine$data$Accipiter_striatus)
 ```
 
 ```
-#>   longitude latitude    type state_province
-#> 1 -122.1706 37.42894 Feature     California
-#> 2 -122.2238 37.46977 Feature     California
-#> 3 -122.2238 37.46977 Feature     California
-#> 4 -122.2238 37.46977 Feature     California
-#> 5 -122.2238 37.46977 Feature     California
-#> 6 -122.2238 37.46977 Feature     California
-#>   coordinate_uncertainty_in_meters   recorded_by begin_date   end_date
-#> 1                             1000 C. J. Pierson 1895-01-25 1895-01-25
-#> 2                             1000 C. Littlejohn 1922-11-22 1922-11-22
-#> 3                             1000 C. Littlejohn 1892-11-18 1892-11-18
-#> 4                             1000 C. Littlejohn 1914-10-11 1914-10-11
-#> 5                             1000 C. Littlejohn 1922-11-22 1922-11-22
-#> 6                             1000 C. Littlejohn 1922-10-25 1922-10-25
-#>                                          source
-#> 1 https://ecoengine.berkeley.edu/api/sources/8/
-#> 2 https://ecoengine.berkeley.edu/api/sources/8/
-#> 3 https://ecoengine.berkeley.edu/api/sources/8/
-#> 4 https://ecoengine.berkeley.edu/api/sources/8/
-#> 5 https://ecoengine.berkeley.edu/api/sources/8/
-#> 6 https://ecoengine.berkeley.edu/api/sources/8/
+#>   longitude latitude    type
+#> 1 -122.1706  37.4289 Feature
+#> 2 -122.2238  37.4698 Feature
+#> 3 -122.2238  37.4698 Feature
+#> 4 -122.2238  37.4698 Feature
+#> 5 -122.2238  37.4698 Feature
+#> 6 -122.2238  37.4698 Feature
 #>                                                                  url
 #> 1 https://ecoengine.berkeley.edu/api/observations/CAS%3AORN%3A73314/
 #> 2 https://ecoengine.berkeley.edu/api/observations/CAS%3AORN%3A73315/
@@ -197,20 +217,41 @@ head(df$ecoengine$data$Accipiter_striatus)
 #> 4 https://ecoengine.berkeley.edu/api/observations/CAS%3AORN%3A73318/
 #> 5 https://ecoengine.berkeley.edu/api/observations/CAS%3AORN%3A73319/
 #> 6 https://ecoengine.berkeley.edu/api/observations/CAS%3AORN%3A73320/
-#>         country                     name            locality           key
-#> 1 United States Accipiter striatus velox Stanford University CAS:ORN:73314
-#> 2 United States Accipiter striatus velox        Redwood City CAS:ORN:73315
-#> 3 United States Accipiter striatus velox        Redwood City CAS:ORN:73338
-#> 4 United States Accipiter striatus velox        Redwood City CAS:ORN:73318
-#> 5 United States Accipiter striatus velox        Redwood City CAS:ORN:73319
-#> 6 United States Accipiter striatus velox        Redwood City CAS:ORN:73320
-#>   remote_resource last_modified observation_type      prov
-#> 1                    2014-06-02         specimen ecoengine
-#> 2                    2014-06-02         specimen ecoengine
-#> 3                    2014-06-02         specimen ecoengine
-#> 4                    2014-06-02         specimen ecoengine
-#> 5                    2014-06-02         specimen ecoengine
-#> 6                    2014-06-02         specimen ecoengine
+#>             key observation_type                     name       country
+#> 1 CAS:ORN:73314         specimen Accipiter striatus velox United States
+#> 2 CAS:ORN:73315         specimen Accipiter striatus velox United States
+#> 3 CAS:ORN:73338         specimen Accipiter striatus velox United States
+#> 4 CAS:ORN:73318         specimen Accipiter striatus velox United States
+#> 5 CAS:ORN:73319         specimen Accipiter striatus velox United States
+#> 6 CAS:ORN:73320         specimen Accipiter striatus velox United States
+#>   state_province begin_date end_date
+#> 1     California       <NA>     <NA>
+#> 2     California       <NA>     <NA>
+#> 3     California       <NA>     <NA>
+#> 4     California       <NA>     <NA>
+#> 5     California       <NA>     <NA>
+#> 6     California       <NA>     <NA>
+#>                                          source remote_resource
+#> 1 https://ecoengine.berkeley.edu/api/sources/8/                
+#> 2 https://ecoengine.berkeley.edu/api/sources/8/                
+#> 3 https://ecoengine.berkeley.edu/api/sources/8/                
+#> 4 https://ecoengine.berkeley.edu/api/sources/8/                
+#> 5 https://ecoengine.berkeley.edu/api/sources/8/                
+#> 6 https://ecoengine.berkeley.edu/api/sources/8/                
+#>              locality coordinate_uncertainty_in_meters   recorded_by
+#> 1 Stanford University                             1000 C. J. Pierson
+#> 2        Redwood City                             1000 C. Littlejohn
+#> 3        Redwood City                             1000 C. Littlejohn
+#> 4        Redwood City                             1000 C. Littlejohn
+#> 5        Redwood City                             1000 C. Littlejohn
+#> 6        Redwood City                             1000 C. Littlejohn
+#>                last_modified      prov
+#> 1 2014-06-02T11:39:10.808198 ecoengine
+#> 2 2014-06-02T11:39:10.855111 ecoengine
+#> 3 2014-06-02T11:39:11.459178 ecoengine
+#> 4 2014-06-02T11:39:10.929030 ecoengine
+#> 5 2014-06-02T11:39:10.956478 ecoengine
+#> 6 2014-06-02T11:39:10.988688 ecoengine
 ```
 
 We provide a function `occ2df` that pulls out a few key columns needed for making maps:
@@ -222,19 +263,19 @@ head(occ2df(df))
 
 ```
 #>                 name  longitude latitude prov                date
-#> 1 Accipiter striatus    0.00000  0.00000 gbif 2014-12-31 23:00:00
-#> 2 Accipiter striatus  -71.19554 42.31845 gbif 2015-01-22 17:48:59
-#> 3 Accipiter striatus         NA       NA gbif 2015-01-06 23:00:00
-#> 4 Accipiter striatus -104.88120 21.46585 gbif 2015-01-20 23:00:00
-#> 5 Accipiter striatus  -75.17209 40.34000 gbif 2015-01-11 20:50:25
-#> 6 Accipiter striatus  -78.15051 37.95521 gbif 2015-01-23 14:30:00
+#> 1 Accipiter striatus  -97.64102 30.55880 gbif 2015-01-25 16:57:47
+#> 2 Accipiter striatus -104.83266 21.47117 gbif 2015-01-20 23:00:00
+#> 3 Accipiter striatus    0.00000  0.00000 gbif 2014-12-31 23:00:00
+#> 4 Accipiter striatus  -71.06930 42.34816 gbif 2015-01-22 17:48:59
+#> 5 Accipiter striatus  -97.25801 32.89462 gbif 2015-01-05 23:00:00
+#> 6 Accipiter striatus  -72.54554 41.22175 gbif 2015-01-06 23:00:00
 #>          key
-#> 1 1064538129
-#> 2 1065595652
-#> 3 1065586305
-#> 4 1065595128
-#> 5 1065588599
-#> 6 1065595954
+#> 1 1065597283
+#> 2 1065595128
+#> 3 1064538129
+#> 4 1065595652
+#> 5 1052607342
+#> 6 1065586305
 ```
 
 
@@ -245,39 +286,77 @@ One problem you often run in to is that there can be various names for the same 
 
 ```r
 df <- occ(query = 'Pinus contorta', from = c('gbif', 'ecoengine'), limit = 50)
-unique(df$gbif$data$Pinus_contorta$name)
+head(df$gbif$data$Pinus_contorta)[1:6, 1:5]
 ```
 
 ```
-#> [1] "Pinus contorta"
+#>             name  longitude latitude              issues prov
+#> 1 Pinus contorta   16.66390 56.63950  cudc,depunl,gass84 gbif
+#> 2 Pinus contorta -110.69412 44.72325 cdround,cudc,gass84 gbif
+#> 3 Pinus contorta   11.78660 58.16500  cudc,depunl,gass84 gbif
+#> 4 Pinus contorta    9.39020 62.56215      cdround,gass84 gbif
+#> 5 Pinus contorta   14.48530 61.23390  cudc,depunl,gass84 gbif
+#> 6 Pinus contorta    9.38997 62.56203      cdround,gass84 gbif
 ```
 
 ```r
-unique(df$ecoengine$data$Pinus_contorta$name)
+head(df$ecoengine$data$Pinus_contorta)[1:6, 1:5]
 ```
 
 ```
-#> [1] "Pinus contorta"                  "Pinus contorta subsp. murrayana"
+#>   longitude latitude    type
+#> 1 -120.6080  39.6193 Feature
+#> 2 -117.5978  34.2416 Feature
+#> 3 -117.6086  34.2325 Feature
+#> 4 -119.4270  38.0044 Feature
+#> 5 -119.4896  38.0112 Feature
+#> 6 -119.6049  38.0574 Feature
+#>                                                                                          url
+#> 1 https://ecoengine.berkeley.edu/api/observations/CalPhotos%3A5555%2B5555%2B0000%2B0901%3A4/
+#> 2 https://ecoengine.berkeley.edu/api/observations/CalPhotos%3A5555%2B5555%2B0000%2B0875%3A2/
+#> 3 https://ecoengine.berkeley.edu/api/observations/CalPhotos%3A5555%2B5555%2B0000%2B0874%3A2/
+#> 4 https://ecoengine.berkeley.edu/api/observations/CalPhotos%3A5555%2B5555%2B0000%2B0867%3A1/
+#> 5 https://ecoengine.berkeley.edu/api/observations/CalPhotos%3A5555%2B5555%2B0000%2B0866%3A1/
+#> 6 https://ecoengine.berkeley.edu/api/observations/CalPhotos%3A5555%2B5555%2B0000%2B0864%3A3/
+#>                               key
+#> 1 CalPhotos:5555+5555+0000+0901:4
+#> 2 CalPhotos:5555+5555+0000+0875:2
+#> 3 CalPhotos:5555+5555+0000+0874:2
+#> 4 CalPhotos:5555+5555+0000+0867:1
+#> 5 CalPhotos:5555+5555+0000+0866:1
+#> 6 CalPhotos:5555+5555+0000+0864:3
 ```
 
 This is fine, but when trying to make a map in which points are colored for each taxon, you can have many colors for a single taxon, where instead one color per taxon is more appropriate. There is a function in `spocc` called `fixnames`, which has a few options in which you can take the shortest names (usually just the plain binomials like _Homo sapiens_), or the original name queried, or a vector of names supplied by the user.
 
 
 ```r
-df <- fixnames(df, how = "supplied", namevec = 'Pinus contorta')
-unique(df$gbif$data$Pinus_contorta$name)
+df <- fixnames(df, how = 'shortest')
+head(df$gbif$data$Pinus_contorta[,1:2])
 ```
 
 ```
-#> [1] "Pinus contorta"
+#>             name  longitude
+#> 1 Pinus contorta   16.66390
+#> 2 Pinus contorta -110.69412
+#> 3 Pinus contorta   11.78660
+#> 4 Pinus contorta    9.39020
+#> 5 Pinus contorta   14.48530
+#> 6 Pinus contorta    9.38997
 ```
 
 ```r
-unique(df$ecoengine$data$Pinus_contorta$name)
+head(df$ecoengine$data$Pinus_contorta[,1:2])
 ```
 
 ```
-#> [1] "Pinus contorta"
+#>   longitude latitude
+#> 1 -120.6080  39.6193
+#> 2 -117.5978  34.2416
+#> 3 -117.6086  34.2325
+#> 4 -119.4270  38.0044
+#> 5 -119.4896  38.0112
+#> 6 -119.6049  38.0574
 ```
 
 ```r
@@ -287,22 +366,22 @@ head(df_comb); tail(df_comb)
 
 ```
 #>             name  longitude latitude prov                date        key
-#> 1 Pinus contorta   11.78660 58.16500 gbif 2015-01-17 23:00:00 1052933649
+#> 1 Pinus contorta   16.66390 56.63950 gbif 2015-01-03 23:00:00 1051515518
 #> 2 Pinus contorta -110.69412 44.72325 gbif 2015-01-01 23:00:00 1088897277
-#> 3 Pinus contorta   16.66390 56.63950 gbif 2015-01-03 23:00:00 1051515518
-#> 4 Pinus contorta   17.84890 59.12440 gbif 2015-02-14 23:00:00 1058422905
-#> 5 Pinus contorta    9.38997 62.56203 gbif 2015-02-19 23:00:00 1092518927
-#> 6 Pinus contorta    9.39000 62.56203 gbif 2015-02-19 23:00:00 1092518920
+#> 3 Pinus contorta   11.78660 58.16500 gbif 2015-01-17 23:00:00 1052933649
+#> 4 Pinus contorta    9.39020 62.56215 gbif 2015-02-19 23:00:00 1092518647
+#> 5 Pinus contorta   14.48530 61.23390 gbif 2015-02-15 23:00:00 1065763672
+#> 6 Pinus contorta    9.38997 62.56203 gbif 2015-02-19 23:00:00 1092518927
 ```
 
 ```
-#>               name longitude latitude      prov       date
-#> 95  Pinus contorta -119.4536 37.59285 ecoengine 1935-08-08
-#> 96  Pinus contorta -120.9033 38.62829 ecoengine 1934-10-11
-#> 97  Pinus contorta -119.9077 38.63392 ecoengine 1934-10-11
-#> 98  Pinus contorta -119.9077 38.63392 ecoengine 1934-10-11
-#> 99  Pinus contorta -119.9077 38.63392 ecoengine 1934-10-11
-#> 100 Pinus contorta -119.9043 38.60915 ecoengine 1934-10-11
+#>               name longitude latitude      prov date
+#> 95  Pinus contorta -119.4536  37.5929 ecoengine <NA>
+#> 96  Pinus contorta -120.9033  38.6283 ecoengine <NA>
+#> 97  Pinus contorta -119.9077  38.6339 ecoengine <NA>
+#> 98  Pinus contorta -119.9077  38.6339 ecoengine <NA>
+#> 99  Pinus contorta -119.9077  38.6339 ecoengine <NA>
+#> 100 Pinus contorta -119.9043  38.6091 ecoengine <NA>
 #>                                 key
 #> 95  CalPhotos:5555+5555+0000+1419:2
 #> 96  CalPhotos:5555+5555+0000+1719:2
@@ -314,95 +393,7 @@ head(df_comb); tail(df_comb)
 
 ### Visualization routines
 
-These have all been moved to `spoccutils`. Install it like
-
-
-```r
-install.packages("spoccutils")
-```
-
-Binaries aren't up on CRAN yet for OSX systems, in which case install from source from CRAN or from GitHub like
-
-
-```r
-devtools::install_github("ropensci/spoccutils")
-```
-
-Then load
-
-
-```r
-library("spoccutils")
-```
-
-__Interactive maps__
-
-_Leaflet.js_
-
-[Leaflet JS](http://leafletjs.com/) is an open source mapping library that can leverage various layers from multiple sources. Using the [`leafletR`](http://cran.r-project.org/web/packages/leafletR/index.html) library, it's possible to generate a local `geoJSON` file and a html file of species distribution maps. The folder can easily be moved to a web server and served widely without any additional coding.
-
-It's also possible to render similar maps with Mapbox by committing just the geoJSON file to GitHub or posting it as a gist on GitHub. All the remaining fields will become part of a table inside a tooltip, providing a extremely quick and easy way to serve up interactive maps. This is especially useful when users do not have their own web hosting options.
-
-Here is an example of making a leaflet map:
-
-
-```r
-spp <- c('Danaus plexippus', 'Accipiter striatus', 'Pinus contorta')
-dat <- occ(query = spp, from = 'gbif', has_coords = TRUE, limit = 100)
-map_leaflet(dat, dest = ".")
-```
-
-![leafmap](../assets/tutorial-images/spocc/leaflet.png)
-
-_Geojson map as a Github gist_
-
-You can also create interactive maps via the `mapgist` function. You have to have a Github account to use this function. Github accounts are free though, and great for versioning and collaborating on code or papers. When you run the `mapgist` function it will ask for your Github username and password. You can alternatively store those in your `.Rprofile` file by adding entries for username (`options(github.username = 'username')`) and password (`options(github.password = 'password')`).
-
-
-```r
-dat <- fixnames(dat)
-map_gist(dat, color = c("#976AAE", "#6B944D", "#BD5945"))
-```
-
-![gistmap](../assets/tutorial-images/spocc/gist.png)
-
-__Static maps__
-
-_base plots_
-
-Base plots, or the built in plotting facility in R accessed via `plot()`, is quite fast, but not easy or efficient to use, but are good for a quick glance at some data. `map_plot()` is a simple wrapper around `plot()`.
-
-
-```r
-spnames <- c('Accipiter striatus', 'Setophaga caerulescens', 'Spinus tristis')
-out <- occ(query = spnames, from = 'gbif', has_coords = TRUE, limit = 200)
-map_plot(out, cex = 1, pch = 10)
-```
-
-![basemap](../assets/tutorial-images/spocc/baseplots.png)
-
-_ggmap_
-
-`ggplot2` is a powerful package for making visualizations in R. Read more about it [here](http://docs.ggplot2.org/0.9.3.1/). We created a simple wrapper function `mapggplot` to make a ggplot2 map from occurrence data using the `ggmap` package, which is built on top of `ggplot2`. Here's an example:
-
-
-```r
-ecoengine_data <- occ(query = 'Lynx rufus californicus', from = 'ecoengine', has_coords = TRUE, limit = 200)
-map_ggmap(ecoengine_data)
-```
-
-![ggmap](../assets/tutorial-images/spocc/ggmap.png)
-
-_ggplot2_
-
-We can also make plots using `ggplot2` without the map layer background.
-
-
-```r
-map_ggplot(ecoengine_data, map = "county")
-```
-
-![ggplotmap](../assets/tutorial-images/spocc/ggplot2.png)
+All mapping functionality is now in a separate package [spoccutils](https://github.com/ropensci/spoccutils), to make `spocc` easier to maintain.
 
 
 <section id="citing">
@@ -413,7 +404,7 @@ To cite `spocc` in publications use:
 
 <br>
 
-> Scott Chamberlain, Karthik Ram and Ted Hart (2015). spocc: R interface to many species occurrence data sources. R package version 0.3.0. https://github.com/ropensci/spocc
+> Scott Chamberlain, Karthik Ram and Ted Hart (2015). spocc: R interface to many species occurrence data sources. R package version 0.4.0. https://github.com/ropensci/spocc
 
 <section id="license_bugs">
 

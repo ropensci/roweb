@@ -1,0 +1,125 @@
+<nex:nexml xmlns:nex="http://www.nexml.org/2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cdao="http://purl.obolibrary.org/obo/cdao.owl" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ter="http://purl.org/dc/terms/" xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/" xmlns:cc="http://creativecommons.org/ns#" xmlns:ncbi="http://www.ncbi.nlm.nih.gov/taxonomy#" xmlns:tc="http://rs.tdwg.org/ontology/voc/TaxonConcept#" xmlns="http://www.nexml.org/2009" version="0.9" generator="RNeXML">
+  <meta xsi:type="LiteralMeta" id="m4" property="dc:title" datatype="xsd:string" content="My test title"/>
+  <meta xsi:type="LiteralMeta" id="m5" property="dc:creator" datatype="xsd:string" content="Carl Boettiger &lt;cboettig@gmail.com&gt;"/>
+  <meta xsi:type="LiteralMeta" id="m6" property="dc:description" datatype="xsd:string" content="A description of my test"/>
+  <meta xsi:type="ResourceMeta" id="m7" href="http://creativecommons.org/publicdomain/zero/1.0/" rel="cc:license"/>
+  <meta xsi:type="LiteralMeta" id="m8" property="dcterms:bibliographicCitation" datatype="xsd:string"/>
+  <otus about="#os2" id="os2">
+    <otu about="#ou24" label="Struthioniformes" id="ou24"/>
+    <otu about="#ou25" label="Tinamiformes" id="ou25"/>
+    <otu about="#ou26" label="Craciformes" id="ou26"/>
+    <otu about="#ou27" label="Galliformes" id="ou27"/>
+    <otu about="#ou28" label="Anseriformes" id="ou28"/>
+    <otu about="#ou29" label="Turniciformes" id="ou29"/>
+    <otu about="#ou30" label="Piciformes" id="ou30"/>
+    <otu about="#ou31" label="Galbuliformes" id="ou31"/>
+    <otu about="#ou32" label="Bucerotiformes" id="ou32"/>
+    <otu about="#ou33" label="Upupiformes" id="ou33"/>
+    <otu about="#ou34" label="Trogoniformes" id="ou34"/>
+    <otu about="#ou35" label="Coraciiformes" id="ou35"/>
+    <otu about="#ou36" label="Coliiformes" id="ou36"/>
+    <otu about="#ou37" label="Cuculiformes" id="ou37"/>
+    <otu about="#ou38" label="Psittaciformes" id="ou38"/>
+    <otu about="#ou39" label="Apodiformes" id="ou39"/>
+    <otu about="#ou40" label="Trochiliformes" id="ou40"/>
+    <otu about="#ou41" label="Musophagiformes" id="ou41"/>
+    <otu about="#ou42" label="Strigiformes" id="ou42"/>
+    <otu about="#ou43" label="Columbiformes" id="ou43"/>
+    <otu about="#ou44" label="Gruiformes" id="ou44"/>
+    <otu about="#ou45" label="Ciconiiformes" id="ou45"/>
+    <otu about="#ou46" label="Passeriformes" id="ou46"/>
+  </otus>
+  <trees about="#ts2" id="ts2" otus="os2">
+    <tree xsi:type="FloatTree" about="#tree2" id="tree2">
+      <node about="#n46" id="n46"/>
+      <node about="#n47" id="n47"/>
+      <node about="#n48" id="n48"/>
+      <node about="#n49" id="n49"/>
+      <node about="#n50" id="n50"/>
+      <node about="#n51" id="n51"/>
+      <node about="#n52" id="n52"/>
+      <node about="#n53" id="n53"/>
+      <node about="#n54" id="n54"/>
+      <node about="#n55" id="n55"/>
+      <node about="#n56" id="n56"/>
+      <node about="#n57" id="n57"/>
+      <node about="#n58" id="n58"/>
+      <node about="#n59" id="n59"/>
+      <node about="#n60" id="n60"/>
+      <node about="#n61" id="n61"/>
+      <node about="#n62" id="n62"/>
+      <node about="#n63" id="n63"/>
+      <node about="#n64" id="n64"/>
+      <node about="#n65" id="n65"/>
+      <node about="#n66" id="n66"/>
+      <node about="#n67" id="n67"/>
+      <node about="#n68" id="n68" otu="ou24"/>
+      <node about="#n69" id="n69" otu="ou25"/>
+      <node about="#n70" id="n70" otu="ou26"/>
+      <node about="#n71" id="n71" otu="ou27"/>
+      <node about="#n72" id="n72" otu="ou28"/>
+      <node about="#n73" id="n73" otu="ou29"/>
+      <node about="#n74" id="n74" otu="ou30"/>
+      <node about="#n75" id="n75" otu="ou31"/>
+      <node about="#n76" id="n76" otu="ou32"/>
+      <node about="#n77" id="n77" otu="ou33"/>
+      <node about="#n78" id="n78" otu="ou34"/>
+      <node about="#n79" id="n79" otu="ou35"/>
+      <node about="#n80" id="n80" otu="ou36"/>
+      <node about="#n81" id="n81" otu="ou37"/>
+      <node about="#n82" id="n82" otu="ou38"/>
+      <node about="#n83" id="n83" otu="ou39"/>
+      <node about="#n84" id="n84" otu="ou40"/>
+      <node about="#n85" id="n85" otu="ou41"/>
+      <node about="#n86" id="n86" otu="ou42"/>
+      <node about="#n87" id="n87" otu="ou43"/>
+      <node about="#n88" id="n88" otu="ou44"/>
+      <node about="#n89" id="n89" otu="ou45"/>
+      <node about="#n90" id="n90" otu="ou46"/>
+      <edge about="#e45" id="e45" source="n46" target="n47" length="2.1"/>
+      <edge about="#e46" id="e46" source="n47" target="n48" length="4.1"/>
+      <edge about="#e47" id="e47" source="n48" target="n68" length="21.8"/>
+      <edge about="#e48" id="e48" source="n48" target="n69" length="21.8"/>
+      <edge about="#e49" id="e49" source="n47" target="n49" length="3"/>
+      <edge about="#e50" id="e50" source="n49" target="n50" length="1.3"/>
+      <edge about="#e51" id="e51" source="n50" target="n70" length="21.6"/>
+      <edge about="#e52" id="e52" source="n50" target="n71" length="21.6"/>
+      <edge about="#e53" id="e53" source="n49" target="n72" length="22.9"/>
+      <edge about="#e54" id="e54" source="n46" target="n51" length="1"/>
+      <edge about="#e55" id="e55" source="n51" target="n73" length="27"/>
+      <edge about="#e56" id="e56" source="n51" target="n52" length="0.7"/>
+      <edge about="#e57" id="e57" source="n52" target="n74" length="26.3"/>
+      <edge about="#e58" id="e58" source="n52" target="n53" length="1.3"/>
+      <edge about="#e59" id="e59" source="n53" target="n54" length="0.6"/>
+      <edge about="#e60" id="e60" source="n54" target="n75" length="24.4"/>
+      <edge about="#e61" id="e61" source="n54" target="n55" length="1"/>
+      <edge about="#e62" id="e62" source="n55" target="n56" length="2.6"/>
+      <edge about="#e63" id="e63" source="n56" target="n76" length="20.8"/>
+      <edge about="#e64" id="e64" source="n56" target="n77" length="20.8"/>
+      <edge about="#e65" id="e65" source="n55" target="n57" length="1.3"/>
+      <edge about="#e66" id="e66" source="n57" target="n78" length="22.1"/>
+      <edge about="#e67" id="e67" source="n57" target="n79" length="22.1"/>
+      <edge about="#e68" id="e68" source="n53" target="n58" length="0.5"/>
+      <edge about="#e69" id="e69" source="n58" target="n80" length="24.5"/>
+      <edge about="#e70" id="e70" source="n58" target="n59" length="0.8"/>
+      <edge about="#e71" id="e71" source="n59" target="n81" length="23.7"/>
+      <edge about="#e72" id="e72" source="n59" target="n60" length="0.6"/>
+      <edge about="#e73" id="e73" source="n60" target="n82" length="23.1"/>
+      <edge about="#e74" id="e74" source="n60" target="n61" length="0.6"/>
+      <edge about="#e75" id="e75" source="n61" target="n62" length="0.6"/>
+      <edge about="#e76" id="e76" source="n62" target="n63" length="0.6"/>
+      <edge about="#e77" id="e77" source="n63" target="n83" length="21.3"/>
+      <edge about="#e78" id="e78" source="n63" target="n84" length="21.3"/>
+      <edge about="#e79" id="e79" source="n62" target="n64" length="1.5"/>
+      <edge about="#e80" id="e80" source="n64" target="n85" length="20.4"/>
+      <edge about="#e81" id="e81" source="n64" target="n86" length="20.4"/>
+      <edge about="#e82" id="e82" source="n61" target="n65" length="0.9"/>
+      <edge about="#e83" id="e83" source="n65" target="n66" length="0.8"/>
+      <edge about="#e84" id="e84" source="n66" target="n87" length="20.8"/>
+      <edge about="#e85" id="e85" source="n66" target="n67" length="0.7"/>
+      <edge about="#e86" id="e86" source="n67" target="n88" length="20.1"/>
+      <edge about="#e87" id="e87" source="n67" target="n89" length="20.1"/>
+      <edge about="#e88" id="e88" source="n65" target="n90" length="21.6"/>
+    </tree>
+  </trees>
+</nex:nexml>

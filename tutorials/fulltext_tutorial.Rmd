@@ -1,7 +1,7 @@
 ---
 title: fulltext vignette
 layout: tutorial
-packge_version: 0.1
+packge_version: 0.1.4
 ---
 
 
@@ -145,12 +145,11 @@ x %>% chunks(c("doi", "history")) %>% tabularize()
 ```
 
 
-
 <section id="citing">
 
 ## Citing
 
-> Chamberlain Scott (2015). fulltext: Full Text of Scholarly Articles Across Many Data Sources. R package version 0.1.0. https://github.com/ropensci/fulltext
+> Chamberlain Scott (2015). fulltext: Full Text of Scholarly Articles Across Many Data Sources. R package version 0.1.4. https://github.com/ropensci/fulltext
 
 
 

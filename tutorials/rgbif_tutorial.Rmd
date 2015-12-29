@@ -1,7 +1,7 @@
 ---
 title: rgbif tutorial
 layout: tutorial
-packge_version: 0.8.6
+packge_version: 0.9.0
 ---
 
 ```{r, echo=FALSE}
@@ -15,6 +15,8 @@ knitr::opts_chunk$set(
 	message = FALSE
 )
 ```
+
+Seach and retrieve data from the Global Biodiverity Information Facilty (GBIF)
 
 `rgbif` is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). `rgbif` wraps R code around the [GBIF API][gbifapi] to allow you to talk to GBIF from R.
 
@@ -148,10 +150,10 @@ head(name_lookup(query='mammalia', return = 'data'))
 Look up the species Helianthus annuus
 
 ```{r name_lookup3}
-head(name_lookup('Helianthus annuus', rank="species", return = 'data'))
+head(name_lookup(query = 'Helianthus annuus', rank="species", return = 'data'))
 ```
 
-The function `name_usage()` works with lots of different name endpoints in GBIF, listed at [http://www.gbif.org/developer/species#nameUsages]().
+The function `name_usage()` works with lots of different name endpoints in GBIF, listed at [http://www.gbif.org/developer/species#nameUsages](http://www.gbif.org/developer/species#nameUsages).
 
 ```{r}
 library("plyr")
@@ -236,65 +238,6 @@ keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5)
 ```
 
-## Downloads
-
-GBIF provides access to their downloads API. This is the same service that you use when you go to [their website]() to search for records then download a zip file.
-
-First, we can search for data, for _Ursus arctos_ (`taxonkey` = 2433433)
-
-```{r eval=FALSE}
-(res <- occ_download('taxonKey = 2433433'))
-```
-
-Then we can check on the download progress
-
-```{r eval=FALSE}
-occ_download_meta(res)
-#> <<gbif download metadata>>
-#>   Status: RUNNING
-#> Download key: 0007658-150615163101818
-#>   Created: 2015-07-09T14:48:40.705+0000
-#>   Modified: 2015-07-09T14:48:40.788+0000
-#>   Download link: http://api.gbif.org/v1/occurrence/download/request/0007658-150615163101818.zip
-#>   Total records: 0
-#>   Request:
-#>     type:  equals
-#>     predicates:
-```
-
-We can see that status is `Running`, so we wait a while longer. And when it's ready, download the data
-
-```{r eval=FALSE}
-res <- occ_download_get(res, overwrite = TRUE)
-#> <<gbif downloaded get>>
-#>   Path: ./0007658-150615163101818.zip
-#>   File size: 3.1 MB
-```
-
-And then import into R, and manipulate
-
-```{r eval=FALSE}
-suppressPackageStartupMessages(library("dplyr"))
-df <- tbl_df(occ_download_import(res))
-df %>%
-  filter(nchar(lifeStage) != 0, !is.na(decimalLatitude)) %>%
-  select(decimalLatitude, decimalLongitude, lifeStage)
-
-#> Source: local data frame [53 x 3]
-#>
-#>    decimalLatitude decimalLongitude lifeStage
-#> 1         44.65373       -110.54160  JUVENILE
-#> 2         63.18333       -139.60000     ADULT
-#> 3         70.48056       -157.41667     ADULT
-#> 4         52.66667       -117.86667     ADULT
-#> 5         59.48333       -139.81667     ADULT
-#> 6         69.93456       -148.68292     ADULT
-#> 7         69.01667       -161.93333  JUVENILE
-#> 8         59.89000       -151.68167     ADULT
-#> 9         59.64154       -139.40070     ADULT
-#> 10        44.61667        -79.41667     ADULT
-#> ..             ...              ...       ...
-```
 
 ********************
 
@@ -305,10 +248,8 @@ Static map using the ggplot2 package. Make a map of *Puma concolor* occurrences.
 ```{r gbifmap1}
 key <- name_backbone(name='Puma concolor')$speciesKey
 dat <- occ_search(taxonKey=key, return='data', limit=300)
-gbifmap(input=dat)
+gbifmap(dat)
 ```
-
-[gbifapi]: http://www.gbif.org/developer/summary
 
 
 <section id="citing">
@@ -319,7 +260,7 @@ To cite `rgbif` in publications use:
 
 <br>
 
-> Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2015). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 0.8.6 https://github.com/ropensci/rgbif
+> Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2015). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 0.9.0 https://github.com/ropensci/rgbif
 
 <section id="license_bugs">
 
@@ -329,3 +270,5 @@ To cite `rgbif` in publications use:
 * Report bugs at [our Github repo for rgbif](https://github.com/ropensci/rgbif/issues?state=open)
 
 [Back to top](#top)
+
+[gbifapi]: http://data.gbif.org/tutorial/services

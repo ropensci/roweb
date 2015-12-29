@@ -1,7 +1,7 @@
 ---
 title: rnoaa tutorial
 layout: tutorial
-packge_version: 0.4.2
+packge_version: 0.5.0
 ---
 
 
@@ -50,7 +50,7 @@ ncdc_stations(datasetid='GHCND', locationid='FIPS:12017', stationid='GHCND:USC00
 #> 
 #> $data
 #>   elevation    mindate    maxdate latitude                  name
-#> 1      12.2 1899-02-01 2015-07-06  28.8029 INVERNESS 3 SE, FL US
+#> 1      12.2 1899-02-01 2015-12-27  28.8029 INVERNESS 3 SE, FL US
 #>   datacoverage                id elevationUnit longitude
 #> 1            1 GHCND:USC00084289        METERS  -82.3126
 #> 
@@ -75,18 +75,19 @@ out$data
 ```
 #> Source: local data frame [25 x 5]
 #> 
-#>                   date        datatype           station value fl_c
-#> 1  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:AQW00061705   869    C
-#> 2  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:CAW00064757   607    Q
-#> 3  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:CQC00914080   840    R
-#> 4  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:CQC00914801   858    R
-#> 5  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914395   876    P
-#> 6  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914419   885    P
-#> 7  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914446   885    P
-#> 8  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914482   868    R
-#> 9  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914720   899    R
-#> 10 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914761   897    P
-#> ..                 ...             ...               ...   ...  ...
+#>                   date        datatype           station value  fl_c
+#>                  (chr)           (chr)             (chr) (int) (chr)
+#> 1  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:AQW00061705   869     C
+#> 2  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:CAW00064757   607     Q
+#> 3  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:CQC00914080   840     R
+#> 4  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:CQC00914801   858     R
+#> 5  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914395   876     P
+#> 6  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914419   885     P
+#> 7  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914446   885     P
+#> 8  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914482   868     R
+#> 9  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914720   899     R
+#> 10 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914761   897     P
+#> ..                 ...             ...               ...   ...   ...
 ```
 
 ### Plot data, super simple, but it's a start
@@ -179,27 +180,27 @@ head(df[[1]]); tail(df[[1]])
 ```
 #> Source: local data frame [6 x 8]
 #> 
-#>                  date datatype           station value fl_m fl_q fl_so
-#> 1 2010-03-01T00:00:00     PRCP GHCND:USW00014895     0    T          0
-#> 2 2010-03-02T00:00:00     PRCP GHCND:USW00014895     0    T          0
-#> 3 2010-03-03T00:00:00     PRCP GHCND:USW00014895     0    T          0
-#> 4 2010-03-04T00:00:00     PRCP GHCND:USW00014895     0               0
-#> 5 2010-03-05T00:00:00     PRCP GHCND:USW00014895     0               0
-#> 6 2010-03-06T00:00:00     PRCP GHCND:USW00014895     0               0
-#> Variables not shown: fl_t (chr)
+#>                  date datatype           station value  fl_m  fl_q fl_so  fl_t
+#>                 (chr)    (chr)             (chr) (int) (chr) (chr) (chr) (chr)
+#> 1 2010-03-01T00:00:00     PRCP GHCND:USW00014895     0     T           0  2400
+#> 2 2010-03-02T00:00:00     PRCP GHCND:USW00014895     0     T           0  2400
+#> 3 2010-03-03T00:00:00     PRCP GHCND:USW00014895     0     T           0  2400
+#> 4 2010-03-04T00:00:00     PRCP GHCND:USW00014895     0                 0  2400
+#> 5 2010-03-05T00:00:00     PRCP GHCND:USW00014895     0                 0  2400
+#> 6 2010-03-06T00:00:00     PRCP GHCND:USW00014895     0                 0  2400
 ```
 
 ```
 #> Source: local data frame [6 x 8]
 #> 
-#>                  date datatype           station value fl_m fl_q fl_so
-#> 1 2010-10-26T00:00:00     PRCP GHCND:USW00014895   221               0
-#> 2 2010-10-27T00:00:00     PRCP GHCND:USW00014895     0               0
-#> 3 2010-10-28T00:00:00     PRCP GHCND:USW00014895     0    T          0
-#> 4 2010-10-29T00:00:00     PRCP GHCND:USW00014895     0    T          0
-#> 5 2010-10-30T00:00:00     PRCP GHCND:USW00014895     0               0
-#> 6 2010-10-31T00:00:00     PRCP GHCND:USW00014895     0               0
-#> Variables not shown: fl_t (chr)
+#>                  date datatype           station value  fl_m  fl_q fl_so  fl_t
+#>                 (chr)    (chr)             (chr) (int) (chr) (chr) (chr) (chr)
+#> 1 2010-10-26T00:00:00     PRCP GHCND:USW00014895   221                 0  2400
+#> 2 2010-10-27T00:00:00     PRCP GHCND:USW00014895     0                 0  2400
+#> 3 2010-10-28T00:00:00     PRCP GHCND:USW00014895     0     T           0  2400
+#> 4 2010-10-29T00:00:00     PRCP GHCND:USW00014895     0     T           0  2400
+#> 5 2010-10-30T00:00:00     PRCP GHCND:USW00014895     0                 0  2400
+#> 6 2010-10-31T00:00:00     PRCP GHCND:USW00014895     0                 0  2400
 ```
 
 Then plot - the default passing in the combined plot plots the data together. In this case it looks kind of weird since a straight line combines two distant dates.
@@ -240,25 +241,25 @@ swdi(dataset='nx3tvs', startdate='20060505', enddate='20060506')
 #> numeric(0)
 #> 
 #> $meta$totalTimeInSeconds
-#> [1] 0.022
+#> [1] 0.028
 #> 
 #> 
 #> $data
 #> Source: local data frame [25 x 8]
 #> 
-#>                   ztime wsr_id cell_id cell_type range azimuth max_shear
-#> 1  2006-05-05T00:05:50Z   KBMX      Q0       TVS     7     217       403
-#> 2  2006-05-05T00:10:02Z   KBMX      Q0       TVS     5     208       421
-#> 3  2006-05-05T00:12:34Z   KSJT      P2       TVS    49     106        17
-#> 4  2006-05-05T00:17:31Z   KSJT      B4       TVS    40     297        25
-#> 5  2006-05-05T00:29:13Z   KMAF      H4       TVS    53     333        34
-#> 6  2006-05-05T00:31:25Z   KLBB      N0       TVS    51     241        24
-#> 7  2006-05-05T00:33:25Z   KMAF      H4       TVS    52     334        46
-#> 8  2006-05-05T00:37:37Z   KMAF      H4       TVS    50     334        34
-#> 9  2006-05-05T00:41:51Z   KMAF      H4       TVS    51     335        29
-#> 10 2006-05-05T00:44:33Z   KLBB      N0       TVS    46     245        35
-#> ..                  ...    ...     ...       ...   ...     ...       ...
-#> Variables not shown: mxdv (chr)
+#>                   ztime wsr_id cell_id cell_type range azimuth max_shear  mxdv
+#>                   (chr)  (chr)   (chr)     (chr) (chr)   (chr)     (chr) (chr)
+#> 1  2006-05-05T00:05:50Z   KBMX      Q0       TVS     7     217       403   116
+#> 2  2006-05-05T00:10:02Z   KBMX      Q0       TVS     5     208       421   120
+#> 3  2006-05-05T00:12:34Z   KSJT      P2       TVS    49     106        17    52
+#> 4  2006-05-05T00:17:31Z   KSJT      B4       TVS    40     297        25    62
+#> 5  2006-05-05T00:29:13Z   KMAF      H4       TVS    53     333        34   111
+#> 6  2006-05-05T00:31:25Z   KLBB      N0       TVS    51     241        24    78
+#> 7  2006-05-05T00:33:25Z   KMAF      H4       TVS    52     334        46   145
+#> 8  2006-05-05T00:37:37Z   KMAF      H4       TVS    50     334        34   107
+#> 9  2006-05-05T00:41:51Z   KMAF      H4       TVS    51     335        29    91
+#> 10 2006-05-05T00:44:33Z   KLBB      N0       TVS    46     245        35   100
+#> ..                  ...    ...     ...       ...   ...     ...       ...   ...
 #> 
 #> $shape
 #>                                         shape
@@ -306,20 +307,20 @@ list(out$meta, head(out$data), head(out$shape))
 #> numeric(0)
 #> 
 #> [[1]]$totalTimeInSeconds
-#> [1] 0.171
+#> [1] 1.042
 #> 
 #> 
 #> [[2]]
 #> Source: local data frame [6 x 6]
 #> 
-#>            ztime_start            ztime_end     id         warningtype
-#> 1 2006-05-05T22:53:00Z 2006-05-06T00:00:00Z 397428 SEVERE THUNDERSTORM
-#> 2 2006-05-05T22:55:00Z 2006-05-06T00:00:00Z 397429 SEVERE THUNDERSTORM
-#> 3 2006-05-05T22:55:00Z 2006-05-06T00:00:00Z 397430 SEVERE THUNDERSTORM
-#> 4 2006-05-05T22:57:00Z 2006-05-06T00:00:00Z 397431 SEVERE THUNDERSTORM
-#> 5 2006-05-05T23:03:00Z 2006-05-06T00:00:00Z 397434 SEVERE THUNDERSTORM
-#> 6 2006-05-05T23:14:00Z 2006-05-06T00:15:00Z 397437 SEVERE THUNDERSTORM
-#> Variables not shown: issuewfo (chr), messageid (chr)
+#>            ztime_start            ztime_end     id         warningtype issuewfo messageid
+#>                  (chr)                (chr)  (chr)               (chr)    (chr)     (chr)
+#> 1 2006-05-05T22:53:00Z 2006-05-06T00:00:00Z 397428 SEVERE THUNDERSTORM     KLCH    052252
+#> 2 2006-05-05T22:55:00Z 2006-05-06T00:00:00Z 397429 SEVERE THUNDERSTORM     KLUB    052256
+#> 3 2006-05-05T22:55:00Z 2006-05-06T00:00:00Z 397430 SEVERE THUNDERSTORM     KLUB    052256
+#> 4 2006-05-05T22:57:00Z 2006-05-06T00:00:00Z 397431 SEVERE THUNDERSTORM     KMAF    052258
+#> 5 2006-05-05T23:03:00Z 2006-05-06T00:00:00Z 397434 SEVERE THUNDERSTORM     KMAF    052305
+#> 6 2006-05-05T23:14:00Z 2006-05-06T00:15:00Z 397437 SEVERE THUNDERSTORM     KLUB    052315
 #> 
 #> [[3]]
 #>                                                                                                                                                          shape
@@ -350,13 +351,13 @@ swdi(dataset='plsr', startdate='20060505', enddate='20060510', bbox=c(-91,30,-90
 #> $data
 #> Source: local data frame [5 x 8]
 #> 
-#>                  ztime     id        event magnitude            city
-#> 1 2006-05-09T02:20:00Z 427540         HAIL         1    5 E KENTWOOD
-#> 2 2006-05-09T02:40:00Z 427536         HAIL         1    MOUNT HERMAN
-#> 3 2006-05-09T02:40:00Z 427537 TSTM WND DMG     -9999    MOUNT HERMAN
-#> 4 2006-05-09T03:00:00Z 427199         HAIL         0     FRANKLINTON
-#> 5 2006-05-09T03:17:00Z 427200      TORNADO     -9999 5 S FRANKLINTON
-#> Variables not shown: county (chr), state (chr), source (chr)
+#>                  ztime     id        event magnitude            city     county state          source
+#>                  (chr)  (chr)        (chr)     (chr)           (chr)      (chr) (chr)           (chr)
+#> 1 2006-05-09T02:20:00Z 427540         HAIL         1    5 E KENTWOOD TANGIPAHOA    LA TRAINED SPOTTER
+#> 2 2006-05-09T02:40:00Z 427536         HAIL         1    MOUNT HERMAN WASHINGTON    LA TRAINED SPOTTER
+#> 3 2006-05-09T02:40:00Z 427537 TSTM WND DMG     -9999    MOUNT HERMAN WASHINGTON    LA TRAINED SPOTTER
+#> 4 2006-05-09T03:00:00Z 427199         HAIL         0     FRANKLINTON WASHINGTON    LA   AMATEUR RADIO
+#> 5 2006-05-09T03:17:00Z 427200      TORNADO     -9999 5 S FRANKLINTON WASHINGTON    LA LAW ENFORCEMENT
 #> 
 #> $shape
 #>                  shape
@@ -405,27 +406,20 @@ head( storm_meta() )
 ```
 
 ```
-#>   Column_number Column_name units Shapefile_pt_flag
-#> 1             1  Serial_Num   N/A                 1
-#> 2             2      Season  Year                 1
-#> 3             3         Num     #                 1
-#> 4             4       Basin    BB                 1
-#> 5             5   Sub_basin    BB                 1
-#> 6             6        Name   N/A                 1
-#>   Shapefile_pt_attribute_name shapefile_att_type shapefile_att_len
-#> 1                  Serial_Num                  7                13
-#> 2                      Season                  3                 4
-#> 3                         Num                  3                 5
-#> 4                       Basin                  7                 3
-#> 5                   Sub_basin                  7                 3
-#> 6                        Name                  7                57
-#>   shapefile_att_prc
-#> 1                 0
-#> 2                 0
-#> 3                 0
-#> 4                 0
-#> 5                 0
-#> 6                 0
+#>   Column_number Column_name units Shapefile_pt_flag Shapefile_pt_attribute_name shapefile_att_type
+#> 1             1  Serial_Num   N/A                 1                  Serial_Num                  7
+#> 2             2      Season  Year                 1                      Season                  3
+#> 3             3         Num     #                 1                         Num                  3
+#> 4             4       Basin    BB                 1                       Basin                  7
+#> 5             5   Sub_basin    BB                 1                   Sub_basin                  7
+#> 6             6        Name   N/A                 1                        Name                  7
+#>   shapefile_att_len shapefile_att_prc
+#> 1                13                 0
+#> 2                 4                 0
+#> 3                 5                 0
+#> 4                 3                 0
+#> 5                 3                 0
+#> 6                57                 0
 ```
 
 Or you can get back a dataset of storm names, including storm ids and their names.
@@ -488,20 +482,13 @@ head(buoys(dataset = "cwind"))
 ```
 
 ```
-#>      id
-#> 1 41001
-#> 2 41002
-#> 3 41004
-#> 4 41006
-#> 5 41008
-#> 6 41009
-#>                                                                       url
-#> 1 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41001/catalog.html
-#> 2 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41002/catalog.html
-#> 3 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41004/catalog.html
-#> 4 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41006/catalog.html
-#> 5 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41008/catalog.html
-#> 6 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41009/catalog.html
+#>      id                                                                     url
+#> 1 41001 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41001/catalog.html
+#> 2 41002 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41002/catalog.html
+#> 3 41004 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41004/catalog.html
+#> 4 41006 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41006/catalog.html
+#> 5 41008 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41008/catalog.html
+#> 6 41009 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41009/catalog.html
 ```
 
 ## Get buoy data
@@ -519,18 +506,18 @@ buoy(dataset = 'cwind', buoyid = 41001, year = 2008, datatype = "cc")
 #> Dimensions (rows/cols): [1585 X 5] 
 #> 2 variables: [wind_dir, wind_spd] 
 #> 
-#>                    time latitude longitude wind_dir wind_spd
-#> 1  2008-05-28T16:00:00Z   34.704   -72.734      230      8.6
-#> 2  2008-05-28T16:10:00Z   34.704   -72.734      230      8.7
-#> 3  2008-05-28T16:20:00Z   34.704   -72.734      229      8.5
-#> 4  2008-05-28T16:30:00Z   34.704   -72.734      231      8.8
-#> 5  2008-05-28T16:40:00Z   34.704   -72.734      236      8.5
-#> 6  2008-05-28T16:50:00Z   34.704   -72.734      235      8.9
-#> 7  2008-05-28T17:00:00Z   34.704   -72.734      233      8.2
-#> 8  2008-05-28T17:10:00Z   34.704   -72.734      233      8.2
-#> 9  2008-05-28T17:20:00Z   34.704   -72.734      231      8.3
-#> 10 2008-05-28T17:30:00Z   34.704   -72.734      232      7.8
-#> ..                  ...      ...       ...      ...      ...
+#>                    time    lat     lon wind_dir wind_spd
+#> 1  2008-05-28T16:00:00Z 34.704 -72.734      230      8.6
+#> 2  2008-05-28T16:10:00Z 34.704 -72.734      230      8.7
+#> 3  2008-05-28T16:20:00Z 34.704 -72.734      229      8.5
+#> 4  2008-05-28T16:30:00Z 34.704 -72.734      231      8.8
+#> 5  2008-05-28T16:40:00Z 34.704 -72.734      236      8.5
+#> 6  2008-05-28T16:50:00Z 34.704 -72.734      235      8.9
+#> 7  2008-05-28T17:00:00Z 34.704 -72.734      233      8.2
+#> 8  2008-05-28T17:10:00Z 34.704 -72.734      233      8.2
+#> 9  2008-05-28T17:20:00Z 34.704 -72.734      231      8.3
+#> 10 2008-05-28T17:30:00Z 34.704 -72.734      232      7.8
+#> ..                  ...    ...     ...      ...      ...
 ```
 
 
@@ -546,7 +533,7 @@ To cite `rnoaa` in publications use:
 
 <br>
 
-> Scott Chamberlain, Hart Edmund, and Karthik Ram (2015). rnoaa: NOAA climate data from R. R package version 0.4.2. https://github.com/ropensci/rnoaa
+> Scott Chamberlain, Hart Edmund, and Karthik Ram (2015). rnoaa: NOAA climate data from R. R package version 0.5.0. https://github.com/ropensci/rnoaa
 
 <section id="license_bugs">
 

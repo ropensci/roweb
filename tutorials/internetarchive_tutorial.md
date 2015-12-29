@@ -1,7 +1,7 @@
 ---
 title: internetarchive tutorial
 layout: tutorial
-packge_version: 0.1.2
+packge_version: 0.1.4
 ---
 
 
@@ -47,7 +47,7 @@ ia_keyword_search("isaac hecker")
 ```
 
 ```
-#> [1] "TheLifeOfFatherHecker"  "fatherhecker01sedg"    
+#> [1] "fatherhecker01sedg"     "TheLifeOfFatherHecker" 
 #> [3] "fatherhecker00sedggoog" "lifeoffatherheck01elli"
 #> [5] "lifeoffatherheck00elli"
 ```
@@ -70,7 +70,7 @@ ia_search(ats_query, num_results = 3)
 ```
 
 ```
-#> [1] "huguenotsfrance00martgoog" "vitalgodlinessa00plumgoog"
+#> [1] "vitalgodlinessa00plumgoog" "huguenotsfrance00martgoog"
 #> [3] "sketcheseloquen00wategoog"
 ```
 
@@ -85,12 +85,6 @@ To search by a date range, use the `date` field and the years (or [ISO 8601 date
 
 ```r
 ia_search(c("publisher" = "american tract society", date = "1840 TO 1850"))
-```
-
-```
-#> [1] "scripturebiogra00hookgoog" "memoirmrssarahl00hookgoog"
-#> [3] "circulationandc00socigoog" "historyreformat09aubgoog" 
-#> [5] "historyreformat22aubgoog"
 ```
 
 ## Getting item metadata and files
@@ -109,48 +103,7 @@ The result is a list where the names of items in the list are the item identifie
 
 ```r
 ia_metadata(hecker)
-```
-
-```
-#> Source: local data frame [25 x 3]
-#> 
-#>                       id       field
-#> 1  TheLifeOfFatherHecker  identifier
-#> 2  TheLifeOfFatherHecker   mediatype
-#> 3  TheLifeOfFatherHecker collection1
-#> 4  TheLifeOfFatherHecker collection2
-#> 5  TheLifeOfFatherHecker collection3
-#> 6  TheLifeOfFatherHecker     creator
-#> 7  TheLifeOfFatherHecker        date
-#> 8  TheLifeOfFatherHecker description
-#> 9  TheLifeOfFatherHecker    language
-#> 10 TheLifeOfFatherHecker  licenseurl
-#> ..                   ...         ...
-#> Variables not shown: value (chr)
-```
-
-```r
 ia_files(hecker)
-```
-
-```
-#> Source: local data frame [14 x 3]
-#> 
-#>                       id                                   file    type
-#> 1  TheLifeOfFatherHecker            /TheLifeOfFatherHecker.djvu    djvu
-#> 2  TheLifeOfFatherHecker            /TheLifeOfFatherHecker.epub    epub
-#> 3  TheLifeOfFatherHecker             /TheLifeOfFatherHecker.gif     gif
-#> 4  TheLifeOfFatherHecker             /TheLifeOfFatherHecker.pdf     pdf
-#> 5  TheLifeOfFatherHecker        /TheLifeOfFatherHecker_abbyy.gz      gz
-#> 6  TheLifeOfFatherHecker /TheLifeOfFatherHecker_archive.torrent torrent
-#> 7  TheLifeOfFatherHecker        /TheLifeOfFatherHecker_djvu.txt     txt
-#> 8  TheLifeOfFatherHecker        /TheLifeOfFatherHecker_djvu.xml     xml
-#> 9  TheLifeOfFatherHecker       /TheLifeOfFatherHecker_files.xml     xml
-#> 10 TheLifeOfFatherHecker         /TheLifeOfFatherHecker_jp2.zip     zip
-#> 11 TheLifeOfFatherHecker     /TheLifeOfFatherHecker_meta.sqlite  sqlite
-#> 12 TheLifeOfFatherHecker        /TheLifeOfFatherHecker_meta.xml     xml
-#> 13 TheLifeOfFatherHecker    /TheLifeOfFatherHecker_scandata.xml     xml
-#> 14 TheLifeOfFatherHecker        /TheLifeOfFatherHecker_text.pdf     pdf
 ```
 
 These functions can also retrieve the information for multiple items when used in a pipeline. Here we search for all the items about Hecker, retrieve their metadata, and turn it into a data frame. We then filter the data frame to get only the titles.
@@ -162,15 +115,6 @@ ia_keyword_search("isaac hecker", num_results = 3) %>%
   ia_metadata() %>%
   filter(field == "title") %>%
   select(value)
-```
-
-```
-#> Source: local data frame [3 x 1]
-#> 
-#>                       value
-#> 1 The Life Of Father Hecker
-#> 2             Father Hecker
-#> 3             Father Hecker
 ```
 
 ## Downloading files
@@ -190,17 +134,6 @@ ia_search(ats_query, num_results = 2) %>%
   glimpse()
 ```
 
-```
-#> Observations: 2
-#> Variables:
-#> $ id         (chr) "huguenotsfrance00martgoog", "vitalgodlinessa00plum...
-#> $ file       (chr) "/huguenotsfrance00martgoog_djvu.txt", "/vitalgodli...
-#> $ type       (chr) "txt", "txt"
-#> $ url        (chr) "https://archive.org/download/huguenotsfrance00mart...
-#> $ local_file (chr) "/var/folders/gs/4khph0xs0436gmd2gdnwsg080000gn/T//...
-#> $ downloaded (lgl) TRUE, TRUE
-```
-
 Notice that `ia_download()` returns a modified version of the data frame that was passed to it, adding a column `local_file` with the path to the download files.
 
 If the `overwrite =` argument is `FALSE`, then you can pass the same data frame of files to `ia_download()` and it will download only the files that it has not already downloaded.
@@ -210,7 +143,7 @@ If the `overwrite =` argument is `FALSE`, then you can pass the same data frame 
 
 ## Citing
 
-> Lincoln Mullen (2015). internetarchive: An API Client for the Internet Archive. R package version 0.1.2. https://github.com/ropensci/internetarchive
+> Lincoln Mullen (2015). internetarchive: An API Client for the Internet Archive. R package version 0.1.4. https://github.com/ropensci/internetarchive
 
 
 <section id="license_bugs">

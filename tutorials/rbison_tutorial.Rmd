@@ -1,7 +1,7 @@
 ---
 title: rbison tutorial
 layout: tutorial
-packge_version: 0.4.5
+packge_version: 0.4.8
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
@@ -27,7 +27,7 @@ BISON is a node of the Global Biodiversity Information Facility (GBIF) - i.e., y
 
 ### Info
 
-See [http://bison.usgs.ornl.gov/doc/api.jsp]() for API docs for the BISON API.
+See [http://bison.usgs.ornl.gov/doc/api.jsp](http://bison.usgs.ornl.gov/doc/api.jsp) for API docs for the BISON API.
 
 ********************
 
@@ -35,7 +35,7 @@ See [http://bison.usgs.ornl.gov/doc/api.jsp]() for API docs for the BISON API.
 
 ## Installation
 
-```{r install, eval=FALSE}
+```{r eval=FALSE}
 install.packages("rbison")
 ```
 
@@ -46,7 +46,7 @@ install.packages("devtools")
 devtools::install_github("ropensci/rbison")
 ```
 
-```{r load, message=FALSE, warning=FALSE}
+```{r}
 library("rbison")
 ```
 
@@ -225,7 +225,7 @@ To cite `rbison` in publications use:
 
 <br>
 
-> Scott Chamberlain (2015). rbison: R interface to the USGS BISON API. R package version 0.4.5 http://CRAN.R-project.org/package=rbison
+> Scott Chamberlain (2015). rbison: R interface to the USGS BISON API. R package version 0.4.8 http://CRAN.R-project.org/package=rbison
 
 <section id="license_bugs">
 

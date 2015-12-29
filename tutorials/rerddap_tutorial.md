@@ -1,7 +1,7 @@
 ---
 title: rerddap tutorial
 layout: tutorial
-packge_version: 0.2.0
+packge_version: 0.3.0
 ---
 
 
@@ -57,50 +57,78 @@ First, you likely want to search for data, specify either `griddadp` or `tableda
 ```r
 ed_search(query = 'size', which = "table")
 #> 11 results, showing first 20 
-#>                                                                                         title
-#> 1                                                                          CalCOFI Fish Sizes
-#> 2                                                                        CalCOFI Larvae Sizes
-#> 3                Channel Islands, Kelp Forest Monitoring, Size and Frequency, Natural Habitat
-#> 4                                                         CalCOFI Larvae Counts Positive Tows
-#> 5                                                                                CalCOFI Tows
-#> 7                                                  OBIS - ARGOS Satellite Tracking of Animals
-#> 8                                                     GLOBEC NEP MOCNESS Plankton (MOC1) Data
-#> 9                                                 GLOBEC NEP Vertical Plankton Tow (VPT) Data
-#> 10 AN EXPERIMENTAL DATASET: Underway Sea Surface Temperature and Salinity Aboard the Oleander
-#> 11                            NWFSC Observer Fixed Gear Data, off West Coast of US, 2002-2006
-#> 12                                 NWFSC Observer Trawl Data, off West Coast of US, 2002-2006
-#>             dataset_id
-#> 1     erdCalCOFIfshsiz
-#> 2     erdCalCOFIlrvsiz
-#> 3       erdCinpKfmSFNH
-#> 4  erdCalCOFIlrvcntpos
-#> 5       erdCalCOFItows
-#> 7            aadcArgos
-#> 8        erdGlobecMoc1
-#> 9         erdGlobecVpt
-#> 10            nodcPJJU
-#> 11  nwioosObsFixed2002
-#> 12  nwioosObsTrawl2002
+#>                                                                                          title
+#> 1                                                                           CalCOFI Fish Sizes
+#> 2                                                                         CalCOFI Larvae Sizes
+#> 3                 Channel Islands, Kelp Forest Monitoring, Size and Frequency, Natural Habitat
+#> 9                                                          CalCOFI Larvae Counts Positive Tows
+#> 10                                                                                CalCOFI Tows
+#> 316                                                 OBIS - ARGOS Satellite Tracking of Animals
+#> 317                                                GLOBEC NEP Vertical Plankton Tow (VPT) Data
+#> 318                                                    GLOBEC NEP MOCNESS Plankton (MOC1) Data
+#> 319 AN EXPERIMENTAL DATASET: Underway Sea Surface Temperature and Salinity Aboard the Oleander
+#> 321                            NWFSC Observer Fixed Gear Data, off West Coast of US, 2002-2006
+#> 322                                 NWFSC Observer Trawl Data, off West Coast of US, 2002-2006
+#>              dataset_id
+#> 1      erdCalCOFIfshsiz
+#> 2      erdCalCOFIlrvsiz
+#> 3        erdCinpKfmSFNH
+#> 9   erdCalCOFIlrvcntpos
+#> 10       erdCalCOFItows
+#> 316           aadcArgos
+#> 317        erdGlobecVpt
+#> 318       erdGlobecMoc1
+#> 319            nodcPJJU
+#> 321  nwioosObsFixed2002
+#> 322  nwioosObsTrawl2002
 ```
 
 
 ```r
 ed_search(query = 'size', which = "grid")
-#> 6 results, showing first 20 
-#>                                                                                                   title
-#> 6                                                       NOAA Global Coral Bleaching Monitoring Products
-#> 13        USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][eta_rho][xi_rho]
-#> 14            USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][eta_u][xi_u]
-#> 15            USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][eta_v][xi_v]
-#> 16 USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][s_rho][eta_rho][xi_rho]
-#> 17  USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][Nbed][eta_rho][xi_rho]
-#>             dataset_id
-#> 6             NOAA_DHW
-#> 13 whoi_ed12_89ce_9592
-#> 14 whoi_61c3_0b5d_cd61
-#> 15 whoi_62d0_9d64_c8ff
-#> 16 whoi_7dd7_db97_4bbe
-#> 17 whoi_a4fb_2c9c_16a7
+#> 311 results, showing first 20 
+#>                                                                                                 title
+#> 4                                                            AVHRR PATHFINDER L3 BSST 5DAY DAYTIME V5
+#> 5                                                           AVHRR PATHFINDER L3 BSST DAILY DAYTIME V5
+#> 6                                                          AVHRR PATHFINDER L3 SST DAILY NIGHTTIME V5
+#> 7                                                          AVHRR PATHFINDER L3 BSST DAILY DAYTIME V51
+#> 8                                                        AVHRR PATHFINDER L3 BSST DAILY NIGHTTIME V51
+#> 11        ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0008) [time][eta_rho][xi_rho]
+#> 12            ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0008) [time][eta_u][xi_u]
+#> 13            ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0008) [time][eta_v][xi_v]
+#> 14 ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0008) [time][s_rho][eta_rho][xi_rho]
+#> 15  ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0008) [time][Nbed][eta_rho][xi_rho]
+#> 16        ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0009) [time][eta_rho][xi_rho]
+#> 17            ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0009) [time][eta_u][xi_u]
+#> 18            ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0009) [time][eta_v][xi_v]
+#> 19 ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0009) [time][s_rho][eta_rho][xi_rho]
+#> 20  ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0009) [time][Nbed][eta_rho][xi_rho]
+#> 21        ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0010) [time][eta_rho][xi_rho]
+#> 22            ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0010) [time][eta_u][xi_u]
+#> 23            ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0010) [time][eta_v][xi_v]
+#> 24 ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0010) [time][s_rho][eta_rho][xi_rho]
+#> 25  ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0010) [time][Nbed][eta_rho][xi_rho]
+#>                 dataset_id
+#> 4  nasa_jpl_ccfc_1654_21c4
+#> 5  nasa_jpl_bef9_68a1_1fd5
+#> 6  nasa_jpl_77ba_ec94_a5d6
+#> 7  nasa_jpl_5533_5dee_222e
+#> 8  nasa_jpl_c2a2_7085_780e
+#> 11     whoi_cbae_ef31_0877
+#> 12     whoi_61f3_6dac_36c1
+#> 13     whoi_4eff_1b8e_513a
+#> 14     whoi_4d06_1f87_db0b
+#> 15     whoi_4849_5c78_58dc
+#> 16     whoi_28c3_4a74_191a
+#> 17     whoi_e627_874c_2b1b
+#> 18     whoi_9183_ea0f_9417
+#> 19     whoi_322d_c428_66b4
+#> 20     whoi_5f75_6229_f722
+#> 21     whoi_02c9_858d_bc77
+#> 22     whoi_689d_0109_9280
+#> 23     whoi_4f6e_439a_8e4b
+#> 24     whoi_5451_efbd_60ac
+#> 25     whoi_1ace_a9ee_f343
 ```
 
 ### Information
@@ -112,7 +140,7 @@ Then you can get information on a single dataset
 info('whoi_62d0_9d64_c8ff')
 #> <ERDDAP info> whoi_62d0_9d64_c8ff 
 #>  Dimensions (range):  
-#>      time: (2012-06-25T01:00:00Z, 2015-07-10T00:00:00Z) 
+#>      time: (2012-06-25T01:00:00Z, 2015-10-14T00:00:00Z) 
 #>      eta_v: (0, 334) 
 #>      xi_v: (0, 895) 
 #>  Variables:  
@@ -152,24 +180,24 @@ Then query for gridded data using the `griddap()` function
 ))
 #> <ERDDAP griddap> noaa_esrl_027d_0fb5_5d38
 #>    Path: [~/.rerddap/648ed11e8b911b65e39eb63c8df339df.nc]
-#>    Last updated: [2015-07-09 07:23:59]
+#>    Last updated: [2015-10-09 09:20:59]
 #>    File size:    [0 mb]
 #>    Dimensions (dims/vars):   [3 X 1]
 #>    Dim names: time, latitude, longitude
 #>    Variable names: CRUTEM3: Surface Air Temperature Monthly Anomaly
 #>    data.frame (rows/columns):   [18 X 4]
-#>                    time latitude longitude  air
-#> 1  2012-01-01T00:00:00Z     22.5     -77.5   NA
-#> 2  2012-01-01T00:00:00Z     22.5     -77.5   NA
-#> 3  2012-01-01T00:00:00Z     22.5     -77.5   NA
-#> 4  2012-01-01T00:00:00Z     22.5     -77.5 -0.1
-#> 5  2012-01-01T00:00:00Z     22.5     -77.5   NA
-#> 6  2012-01-01T00:00:00Z     22.5     -77.5 -0.2
-#> 7  2012-01-01T00:00:00Z     17.5     -72.5  0.2
-#> 8  2012-01-01T00:00:00Z     17.5     -72.5   NA
-#> 9  2012-01-01T00:00:00Z     17.5     -72.5  0.3
-#> 10 2012-02-01T00:00:00Z     17.5     -72.5   NA
-#> ..                  ...      ...       ...  ...
+#>                    time  lat   lon  air
+#> 1  2012-01-01T00:00:00Z 22.5 -77.5   NA
+#> 2  2012-01-01T00:00:00Z 22.5 -72.5   NA
+#> 3  2012-01-01T00:00:00Z 22.5 -67.5   NA
+#> 4  2012-01-01T00:00:00Z 17.5 -77.5 -0.1
+#> 5  2012-01-01T00:00:00Z 17.5 -72.5   NA
+#> 6  2012-01-01T00:00:00Z 17.5 -67.5 -0.2
+#> 7  2012-01-01T00:00:00Z 12.5 -77.5  0.2
+#> 8  2012-01-01T00:00:00Z 12.5 -72.5   NA
+#> 9  2012-01-01T00:00:00Z 12.5 -67.5  0.3
+#> 10 2012-02-01T00:00:00Z 22.5 -77.5   NA
+#> ..                  ...  ...   ...  ...
 ```
 
 The output of `griddap()` is a list that you can explore further. Get the summary
@@ -177,13 +205,15 @@ The output of `griddap()` is a list that you can explore further. Get the summar
 
 ```r
 res$summary
-#> [1] "file ~/.rerddap/648ed11e8b911b65e39eb63c8df339df.nc has 3 dimensions:"
-#> [1] "time   Size: 2"
-#> [1] "latitude   Size: 3"
-#> [1] "longitude   Size: 3"
-#> [1] "------------------------"
-#> [1] "file ~/.rerddap/648ed11e8b911b65e39eb63c8df339df.nc has 1 variables:"
-#> [1] "float air[longitude,latitude,time]  Longname:CRUTEM3: Surface Air Temperature Monthly Anomaly Missval:-9.96920996838687e+36"
+#> $filename
+#> [1] "~/.rerddap/648ed11e8b911b65e39eb63c8df339df.nc"
+#> 
+#> $writable
+#> [1] FALSE
+#> 
+#> $id
+#> [1] 65536
+#> ...
 ```
 
 Get the dimension variables
@@ -199,25 +229,25 @@ Get the data.frame (beware: you may want to just look at the `head` of the data.
 
 ```r
 res$data
-#>                    time latitude longitude   air
-#> 1  2012-01-01T00:00:00Z     22.5     -77.5    NA
-#> 2  2012-01-01T00:00:00Z     22.5     -77.5    NA
-#> 3  2012-01-01T00:00:00Z     22.5     -77.5    NA
-#> 4  2012-01-01T00:00:00Z     22.5     -77.5 -0.10
-#> 5  2012-01-01T00:00:00Z     22.5     -77.5    NA
-#> 6  2012-01-01T00:00:00Z     22.5     -77.5 -0.20
-#> 7  2012-01-01T00:00:00Z     17.5     -72.5  0.20
-#> 8  2012-01-01T00:00:00Z     17.5     -72.5    NA
-#> 9  2012-01-01T00:00:00Z     17.5     -72.5  0.30
-#> 10 2012-02-01T00:00:00Z     17.5     -72.5    NA
-#> 11 2012-02-01T00:00:00Z     17.5     -72.5    NA
-#> 12 2012-02-01T00:00:00Z     17.5     -72.5    NA
-#> 13 2012-02-01T00:00:00Z     12.5     -67.5  0.40
-#> 14 2012-02-01T00:00:00Z     12.5     -67.5    NA
-#> 15 2012-02-01T00:00:00Z     12.5     -67.5  0.20
-#> 16 2012-02-01T00:00:00Z     12.5     -67.5  0.00
-#> 17 2012-02-01T00:00:00Z     12.5     -67.5    NA
-#> 18 2012-02-01T00:00:00Z     12.5     -67.5  0.32
+#>                    time  lat   lon   air
+#> 1  2012-01-01T00:00:00Z 22.5 -77.5    NA
+#> 2  2012-01-01T00:00:00Z 22.5 -72.5    NA
+#> 3  2012-01-01T00:00:00Z 22.5 -67.5    NA
+#> 4  2012-01-01T00:00:00Z 17.5 -77.5 -0.10
+#> 5  2012-01-01T00:00:00Z 17.5 -72.5    NA
+#> 6  2012-01-01T00:00:00Z 17.5 -67.5 -0.20
+#> 7  2012-01-01T00:00:00Z 12.5 -77.5  0.20
+#> 8  2012-01-01T00:00:00Z 12.5 -72.5    NA
+#> 9  2012-01-01T00:00:00Z 12.5 -67.5  0.30
+#> 10 2012-02-01T00:00:00Z 22.5 -77.5    NA
+#> 11 2012-02-01T00:00:00Z 22.5 -72.5    NA
+#> 12 2012-02-01T00:00:00Z 22.5 -67.5    NA
+#> 13 2012-02-01T00:00:00Z 17.5 -77.5  0.40
+#> 14 2012-02-01T00:00:00Z 17.5 -72.5    NA
+#> 15 2012-02-01T00:00:00Z 17.5 -67.5  0.20
+#> 16 2012-02-01T00:00:00Z 12.5 -77.5  0.00
+#> 17 2012-02-01T00:00:00Z 12.5 -72.5    NA
+#> 18 2012-02-01T00:00:00Z 12.5 -67.5  0.32
 ```
 
 ### tabledap (tabular) data
@@ -243,21 +273,21 @@ res$data
 (dat <- tabledap(out, 'time>=2001-07-07', 'time<=2001-07-10', fields = c('longitude', 'latitude', 'fish_size', 'itis_tsn', 'scientific_name')))
 #> <ERDDAP tabledap> erdCalCOFIfshsiz
 #>    Path: [~/.rerddap/f013f9ee09bdb4184928d533e575e948.csv]
-#>    Last updated: [2015-07-09 07:24:00]
+#>    Last updated: [2015-10-09 09:21:00]
 #>    File size:    [0.03 mb]
 #>    Dimensions:   [558 X 5]
 #> 
 #>     longitude  latitude fish_size itis_tsn       scientific_name
-#> 2     -118.26    33.255      22.9   623745 Nannobrachium ritteri
-#> 3     -118.26    33.255      22.9   623745 Nannobrachium ritteri
-#> 4  -118.10667 32.738335      31.5   623625  Lipolagus ochotensis
-#> 5  -118.10667 32.738335      48.3   623625  Lipolagus ochotensis
-#> 6  -118.10667 32.738335      15.5   162221 Argyropelecus sladeni
-#> 7  -118.10667 32.738335      16.3   162221 Argyropelecus sladeni
-#> 8  -118.10667 32.738335      17.8   162221 Argyropelecus sladeni
-#> 9  -118.10667 32.738335      18.2   162221 Argyropelecus sladeni
-#> 10 -118.10667 32.738335      19.2   162221 Argyropelecus sladeni
-#> 11 -118.10667 32.738335      20.0   162221 Argyropelecus sladeni
+#> 2  -118.10667 32.738335      31.5   623625  Lipolagus ochotensis
+#> 3  -118.10667 32.738335      48.3   623625  Lipolagus ochotensis
+#> 4  -118.10667 32.738335      15.5   162221 Argyropelecus sladeni
+#> 5  -118.10667 32.738335      16.3   162221 Argyropelecus sladeni
+#> 6  -118.10667 32.738335      17.8   162221 Argyropelecus sladeni
+#> 7  -118.10667 32.738335      18.2   162221 Argyropelecus sladeni
+#> 8  -118.10667 32.738335      19.2   162221 Argyropelecus sladeni
+#> 9  -118.10667 32.738335      20.0   162221 Argyropelecus sladeni
+#> 10 -118.10667 32.738335      21.0   162221 Argyropelecus sladeni
+#> 11 -118.10667 32.738335      21.5   162221 Argyropelecus sladeni
 #> ..        ...       ...       ...      ...                   ...
 ```
 
@@ -275,6 +305,7 @@ tbl_df(dat) %>%
 #> Source: local data frame [20 x 2]
 #> 
 #>                 scientific_name mean_size
+#>                           (chr)     (dbl)
 #> 1       Idiacanthus antrostomus 253.00000
 #> 2            Stomias atriventer 189.25000
 #> 3            Lestidiops ringens  98.70000
@@ -297,6 +328,7 @@ tbl_df(dat) %>%
 #> 20        Argyropelecus sladeni  32.43333
 ```
 
+
 <section id="citing">
 
 ## Citing
@@ -306,7 +338,7 @@ To cite `rerddap` in publications use:
 <br>
 
 >  Scott Chamberlain (2015). rerddap: General Purpose Client for 'ERDDAP' Servers. R
-  package version 0.2.0. https://github.com/ropensci/rerddap
+  package version 0.3.0. https://github.com/ropensci/rerddap
 
 <section id="license_bugs">
 

@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+                                                                                
+"features": [
+{ "type": "Feature", "id": 1, "properties": { "name": "Abilene TX", "country.etc": "TX", "pop": 113888, "lat": 32.450000, "long": -99.740000, "capital": 0 }, "geometry": { "type": "Point", "coordinates": [ -99.74, 32.45 ] } },
+{ "type": "Feature", "id": 2, "properties": { "name": "Akron OH", "country.etc": "OH", "pop": 206634, "lat": 41.080000, "long": -81.520000, "capital": 0 }, "geometry": { "type": "Point", "coordinates": [ -81.52, 41.08 ] } }
+]
+}

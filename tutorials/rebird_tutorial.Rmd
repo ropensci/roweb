@@ -1,7 +1,7 @@
 ---
 title: rebird tutorial
 layout: tutorial
-packge_version: 0.1.1
+packge_version: 0.2.0
 ---
 
 A programmatic interface to the eBird database. Find out more about eBird at [their website](http://ebird.org/content/ebird/).
@@ -21,8 +21,7 @@ Or the development version from Github
 
 ```{r eval=FALSE}
 install.packages("devtools")
-library("devtools")
-install_github("ropensci/rebird")
+devtools::install_github("ropensci/rebird")
 ```
 
 Then load the package into the R sesssion
@@ -40,16 +39,13 @@ library("rebird")
 Search for bird occurrences by latitude and longitude point
 
 ```{r ebirdgeo1}
-out <- ebirdgeo(species = 'spinus tristis', lat = 42, lng = -76)
-head(out)
+ebirdgeo(species = 'spinus tristis', lat = 42, lng = -76)
 ```
 
 Same, but with additional parameter settings, returning only 10 records, including provisional records, and hotspot records.
 
 ```{r ebirdgeo2}
-out1 <- ebirdgeo(lat = 42, lng = -76, max = 10, includeProvisional = TRUE, hotspot = TRUE)
-head(out1)
-nrow(out1)
+ebirdgeo(lat = 42, lng = -76, max = 10, includeProvisional = TRUE, hotspot = TRUE)
 ```
 
 
@@ -58,8 +54,7 @@ nrow(out1)
 Search for bird occurrences for two locations by their IDs
 
 ```{r ebirdloc1}
-out2 <- ebirdloc(locID = c('L99381','L99382'))
-head(out2)
+ebirdloc(locID = c('L99381','L99382'))
 ```
 
 Search by location ID and species name, as well as some additional parameter settings
@@ -74,8 +69,7 @@ ebirdloc(locID = 'L99381', species = 'larus delawarensis', max = 10, provisional
 Search for bird occurrences by region and species name
 
 ```{r ebirdregion1}
-out3 <- ebirdregion(region = 'US', species = 'Setophaga caerulescens')
-head(out3)
+ebirdregion(region = 'US', species = 'Setophaga caerulescens')
 ```
 
 Search by location ID and species name, as well as some additional parameter settings. Note that we use `US-OH` to represent Ohio within the US. [See possible region values](https://confluence.cornell.edu/display/CLOISAPI/eBird-1.1-RegionCodeReference).
@@ -94,13 +88,46 @@ ebirdhotspot(locID = c('L99381','L99382'), species = 'larus delawarensis')
 ```
 
 
+### Frequency of observations at hotspots or regions
+
+Obtain historical frequencies of bird occurrences at a given hotspot
+
+```{r ebirdfreq1}
+ebirdfreq(loctype = 'hotspots', loc = 'L196159')
+```
+
+Same, but in wide format (for making bar charts)
+
+```{r ebirdfreq2}
+ebirdfreq(loctype = 'hotspots', loc = 'L196159', long = FALSE)
+```
+
+Obtain frequency data for a given state
+
+```{r ebirdfreq3}
+ebirdfreq(loctype = 'states', loc = 'CA-BC')
+```
+
+Or county
+
+```{r ebirdfreq4}
+ebirdfreq(loctype = 'counties', loc = 'CA-BC-GV')
+```
+
+Obtain frequency data within a range of years and months
+
+```{r ebirdfreq5}
+ebirdfreq(loctype = 'hotspots', loc = 'L196159', startyear = 2010,
+          endyear = 2014, startmonth = 1, endmonth = 3)
+```
+
+
 ### Recent notable sightings
 
 Search for notable sightings at a given latitude and longitude
 
 ```{r ebirdnotable}
-out4 <- ebirdnotable(lat = 42, lng = -70)
-head(out4)
+ebirdnotable(lat = 42, lng = -70)
 ```
 
 
@@ -109,15 +136,22 @@ head(out4)
 Returns a data.frame of all species in the eBird taxonomy for the given parameter inputs
 
 ```{r ebirdtax1}
-out5 <- ebirdtaxonomy()
-head(out5)
+ebirdtaxonomy()
 ```
 
 Search for hybrid species only
 
 ```{r ebirdtax2}
-out6 <- ebirdtaxonomy(cat="hybrid")
-head(out6)
+ebirdtaxonomy(cat="hybrid")
+```
+
+
+### Check eBird region
+
+Check if region is valid in eBird database
+
+```{r ebirdregioncheck}
+ebirdregioncheck(loctype = 'counties', loc = 'CA-BC-GV')
 ```
 
 
@@ -129,7 +163,7 @@ To cite `rebird` in publications use:
 
 <br>
 
-> Rafael Maia, Scott Chamberlain and Andy Teucher (2014). rebird: Interface to eBird. R package version 0.1.1. http://github.com/ropensci/rebird
+> Rafael Maia, Scott Chamberlain and Andy Teucher (2015). rebird: Interface to eBird. R package version 0.2.0. http://github.com/ropensci/rebird
 
 <section id="license_bugs">
 

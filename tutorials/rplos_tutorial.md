@@ -1,7 +1,7 @@
 ---
 title: rplos tutorial
 layout: tutorial
-packge_version: 0.5.0
+packge_version: 0.5.4
 ---
 
 
@@ -47,15 +47,15 @@ searchplos(q= "Helianthus", fl= "id", limit = 5)
 ```
 #> $meta
 #>   numFound start maxScore
-#> 1      348     0       NA
+#> 1      396     0       NA
 #> 
 #> $data
 #>                             id
 #> 1 10.1371/journal.pone.0111982
-#> 2 10.1371/journal.pone.0057533
-#> 3 10.1371/journal.pone.0045899
-#> 4 10.1371/journal.pone.0037191
-#> 5 10.1371/journal.pone.0051360
+#> 2 10.1371/journal.pone.0139188
+#> 3 10.1371/journal.pone.0057533
+#> 4 10.1371/journal.pone.0045899
+#> 5 10.1371/journal.pone.0037191
 ```
 
 Get only full article DOIs
@@ -68,15 +68,15 @@ searchplos(q="*:*", fl='id', fq='doc_type:full', start=0, limit=5)
 ```
 #> $meta
 #>   numFound start maxScore
-#> 1   159574     0       NA
+#> 1   174910     0       NA
 #> 
 #> $data
-#>                             id
-#> 1 10.1371/journal.pone.0031384
-#> 2 10.1371/journal.pone.0031385
-#> 3 10.1371/journal.pone.0107441
-#> 4 10.1371/journal.pone.0000339
-#> 5 10.1371/journal.pone.0046739
+#>                                                        id
+#> 1                            10.1371/journal.pbio.0000030
+#> 2 10.1371/annotation/d090733e-1f34-43c5-a06a-255456946303
+#> 3 10.1371/annotation/d1b28569-d9c0-4812-8332-9a6bfa9eb27f
+#> 4 10.1371/annotation/d29aed40-7667-4901-8008-ef473c363216
+#> 5 10.1371/annotation/d271d9c1-5588-4b43-85c3-d3de58ab61a4
 ```
 
 Get DOIs for only PLoS One articles
@@ -89,15 +89,15 @@ searchplos(q="*:*", fl='id', fq='cross_published_journal_key:PLoSONE', start=0, 
 ```
 #> $meta
 #>   numFound start maxScore
-#> 1  1148921     0       NA
+#> 1  1268014     0       NA
 #> 
 #> $data
-#>                                          id
-#> 1        10.1371/journal.pone.0123754/title
-#> 2     10.1371/journal.pone.0123754/abstract
-#> 3   10.1371/journal.pone.0123754/references
-#> 4         10.1371/journal.pone.0123754/body
-#> 5 10.1371/journal.pone.0123754/introduction
+#>                                                                   id
+#> 1            10.1371/annotation/d090733e-1f34-43c5-a06a-255456946303
+#> 2      10.1371/annotation/d090733e-1f34-43c5-a06a-255456946303/title
+#> 3   10.1371/annotation/d090733e-1f34-43c5-a06a-255456946303/abstract
+#> 4 10.1371/annotation/d090733e-1f34-43c5-a06a-255456946303/references
+#> 5       10.1371/annotation/d090733e-1f34-43c5-a06a-255456946303/body
 ```
 
 Get DOIs for full article in PLoS One
@@ -112,15 +112,15 @@ searchplos(q="*:*", fl='id',
 ```
 #> $meta
 #>   numFound start maxScore
-#> 1   134656     0       NA
+#> 1   148355     0       NA
 #> 
 #> $data
-#>                             id
-#> 1 10.1371/journal.pone.0031384
-#> 2 10.1371/journal.pone.0031385
-#> 3 10.1371/journal.pone.0107441
-#> 4 10.1371/journal.pone.0000339
-#> 5 10.1371/journal.pone.0046739
+#>                                                        id
+#> 1 10.1371/annotation/d090733e-1f34-43c5-a06a-255456946303
+#> 2 10.1371/annotation/d1b28569-d9c0-4812-8332-9a6bfa9eb27f
+#> 3 10.1371/annotation/d29aed40-7667-4901-8008-ef473c363216
+#> 4 10.1371/annotation/d271d9c1-5588-4b43-85c3-d3de58ab61a4
+#> 5 10.1371/annotation/d2692d0c-26c3-4a7d-b4f5-1139e051e59a
 ```
 
 Search for many terms
@@ -135,7 +135,7 @@ lapply(q, function(x) searchplos(x, limit=2))
 #> [[1]]
 #> [[1]]$meta
 #>   numFound start maxScore
-#> 1    28002     0       NA
+#> 1    30856     0       NA
 #> 
 #> [[1]]$data
 #>                             id
@@ -146,18 +146,18 @@ lapply(q, function(x) searchplos(x, limit=2))
 #> [[2]]
 #> [[2]]$meta
 #>   numFound start maxScore
-#> 1    46684     0       NA
+#> 1    50847     0       NA
 #> 
 #> [[2]]$data
 #>                                                        id
-#> 1 10.1371/annotation/9773af53-a076-4946-a3f1-83914226c10d
-#> 2 10.1371/annotation/c55d5089-ba2f-449d-8696-2bc8395978db
+#> 1 10.1371/annotation/c55d5089-ba2f-449d-8696-2bc8395978db
+#> 2 10.1371/annotation/9773af53-a076-4946-a3f1-83914226c10d
 #> 
 #> 
 #> [[3]]
 #> [[3]]$meta
 #>   numFound start maxScore
-#> 1   135561     0       NA
+#> 1   147829     0       NA
 #> 
 #> [[3]]$data
 #>                             id
@@ -185,7 +185,7 @@ plosauthor(q = "Eisen", fl = "author", limit = 5)
 ```
 #> $meta
 #>   numFound start maxScore
-#> 1      764     0       NA
+#> 1      824     0       NA
 #> 
 #> $data
 #>             author
@@ -206,21 +206,21 @@ plosabstract(q = 'drosophila', fl='id,title', limit = 5)
 ```
 #> $meta
 #>   numFound start maxScore
-#> 1     2676     0       NA
+#> 1     2835     0       NA
 #> 
 #> $data
 #>                             id
 #> 1 10.1371/journal.pbio.0040198
 #> 2 10.1371/journal.pbio.0030246
 #> 3 10.1371/journal.pone.0012421
-#> 4 10.1371/journal.pbio.0030389
+#> 4 10.1371/journal.pone.0002817
 #> 5 10.1371/journal.pbio.1000342
-#>                                                                       title
-#> 1                                                               All for All
-#> 2                               School Students as Drosophila Experimenters
-#> 3                      Host Range and Specificity of the Drosophila C Virus
-#> 4               New Environments Set the Stage for Changing Tastes in Mates
-#> 5 Variable Transcription Factor Binding: A Mechanism of Evolutionary Change
+#>                                                                             title
+#> 1                                                                     All for All
+#> 2                                     School Students as Drosophila Experimenters
+#> 3                            Host Range and Specificity of the Drosophila C Virus
+#> 4 High-Resolution, In Vivo Magnetic Resonance Imaging of Drosophila at 18.8 Tesla
+#> 5       Variable Transcription Factor Binding: A Mechanism of Evolutionary Change
 ```
 
 `plostitle` searches across titles, and in this case returns the title and journal of the matching papers
@@ -233,15 +233,21 @@ plostitle(q='drosophila', fl='title,journal', limit=5)
 ```
 #> $meta
 #>   numFound start maxScore
-#> 1     1722     0       NA
+#> 1     1838     0       NA
 #> 
 #> $data
-#>        journal                                         title
-#> 1 PLoS Biology Identification of Drosophila MicroRNA Targets
-#> 2     PLoS ONE                     A DNA Virus of Drosophila
-#> 3 PLoS Biology   School Students as Drosophila Experimenters
-#> 4 PLoS Biology   Expression in Aneuploid Drosophila S2 Cells
-#> 5     PLoS ONE   Quantification of Food Intake in Drosophila
+#>                      journal
+#> 1                   PLoS ONE
+#> 2              PLoS Genetics
+#> 3                   PLoS ONE
+#> 4                   PLoS ONE
+#> 5 PLOS Computational Biology
+#>                                                   title
+#> 1           Quantification of Food Intake in Drosophila
+#> 2 Phenotypic Plasticity of the Drosophila Transcriptome
+#> 3                             A DNA Virus of Drosophila
+#> 4              A Tripartite Synapse Model in Drosophila
+#> 5                A Model of Drosophila Larva Chemotaxis
 ```
 
 ### Search for terms and visualize results as a histogram OR as a plot through time
@@ -258,11 +264,11 @@ out$table
 
 ```
 #>   No_Articles       Term
-#> 1        9139     monkey
-#> 2         348 Helianthus
-#> 3         944  sunflower
-#> 4      101494    protein
-#> 5        1146      whale
+#> 1        9841     monkey
+#> 2         396 Helianthus
+#> 3        1060  sunflower
+#> 4      109616    protein
+#> 5        1268      whale
 ```
 
 
@@ -281,7 +287,7 @@ plosword('Helianthus', callopts=list(verbose=TRUE))
 
 ```
 #> Number of articles with search term 
-#>                                 348
+#>                                 396
 ```
 
 ### Visualize terms
@@ -312,17 +318,16 @@ facetplos(q='*:*', facet.field='journal')
 #> 
 #> $facet_fields
 #> $facet_fields$journal
-#>                                  X1      X2
-#> 1                          plos one 1090088
-#> 2                     plos genetics   45276
-#> 3                    plos pathogens   39556
-#> 4        plos computational biology   32898
-#> 5  plos neglected tropical diseases   29735
-#> 6                      plos biology   27505
-#> 7                     plos medicine   19194
-#> 8              plos clinical trials     521
-#> 9                  plos collections      15
-#> 10                     plos medicin       9
+#>                                 X1      X2
+#> 1                         plos one 1209117
+#> 2                    plos genetics   48536
+#> 3                   plos pathogens   42131
+#> 4       plos computational biology   35793
+#> 5 plos neglected tropical diseases   32948
+#> 6                     plos biology   28488
+#> 7                    plos medicine   19776
+#> 8             plos clinical trials     521
+#> 9                     plos medicin       9
 #> 
 #> 
 #> $facet_dates
@@ -342,21 +347,20 @@ facetplos(q='*:*', facet.field='journal', facet.query='cell,bird')
 ```
 #> $facet_queries
 #>        term value
-#> 1 cell,bird    21
+#> 1 cell,bird    24
 #> 
 #> $facet_fields
 #> $facet_fields$journal
-#>                                  X1      X2
-#> 1                          plos one 1090088
-#> 2                     plos genetics   45276
-#> 3                    plos pathogens   39556
-#> 4        plos computational biology   32898
-#> 5  plos neglected tropical diseases   29735
-#> 6                      plos biology   27505
-#> 7                     plos medicine   19194
-#> 8              plos clinical trials     521
-#> 9                  plos collections      15
-#> 10                     plos medicin       9
+#>                                 X1      X2
+#> 1                         plos one 1209117
+#> 2                    plos genetics   48536
+#> 3                   plos pathogens   42131
+#> 4       plos computational biology   35793
+#> 5 plos neglected tropical diseases   32948
+#> 6                     plos biology   28488
+#> 7                    plos medicine   19776
+#> 8             plos clinical trials     521
+#> 9                     plos medicin       9
 #> 
 #> 
 #> $facet_dates
@@ -384,12 +388,12 @@ facetplos(q='*:*', url=url, facet.date='publication_date',
 #> $facet_dates
 #> $facet_dates$publication_date
 #>                   date value
-#> 1 2015-07-04T00:00:00Z     0
-#> 2 2015-07-05T00:00:00Z  2981
-#> 3 2015-07-06T00:00:00Z  3471
-#> 4 2015-07-07T00:00:00Z  1397
-#> 5 2015-07-08T00:00:00Z   907
-#> 6 2015-07-09T00:00:00Z     0
+#> 1 2015-12-24T00:00:00Z     0
+#> 2 2015-12-25T00:00:00Z     0
+#> 3 2015-12-26T00:00:00Z     0
+#> 4 2015-12-27T00:00:00Z   920
+#> 5 2015-12-28T00:00:00Z  2161
+#> 6 2015-12-29T00:00:00Z  1241
 #> 
 #> 
 #> $facet_ranges
@@ -485,7 +489,7 @@ To cite `rplos` in publications use:
 
 <br>
 
-> Scott Chamberlain, Carl Boettiger and Karthik Ram (2015). rplos: Interface to PLOS Journals search API. R package version 0.5.0 https://github.com/ropensci/rplos
+> Scott Chamberlain, Carl Boettiger and Karthik Ram (2015). rplos: Interface to PLOS Journals search API. R package version 0.5.4 https://github.com/ropensci/rplos
 
 <section id="license_bugs">
 

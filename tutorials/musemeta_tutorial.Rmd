@@ -1,7 +1,7 @@
 ---
 title: musemeta tutorial
 layout: tutorial
-packge_version: 0.0.5
+packge_version: 0.0.6
 ---
 
 ```{r, eval=TRUE, echo=FALSE}

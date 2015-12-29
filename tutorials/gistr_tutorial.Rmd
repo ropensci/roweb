@@ -1,7 +1,7 @@
 ---
 title: gistr vignette
 layout: tutorial
-packge_version: 0.3
+packge_version: 0.3.6
 ---
 
 
@@ -110,21 +110,6 @@ gists('minepublic', per_page = 2)
 gist(id = 'f1403260eb92f5dfa7e1')
 ```
 
-## Easily play with gist data
-
-A new function in `v0.2` is `tabl()` (weirdly named to avoid collision with `base::table()`),
-which attempts to parse data on gists into data.frame's for easy manipulation.
-
-Here, we play with commit data on each of 30 gists
-
-```{r}
-library("dplyr")
-x <- sapply(c(gists(), gists()), commits)
-tabl(x) %>%
-  select(id, login, change_status.total, url) %>%
-  filter(change_status.total > 70)
-```
-
 ## Create gist
 
 You can pass in files
@@ -136,14 +121,14 @@ stuffpath <- system.file("examples", "stuff.md", package = "gistr")
 ```
 
 ```{r eval=FALSE}
-gist_create(files = stuffpath, description='a new cool gist')
+gist_create(files = stuffpath, description = 'a new cool gist')
 ```
 
 ```{r}
 gist_create(files = stuffpath, description = 'a new cool gist', browse = FALSE)
 ```
 
-Or, wrap `gist_create()` around some code in your R session/IDE, like so, with just the function name, and a `{'` at the start and a `}'` at the end.
+Or, wrap `gist_create()` around some code in your R session/IDE, like so, with just the function name, and a `{'` at the start and a `'}` at the end.
 
 ```{r}
 gist_create(code = {'
@@ -159,7 +144,7 @@ You can also knit an input file before posting as a gist:
 
 ```{r eval=FALSE}
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
-gist_create(file, description = 'a new cool gist', knit=TRUE)
+gist_create(file, description = 'a new cool gist', knit = TRUE)
 #> <gist>4162b9c53479fbc298db
 #>   URL: https://gist.github.com/4162b9c53479fbc298db
 #>   Description: a new cool gist
@@ -189,8 +174,7 @@ knit a local file
 
 ```{r}
 file <- system.file("examples", "stuff.Rmd", package = "gistr")
-run(file, knitopts = list(quiet = TRUE)) %>%
-  gist_create(browse = FALSE)
+run(file, knitopts = list(quiet = TRUE)) %>% gist_create(browse = FALSE)
 ```
 
 ```{r echo=FALSE}
@@ -203,60 +187,13 @@ knit a code block (`knitr` code block notation missing, do add that in) (result 
 run({'
 x <- letters
 (numbers <- runif(8))
-'}) %>% gist_create
+'}) %>% gist_create()
 ```
 
 knit a file from a gist, has to get file first (result not shown)
 
 ```{r eval=FALSE}
-gists('minepublic')[[1]] %>%
-  run() %>%
-  update()
-```
-
-## Include source file in the created gist
-
-```{r eval=FALSE}
-file <- system.file("examples", "stuff.Rmd", package = "gistr")
-gist_create(file, knit = TRUE, include_source = TRUE)
-```
-
-## Inject image links with IMGUR
-
-```{r eval=FALSE}
-file <- system.file("examples", "plots.Rmd", package = "gistr")
-gist_create(file, knit = TRUE, imgur_inject = TRUE)
-```
-
-![inject_imgur](../assets/tutorial-images/gistr/gistr_imgur.png)
-
-## Create gists from R objects
-
-First, `gist_create_obj()` was made a separate function from `gist_create()` because there was
-a bunch of different parameters, and it was too complicated to cobmine. Behavior of this function
-is a bit dumb at this point, e.g., if a data.frame is pushed up to a gist, you'd expect a
-markdown table probably - but that doesn't quite work yet, sorry :) For other formats (e.g.,
-lists), it's not clear what to show in a gist.
-
-__data.frame__
-
-by default makes pretty table in markdown format
-
-```{r}
-row.names(mtcars) <- NULL
-gist_create_obj(mtcars)
-```
-
-or just push up json
-
-```{r}
-gist_create_obj(mtcars, pretty = FALSE)
-```
-
-__list__
-
-```{r}
-gist_create_obj(apply(mtcars, 1, as.list))
+gists('minepublic')[[1]] %>% run() %>% update()
 ```
 
 ## List commits on a gist
@@ -270,13 +207,13 @@ gists()[[1]] %>% commits()
 Star
 
 ```{r}
-gist('7ddb9810fc99c84c65ec') %>% star()
+gist('485d4edfb1e1912bb9f4') %>% star()
 ```
 
 Unstar
 
 ```{r}
-gist('7ddb9810fc99c84c65ec') %>% unstar()
+gist('485d4edfb1e1912bb9f4') %>% unstar()
 ```
 
 ## Update a gist
@@ -347,8 +284,8 @@ The API is described at [https://github.com/pelias/pelias](https://github.com/pe
 ```{r eval=FALSE}
 library('httr')
 base <- "http://pelias.mapzen.com/search"
-res <- GET(base, query = list(input = 'coffee shop', lat = 45.5, lon = -122.6))
-json <- content(res, as = "text")
+res <- httr::GET(base, query = list(input = 'coffee shop', lat = 45.5, lon = -122.6))
+json <- httr::content(res, "text")
 gist_create(code = json, filename = "pelias_test.geojson")
 #> <gist>017214637bcfeb198070
 #>   URL: https://gist.github.com/017214637bcfeb198070
@@ -360,8 +297,7 @@ gist_create(code = json, filename = "pelias_test.geojson")
 
 And here's that gist: [https://gist.github.com/sckott/017214637bcfeb198070](https://gist.github.com/sckott/017214637bcfeb198070)
 
-![gistmap](../assets/tutorial-images/gistr/gistr_ss.png)
-
+![img](../assets/tutorial-images/gistr/gistr_ss.png)
 
 
 <section id="citing">
@@ -369,7 +305,7 @@ And here's that gist: [https://gist.github.com/sckott/017214637bcfeb198070](http
 ## Citing
 
 > Ramnath Vaidyanathan, Karthik Ram and Scott Chamberlain (2015). gistr: Work with
-  GitHub Gists from R. R package version 0.3.0. https://github.com/ropensci/gistr
+  GitHub Gists from R. R package version 0.3.6. https://github.com/ropensci/gistr
 
 
 
