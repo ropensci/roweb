@@ -1,11 +1,16 @@
 ---
 title: treebase tutorial
 layout: tutorial
-packge_version: 0.0-7.1
+packge_version: 0.1.2
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
-opts_chunk$set(fig.path="../assets/tutorial-images/treebase/", comment=NA, message=FALSE, warning=FALSE)
+opts_chunk$set(
+  fig.path="../assets/tutorial-images/treebase/",
+  comment=NA,
+  message=FALSE,
+  warning=FALSE
+)
 ```
 
 Here are a few introductory examples to illustrate some of the functionality of the package. Thanks in part to new data deposition requirements at journals such as Evolution, Am Nat, and Sys Bio, and
@@ -22,7 +27,7 @@ install.packages('treebase')
 ```
 
 ```{r loadpkg}
-library(treebase)
+library("treebase")
 ```
 
 <section id="usage">
@@ -31,8 +36,6 @@ library(treebase)
 
 Basic tree and metadata queries
 ==========
-
-Downloading trees by different queries: by author, taxa, & study. More options are described in the help file.
 
 ```{r search1, eval=FALSE, message=FALSE, warning=FALSE}
 both <- search_treebase("Ronquist or Hulesenbeck", by=c("author", "author"))
@@ -76,10 +79,6 @@ plot(tree)
 ```
 
 They fit a variety of diversification rate models avialable in the `laser` R package, which they compare using AIC.
-
-```{r eval=FALSE}
-install.packages("laser")
-```
 
 ```{r message=FALSE, warning=FALSE}
 library(laser)
@@ -149,7 +148,7 @@ To cite `treebase` in publications use:
 
 <br>
 
-> Carl Boettiger and Duncan Temple Lang (2011). treebase: An R package for discovery, access and manipulation of online phylogenies. R package version 0.0-7.1. https://github.com/ropensci/treebase
+> Carl Boettiger and Duncan Temple Lang (2011). treebase: An R package for discovery, access and manipulation of online phylogenies. R package version 0.1.2. https://github.com/ropensci/treebase
 
 <section id="license_bugs">
 

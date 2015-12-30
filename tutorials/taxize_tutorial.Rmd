@@ -1,7 +1,7 @@
 ---
 title: taxize tutorial
 layout: tutorial
-packge_version: 0.6.0
+packge_version: 0.7.0
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
@@ -34,42 +34,41 @@ install.packages("devtools")
 devtools::install_github("ropensci/taxize")
 ```
 
-<section id="usage">
-
-## Usage
-
 ```{r loadtaxize}
 library("taxize")
 ```
 
+<section id="usage">
+
+## Usage
+
 ## Resolve taxonomic name
 
-This is a common task in biology. We often have a list of species names and we want to know a) if we have the most up to date names, b) if our names are spelled correctly, and c) the scientific name for a common name. One way to resolve names is via the [Global Names Resolver (GNR) service][gnr]. Here, we are searching for two misspelled names:
+This is a common task in biology. We often have a list of species names and we want to know a) if we have the most up to date names, b) if our names are spelled correctly, and c) the scientific name for a common name. One way to resolve names is via the Global Names Resolver (GNR) service provided by the [Encyclopedia of Life][eol]. Here, we are searching for two misspelled names:
 
-```{r resolvenames, eval=TRUE, cache=FALSE}
+```{r resolvenames}
 temp <- gnr_resolve(names = c("Helianthos annus", "Homo saapiens"))
-head( temp$results )
+head(temp)
 ```
 
-The correct spellings are *Helianthus annuus* and *Homo sapiens*. Another approach uses the [Taxonomic Name Resolution Service via the Taxosaurus API][taxosaurus] developed by iPLant and the Phylotastic organization. In this example, we provide a list of species names, some of which are misspelled, and we'll call the API with the *tnrs* function.
+The correct spellings are *Helianthus annuus* and *Homo sapiens*. Another approach uses the Taxonomic Name Resolution Service via the Taxosaurus API developed by iPLant and the Phylotastic organization. In this example, we provide a list of species names, some of which are misspelled, and we'll call the API with the *tnrs* function.
 
-```{r tnrs, eval=TRUE, cache=FALSE}
+```{r tnrs, cache=TRUE}
 mynames <- c("Helianthus annuus", "Pinus contort", "Poa anua", "Abis magnifica",
   	"Rosa california", "Festuca arundinace", "Sorbus occidentalos","Madia sateva")
 tnrs(query = mynames, source = "iPlant_TNRS")[ , -c(5:7)]
 ```
 
-It turns out there are a few corrections: e.g., *Madia sateva* should be *Madia sativa*, and *Rosa california* should be *Rosa californica*. Note that this search worked because fuzzy matching was employed to retrieve names that were close, but not exact matches. Fuzzy matching is only available for plants in the TNRS service, so we advise using the [Global Names Resolver][gnr] if you need to resolve animal names.
+It turns out there are a few corrections: e.g., *Madia sateva* should be *Madia sativa*, and *Rosa california* should be *Rosa californica*. Note that this search worked because fuzzy matching was employed to retrieve names that were close, but not exact matches. Fuzzy matching is only available for plants in the TNRS service, so we advise using EOL's Global Names Resolver if you need to resolve animal names.
 
-taxize takes the approach that the user should be able to make decisions about what resource to trust, rather than making the decision. Both the GNR and the TNRS services provide data from a variety of data sources. The user may trust a specific data source, thus may want to use the names from that data source. In the future, we may provide the ability for taxize to suggest the best match from a variety of sources.
+taxize takes the approach that the user should be able to make decisions about what resource to trust, rather than making the decision. Both the EOL GNR and the TNRS services provide data from a variety of data sources. The user may trust a specific data source, thus may want to use the names from that data source. In the future, we may provide the ability for taxize to suggest the best match from a variety of sources.
 
 Another common use case is when there are many synonyms for a species. In this example, we have three synonyms of the currently accepted name for a species.
 
 ```{r synonyms, eval=TRUE, cache=FALSE, message=FALSE, warning=FALSE, comment=NA}
 mynames <- c("Helianthus annuus ssp. jaegeri", "Helianthus annuus ssp. lenticularis", "Helianthus annuus ssp. texanus")
 (tsn <- get_tsn(mynames, accepted = FALSE))
-library("plyr")
-ldply(tsn, itis_acceptname)
+lapply(tsn, itis_acceptname)
 ```
 
 ## Retrieve higher taxonomic names
@@ -78,7 +77,7 @@ Another task biologists often face is getting higher taxonomic names for a taxa 
 
 A number of data sources in taxize provide the capability to retrieve higher taxonomic names, but we will highlight two of the more useful ones: [Integrated Taxonomic Information System (ITIS)][itis] and [National Center for Biotechnology Information (NCBI)][ncbi]. First, we'll search for two species, *Abies procera} and *Pinus contorta* within ITIS.
 
-```{r itisclass, eval=TRUE, cache=FALSE}
+```{r classification}
 specieslist <- c("Abies procera","Pinus contorta")
 classification(specieslist, db = 'itis')
 ```
@@ -118,7 +117,6 @@ There are functions for many other sources
 * `get_gbifid()`
 * `get_nbnid()`
 * `get_tpsid()`
-* `get_ubioid()`
 
 Sometimes with these functions you get a lot of data back. In these cases you may want to limit your choices. Soon we will incorporate the ability to filter using `regex` to limit matches, but for now, we have a new parameter, `rows`, which lets you select certain rows. For example, you can select the first row of each given name, which means there is no interactive component:
 
@@ -136,7 +134,7 @@ In addition, in case you don't want to do interactive name selection in the case
 
 ```{r}
 out <- get_nbnid_("Poa annua")
-NROW(out)
+NROW(out$`Poa annua`)
 ```
 
 That's a lot of data, so we can get only certain rows back
@@ -230,7 +228,7 @@ A_clas[[1]]$rank[tolower(A_clas[[1]]$name) %in% B2]
 A_clas[[1]]$rank[tolower(A_clas[[1]]$name) %in% B3]
 ```
 
-If we find a direct match (here *Gammarus roeseli*), we are lucky. But we can also match Gammaridae with *Gammarus roeseli*, but on a lower taxonomic level. A more comprehensive and realistic example (matching a trait table with an abundance table) is given in the vignette on matching.
+If we find a direct match (here *Gammarus roeseli*), we are lucky. But we can also match Gammaridae with *Gammarus roeseli*, but on a lower taxonomic level
 
 <section id="citing">
 
@@ -242,7 +240,7 @@ To cite `taxize` in publications use:
 
 > Scott Chamberlain and Eduard Szocs (2013). taxize - taxonomic search and retrieval in R. F1000Research, 2:191. URL: http://f1000research.com/articles/2-191/v2.
 
-> Scott Chamberlain, Eduard Szocs, Carl Boettiger, Karthik Ram, Ignasi Bartomeus, and John Baumgartner (2015) taxize: Taxonomic information from around the web. R package version 0.6.0. https://github.com/ropensci/taxize
+> Scott Chamberlain, Eduard Szocs, Carl Boettiger, Karthik Ram, Ignasi Bartomeus, and John Baumgartner (2015) taxize: Taxonomic information from around the web. R package version 0.7.0. https://github.com/ropensci/taxize
 
 <section id="license_bugs">
 

@@ -1,7 +1,7 @@
 ---
 title: taxize tutorial
 layout: tutorial
-packge_version: 0.6.0
+packge_version: 0.7.0
 ---
 
 
@@ -29,23 +29,23 @@ install.packages("devtools")
 devtools::install_github("ropensci/taxize")
 ```
 
-<section id="usage">
-
-## Usage
-
 
 ```r
 library("taxize")
 ```
 
+<section id="usage">
+
+## Usage
+
 ## Resolve taxonomic name
 
-This is a common task in biology. We often have a list of species names and we want to know a) if we have the most up to date names, b) if our names are spelled correctly, and c) the scientific name for a common name. One way to resolve names is via the [Global Names Resolver (GNR) service][gnr]. Here, we are searching for two misspelled names:
+This is a common task in biology. We often have a list of species names and we want to know a) if we have the most up to date names, b) if our names are spelled correctly, and c) the scientific name for a common name. One way to resolve names is via the Global Names Resolver (GNR) service provided by the [Encyclopedia of Life][eol]. Here, we are searching for two misspelled names:
 
 
 ```r
 temp <- gnr_resolve(names = c("Helianthos annus", "Homo saapiens"))
-head( temp$results )
+head(temp)
 ```
 
 ```
@@ -58,7 +58,7 @@ head( temp$results )
 #> 6 Helianthos annus    Helianthus annuus              NCBI  0.75
 ```
 
-The correct spellings are *Helianthus annuus* and *Homo sapiens*. Another approach uses the [Taxonomic Name Resolution Service via the Taxosaurus API][taxosaurus] developed by iPLant and the Phylotastic organization. In this example, we provide a list of species names, some of which are misspelled, and we'll call the API with the *tnrs* function.
+The correct spellings are *Helianthus annuus* and *Homo sapiens*. Another approach uses the Taxonomic Name Resolution Service via the Taxosaurus API developed by iPLant and the Phylotastic organization. In this example, we provide a list of species names, some of which are misspelled, and we'll call the API with the *tnrs* function.
 
 
 ```r
@@ -79,9 +79,9 @@ tnrs(query = mynames, source = "iPlant_TNRS")[ , -c(5:7)]
 #> 8     Rosa california    Rosa californica iPlant_TNRS  0.99
 ```
 
-It turns out there are a few corrections: e.g., *Madia sateva* should be *Madia sativa*, and *Rosa california* should be *Rosa californica*. Note that this search worked because fuzzy matching was employed to retrieve names that were close, but not exact matches. Fuzzy matching is only available for plants in the TNRS service, so we advise using the [Global Names Resolver][gnr] if you need to resolve animal names.
+It turns out there are a few corrections: e.g., *Madia sateva* should be *Madia sativa*, and *Rosa california* should be *Rosa californica*. Note that this search worked because fuzzy matching was employed to retrieve names that were close, but not exact matches. Fuzzy matching is only available for plants in the TNRS service, so we advise using EOL's Global Names Resolver if you need to resolve animal names.
 
-taxize takes the approach that the user should be able to make decisions about what resource to trust, rather than making the decision. Both the GNR and the TNRS services provide data from a variety of data sources. The user may trust a specific data source, thus may want to use the names from that data source. In the future, we may provide the ability for taxize to suggest the best match from a variety of sources.
+taxize takes the approach that the user should be able to make decisions about what resource to trust, rather than making the decision. Both the EOL GNR and the TNRS services provide data from a variety of data sources. The user may trust a specific data source, thus may want to use the names from that data source. In the future, we may provide the ability for taxize to suggest the best match from a variety of sources.
 
 Another common use case is when there are many synonyms for a species. In this example, we have three synonyms of the currently accepted name for a species.
 
@@ -104,15 +104,21 @@ attr(,"class")
 ```
 
 ```r
-library("plyr")
-ldply(tsn, itis_acceptname)
+lapply(tsn, itis_acceptname)
 ```
 
 ```
+[[1]]
   submittedtsn      acceptedname acceptedtsn
 1       525928 Helianthus annuus       36616
-2       525929 Helianthus annuus       36616
-3       525930 Helianthus annuus       36616
+
+[[2]]
+  submittedtsn      acceptedname acceptedtsn
+1       525929 Helianthus annuus       36616
+
+[[3]]
+  submittedtsn      acceptedname acceptedtsn
+1       525930 Helianthus annuus       36616
 ```
 
 ## Retrieve higher taxonomic names
@@ -196,7 +202,7 @@ get_uid(sciname = "Pinus")
 #> 1 active subgenus seed plants          Pinus hard pines 139271      
 #> 2 active    genus seed plants          Pinus              3337      
 #>   species subsp modificationdate
-#> 1               2010/12/13 00:00
+#> 1               2015/09/16 00:00
 #> 2               2004/09/10 00:00
 ```
 
@@ -238,7 +244,6 @@ There are functions for many other sources
 * `get_gbifid()`
 * `get_nbnid()`
 * `get_tpsid()`
-* `get_ubioid()`
 
 Sometimes with these functions you get a lot of data back. In these cases you may want to limit your choices. Soon we will incorporate the ability to filter using `regex` to limit matches, but for now, we have a new parameter, `rows`, which lets you select certain rows. For example, you can select the first row of each given name, which means there is no interactive component:
 
@@ -266,15 +271,15 @@ get_nbnid(c("Zootoca vivipara","Pinus contorta"), rows = 1:3)
 ```
 
 ```
-#>              nbnid                  searchMatchTitle       rank
+#>              nbnid                  searchmatchtitle       rank
 #> 1 NHMSYS0001706186                  Zootoca vivipara    Species
 #> 2 NHMSYS0020784960 Zootoca vivipara subsp. pannonica Subspecies
 #> 3 NHMSYS0001706185                           Zootoca      Genus
-#>    nameStatus
+#>    namestatus
 #> 1 Recommended
 #> 2 Recommended
 #> 3 Recommended
-#>              nbnid               searchMatchTitle       rank  nameStatus
+#>              nbnid               searchmatchtitle       rank  namestatus
 #> 1 NHMSYS0000494848   Pinus contorta var. contorta    Variety Recommended
 #> 2 NBNSYS0000004786                 Pinus contorta    Species Recommended
 #> 3 NHMSYS0000494848 Pinus contorta subsp. contorta Subspecies Recommended
@@ -296,11 +301,11 @@ In addition, in case you don't want to do interactive name selection in the case
 
 ```r
 out <- get_nbnid_("Poa annua")
-NROW(out)
+NROW(out$`Poa annua`)
 ```
 
 ```
-#> [1] 1
+#> [1] 147
 ```
 
 That's a lot of data, so we can get only certain rows back
@@ -312,17 +317,17 @@ get_nbnid_("Poa annua", rows = 1:10)
 
 ```
 #> $`Poa annua`
-#>    ptaxonVersionKey searchMatchTitle    rank   nameStatus
+#>    ptaxonversionkey searchmatchtitle    rank   namestatus
 #> 1  NBNSYS0000002544        Poa annua Species  Recommended
 #> 2  NHMSYS0000461798              Poa   Genus  Recommended
 #> 3  NHMSYS0000461804         Poa laxa Species      Synonym
 #> 4  NHMSYS0021060390           Poales   Order  Recommended
-#> 5  NBNSYS0000002551       Poa glauca Species  Recommended
-#> 6  NBNSYS0000002547       Poa alpina Species  Recommended
-#> 7  NBNSYS0000002551       Poa caesia Species      Synonym
-#> 8  NBNSYS0000002545       Poa exilis Species Undetermined
-#> 9  NBNSYS0000160753          Poaceae  Family  Recommended
-#> 10 NHMSYS0000456981       Poa rigida Species      Synonym
+#> 5  NBNSYS0000002547       Poa alpina Species  Recommended
+#> 6  NBNSYS0000002551       Poa glauca Species  Recommended
+#> 7  NBNSYS0000160753          Poaceae  Family  Recommended
+#> 8  NHMSYS0000456981       Poa rigida Species      Synonym
+#> 9  NBNSYS0000002545       Poa exilis Species Undetermined
+#> 10 NBNSYS0000002551       Poa caesia Species      Synonym
 ```
 
 ## Coerce numerics/alphanumerics to taxon IDs
@@ -334,51 +339,6 @@ For example, adfafd
 
 ```r
 as.gbifid(get_gbifid("Poa annua")) # already a uid, returns the same
-```
-
-```
-#>     gbifid        phylum  order  family         canonicalname       rank
-#> 1  2704179 Magnoliophyta Poales Poaceae             Poa annua    SPECIES
-#> 2  7262139 Magnoliophyta Poales Poaceae       Poa annua annua SUBSPECIES
-#> 3  6313731 Magnoliophyta Poales Poaceae       Poa annua varia SUBSPECIES
-#> 4  6313730 Magnoliophyta Poales Poaceae      Poa annua exilis SUBSPECIES
-#> 5  5947756 Magnoliophyta Poales Poaceae      Poa annua supina SUBSPECIES
-#> 6  4128735 Magnoliophyta Poales Poaceae  Poa annua raniglumis SUBSPECIES
-#> 7  4128771 Magnoliophyta Poales Poaceae   Poa annua notabilis SUBSPECIES
-#> 8  6431931 Magnoliophyta Poales Poaceae  Poa annua raniglumis    VARIETY
-#> 9  6431930 Magnoliophyta Poales Poaceae       Poa annua annua    VARIETY
-#> 10 5947873 Magnoliophyta Poales Poaceae  Poa annua hypsophila    VARIETY
-#> 11 6313732 Magnoliophyta Poales Poaceae      Poa annua supina    VARIETY
-#> 12 6313765 Magnoliophyta Poales Poaceae     Poa annua reptans    VARIETY
-#> 13 5947510 Magnoliophyta Poales Poaceae     Poa annua stricta    VARIETY
-#> 14 5947556 Magnoliophyta Poales Poaceae Poa annua sikkimensis    VARIETY
-#> 15 5947757 Magnoliophyta Poales Poaceae       Poa annua varia    VARIETY
-#> 16 5947582 Magnoliophyta Poales Poaceae      Poa annua exilis    VARIETY
-#> 17 5947584 Magnoliophyta Poales Poaceae Poa annua remotiflora    VARIETY
-#> 18 5947754 Magnoliophyta Poales Poaceae      Poa annua exigua    VARIETY
-#> 19 5947585 Magnoliophyta Poales Poaceae  Poa annua tommasinii    VARIETY
-#> 20 5947583 Magnoliophyta Poales Poaceae   Poa annua maroccana    VARIETY
-#>         class
-#> 1  Liliopsida
-#> 2  Liliopsida
-#> 3  Liliopsida
-#> 4  Liliopsida
-#> 5  Liliopsida
-#> 6  Liliopsida
-#> 7  Liliopsida
-#> 8  Liliopsida
-#> 9  Liliopsida
-#> 10 Liliopsida
-#> 11 Liliopsida
-#> 12 Liliopsida
-#> 13 Liliopsida
-#> 14 Liliopsida
-#> 15 Liliopsida
-#> 16 Liliopsida
-#> 17 Liliopsida
-#> 18 Liliopsida
-#> 19 Liliopsida
-#> 20 Liliopsida
 ```
 
 ```
@@ -444,7 +404,7 @@ system.time( replicate(3, as.gbifid(c("2704179","2435099","3171445"), check=TRUE
 
 ```
 #>    user  system elapsed 
-#>   0.200   0.006   1.819
+#>   0.156   0.006   1.833
 ```
 
 ```r
@@ -453,7 +413,7 @@ system.time( replicate(3, as.gbifid(c("2704179","2435099","3171445"), check=FALS
 
 ```
 #>    user  system elapsed 
-#>   0.001   0.000   0.000
+#>   0.001   0.000   0.001
 ```
 
 ## What taxa are downstream of my taxon of interest?
@@ -621,7 +581,7 @@ A_clas[[1]]$rank[tolower(A_clas[[1]]$name) %in% B3]
 #> [1] "family"
 ```
 
-If we find a direct match (here *Gammarus roeseli*), we are lucky. But we can also match Gammaridae with *Gammarus roeseli*, but on a lower taxonomic level. A more comprehensive and realistic example (matching a trait table with an abundance table) is given in the vignette on matching.
+If we find a direct match (here *Gammarus roeseli*), we are lucky. But we can also match Gammaridae with *Gammarus roeseli*, but on a lower taxonomic level
 
 <section id="citing">
 
@@ -633,7 +593,7 @@ To cite `taxize` in publications use:
 
 > Scott Chamberlain and Eduard Szocs (2013). taxize - taxonomic search and retrieval in R. F1000Research, 2:191. URL: http://f1000research.com/articles/2-191/v2.
 
-> Scott Chamberlain, Eduard Szocs, Carl Boettiger, Karthik Ram, Ignasi Bartomeus, and John Baumgartner (2015) taxize: Taxonomic information from around the web. R package version 0.6.0. https://github.com/ropensci/taxize
+> Scott Chamberlain, Eduard Szocs, Carl Boettiger, Karthik Ram, Ignasi Bartomeus, and John Baumgartner (2015) taxize: Taxonomic information from around the web. R package version 0.7.0. https://github.com/ropensci/taxize
 
 <section id="license_bugs">
 
