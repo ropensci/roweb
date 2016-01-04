@@ -13,4 +13,4 @@ We've got a big year ahead of us as we work towards expanding our team and organ
 
 <center><h3><a href="http://ropensci.org/survey">ropensci.org/survey</a></h3></center>
 
-The survey is not just for R users (we are keen on hearing from Python and Julia users and also folks that don't use these three languages). Please encourage your colleagues to participate. We'll summarize responses in a future post. 
+We are keen on hearing from Python and Julia users as well and also folks that don't use these widely used languages. Please encourage your colleagues to participate. We'll summarize responses in a future post. 
