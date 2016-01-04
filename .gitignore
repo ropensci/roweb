@@ -5,7 +5,7 @@
 *.eot
 *.woff
 
-
+.jekyll-metadata
 _site
 internal_notes.md
 ngrok
