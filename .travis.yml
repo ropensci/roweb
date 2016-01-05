@@ -1,11 +1,17 @@
 language: c
 sudo: required
 services:
-- docker
+  - docker
 script:
-- docker run --rm --label=jekyll --volume=$(pwd):/srv/jekyll -it jekyll/jekyll bundle
-  exec jekyll build
-- ./deploy.sh  
+  ## Ammend a site.url so we can preview on roweb
+  - echo 'url: "http://ropensci.github.io/roweb"' >> _config.yml
+
+  ## Build the site.  Should build this way on the official deploy to ensure reproducible builds
+  - docker run --rm --label=jekyll --volume=$(pwd):/srv/jekyll -it jekyll/jekyll bundle
+    exec jekyll build
+
+  ## Deploy to gh-pages on roweb using secure GH_TOKEN
+  - ./deploy.sh
 
 env:
   global:
