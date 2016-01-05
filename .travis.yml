@@ -1,9 +1,12 @@
 language: c
 sudo: required
-
 services:
-  - docker
-
+- docker
 script:
-  - docker run --rm --label=jekyll --volume=$(pwd):/srv/jekyll -it jekyll/jekyll bundle exec jekyll build
-    
+- docker run --rm --label=jekyll --volume=$(pwd):/srv/jekyll -it jekyll/jekyll bundle
+  exec jekyll build
+- ./deploy.sh  
+
+env:
+  global:
+    secure: lA2esTT2fOeJfNJLTZAEHSPABgZC9Q0lW+7dVme04NgVPwVwPlkjDNL5D3Apbl8fl87To4tgFTUNQ92DwhBWmiw9CJyBA3mCtvb/pw2hfwBe4Z+CHiX8fLM9dKF/9xNuHAACaD0etRWV+9qSsg0NSd/JiwXEJ2/Re1f0eZnPHYc=
