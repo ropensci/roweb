@@ -16,8 +16,8 @@ title: "rOpenSci Blog"
           <li><a href="#">More coming soon...</a></li>
         </ul>
       </div><br><br>
-      <span class="label label-blog"><a href="/tags.html">Posts by tag</a></span><br><br>
-      <span class="label label-blog"><a href="/archives.html">Posts by date</a></span>
+      <span class="label label-blog"><a href="{{site.url}}/tags.html">Posts by tag</a></span><br><br>
+      <span class="label label-blog"><a href="{{site.url}}/archives.html">Posts by date</a></span>
       <!-- <a href="http://ropensci.org/feed.xml" target="_blank" class="ss-social ss-icon btn" rel="tooltip" data-placement="right" title="Blog posts via RSS Feed">RSS</a> -->
     </div>
 
@@ -28,7 +28,7 @@ title: "rOpenSci Blog"
       {% if post.categories contains 'pt' %}
       <!-- we do nothing -->
       {% else if %}
-      <h3><a href="{{ site.dir }}{{ post.url }}">{{ post.title }}</a></h3>
+      <h3><a href="{{site.url}}/{{ site.dir }}{{ post.url }}">{{ post.title }}</a></h3>
       {{ post.authors | map: "name" | join: ", " }} &mdash; <i>{{ post.date | date: "%B %e, %Y" }}</i><br>
       {{ post.content | strip_html | truncatewords:75 }}<br>
       <!-- {{ post.content | remove_alerts | strip_html | truncatewords:75 }}<br> -->
@@ -40,18 +40,18 @@ title: "rOpenSci Blog"
   <div class="pagination">
     <ul>
       {% if paginator.previous_page %}
-      <li>{% if paginator.previous_page == 1 %}<a href="/blog">&laquo;</a>{% else %}<a href="/blog/page{{paginator.previous_page}}">&laquo;</a>{% endif %}</li>
+      <li>{% if paginator.previous_page == 1 %}<a href="/blog">&laquo;</a>{% else %}<a href="{{site.url}}/blog/page{{paginator.previous_page}}">&laquo;</a>{% endif %}</li>
       {% else %}
-      <li class="disabled"><a href="/blog">&laquo;</a></li>
+      <li class="disabled"><a href="{{site.url}}/blog">&laquo;</a></li>
       {% endif %}
-      {% if paginator.page == 1 %}<li class="active"><a href="/blog">1</a></span>{% else %}<li><a href="/blog">1</a></li>{% endif %}
+      {% if paginator.page == 1 %}<li class="active"><a href="{{site.url}}/blog">1</a></span>{% else %}<li><a href="{{site.url}}/blog">1</a></li>{% endif %}
 
       {% capture start %}{{ paginator.page | minus: 3 }}{% endcapture %}
 
       {% for count in (2..paginator.total_pages) limit: 5 offset: start %}
-      {% if count == paginator.page %}<li class="active"><a href="/blog/page{{count}}">{{count}}</a></li>{% else %}<li><a href="/blog/page{{count}}">{{count}}</a></li>{% endif %}
+      {% if count == paginator.page %}<li class="active"><a href="{{site.url}}/blog/page{{count}}">{{count}}</a></li>{% else %}<li><a href="{{site.url}}/blog/page{{count}}">{{count}}</a></li>{% endif %}
       {% endfor %}
-      {% if paginator.next_page %}<li><a href="/blog/page{{paginator.next_page}}">&raquo;</a></li>{% else %}<li class="disabled">&raquo;</li>{% endif %}
+      {% if paginator.next_page %}<li><a href="{{site.url}}/blog/page{{paginator.next_page}}">&raquo;</a></li>{% else %}<li class="disabled">&raquo;</li>{% endif %}
     </ul>
   </div>
   <!-- End pagination -->
