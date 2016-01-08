@@ -9,6 +9,8 @@ redcarpet:
 deploy: false
 encoding: utf-8
 
+url: http://ropensci.github.com/roweb
+
 gems: ['jekyll-paginate']
 
 exclude: ['*.Rmd']
