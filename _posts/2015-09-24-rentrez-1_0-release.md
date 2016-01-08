@@ -1,7 +1,7 @@
 ---
-name: rentrez-1_0-release
+name: rentrez_release
 layout: post
-title: Rentrez 1.0 released 
+title: Rentrez 1_0 released 
 date: 2015-09-24
 authors: 
   - name: David Winter
