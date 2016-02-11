@@ -8,6 +8,7 @@ authors:
     url: http://about.me/gawbul
 tags:
 - Python
+- pyOpenSci
 - API
 ---
 *A guest blog post by Steve Moss*
@@ -57,13 +58,13 @@ Doctoral Research Student<br>
 [python]: http://www.python.org/
 [mrescompbiol]: http://www.york.ac.uk/biology/postgraduate/masters/mres-computational-biology/
 [yorkuni]: http://www.york.ac.uk/
-[myblogpost]: http://stevemossphd.wordpress.com/2010/11/16/perl-python-or-ruby/
+[myblogpost]: https://medium.com/@gawbul/perl-python-or-ruby-543054dd3bd5
 [pyopensci]: http://github.com/pyOpenSci/
 [rstats]: http://www.r-project.org/
 [ropensciwrappers]: http://github.com/rOpenSci/
 [pyensemblrest]: http://github.com/pyOpenSci/pyEnsemblRest/
 [ensembl]: http://www.ensembl.org/
-[restapi]: http://beta.rest.ensembl.org/
+[restapi]: https://rest.ensembl.org
 [raspberrypi]: http://www.raspberrypi.org
 [arduino]: http://www.arduino.cc
 [gpio]: http://www.raspberrypi.org/archives/tag/gpio
