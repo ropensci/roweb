@@ -6,9 +6,11 @@ date: 2016-02-20
 authors:
   - name: Noam Ross
     url: http://www.noamross.net
-  - name: Scott Chamberlain
-  - name: Karthik Ram
   - name: Carl Boettiger
+  - name: Jenny Bryan
+  - name: Scott Chamberlain
+  - name: Rich FitzJohn
+  - name: Karthik Ram
 tags:
 - software
 - review
