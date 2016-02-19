@@ -18,7 +18,7 @@ Geospatial data input/output, manipulation, and vizualization are tasks that are
 
 ## geojsonio
 
-<span class="label label-warning">downloads</span>
+<a href="https://cran.rstudio.com/web/packages/geojsonio/"><span class="label label-warning">cran</span></a> <a href="https://github.com/ropensci/geojsonio"><span class="label label-info">github</span></a>
 
 [geojsonio](https://github.com/ropensci/geojsonio) - A tool for converting to and from geojson data. For example:
 
@@ -29,6 +29,8 @@ library("geojsonio")
 #> [1] "xxx"
 ```
 ## wellknown
+
+<a href="https://cran.rstudio.com/web/packages/wellknown/"><span class="label label-warning">cran</span></a> <a href="https://github.com/ropensci/wellknown"><span class="label label-info">github</span></a>
 
 [wellknown](https://github.com/ropensci/wellknown) - A tool for converting to and from well-known text data. For example:
 
@@ -41,6 +43,8 @@ library("wellknown")
 
 ## gistr
 
+<a href="https://cran.rstudio.com/web/packages/gistr/"><span class="label label-warning">cran</span></a> <a href="https://github.com/ropensci/gistr"><span class="label label-info">github</span></a>
+
 [gistr](https://github.com/ropensci/gistr) - This is not a geospatial tool per se, but it's extremely useful for sharing maps. For example, with just a few lines, you can share an interactive map to GitHub.
 
 
@@ -52,6 +56,8 @@ library("gistr")
 
 ## lawn
 
+<a href="https://cran.rstudio.com/web/packages/lawn/"><span class="label label-warning">cran</span></a> <a href="https://github.com/ropensci/lawn"><span class="label label-info">github</span></a>
+
 An R client for [turf.js](http://turfjs.org/).
 
 
@@ -62,6 +68,8 @@ library("lawn")
 ```
 
 ## proj
+
+<span class="label label-warning">cran</span> <a href="https://github.com/ropensci/proj"><span class="label label-info">github</span></a>
 
 An R client for [proj4js](https://github.com/proj4js/proj4js), a Javascript library for projections.
 
@@ -77,6 +85,8 @@ There's an increasing number of options for mapping in R. rOpenSci has two offer
 
 ### plotly
 
+<a href="https://cran.rstudio.com/web/packages/plotly/"><span class="label label-warning">cran</span></a> <a href="https://github.com/ropensci/plotly"><span class="label label-info">github</span></a>
+
 [plotly](https://github.com/ropensci/plotly) is an R client for [Plotly](https://plot.ly/) - a web interface and API for creating interactive graphics.
 
 
@@ -88,6 +98,8 @@ library("plotly")
 
 ### cartographer
 
+<span class="label label-inverse">cran</span> <a href="https://github.com/ropensci/cartographer"><span class="label label-info">github</span></a>
+
 [cartographer](https://github.com/ropensci/cartographer) - xxdasfaff. For example:
 
 
@@ -98,5 +110,7 @@ library("cartographer")
 ```
 
 ## Maptools Task View
+
+<a href="https://github.com/ropensci/maptools"><span class="label label-info">github</span></a>
 
 [Jeff Hollister](http://jwhollister.com/) is leading the [maptools task view](https://github.com/ropensci/maptools) to organize R mapping tools packages, sources of data, projections, static and interactive mapping, data transformation, and more.
