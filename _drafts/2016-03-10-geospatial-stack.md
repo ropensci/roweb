@@ -14,7 +14,7 @@ tags:
 
 
 
-Geospatial data input/output, manipulation, and vizualization are tasks that are common to many disciplines. Thus, we're keenly interested in making great tools. We have an increasing set of spatial tools.
+Geospatial data input/output, manipulation, and vizualization are tasks that are common to many disciplines. Thus, we're keenly interested in making great tools in this space. We have an increasing set of spatial tools, which we'll cover lightly, and point to deeper dives on each if any peak your interest.
 
 ## geojsonio
 
@@ -73,11 +73,38 @@ library("lawn")
 
 An R client for [proj4js](https://github.com/proj4js/proj4js), a Javascript library for projections.
 
-Main features:
 
-* x
-* y
-* z
+```r
+library("proj")
+'xxx'
+#> [1] "xxx"
+```
+
+## getlandsat
+
+<span class="label label-warning">cran</span> <a href="https://github.com/ropenscilabs/getlandsat"><span class="label label-info">github</span></a>
+
+An R client to fetch Landsat data
+
+
+```r
+library("getlandsat")
+'xxx'
+#> [1] "xxx"
+```
+
+## siftgeojson
+
+<span class="label label-warning">cran</span> <a href="https://github.com/ropenscilabs/siftgeojson"><span class="label label-info">github</span></a>
+
+Slice and dice GeoJSON just as easily as you would a data.frame.
+
+
+```r
+library("getlandsat")
+'xxx'
+#> [1] "xxx"
+```
 
 ## Maps
 
@@ -100,7 +127,7 @@ library("plotly")
 
 <span class="label label-inverse">cran</span> <a href="https://github.com/ropensci/cartographer"><span class="label label-info">github</span></a>
 
-[cartographer](https://github.com/ropensci/cartographer) - xxdasfaff. For example:
+[cartographer](https://github.com/ropensci/cartographer) - xxdasfaff. Note that `cartographer` is sort of a suspended state of animation. Do checkout the [leaflet pacakge](https://cran.rstudio.com/web/packages/leaflet/) for a more complete solution. For example:
 
 
 ```r
