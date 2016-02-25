@@ -24,7 +24,7 @@ structured review in developer teams. Scientific software, which is often more
 specialized, has fewer users and is often developed by single users.  Software
 *papers* may be peer-reviewed, but rarely the code itself - there isn't a robust
 ecosystem for review of scientific OSS with a large pool of potential reviewers,
-editors, and incenvtive mechanisms.
+editors, and incentive mechanisms.
 
 At ROpenSci, we have been experimenting with a system of peer-review of
 software for the past year for R packages contributed to [our collection](https://ropensci.org/packages/).
@@ -48,7 +48,7 @@ and authors are known to each other, free to communicate directly with each othe
 
 # Some lessons learned
 
-So far, we've recieved 13 packages.  Of these, only 1 was rejected due to lack of
+So far, we've received 13 packages.  Of these, only 1 was rejected due to lack of
 fit. 11 were reviewed, 6 of which were accepted, and 5 are awaiting changes requested
 by reviewers.  1 is still pending review. Here are some lessons based on this
 humble start:
@@ -92,7 +92,7 @@ humble start:
 -  *Author Incentives.* At the moment, we believe package authors submit because (1) they think
    they will get useful feedback from high-quality reviews, (2) the ROpenSci
    "stamp" is a form of credential for themselves and their package, and (3)
-   they can recieve some ongoing help with package maintenance after acceptance.
+   they can receive some ongoing help with package maintenance after acceptance.
    Will these incentives be enough to continue to draw more package authors to
    do the extra work of putting their packages through review? What other incentives
    could we offer?
