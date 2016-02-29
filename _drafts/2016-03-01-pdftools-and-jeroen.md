@@ -47,7 +47,7 @@ brew install poppler
 That's it.
 
 
-## Getting stareted
+## Getting started
 
 The `?pdftools` manual page shows a brief overview of the main utilities. The most important function is `pdf_text` which returns a character vector of length equal to the number of pages in the pdf. Each string in the vector contains a plain text version of the text on that page.
 
@@ -73,7 +73,7 @@ toc <- pdf_toc("1403.2805.pdf")
 jsonlite::toJSON(toc, auto_unbox = TRUE, pretty = TRUE)
 ```
 
-Other functions provide information about fonts, attachements and metadata such as the author, creation date or tags.
+Other functions provide information about fonts, attachments and metadata such as the author, creation date or tags.
 
 
 ```r
@@ -112,7 +112,7 @@ cat(txt[18])
 cat(txt[19])
 ```
 
-Pdftools usually does a decent job in retaining the positioning of table elements when converting from pdf to text. But the output is still very dependent on the formatting of the original pdf table, which makes it very difficult to write a generic table extracter. But with a little creativity you might be able to parse the table data from the text output of a given paper.
+Pdftools usually does a decent job in retaining the positioning of table elements when converting from pdf to text. But the output is still very dependent on the formatting of the original pdf table, which makes it very difficult to write a generic table extractor. But with a little creativity you might be able to parse the table data from the text output of a given paper.
 
 ## Jeroen Ooms joins rOpenSci !
 
