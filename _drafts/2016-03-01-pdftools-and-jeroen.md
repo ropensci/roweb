@@ -1,7 +1,7 @@
 ---
 layout: post
 title: New rOpenSci package — and team member!
-date: 2016-02-25
+date: 2016-03-01
 authors:
   - name: Jeroen Ooms
 tags:
