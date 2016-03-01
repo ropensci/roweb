@@ -11,7 +11,7 @@ tags:
 - pdftools
 ---
 
-Scientific articles are typically published in PDF format, which is great for printing but not so much for searching or indexing. The new [pdftools](https://cran.r-project.org/package=pdftools) package allows for extracting text and metadata from pdf files in R. From the plain-text we could for example find articles discussing a particular drug or species name, without having to rely on publishers providing metadata, or pay-walled search engines.
+Scientific articles are typically locked away in PDF format, a format designed primarily for printing but not so great for searching or indexing. The new [pdftools](https://cran.r-project.org/package=pdftools) package allows for extracting text and metadata from pdf files in R. From the extracted plain-text one could find articles discussing a particular drug or species name, without having to rely on publishers providing metadata, or pay-walled search engines.
 
 The pdftools slightly overlaps with the [Rpoppler](https://cran.r-project.org/web/packages/Rpoppler/index.html) package by Kurt Hornik. The main motivation behind developing pdftools was that Rpoppler depends on glib, which does not work well on Mac and Windows. The pdftools package uses the poppler c++ interface together with Rcpp, which results in a lighter and more portable implementation.
 
@@ -26,7 +26,7 @@ On Windows and Mac the binary packages can be installed directly from CRAN:
 install.packages("pdftools")
 ```
 
-Installation on Linux require the poppler development library. On Debian/Ubuntu:
+Installation on Linux requires the poppler development library. On Debian/Ubuntu:
 
 ```
 sudo apt-get install libpoppler-cpp-dev
@@ -114,6 +114,8 @@ cat(txt[19])
 
 Pdftools usually does a decent job in retaining the positioning of table elements when converting from pdf to text. But the output is still very dependent on the formatting of the original pdf table, which makes it very difficult to write a generic table extractor. But with a little creativity you might be able to parse the table data from the text output of a given paper.
 
-## Jeroen Ooms joins rOpenSci !
+## Jeroen Ooms joins team rOpenSci!
 
-A message from the team: We are happy to announce that [Jeroen Ooms](https://jeroenooms.github.io/) is joining the rOpenSci crew! Jeroen is currently a post-doctoral researcher at UCLA and has written numerous [popular packages](https://cran.r-project.org/web/checks/check_results_jeroen.ooms_at_stat.ucla.edu.html). At rOpenSci, he will continue to work on developing awesome R packages and infrastructural software for improving the scientific tool chain.
+A message from the team: We are happy to announce that [Jeroen Ooms](https://jeroenooms.github.io/) has joined the rOpenSci crew! Jeroen is a prolific programmer and author of numerous [widely used packages](https://cran.r-project.org/web/checks/check_results_jeroen.ooms_at_stat.ucla.edu.html). At rOpenSci, he will continue to work on developing awesome packages and infrastructural software for improving the scientific tool chain.
+
+
