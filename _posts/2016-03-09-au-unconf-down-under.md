@@ -11,8 +11,6 @@ tags:
 - ropensci
 ---
 
-# The Australian rOpenSci Unconference
-
 The rOpenSci Unconference is coming to Australia and we are excited!! 
 
 The event will take place in sunny Brisbane, on April 21-22 2016 hosted at the [Microsoft Innovation Centre](https://www.microsoftinnovationcenters.com/). You can find more information about the event and how to register at http://www.auunconf.ropensci.org.
