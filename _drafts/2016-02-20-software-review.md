@@ -59,6 +59,9 @@ humble start:
     do with this, as reviews are public and this incents reviewers to do good
     work and abide by a [code of conduct](https://github.com/ropensci/policies#code-of-conduct).
 
+    One of the reasons that reviews have been so high-quality is that the focus
+    has mostly been on improving the software, rather than judging its quality
+
 -  *Openness and tooling enable more efficient review.* The ongoing, direct interaction
    between reviewers and authors lets issues be resolved faster than in reviews
    mediated by an editor.  Also, GitHub based reviews allows reviewers to publicly
@@ -104,6 +107,6 @@ humble start:
    automated testing, too, but some of this will rely on having higher standards
    and burdens for our package authors.  How much should we demand?
 
-We have learned a ton from this experiment and look forward to making review better!
+We have learned a ton from this experiment and look forward to making code review better!
 Many, many thanks to the authors who have contributed to the ROpenSci package
 ecosystem and the reviewers who have lent their time to this project.
