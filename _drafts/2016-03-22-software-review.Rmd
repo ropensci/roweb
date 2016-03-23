@@ -107,8 +107,13 @@ other experienced authors. Reviewers also praised the ability to converse
 directly with author, expand their community of colleagues and learn about new
 and best practices from other authors.
 
-Interestingly, no one mentioned the credential of an rOpenSci "badge" in
-their feedback, though this may have been due to our question phrasing.
+Interestingly, no one mentioned the credential of an rOpenSci "badge" as a
+positive aspect of review.  While the badge may be a motivating factor,
+it seems from the responses that authors primarily value in the feedback itself.
+There has been some [argument](http://simplystatistics.org/2013/09/26/how-could-code-review-discourage-code-disclosure-reviewers-with-motivation/) whether code
+review encourage or discourage for scientists to publish their
+code.  While our package authors represent a specific subset of scientists - those knowledgeable and motivated enough to create and disseminate packages - we think
+our pilot shows that a well-designed review process can be encouraging.
 
 ### Review takes a lot of time
 
