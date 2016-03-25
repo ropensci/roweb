@@ -5,7 +5,7 @@ paginate_path: "blog/page:num"
 paginate: 3
 highlighter: pygments
 redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data", "footnotes"]
 deploy: false
 encoding: utf-8
 

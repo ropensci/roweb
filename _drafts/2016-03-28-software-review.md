@@ -2,7 +2,7 @@
 name: software-review
 layout: post
 title: "Onboarding at rOpenSci: A Year in Reviews"
-date: 2016-03-22
+date: 2016-03-28
 authors:
   - name: Noam Ross
     url: http://twitter.com/noamross
@@ -120,23 +120,7 @@ our pilot shows that a well-designed review process can be encouraging.
 We asked reviewers to estimate how much time each review took, and here's what
 they reported:
    
-```{r reviewer-time, echo=FALSE, message=FALSE, warning=FALSE}
-library(readr)
-library(stringi)
-library(ggplot2)
-library(dplyr)
-library(noamtools)
-data = read_csv('https://docs.google.com/spreadsheets/d/1zaE5MvqXyD0I7LWONh1HlQu98wTIZ6Uls4QVmKs2u-w/pub?output=csv')
-hours = data[[5]]
-hours[13] <- 4.5
-hours = na.omit(as.numeric(unlist(stri_split_regex(hours, "[\\s,]+"))))
-ggplot(data_frame(hours=hours), aes(x=hours)) +
-  geom_histogram(binwidth=1, center=0, col="white") +
-  scale_y_continuous(breaks=seq(0,4, by=1)) +
-  scale_x_continuous(breaks=seq(0,10, by=1)) +
-  xlab("Hours spent on review") + ylab("Number of reviews") +
-  theme_nr + theme(panel.grid=element_blank())
-```
+![plot of chunk reviewer-time](/assets/blog-images/2016-03-28-software-review/reviewer-time-1.png)
 
 Answers varied from 1-10 hours with an average of 4. This is comparable
 to [how long it takes researchers to review scholarly papers](http://
@@ -184,8 +168,7 @@ appreciating best practices: continuous integration, documentation,
 Importantly, a number of reviewers and reviewees commented that they *learned
 the value of review* through this process.  
 
-[^RefC]: Also, "RefClasses are
-the devil", said one reviewer.  Interpret that as you may
+[^RefC]: Also, "RefClasses are the devil", said one reviewer.  Interpret that as you may.
 
 # Questions and ideas for the future.
 
