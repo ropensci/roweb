@@ -123,11 +123,8 @@ it's still a lot of time, and does not include further time corresponding with
 the authors or re-reviewing an updated package.
 
 Package writing and reviewing are generally volunteer activities, and as one
-respondent put it, the process
-
-> still feels more like community service than a professional obligation.
-
-7 of 16 reviewers respondents mentioned the time to
+respondent put it, the process "still feels more like community service than
+a professional obligation." 7 of 16 reviewers respondents mentioned the time to
 it took to review and respond as a negative of the process. For this process to
 be sustainable, we have to figure out how to limit the burden on our reviewers.
 
