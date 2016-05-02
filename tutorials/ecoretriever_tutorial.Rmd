@@ -1,12 +1,12 @@
 ---
 title: ecoretriever tutorial
 layout: tutorial
-packge_version: 0.1.0
+packge_version: 0.2.1
 ---
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(
-  fig.path="../assets/tutorial-images/ecoretriever/", 
+  fig.path = "../assets/tutorial-images/ecoretriever/", 
   collapse = TRUE, 
   comment = "#>",
   warning = FALSE,
@@ -118,7 +118,7 @@ To cite `ecoretriever` in publications use:
 
 Software: 
 
-> Daniel McGlinn and Ethan White (2014). ecoretriever: R Interface to the EcoData Retriever. R package version 0.1.0 https://github.com/ropensci/ecoretriever/
+> Daniel McGlinn and Ethan White (2015). ecoretriever: R Interface to the EcoData Retriever. R package version 0.2.1 https://github.com/ropensci/ecoretriever
 
 Publication:
 

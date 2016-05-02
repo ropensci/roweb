@@ -1,12 +1,12 @@
 ---
 title: rplos tutorial
 layout: tutorial
-packge_version: 0.5.4
+packge_version: 0.5.6
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
 knitr::opts_chunk$set(
-  fig.path="../assets/tutorial-images/rplos/",
+  fig.path = "../assets/tutorial-images/rplos/",
   comment = "#>",
   warning = FALSE,
   message = FALSE
@@ -31,8 +31,15 @@ of things possible in `rplos`.
 install.packages("rplos")
 ```
 
+Or development version
+
+```{r eval=FALSE}
+if (!require("devtools")) install.packages("devtools")
+devtools::install_github("ropensci/rplos")
+```
+
 ```{r}
-library(rplos)
+library("rplos")
 ```
 
 <section id="usage">
@@ -129,6 +136,7 @@ plosword('Helianthus', callopts=list(verbose=TRUE))
 `plot_throughtime` allows you to search for up to 2 words and visualize the results as a line plot through time, comparing number of articles matching through time. Visualize with the ggplot2 package, only up to two terms for now.
 
 ```{r throughtime1, fig.width=6, fig.height=4}
+library("ggplot2")
 plot_throughtime(terms = "phylogeny", limit = 200) + geom_line(size=2, color='black')
 ```
 
@@ -206,7 +214,7 @@ To cite `rplos` in publications use:
 
 <br>
 
-> Scott Chamberlain, Carl Boettiger and Karthik Ram (2015). rplos: Interface to PLOS Journals search API. R package version 0.5.4 https://github.com/ropensci/rplos
+> Scott Chamberlain, Carl Boettiger and Karthik Ram (2016). rplos: Interface to PLOS Journals search API. R package version 0.5.6 https://github.com/ropensci/rplos
 
 <section id="license_bugs">
 

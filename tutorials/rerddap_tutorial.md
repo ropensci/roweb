@@ -1,7 +1,7 @@
 ---
 title: rerddap tutorial
 layout: tutorial
-packge_version: 0.3.0
+packge_version: 0.3.4
 ---
 
 
@@ -57,30 +57,30 @@ First, you likely want to search for data, specify either `griddadp` or `tableda
 ```r
 ed_search(query = 'size', which = "table")
 #> 11 results, showing first 20 
-#>                                                                                          title
-#> 1                                                                           CalCOFI Fish Sizes
-#> 2                                                                         CalCOFI Larvae Sizes
-#> 3                 Channel Islands, Kelp Forest Monitoring, Size and Frequency, Natural Habitat
-#> 9                                                          CalCOFI Larvae Counts Positive Tows
-#> 10                                                                                CalCOFI Tows
-#> 316                                                 OBIS - ARGOS Satellite Tracking of Animals
-#> 317                                                GLOBEC NEP Vertical Plankton Tow (VPT) Data
-#> 318                                                    GLOBEC NEP MOCNESS Plankton (MOC1) Data
-#> 319 AN EXPERIMENTAL DATASET: Underway Sea Surface Temperature and Salinity Aboard the Oleander
-#> 321                            NWFSC Observer Fixed Gear Data, off West Coast of US, 2002-2006
-#> 322                                 NWFSC Observer Trawl Data, off West Coast of US, 2002-2006
-#>              dataset_id
-#> 1      erdCalCOFIfshsiz
-#> 2      erdCalCOFIlrvsiz
-#> 3        erdCinpKfmSFNH
-#> 9   erdCalCOFIlrvcntpos
-#> 10       erdCalCOFItows
-#> 316           aadcArgos
-#> 317        erdGlobecVpt
-#> 318       erdGlobecMoc1
-#> 319            nodcPJJU
-#> 321  nwioosObsFixed2002
-#> 322  nwioosObsTrawl2002
+#>                                                                                         title
+#> 1                                                                          CalCOFI Fish Sizes
+#> 2                                                                        CalCOFI Larvae Sizes
+#> 3                Channel Islands, Kelp Forest Monitoring, Size and Frequency, Natural Habitat
+#> 4                             NWFSC Observer Fixed Gear Data, off West Coast of US, 2002-2006
+#> 5                                  NWFSC Observer Trawl Data, off West Coast of US, 2002-2006
+#> 6                                                  OBIS - ARGOS Satellite Tracking of Animals
+#> 7                                                         CalCOFI Larvae Counts Positive Tows
+#> 8                                                                                CalCOFI Tows
+#> 9                                                     GLOBEC NEP MOCNESS Plankton (MOC1) Data
+#> 10                                                GLOBEC NEP Vertical Plankton Tow (VPT) Data
+#> 11 AN EXPERIMENTAL DATASET: Underway Sea Surface Temperature and Salinity Aboard the Oleander
+#>             dataset_id
+#> 1     erdCalCOFIfshsiz
+#> 2     erdCalCOFIlrvsiz
+#> 3       erdCinpKfmSFNH
+#> 4   nwioosObsFixed2002
+#> 5   nwioosObsTrawl2002
+#> 6            aadcArgos
+#> 7  erdCalCOFIlrvcntpos
+#> 8       erdCalCOFItows
+#> 9        erdGlobecMoc1
+#> 10        erdGlobecVpt
+#> 11            nodcPJJU
 ```
 
 
@@ -88,47 +88,47 @@ ed_search(query = 'size', which = "table")
 ed_search(query = 'size', which = "grid")
 #> 311 results, showing first 20 
 #>                                                                                                 title
-#> 4                                                            AVHRR PATHFINDER L3 BSST 5DAY DAYTIME V5
-#> 5                                                           AVHRR PATHFINDER L3 BSST DAILY DAYTIME V5
-#> 6                                                          AVHRR PATHFINDER L3 SST DAILY NIGHTTIME V5
-#> 7                                                          AVHRR PATHFINDER L3 BSST DAILY DAYTIME V51
-#> 8                                                        AVHRR PATHFINDER L3 BSST DAILY NIGHTTIME V51
-#> 11        ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0008) [time][eta_rho][xi_rho]
-#> 12            ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0008) [time][eta_u][xi_u]
-#> 13            ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0008) [time][eta_v][xi_v]
-#> 14 ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0008) [time][s_rho][eta_rho][xi_rho]
-#> 15  ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0008) [time][Nbed][eta_rho][xi_rho]
-#> 16        ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0009) [time][eta_rho][xi_rho]
-#> 17            ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0009) [time][eta_u][xi_u]
-#> 18            ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0009) [time][eta_v][xi_v]
-#> 19 ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0009) [time][s_rho][eta_rho][xi_rho]
-#> 20  ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0009) [time][Nbed][eta_rho][xi_rho]
-#> 21        ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0010) [time][eta_rho][xi_rho]
-#> 22            ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0010) [time][eta_u][xi_u]
-#> 23            ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0010) [time][eta_v][xi_v]
-#> 24 ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0010) [time][s_rho][eta_rho][xi_rho]
-#> 25  ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0010) [time][Nbed][eta_rho][xi_rho]
-#>                 dataset_id
-#> 4  nasa_jpl_ccfc_1654_21c4
-#> 5  nasa_jpl_bef9_68a1_1fd5
-#> 6  nasa_jpl_77ba_ec94_a5d6
-#> 7  nasa_jpl_5533_5dee_222e
-#> 8  nasa_jpl_c2a2_7085_780e
-#> 11     whoi_cbae_ef31_0877
-#> 12     whoi_61f3_6dac_36c1
-#> 13     whoi_4eff_1b8e_513a
-#> 14     whoi_4d06_1f87_db0b
-#> 15     whoi_4849_5c78_58dc
-#> 16     whoi_28c3_4a74_191a
-#> 17     whoi_e627_874c_2b1b
-#> 18     whoi_9183_ea0f_9417
-#> 19     whoi_322d_c428_66b4
-#> 20     whoi_5f75_6229_f722
-#> 21     whoi_02c9_858d_bc77
-#> 22     whoi_689d_0109_9280
-#> 23     whoi_4f6e_439a_8e4b
-#> 24     whoi_5451_efbd_60ac
-#> 25     whoi_1ace_a9ee_f343
+#> 1                                                            AVHRR PATHFINDER L3 BSST 5DAY DAYTIME V5
+#> 2                                                           AVHRR PATHFINDER L3 BSST DAILY DAYTIME V5
+#> 3                                                          AVHRR PATHFINDER L3 SST DAILY NIGHTTIME V5
+#> 4                                                          AVHRR PATHFINDER L3 BSST DAILY DAYTIME V51
+#> 5                                                        AVHRR PATHFINDER L3 BSST DAILY NIGHTTIME V51
+#> 6         ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0017) [time][eta_rho][xi_rho]
+#> 7             ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0017) [time][eta_u][xi_u]
+#> 8             ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0017) [time][eta_v][xi_v]
+#> 9  ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0017) [time][s_rho][eta_rho][xi_rho]
+#> 10  ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0017) [time][Nbed][eta_rho][xi_rho]
+#> 11        ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0018) [time][eta_rho][xi_rho]
+#> 12            ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0018) [time][eta_u][xi_u]
+#> 13            ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0018) [time][eta_v][xi_v]
+#> 14 ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0018) [time][s_rho][eta_rho][xi_rho]
+#> 15  ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0018) [time][Nbed][eta_rho][xi_rho]
+#> 16        ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0019) [time][eta_rho][xi_rho]
+#> 17            ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0019) [time][eta_u][xi_u]
+#> 18            ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0019) [time][eta_v][xi_v]
+#> 19 ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0019) [time][s_rho][eta_rho][xi_rho]
+#> 20  ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0019) [time][Nbed][eta_rho][xi_rho]
+#>                     dataset_id
+#> 1      nasa_jpl_ccfc_1654_21c4
+#> 2      nasa_jpl_bef9_68a1_1fd5
+#> 3      nasa_jpl_77ba_ec94_a5d6
+#> 4      nasa_jpl_5533_5dee_222e
+#> 5      nasa_jpl_c2a2_7085_780e
+#> 6  whoi_geoport_9fae_a253_b9e6
+#> 7  whoi_geoport_bc88_76a5_31f4
+#> 8  whoi_geoport_bd7a_32ca_7926
+#> 9  whoi_geoport_6324_3c6c_0650
+#> 10 whoi_geoport_2943_e6e7_d41e
+#> 11 whoi_geoport_1e1d_f2ed_d03a
+#> 12 whoi_geoport_82ea_368a_673c
+#> 13 whoi_geoport_f64d_70b8_2489
+#> 14 whoi_geoport_5520_5288_24fe
+#> 15 whoi_geoport_8c74_ef3a_3c2a
+#> 16 whoi_geoport_fcdf_fd74_5b90
+#> 17 whoi_geoport_5523_0716_f75a
+#> 18 whoi_geoport_3910_5cd3_1733
+#> 19 whoi_geoport_a3e3_35c2_de35
+#> 20 whoi_geoport_8c63_4462_fff8
 ```
 
 ### Information
@@ -138,17 +138,7 @@ Then you can get information on a single dataset
 
 ```r
 info('whoi_62d0_9d64_c8ff')
-#> <ERDDAP info> whoi_62d0_9d64_c8ff 
-#>  Dimensions (range):  
-#>      time: (2012-06-25T01:00:00Z, 2015-10-14T00:00:00Z) 
-#>      eta_v: (0, 334) 
-#>      xi_v: (0, 895) 
-#>  Variables:  
-#>      bedload_Vsand_01: 
-#>          Units: kilogram meter-1 s-1 
-#>      bedload_Vsand_02: 
-#>          Units: kilogram meter-1 s-1 
-...
+#> Error: HTTP Status 404 - Resource not found: /erddap/info/whoi_62d0_9d64_c8ff/index.json (Currently unknown datasetID=whoi_62d0_9d64_c8ff)
 ```
 
 ### griddap (gridded) data
@@ -180,7 +170,7 @@ Then query for gridded data using the `griddap()` function
 ))
 #> <ERDDAP griddap> noaa_esrl_027d_0fb5_5d38
 #>    Path: [~/.rerddap/648ed11e8b911b65e39eb63c8df339df.nc]
-#>    Last updated: [2015-10-09 09:20:59]
+#>    Last updated: [2016-01-12 12:18:06]
 #>    File size:    [0 mb]
 #>    Dimensions (dims/vars):   [3 X 1]
 #>    Dim names: time, latitude, longitude
@@ -213,7 +203,14 @@ res$summary
 #> 
 #> $id
 #> [1] 65536
-#> ...
+#> 
+#> $safemode
+#> [1] FALSE
+#> 
+#> $format
+#> [1] "NC_FORMAT_CLASSIC"
+#> 
+...
 ```
 
 Get the dimension variables
@@ -273,7 +270,7 @@ res$data
 (dat <- tabledap(out, 'time>=2001-07-07', 'time<=2001-07-10', fields = c('longitude', 'latitude', 'fish_size', 'itis_tsn', 'scientific_name')))
 #> <ERDDAP tabledap> erdCalCOFIfshsiz
 #>    Path: [~/.rerddap/f013f9ee09bdb4184928d533e575e948.csv]
-#>    Last updated: [2015-10-09 09:21:00]
+#>    Last updated: [2016-01-12 12:18:07]
 #>    File size:    [0.03 mb]
 #>    Dimensions:   [558 X 5]
 #> 
@@ -305,7 +302,7 @@ tbl_df(dat) %>%
 #> Source: local data frame [20 x 2]
 #> 
 #>                 scientific_name mean_size
-#>                           (chr)     (dbl)
+#>                           <chr>     <dbl>
 #> 1       Idiacanthus antrostomus 253.00000
 #> 2            Stomias atriventer 189.25000
 #> 3            Lestidiops ringens  98.70000
@@ -337,8 +334,8 @@ To cite `rerddap` in publications use:
 
 <br>
 
->  Scott Chamberlain (2015). rerddap: General Purpose Client for 'ERDDAP' Servers. R
-  package version 0.3.0. https://github.com/ropensci/rerddap
+>  Scott Chamberlain (2016). rerddap: General Purpose Client for 'ERDDAP' Servers. R
+  package version 0.3.4. https://github.com/ropensci/rerddap
 
 <section id="license_bugs">
 

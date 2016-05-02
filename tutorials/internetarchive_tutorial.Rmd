@@ -1,12 +1,12 @@
 ---
 title: internetarchive tutorial
 layout: tutorial
-packge_version: 0.1.4
+packge_version: 0.1.5
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
 knitr::opts_chunk$set(
-  fig.path="../assets/tutorial-images/internetarchive/",
+  fig.path = "../assets/tutorial-images/internetarchive/",
   warning = FALSE,
   message = FALSE,
   comment = "#>"
@@ -25,14 +25,14 @@ Stable version from CRAN
 install.packages("internetarchive")
 ```
 
-Install the [development version](https://github.com/ropensci/internetarchive) from GitHub with [devtools](http://cran.rstudio.org/web/packages/devtools/).
+Development version:
 
 ```{r eval=FALSE}
-# install.packages("devtools")
+if (!require("devtools")) install.packages("devtools")
 devtools::install_github("ropensci/internetarchive", build_vignettes = TRUE)
 ```
 
-Then load the package. We will also use [dplyr](https://github.com/hadley/dplyr) for manipulating the retrieved data.
+First load the package. We will also use [dplyr](https://github.com/hadley/dplyr) for manipulating the retrieved data.
 
 ```{r}
 library("internetarchive")
@@ -57,7 +57,7 @@ ia_browse("TheLifeOfFatherHecker")
 
 ## Advanced search
 
-Usually it is more useful to perform an advanced search. You can construct an advanced search as a named character vector, where the names correspond to the fields. The following search, for instance, looks for items published by the American Tract Society in 1864. Run the function `ia_list_fields()` to see the list of accepted metadata fields.
+Usually it is more useful to perform an advanced search. You can construct an advanced search as a named character vector, where the names correspond to the fields. The following search, for instance, looks for items published by the American Tract Society in 1864. Run the function `ia_list_fields()` to see the list of accepted metadata fields. 
 
 ```{r}
 ats_query <- c("publisher" = "american tract society", "year" = "1864")
@@ -96,10 +96,10 @@ ia_files(hecker)
 These functions can also retrieve the information for multiple items when used in a pipeline. Here we search for all the items about Hecker, retrieve their metadata, and turn it into a data frame. We then filter the data frame to get only the titles.
 
 ```{r, eval=FALSE}
-ia_keyword_search("isaac hecker", num_results = 3) %>%
-  ia_get_items() %>%
-  ia_metadata() %>%
-  filter(field == "title") %>%
+ia_keyword_search("isaac hecker", num_results = 3) %>% 
+  ia_get_items() %>% 
+  ia_metadata() %>% 
+  filter(field == "title") %>% 
   select(value)
 ```
 
@@ -109,13 +109,13 @@ The `ia_download()` function will download all the files in a data frame returne
 
 ```{r, eval=FALSE}
 dir <- tempdir()
-ia_search(ats_query, num_results = 2) %>%
-  ia_get_items() %>%
-  ia_files() %>%
-  filter(type == "txt") %>%
-  group_by(id) %>%
-  slice(1) %>%
-  ia_download(dir = dir, overwrite = FALSE) %>%
+ia_search(ats_query, num_results = 2) %>% 
+  ia_get_items() %>% 
+  ia_files() %>% 
+  filter(type == "txt") %>% 
+  group_by(id) %>% 
+  slice(1) %>% 
+  ia_download(dir = dir, overwrite = FALSE) %>% 
   glimpse()
 ```
 
@@ -123,12 +123,11 @@ Notice that `ia_download()` returns a modified version of the data frame that wa
 
 If the `overwrite =` argument is `FALSE`, then you can pass the same data frame of files to `ia_download()` and it will download only the files that it has not already downloaded.
 
-
 <section id="citing">
 
 ## Citing
 
-> Lincoln Mullen (2015). internetarchive: An API Client for the Internet Archive. R package version 0.1.4. https://github.com/ropensci/internetarchive
+> Lincoln Mullen (2016). internetarchive: An API Client for the Internet Archive. R package version 0.1.5. https://cran.rstudio.com/package=internetarchive
 
 
 <section id="license_bugs">

@@ -1,8 +1,10 @@
 ---
 title: rebird tutorial
 layout: tutorial
-packge_version: 0.2.0
+packge_version: 0.3.0
 ---
+
+
 
 A programmatic interface to the eBird database. Find out more about eBird at [their website](http://ebird.org/content/ebird/).
 
@@ -44,28 +46,17 @@ Search for bird occurrences by latitude and longitude point
 
 ```r
 ebirdgeo(species = 'spinus tristis', lat = 42, lng = -76)
-```
-
-```
-## Source: local data frame [12 x 11]
-## 
-##               obsDt       lng
-##               (chr)     (dbl)
-## 1  2015-12-28 11:45 -75.90543
-## 2  2015-12-28 10:50 -75.89836
-## 3  2015-12-26 10:25 -75.98355
-## 4  2015-12-25 13:01 -75.88002
-## 5  2015-12-24 14:57 -76.07799
-## 6  2015-12-24 10:32 -76.09052
-## 7  2015-12-23 11:49 -76.08453
-## 8  2015-12-22 10:00 -75.93579
-## 9  2015-12-20 14:15 -75.96821
-## 10 2015-12-20 09:00 -76.00171
-## 11 2015-12-19 11:13 -76.27245
-## 12 2015-12-19 11:02 -75.93946
-## Variables not shown: locName (chr), obsValid (lgl), comName (chr),
-##   obsReviewed (lgl), sciName (chr), locationPrivate (lgl), howMany (int),
-##   lat (dbl), locID (chr)
+#>               obsDt       lng
+#> 1  2016-05-02 08:15 -76.03871
+#> 2  2016-05-02 07:01 -75.88152
+#> 3  2016-05-02 06:40 -75.93579
+#> 4  2016-05-01 15:27 -75.90142
+#> 5  2016-05-01 12:20 -75.83381
+#> 6  2016-05-01 10:45 -76.00171
+#> 7  2016-05-01 08:15 -75.90972
+#> 8  2016-05-01 07:45 -75.92510
+#> 9        2016-05-01 -75.96305
+...
 ```
 
 Same, but with additional parameter settings, returning only 10 records, including provisional records, and hotspot records.
@@ -73,25 +64,17 @@ Same, but with additional parameter settings, returning only 10 records, includi
 
 ```r
 ebirdgeo(lat = 42, lng = -76, max = 10, includeProvisional = TRUE, hotspot = TRUE)
-```
-
-```
-## Source: local data frame [10 x 11]
-## 
-##               obsDt       lng              locName obsValid
-##               (chr)     (dbl)                (chr)    (lgl)
-## 1  2015-12-28 12:02 -75.91100 Water St. River Walk     TRUE
-## 2  2015-12-28 12:02 -75.91100 Water St. River Walk     TRUE
-## 3  2015-12-28 12:02 -75.91100 Water St. River Walk     TRUE
-## 4  2015-12-28 12:02 -75.91100 Water St. River Walk     TRUE
-## 5  2015-12-28 12:02 -75.91100 Water St. River Walk     TRUE
-## 6  2015-12-28 12:02 -75.91100 Water St. River Walk     TRUE
-## 7  2015-12-28 12:02 -75.91100 Water St. River Walk     TRUE
-## 8  2015-12-28 07:32 -76.00171  River Rd. (Endwell)     TRUE
-## 9  2015-12-28 07:32 -76.00171  River Rd. (Endwell)     TRUE
-## 10 2015-12-27 10:43 -76.01297    Harold Moore Park     TRUE
-## Variables not shown: comName (chr), obsReviewed (lgl), sciName (chr),
-##   locationPrivate (lgl), howMany (int), lat (dbl), locID (chr)
+#>               obsDt       lng     locName obsValid              comName
+#> 1  2016-05-02 07:01 -75.88152 Boland Pond     TRUE        American Coot
+#> 2  2016-05-02 07:01 -75.88152 Boland Pond     TRUE                 Sora
+#> 3  2016-05-02 07:01 -75.88152 Boland Pond     TRUE         Song Sparrow
+#> 4  2016-05-02 07:01 -75.88152 Boland Pond     TRUE Red-winged Blackbird
+#> 5  2016-05-02 07:01 -75.88152 Boland Pond     TRUE        Mourning Dove
+#> 6  2016-05-02 07:01 -75.88152 Boland Pond     TRUE    European Starling
+#> 7  2016-05-02 07:01 -75.88152 Boland Pond     TRUE       Eastern Towhee
+#> 8  2016-05-02 07:01 -75.88152 Boland Pond     TRUE       Common Grackle
+#> 9  2016-05-02 07:01 -75.88152 Boland Pond     TRUE         Canada Goose
+...
 ```
 
 
@@ -102,26 +85,17 @@ Search for bird occurrences for two locations by their IDs
 
 ```r
 ebirdloc(locID = c('L99381','L99382'))
-```
-
-```
-## Source: local data frame [61 x 11]
-## 
-##               obsDt       lng      locName obsValid
-##               (chr)     (dbl)        (chr)    (lgl)
-## 1  2015-12-26 08:48 -76.50375 Stewart Park     TRUE
-## 2  2015-12-26 08:48 -76.50375 Stewart Park     TRUE
-## 3  2015-12-26 08:48 -76.50375 Stewart Park     TRUE
-## 4  2015-12-26 08:48 -76.50375 Stewart Park     TRUE
-## 5  2015-12-26 08:48 -76.50375 Stewart Park     TRUE
-## 6  2015-12-26 08:48 -76.50375 Stewart Park     TRUE
-## 7  2015-12-26 08:48 -76.50375 Stewart Park     TRUE
-## 8  2015-12-26 08:48 -76.50375 Stewart Park     TRUE
-## 9  2015-12-26 08:48 -76.50375 Stewart Park     TRUE
-## 10 2015-12-26 08:48 -76.50375 Stewart Park     TRUE
-## ..              ...       ...          ...      ...
-## Variables not shown: comName (chr), obsReviewed (lgl), sciName (chr),
-##   locationPrivate (lgl), howMany (int), lat (dbl), locID (chr)
+#>                obsDt       lng      locName obsValid
+#> 1   2016-05-02 13:18 -76.50546 Stewart Park     TRUE
+#> 2   2016-05-02 13:18 -76.50546 Stewart Park     TRUE
+#> 3   2016-05-02 13:18 -76.50546 Stewart Park     TRUE
+#> 4   2016-05-02 13:18 -76.50546 Stewart Park     TRUE
+#> 5   2016-05-02 13:18 -76.50546 Stewart Park     TRUE
+#> 6   2016-05-02 13:18 -76.50546 Stewart Park     TRUE
+#> 7   2016-05-02 13:18 -76.50546 Stewart Park     TRUE
+#> 8   2016-05-02 13:18 -76.50546 Stewart Park     TRUE
+#> 9   2016-05-02 13:18 -76.50546 Stewart Park     TRUE
+...
 ```
 
 Search by location ID and species name, as well as some additional parameter settings
@@ -129,16 +103,10 @@ Search by location ID and species name, as well as some additional parameter set
 
 ```r
 ebirdloc(locID = 'L99381', species = 'larus delawarensis', max = 10, provisional = TRUE, hotspot=TRUE)
-```
-
-```
-## Source: local data frame [1 x 11]
-## 
-##              obsDt       lng      locName obsValid          comName
-##              (chr)     (dbl)        (chr)    (lgl)            (chr)
-## 1 2015-12-26 08:48 -76.50375 Stewart Park     TRUE Ring-billed Gull
-## Variables not shown: obsReviewed (lgl), sciName (chr), locationPrivate
-##   (lgl), howMany (int), lat (dbl), locID (chr)
+#>              obsDt       lng      locName obsValid          comName
+#> 1 2016-05-02 13:18 -76.50546 Stewart Park     TRUE Ring-billed Gull
+#>   obsReviewed            sciName locationPrivate      lat  locID
+#> 1       FALSE Larus delawarensis           FALSE 42.46134 L99381
 ```
 
 
@@ -149,27 +117,17 @@ Search for bird occurrences by region and species name
 
 ```r
 ebirdregion(region = 'US', species = 'Setophaga caerulescens')
-```
-
-```
-## Source: local data frame [28 x 11]
-## 
-##               obsDt       lng
-##               (chr)     (dbl)
-## 1  2015-12-28 16:05 -80.33864
-## 2  2015-12-28 15:15 -80.31086
-## 3        2015-12-28 -80.79450
-## 4  2015-12-27 08:00 -80.27264
-## 5  2015-12-27 07:30 -74.50722
-## 6  2015-12-26 16:03 -76.58631
-## 7  2015-12-26 15:01 -80.28426
-## 8  2015-12-26 14:51 -80.30780
-## 9  2015-12-26 11:28 -80.29746
-## 10 2015-12-26 10:21 -80.26847
-## ..              ...       ...
-## Variables not shown: locName (chr), obsValid (lgl), comName (chr),
-##   obsReviewed (lgl), sciName (chr), locationPrivate (lgl), howMany (int),
-##   lat (dbl), locID (chr)
+#>                 obsDt       lng
+#> 1    2016-05-02 09:25 -77.05141
+#> 2    2016-05-02 09:20 -78.69069
+#> 3    2016-05-02 09:08 -77.49636
+#> 4    2016-05-02 09:05 -74.94081
+#> 5    2016-05-02 09:00 -76.50132
+#> 6    2016-05-02 08:56 -76.96700
+#> 7    2016-05-02 08:53 -77.59850
+#> 8    2016-05-02 08:50 -77.43810
+#> 9    2016-05-02 08:42 -74.50114
+...
 ```
 
 Search by location ID and species name, as well as some additional parameter settings. Note that we use `US-OH` to represent Ohio within the US. [See possible region values](https://confluence.cornell.edu/display/CLOISAPI/eBird-1.1-RegionCodeReference).
@@ -177,26 +135,17 @@ Search by location ID and species name, as well as some additional parameter set
 
 ```r
 ebirdregion(region = 'US-OH', max = 10, provisional = TRUE, hotspot = TRUE)
-```
-
-```
-## Source: local data frame [10 x 11]
-## 
-##               obsDt       lng
-##               (chr)     (dbl)
-## 1  2015-12-29 08:45 -82.96656
-## 2  2015-12-29 08:45 -82.96656
-## 3  2015-12-29 08:45 -82.96656
-## 4  2015-12-29 08:45 -82.96656
-## 5  2015-12-29 08:45 -82.96656
-## 6  2015-12-29 08:45 -82.96656
-## 7  2015-12-29 08:45 -82.96656
-## 8  2015-12-29 08:45 -82.96656
-## 9  2015-12-29 08:45 -82.96656
-## 10 2015-12-29 08:45 -82.96656
-## Variables not shown: locName (chr), obsValid (lgl), comName (chr),
-##   obsReviewed (lgl), sciName (chr), locationPrivate (lgl), howMany (int),
-##   lat (dbl), locID (chr)
+#>               obsDt       lng                                    locName
+#> 1  2016-05-02 09:42 -83.18247 Magee Marsh--Causeway Marshes (Ottawa Co.)
+#> 2  2016-05-02 09:42 -83.18247 Magee Marsh--Causeway Marshes (Ottawa Co.)
+#> 3  2016-05-02 09:42 -83.18247 Magee Marsh--Causeway Marshes (Ottawa Co.)
+#> 4  2016-05-02 09:42 -83.18247 Magee Marsh--Causeway Marshes (Ottawa Co.)
+#> 5  2016-05-02 09:42 -83.18247 Magee Marsh--Causeway Marshes (Ottawa Co.)
+#> 6  2016-05-02 09:42 -83.18247 Magee Marsh--Causeway Marshes (Ottawa Co.)
+#> 7  2016-05-02 09:42 -83.18247 Magee Marsh--Causeway Marshes (Ottawa Co.)
+#> 8  2016-05-02 09:42 -83.18247 Magee Marsh--Causeway Marshes (Ottawa Co.)
+#> 9  2016-05-02 09:42 -83.18247 Magee Marsh--Causeway Marshes (Ottawa Co.)
+...
 ```
 
 
@@ -207,16 +156,16 @@ Search for bird occurrences by region and species name
 
 ```r
 ebirdhotspot(locID = c('L99381','L99382'), species = 'larus delawarensis')
-```
-
-```
-## Source: local data frame [1 x 11]
-## 
-##              obsDt       lng      locName obsValid          comName
-##              (chr)     (dbl)        (chr)    (lgl)            (chr)
-## 1 2015-12-26 08:48 -76.50375 Stewart Park     TRUE Ring-billed Gull
-## Variables not shown: obsReviewed (lgl), sciName (chr), locationPrivate
-##   (lgl), howMany (int), lat (dbl), locID (chr)
+#>              obsDt       lng      locName obsValid          comName
+#> 1 2016-05-02 13:18 -76.50546 Stewart Park     TRUE Ring-billed Gull
+#>   obsReviewed            sciName locationPrivate      lat  locID
+#> 1       FALSE Larus delawarensis           FALSE 42.46134 L99381
+NA
+NA
+NA
+NA
+NA
+NA
 ```
 
 
@@ -227,24 +176,17 @@ Obtain historical frequencies of bird occurrences at a given hotspot
 
 ```r
 ebirdfreq(loctype = 'hotspots', loc = 'L196159')
-```
-
-```
-## Source: local data frame [8,208 x 4]
-## 
-##                        comName   monthQt frequency sampleSize
-##                          (chr)     (chr)     (dbl)      (dbl)
-## 1  Greater White-fronted Goose January-1    0.0000         16
-## 2                   Snow Goose January-1    0.0000         16
-## 3               Cackling Goose January-1    0.0000         16
-## 4                 Canada Goose January-1    0.0000         16
-## 5        Cackling/Canada Goose January-1    0.0000         16
-## 6               Trumpeter Swan January-1    0.0000         16
-## 7                    Wood Duck January-1    0.2500         16
-## 8                      Gadwall January-1    0.0000         16
-## 9              Eurasian Wigeon January-1    0.5625         16
-## 10             American Wigeon January-1    1.0000         16
-## ..                         ...       ...       ...        ...
+#> Source: local data frame [8,352 x 4]
+#>
+#>                        comName   monthQt frequency sampleSize
+#>                          <chr>     <chr>     <dbl>      <dbl>
+#> 1  Greater White-fronted Goose January-1 0.0000000         22
+#> 2                   Snow Goose January-1 0.0000000         22
+#> 3               Cackling Goose January-1 0.0000000         22
+#> 4                 Canada Goose January-1 0.0000000         22
+#> 5        Cackling/Canada Goose January-1 0.0000000         22
+#> 6               Trumpeter Swan January-1 0.0000000         22
+...
 ```
 
 Same, but in wide format (for making bar charts)
@@ -252,35 +194,17 @@ Same, but in wide format (for making bar charts)
 
 ```r
 ebirdfreq(loctype = 'hotspots', loc = 'L196159', long = FALSE)
-```
-
-```
-## Source: local data frame [172 x 49]
-## 
-##                        comName January-1  January-2 January-3  January-4
-##                          (chr)     (dbl)      (dbl)     (dbl)      (dbl)
-## 1                 Sample Size:   16.0000 19.0000000      20.0 28.0000000
-## 2  Greater White-fronted Goose    0.0000  0.0000000       0.0  0.0000000
-## 3                   Snow Goose    0.0000  0.0000000       0.0  0.0000000
-## 4               Cackling Goose    0.0000  0.0000000       0.0  0.0000000
-## 5                 Canada Goose    0.0000  0.0000000       0.0  0.0000000
-## 6        Cackling/Canada Goose    0.0000  0.0000000       0.0  0.0000000
-## 7               Trumpeter Swan    0.0000  0.0000000       0.0  0.0000000
-## 8                    Wood Duck    0.2500  0.0000000       0.0  0.0000000
-## 9                      Gadwall    0.0000  0.0000000       0.0  0.0000000
-## 10             Eurasian Wigeon    0.5625  0.7368421       0.8  0.3928571
-## ..                         ...       ...        ...       ...        ...
-## Variables not shown: February-1 (dbl), February-2 (dbl), February-3 (dbl),
-##   February-4 (dbl), March-1 (dbl), March-2 (dbl), March-3 (dbl), March-4
-##   (dbl), April-1 (dbl), April-2 (dbl), April-3 (dbl), April-4 (dbl), May-1
-##   (dbl), May-2 (dbl), May-3 (dbl), May-4 (dbl), June-1 (dbl), June-2
-##   (dbl), June-3 (dbl), June-4 (dbl), July-1 (dbl), July-2 (dbl), July-3
-##   (dbl), July-4 (dbl), August-1 (dbl), August-2 (dbl), August-3 (dbl),
-##   August-4 (dbl), September-1 (dbl), September-2 (dbl), September-3 (dbl),
-##   September-4 (dbl), October-1 (dbl), October-2 (dbl), October-3 (dbl),
-##   October-4 (dbl), November-1 (dbl), November-2 (dbl), November-3 (dbl),
-##   November-4 (dbl), December-1 (dbl), December-2 (dbl), December-3 (dbl),
-##   December-4 (dbl)
+#> Source: local data frame [175 x 49]
+#>
+#>                        comName  January-1  January-2  January-3
+#>                          <chr>      <dbl>      <dbl>      <dbl>
+#> 1                 Sample Size: 22.0000000 21.0000000 27.0000000
+#> 2  Greater White-fronted Goose  0.0000000  0.0000000  0.0000000
+#> 3                   Snow Goose  0.0000000  0.0000000  0.0000000
+#> 4               Cackling Goose  0.0000000  0.0000000  0.0000000
+#> 5                 Canada Goose  0.0000000  0.0000000  0.0000000
+#> 6        Cackling/Canada Goose  0.0000000  0.0000000  0.0000000
+...
 ```
 
 Obtain frequency data for a given state
@@ -288,25 +212,17 @@ Obtain frequency data for a given state
 
 ```r
 ebirdfreq(loctype = 'states', loc = 'CA-BC')
-```
-
-```
-## Source: local data frame [32,160 x 4]
-## 
-##                                          comName   monthQt   frequency
-##                                            (chr)     (chr)       (dbl)
-## 1                         Fulvous Whistling-Duck January-1 0.000000000
-## 2                    Greater White-fronted Goose January-1 0.008611263
-## 3  Swan x Graylag Goose (Domestic type) (hybrid) January-1 0.000000000
-## 4                                  Emperor Goose January-1 0.000000000
-## 5                                     Snow Goose January-1 0.024876982
-## 6                                   Ross's Goose January-1 0.000000000
-## 7                              Snow/Ross's Goose January-1 0.000000000
-## 8                                          Brant January-1 0.007927829
-## 9                                 Cackling Goose January-1 0.014762165
-## 10                                  Canada Goose January-1 0.188627665
-## ..                                           ...       ...         ...
-## Variables not shown: sampleSize (dbl)
+#> Source: local data frame [32,640 x 4]
+#>
+#>                                          comName   monthQt   frequency
+#>                                            <chr>     <chr>       <dbl>
+#> 1                         Fulvous Whistling-Duck January-1 0.000000000
+#> 2                    Greater White-fronted Goose January-1 0.008672087
+#> 3  Swan x Graylag Goose (Domestic type) (hybrid) January-1 0.000000000
+#> 4             Domestic goose sp. (Domestic type) January-1 0.000000000
+#> 5                                  Emperor Goose January-1 0.000000000
+#> 6                                     Snow Goose January-1 0.024390244
+...
 ```
 
 Or county
@@ -314,24 +230,17 @@ Or county
 
 ```r
 ebirdfreq(loctype = 'counties', loc = 'CA-BC-GV')
-```
-
-```
-## Source: local data frame [22,704 x 4]
-## 
-##                        comName   monthQt   frequency sampleSize
-##                          (chr)     (chr)       (dbl)      (dbl)
-## 1  Greater White-fronted Goose January-1 0.008098727       2593
-## 2                Emperor Goose January-1 0.000000000       2593
-## 3                   Snow Goose January-1 0.058233706       2593
-## 4                 Ross's Goose January-1 0.000000000       2593
-## 5            Snow/Ross's Goose January-1 0.000000000       2593
-## 6                        Brant January-1 0.018125723       2593
-## 7               Cackling Goose January-1 0.014269186       2593
-## 8                 Canada Goose January-1 0.185499422       2593
-## 9        Cackling/Canada Goose January-1 0.001156961       2593
-## 10                   goose sp. January-1 0.000000000       2593
-## ..                         ...       ...         ...        ...
+#> Source: local data frame [22,656 x 4]
+#>
+#>                        comName   monthQt   frequency sampleSize
+#>                          <chr>     <chr>       <dbl>      <dbl>
+#> 1  Greater White-fronted Goose January-1 0.007092199       3243
+#> 2                Emperor Goose January-1 0.000000000       3243
+#> 3                   Snow Goose January-1 0.056429232       3243
+#> 4                 Ross's Goose January-1 0.000000000       3243
+#> 5            Snow/Ross's Goose January-1 0.000000000       3243
+#> 6                        Brant January-1 0.021584952       3243
+...
 ```
 
 Obtain frequency data within a range of years and months
@@ -340,24 +249,17 @@ Obtain frequency data within a range of years and months
 ```r
 ebirdfreq(loctype = 'hotspots', loc = 'L196159', startyear = 2010,
           endyear = 2014, startmonth = 1, endmonth = 3)
-```
-
-```
-## Source: local data frame [3,792 x 4]
-## 
-##                                comName   monthQt frequency sampleSize
-##                                  (chr)     (chr)     (dbl)      (dbl)
-## 1                         Canada Goose January-1       0.0         10
-## 2                            Wood Duck January-1       0.4         10
-## 3                              Gadwall January-1       0.0         10
-## 4                      Eurasian Wigeon January-1       0.4         10
-## 5                      American Wigeon January-1       1.0         10
-## 6  Eurasian x American Wigeon (hybrid) January-1       0.0         10
-## 7                              Mallard January-1       1.0         10
-## 8                    Northern Shoveler January-1       0.8         10
-## 9                     Northern Pintail January-1       0.0         10
-## 10                   Green-winged Teal January-1       0.0         10
-## ..                                 ...       ...       ...        ...
+#> Source: local data frame [3,792 x 4]
+#>
+#>                                comName   monthQt frequency sampleSize
+#>                                  <chr>     <chr>     <dbl>      <dbl>
+#> 1                         Canada Goose January-1       0.0         10
+#> 2                            Wood Duck January-1       0.4         10
+#> 3                              Gadwall January-1       0.0         10
+#> 4                      Eurasian Wigeon January-1       0.4         10
+#> 5                      American Wigeon January-1       1.0         10
+#> 6  Eurasian x American Wigeon (hybrid) January-1       0.0         10
+...
 ```
 
 
@@ -368,27 +270,17 @@ Search for notable sightings at a given latitude and longitude
 
 ```r
 ebirdnotable(lat = 42, lng = -70)
-```
-
-```
-## Source: local data frame [1,215 x 11]
-## 
-##               obsDt       lng                                   locName
-##               (chr)     (dbl)                                     (chr)
-## 1  2015-12-29 11:54 -71.61575                           Westborough WMA
-## 2  2015-12-29 11:54 -71.10285                         1016 Boston Road 
-## 3  2015-12-29 11:50 -70.89774                              Fort Phoenix
-## 4  2015-12-29 09:57 -71.13639                    Allandale Woods--marsh
-## 5  2015-12-29 08:00 -71.84466                             Beaumont Home
-## 6  2015-12-28 15:30 -72.54394                     Broad Brook Mill Pond
-## 7  2015-12-28 15:30 -72.54394                     Broad Brook Mill Pond
-## 8  2015-12-28 15:28 -70.34081         Stroudwater St. fields, Westbrook
-## 9  2015-12-28 15:10 -70.98352 Belle Isle Cemetery/Winthrop Compost Dump
-## 10 2015-12-28 15:10 -70.98352 Belle Isle Cemetery/Winthrop Compost Dump
-## ..              ...       ...                                       ...
-## Variables not shown: obsValid (lgl), comName (chr), obsReviewed (lgl),
-##   sciName (chr), locationPrivate (lgl), howMany (int), lat (dbl), locID
-##   (chr)
+#>                obsDt       lng
+#> 1   2016-05-02 13:43 -72.56238
+#> 2   2016-05-02 11:48 -71.76948
+#> 3   2016-05-02 11:39 -71.39980
+#> 4   2016-05-02 11:00 -72.17408
+#> 5   2016-05-02 10:17 -71.37212
+#> 6   2016-05-02 09:50 -72.16669
+#> 7   2016-05-02 09:05 -70.20693
+#> 8   2016-05-02 09:05 -70.20693
+#> 9   2016-05-02 09:05 -70.20693
+...
 ```
 
 
@@ -399,26 +291,17 @@ Returns a data.frame of all species in the eBird taxonomy for the given paramete
 
 ```r
 ebirdtaxonomy()
-```
-
-```
-## Source: local data frame [10,473 x 9]
-## 
-##    speciesCode category                comName sciNameCodes
-##          (chr)    (chr)                  (chr)        (chr)
-## 1      ostric2  species         Common Ostrich         STCA
-## 2      ostric3  species         Somali Ostrich         STMO
-## 3      grerhe1  species           Greater Rhea         RHAM
-## 4      lesrhe2  species            Lesser Rhea         RHPE
-## 5      tabtin1  species Tawny-breasted Tinamou         NOJU
-## 6      higtin1  species       Highland Tinamou         NOBO
-## 7      hootin1  species         Hooded Tinamou         NONI
-## 8      grytin1  species           Gray Tinamou         TITA
-## 9      soltin1  species       Solitary Tinamou         TISO
-## 10     blatin1  species          Black Tinamou         TIOS
-## ..         ...      ...                    ...          ...
-## Variables not shown: sciName (chr), taxonID (chr), taxonOrder (dbl),
-##   comNameCodes (chr), bandingCodes (chr)
+#>       speciesCode category                           comName sciNameCodes
+#> 1         ostric2  species                    Common Ostrich         STCA
+#> 2         ostric3  species                    Somali Ostrich         STMO
+#> 3         grerhe1  species                      Greater Rhea         RHAM
+#> 4         lesrhe2  species                       Lesser Rhea         RHPE
+#> 5         tabtin1  species            Tawny-breasted Tinamou         NOJU
+#> 6         higtin1  species                  Highland Tinamou         NOBO
+#> 7         hootin1  species                    Hooded Tinamou         NONI
+#> 8         grytin1  species                      Gray Tinamou         TITA
+#> 9         soltin1  species                  Solitary Tinamou         TISO
+...
 ```
 
 Search for hybrid species only
@@ -426,26 +309,17 @@ Search for hybrid species only
 
 ```r
 ebirdtaxonomy(cat="hybrid")
-```
-
-```
-## Source: local data frame [308 x 9]
-## 
-##    speciesCode category
-##          (chr)    (chr)
-## 1       x00721   hybrid
-## 2       x00775   hybrid
-## 3       x00776   hybrid
-## 4       x00755   hybrid
-## 5       x00627   hybrid
-## 6      sxrgoo1   hybrid
-## 7       x00685   hybrid
-## 8       x00756   hybrid
-## 9       x00757   hybrid
-## 10      x00649   hybrid
-## ..         ...      ...
-## Variables not shown: comName (chr), sciNameCodes (chr), sciName (chr),
-##   taxonID (chr), taxonOrder (dbl), comNameCodes (chr), bandingCodes (chr)
+#>     speciesCode category
+#> 1        x00721   hybrid
+#> 2        x00775   hybrid
+#> 3        x00776   hybrid
+#> 4        x00755   hybrid
+#> 5        x00627   hybrid
+#> 6       sxrgoo1   hybrid
+#> 7        x00685   hybrid
+#> 8        x00756   hybrid
+#> 9        x00757   hybrid
+...
 ```
 
 
@@ -456,11 +330,9 @@ Check if region is valid in eBird database
 
 ```r
 ebirdregioncheck(loctype = 'counties', loc = 'CA-BC-GV')
+#> [1] TRUE
 ```
 
-```
-## [1] TRUE
-```
 
 
 <section id="citing">
@@ -471,7 +343,7 @@ To cite `rebird` in publications use:
 
 <br>
 
-> Rafael Maia, Scott Chamberlain and Andy Teucher (2015). rebird: Interface to eBird. R package version 0.2.0. http://github.com/ropensci/rebird
+> Rafael Maia, Scott Chamberlain, Andy Teucher and Sebastian Pardo (2016). rebird: R Client for the eBird Database of Bird Observations. R package version 0.3.0. https://github.com/ropensci/rebird
 
 <section id="license_bugs">
 

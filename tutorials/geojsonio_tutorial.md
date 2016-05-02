@@ -1,7 +1,7 @@
 ---
 title: geojsonio tutorial
 layout: tutorial
-packge_version: 0.1.4
+packge_version: 0.1.8
 ---
 
 
@@ -12,6 +12,7 @@ Functions in this package are organized first around what you're working with or
 
 * `geojson_list()` - convert to geojson as R list format
 * `geojson_json()` - convert to geojson as json
+* `geojson_sp()` - convert output of `geojson_list()` or `geojson_json()` to spatial objects
 * `geojson_read()`/`topojson_read()` - read a geojson/topojson file from file path or URL
 * `geojson_write()` - write a geojson file locally (no write topojson yet)
 
@@ -20,7 +21,7 @@ Each of the above functions have methods for various objects/classes, including 
 Additional functions:
 
 * `map_gist()` - push up a geojson or topojson file as a GitHub gist (renders as an interactive map) - See the _maps with geojsonio_ vignette.
-* `map_leaf()` - create a local interactive map with the `leaflet` package - See the _maps with geojsonio_ vignette.
+* `map_leaf()` - create a local interactive map with the `leaflet` package - See the _maps with geojsonio_ vignette. 
 
 <section id="installation">
 
@@ -46,6 +47,7 @@ Development version from GitHub
 
 
 ```r
+if (!require("devtools")) install.packages("devtools")
 devtools::install_github("ropensci/geojsonio")
 ```
 
@@ -213,11 +215,11 @@ out <- geojson_read(file, what = "sp")
 plot(out)
 ```
 
-![plot of chunk unnamed-chunk-17](../assets/tutorial-images/geojsonio/unnamed-chunk-17-1.png) 
+![plot of chunk unnamed-chunk-17](../assets/tutorial-images/geojsonio/unnamed-chunk-17-1.png)
 
 ## Topojson
 
-In the current version of this package you can read topojson. Writing topojson was in this package, but is gone for now - will come back later as in interface to [topojson](https://github.com/mbostock/topojson) via [V8](https://github.com/jeroenooms/V8).
+In the current version of this package you can read topojson. Writing topojson was in this package, but is gone for now - will come back later as in interface to [topojson](https://github.com/mbostock/topojson) via [V8](https://github.com/jeroenooms/V8). 
 
 Read from a file
 
@@ -268,8 +270,7 @@ out <- topojson_read(loc, verbose = FALSE)
 
 ## Citing
 
-> Scott Chamberlain and Andy Teucher (2015). geojsonio: Convert Data from and to 'geoJSON' or 'topoJSON'. R package version 0.1.4
-
+> Scott Chamberlain and Andy Teucher (2016). geojsonio: Convert Data from and to 'geoJSON' or 'topoJSON'. R package version 0.1.8. https://cran.rstudio.com/package=geojsonio
 
 
 <section id="license_bugs">

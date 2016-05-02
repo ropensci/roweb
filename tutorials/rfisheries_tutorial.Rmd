@@ -1,11 +1,17 @@
 ---
 title: rfisheries tutorial
 layout: tutorial
-packge_version: 0.1
+packge_version: 0.2
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
-opts_chunk$set(fig.path="../assets/tutorial-images/rfisheries/")
+knitr::opts_chunk$set(
+  fig.path = "../assets/tutorial-images/rfisheries/",
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE
+)
 ```
 
 This package provides programmatic access to the [openfisheries](http://openfisheries.org/) [API](http://openfisheries.org/api-info).
@@ -17,8 +23,15 @@ Open Fisheries is a platform that aggregates global fishery data and currently o
 ## Installation
 
 
-```{r install, eval=FALSE}
+```{r eval=FALSE}
 install.packages("rfisheries")
+```
+
+Development version
+
+```{r eval=FALSE}
+if (!require("devtools")) install.packages("devtools")
+devtools::install_github("ropensci/rfisheries")
 ```
 
 <section id="usage">
@@ -27,20 +40,20 @@ install.packages("rfisheries")
 
 Package currently provides three basic functions. Landings data can be obtained by calling `landings()`
 
-```{r landings, messages=FALSE, warning=FALSE}
+```{r}
 library(rfisheries)
 head( of_landings() )
 ```
 
 To get country specific data, provide a iso3c country code
 
-```{r landings_co, messages=FALSE, warning=FALSE}
+```{r}
 head( of_landings(country = "USA") )
 ```
 
 To get species specific landings, provide the correct a3 code for the required species.
 
-```{r landings_sp, messages=FALSE, warning=FALSE}
+```{r}
 head( of_landings(species = "SKJ") )
 ```
 
@@ -67,13 +80,13 @@ head( species_codes() )
 
 Similarly you can get a full list of country codes
 
-```{r countrycodes, messages=FALSE, warning=FALSE}
+```{r}
 head( of_country_codes() )
 ```
 
 Example: Compare landings from multiple countries
 
-```{r getdata, messages=FALSE, warning=FALSE, tidy=FALSE}
+```{r, tidy=FALSE}
 library(plyr)
 countries <- of_country_codes()
 # let's take a small subset, say 5 random countries
@@ -88,7 +101,7 @@ results <- ldply(c_list, function(x) {
 
 You can easily compare these results
 
-```{r plot, messages=FALSE, warning=FALSE, tidy=FALSE}
+```{r, tidy=FALSE}
 library(ggplot2)
 ggplot(results, aes(year, catch, group = country, color = country)) +
   geom_line()
@@ -105,13 +118,13 @@ To cite `rfisheries` in publications use:
 
 <br>
 
-> Karthik Ram, Carl Boettiger and Andrew Dyck (2013). rfisheries: R interface for fisheries data. R package version 0.1. http://www.github.com/ropensci/rfisheries
+> Karthik Ram, Carl Boettiger and Andrew Dyck (2016). rfisheries: 'Programmatic Interface to the 'openfisheries.org' API'. R package version 0.2. https://github.com/ropensci/rfisheries
 
 <section id="license_bugs">
 
 ## License and bugs
 
-* License: [CC0](http://creativecommons.org/choose/zero/)
+* License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our Github repo for rfisheries](https://github.com/ropensci/rfisheries/issues?state=open)
 
 [Back to top](#top)

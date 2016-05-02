@@ -1,7 +1,7 @@
 ---
 title: ecoretriever tutorial
 layout: tutorial
-packge_version: 0.1.0
+packge_version: 0.2.1
 ---
 
 
@@ -49,6 +49,47 @@ library('ecoretriever')
 
 ```r
 ecoretriever::datasets()
+#>  [1] "Available datasets (47):" ""                        
+#>  [3] "Adler2007"                "AmnioteDB"               
+#>  [5] "Anderson2011"             "ArcticBreedBird"         
+#>  [7] "AvianBodySize"            "BAAD"                    
+#>  [9] "BBS"                      "BBS50"                   
+#> [11] "Bioclim"                  "CForBioData"             
+#> [13] "Clark2006"                "DelMoral2010"            
+#> [15] "eBirdOD"                  "EltonTraits"             
+#> [17] "FIA"                      "FishParasiteHosts"       
+#> [19] "FrayJorge"                "Gentry"                  
+#> [21] "GWDD"                     "HomeRanges"              
+#> [23] "leaf_herbivory"           "leda"                    
+#> [25] "MammalDIET"               "MammalLH"                
+#> [27] "MammalMR2010"             "MarineSize"              
+#> [29] "Matter2014"               "MCDB"                    
+#> [31] "McGlinn2010"              "MiscAbundanceDB"         
+#> [33] "MoM2003"                  "NPN"                     
+#> [35] "Palmer2007"               "Pantheria"               
+#> [37] "Petraitis2008"            "PhytoplankonBiovolume"   
+#> [39] "PlantTaxonomy"            "PortalMammals"           
+#> [41] "PRISM"                    "Ramesh2010"              
+#> [43] "SonoranPerennials"        "Steppe_plants_2013"      
+#> [45] "TreeWesternGhats"         "vertnet"                 
+#> [47] "Woods2009"                "Zachmann2010"            
+#> [49] "Groups:"                  "ALL"                     
+#> [51] "ALLOCATION"               "ANIMALS"                 
+#> [53] "BIOMASS"                  "BIOME"                   
+#> [55] "BIRDS"                    "BUTTERFLIES"             
+#> [57] "CHINA"                    "CLIMATE"                 
+#> [59] "COMPILATION"              "CONTINENTAL"             
+#> [61] "DATA TYPE"                "DESERT"                  
+#> [63] "EXPERIMENTAL"             "FISH"                    
+#> [65] "FOREST TYPE"              "GLOBAL"                  
+#> [67] "LOCAL"                    "MAMMALS"                 
+#> [69] "METAPOPULATION"           "NECROMASS"               
+#> [71] "OBSERVATION"              "OBSERVATIONAL"           
+#> [73] "PHENOLOGY"                "PHYTOPLANKTON"           
+#> [75] "PLANTS"                   "REGIONAL"                
+#> [77] "SPATIAL SCALE"            "STAND STRUCTURE"         
+#> [79] "TAXON"                    "TAXONOMY"                
+#> [81] "TIME SERIES"
 ```
 
 ### Install into csv
@@ -172,7 +213,7 @@ To cite `ecoretriever` in publications use:
 
 Software: 
 
-> Daniel McGlinn and Ethan White (2014). ecoretriever: R Interface to the EcoData Retriever. R package version 0.1.0 https://github.com/ropensci/ecoretriever/
+> Daniel McGlinn and Ethan White (2015). ecoretriever: R Interface to the EcoData Retriever. R package version 0.2.1 https://github.com/ropensci/ecoretriever
 
 Publication:
 

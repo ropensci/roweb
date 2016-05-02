@@ -1,7 +1,7 @@
 ---
 title: rvertnet tutorial
 layout: tutorial
-packge_version: 0.4.1
+packge_version: 0.4.4
 ---
 
 
@@ -25,7 +25,7 @@ Or the development version from GitHub using the `devtools` package:
 
 
 ```r
-install.packages("devtools")
+if (!require("devtools")) install.packages("devtools")
 devtools::install_github("ropensci/rvertnet")
 ```
 
@@ -56,7 +56,7 @@ res$meta
 
 ```
 #> $request_date
-#> [1] "2015-12-29T19:40:14.851160"
+#> [1] "2016-05-02T20:23:07.377420"
 #> 
 #> $response_records
 #> [1] 10
@@ -65,7 +65,7 @@ res$meta
 #> [1] "45.523452,-122.676207"
 #> 
 #> $last_cursor
-#> [1] "False:CpoFCuYCCr4C9wAAABn_____jIGJmo2LkZqL0o-QjYuek96WkZuah9LNz87L0s_N0s7Onv8AAP90baCgmYuMoKD_AAD_XZ6Pj5qRmJaRmv8AAP9zdG2WkZuah_8AAP9dm4ic_wAA_3N0bZuQnKCWm_8AAP9dnIqSidCdlo2b0oyPmpyWkpqRjNDKz8zPx_8AAP9zf5yKkonQnZaNm9KMj5qclpKakYzQys_Mz8f_AAD__wD-__6MgYmajYuRmovSj5CNi56T3paRm5qH0s3PzsvSz83Szs6e_wB0baCgmYuMoKD_AF2ej4-akZiWkZr_AHN0bZaRm5qH_wBdm4ic_wBzdG2bkJyglpv_AF2cipKJ0J2WjZvSjI-anJaSmpGM0MrPzM_H_wBzf5yKkonQnZaNm9KMj5qclpKakYzQys_Mz8f_AP_-EAohBN0EkB08Gxk5AAAAAOb___9IClAAWgsJyEEOwRHJ_dAQARINRG9jdW1lbnRJbmRleBr9AShBTkQgKElTICJjdXN0b21lcl9uYW1lIiAiYXBwZW5naW5lIikgKElTICJncm91cF9uYW1lIiAic352ZXJ0bmV0LXBvcnRhbCIpIChJUyAibmFtZXNwYWNlIiAiaW5kZXgtMjAxNC0wMi0xMWEiKSAoSVMgImluZGV4X25hbWUiICJkd2MiKSAoQU5EIChRVCAiQXZlcyIgInJ0ZXh0X2NsYXNzIikgKE9SIChJUyAicmF0b21fc3RhdGVwcm92aW5jZSIgImNhbGlmb3JuaWEiKSAoUVQgIkNhbGlmb3JuaWEiICJydGV4dF9zdGF0ZXByb3ZpbmNlIikpKSk6GQoMKE4gb3JkZXJfaWQpEAEZAAAAAAAA8P9KBQgAQOgH"
+#> [1] "False:CpoFCuYCCr4C9wAAABn_____jIGJmo2LkZqL0o-QjYuek96WkZuah9LNz87L0s_N0s7Onv8AAP90baCgmYuMoKD_AAD_XZ6Pj5qRmJaRmv8AAP9zdG2WkZuah_8AAP9dm4ic_wAA_3N0bZuQnKCWm_8AAP9dnIqSidCdlo2b0oyPmpyWkpqRjNDKz8zPx_8AAP9zf5yKkonQnZaNm9KMj5qclpKakYzQys_Mz8f_AAD__wD-__6MgYmajYuRmovSj5CNi56T3paRm5qH0s3PzsvSz83Szs6e_wB0baCgmYuMoKD_AF2ej4-akZiWkZr_AHN0bZaRm5qH_wBdm4ic_wBzdG2bkJyglpv_AF2cipKJ0J2WjZvSjI-anJaSmpGM0MrPzM_H_wBzf5yKkonQnZaNm9KMj5qclpKakYzQys_Mz8f_AP_-EAohBN0EkB08Gxk5AAAAAOb___9IClAAWgsJiHXojJoeokwQARINRG9jdW1lbnRJbmRleBr9AShBTkQgKElTICJjdXN0b21lcl9uYW1lIiAiYXBwZW5naW5lIikgKElTICJncm91cF9uYW1lIiAic352ZXJ0bmV0LXBvcnRhbCIpIChJUyAibmFtZXNwYWNlIiAiaW5kZXgtMjAxNC0wMi0xMWEiKSAoSVMgImluZGV4X25hbWUiICJkd2MiKSAoQU5EIChRVCAiQXZlcyIgInJ0ZXh0X2NsYXNzIikgKE9SIChJUyAicmF0b21fc3RhdGVwcm92aW5jZSIgImNhbGlmb3JuaWEiKSAoUVQgIkNhbGlmb3JuaWEiICJydGV4dF9zdGF0ZXByb3ZpbmNlIikpKSk6GQoMKE4gb3JkZXJfaWQpEAEZAAAAAAAA8P9KBQgAQOgH"
 #> 
 #> $limit
 #> [1] 10
@@ -375,7 +375,7 @@ out <- vertsearch(tax = "(mustela nivalis OR mustela erminea)")
 vertmap(out)
 ```
 
-![plot of chunk unnamed-chunk-13](../assets/tutorial-images/rvertnet/unnamed-chunk-13-1.png) 
+![plot of chunk unnamed-chunk-13](../assets/tutorial-images/rvertnet/unnamed-chunk-13-1.png)
 
 ### Lots of data
 
@@ -414,9 +414,9 @@ To cite `rvertnet` in publications use:
 
 <br>
 
->  Scott Chamberlain, Chris Ray and Vijay Barve (2015). rvertnet: Search
+>  Scott Chamberlain, Chris Ray and Vijay Barve (2016). rvertnet: Search
   VertNet, a Database of Vertebrate Specimen Records. R package version
-  0.4.1. https://github.com/ropensci/rvertnet
+  0.4.4. https://github.com/ropensci/rvertnet
 
 <section id="license_bugs">
 

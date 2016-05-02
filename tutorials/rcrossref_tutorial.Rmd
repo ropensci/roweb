@@ -1,7 +1,7 @@
 ---
 title: rcrossref tutorial
 layout: tutorial
-packge_version: 0.3.0
+packge_version: 0.5.2
 ---
 
 ```{r, echo=FALSE}
@@ -161,8 +161,8 @@ To cite `rcrossref` in publications use:
 
 <br>
 
-> Scott Chamberlain, Carl Boettiger, Ted Hart, and Karthik Ram (2014). rcrossref:
-  R Client for Various CrossRef APIs. R package version 0.3.0
+> Scott Chamberlain, Carl Boettiger, Ted Hart, and Karthik Ram (2016). rcrossref:
+  R Client for Various CrossRef APIs. R package version 0.5.2
   https://github.com/ropensci/rcrossref
 
 <section id="license_bugs">

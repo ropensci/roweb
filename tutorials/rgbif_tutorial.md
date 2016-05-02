@@ -1,14 +1,14 @@
 ---
 title: rgbif tutorial
 layout: tutorial
-packge_version: 0.9.0
+packge_version: 0.9.3
 ---
 
 
 
 Seach and retrieve data from the Global Biodiverity Information Facilty (GBIF)
 
-`rgbif` is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). `rgbif` wraps R code around the [GBIF API][gbifapi] to allow you to talk to GBIF from R.
+`rgbif` is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). `rgbif` wraps R code around the [GBIF API](http://www.gbif.org/developer/summary) to allow you to talk to GBIF from R.
 
 ********************
 
@@ -50,7 +50,7 @@ Search by type of record, all observational in this case
 
 ```r
 occ_count(basisOfRecord='OBSERVATION')
-#> [1] 97116011
+#> [1] 87417489
 ```
 
 Records for **Puma concolor** with lat/long data (georeferened) only. Note that `hasCoordinate` in `occ_search()` is the same as `georeferenced` in `occ_count()`.
@@ -58,7 +58,7 @@ Records for **Puma concolor** with lat/long data (georeferened) only. Note that 
 
 ```r
 occ_count(taxonKey=2435099, georeferenced=TRUE)
-#> [1] 2764
+#> [1] 2878
 ```
 
 All georeferenced records in GBIF
@@ -66,7 +66,7 @@ All georeferenced records in GBIF
 
 ```r
 occ_count(georeferenced=TRUE)
-#> [1] 562783703
+#> [1] 568769410
 ```
 
 Records from Denmark
@@ -75,7 +75,7 @@ Records from Denmark
 ```r
 denmark_code <- isocodes[grep("Denmark", isocodes$name), "code"]
 occ_count(country=denmark_code)
-#> [1] 9670913
+#> [1] 10280120
 ```
 
 Number of records in a particular dataset
@@ -91,7 +91,7 @@ All records from 2012
 
 ```r
 occ_count(year=2012)
-#> [1] 39254838
+#> [1] 39022386
 ```
 
 Records for a particular dataset, and only for preserved specimens
@@ -132,61 +132,54 @@ names(out)
 ```r
 out$meta
 #>   offset limit endOfRecords  count
-#> 1      0   100        FALSE 122809
+#> 1      0   100        FALSE 147188
 ```
 
 
 ```r
 head(out$data)
-#>         key                 scientificName                           datasetKey parentKey   parent
-#> 1 101961729 Mammalia (awaiting allocation) 714c64e3-2dc1-4bb7-91e4-54be5af4da12 101961726 Mammalia
-#> 2 100375341                       Mammalia 16c3f9cb-4b19-4553-ac8e-ebb90003aa02        NA     <NA>
-#> 3 101961726 Mammalia (awaiting allocation) 714c64e3-2dc1-4bb7-91e4-54be5af4da12 101959399 Mammalia
-#> 4 113391223        Mammalia Linnaeus, 1758 cbb6498e-8927-405a-916b-576d00a6289b 113301736 Chordata
-#> 5       359        Mammalia Linnaeus, 1758 d7dddbf4-2cf0-4f39-9b2a-bb099caae36c        44 Chordata
-#> 6 100348839         Mammalia Linnaeus 1758 16c3f9cb-4b19-4553-ac8e-ebb90003aa02 100347572 Chordata
-#>    kingdom   phylum    order   family kingdomKey phylumKey  classKey  orderKey familyKey canonicalName
-#> 1 Animalia Chordata Mammalia Mammalia  101859873 101946562 101959399 101961726 101961729      Mammalia
-#> 2     <NA>     <NA>     <NA>     <NA>         NA        NA 100375341        NA        NA      Mammalia
-#> 3 Animalia Chordata Mammalia     <NA>  101859873 101946562 101959399 101961726        NA      Mammalia
-#> 4 Animalia Chordata     <NA>     <NA>  112707351 113301736 113391223        NA        NA      Mammalia
-#> 5 Animalia Chordata     <NA>     <NA>          1        44       359        NA        NA      Mammalia
-#> 6     <NA> Chordata     <NA>     <NA>         NA 100347572 100348839        NA        NA      Mammalia
-#>       authorship   nameType taxonomicStatus   rank numDescendants numOccurrences habitats
-#> 1                   NO_NAME        ACCEPTED FAMILY            138              0     <NA>
-#> 2                SCIENTIFIC            <NA>  CLASS              0              0     <NA>
-#> 3                   NO_NAME        ACCEPTED  ORDER            139              0     <NA>
-#> 4 Linnaeus, 1758 SCIENTIFIC            <NA>  CLASS           3477              0     <NA>
-#> 5 Linnaeus, 1758 SCIENTIFIC        ACCEPTED  CLASS          30001              0   MARINE
-#> 6 Linnaeus, 1758 SCIENTIFIC            <NA>  CLASS              0              0     <NA>
-#>   nomenclaturalStatus threatStatuses synonym    class nubKey extinct
-#> 1                <NA>             NA   FALSE Mammalia     NA      NA
-#> 2                <NA>             NA   FALSE Mammalia    359    TRUE
-#> 3                <NA>             NA   FALSE Mammalia     NA      NA
-#> 4                <NA>             NA   FALSE Mammalia    359      NA
-#> 5                <NA>             NA   FALSE Mammalia    359   FALSE
-#> 6                <NA>             NA   FALSE Mammalia    359      NA
-#>                                                                                                                                                                                                                      publishedIn
-#> 1                                                                                                                                                                                                                           <NA>
-#> 2                                                                                                                                                                                                                           <NA>
-#> 3                                                                                                                                                                                                                           <NA>
-#> 4                                                                                                                                                                                                                           <NA>
-#> 5 Linnaeus, C. (1758). Systema Naturae per regna tria naturae, secundum classes, ordines, genera, species, cum characteribus, differentiis, synonymis, locis. Editio decima, reformata. Laurentius Salvius: Holmiae. ii, 824 pp.
-#> 6                                                                                                                                                                                                                           <NA>
-#>                               accordingTo taxonID species speciesKey acceptedKey accepted genus
-#> 1                                    <NA>    <NA>    <NA>         NA          NA     <NA>  <NA>
-#> 2                                    <NA>    <NA>    <NA>         NA          NA     <NA>  <NA>
-#> 3                                    <NA>    <NA>    <NA>         NA          NA     <NA>  <NA>
-#> 4                                    <NA>    <NA>    <NA>         NA          NA     <NA>  <NA>
-#> 5 The Catalogue of Life, 3rd January 2011    <NA>    <NA>         NA          NA     <NA>  <NA>
-#> 6                                    <NA>    <NA>    <NA>         NA          NA     <NA>  <NA>
-#>   genusKey
-#> 1       NA
-#> 2       NA
-#> 3       NA
-#> 4       NA
-#> 5       NA
-#> 6       NA
+#>         key                 scientificName
+#> 1 115507497 Mammalia (awaiting allocation)
+#> 2       359                       Mammalia
+#> 3 100375341                       Mammalia
+#> 4 113391223        Mammalia Linnaeus, 1758
+#> 5 100348839         Mammalia Linnaeus 1758
+#> 6 115507496 Mammalia (awaiting allocation)
+#>                             datasetKey parentKey   parent  kingdom
+#> 1 714c64e3-2dc1-4bb7-91e4-54be5af4da12 115507496 Mammalia Animalia
+#> 2 d7dddbf4-2cf0-4f39-9b2a-bb099caae36c        44 Chordata Animalia
+#> 3 16c3f9cb-4b19-4553-ac8e-ebb90003aa02        NA     <NA>     <NA>
+#> 4 cbb6498e-8927-405a-916b-576d00a6289b 115330302 Chordata Animalia
+#> 5 16c3f9cb-4b19-4553-ac8e-ebb90003aa02 100347572 Chordata     <NA>
+#> 6 714c64e3-2dc1-4bb7-91e4-54be5af4da12 115506762 Mammalia Animalia
+#>     phylum    order   family kingdomKey phylumKey  classKey  orderKey
+#> 1 Chordata Mammalia Mammalia  115499364 115503274 115506762 115507496
+#> 2 Chordata     <NA>     <NA>          1        44       359        NA
+#> 3     <NA>     <NA>     <NA>         NA        NA 100375341        NA
+#> 4 Chordata     <NA>     <NA>  112707351 115330302 113391223        NA
+#> 5 Chordata     <NA>     <NA>         NA 100347572 100348839        NA
+#> 6 Chordata Mammalia     <NA>  115499364 115503274 115506762 115507496
+#>   familyKey canonicalName     authorship   nameType taxonomicStatus   rank
+#> 1 115507497      Mammalia                   NO_NAME        ACCEPTED FAMILY
+#> 2        NA      Mammalia                SCIENTIFIC        ACCEPTED  CLASS
+#> 3        NA      Mammalia                SCIENTIFIC            <NA>  CLASS
+#> 4        NA      Mammalia Linnaeus, 1758 SCIENTIFIC            <NA>  CLASS
+#> 5        NA      Mammalia Linnaeus, 1758 SCIENTIFIC            <NA>  CLASS
+#> 6        NA      Mammalia                   NO_NAME        ACCEPTED  ORDER
+#>   numDescendants numOccurrences habitats nomenclaturalStatus
+#> 1            138              0     <NA>                  NA
+#> 2          29630              0   MARINE                  NA
+#> 3              0              0     <NA>                  NA
+#> 4           3545              0     <NA>                  NA
+#> 5              0              0     <NA>                  NA
+#> 6            139              0     <NA>                  NA
+#>   threatStatuses synonym    class nubKey extinct
+#> 1             NA   FALSE Mammalia     NA      NA
+#> 2             NA   FALSE Mammalia    359   FALSE
+#> 3             NA   FALSE Mammalia    359    TRUE
+#> 4             NA   FALSE Mammalia    359      NA
+#> 5             NA   FALSE Mammalia    359      NA
+#> 6             NA   FALSE Mammalia     NA      NA
 ```
 
 
@@ -198,26 +191,31 @@ out$facets
 
 ```r
 out$hierarchies[1:2]
-#> $`101961729`
+#> $`115507497`
 #>     rankkey     name
-#> 1 101859873 Animalia
-#> 2 101946562 Chordata
-#> 3 101959399 Mammalia
-#> 4 101961726 Mammalia
+#> 1 115499364 Animalia
+#> 2 115503274 Chordata
+#> 3 115506762 Mammalia
+#> 4 115507496 Mammalia
 #> 
-#> $`101961726`
-#>     rankkey     name
-#> 1 101859873 Animalia
-#> 2 101946562 Chordata
-#> 3 101959399 Mammalia
+#> $`359`
+#>   rankkey     name
+#> 1       1 Animalia
+#> 2      44 Chordata
 ```
 
 
 ```r
 out$names[2]
-#> $`113391223`
+#> $`100375341`
 #>   vernacularName language
-#> 1        Mammals      eng
+#> 1     Säugetiere      deu
+#> 2    Triconodont      cat
+#> 3   Triconodonta      ces
+#> 4   Triconodonta      nld
+#> 5   Triconodonta      por
+#> 6   Trykonodonty      pol
+#> 7   Триконодонты      rus
 ```
 
 Search for a genus
@@ -225,48 +223,55 @@ Search for a genus
 
 ```r
 head(name_lookup(query='Cnaemidophorus', rank="genus", return="data"))
-#>         key                  scientificName                           datasetKey  nubKey parentKey
-#> 1 113100610 Cnaemidophorus Wallengren, 1862 cbb6498e-8927-405a-916b-576d00a6289b 1858636 113099670
-#> 2   1858636 Cnaemidophorus Wallengren, 1862 d7dddbf4-2cf0-4f39-9b2a-bb099caae36c 1858636      8863
-#> 3 100555508 Cnaemidophorus Wallengren, 1862 16c3f9cb-4b19-4553-ac8e-ebb90003aa02 1858636 100555506
-#> 4 110531263                  Cnaemidophorus 7ddf754f-d193-4cc9-b351-99906754a03b 1858636 110531096
-#> 5 113100606                  Cnaemidophorus cbb6498e-8927-405a-916b-576d00a6289b 1858636 113099670
-#> 6 113212699                  Cnaemidophorus cbb6498e-8927-405a-916b-576d00a6289b 1858636 113212683
-#>          parent  kingdom     phylum       order        family          genus kingdomKey phylumKey
-#> 1 Pterophoridae Animalia Arthropoda Lepidoptera Pterophoridae Cnaemidophorus  112707351 112710199
-#> 2 Pterophoridae Animalia Arthropoda Lepidoptera Pterophoridae Cnaemidophorus          1        54
-#> 3 Pterophoridae     <NA>       <NA> Lepidoptera Pterophoridae Cnaemidophorus         NA        NA
-#> 4 Pterophoridae Animalia Arthropoda Lepidoptera Pterophoridae Cnaemidophorus  109354902 109380340
-#> 5 Pterophoridae Animalia Arthropoda Lepidoptera Pterophoridae Cnaemidophorus  112707351 112710199
-#> 6 Pterophoridae Animalia Arthropoda Lepidoptera Pterophoridae Cnaemidophorus  112707351 113188372
-#>    classKey  orderKey familyKey  genusKey  canonicalName       authorship   nameType  rank
-#> 1 112780522 112876893 113099670 113100610 Cnaemidophorus Wallengren, 1862 SCIENTIFIC GENUS
-#> 2       216       797      8863   1858636 Cnaemidophorus Wallengren, 1862 SCIENTIFIC GENUS
-#> 3        NA 100555505 100555506 100555508 Cnaemidophorus Wallengren, 1862 SCIENTIFIC GENUS
-#> 4 109498964 110368094 110531096 110531263 Cnaemidophorus                  SCIENTIFIC GENUS
-#> 5 112780522 112876893 113099670 113100606 Cnaemidophorus                  SCIENTIFIC GENUS
-#> 6 113191312 113197877 113212683 113212699 Cnaemidophorus                  SCIENTIFIC GENUS
-#>   numDescendants numOccurrences habitats nomenclaturalStatus threatStatuses synonym   class
-#> 1              2              0       NA                  NA             NA   FALSE Insecta
-#> 2              4              0       NA                  NA             NA   FALSE Insecta
-#> 3              0              0       NA                  NA             NA   FALSE    <NA>
-#> 4              2              0       NA                  NA             NA   FALSE Insecta
-#> 5              1              0       NA                  NA             NA   FALSE Insecta
-#> 6              1              0       NA                  NA             NA   FALSE Insecta
-#>                                               publishedIn    accordingTo taxonomicStatus extinct
-#> 1                                                    <NA>           <NA>            <NA>      NA
-#> 2 K. svenska VetenskAkad. Handl. , (N. F. ) 3, no. 7, 10. Fauna Europaea        ACCEPTED   FALSE
-#> 3                                                    <NA>           <NA>            <NA>      NA
-#> 4                                                    <NA>           <NA>            <NA>      NA
-#> 5                                                    <NA>           <NA>        ACCEPTED      NA
-#> 6                                                    <NA>           <NA>        ACCEPTED      NA
-#>   taxonID acceptedKey accepted
-#> 1    <NA>          NA     <NA>
-#> 2    <NA>          NA     <NA>
-#> 3    <NA>          NA     <NA>
-#> 4    <NA>          NA     <NA>
-#> 5    <NA>          NA     <NA>
-#> 6    <NA>          NA     <NA>
+#>         key                  scientificName
+#> 1   1858636 Cnaemidophorus Wallengren, 1862
+#> 2 113100610 Cnaemidophorus Wallengren, 1862
+#> 3 100555508 Cnaemidophorus Wallengren, 1862
+#> 4 100465203 Cnaemidophorus Wallengren, 1862
+#> 5 115196907                  Cnaemidophorus
+#> 6 115216121                  Cnaemidophorus
+#>                             datasetKey  nubKey parentKey        parent
+#> 1 d7dddbf4-2cf0-4f39-9b2a-bb099caae36c 1858636      8863 Pterophoridae
+#> 2 cbb6498e-8927-405a-916b-576d00a6289b      NA 115216114 Pterophoridae
+#> 3 16c3f9cb-4b19-4553-ac8e-ebb90003aa02 1858636 100557623 Pterophoridae
+#> 4 39653f3e-8d6b-4a94-a202-859359c164c5 1858636 100465147 Pterophoridae
+#> 5 16c3f9cb-4b19-4553-ac8e-ebb90003aa02 1858636 100557623 Pterophoridae
+#> 6 cbb6498e-8927-405a-916b-576d00a6289b      NA 115216114 Pterophoridae
+#>    kingdom     phylum       order        family          genus kingdomKey
+#> 1 Animalia Arthropoda Lepidoptera Pterophoridae Cnaemidophorus          1
+#> 2 Animalia Arthropoda Lepidoptera Pterophoridae Cnaemidophorus  112707351
+#> 3     <NA>       <NA> Lepidoptera Pterophoridae Cnaemidophorus         NA
+#> 4 Animalia Arthropoda Lepidoptera Pterophoridae Cnaemidophorus  100382406
+#> 5     <NA>       <NA> Lepidoptera Pterophoridae Cnaemidophorus         NA
+#> 6 Animalia Arthropoda Lepidoptera Pterophoridae Cnaemidophorus  112707351
+#>   phylumKey  classKey  orderKey familyKey  genusKey  canonicalName
+#> 1        54       216       797      8863   1858636 Cnaemidophorus
+#> 2 112710199 112780522 115213976 115216114 113100610 Cnaemidophorus
+#> 3        NA        NA 115196607 100557623 100555508 Cnaemidophorus
+#> 4 100382501 100384963 100448306 100465147 100465203 Cnaemidophorus
+#> 5        NA        NA 115196607 100557623 115196907 Cnaemidophorus
+#> 6 112710199 112780522 115213976 115216114 115216121 Cnaemidophorus
+#>         authorship   nameType taxonomicStatus  rank numDescendants
+#> 1 Wallengren, 1862 SCIENTIFIC        ACCEPTED GENUS              4
+#> 2 Wallengren, 1862 SCIENTIFIC            <NA> GENUS              2
+#> 3 Wallengren, 1862 SCIENTIFIC            <NA> GENUS              0
+#> 4 Wallengren, 1862 SCIENTIFIC        DOUBTFUL GENUS              1
+#> 5                  SCIENTIFIC        ACCEPTED GENUS              1
+#> 6                  SCIENTIFIC        ACCEPTED GENUS              1
+#>   numOccurrences extinct habitats nomenclaturalStatus threatStatuses
+#> 1              0   FALSE       NA                <NA>             NA
+#> 2              0      NA       NA                <NA>             NA
+#> 3              0      NA       NA                <NA>             NA
+#> 4              0      NA       NA                <NA>             NA
+#> 5              0      NA       NA                <NA>             NA
+#> 6              0      NA       NA                <NA>             NA
+#>   synonym   class publishedIn accordingTo taxonID acceptedKey accepted
+#> 1   FALSE Insecta        <NA>        <NA>    <NA>          NA     <NA>
+#> 2   FALSE Insecta        <NA>        <NA>    <NA>          NA     <NA>
+#> 3   FALSE    <NA>        <NA>        <NA>    <NA>          NA     <NA>
+#> 4   FALSE Insecta        <NA>        <NA>    <NA>          NA     <NA>
+#> 5   FALSE    <NA>        <NA>        <NA>    <NA>          NA     <NA>
+#> 6   FALSE Insecta        <NA>        <NA>    <NA>          NA     <NA>
 ```
 
 Search for the class mammalia
@@ -274,55 +279,48 @@ Search for the class mammalia
 
 ```r
 head(name_lookup(query='mammalia', return = 'data'))
-#>         key                 scientificName                           datasetKey parentKey   parent
-#> 1 101961729 Mammalia (awaiting allocation) 714c64e3-2dc1-4bb7-91e4-54be5af4da12 101961726 Mammalia
-#> 2 100375341                       Mammalia 16c3f9cb-4b19-4553-ac8e-ebb90003aa02        NA     <NA>
-#> 3 101961726 Mammalia (awaiting allocation) 714c64e3-2dc1-4bb7-91e4-54be5af4da12 101959399 Mammalia
-#> 4 113391223        Mammalia Linnaeus, 1758 cbb6498e-8927-405a-916b-576d00a6289b 113301736 Chordata
-#> 5       359        Mammalia Linnaeus, 1758 d7dddbf4-2cf0-4f39-9b2a-bb099caae36c        44 Chordata
-#> 6 100348839         Mammalia Linnaeus 1758 16c3f9cb-4b19-4553-ac8e-ebb90003aa02 100347572 Chordata
-#>    kingdom   phylum    order   family kingdomKey phylumKey  classKey  orderKey familyKey canonicalName
-#> 1 Animalia Chordata Mammalia Mammalia  101859873 101946562 101959399 101961726 101961729      Mammalia
-#> 2     <NA>     <NA>     <NA>     <NA>         NA        NA 100375341        NA        NA      Mammalia
-#> 3 Animalia Chordata Mammalia     <NA>  101859873 101946562 101959399 101961726        NA      Mammalia
-#> 4 Animalia Chordata     <NA>     <NA>  112707351 113301736 113391223        NA        NA      Mammalia
-#> 5 Animalia Chordata     <NA>     <NA>          1        44       359        NA        NA      Mammalia
-#> 6     <NA> Chordata     <NA>     <NA>         NA 100347572 100348839        NA        NA      Mammalia
-#>       authorship   nameType taxonomicStatus   rank numDescendants numOccurrences habitats
-#> 1                   NO_NAME        ACCEPTED FAMILY            138              0     <NA>
-#> 2                SCIENTIFIC            <NA>  CLASS              0              0     <NA>
-#> 3                   NO_NAME        ACCEPTED  ORDER            139              0     <NA>
-#> 4 Linnaeus, 1758 SCIENTIFIC            <NA>  CLASS           3477              0     <NA>
-#> 5 Linnaeus, 1758 SCIENTIFIC        ACCEPTED  CLASS          30001              0   MARINE
-#> 6 Linnaeus, 1758 SCIENTIFIC            <NA>  CLASS              0              0     <NA>
-#>   nomenclaturalStatus threatStatuses synonym    class nubKey extinct
-#> 1                <NA>             NA   FALSE Mammalia     NA      NA
-#> 2                <NA>             NA   FALSE Mammalia    359    TRUE
-#> 3                <NA>             NA   FALSE Mammalia     NA      NA
-#> 4                <NA>             NA   FALSE Mammalia    359      NA
-#> 5                <NA>             NA   FALSE Mammalia    359   FALSE
-#> 6                <NA>             NA   FALSE Mammalia    359      NA
-#>                                                                                                                                                                                                                      publishedIn
-#> 1                                                                                                                                                                                                                           <NA>
-#> 2                                                                                                                                                                                                                           <NA>
-#> 3                                                                                                                                                                                                                           <NA>
-#> 4                                                                                                                                                                                                                           <NA>
-#> 5 Linnaeus, C. (1758). Systema Naturae per regna tria naturae, secundum classes, ordines, genera, species, cum characteribus, differentiis, synonymis, locis. Editio decima, reformata. Laurentius Salvius: Holmiae. ii, 824 pp.
-#> 6                                                                                                                                                                                                                           <NA>
-#>                               accordingTo taxonID species speciesKey acceptedKey accepted genus
-#> 1                                    <NA>    <NA>    <NA>         NA          NA     <NA>  <NA>
-#> 2                                    <NA>    <NA>    <NA>         NA          NA     <NA>  <NA>
-#> 3                                    <NA>    <NA>    <NA>         NA          NA     <NA>  <NA>
-#> 4                                    <NA>    <NA>    <NA>         NA          NA     <NA>  <NA>
-#> 5 The Catalogue of Life, 3rd January 2011    <NA>    <NA>         NA          NA     <NA>  <NA>
-#> 6                                    <NA>    <NA>    <NA>         NA          NA     <NA>  <NA>
-#>   genusKey
-#> 1       NA
-#> 2       NA
-#> 3       NA
-#> 4       NA
-#> 5       NA
-#> 6       NA
+#>         key                 scientificName
+#> 1 115507497 Mammalia (awaiting allocation)
+#> 2       359                       Mammalia
+#> 3 100375341                       Mammalia
+#> 4 113391223        Mammalia Linnaeus, 1758
+#> 5 100348839         Mammalia Linnaeus 1758
+#> 6 115507496 Mammalia (awaiting allocation)
+#>                             datasetKey parentKey   parent  kingdom
+#> 1 714c64e3-2dc1-4bb7-91e4-54be5af4da12 115507496 Mammalia Animalia
+#> 2 d7dddbf4-2cf0-4f39-9b2a-bb099caae36c        44 Chordata Animalia
+#> 3 16c3f9cb-4b19-4553-ac8e-ebb90003aa02        NA     <NA>     <NA>
+#> 4 cbb6498e-8927-405a-916b-576d00a6289b 115330302 Chordata Animalia
+#> 5 16c3f9cb-4b19-4553-ac8e-ebb90003aa02 100347572 Chordata     <NA>
+#> 6 714c64e3-2dc1-4bb7-91e4-54be5af4da12 115506762 Mammalia Animalia
+#>     phylum    order   family kingdomKey phylumKey  classKey  orderKey
+#> 1 Chordata Mammalia Mammalia  115499364 115503274 115506762 115507496
+#> 2 Chordata     <NA>     <NA>          1        44       359        NA
+#> 3     <NA>     <NA>     <NA>         NA        NA 100375341        NA
+#> 4 Chordata     <NA>     <NA>  112707351 115330302 113391223        NA
+#> 5 Chordata     <NA>     <NA>         NA 100347572 100348839        NA
+#> 6 Chordata Mammalia     <NA>  115499364 115503274 115506762 115507496
+#>   familyKey canonicalName     authorship   nameType taxonomicStatus   rank
+#> 1 115507497      Mammalia                   NO_NAME        ACCEPTED FAMILY
+#> 2        NA      Mammalia                SCIENTIFIC        ACCEPTED  CLASS
+#> 3        NA      Mammalia                SCIENTIFIC            <NA>  CLASS
+#> 4        NA      Mammalia Linnaeus, 1758 SCIENTIFIC            <NA>  CLASS
+#> 5        NA      Mammalia Linnaeus, 1758 SCIENTIFIC            <NA>  CLASS
+#> 6        NA      Mammalia                   NO_NAME        ACCEPTED  ORDER
+#>   numDescendants numOccurrences habitats nomenclaturalStatus
+#> 1            138              0     <NA>                  NA
+#> 2          29630              0   MARINE                  NA
+#> 3              0              0     <NA>                  NA
+#> 4           3545              0     <NA>                  NA
+#> 5              0              0     <NA>                  NA
+#> 6            139              0     <NA>                  NA
+#>   threatStatuses synonym    class nubKey extinct
+#> 1             NA   FALSE Mammalia     NA      NA
+#> 2             NA   FALSE Mammalia    359   FALSE
+#> 3             NA   FALSE Mammalia    359    TRUE
+#> 4             NA   FALSE Mammalia    359      NA
+#> 5             NA   FALSE Mammalia    359      NA
+#> 6             NA   FALSE Mammalia     NA      NA
 ```
 
 Look up the species Helianthus annuus
@@ -330,55 +328,62 @@ Look up the species Helianthus annuus
 
 ```r
 head(name_lookup(query = 'Helianthus annuus', rank="species", return = 'data'))
-#>         key                             scientificName                           datasetKey  nubKey
-#> 1 113584542                       Helianthus annuus L. cbb6498e-8927-405a-916b-576d00a6289b 3119195
-#> 2   3119195                       Helianthus annuus L. d7dddbf4-2cf0-4f39-9b2a-bb099caae36c 3119195
-#> 3 100336353                       Helianthus annuus L. 16c3f9cb-4b19-4553-ac8e-ebb90003aa02 3119195
-#> 4 103340289                          Helianthus annuus fab88965-e69d-4491-a04d-e3198b626e52 3119195
-#> 5 114910965                          Helianthus annuus ee2aac07-de9a-47a2-b828-37430d537633 3119195
-#> 6 102912762 'Helianthus annuus' fasciation phytoplasma fab88965-e69d-4491-a04d-e3198b626e52 3119195
-#>   parentKey                    parent       kingdom             order             family      genus
-#> 1 113584540                Helianthus       Plantae         Asterales         Asteraceae Helianthus
-#> 2   3119134                Helianthus       Plantae         Asterales         Asteraceae Helianthus
-#> 3 100336352                Helianthus       Plantae         Asterales         Asteraceae Helianthus
-#> 4 103340270                Helianthus Viridiplantae         Asterales         Asteraceae Helianthus
-#> 5 114910964                Helianthus       Plantae         Asterales         Asteraceae Helianthus
-#> 6 102912523 unclassified phytoplasmas          <NA> Acholeplasmatales Acholeplasmataceae Candidatus
-#>             species kingdomKey  orderKey familyKey  genusKey speciesKey     canonicalName authorship
-#> 1 Helianthus annuus  113551056 113580333 113580355 113584540  113584542 Helianthus annuus         L.
-#> 2 Helianthus annuus          6       414      3065   3119134    3119195 Helianthus annuus         L.
-#> 3 Helianthus annuus  100325740 100336278 100336349 100336352  100336353 Helianthus annuus         L.
-#> 4 Helianthus annuus  102974832 103311652 103311763 103340270  103340289 Helianthus annuus           
-#> 5 Helianthus annuus  114906846 114910800 114910801 114910964  114910965 Helianthus annuus       <NA>
-#> 6 Helianthus annuus         NA 102911070 102911072 102911169  102912762 Helianthus annuus           
-#>     nameType    rank numDescendants numOccurrences    habitats nomenclaturalStatus threatStatuses
-#> 1 SCIENTIFIC SPECIES              0              0        <NA>                <NA>             NA
-#> 2 SCIENTIFIC SPECIES             36              0 TERRESTRIAL                <NA>             NA
-#> 3 SCIENTIFIC SPECIES              0              0        <NA>                <NA>             NA
-#> 4 SCIENTIFIC SPECIES              2              0        <NA>                <NA>             NA
-#> 5 SCIENTIFIC SPECIES              0              0        <NA>                <NA>             NA
-#> 6 SCIENTIFIC SPECIES              0              0        <NA>                <NA>             NA
-#>   synonym basionymKey                                  basionym        phylum phylumKey  classKey
-#> 1   FALSE          NA                                      <NA>          <NA>        NA        NA
-#> 2   FALSE     3119205 Helianthus lenticularis Douglas ex Lindl. Magnoliophyta        49       220
-#> 3   FALSE          NA                                      <NA>          <NA>        NA 100328106
-#> 4   FALSE          NA                                      <NA>  Streptophyta 102986054        NA
-#> 5   FALSE          NA                                      <NA>  Tracheophyta 114909436 114910720
-#> 6   FALSE          NA                                      <NA>   Tenericutes 102911063 102911065
-#>           publishedIn                             accordingTo taxonomicStatus extinct         class
-#> 1                <NA>                                    <NA>            <NA>      NA          <NA>
-#> 2 Sp. pl. 2:904. 1753 Integrated Taxonomic Information System        ACCEPTED   FALSE Magnoliopsida
-#> 3                <NA>                                    <NA>            <NA>      NA Magnoliopsida
-#> 4                <NA>                                    <NA>            <NA>      NA          <NA>
-#> 5                <NA>                                    <NA>            <NA>      NA Magnoliopsida
-#> 6                <NA>                                    <NA>            <NA>      NA    Mollicutes
-#>                       taxonID acceptedKey accepted
-#> 1                        <NA>          NA     <NA>
-#> 2                        <NA>          NA     <NA>
-#> 3                        <NA>          NA     <NA>
-#> 4                        <NA>          NA     <NA>
-#> 5 http://eol.org/pages/468106          NA     <NA>
-#> 6                        <NA>          NA     <NA>
+#>         key       scientificName                           datasetKey
+#> 1 100336353 Helianthus annuus L. 16c3f9cb-4b19-4553-ac8e-ebb90003aa02
+#> 2 113584542 Helianthus annuus L. cbb6498e-8927-405a-916b-576d00a6289b
+#> 3   3119195 Helianthus annuus L. d7dddbf4-2cf0-4f39-9b2a-bb099caae36c
+#> 4 103340289    Helianthus annuus fab88965-e69d-4491-a04d-e3198b626e52
+#> 5 114910965    Helianthus annuus ee2aac07-de9a-47a2-b828-37430d537633
+#> 6 115006874 Helianthus annuus L. b4af7484-5acd-4804-8211-d738f13832c7
+#>    nubKey parentKey     parent       kingdom     order     family
+#> 1 3119195 115178966 Helianthus       Plantae Asterales Asteraceae
+#> 2 3119195 115390134 Helianthus       Plantae Asterales Asteraceae
+#> 3 3119195   3119134 Helianthus       Plantae Asterales Asteraceae
+#> 4      NA 103340270 Helianthus Viridiplantae Asterales Asteraceae
+#> 5 3119195 114995002 Helianthus       Plantae Asterales Asteraceae
+#> 6 3119195 115006870 Helianthus          <NA>      <NA> Compositae
+#>        genus           species kingdomKey  classKey  orderKey familyKey
+#> 1 Helianthus Helianthus annuus  115177477 100328106 100336278 115178941
+#> 2 Helianthus Helianthus annuus  113551056        NA 115388548 115388694
+#> 3 Helianthus Helianthus annuus          6       220       414      3065
+#> 4 Helianthus Helianthus annuus  102974832        NA 103311652 103311763
+#> 5 Helianthus Helianthus annuus  114991342 114994101 114994711 114994731
+#> 6 Helianthus              <NA>         NA        NA        NA 115005819
+#>    genusKey speciesKey     canonicalName authorship   nameType    rank
+#> 1 115178966  100336353 Helianthus annuus         L. SCIENTIFIC SPECIES
+#> 2 115390134  113584542 Helianthus annuus         L. SCIENTIFIC SPECIES
+#> 3   3119134    3119195 Helianthus annuus         L. SCIENTIFIC SPECIES
+#> 4 103340270  103340289 Helianthus annuus            SCIENTIFIC SPECIES
+#> 5 114995002  114910965 Helianthus annuus            SCIENTIFIC SPECIES
+#> 6 115006870         NA Helianthus annuus         L. SCIENTIFIC SPECIES
+#>   numDescendants numOccurrences    habitats nomenclaturalStatus
+#> 1              0              0        <NA>                <NA>
+#> 2              0              0        <NA>                <NA>
+#> 3             26              0 TERRESTRIAL                <NA>
+#> 4              2              0        <NA>                <NA>
+#> 5              0              0        <NA>                <NA>
+#> 6              8              0        <NA>                <NA>
+#>   threatStatuses synonym         class basionymKey
+#> 1             NA   FALSE Magnoliopsida          NA
+#> 2             NA   FALSE          <NA>          NA
+#> 3             NA   FALSE Magnoliopsida     7566760
+#> 4             NA   FALSE          <NA>          NA
+#> 5             NA   FALSE Magnoliopsida          NA
+#> 6             NA   FALSE          <NA>          NA
+#>                          basionym       phylum phylumKey taxonomicStatus
+#> 1                            <NA>         <NA>        NA            <NA>
+#> 2                            <NA>         <NA>        NA            <NA>
+#> 3 Helianthus lenticularis Douglas Tracheophyta   7707728        DOUBTFUL
+#> 4                            <NA> Streptophyta 102986054            <NA>
+#> 5                            <NA> Tracheophyta 114993928            <NA>
+#> 6                            <NA>         <NA>        NA            <NA>
+#>   extinct publishedIn accordingTo acceptedKey accepted
+#> 1      NA        <NA>        <NA>          NA     <NA>
+#> 2      NA        <NA>        <NA>          NA     <NA>
+#> 3   FALSE        <NA>        <NA>          NA     <NA>
+#> 4      NA        <NA>        <NA>          NA     <NA>
+#> 5      NA        <NA>        <NA>          NA     <NA>
+#> 6      NA        <NA>        <NA>          NA     <NA>
 ```
 
 The function `name_usage()` works with lots of different name endpoints in GBIF, listed at [http://www.gbif.org/developer/species#nameUsages](http://www.gbif.org/developer/species#nameUsages).
@@ -388,13 +393,20 @@ The function `name_usage()` works with lots of different name endpoints in GBIF,
 library("plyr")
 out <- name_usage(key=3119195, language="FRENCH", data='vernacularNames')
 head(out$data)
-#>     vernacularName language                                         source sourceTaxonKey preferred
-#> 1      Sonnenblume      deu                                  GRIN Taxonomy      101321447        NA
-#> 2          alizeti      swa                                  GRIN Taxonomy      101321447        NA
-#> 3 annual sunflower      eng Integrated Taxonomic Information System (ITIS)      102234356        NA
-#> 4 common sunflower                                           NCBI Taxonomy      103340289        NA
-#> 5 common sunflower      eng Integrated Taxonomic Information System (ITIS)      102234356        NA
-#> 6          girasol      spa                                  GRIN Taxonomy      101321447        NA
+#>            vernacularName language country sourceTaxonKey
+#> 1 Gewöhnliche Sonnenblume      deu      DE      116782143
+#> 2             Sonnenblume      deu    <NA>      101321447
+#> 3                 alizeti      swa    <NA>      101321447
+#> 4        annual sunflower      eng    <NA>      102234356
+#> 5        common sunflower      eng    <NA>      102234356
+#> 6                 girasol      spa    <NA>      101321447
+#>                                           source preferred
+#> 1                                           <NA>        NA
+#> 2                                  GRIN Taxonomy        NA
+#> 3                                  GRIN Taxonomy        NA
+#> 4 Integrated Taxonomic Information System (ITIS)        NA
+#> 5 Integrated Taxonomic Information System (ITIS)        NA
+#> 6                                  GRIN Taxonomy        NA
 ```
 
 The function `name_backbone()` is used to search against the GBIF backbone taxonomy
@@ -427,7 +439,7 @@ name_backbone(name='Helianthus', rank='genus', kingdom='plants')
 #> [1] "Plantae"
 #> 
 #> $phylum
-#> [1] "Magnoliophyta"
+#> [1] "Tracheophyta"
 #> 
 #> $order
 #> [1] "Asterales"
@@ -442,7 +454,7 @@ name_backbone(name='Helianthus', rank='genus', kingdom='plants')
 #> [1] 6
 #> 
 #> $phylumKey
-#> [1] 49
+#> [1] 7707728
 #> 
 #> $classKey
 #> [1] 220
@@ -469,12 +481,12 @@ The function `name_suggest()` is optimized for speed, and gives back suggested n
 ```r
 head( name_suggest(q='Puma concolor') )
 #>       key             canonicalName       rank
-#> 1 2435099             Puma concolor    SPECIES
-#> 2 6164604  Puma concolor stanleyana SUBSPECIES
-#> 3 6164610 Puma concolor hippolestes SUBSPECIES
-#> 4 6164591 Puma concolor kaibabensis SUBSPECIES
-#> 5 6164618      Puma concolor browni SUBSPECIES
-#> 6 6164613   Puma concolor schorgeri SUBSPECIES
+#> 1 6164620      Puma concolor cougar SUBSPECIES
+#> 2 6164600       Puma concolor coryi SUBSPECIES
+#> 3 6164604  Puma concolor stanleyana SUBSPECIES
+#> 4 6164610 Puma concolor hippolestes SUBSPECIES
+#> 5 6164622        Puma concolor puma SUBSPECIES
+#> 6 7193927    Puma concolor concolor SUBSPECIES
 ```
 
 
@@ -487,8 +499,10 @@ Just data
 
 ```r
 occ_get(key=766766824, return='data')
-#>              name       key decimalLatitude decimalLongitude        issues
-#> 1 Corvus monedula 766766824         59.4568          17.9054 depunl,gass84
+#>               name       key decimalLatitude decimalLongitude
+#> 1 Coloeus monedula 766766824         59.4568          17.9054
+#>          issues
+#> 1 depunl,gass84
 ```
 
 Just taxonomic hierarchy
@@ -496,14 +510,14 @@ Just taxonomic hierarchy
 
 ```r
 occ_get(key=766766824, return='hier')
-#>              name     key    rank
-#> 1        Animalia       1 kingdom
-#> 2        Chordata      44  phylum
-#> 3            Aves     212   class
-#> 4   Passeriformes     729   order
-#> 5        Corvidae    5235  family
-#> 6          Corvus 2482468   genus
-#> 7 Corvus monedula 2482473 species
+#>               name     key    rank
+#> 1         Animalia       1 kingdom
+#> 2         Chordata      44  phylum
+#> 3             Aves     212   class
+#> 4    Passeriformes     729   order
+#> 5         Corvidae    5235  family
+#> 6          Coloeus 4852454   genus
+#> 7 Coloeus monedula 6100954 species
 ```
 
 All data, or leave return parameter blank
@@ -512,21 +526,23 @@ All data, or leave return parameter blank
 ```r
 occ_get(key=766766824, return='all')
 #> $hierarchy
-#>              name     key    rank
-#> 1        Animalia       1 kingdom
-#> 2        Chordata      44  phylum
-#> 3            Aves     212   class
-#> 4   Passeriformes     729   order
-#> 5        Corvidae    5235  family
-#> 6          Corvus 2482468   genus
-#> 7 Corvus monedula 2482473 species
+#>               name     key    rank
+#> 1         Animalia       1 kingdom
+#> 2         Chordata      44  phylum
+#> 3             Aves     212   class
+#> 4    Passeriformes     729   order
+#> 5         Corvidae    5235  family
+#> 6          Coloeus 4852454   genus
+#> 7 Coloeus monedula 6100954 species
 #> 
 #> $media
 #> list()
 #> 
 #> $data
-#>              name       key decimalLatitude decimalLongitude        issues
-#> 1 Corvus monedula 766766824         59.4568          17.9054 depunl,gass84
+#>               name       key decimalLatitude decimalLongitude
+#> 1 Coloeus monedula 766766824         59.4568          17.9054
+#>          issues
+#> 1 depunl,gass84
 ```
 
 Get many occurrences. `occ_get` is vectorized
@@ -534,11 +550,16 @@ Get many occurrences. `occ_get` is vectorized
 
 ```r
 occ_get(key=c(766766824, 101010, 240713150, 855998194), return='data')
-#>                  name       key decimalLatitude decimalLongitude         issues
-#> 1     Corvus monedula 766766824         59.4568          17.9054  depunl,gass84
-#> 2 Platydoras costatus    101010         -4.3500         -70.0667 cucdmis,gass84
-#> 3            Pelosina 240713150        -77.5667         163.5830 cdround,gass84
-#> 4    Sciurus vulgaris 855998194         58.4068          12.0438  depunl,gass84
+#>                   name       key decimalLatitude decimalLongitude
+#> 1     Coloeus monedula 766766824         59.4568          17.9054
+#> 2 Platydoras armatulus    101010              NA               NA
+#> 3             Pelosina 240713150        -77.5667         163.5830
+#> 4     Sciurus vulgaris 855998194         58.4068          12.0438
+#>           issues
+#> 1  depunl,gass84
+#> 2               
+#> 3 cdround,gass84
+#> 4  depunl,gass84
 ```
 
 
@@ -549,38 +570,44 @@ By default `occ_search()` returns a `dplyr` like output summary in which the dat
 
 ```r
 occ_search(scientificName = "Ursus americanus", limit = 20)
-#> Records found [7484] 
+#> Records found [7802] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
-#> No. media records [19] 
+#> No. media records [18] 
 #> Args [scientificName=Ursus americanus, limit=20, offset=0, fields=all] 
 #> First 10 rows of data
 #> 
-#>                name        key decimalLatitude decimalLongitude              issues
-#> 1  Ursus americanus 1065590124        38.36662        -79.68283 cdround,cudc,gass84
-#> 2  Ursus americanus 1065588899        35.73304        -82.42028 cdround,cudc,gass84
-#> 3  Ursus americanus 1065611122        43.94883        -72.77432 cdround,cudc,gass84
-#> 4  Ursus americanus 1098894889        23.66893        -99.09625 cdround,cudc,gass84
-#> 5  Ursus americanus 1088908315        43.86464        -72.34617 cdround,cudc,gass84
-#> 6  Ursus americanus 1088932238        32.65219       -108.53674 cdround,cudc,gass84
-#> 7  Ursus americanus 1132403409        40.13240       -123.82900 cdround,cudc,gass84
-#> 8  Ursus americanus 1088923534        36.93018        -78.25027 cdround,cudc,gass84
-#> 9  Ursus americanus 1088932273        32.65237       -108.53691 cdround,cudc,gass84
-#> 10 Ursus americanus 1211969637        43.50321        -72.43548 cdround,cudc,gass84
-#> ..              ...        ...             ...              ...                 ...
-#> Variables not shown: datasetKey (chr), publishingOrgKey (chr), publishingCountry (chr), protocol
-#>      (chr), lastCrawled (chr), lastParsed (chr), extensions (chr), basisOfRecord (chr), taxonKey
-#>      (int), kingdomKey (int), phylumKey (int), classKey (int), orderKey (int), familyKey (int),
-#>      genusKey (int), speciesKey (int), scientificName (chr), kingdom (chr), phylum (chr), order (chr),
-#>      family (chr), genus (chr), species (chr), genericName (chr), specificEpithet (chr), taxonRank
-#>      (chr), dateIdentified (chr), year (int), month (int), day (int), eventDate (chr), modified (chr),
-#>      lastInterpreted (chr), references (chr), identifiers (chr), facts (chr), relations (chr),
-#>      geodeticDatum (chr), class (chr), countryCode (chr), country (chr), rightsHolder (chr),
-#>      identifier (chr), verbatimEventDate (chr), datasetName (chr), gbifID (chr), collectionCode (chr),
-#>      occurrenceID (chr), taxonID (chr), catalogNumber (chr), recordedBy (chr),
-#>      http...unknown.org.occurrenceDetails (chr), institutionCode (chr), rights (chr), eventTime (chr),
-#>      occurrenceRemarks (chr), identificationID (chr), verbatimLocality (chr), infraspecificEpithet
-#>      (chr), informationWithheld (chr)
+#>                name        key decimalLatitude decimalLongitude
+#> 1  Ursus americanus 1229610216        44.06086        -71.92712
+#> 2  Ursus americanus 1253300445        44.65481        -72.67270
+#> 3  Ursus americanus 1249277297        35.76789        -75.80894
+#> 4  Ursus americanus 1229610234        44.06062        -71.92692
+#> 5  Ursus americanus 1253314877        49.25782       -122.82786
+#> 6  Ursus americanus 1249284297        43.68723        -72.32891
+#> 7  Ursus americanus 1249296297        39.08590       -105.24586
+#> 8  Ursus americanus 1253317181        43.64214        -72.52494
+#> 9  Ursus americanus 1257415362        44.32746        -72.41007
+#> 10 Ursus americanus 1262389246        43.80871        -72.20964
+#> ..              ...        ...             ...              ...
+#> Variables not shown: issues (chr), datasetKey (chr), publishingOrgKey
+#>      (chr), publishingCountry (chr), protocol (chr), lastCrawled (chr),
+#>      lastParsed (chr), extensions (chr), basisOfRecord (chr), taxonKey
+#>      (int), kingdomKey (int), phylumKey (int), classKey (int), orderKey
+#>      (int), familyKey (int), genusKey (int), speciesKey (int),
+#>      scientificName (chr), kingdom (chr), phylum (chr), order (chr),
+#>      family (chr), genus (chr), species (chr), genericName (chr),
+#>      specificEpithet (chr), taxonRank (chr), dateIdentified (chr), year
+#>      (int), month (int), day (int), eventDate (chr), modified (chr),
+#>      lastInterpreted (chr), references (chr), identifiers (chr), facts
+#>      (chr), relations (chr), geodeticDatum (chr), class (chr), countryCode
+#>      (chr), country (chr), rightsHolder (chr), identifier (chr),
+#>      verbatimEventDate (chr), datasetName (chr), verbatimLocality (chr),
+#>      collectionCode (chr), gbifID (chr), occurrenceID (chr), taxonID
+#>      (chr), license (chr), catalogNumber (chr), recordedBy (chr),
+#>      http...unknown.org.occurrenceDetails (chr), institutionCode (chr),
+#>      rights (chr), eventTime (chr), identificationID (chr),
+#>      occurrenceRemarks (chr), infraspecificEpithet (chr),
+#>      coordinateUncertaintyInMeters (dbl), informationWithheld (chr)
 ```
 
 Or to be more precise, you can search for names first, make sure you have the right name, then pass the GBIF key to the `occ_search()` function:
@@ -589,40 +616,50 @@ Or to be more precise, you can search for names first, make sure you have the ri
 ```r
 key <- name_suggest(q='Helianthus annuus', rank='species')$key[1]
 occ_search(taxonKey=key, limit=20)
-#> Records found [21652] 
+#> Records found [30216] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
-#> No. media records [14] 
+#> No. media records [12] 
 #> Args [taxonKey=3119195, limit=20, offset=0, fields=all] 
 #> First 10 rows of data
 #> 
-#>                 name        key decimalLatitude decimalLongitude                issues
-#> 1  Helianthus annuus 1143516596        35.42767       -105.06884   cdround,cudc,gass84
-#> 2  Helianthus annuus 1095851641         0.00000          0.00000 cucdmis,gass84,zerocd
-#> 3  Helianthus annuus 1088900309        33.95239       -117.32011           cudc,gass84
-#> 4  Helianthus annuus 1088944416        26.20518        -98.26725   cdround,cudc,gass84
-#> 5  Helianthus annuus 1135523136        33.96709       -117.99769   cdround,cudc,gass84
-#> 6  Helianthus annuus 1135826959              NA               NA                      
-#> 7  Helianthus annuus 1092889645         1.27617        103.79136   cdround,cudc,gass84
-#> 8  Helianthus annuus 1092901911        30.22344        -97.95281   cdround,cudc,gass84
-#> 9  Helianthus annuus 1135523412        33.96787       -118.00016   cdround,cudc,gass84
-#> 10 Helianthus annuus 1090389390        59.96150         17.71060    cudc,depunl,gass84
-#> ..               ...        ...             ...              ...                   ...
-#> Variables not shown: datasetKey (chr), publishingOrgKey (chr), publishingCountry (chr), protocol
-#>      (chr), lastCrawled (chr), lastParsed (chr), extensions (chr), basisOfRecord (chr), taxonKey
-#>      (int), kingdomKey (int), phylumKey (int), classKey (int), orderKey (int), familyKey (int),
-#>      genusKey (int), speciesKey (int), scientificName (chr), kingdom (chr), phylum (chr), order (chr),
-#>      family (chr), genus (chr), species (chr), genericName (chr), specificEpithet (chr), taxonRank
-#>      (chr), dateIdentified (chr), year (int), month (int), day (int), eventDate (chr), modified (chr),
-#>      lastInterpreted (chr), references (chr), identifiers (chr), facts (chr), relations (chr),
-#>      geodeticDatum (chr), class (chr), countryCode (chr), country (chr), rightsHolder (chr),
-#>      identifier (chr), verbatimEventDate (chr), datasetName (chr), gbifID (chr), collectionCode (chr),
-#>      verbatimLocality (chr), occurrenceID (chr), taxonID (chr), catalogNumber (chr), recordedBy (chr),
-#>      http...unknown.org.occurrenceDetails (chr), institutionCode (chr), rights (chr),
-#>      occurrenceRemarks (chr), identificationID (chr), elevation (dbl), elevationAccuracy (dbl),
-#>      stateProvince (chr), recordNumber (chr), locality (chr), municipality (chr), language (chr), type
-#>      (chr), ownerInstitutionCode (chr), identifiedBy (chr), eventTime (chr), informationWithheld
-#>      (chr), coordinateAccuracy (dbl), depth (dbl), depthAccuracy (dbl), county (chr)
+#>                 name        key decimalLatitude decimalLongitude
+#> 1  Helianthus annuus 1249279611        34.04810       -117.79884
+#> 2  Helianthus annuus 1248872560        37.81227         -8.82959
+#> 3  Helianthus annuus 1248887127        38.53339         -8.94263
+#> 4  Helianthus annuus 1249286909        32.58747        -97.10081
+#> 5  Helianthus annuus 1253308332        29.67463        -95.44804
+#> 6  Helianthus annuus 1248873088        38.53339         -8.94263
+#> 7  Helianthus annuus 1262375813        29.82586        -95.45604
+#> 8  Helianthus annuus 1262379231        34.04911       -117.80066
+#> 9  Helianthus annuus 1265544678        32.58747        -97.10081
+#> 10 Helianthus annuus 1262385911        32.78328        -96.70352
+#> ..               ...        ...             ...              ...
+#> Variables not shown: issues (chr), datasetKey (chr), publishingOrgKey
+#>      (chr), publishingCountry (chr), protocol (chr), lastCrawled (chr),
+#>      lastParsed (chr), extensions (chr), basisOfRecord (chr), taxonKey
+#>      (int), kingdomKey (int), phylumKey (int), classKey (int), orderKey
+#>      (int), familyKey (int), genusKey (int), speciesKey (int),
+#>      scientificName (chr), kingdom (chr), phylum (chr), order (chr),
+#>      family (chr), genus (chr), species (chr), genericName (chr),
+#>      specificEpithet (chr), taxonRank (chr), dateIdentified (chr), year
+#>      (int), month (int), day (int), eventDate (chr), modified (chr),
+#>      lastInterpreted (chr), references (chr), identifiers (chr), facts
+#>      (chr), relations (chr), geodeticDatum (chr), class (chr), countryCode
+#>      (chr), country (chr), rightsHolder (chr), identifier (chr),
+#>      verbatimEventDate (chr), datasetName (chr), verbatimLocality (chr),
+#>      collectionCode (chr), gbifID (chr), occurrenceID (chr), taxonID
+#>      (chr), license (chr), catalogNumber (chr), recordedBy (chr),
+#>      http...unknown.org.occurrenceDetails (chr), institutionCode (chr),
+#>      rights (chr), eventTime (chr), identificationID (chr),
+#>      infraspecificEpithet (chr), nomenclaturalCode (chr), institutionID
+#>      (chr), dataGeneralizations (chr), footprintWKT (chr), municipality
+#>      (chr), county (chr), language (chr), occurrenceStatus (chr),
+#>      footprintSRS (chr), ownerInstitutionCode (chr), identifiedBy (chr),
+#>      reproductiveCondition (chr), higherClassification (chr), collectionID
+#>      (chr), coordinateUncertaintyInMeters (dbl), occurrenceRemarks (chr),
+#>      informationWithheld (chr), elevation (dbl), elevationAccuracy (dbl),
+#>      stateProvince (chr), recordNumber (chr), locality (chr), type (chr)
 ```
 
 Like many functions in `rgbif`, you can choose what to return with the `return` parameter, here, just returning the metadata:
@@ -631,7 +668,7 @@ Like many functions in `rgbif`, you can choose what to return with the `return` 
 ```r
 occ_search(taxonKey=key, return='meta')
 #>   offset limit endOfRecords count
-#> 1    300   200        FALSE 21652
+#> 1    300   200        FALSE 30216
 ```
 
 You can choose what fields to return. This isn't passed on to the API query to GBIF as they don't allow that, but we filter out the columns before we give the data back to you.
@@ -639,11 +676,12 @@ You can choose what fields to return. This isn't passed on to the API query to G
 
 ```r
 occ_search(scientificName = "Ursus americanus", fields=c('name','basisOfRecord','protocol'), limit = 20)
-#> Records found [7484] 
+#> Records found [7802] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
-#> No. media records [19] 
-#> Args [scientificName=Ursus americanus, limit=20, offset=0, fields=name,basisOfRecord,protocol] 
+#> No. media records [18] 
+#> Args [scientificName=Ursus americanus, limit=20, offset=0,
+#>      fields=name,basisOfRecord,protocol] 
 #> First 10 rows of data
 #> 
 #>                name    protocol     basisOfRecord
@@ -667,31 +705,40 @@ Most parameters are vectorized, so you can pass in more than one value:
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5)
-#> Occ. found [2482598 (455679), 2492010 (2469925), 2498387 (777289)] 
-#> Occ. returned [2482598 (5), 2492010 (5), 2498387 (5)] 
-#> No. unique hierarchies [2482598 (1), 2492010 (1), 2498387 (1)] 
-#> No. media records [2482598 (5), 2492010 (5), 2498387 (3)] 
-#> Args [taxonKey=2482598,2492010,2498387, limit=5, offset=0, fields=all] 
-#> First 10 rows of data from 2482598
+#> Occ. found [7192170 (1174), 6173536 (57), 2498387 (775349)] 
+#> Occ. returned [7192170 (5), 6173536 (5), 2498387 (5)] 
+#> No. unique hierarchies [7192170 (1), 6173536 (1), 2498387 (1)] 
+#> No. media records [7192170 (5), 6173536 (1), 2498387 (5)] 
+#> Args [taxonKey=7192170,6173536,2498387, limit=5, offset=0, fields=all] 
+#> First 10 rows of data from 7192170
 #> 
-#>                  name        key decimalLatitude decimalLongitude              issues
-#> 1 Cyanocitta stelleri 1212002236        49.18573        -123.9761 cdround,cudc,gass84
-#> 2 Cyanocitta stelleri 1052604494        37.76975        -122.4715 cdround,cudc,gass84
-#> 3 Cyanocitta stelleri 1065588311        37.26200        -122.3271 cdround,cudc,gass84
-#> 4 Cyanocitta stelleri 1065590449        37.50713        -122.4818 cdround,cudc,gass84
-#> 5 Cyanocitta stelleri 1065601214        37.41080        -122.2617 cdround,cudc,gass84
-#> Variables not shown: datasetKey (chr), publishingOrgKey (chr), publishingCountry (chr), protocol
-#>      (chr), lastCrawled (chr), lastParsed (chr), extensions (chr), basisOfRecord (chr), taxonKey
-#>      (int), kingdomKey (int), phylumKey (int), classKey (int), orderKey (int), familyKey (int),
-#>      genusKey (int), speciesKey (int), scientificName (chr), kingdom (chr), phylum (chr), order (chr),
-#>      family (chr), genus (chr), species (chr), genericName (chr), specificEpithet (chr), taxonRank
-#>      (chr), dateIdentified (chr), year (int), month (int), day (int), eventDate (chr), modified (chr),
-#>      lastInterpreted (chr), references (chr), identifiers (chr), facts (chr), relations (chr),
-#>      geodeticDatum (chr), class (chr), countryCode (chr), country (chr), rightsHolder (chr),
-#>      identifier (chr), verbatimEventDate (chr), datasetName (chr), gbifID (chr), collectionCode (chr),
-#>      verbatimLocality (chr), occurrenceID (chr), taxonID (chr), catalogNumber (chr), recordedBy (chr),
-#>      http...unknown.org.occurrenceDetails (chr), institutionCode (chr), rights (chr), eventTime (chr),
-#>      identificationID (chr), occurrenceRemarks (chr)
+#>                  name        key decimalLatitude decimalLongitude  issues
+#> 1 Cyanocitta stelleri 1147228297        34.73360        -119.9871        
+#> 2 Cyanocitta stelleri 1147052100        39.61584        -120.5881 cdround
+#> 3 Cyanocitta stelleri 1147243804        39.61584        -120.5881 cdround
+#> 4 Cyanocitta stelleri 1147083657        39.61584        -120.5881 cdround
+#> 5 Cyanocitta stelleri 1147179622        39.63799        -120.6085 cdround
+#> Variables not shown: datasetKey (chr), publishingOrgKey (chr),
+#>      publishingCountry (chr), protocol (chr), lastCrawled (chr),
+#>      lastParsed (chr), extensions (chr), basisOfRecord (chr),
+#>      establishmentMeans (chr), taxonKey (int), kingdomKey (int), phylumKey
+#>      (int), classKey (int), orderKey (int), familyKey (int), genusKey
+#>      (int), speciesKey (int), scientificName (chr), kingdom (chr), phylum
+#>      (chr), order (chr), family (chr), genus (chr), species (chr),
+#>      genericName (chr), specificEpithet (chr), infraspecificEpithet (chr),
+#>      taxonRank (chr), continent (chr), stateProvince (chr), year (int),
+#>      month (int), day (int), eventDate (chr), modified (chr),
+#>      lastInterpreted (chr), references (chr), identifiers (chr), facts
+#>      (chr), relations (chr), geodeticDatum (chr), class (chr), countryCode
+#>      (chr), country (chr), institutionID (chr), county (chr), language
+#>      (chr), gbifID (chr), type (chr), catalogNumber (chr),
+#>      occurrenceStatus (chr), vernacularName (chr), institutionCode (chr),
+#>      rights (chr), behavior (chr), identifier (chr), verbatimEventDate
+#>      (chr), higherGeography (chr), nomenclaturalCode (chr), endDayOfYear
+#>      (chr), georeferenceVerificationStatus (chr), locality (chr),
+#>      verbatimLocality (chr), collectionCode (chr), occurrenceID (chr),
+#>      recordedBy (chr), startDayOfYear (chr), occurrenceRemarks (chr),
+#>      accessRights (chr)
 ```
 
 
@@ -708,7 +755,8 @@ dat <- occ_search(taxonKey=key, return='data', limit=300)
 gbifmap(dat)
 ```
 
-![plot of chunk gbifmap1](../assets/tutorial-images/rgbif/gbifmap1-1.png) 
+![plot of chunk gbifmap1](../assets/tutorial-images/rgbif/gbifmap1-1.png)
+
 
 <section id="citing">
 
@@ -718,7 +766,7 @@ To cite `rgbif` in publications use:
 
 <br>
 
-> Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2015). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 0.9.0 https://github.com/ropensci/rgbif
+> Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2016). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 0.9.3 https://github.com/ropensci/rgbif
 
 <section id="license_bugs">
 
@@ -729,4 +777,4 @@ To cite `rgbif` in publications use:
 
 [Back to top](#top)
 
-[gbifapi]: http://data.gbif.org/tutorial/services
+[gbifapi]: http://www.gbif.org/developer/summary
