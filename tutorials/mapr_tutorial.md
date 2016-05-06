@@ -35,6 +35,8 @@ library("spocc")
 
 <section id="usage">
 
+## Usage
+
 ### Interactive maps
 
 #### Leaflet.js

@@ -39,51 +39,53 @@ devtools::install_github("ropensci/oai")
 
 <section id="usage">
 
-## Identify
+## Usage
+
+### Identify
 
 ```{r}
 id("http://oai.datacite.org/oai")
 ```
 
-## ListIdentifiers
+### ListIdentifiers
 
 ```{r}
 list_identifiers(from = '2011-05-01T', until = '2011-09-01T')
 ```
 
-## Count Identifiers
+### Count Identifiers
 
 ```{r}
 count_identifiers()
 ```
 
-## ListRecords
+### ListRecords
 
 ```{r}
 list_records(from = '2011-05-01T', until = '2011-08-15T')
 ```
 
-## GetRecords
+### GetRecords
 
 ```{r}
 get_records(c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325"))
 ```
 
-## List MetadataFormats
+### List MetadataFormats
 
 ```{r}
 list_metadataformats(id = "oai:oai.datacite.org:32348")
 ```
 
-## List Sets
+### List Sets
 
 ```{r}
 list_sets("http://oai.datacite.org/oai")
 ```
 
-## Examples of other OAI providers
+### Examples of other OAI providers
 
-### Global Biodiversity Information Facility
+#### Global Biodiversity Information Facility
 
 Identify
 
@@ -98,7 +100,7 @@ get_records(c("816f4734-6b49-41ab-8a1d-1b21e6b5486d", "95e3042f-f48d-4a04-8251-f
             url = "http://api.gbif.org/v1/oai-pmh/registry")
 ```
 
-### Biodiversity Heritage Library
+#### Biodiversity Heritage Library
 
 Identify
 

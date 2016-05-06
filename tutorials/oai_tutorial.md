@@ -34,7 +34,9 @@ devtools::install_github("ropensci/oai")
 
 <section id="usage">
 
-## Identify
+## Usage
+
+### Identify
 
 
 ```r
@@ -52,7 +54,7 @@ id("http://oai.datacite.org/oai")
 #> 1 oaioai.datacite.org:oai:oai.datacite.org:12425
 ```
 
-## ListIdentifiers
+### ListIdentifiers
 
 
 ```r
@@ -77,7 +79,7 @@ list_identifiers(from = '2011-05-01T', until = '2011-09-01T')
 #> Variables not shown: setSpec.2 (chr), setSpec.3 (chr)
 ```
 
-## Count Identifiers
+### Count Identifiers
 
 
 ```r
@@ -89,7 +91,7 @@ count_identifiers()
 #> 1 http://oai.datacite.org/oai 7547833
 ```
 
-## ListRecords
+### ListRecords
 
 
 ```r
@@ -124,7 +126,7 @@ list_records(from = '2011-05-01T', until = '2011-08-15T')
 #>      title.1 (chr), contributor.1 (chr)
 ```
 
-## GetRecords
+### GetRecords
 
 
 ```r
@@ -144,7 +146,7 @@ get_records(c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325"))
 #>      (chr), type.1 (chr), format (chr), format.1 (chr), rights (chr)
 ```
 
-## List MetadataFormats
+### List MetadataFormats
 
 
 ```r
@@ -167,7 +169,7 @@ list_metadataformats(id = "oai:oai.datacite.org:32348")
 #> 3     http://schema.datacite.org/oai/oai-1.0/
 ```
 
-## List Sets
+### List Sets
 
 
 ```r
@@ -192,9 +194,9 @@ list_sets("http://oai.datacite.org/oai")
 #> Variables not shown: setName (chr)
 ```
 
-## Examples of other OAI providers
+### Examples of other OAI providers
 
-### Global Biodiversity Information Facility
+#### Global Biodiversity Information Facility
 
 Identify
 
@@ -235,7 +237,7 @@ get_records(c("816f4734-6b49-41ab-8a1d-1b21e6b5486d", "95e3042f-f48d-4a04-8251-f
 #>      rights (chr), coverage (chr), coverage.1 (chr), coverage.2 (chr)
 ```
 
-### Biodiversity Heritage Library
+#### Biodiversity Heritage Library
 
 Identify
 
