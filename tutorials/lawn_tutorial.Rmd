@@ -1,7 +1,7 @@
 ---
 title: lawn tutorial
 layout: tutorial
-packge_version: 0.1.4
+packge_version: 0.1.7
 ---
 
 ```{r echo=FALSE}
@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 
 There is an additional helper function (see `view()`) in this package to help visualize data with interactive maps via the `leaflet` package ([https://github.com/rstudio/leaflet](https://github.com/rstudio/leaflet)). Note that `leaflet` is not required to install `lawn` - it's in Suggests, not Imports or Depends.
 
-<section id="installation">
+<section id="installation"> 
 
 ## Installation
 
@@ -290,8 +290,8 @@ To cite `lawn` in publications use:
 
 <br>
 
-> Scott Chamberlain and Jeff Hollister (2015). lawn: R Client for Turf.js for Geospatial
-  Analysis. R package version 0.1.4. https://github.com/ropensci/lawn
+> Scott Chamberlain and Jeff Hollister (2016). lawn: R Client for Turf.js for Geospatial
+  Analysis. R package version 0.1.7. https://github.com/ropensci/lawn
 
 <section id="license_bugs">
 

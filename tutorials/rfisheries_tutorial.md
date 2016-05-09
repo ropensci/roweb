@@ -1,7 +1,7 @@
 ---
 title: rfisheries tutorial
 layout: tutorial
-packge_version: 0.1
+packge_version: 0.2
 ---
 
 
@@ -20,6 +20,14 @@ Open Fisheries is a platform that aggregates global fishery data and currently o
 install.packages("rfisheries")
 ```
 
+Development version
+
+
+```r
+if (!require("devtools")) install.packages("devtools")
+devtools::install_github("ropensci/rfisheries")
+```
+
 <section id="usage">
 
 ## Usage
@@ -30,16 +38,13 @@ Package currently provides three basic functions. Landings data can be obtained 
 ```r
 library(rfisheries)
 head( of_landings() )
-```
-
-```
-##      catch year
-## 1 19233982 1950
-## 2 21685025 1951
-## 3 23645195 1952
-## 4 24063731 1953
-## 5 25974046 1954
-## 6 27496847 1955
+#>      catch year
+#> 1 19233982 1950
+#> 2 21685025 1951
+#> 3 23645195 1952
+#> 4 24063731 1953
+#> 5 25974046 1954
+#> 6 27496847 1955
 ```
 
 To get country specific data, provide a iso3c country code
@@ -47,16 +52,13 @@ To get country specific data, provide a iso3c country code
 
 ```r
 head( of_landings(country = "USA") )
-```
-
-```
-##     catch year country
-## 1 2629961 1950     USA
-## 2 2452312 1951     USA
-## 3 2472565 1952     USA
-## 4 2534099 1953     USA
-## 5 2596039 1954     USA
-## 6 2621021 1955     USA
+#>   year   catch country
+#> 1 1950 2629961     USA
+#> 2 1951 2452312     USA
+#> 3 1952 2472565     USA
+#> 4 1953 2534099     USA
+#> 5 1954 2596039     USA
+#> 6 1955 2621021     USA
 ```
 
 To get species specific landings, provide the correct a3 code for the required species.
@@ -64,16 +66,13 @@ To get species specific landings, provide the correct a3 code for the required s
 
 ```r
 head( of_landings(species = "SKJ") )
-```
-
-```
-##    catch year species
-## 1 163250 1950     SKJ
-## 2 187816 1951     SKJ
-## 3 159553 1952     SKJ
-## 4 166714 1953     SKJ
-## 5 213505 1954     SKJ
-## 6 192035 1955     SKJ
+#>   year  catch species
+#> 1 1950 163250     SKJ
+#> 2 1951 187816     SKJ
+#> 3 1952 159553     SKJ
+#> 4 1953 166714     SKJ
+#> 5 1954 213505     SKJ
+#> 6 1955 192035     SKJ
 ```
 
 If you don't have know the correct species or country codes, you can get a complete list with the following two functions.
@@ -102,16 +101,13 @@ Similarly you can get a full list of country codes
 
 ```r
 head( of_country_codes() )
-```
-
-```
-##          country iso3c
-## 1    Afghanistan   AFG
-## 2        Albania   ALB
-## 3        Algeria   DZA
-## 4 American Samoa   ASM
-## 5        Andorra   AND
-## 6         Angola   AGO
+#>          country iso3c
+#> 1    Afghanistan   AFG
+#> 2        Albania   ALB
+#> 3        Algeria   DZA
+#> 4 American Samoa   ASM
+#> 5        Andorra   AND
+#> 6         Angola   AGO
 ```
 
 Example: Compare landings from multiple countries
@@ -139,7 +135,7 @@ ggplot(results, aes(year, catch, group = country, color = country)) +
   geom_line()
 ```
 
-![plot of chunk plot](../assets/tutorial-images/rfisheries/plot.png) 
+![plot of chunk unnamed-chunk-9](../assets/tutorial-images/rfisheries/unnamed-chunk-9-1.png)
 
 Similarly you can get landings data for multiple species. As the API evolves, we'll update the package.
 
@@ -152,13 +148,13 @@ To cite `rfisheries` in publications use:
 
 <br>
 
-> Karthik Ram, Carl Boettiger and Andrew Dyck (2013). rfisheries: R interface for fisheries data. R package version 0.1. http://www.github.com/ropensci/rfisheries
+> Karthik Ram, Carl Boettiger and Andrew Dyck (2016). rfisheries: 'Programmatic Interface to the 'openfisheries.org' API'. R package version 0.2. https://github.com/ropensci/rfisheries
 
 <section id="license_bugs">
 
 ## License and bugs
 
-* License: [CC0](http://creativecommons.org/choose/zero/)
+* License: [MIT](http://opensource.org/licenses/MIT)
 * Report bugs at [our Github repo for rfisheries](https://github.com/ropensci/rfisheries/issues?state=open)
 
 [Back to top](#top)

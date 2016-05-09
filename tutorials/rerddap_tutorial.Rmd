@@ -1,7 +1,7 @@
 ---
 title: rerddap tutorial
 layout: tutorial
-packge_version: 0.3.0
+packge_version: 0.3.4
 ---
 
 ```{r echo=FALSE}
@@ -119,7 +119,7 @@ Then query for gridded data using the `griddap()` function
 
 The output of `griddap()` is a list that you can explore further. Get the summary
 
-```{r}
+```{r output.lines=1:15}
 res$summary
 ```
 
@@ -166,8 +166,8 @@ To cite `rerddap` in publications use:
 
 <br>
 
->  Scott Chamberlain (2015). rerddap: General Purpose Client for 'ERDDAP' Servers. R
-  package version 0.3.0. https://github.com/ropensci/rerddap
+>  Scott Chamberlain (2016). rerddap: General Purpose Client for 'ERDDAP' Servers. R
+  package version 0.3.4. https://github.com/ropensci/rerddap
 
 <section id="license_bugs">
 

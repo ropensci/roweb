@@ -1,7 +1,7 @@
 ---
 title: rnoaa tutorial
 layout: tutorial
-packge_version: 0.5.0
+packge_version: 0.5.2
 ---
 
 
@@ -50,7 +50,7 @@ ncdc_stations(datasetid='GHCND', locationid='FIPS:12017', stationid='GHCND:USC00
 #> 
 #> $data
 #>   elevation    mindate    maxdate latitude                  name
-#> 1      12.2 1899-02-01 2015-12-27  28.8029 INVERNESS 3 SE, FL US
+#> 1      12.2 1899-02-01 2016-04-30  28.8029 INVERNESS 3 SE, FL US
 #>   datacoverage                id elevationUnit longitude
 #> 1            1 GHCND:USC00084289        METERS  -82.3126
 #> 
@@ -73,21 +73,32 @@ out$data
 ```
 
 ```
-#> Source: local data frame [25 x 5]
-#> 
-#>                   date        datatype           station value  fl_c
-#>                  (chr)           (chr)             (chr) (int) (chr)
-#> 1  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:AQW00061705   869     C
-#> 2  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:CAW00064757   607     Q
-#> 3  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:CQC00914080   840     R
-#> 4  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:CQC00914801   858     R
-#> 5  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914395   876     P
-#> 6  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914419   885     P
-#> 7  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914446   885     P
-#> 8  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914482   868     R
-#> 9  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914720   899     R
-#> 10 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914761   897     P
-#> ..                 ...             ...               ...   ...   ...
+#>                   date        datatype           station value fl_c
+#> 1  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:AQW00061705   869    C
+#> 2  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:CAW00064757   607    Q
+#> 3  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:CQC00914080   840    R
+#> 4  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:CQC00914801   858    R
+#> 5  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914395   876    P
+#> 6  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914419   885    P
+#> 7  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914446   885    P
+#> 8  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914482   868    R
+#> 9  2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914720   899    R
+#> 10 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914761   897    P
+#> 11 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914831   870    P
+#> 12 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914892   883    P
+#> 13 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914898   875    P
+#> 14 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMC00914911   885    P
+#> 15 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMW00040308   888    S
+#> 16 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMW00040504   879    C
+#> 17 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:FMW00040505   867    S
+#> 18 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:GQC00914025   852    P
+#> 19 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:GQW00041415   877    C
+#> 20 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:JQW00021603   852    P
+#> 21 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:PSC00914519   883    P
+#> 22 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:PSC00914712   840    P
+#> 23 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:PSW00040309   879    S
+#> 24 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:RMW00040604   867    S
+#> 25 2010-05-01T00:00:00 DLY-TMAX-NORMAL GHCND:RMW00040710   863    C
 ```
 
 ### Plot data, super simple, but it's a start
@@ -98,7 +109,7 @@ out <- ncdc(datasetid='NORMAL_DLY', stationid='GHCND:USW00014895', datatypeid='d
 ncdc_plot(out)
 ```
 
-![plot of chunk six](../assets/tutorial-images/rnoaa/six-1.png) 
+![plot of chunk six](../assets/tutorial-images/rnoaa/six-1.png)
 
 Note that the x-axis tick text is not readable, but see futher down in tutorial for how to adjust that.
 
@@ -120,7 +131,7 @@ Default plot
 ncdc_plot(out)
 ```
 
-![plot of chunk unnamed-chunk-5](../assets/tutorial-images/rnoaa/unnamed-chunk-5-1.png) 
+![plot of chunk unnamed-chunk-5](../assets/tutorial-images/rnoaa/unnamed-chunk-5-1.png)
 
 Create 14 day breaks
 
@@ -129,7 +140,11 @@ Create 14 day breaks
 ncdc_plot(out, breaks="14 days")
 ```
 
-![plot of chunk unnamed-chunk-6](../assets/tutorial-images/rnoaa/unnamed-chunk-6-1.png) 
+```
+#> Error: Invalid input: time_trans works with objects of class POSIXct only
+```
+
+![plot of chunk unnamed-chunk-6](../assets/tutorial-images/rnoaa/unnamed-chunk-6-1.png)
 
 One month breaks
 
@@ -138,7 +153,11 @@ One month breaks
 ncdc_plot(out, breaks="1 month", dateformat="%d/%m")
 ```
 
-![plot of chunk unnamed-chunk-7](../assets/tutorial-images/rnoaa/unnamed-chunk-7-1.png) 
+```
+#> Error: Invalid input: time_trans works with objects of class POSIXct only
+```
+
+![plot of chunk unnamed-chunk-7](../assets/tutorial-images/rnoaa/unnamed-chunk-7-1.png)
 
 #### Example 2
 
@@ -156,7 +175,11 @@ Make a plot, with 6 hour breaks, and date format with only hour
 ncdc_plot(out2, breaks="6 hours", dateformat="%H")
 ```
 
-![plot of chunk unnamed-chunk-9](../assets/tutorial-images/rnoaa/unnamed-chunk-9-1.png) 
+```
+#> Error: Invalid input: time_trans works with objects of class POSIXct only
+```
+
+![plot of chunk unnamed-chunk-9](../assets/tutorial-images/rnoaa/unnamed-chunk-9-1.png)
 
 ### Combine many calls to noaa function
 
@@ -178,29 +201,37 @@ head(df[[1]]); tail(df[[1]])
 ```
 
 ```
-#> Source: local data frame [6 x 8]
-#> 
-#>                  date datatype           station value  fl_m  fl_q fl_so  fl_t
-#>                 (chr)    (chr)             (chr) (int) (chr) (chr) (chr) (chr)
-#> 1 2010-03-01T00:00:00     PRCP GHCND:USW00014895     0     T           0  2400
-#> 2 2010-03-02T00:00:00     PRCP GHCND:USW00014895     0     T           0  2400
-#> 3 2010-03-03T00:00:00     PRCP GHCND:USW00014895     0     T           0  2400
-#> 4 2010-03-04T00:00:00     PRCP GHCND:USW00014895     0                 0  2400
-#> 5 2010-03-05T00:00:00     PRCP GHCND:USW00014895     0                 0  2400
-#> 6 2010-03-06T00:00:00     PRCP GHCND:USW00014895     0                 0  2400
+#>                  date datatype           station value fl_m fl_q fl_so
+#> 1 2010-03-01T00:00:00     PRCP GHCND:USW00014895     0    T          0
+#> 2 2010-03-02T00:00:00     PRCP GHCND:USW00014895     0    T          0
+#> 3 2010-03-03T00:00:00     PRCP GHCND:USW00014895     0    T          0
+#> 4 2010-03-04T00:00:00     PRCP GHCND:USW00014895     0               0
+#> 5 2010-03-05T00:00:00     PRCP GHCND:USW00014895     0               0
+#> 6 2010-03-06T00:00:00     PRCP GHCND:USW00014895     0               0
+#>   fl_t
+#> 1 2400
+#> 2 2400
+#> 3 2400
+#> 4 2400
+#> 5 2400
+#> 6 2400
 ```
 
 ```
-#> Source: local data frame [6 x 8]
-#> 
-#>                  date datatype           station value  fl_m  fl_q fl_so  fl_t
-#>                 (chr)    (chr)             (chr) (int) (chr) (chr) (chr) (chr)
-#> 1 2010-10-26T00:00:00     PRCP GHCND:USW00014895   221                 0  2400
-#> 2 2010-10-27T00:00:00     PRCP GHCND:USW00014895     0                 0  2400
-#> 3 2010-10-28T00:00:00     PRCP GHCND:USW00014895     0     T           0  2400
-#> 4 2010-10-29T00:00:00     PRCP GHCND:USW00014895     0     T           0  2400
-#> 5 2010-10-30T00:00:00     PRCP GHCND:USW00014895     0                 0  2400
-#> 6 2010-10-31T00:00:00     PRCP GHCND:USW00014895     0                 0  2400
+#>                    date datatype           station value fl_m fl_q fl_so
+#> 148 2010-10-26T00:00:00     PRCP GHCND:USW00014895   221               0
+#> 149 2010-10-27T00:00:00     PRCP GHCND:USW00014895     0               0
+#> 150 2010-10-28T00:00:00     PRCP GHCND:USW00014895     0    T          0
+#> 151 2010-10-29T00:00:00     PRCP GHCND:USW00014895     0    T          0
+#> 152 2010-10-30T00:00:00     PRCP GHCND:USW00014895     0               0
+#> 153 2010-10-31T00:00:00     PRCP GHCND:USW00014895     0               0
+#>     fl_t
+#> 148 2400
+#> 149 2400
+#> 150 2400
+#> 151 2400
+#> 152 2400
+#> 153 2400
 ```
 
 Then plot - the default passing in the combined plot plots the data together. In this case it looks kind of weird since a straight line combines two distant dates.
@@ -210,7 +241,7 @@ Then plot - the default passing in the combined plot plots the data together. In
 ncdc_plot(df)
 ```
 
-![plot of chunk unnamed-chunk-12](../assets/tutorial-images/rnoaa/unnamed-chunk-12-1.png) 
+![plot of chunk unnamed-chunk-12](../assets/tutorial-images/rnoaa/unnamed-chunk-12-1.png)
 
 But we can pass in each separately, which uses `facet_wrap` in `ggplot2` to plot each set of data in its own panel.
 
@@ -219,7 +250,11 @@ But we can pass in each separately, which uses `facet_wrap` in `ggplot2` to plot
 ncdc_plot(out1, out2, breaks="45 days")
 ```
 
-![plot of chunk unnamed-chunk-13](../assets/tutorial-images/rnoaa/unnamed-chunk-13-1.png) 
+```
+#> Error: Invalid input: time_trans works with objects of class POSIXct only
+```
+
+![plot of chunk unnamed-chunk-13](../assets/tutorial-images/rnoaa/unnamed-chunk-13-1.png)
 
 ## ERDDAP data
 
@@ -241,25 +276,62 @@ swdi(dataset='nx3tvs', startdate='20060505', enddate='20060506')
 #> numeric(0)
 #> 
 #> $meta$totalTimeInSeconds
-#> [1] 0.028
+#> [1] 0.038
 #> 
 #> 
 #> $data
-#> Source: local data frame [25 x 8]
-#> 
-#>                   ztime wsr_id cell_id cell_type range azimuth max_shear  mxdv
-#>                   (chr)  (chr)   (chr)     (chr) (chr)   (chr)     (chr) (chr)
-#> 1  2006-05-05T00:05:50Z   KBMX      Q0       TVS     7     217       403   116
-#> 2  2006-05-05T00:10:02Z   KBMX      Q0       TVS     5     208       421   120
-#> 3  2006-05-05T00:12:34Z   KSJT      P2       TVS    49     106        17    52
-#> 4  2006-05-05T00:17:31Z   KSJT      B4       TVS    40     297        25    62
-#> 5  2006-05-05T00:29:13Z   KMAF      H4       TVS    53     333        34   111
-#> 6  2006-05-05T00:31:25Z   KLBB      N0       TVS    51     241        24    78
-#> 7  2006-05-05T00:33:25Z   KMAF      H4       TVS    52     334        46   145
-#> 8  2006-05-05T00:37:37Z   KMAF      H4       TVS    50     334        34   107
-#> 9  2006-05-05T00:41:51Z   KMAF      H4       TVS    51     335        29    91
-#> 10 2006-05-05T00:44:33Z   KLBB      N0       TVS    46     245        35   100
-#> ..                  ...    ...     ...       ...   ...     ...       ...   ...
+#>                   ztime wsr_id cell_id cell_type range azimuth max_shear
+#> 1  2006-05-05T00:05:50Z   KBMX      Q0       TVS     7     217       403
+#> 2  2006-05-05T00:10:02Z   KBMX      Q0       TVS     5     208       421
+#> 3  2006-05-05T00:12:34Z   KSJT      P2       TVS    49     106        17
+#> 4  2006-05-05T00:17:31Z   KSJT      B4       TVS    40     297        25
+#> 5  2006-05-05T00:29:13Z   KMAF      H4       TVS    53     333        34
+#> 6  2006-05-05T00:31:25Z   KLBB      N0       TVS    51     241        24
+#> 7  2006-05-05T00:33:25Z   KMAF      H4       TVS    52     334        46
+#> 8  2006-05-05T00:37:37Z   KMAF      H4       TVS    50     334        34
+#> 9  2006-05-05T00:41:51Z   KMAF      H4       TVS    51     335        29
+#> 10 2006-05-05T00:44:33Z   KLBB      N0       TVS    46     245        35
+#> 11 2006-05-05T00:46:03Z   KMAF      H4       TVS    49     335        41
+#> 12 2006-05-05T00:48:55Z   KLBB      N0       TVS    44     246        44
+#> 13 2006-05-05T00:50:16Z   KMAF      H4       TVS    49     337        33
+#> 14 2006-05-05T00:54:29Z   KMAF      H4       TVS    47     337        42
+#> 15 2006-05-05T00:57:42Z   KLBB      N0       TVS    41     251        46
+#> 16 2006-05-05T00:58:41Z   KMAF      H4       TVS    46     340        29
+#> 17 2006-05-05T01:02:04Z   KLBB      N0       TVS    39     251        42
+#> 18 2006-05-05T01:02:53Z   KMAF      H4       TVS    46     339        35
+#> 19 2006-05-05T01:02:53Z   KMAF      H4       TVS    50     338        27
+#> 20 2006-05-05T01:06:26Z   KLBB      N0       TVS    36     251        31
+#> 21 2006-05-05T01:07:06Z   KMAF      F5       TVS    45     342        44
+#> 22 2006-05-05T01:10:48Z   KLBB      N0       TVS    36     256        37
+#> 23 2006-05-05T01:11:18Z   KMAF      F5       TVS    45     343        39
+#> 24 2006-05-05T01:15:30Z   KMAF      F5       TVS    44     344        30
+#> 25 2006-05-05T01:15:30Z   KMAF      H4       TVS    49     341        26
+#>    mxdv
+#> 1   116
+#> 2   120
+#> 3    52
+#> 4    62
+#> 5   111
+#> 6    78
+#> 7   145
+#> 8   107
+#> 9    91
+#> 10  100
+#> 11  127
+#> 12  121
+#> 13   98
+#> 14  126
+#> 15  117
+#> 16   85
+#> 17  102
+#> 18  101
+#> 19   84
+#> 20   70
+#> 21  120
+#> 22   83
+#> 23  108
+#> 24   78
+#> 25   81
 #> 
 #> $shape
 #>                                         shape
@@ -307,20 +379,24 @@ list(out$meta, head(out$data), head(out$shape))
 #> numeric(0)
 #> 
 #> [[1]]$totalTimeInSeconds
-#> [1] 1.042
+#> [1] 0.475
 #> 
 #> 
 #> [[2]]
-#> Source: local data frame [6 x 6]
-#> 
-#>            ztime_start            ztime_end     id         warningtype issuewfo messageid
-#>                  (chr)                (chr)  (chr)               (chr)    (chr)     (chr)
-#> 1 2006-05-05T22:53:00Z 2006-05-06T00:00:00Z 397428 SEVERE THUNDERSTORM     KLCH    052252
-#> 2 2006-05-05T22:55:00Z 2006-05-06T00:00:00Z 397429 SEVERE THUNDERSTORM     KLUB    052256
-#> 3 2006-05-05T22:55:00Z 2006-05-06T00:00:00Z 397430 SEVERE THUNDERSTORM     KLUB    052256
-#> 4 2006-05-05T22:57:00Z 2006-05-06T00:00:00Z 397431 SEVERE THUNDERSTORM     KMAF    052258
-#> 5 2006-05-05T23:03:00Z 2006-05-06T00:00:00Z 397434 SEVERE THUNDERSTORM     KMAF    052305
-#> 6 2006-05-05T23:14:00Z 2006-05-06T00:15:00Z 397437 SEVERE THUNDERSTORM     KLUB    052315
+#>            ztime_start            ztime_end     id         warningtype
+#> 1 2006-05-05T22:53:00Z 2006-05-06T00:00:00Z 397428 SEVERE THUNDERSTORM
+#> 2 2006-05-05T22:55:00Z 2006-05-06T00:00:00Z 397429 SEVERE THUNDERSTORM
+#> 3 2006-05-05T22:55:00Z 2006-05-06T00:00:00Z 397430 SEVERE THUNDERSTORM
+#> 4 2006-05-05T22:57:00Z 2006-05-06T00:00:00Z 397431 SEVERE THUNDERSTORM
+#> 5 2006-05-05T23:03:00Z 2006-05-06T00:00:00Z 397434 SEVERE THUNDERSTORM
+#> 6 2006-05-05T23:14:00Z 2006-05-06T00:15:00Z 397437 SEVERE THUNDERSTORM
+#>   issuewfo messageid
+#> 1     KLCH    052252
+#> 2     KLUB    052256
+#> 3     KLUB    052256
+#> 4     KMAF    052258
+#> 5     KMAF    052305
+#> 6     KLUB    052315
 #> 
 #> [[3]]
 #>                                                                                                                                                          shape
@@ -345,19 +421,22 @@ swdi(dataset='plsr', startdate='20060505', enddate='20060510', bbox=c(-91,30,-90
 #> numeric(0)
 #> 
 #> $meta$totalTimeInSeconds
-#> [1] 0
+#> [1] 0.001
 #> 
 #> 
 #> $data
-#> Source: local data frame [5 x 8]
-#> 
-#>                  ztime     id        event magnitude            city     county state          source
-#>                  (chr)  (chr)        (chr)     (chr)           (chr)      (chr) (chr)           (chr)
-#> 1 2006-05-09T02:20:00Z 427540         HAIL         1    5 E KENTWOOD TANGIPAHOA    LA TRAINED SPOTTER
-#> 2 2006-05-09T02:40:00Z 427536         HAIL         1    MOUNT HERMAN WASHINGTON    LA TRAINED SPOTTER
-#> 3 2006-05-09T02:40:00Z 427537 TSTM WND DMG     -9999    MOUNT HERMAN WASHINGTON    LA TRAINED SPOTTER
-#> 4 2006-05-09T03:00:00Z 427199         HAIL         0     FRANKLINTON WASHINGTON    LA   AMATEUR RADIO
-#> 5 2006-05-09T03:17:00Z 427200      TORNADO     -9999 5 S FRANKLINTON WASHINGTON    LA LAW ENFORCEMENT
+#>                  ztime     id        event magnitude            city
+#> 1 2006-05-09T02:20:00Z 427540         HAIL         1    5 E KENTWOOD
+#> 2 2006-05-09T02:40:00Z 427536         HAIL         1    MOUNT HERMAN
+#> 3 2006-05-09T02:40:00Z 427537 TSTM WND DMG     -9999    MOUNT HERMAN
+#> 4 2006-05-09T03:00:00Z 427199         HAIL         0     FRANKLINTON
+#> 5 2006-05-09T03:17:00Z 427200      TORNADO     -9999 5 S FRANKLINTON
+#>       county state          source
+#> 1 TANGIPAHOA    LA TRAINED SPOTTER
+#> 2 WASHINGTON    LA TRAINED SPOTTER
+#> 3 WASHINGTON    LA TRAINED SPOTTER
+#> 4 WASHINGTON    LA   AMATEUR RADIO
+#> 5 WASHINGTON    LA LAW ENFORCEMENT
 #> 
 #> $shape
 #>                  shape
@@ -406,20 +485,27 @@ head( storm_meta() )
 ```
 
 ```
-#>   Column_number Column_name units Shapefile_pt_flag Shapefile_pt_attribute_name shapefile_att_type
-#> 1             1  Serial_Num   N/A                 1                  Serial_Num                  7
-#> 2             2      Season  Year                 1                      Season                  3
-#> 3             3         Num     #                 1                         Num                  3
-#> 4             4       Basin    BB                 1                       Basin                  7
-#> 5             5   Sub_basin    BB                 1                   Sub_basin                  7
-#> 6             6        Name   N/A                 1                        Name                  7
-#>   shapefile_att_len shapefile_att_prc
-#> 1                13                 0
-#> 2                 4                 0
-#> 3                 5                 0
-#> 4                 3                 0
-#> 5                 3                 0
-#> 6                57                 0
+#>   Column_number Column_name units Shapefile_pt_flag
+#> 1             1  Serial_Num   N/A                 1
+#> 2             2      Season  Year                 1
+#> 3             3         Num     #                 1
+#> 4             4       Basin    BB                 1
+#> 5             5   Sub_basin    BB                 1
+#> 6             6        Name   N/A                 1
+#>   Shapefile_pt_attribute_name shapefile_att_type shapefile_att_len
+#> 1                  Serial_Num                  7                13
+#> 2                      Season                  3                 4
+#> 3                         Num                  3                 5
+#> 4                       Basin                  7                 3
+#> 5                   Sub_basin                  7                 3
+#> 6                        Name                  7                57
+#>   shapefile_att_prc
+#> 1                 0
+#> 2                 0
+#> 3                 0
+#> 4                 0
+#> 5                 0
+#> 6                 0
 ```
 
 Or you can get back a dataset of storm names, including storm ids and their names.
@@ -482,13 +568,20 @@ head(buoys(dataset = "cwind"))
 ```
 
 ```
-#>      id                                                                     url
-#> 1 41001 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41001/catalog.html
-#> 2 41002 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41002/catalog.html
-#> 3 41004 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41004/catalog.html
-#> 4 41006 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41006/catalog.html
-#> 5 41008 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41008/catalog.html
-#> 6 41009 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41009/catalog.html
+#>      id
+#> 1 41001
+#> 2 41002
+#> 3 41004
+#> 4 41006
+#> 5 41008
+#> 6 41009
+#>                                                                       url
+#> 1 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41001/catalog.html
+#> 2 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41002/catalog.html
+#> 3 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41004/catalog.html
+#> 4 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41006/catalog.html
+#> 5 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41008/catalog.html
+#> 6 http://dods.ndbc.noaa.gov/thredds/catalog/data/cwind/41009/catalog.html
 ```
 
 ## Get buoy data
@@ -533,7 +626,7 @@ To cite `rnoaa` in publications use:
 
 <br>
 
-> Scott Chamberlain, Hart Edmund, and Karthik Ram (2015). rnoaa: NOAA climate data from R. R package version 0.5.0. https://github.com/ropensci/rnoaa
+> Scott Chamberlain, Adam Erickson, Nicholas Potter, Joseph Stachelek, Karthik Ram and Hart Edmund (2016). rnoaa: NOAA climate data from R. R package version 0.5.2. https://github.com/ropensci/rnoaa
 
 <section id="license_bugs">
 

@@ -1,7 +1,7 @@
 ---
 title: rcrossref tutorial
 layout: tutorial
-packge_version: 0.3.0
+packge_version: 0.5.2
 ---
 
 
@@ -80,9 +80,8 @@ cat(cr_cn(dois = "10.1126/science.169.3946.635", format = "bibtex"))
 ```r
 cr_cn(dois = "10.6084/m9.figshare.97218", format = "bibentry")
 #> Boettiger; C (2012). "Regime shifts in ecology and evolution (PhD
-#> Dissertation)." <URL:
-#> http://dx.doi.org/10.6084/m9.figshare.97218>, <URL:
-#> http://dx.doi.org/10.6084/m9.figshare.97218>.
+#> Dissertation)." <URL: http://doi.org/10.6084/m9.figshare.97218>,
+#> <URL: http://dx.doi.org/10.6084/m9.figshare.97218>.
 ```
 
 ## Citation count
@@ -92,7 +91,7 @@ Citation count, using OpenURL
 
 ```r
 cr_citation_count(doi="10.1371/journal.pone.0042793")
-#> [1] 5
+#> [1] 8
 ```
 
 ## Search Crossref metadata API
@@ -109,18 +108,51 @@ cr_fundref(query="NSF")
 #> 1             8          NSF           0             20
 #> 
 #> $data
-#> Source: local data frame [8 x 6]
-#> 
 #>             id      location
-#> 1 501100004190        Norway
-#> 2    100000179 United States
-#> 3 501100000930     Australia
-#> 4    100008367       Denmark
-#> 5    100003187 United States
-#> 6    100000001 United States
-#> 7    100006445 United States
+#> 1    100003187 United States
+#> 2    100008367       Denmark
+#> 3 501100004190        Norway
+#> 4    100000179 United States
+#> 5    100006445 United States
+#> 6 501100000930     Australia
+#> 7    100000001 United States
 #> 8 501100001809         China
-#> Variables not shown: name (chr), alt.names (chr), uri (chr), tokens (chr)
+#>                                                                 name
+#> 1                                          National Sleep Foundation
+#> 2                          Statens Naturvidenskabelige Forskningsrad
+#> 3                                            Norsk Sykepleierforbund
+#> 4                                         NSF Office of the Director
+#> 5 Center for Hierarchical Manufacturing, National Science Foundation
+#> 6                                         National Stroke Foundation
+#> 7                                        National Science Foundation
+#> 8                       National Natural Science Foundation of China
+#>                                                                                                                alt.names
+#> 1                                                                                                                    NSF
+#> 2                                                                    SNF, Danish National Science Foundation, Danish NSF
+#> 3                                                                                     NSF, Norwegian Nurses Organisation
+#> 4                                                                                                                     OD
+#> 5 CHM, NSF, University of Massachusetts NSF Center for Hierarchical Manufacturing, Center for Hierarchical Manufacturing
+#> 6                                                                                                                    NSF
+#> 7                                                                                                                    NSF
+#> 8                                        Natural Science Foundation of China, National Science Foundation of China, NSFC
+#>                                       uri
+#> 1    http://dx.doi.org/10.13039/100003187
+#> 2    http://dx.doi.org/10.13039/100008367
+#> 3 http://dx.doi.org/10.13039/501100004190
+#> 4    http://dx.doi.org/10.13039/100000179
+#> 5    http://dx.doi.org/10.13039/100006445
+#> 6 http://dx.doi.org/10.13039/501100000930
+#> 7    http://dx.doi.org/10.13039/100000001
+#> 8 http://dx.doi.org/10.13039/501100001809
+#>                                                                                                                                                                                                      tokens
+#> 1                                                                                                                                                                          national, sleep, foundation, nsf
+#> 2                                                                                                      statens, naturvidenskabelige, forskningsrad, snf, danish, national, science, foundation, danish, nsf
+#> 3                                                                                                                                            norsk, sykepleierforbund, nsf, norwegian, nurses, organisation
+#> 4                                                                                                                                                                        nsf, office, of, the, director, od
+#> 5 center, for, hierarchical, manufacturing, national, science, foundation, chm, nsf, university, of, massachusetts, nsf, center, for, hierarchical, manufacturing, center, for, hierarchical, manufacturing
+#> 6                                                                                                                                                                         national, stroke, foundation, nsf
+#> 7                                                                                                                                                                        national, science, foundation, nsf
+#> 8                                                                national, natural, science, foundation, of, china, natural, science, foundation, of, china, national, science, foundation, of, china, nsfc
 ```
 
 ### Check the DOI minting agency
@@ -146,19 +178,25 @@ cr_agency(dois = '10.13039/100000001')
 cr_works(filter=c(has_orcid=TRUE, from_pub_date='2004-04-04'), limit=1)
 #> $meta
 #>   total_results search_terms start_index items_per_page
-#> 1        130551           NA           0              1
+#> 1        296797           NA           0              1
 #> 
 #> $data
-#> Source: local data frame [1 x 24]
-#> 
-#>    issued score                                prefix
-#> 1 2014-12     1 http://id.crossref.org/prefix/10.1016
-#> Variables not shown: container.title (chr), reference.count (chr),
-#>   deposited (chr), title (chr), type (chr), DOI (chr), URL (chr), source
-#>   (chr), publisher (chr), indexed (chr), member (chr), ISBN (chr), subject
-#>   (chr), author (chr), issue (chr), ISSN (chr), volume (chr), license_date
-#>   (chr), license_content.version (chr), license_delay.in.days (chr),
-#>   license_URL (chr)
+#>   alternative.id container.title    created  deposited
+#> 1                                2015-11-11 2015-11-11
+#>                    DOI funder    indexed ISBN ISSN     issued link
+#> 1 10.19138/ejaz.1437.1   NULL 2015-11-14           2012-07-13 NULL
+#>                               member
+#> 1 http://id.crossref.org/member/8212
+#>                                   prefix
+#> 1 http://id.crossref.org/prefix/10.19138
+#>                               publisher reference.count score   source
+#> 1 Academic Journal, Al-Azhar University               0     1 CrossRef
+#>   subject                                  title   type
+#> 1         الإعجاز في قوله تعالى "والمرسلات عرفا" report
+#>                                      URL assertion
+#> 1 http://dx.doi.org/10.19138/ejaz.1437.1      NULL
+#>                                             author
+#> 1 معوض, رامي, http://orcid.org/0000-0003-4211-3903
 #> 
 #> $facets
 #> NULL
@@ -169,14 +207,15 @@ cr_works(filter=c(has_orcid=TRUE, from_pub_date='2004-04-04'), limit=1)
 
 ```r
 cr_journals(issn=c('1803-2427','2326-4225'))
-#> Source: local data frame [2 x 12]
-#> 
-#>   issued container.title deposited
-#> 1                                 
-#> 2                                 
-#> Variables not shown: title (chr), publisher (chr), indexed (chr), ISBN
-#>   (chr), subject (chr), author (chr), issue (chr), ISSN (chr), volume
-#>   (chr)
+#>   alternative.id container.title created deposited funder indexed ISBN
+#> 1                                                    NULL             
+#> 2                                                    NULL             
+#>        ISSN issued link                      publisher subject
+#> 1 1803-2427        NULL    De Gruyter Open Sp. z o.o.         
+#> 2 2326-4225        NULL American Scientific Publishers        
+#>                                              title assertion author
+#> 1                     Journal of Landscape Ecology      NULL   NULL
+#> 2 Journal of Nutritional Ecology and Food Research      NULL   NULL
 ```
 
 ### Search license information
@@ -186,14 +225,35 @@ cr_journals(issn=c('1803-2427','2326-4225'))
 cr_licenses(query = 'elsevier')
 #> $meta
 #>   total_results search_terms start_index items_per_page
-#> 1             2     elsevier           0             20
+#> 1            12     elsevier           0             20
 #> 
 #> $data
-#> Source: local data frame [2 x 2]
-#> 
-#>                                            URL work.count
-#> 1  http://creativecommons.org/licenses/by/3.0/          1
-#> 2 http://www.elsevier.com/tdm/userlicense/1.0/        145
+#>                                                                                                                                                                                         URL
+#> 1                                                                                                                                         http://creativecommons.org/licenses/by-nc-nd/3.0/
+#> 2                                                                                                                                         http://creativecommons.org/licenses/by-nc-nd/4.0/
+#> 3                                                                                                                                               http://creativecommons.org/licenses/by/3.0/
+#> 4                                                                                                                                               http://creativecommons.org/licenses/by/4.0/
+#> 5                                                                                                                                                http://doi.wiley.com/10.1002/tdm_license_1
+#> 6                                                                                                                                         http://onlinelibrary.wiley.com/termsAndConditions
+#> 7                                                                                                                      http://www.acm.org/publications/policies/copyright_policy#Background
+#> 8                                                                                                                                      http://www.elsevier.com/open-access/userlicense/1.0/
+#> 9                                                                                                                                              http://www.elsevier.com/tdm/userlicense/1.0/
+#> 10                                                                                                                                                              http://www.springer.com/tdm
+#> 11 © 2007 Elsevier Masson SAS. All rights reserved. The patient figure in Figure 6, part A is reproduced from Ferrero et al., (2007), European Journal of Medical Genetics with permission.
+#> 12 © 2012, Elsevier Inc., All Rights Reserved. Figure 8, part (B) (images of HVCX dendrites from LMAN intact bird) is reprinted with permission from Figure 1B in Tschida and Mooney, 2012.
+#>    work.count
+#> 1          12
+#> 2           3
+#> 3           2
+#> 4           1
+#> 5        2266
+#> 6         214
+#> 7           3
+#> 8           3
+#> 9        1198
+#> 10          9
+#> 11          1
+#> 12          1
 ```
 
 ### Search based on DOI prefixes
@@ -205,15 +265,18 @@ cr_prefixes(prefixes=c('10.1016','10.1371','10.1023','10.4176','10.1093'))
 #> NULL
 #> 
 #> $data
-#> Source: local data frame [5 x 3]
-#> 
 #>                               member                              name
 #> 1   http://id.crossref.org/member/78                       Elsevier BV
 #> 2  http://id.crossref.org/member/340  Public Library of Science (PLoS)
 #> 3  http://id.crossref.org/member/297 Springer Science + Business Media
 #> 4 http://id.crossref.org/member/1989              Co-Action Publishing
 #> 5  http://id.crossref.org/member/286     Oxford University Press (OUP)
-#> Variables not shown: prefix (chr)
+#>                                  prefix
+#> 1 http://id.crossref.org/prefix/10.1016
+#> 2 http://id.crossref.org/prefix/10.1371
+#> 3 http://id.crossref.org/prefix/10.1023
+#> 4 http://id.crossref.org/prefix/10.4176
+#> 5 http://id.crossref.org/prefix/10.1093
 #> 
 #> $facets
 #> list()
@@ -226,39 +289,135 @@ cr_prefixes(prefixes=c('10.1016','10.1371','10.1023','10.4176','10.1093'))
 cr_members(query='ecology', limit = 5)
 #> $meta
 #>   total_results search_terms start_index items_per_page
-#> 1            15      ecology           0              5
+#> 1            17      ecology           0              5
 #> 
 #> $data
-#> Source: local data frame [5 x 40]
-#> 
-#>     id                                 primary_name
-#> 1 3947          Korean Association of Human Ecology
-#> 2 2151        Ecology and Civil Engineering Society
-#> 3 2080        The Japan Society of Tropical Ecology
-#> 4 2232 Japanese Society of Health and Human Ecology
-#> 5  336        Japanese Society of Microbial Ecology
-#> Variables not shown: location (chr), last_status_check_time (date),
-#>   backfile.dois (chr), current.dois (chr), total.dois (chr), prefixes
-#>   (chr), coverge.resource.links.backfile (chr), coverge.funders.current
-#>   (chr), coverge.funders.backfile (chr), coverge.references.current (chr),
-#>   coverge.references.backfile (chr), coverge.update.policies.backfile
-#>   (chr), coverge.resource.links.current (chr),
-#>   coverge.update.policies.current (chr), coverge.award.numbers.current
-#>   (chr), coverge.orcids.current (chr), coverge.orcids.backfile (chr),
-#>   coverge.award.numbers.backfile (chr), coverge.licenses.current (chr),
-#>   coverge.licenses.backfile (chr), flags.deposits.award.numbers.backfile
-#>   (chr), flags.deposits (chr), flags.deposits.licenses.backfile (chr),
-#>   flags.deposits.resource.links.backfile (chr),
-#>   flags.deposits.licenses.current (chr), flags.deposits.orcids.current
-#>   (chr), flags.deposits.funders.backfile (chr),
-#>   flags.deposits.references.current (chr), flags.deposits.orcids.backfile
-#>   (chr), flags.deposits.references.backfile (chr),
-#>   flags.deposits.resource.links.current (chr),
-#>   flags.deposits.award.numbers.current (chr),
-#>   flags.deposits.update.policies.backfile (chr),
-#>   flags.deposits.funders.current (chr),
-#>   flags.deposits.update.policies.current (chr), flags.deposits.articles
-#>   (chr), names (chr), tokens (chr)
+#>     id                                             primary_name
+#> 1 7052                         Chinese Journal of Plant Ecology
+#> 2 6933                          Knowledge Ecology International
+#> 3 7278 Korean Society of Ecology and Infrastructure Engineering
+#> 4 7745                             Institute of Applied Ecology
+#> 5  336                    Japanese Society of Microbial Ecology
+#>                                                                 location
+#> 1                           Room 216 15 Fuxing Road Beijing 100038 China
+#> 2 1621 Connecticut Avenue NW Suite 500 Washington DC 20009 United States
+#> 3                245 Daehangno Yusong Yusong Daejeon 305-806 South Korea
+#> 4          Bld. 1, 46 Myasnitskaya Str. Moscow 101000 Russian Federation
+#> 5                          5-3 Yonbancho Chiyoda-ku Tokyo 102-0081 Japan
+#>   last_status_check_time backfile.dois current.dois total.dois prefixes
+#> 1             2016-05-02           644          141        785 10.17521
+#> 2             2016-05-02             0            0          0 10.17534
+#> 3             2016-05-02             6           56         62 10.17820
+#> 4             2016-05-02             0          527        527 10.18470
+#> 5             2016-05-02           889           66        955  10.1264
+#>   coverge.funders.backfile coverge.licenses.backfile
+#> 1                        0                         0
+#> 2                        0                         0
+#> 3                        0                         0
+#> 4                        0                         0
+#> 5                        0                         0
+#>   coverge.funders.current coverge.resource.links.backfile
+#> 1                       0                               0
+#> 2                       0                               0
+#> 3                       0                               0
+#> 4                       0                               0
+#> 5                       0                               0
+#>   coverge.orcids.backfile coverge.update.policies.current
+#> 1                       0                               0
+#> 2                       0                               0
+#> 3                       0                               0
+#> 4                       0                               0
+#> 5                       0                               0
+#>   coverge.orcids.current coverge.references.backfile
+#> 1                      0         0.00155279505997896
+#> 2                      0                           0
+#> 3                      0                           1
+#> 4                      0                           0
+#> 5                      0           0.676040470600128
+#>   coverge.award.numbers.backfile coverge.update.policies.backfile
+#> 1                              0                                0
+#> 2                              0                                0
+#> 3                              0                                0
+#> 4                              0                                0
+#> 5                              0                                0
+#>   coverge.licenses.current coverge.award.numbers.current
+#> 1                        0                             0
+#> 2                        0                             0
+#> 3                        0                             0
+#> 4                        0                             0
+#> 5                        0                             0
+#>   coverge.resource.links.current coverge.references.current
+#> 1                              0                          0
+#> 2                              0                          0
+#> 3                              0          0.839285731315613
+#> 4              0.905123353004456                          0
+#> 5                              0          0.727272748947144
+#>   flags.deposits.orcids.current flags.deposits
+#> 1                         FALSE           TRUE
+#> 2                         FALSE          FALSE
+#> 3                         FALSE           TRUE
+#> 4                         FALSE           TRUE
+#> 5                         FALSE           TRUE
+#>   flags.deposits.update.policies.backfile
+#> 1                                   FALSE
+#> 2                                   FALSE
+#> 3                                   FALSE
+#> 4                                   FALSE
+#> 5                                   FALSE
+#>   flags.deposits.award.numbers.current
+#> 1                                FALSE
+#> 2                                FALSE
+#> 3                                FALSE
+#> 4                                FALSE
+#> 5                                FALSE
+#>   flags.deposits.resource.links.current flags.deposits.articles
+#> 1                                 FALSE                    TRUE
+#> 2                                 FALSE                   FALSE
+#> 3                                 FALSE                    TRUE
+#> 4                                  TRUE                    TRUE
+#> 5                                 FALSE                    TRUE
+#>   flags.deposits.funders.current flags.deposits.references.backfile
+#> 1                          FALSE                               TRUE
+#> 2                          FALSE                              FALSE
+#> 3                          FALSE                               TRUE
+#> 4                          FALSE                              FALSE
+#> 5                          FALSE                               TRUE
+#>   flags.deposits.licenses.backfile flags.deposits.award.numbers.backfile
+#> 1                            FALSE                                 FALSE
+#> 2                            FALSE                                 FALSE
+#> 3                            FALSE                                 FALSE
+#> 4                            FALSE                                 FALSE
+#> 5                            FALSE                                 FALSE
+#>   flags.deposits.references.current flags.deposits.resource.links.backfile
+#> 1                             FALSE                                  FALSE
+#> 2                             FALSE                                  FALSE
+#> 3                              TRUE                                  FALSE
+#> 4                             FALSE                                  FALSE
+#> 5                              TRUE                                  FALSE
+#>   flags.deposits.orcids.backfile flags.deposits.funders.backfile
+#> 1                          FALSE                           FALSE
+#> 2                          FALSE                           FALSE
+#> 3                          FALSE                           FALSE
+#> 4                          FALSE                           FALSE
+#> 5                          FALSE                           FALSE
+#>   flags.deposits.update.policies.current flags.deposits.licenses.current
+#> 1                                  FALSE                           FALSE
+#> 2                                  FALSE                           FALSE
+#> 3                                  FALSE                           FALSE
+#> 4                                  FALSE                           FALSE
+#> 5                                  FALSE                           FALSE
+#>                                                      names
+#> 1                         Chinese Journal of Plant Ecology
+#> 2                          Knowledge Ecology International
+#> 3 Korean Society of Ecology and Infrastructure Engineering
+#> 4                             Institute of Applied Ecology
+#> 5                    Japanese Society of Microbial Ecology
+#>                                                           tokens
+#> 1                           chinese, journal, of, plant, ecology
+#> 2                              knowledge, ecology, international
+#> 3 korean, society, of, ecology, and, infrastructure, engineering
+#> 4                                institute, of, applied, ecology
+#> 5                      japanese, society, of, microbial, ecology
 #> 
 #> $facets
 #> NULL
@@ -271,16 +430,11 @@ cr_members(query='ecology', limit = 5)
 
 ```r
 cr_r()
-#>  [1] "10.1007/jhep08(2011)121"          
-#>  [2] "10.1103/physrev.84.1059.4"        
-#>  [3] "10.5248/124.cvr"                  
-#>  [4] "10.1097/ta.0b013e3180479827"      
-#>  [5] "10.1016/s0022-510x(97)84936-2"    
-#>  [6] "10.1016/0305-0491(79)90260-8"     
-#>  [7] "10.1063/1.1677808"                
-#>  [8] "10.1016/0009-2614(72)87067-2"     
-#>  [9] "10.1016/j.jaad.2014.01.097"       
-#> [10] "10.1097/01.sa.0000450914.29374.55"
+#>  [1] "10.1103/physrevb.59.3086"         "10.3807/josk.2015.19.1.095"      
+#>  [3] "10.1159/000406186"                "10.3775/jie.18.797"              
+#>  [5] "10.1109/pgec.1967.264707"         "10.1177/1354068806064733"        
+#>  [7] "10.1007/s10862-007-9070-0"        "10.1016/0893-6080(94)90013-2"    
+#>  [9] "10.1787/9789264007550-sum-sv"     "10.1111/j.1399-302x.2007.00354.x"
 ```
 
 You can pass in the number of DOIs you want back (default is 10)
@@ -288,8 +442,7 @@ You can pass in the number of DOIs you want back (default is 10)
 
 ```r
 cr_r(2)
-#> [1] "10.4158/ep.5.3.109"                    
-#> [2] "10.1163/1573-3912_ei2glos_sim_gi_00745"
+#> [1] "10.2134/jeq2007.0203" "10.1007/bf00404592"
 ```
 
 ### The older functions and API
@@ -299,18 +452,18 @@ Search by author
 
 ```r
 cr_search(query = c("renear", "palmer"), rows = 3, sort = "year")[1:2,-6]
-#>                                              doi     score normalizedScore
-#> 1 http://dx.doi.org/10.1136/flgastro-2014-100540 0.4934665              15
-#> 2 http://dx.doi.org/10.1097/aln.0000000000000554 0.4934665              15
-#>                                                title
-#> 1 New and emerging endoscopic haemostasis techniques
-#> 2                  Tilting at Aortocaval Compression
-#>                                                                                                          fullCitation
-#> 1 R. Palmer, B. Braden, 2015, 'New and emerging endoscopic haemostasis techniques', <i>Frontline Gastroenterology</i>
-#> 2     Craig M. Palmer, 2015, 'Tilting at Aortocaval Compression', <i>Anesthesiology</i>, vol. 122, no. 2, pp. 231-232
+#>                                                   doi     score
+#> 1         http://dx.doi.org/10.1007/978-3-658-12433-5 0.7289054
+#> 2 http://dx.doi.org/10.13110/merrpalmquar1982.62.1.fm 0.6872187
+#>   normalizedScore                                 title
+#> 1              22 Berufsbezogene Kreativitätsdiagnostik
+#> 2              20                          Front Matter
+#>                                                                  fullCitation
+#> 1               Carolin Palmer, 2016, 'Berufsbezogene Kreativitätsdiagnostik'
+#> 2 2016, 'Front Matter', <i>Merrill-Palmer Quarterly</i>, vol. 62, no. 1, p. i
 #>   year
-#> 1 2015
-#> 2 2015
+#> 1 2016
+#> 2 2016
 ```
 
 Search by DOI
@@ -319,7 +472,7 @@ Search by DOI
 ```r
 cr_search(doi = "10.1890/10-0340.1")[,-6]
 #>                                   doi    score normalizedScore
-#> 1 http://dx.doi.org/10.1890/10-0340.1 18.60046             100
+#> 1 http://dx.doi.org/10.1890/10-0340.1 17.97163             100
 #>                                                            title
 #> 1 The arcsine is asinine: the analysis of proportions in ecology
 #>                                                                                                                                           fullCitation
@@ -342,10 +495,10 @@ cr_search_free(queries)[,-4]
 #> 3            William Gunn A Crosstalk Between Myeloma Cells  TRUE
 #> 4 karthik ram Metapopulation dynamics override local limits  TRUE
 #>                                              doi    score
-#> 1 http://dx.doi.org/10.1371/journal.pone.0000308 3.353887
-#> 2        http://dx.doi.org/10.5210/fm.v15i7.2874 3.747528
-#> 3  http://dx.doi.org/10.1634/stemcells.2005-0220 2.833399
-#> 4            http://dx.doi.org/10.1890/08-0228.1 3.966518
+#> 1 http://dx.doi.org/10.1371/journal.pone.0000308 3.247673
+#> 2        http://dx.doi.org/10.5210/fm.v15i7.2874 3.595765
+#> 3  http://dx.doi.org/10.1634/stemcells.2005-0220 2.813690
+#> 4            http://dx.doi.org/10.1890/08-0228.1 3.950688
 ```
 
 <section id="citing">

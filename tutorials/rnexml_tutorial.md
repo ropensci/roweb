@@ -244,6 +244,7 @@ Create an `nexml` object for the phylogeny `bird.orders` and add appropriate met
 
 
 ```r
+data("bird.orders")
 birds <- add_trees(bird.orders)
 birds <- add_basic_meta(
   title = "Phylogeny of the Orders of Birds From Sibley and Ahlquist",
@@ -517,7 +518,7 @@ otu_meta
 ```
 
 ```
-Source: local data frame [215 x 9]
+Source: local data frame [216 x 9]
 
     meta property datatype content     xsi.type        rel
    (chr)    (lgl)    (lgl)   (lgl)        (chr)      (chr)
@@ -581,13 +582,26 @@ Now that we have nice `data.frame` objects for all our data, it's easy to join t
 taxa %>%
   left_join(char, by = c("label" = "taxa")) %>%
   left_join(otu_meta, by = "otu") %>%
-  select(id, label, x, href)
+  select(otu, label, x, href)
 ```
 
 ```
-Error: All select() inputs must resolve to integer column positions.
-The following do not:
-*  id
+Source: local data frame [233 x 4]
+
+     otu                       label        x
+   (chr)                       (chr)    (dbl)
+1   ou24 Allenopithecus_nigroviridis 8.465900
+2   ou25         Allocebus_trichotis 4.368181
+3   ou26           Alouatta_belzebul 8.729074
+4   ou27             Alouatta_caraya 8.628735
+5   ou28          Alouatta_coibensis 8.764053
+6   ou29              Alouatta_fusca 8.554489
+7   ou30           Alouatta_palliata 8.791790
+8   ou31              Alouatta_pigra 8.881836
+9   ou32               Alouatta_sara 8.796339
+10  ou33          Alouatta_seniculus 8.767173
+..   ...                         ...      ...
+Variables not shown: href (chr)
 ```
 
 Because these are all from the same otus block anyway, we haven't selected that column, but were it of interest it is also available in the taxa table.

@@ -1,7 +1,7 @@
 ---
 title: rvertnet tutorial
 layout: tutorial
-packge_version: 0.4.1
+packge_version: 0.4.4
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
@@ -30,7 +30,7 @@ install.packages("rvertnet")
 Or the development version from GitHub using the `devtools` package:
 
 ```{r eval=FALSE}
-install.packages("devtools")
+if (!require("devtools")) install.packages("devtools")
 devtools::install_github("ropensci/rvertnet")
 ```
 
@@ -143,9 +143,9 @@ To cite `rvertnet` in publications use:
 
 <br>
 
->  Scott Chamberlain, Chris Ray and Vijay Barve (2015). rvertnet: Search
+>  Scott Chamberlain, Chris Ray and Vijay Barve (2016). rvertnet: Search
   VertNet, a Database of Vertebrate Specimen Records. R package version
-  0.4.1. https://github.com/ropensci/rvertnet
+  0.4.4. https://github.com/ropensci/rvertnet
 
 <section id="license_bugs">
 

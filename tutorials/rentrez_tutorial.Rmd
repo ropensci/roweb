@@ -1,7 +1,7 @@
 ---
 title: rentrez tutorial
 layout: tutorial
-packge_version: 1.0.0
+packge_version: 1.0.2
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
@@ -63,7 +63,7 @@ library("rentrez")
 
 <section id="usage">
 
-### Getting started with rentrez
+### Getting started with the rentrez
 
 To make the most of all the data the NCBI shares you need to know a little about
 their databases, the records they contain and the ways you can find those
@@ -71,7 +71,7 @@ records. The [NCBI provides extensive documentation for each of their
 databases](http://www.ncbi.nlm.nih.gov/home/documentation.shtml) and for the
 [EUtils API that `rentrez` takes advantage of](http://www.ncbi.nlm.nih.gov/books/NBK25501/).
 There are also some helper functions in `rentrez` that help users learn their
-way around the NCBI's databases.
+way around the NCBI's databases. 
 
 First, you can use `entrez_dbs()` to find the list of available databases:
 
@@ -110,7 +110,7 @@ you've started using `rentrez`, so let's get started.
 
 Very often, the first thing you'll want to do with `rentrez` is search a given
 NCBI database to find records that match some keywords. You can do this using
-the function `entrez_search()`. In the simplest case you just need to provide a
+the function `entrez_search()`. In the simplest case you just need to provide a 
 database name (`db`) and a search term (`term`) so let's search PubMed for
 articles about the `R language`:
 
@@ -118,7 +118,7 @@ articles about the `R language`:
 ```{r eg_search}
 r_search <- entrez_search(db="pubmed", term="R Language")
 ```
-The object returned by a search acts like a list, and you can get a summary of
+The object returned by a search acts like a list, and you can get a summary of 
 its contents by printing it.
 
 ```{r print_search}
@@ -172,7 +172,7 @@ entrez_search(db="sra",
               retmax=0)
 ```
 
-We can narrow our focus to only those records that have been added recently (using the colon to
+We can narrow our focus to only those records that have been added recently (using the colon to 
 specify a range of values):
 
 
@@ -199,7 +199,7 @@ of available terms or any given data base with `entrez_db_searchable()`
 entrez_db_searchable("sra")
 ```
 
-#### Precise queries using MeSH terms
+####Precise queries using MeSH terms
 
 In addition to the search terms described above, the NCBI allows searches using
 [Medical Subject Heading (MeSH)](http://www.ncbi.nlm.nih.gov/mesh) terms. These
@@ -216,8 +216,8 @@ entrez_search(db   = "pubmed",
 ```
 
 The complete set of MeSH terms is available as a database from the NCBI. That
-means it is possible to download detailed information about each term and find
-the ways in which terms relate to each other using `rentrez`. You can search
+means it is possible to download detailed information about each term and find 
+the ways in which terms relate to each other using `rentrez`. You can search 
 for specific terms with `entrez_search(db="mesh", term =...)` and learn about the
 results of your search using the tools described below.
 
@@ -227,7 +227,7 @@ As you can see above, the  object returned by `entrez_search()` includes the
 number of records matching a given search. This means you can learn a little
 about the composition of, or trends in, the records stored in the NCBI's
 databases using only the search utility. For instance, let's track the rise of
-the scientific buzzword "connectome" in PubMed, programmatically creating
+the scientific buzzword "connectome" in PubMed, programmatically creating 
 search terms for the `PDAT` field:
 
 ```{r, connectome, fig.width=5, fig.height=4, fig.align='center'}
@@ -250,11 +250,11 @@ type are connected to  other records within the NCBI or to external data
 sources. The function `entrez_link()` allows users to discover these links
 between records.
 
-#### My god, it's full of links
+####My god, it's full of links
 
 To get an idea of the degree to which records in the NCBI are cross-linked we
-can find all NCBI data associated with a single gene (in this case the
-Amyloid Beta Precursor gene, the product of which is associated with the
+can find all NCBI data associated with a single gene (in this case the 
+Amyloid Beta Precursor gene, the product of which is associated with the 
 plaques that form in the brains of  Alzheimer's Disease patients).
 
 The function `entrez_link()` can be used to find cross-referenced records. In
@@ -274,7 +274,7 @@ information is in `links` (and there's a lot of them!):
 ```{r elink_link}
 all_the_links$links
 ```
-The names of the list elements are in the format `[source_database]_[linked_database]`
+The names of the list elements are in the format `[source_database]_[linked_database]` 
 and the elements themselves contain a vector of linked-IDs. So, if we want to
 find open access publications associated with this gene we could get linked records
 in PubMed Central:
@@ -283,20 +283,20 @@ in PubMed Central:
 all_the_links$links$gene_pmc[1:10]
 ```
 
-Or if were interested in this gene's role in diseases we could find links to OMIM:
+Or if were interested in this gene's role in diseases we could find links to clinVar:
 
 ```{r, elink_omim}
-all_the_links$links$gene_omim
+all_the_links$links$gene_clinvar
 
 ```
 
-#### Narrowing our focus
+####Narrowing our focus
 
 If we know beforehand what sort of links we'd like to find , we can
 to use the `db` argument to narrow the focus of a call to `entrez_link`.
 
-For instance, say we are interested in knowing about all of the
-RNA transcripts associated with the Amyloid Beta Precursor gene in humans.
+For instance, say we are interested in knowing about all of the 
+RNA transcripts associated with the Amyloid Beta Precursor gene in humans. 
 Transcript sequences are stored in the nucleotide database (referred
 to as `nuccore` in EUtils), so to find transcripts associated with a given gene
 we need to set `dbfrom=gene` and `db=nuccore`.
@@ -307,7 +307,7 @@ nuc_links
 nuc_links$links
 ```
 The object we get back contains links to the nucleotide database generally, but
-also to special subsets of that database like [refseq](http://www.ncbi.nlm.nih.gov/refseq/).
+also to special subsets of that database like [refseq](http://www.ncbi.nlm.nih.gov/refseq/). 
 We can take advantage of this narrower set of links to find IDs that match unique
 transcripts from our gene of interest.
 
@@ -315,15 +315,15 @@ transcripts from our gene of interest.
 nuc_links$links$gene_nuccore_refseqrna
 ```
 We can use these ids in calls to `entrez_fetch()` or `entrez_summary()` to learn
-more about the transcripts they represent.
+more about the transcripts they represent. 
 
-#### External links
+####External links
 
 In addition to finding data within the NCBI, `entrez_link` can turn up
 connections to external databases. Perhaps the most interesting example is
 finding links to the full text of papers in PubMed. For example, when I wrote
 this document the first paper linked to Amyloid Beta Precursor  had a unique ID of
-`25500142`. We can find links to the full text of that paper with `entrez_link`
+`25500142`. We can find links to the full text of that paper with `entrez_link` 
 by setting the `cmd` argument to 'llinks':
 
 ```{r, outlinks}
@@ -338,7 +338,7 @@ source of data on this paper:
 paper_links$linkouts
 ```
 
-Each of those linkout objects contains quite a lot of information, but the URL
+Each of those linkout objects contains quite a lot of information, but the URL 
 is probably the most useful. For that reason, `rentrez` provides the
 function `linkout_urls` to make extracting just the URL simple:
 
@@ -348,14 +348,14 @@ linkout_urls(paper_links)
 
 The full list of options for the `cmd` argument are given in in-line
 documentation (`?entrez_link`). If you are interested in finding full text
-records for a large number of articles checkout the package
+records for a large number of articles checkout the package 
 [fulltext](https://github.com/ropensci/fulltext) which makes use of multiple
 sources (including the NCBI) to discover the full text articles.
 
-#### Using more than one ID
+####Using more than one ID
 
 It is possible to pass more than one ID to `entrez_link()`. By default, doing so
-will give you a single elink object containing the complete set of links for
+will give you a single elink object containing the complete set of links for 
 _all_ of the IDs that you specified. So, if you were looking for protein IDs
 related to specific genes you could do:
 
@@ -376,7 +376,6 @@ all_links_sep
 lapply(all_links_sep, function(x) x$links$gene_protein)
 ```
 
-
 ### Getting summary data: `entrez_summary()`
 
 Having found the unique IDs for some records via `entrez_search` or `entrez_link()`, you are
@@ -388,7 +387,7 @@ you are after, so `rentrez` provides functions to parse and summarise summary
 records.
 
 
-#### The summary record
+####The summary record
 
 `entrez_summary()` takes a vector of unique IDs for the samples you want to get
 summary information from. Let's start by finding out something about the paper
@@ -413,7 +412,7 @@ taxize_summ$articleids
 taxize_summ$pmcrefcount
 ```
 
-#### Dealing with many records
+####Dealing with many records
 
 If you give `entrez_summary()` a vector with more than one ID you'll get a
 list of summary records back. Let's get those _Plasmodium vivax_ papers we found
@@ -439,14 +438,14 @@ date_and_cite <- extract_from_esummary(multi_summs, c("pubdate", "pmcrefcount", 
 knitr::kable(head(t(date_and_cite)), row.names=FALSE)
 ```
 
-### Fetching full records: `entrez_fetch()`
+###Fetching full records: `entrez_fetch()`
 
 As useful as the summary records are, sometimes they just don't have the
 information that you need. If you want a complete representation of a record you
 can use `entrez_fetch`, using the argument `rettype` to specify the format you'd
 like the record in.
 
-#### Fetch DNA sequences in fasta format
+####Fetch DNA sequences in fasta format
 
 Let's extend the example given in the `entrez_link()` section about finding
 transcript for a given gene. This time we will fetch cDNA sequences of those
@@ -476,14 +475,14 @@ printing all those thousands of bases we can take a peak at the top of the file:
 cat(strwrap(substr(all_recs, 1, 500)), sep="\n")
 ```
 
-If we wanted to use these sequences in some other application we could write them
+If we wanted to use these sequences in some other application we could write them 
 to file:
 
 ```r
 write(all_recs, file="my_transcripts.fasta")
 ```
 
-Alternatively, if you want to use them  within an R session
+Alternatively, if you want to use them  within an R session  
 we could write them to a  temporary file then read that. In this case I'm using `read.dna()` from the
 pylogenetics package ape (but not executing the code block in this vignette, so
 you don't have to install that package):
@@ -494,7 +493,7 @@ write(all_recs, temp)
 parsed_recs <- ape::read.dna(all_recs, temp)
 ```
 
-#### Fetch a parsed XML document
+####Fetch a parsed XML document
 
 Most of the NCBI's databases can return records in XML format. In additional to
 downloading the text-representation of these files, `entrez_fetch()` can return
@@ -519,7 +518,7 @@ tax_list$Taxon$GeneticCode
 ```
 
 For more complex records, which generate deeply-nested lists, you can use
-[XPath expressions](https://en.wikipedia.org/wiki/XPath) along with the function
+[XPath expressions](https://en.wikipedia.org/wiki/XPath) along with the function 
 `XML::xpathSApply` or the extraction operatord `[` and `[[` to extract specific parts of the
 file. For instance, we can get the scientific name of each taxon in _T.
 thermophila_'s lineage by specifying a path through the XML
@@ -531,7 +530,7 @@ tt_lineage[1:4]
 
 As the name suggests, `XML::xpathSApply()` is a counterpart of base R's
 `sapply`, and can be used to apply a function to
-nodes in an XML object. A particularly useful function to apply is `XML::xmlValue`,
+nodes in an XML object. A particularly useful function to apply is `XML::xmlValue`, 
 which returns the content of the node:
 
 ```{r, Tt_apply}
@@ -541,14 +540,14 @@ There are a few more complex examples of using `XPath` [on the rentrez wiki](htt
 
 <a name="web_history"></a>
 
-### Using NCBI's Web History features
+###Using NCBI's Web History features
 
 When you are dealing with very large queries it can be time  consuming to pass
 long vectors of unique IDs to and from the NCBI. To avoid this problem, the NCBI
 provides a feature called "web history" which allows users to store IDs on the
 NCBI servers then refer to them in future calls.
 
-#### Post a set of IDs to the NCBI for later use: `entrez_post()`
+####Post a set of IDs to the NCBI for later use: `entrez_post()`
 
 If you have a list of many NCBI IDs that you want to use later on, you can post
 them to the NCBI's severs. In order to provide a brief example, I'm going to post just one
@@ -558,10 +557,10 @@ ID, the `omim` identifier for asthma:
 upload <- entrez_post(db="omim", id=600807)
 upload
 ```
-The NCBI sends you back some information you can use to refer to the posted IDs.
-In `rentrez`, that information is represented as a `web_history` object.
+The NCBI sends you back some information you can use to refer to the posted IDs. 
+In `rentrez`, that information is represented as a `web_history` object. 
 
-#### Get a `web_history` object from `entrez_search` or `entrez_link()`
+####Get a `web_history` object from `entrez_search` or `entrez_link()`
 
 In addition to directly uploading IDs to the NCBI, you can use the web history
 features with `entrez_search` and `entrez_link`. For instance, imagine you wanted to
@@ -584,37 +583,42 @@ snail_coi$web_history
 ```
 
 Similarity, `entrez_link()` can return `web_history` objects by using the `cmd`
-`neighbor_history`. Let's find SNPs associated with asthma (using the `omim` ID
-mentioned above):
+`neighbor_history`. Let's find genetic variants (from the clinvar database)
+associated with asthma (using the same OMIM ID we identified earlier):
+
 
 ```{r, asthma_links}
-asthma_snps <- entrez_link(dbfrom="omim", db="snp", cmd="neighbor_history", id=600807)
-asthma_snps$web_histories
+asthma_clinvar <- entrez_link(dbfrom="omim", db="clinvar", cmd="neighbor_history", id=600807)
+asthma_clinvar$web_histories
 ```
 
 As you can see, instead of returning lists of IDs for each linked database (as
 it would be default), `entrez_link()` now  returns a list of web_histories.
 
-#### Use a `web_history` object
+####Use a `web_history` object
 
 Once you have those IDs stored on the NCBI's servers, you are going to want to
 do something with them. The functions `entrez_fetch()` `entrez_summary()` and
 `entrez_link()` can all use `web_history` objects in exactly the same way they
-use IDs.
+use IDs. 
 
-So, we could repeat the last example (finding SNPs linked to asthma), but this
+So, we could repeat the last example (finding variants linked to asthma), but this
 time using the ID we uploaded earlier
 
 ```{r, asthma_links_upload}
-asthma_snps <- entrez_link(dbfrom="omim", db="snp", cmd="neighbor_history", web_history=upload)
-asthma_snps
+asthma_variants <- entrez_link(dbfrom="omim", db="clinvar", cmd="neighbor_history", web_history=upload)
+asthma_variants
 ```
 
-... then summarize each linked SNP using `entrez_summary()`:
-
+... if we want to get some genetic information about these variants we need to
+map our clinvar IDs to SNP IDs:
+                           
 
 ```{r, links}
-snp_summ <- entrez_summary(db="snp", web_history=asthma_snps$web_histories$omim_snp)
+snp_links <- entrez_link(dbfrom="clinvar", db="snp", 
+                         web_history=asthma_variants$web_histories$omim_clinvar,
+                         cmd="neighbor_history")
+snp_summ <- entrez_summary(db="snp", web_history=snp_links$web_histories$clinvar_snp)
 knitr::kable(extract_from_esummary(snp_summ, c("chr", "fxn_class", "global_maf")))
 ```
 
@@ -635,7 +639,7 @@ for( seq_start in seq(1,200,50)){
 }
 ```
 
-### What next ?
+###What next ?
 
 This tutorial has introduced you to the core functions of `rentrez`, there are
 almost limitless ways that you could put them together. [Check out the wiki](https://github.com/ropensci/rentrez/wiki)
@@ -652,7 +656,7 @@ To cite `rentrez` in publications use:
 
 <br>
 
-> David Winter (2015). rentrez: Entrez in R. R package version 1.0.0. https://github.com/ropensci/rentrez
+> David Winter (2016). rentrez: Entrez in R. R package version 1.0.2. https://github.com/ropensci/rentrez
 
 <section id="license_bugs">
 

@@ -1,11 +1,16 @@
 ---
 title: AntWeb tutorial
 layout: tutorial
-packge_version: 0.6.6
+packge_version: 0.7.0
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
-opts_chunk$set(fig.path="../assets/tutorial-images/antweb/")
+knitr::opts_chunk$set(
+  fig.path = "../assets/tutorial-images/antweb/",
+  comment = "#>",
+	warning = FALSE, 
+	message = FALSE
+)
 ```
 
 [AntWeb](http://www.antweb.org/) is a repository that boasts a wealth of natural history data, digital images, and specimen records on ant species from a large community of museum curators.
@@ -13,9 +18,6 @@ opts_chunk$set(fig.path="../assets/tutorial-images/antweb/")
 <section id="installation">
 
 ## Installation
-
-A stable version of the package (`0.6.1`) is now available on CRAN.
-
 
 ```{r eval=FALSE}
 install.packages("AntWeb")

@@ -1,12 +1,19 @@
 ---
 title: solr tutorial
 layout: tutorial
-packge_version: 0.1.4
+packge_version: 0.1.6
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
-opts_chunk$set(fig.path="../assets/tutorial-images/solr/", message=FALSE)
+knitr::opts_chunk$set(
+  fig.path = "../assets/tutorial-images/solr/", 
+  warning = FALSE,
+  message = FALSE,
+  comment = "#>"
+)
 ```
+
+> This package has been rebooted as `solrium` - check out the tutorial at [https://ropensci.org/tutorials/solrium_tutorial.html](https://ropensci.org/tutorials/solrium_tutorial.html)
 
 <section id="installation">
 
@@ -22,14 +29,13 @@ install.packages("solr")
 Development version from Github
 
 ```{r installgithub, eval=FALSE}
-install.packages("devtools")
-library(devtools)
-install_github("ropensci/solr")
+if (!require("devtools")) install.packages("devtools")
+devtools::install_github("ropensci/solr")
 ```
 
 Load
 
-```{r load, message=FALSE}
+```{r}
 library("solr")
 ```
 
@@ -150,7 +156,7 @@ To cite `solr` in publications use:
 
 <br>
 
-> Scott Chamberlain (2014). solr: General purpose R interface to Solr. R package version 0.1.4. http://CRAN.R-project.org/package=solr
+> Scott Chamberlain (2016). solr: General purpose R interface to Solr. R package version 0.1.6. http://CRAN.R-project.org/package=solr
 
 <section id="license_bugs">
 

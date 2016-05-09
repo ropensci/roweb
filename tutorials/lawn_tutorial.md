@@ -1,7 +1,7 @@
 ---
 title: lawn tutorial
 layout: tutorial
-packge_version: 0.1.4
+packge_version: 0.1.7
 ---
 
 
@@ -12,7 +12,7 @@ packge_version: 0.1.4
 
 There is an additional helper function (see `view()`) in this package to help visualize data with interactive maps via the `leaflet` package ([https://github.com/rstudio/leaflet](https://github.com/rstudio/leaflet)). Note that `leaflet` is not required to install `lawn` - it's in Suggests, not Imports or Depends.
 
-<section id="installation">
+<section id="installation"> 
 
 ## Installation
 
@@ -145,7 +145,7 @@ lawn_distance(from, to)
 ```r
 lawn_random(n = 2)
 #> <FeatureCollection>
-#>   Bounding box: -95.9 -27.5 127.6 49.4
+#>   Bounding box: -143.7 -70.6 178.1 16.5
 #>   No. features: 2
 #>   No. points: 4
 #>   Properties: NULL
@@ -155,7 +155,7 @@ lawn_random(n = 2)
 ```r
 lawn_random(n = 5)
 #> <FeatureCollection>
-#>   Bounding box: -155.2 -88.4 88.1 7.9
+#>   Bounding box: -114.0 -89.5 54.5 -21.1
 #>   No. features: 5
 #>   No. points: 10
 #>   Properties: NULL
@@ -168,7 +168,7 @@ Positions
 
 ```r
 gr_position()
-#> [1] -23.04592 -51.32943
+#> [1] -114.45746   55.92978
 ```
 
 Points
@@ -177,7 +177,7 @@ Points
 ```r
 gr_point(2)
 #> <FeatureCollection>
-#>   Bounding box: -1.4 24.6 174.8 65.0
+#>   Bounding box: -106.3 -27.0 30.5 41.6
 #>   No. features: 2
 #>   No. points: 4
 #>   Properties: NULL
@@ -189,7 +189,7 @@ Polygons
 ```r
 gr_polygon(n = 1, vertices = 5, max_radial_length = 5)
 #> <FeatureCollection>
-#>   Bounding box: -74.6 -16.2 -68.8 -8.2
+#>   Bounding box: -148.7 25.9 -141.9 28.9
 #>   No. features: 1
 #>   No. points: 12
 #>   Properties: NULL
@@ -202,7 +202,7 @@ gr_polygon(n = 1, vertices = 5, max_radial_length = 5)
 dat <- lawn_data$points_average
 lawn_sample(dat, 1)
 #> <FeatureCollection>
-#>   Bounding box: 10.8 59.9 10.8 59.9
+#>   Bounding box: 10.7 59.9 10.7 59.9
 #>   No. features: 1
 #>   No. points: 2
 #>   Properties: NULL
@@ -212,7 +212,7 @@ lawn_sample(dat, 1)
 ```r
 lawn_sample(dat, 2)
 #> <FeatureCollection>
-#>   Bounding box: 10.7 59.9 10.8 59.9
+#>   Bounding box: 10.7 59.9 10.7 59.9
 #>   No. features: 2
 #>   No. points: 4
 #>   Properties: NULL
@@ -374,8 +374,8 @@ To cite `lawn` in publications use:
 
 <br>
 
-> Scott Chamberlain and Jeff Hollister (2015). lawn: R Client for Turf.js for Geospatial
-  Analysis. R package version 0.1.4. https://github.com/ropensci/lawn
+> Scott Chamberlain and Jeff Hollister (2016). lawn: R Client for Turf.js for Geospatial
+  Analysis. R package version 0.1.7. https://github.com/ropensci/lawn
 
 <section id="license_bugs">
 

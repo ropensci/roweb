@@ -1,7 +1,7 @@
 ---
 title: fulltext vignette
 layout: tutorial
-packge_version: 0.1.4
+packge_version: 0.1.6
 ---
 
 
@@ -28,7 +28,7 @@ Or the development version from GitHub
 
 
 ```r
-install.packages("devtools")
+if (!require("devtools")) install.packages("devtools")
 devtools::install_github("ropensci/fulltext")
 ```
 
@@ -55,7 +55,7 @@ Search for the term _ecology_ in PLOS journals.
 #> Query:
 #>   [ecology] 
 #> Found:
-#>   [PLoS: 30831; BMC: 0; Crossref: 0; Entrez: 0; arxiv: 0; biorxiv: 0; Europe PMC: 0] 
+#>   [PLoS: 32852; BMC: 0; Crossref: 0; Entrez: 0; arxiv: 0; biorxiv: 0; Europe PMC: 0] 
 #> Returned:
 #>   [PLoS: 10; BMC: 0; Crossref: 0; Entrez: 0; arxiv: 0; biorxiv: 0; Europe PMC: 0]
 ```
@@ -69,7 +69,7 @@ res1$plos
 
 ```
 #> Query: [ecology] 
-#> Records found, returned: [30831, 10] 
+#> Records found, returned: [32852, 10] 
 #> License: [CC-BY] 
 #>                                                         id
 #> 1                             10.1371/journal.pone.0059813
@@ -79,9 +79,9 @@ res1$plos
 #> 5                             10.1371/journal.pone.0102437
 #> 6                             10.1371/journal.pone.0017342
 #> 7                             10.1371/journal.pone.0140306
-#> 8                             10.1371/journal.pone.0091497
-#> 9                             10.1371/journal.pone.0092931
-#> 10 10.1371/annotation/28ac6052-4f87-4b88-a817-0cd5743e83d6
+#> 8                             10.1371/journal.pone.0092931
+#> 9                             10.1371/journal.pone.0091497
+#> 10                            10.1371/journal.pone.0150648
 ```
 
 ## Get full text
@@ -95,12 +95,13 @@ Using the results from `ft_search()` we can grab full text of some articles
 
 ```
 #> <fulltext text>
-#> [Docs] 8 
+#> [Docs] 9 
 #> [Source] R session  
 #> [IDs] 10.1371/journal.pone.0059813 10.1371/journal.pone.0001248
 #>      10.1371/journal.pone.0080763 10.1371/journal.pone.0102437
 #>      10.1371/journal.pone.0017342 10.1371/journal.pone.0140306
-#>      10.1371/journal.pone.0091497 10.1371/journal.pone.0092931 ...
+#>      10.1371/journal.pone.0092931 10.1371/journal.pone.0091497
+#>      10.1371/journal.pone.0150648 ...
 ```
 
 Dig in to the PLOS data
@@ -112,13 +113,14 @@ out$plos
 
 ```
 #> $found
-#> [1] 8
+#> [1] 9
 #> 
 #> $dois
 #> [1] "10.1371/journal.pone.0059813" "10.1371/journal.pone.0001248"
 #> [3] "10.1371/journal.pone.0080763" "10.1371/journal.pone.0102437"
 #> [5] "10.1371/journal.pone.0017342" "10.1371/journal.pone.0140306"
-#> [7] "10.1371/journal.pone.0091497" "10.1371/journal.pone.0092931"
+#> [7] "10.1371/journal.pone.0092931" "10.1371/journal.pone.0091497"
+#> [9] "10.1371/journal.pone.0150648"
 #> 
 #> $data
 #> $data$backend
@@ -128,12 +130,13 @@ out$plos
 #> [1] "session"
 #> 
 #> $data$data
-#> 8 full-text articles retrieved 
-#> Min. Length: 3828 - Max. Length: 98949 
+#> 9 full-text articles retrieved 
+#> Min. Length: 3828 - Max. Length: 104536 
 #> DOIs: 10.1371/journal.pone.0059813 10.1371/journal.pone.0001248
 #>   10.1371/journal.pone.0080763 10.1371/journal.pone.0102437
 #>   10.1371/journal.pone.0017342 10.1371/journal.pone.0140306
-#>   10.1371/journal.pone.0091497 10.1371/journal.pone.0092931 ... 
+#>   10.1371/journal.pone.0092931 10.1371/journal.pone.0091497
+#>   10.1371/journal.pone.0150648 ... 
 #> 
 #> NOTE: extract xml strings like output['<doi>']
 #> 
@@ -142,7 +145,8 @@ out$plos
 #> [1] "10.1371/journal.pone.0059813" "10.1371/journal.pone.0001248"
 #> [3] "10.1371/journal.pone.0080763" "10.1371/journal.pone.0102437"
 #> [5] "10.1371/journal.pone.0017342" "10.1371/journal.pone.0140306"
-#> [7] "10.1371/journal.pone.0091497" "10.1371/journal.pone.0092931"
+#> [7] "10.1371/journal.pone.0092931" "10.1371/journal.pone.0091497"
+#> [9] "10.1371/journal.pone.0150648"
 ```
 
 Dig in further to get to one of the articles in XML format
@@ -240,12 +244,13 @@ res <- ft_search(query = "ecology", from = "plos")
 
 ```
 #> <fulltext text>
-#> [Docs] 8 
+#> [Docs] 9 
 #> [Source] R session  
 #> [IDs] 10.1371/journal.pone.0059813 10.1371/journal.pone.0001248
 #>      10.1371/journal.pone.0080763 10.1371/journal.pone.0102437
 #>      10.1371/journal.pone.0017342 10.1371/journal.pone.0140306
-#>      10.1371/journal.pone.0091497 10.1371/journal.pone.0092931 ...
+#>      10.1371/journal.pone.0092931 10.1371/journal.pone.0091497
+#>      10.1371/journal.pone.0150648 ...
 ```
 
 Extract DOIs
@@ -287,14 +292,19 @@ x %>% chunks("doi")
 #> [1] "10.1371/journal.pone.0140306"
 #> 
 #> 
+#> $plos$`10.1371/journal.pone.0092931`
+#> $plos$`10.1371/journal.pone.0092931`$doi
+#> [1] "10.1371/journal.pone.0092931"
+#> 
+#> 
 #> $plos$`10.1371/journal.pone.0091497`
 #> $plos$`10.1371/journal.pone.0091497`$doi
 #> [1] "10.1371/journal.pone.0091497"
 #> 
 #> 
-#> $plos$`10.1371/journal.pone.0092931`
-#> $plos$`10.1371/journal.pone.0092931`$doi
-#> [1] "10.1371/journal.pone.0092931"
+#> $plos$`10.1371/journal.pone.0150648`
+#> $plos$`10.1371/journal.pone.0150648`$doi
+#> [1] "10.1371/journal.pone.0150648"
 ```
 
 Extract DOIs and categories
@@ -395,6 +405,14 @@ x %>% chunks(c("doi","categories"))
 #> [1] "Correction"
 #> 
 #> 
+#> $plos$`10.1371/journal.pone.0092931`
+#> $plos$`10.1371/journal.pone.0092931`$doi
+#> [1] "10.1371/journal.pone.0092931"
+#> 
+#> $plos$`10.1371/journal.pone.0092931`$categories
+#> [1] "Correction"
+#> 
+#> 
 #> $plos$`10.1371/journal.pone.0091497`
 #> $plos$`10.1371/journal.pone.0091497`$doi
 #> [1] "10.1371/journal.pone.0091497"
@@ -403,12 +421,72 @@ x %>% chunks(c("doi","categories"))
 #> [1] "Correction"
 #> 
 #> 
-#> $plos$`10.1371/journal.pone.0092931`
-#> $plos$`10.1371/journal.pone.0092931`$doi
-#> [1] "10.1371/journal.pone.0092931"
+#> $plos$`10.1371/journal.pone.0150648`
+#> $plos$`10.1371/journal.pone.0150648`$doi
+#> [1] "10.1371/journal.pone.0150648"
 #> 
-#> $plos$`10.1371/journal.pone.0092931`$categories
-#> [1] "Correction"
+#> $plos$`10.1371/journal.pone.0150648`$categories
+#>  [1] "Research Article"                  
+#>  [2] "Biology and life sciences"         
+#>  [3] "Ecology"                           
+#>  [4] "Community ecology"                 
+#>  [5] "Ecology and environmental sciences"
+#>  [6] "Ecology"                           
+#>  [7] "Community ecology"                 
+#>  [8] "Biology and life sciences"         
+#>  [9] "Ecology"                           
+#> [10] "Population ecology"                
+#> [11] "Ecology and environmental sciences"
+#> [12] "Ecology"                           
+#> [13] "Population ecology"                
+#> [14] "Biology and life sciences"         
+#> [15] "Population biology"                
+#> [16] "Population ecology"                
+#> [17] "Biology and life sciences"         
+#> [18] "Neuroscience"                      
+#> [19] "Cognitive science"                 
+#> [20] "Cognitive psychology"              
+#> [21] "Academic skills"                   
+#> [22] "Literacy"                          
+#> [23] "Biology and life sciences"         
+#> [24] "Psychology"                        
+#> [25] "Cognitive psychology"              
+#> [26] "Academic skills"                   
+#> [27] "Literacy"                          
+#> [28] "Social sciences"                   
+#> [29] "Psychology"                        
+#> [30] "Cognitive psychology"              
+#> [31] "Academic skills"                   
+#> [32] "Literacy"                          
+#> [33] "Biology and life sciences"         
+#> [34] "Ecology"                           
+#> [35] "Ecology and environmental sciences"
+#> [36] "Ecology"                           
+#> [37] "Biology and life sciences"         
+#> [38] "Ecology"                           
+#> [39] "Ecosystems"                        
+#> [40] "Ecology and environmental sciences"
+#> [41] "Ecology"                           
+#> [42] "Ecosystems"                        
+#> [43] "People and places"                 
+#> [44] "Population groupings"              
+#> [45] "Age groups"                        
+#> [46] "Adults"                            
+#> [47] "Biology and life sciences"         
+#> [48] "Ecology"                           
+#> [49] "Industrial ecology"                
+#> [50] "Ecology and environmental sciences"
+#> [51] "Ecology"                           
+#> [52] "Industrial ecology"                
+#> [53] "Engineering and technology"        
+#> [54] "Industrial engineering"            
+#> [55] "Industrial ecology"                
+#> [56] "Biology and life sciences"         
+#> [57] "Ecology"                           
+#> [58] "Ecological metrics"                
+#> [59] "Ecology and environmental sciences"
+#> [60] "Ecology"                           
+#> [61] "Ecological metrics"
 ```
 
 `tabularize` attempts to help you put the data that comes out of `chunks()` in to a `data.frame`, that we all know and love.
@@ -427,8 +505,9 @@ x %>% chunks(c("doi", "history")) %>% tabularize()
 #> 4 10.1371/journal.pone.0102437       2013-11-27       2014-06-19
 #> 5 10.1371/journal.pone.0017342       2010-08-24       2011-01-31
 #> 6 10.1371/journal.pone.0140306             <NA>             <NA>
-#> 7 10.1371/journal.pone.0091497             <NA>             <NA>
-#> 8 10.1371/journal.pone.0092931             <NA>             <NA>
+#> 7 10.1371/journal.pone.0092931             <NA>             <NA>
+#> 8 10.1371/journal.pone.0091497             <NA>             <NA>
+#> 9 10.1371/journal.pone.0150648       2015-09-19       2016-02-16
 ```
 
 
@@ -436,7 +515,7 @@ x %>% chunks(c("doi", "history")) %>% tabularize()
 
 ## Citing
 
-> Chamberlain Scott (2015). fulltext: Full Text of Scholarly Articles Across Many Data Sources. R package version 0.1.4. https://github.com/ropensci/fulltext
+> Chamberlain Scott (2016). fulltext: Full Text of Scholarly Articles Across Many Data Sources. R package version 0.1.6. https://github.com/ropensci/fulltext
 
 
 

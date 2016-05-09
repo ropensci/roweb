@@ -1,7 +1,7 @@
 ---
 title: elastic tutorial
 layout: tutorial
-packge_version: 0.5.0
+packge_version: 0.6.0
 ---
 
 
@@ -47,13 +47,13 @@ library("elastic")
 
 __Unix (linux/osx)__
 
-Replace `1.6.0` with the version you are working with.
+Replace `2.3.2` with the version you are working with.
 
-+ Download zip or tar file from Elasticsearch [see here for download](https://www.elastic.co/downloads/elasticsearch), e.g., `curl -L -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.6.0.tar.gz`
-+ Uncompress it: `tar -xvf elasticsearch-1.6.0.tar.gz`
-+ Move it: `sudo mv /path/to/elasticsearch-1.6.0 /usr/local`
++ Download zip or tar file from Elasticsearch [see here for download](https://www.elastic.co/downloads/elasticsearch), e.g., `curl -L -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-2.3.2.tar.gz`
++ Uncompress it: `tar -xvf elasticsearch-2.3.2.tar.gz`
++ Move it: `sudo mv elasticsearch-2.3.2 /usr/local`
 + Navigate to /usr/local: `cd /usr/local`
-+ Add shortcut: `sudo ln -s elasticsearch-1.6.0 elasticsearch`
++ Add shortcut: `sudo ln -s elasticsearch-2.3.2 elasticsearch`
 
 On OSX, you can install via Homebrew: `brew install elasticsearch`
 
@@ -80,16 +80,19 @@ connect()
 ```
 
 ```
-#> url:       http://127.0.0.1 
-#> port:      9200 
-#> username:  NULL 
-#> password:  NULL 
-#> elasticsearch details:   
-#>    status:                  200 
-#>    name:                    Artie 
-#>    Elasticsearch version:   1.6.0 
-#>    ES version timestamp:    2015-06-09T13:36:34Z 
-#>    lucene version:          4.10.4
+#> transport:  http
+#> host:       127.0.0.1
+#> port:      9200
+#> headers (names):  NULL
+#> username:  NULL
+#> password:  NULL
+#> errors:    simple
+#> Elasticsearch (ES) details:
+#>    name:                    Ningal
+#>    ES version:              2.3.1
+#>    ES version timestamp:    2016-04-04T12:25:05Z
+#>    ES build hash:           bd980929010aef404e7cb0843e61d0665269fc39
+#>    lucene version:          5.5.0
 ```
 
 On package load, your base url and port are set to `http://127.0.0.1` and `9200`, respectively. You can of course override these settings per session or for all sessions.
@@ -168,25 +171,22 @@ Search(index="plos", size=1)$hits$hits
 #> [[1]]
 #> [[1]]$`_index`
 #> [1] "plos"
-#> 
+#>
 #> [[1]]$`_type`
 #> [1] "article"
-#> 
+#>
 #> [[1]]$`_id`
-#> [1] "4"
-#> 
-#> [[1]]$`_version`
-#> [1] 1
-#> 
+#> [1] "0"
+#>
 #> [[1]]$`_score`
 #> [1] 1
-#> 
+#>
 #> [[1]]$`_source`
 #> [[1]]$`_source`$id
-#> [1] "10.1371/journal.pone.0107758"
-#> 
+#> [1] "10.1371/journal.pone.0007737"
+#>
 #> [[1]]$`_source`$title
-#> [1] "Lactobacilli Inactivate Chlamydia trachomatis through Lactic Acid but Not H2O2"
+#> [1] "Phospholipase C-β4 Is Essential for the Progression of the Normal Sleep Sequence and Ultradian Body Temperature Rhythms in Mice"
 ```
 
 Search the `plos` index, and the `article` document type, sort by title, and query for _antibody_, limit to 1 result
@@ -200,27 +200,24 @@ Search(index="plos", type="article", sort="title", q="antibody", size=1)$hits$hi
 #> [[1]]
 #> [[1]]$`_index`
 #> [1] "plos"
-#> 
+#>
 #> [[1]]$`_type`
 #> [1] "article"
-#> 
+#>
 #> [[1]]$`_id`
 #> [1] "568"
-#> 
-#> [[1]]$`_version`
-#> [1] 1
-#> 
+#>
 #> [[1]]$`_score`
 #> NULL
-#> 
+#>
 #> [[1]]$`_source`
 #> [[1]]$`_source`$id
 #> [1] "10.1371/journal.pone.0085002"
-#> 
+#>
 #> [[1]]$`_source`$title
 #> [1] "Evaluation of 131I-Anti-Angiotensin II Type 1 Receptor Monoclonal Antibody as a Reporter for Hepatocellular Carcinoma"
-#> 
-#> 
+#>
+#>
 #> [[1]]$sort
 #> [[1]]$sort[[1]]
 #> [1] "1"
@@ -243,25 +240,22 @@ Search_uri(index = "plos", size = 1)$hits$hits
 #> [[1]]
 #> [[1]]$`_index`
 #> [1] "plos"
-#> 
+#>
 #> [[1]]$`_type`
 #> [1] "article"
-#> 
+#>
 #> [[1]]$`_id`
-#> [1] "4"
-#> 
-#> [[1]]$`_version`
-#> [1] 1
-#> 
+#> [1] "0"
+#>
 #> [[1]]$`_score`
 #> [1] 1
-#> 
+#>
 #> [[1]]$`_source`
 #> [[1]]$`_source`$id
-#> [1] "10.1371/journal.pone.0107758"
-#> 
+#> [1] "10.1371/journal.pone.0007737"
+#>
 #> [[1]]$`_source`$title
-#> [1] "Lactobacilli Inactivate Chlamydia trachomatis through Lactic Acid but Not H2O2"
+#> [1] "Phospholipase C-β4 Is Essential for the Progression of the Normal Sleep Sequence and Ultradian Body Temperature Rhythms in Mice"
 ```
 
 Sorting
@@ -275,28 +269,28 @@ sapply(res$hits$hits, "[[", c("fields", "speaker"))
 ```
 #> [[1]]
 #> [1] "ARCHBISHOP OF YORK"
-#> 
+#>
 #> [[2]]
 #> [1] "VERNON"
-#> 
+#>
 #> [[3]]
 #> [1] "PLANTAGENET"
-#> 
+#>
 #> [[4]]
 #> [1] "PETO"
-#> 
+#>
 #> [[5]]
 #> [1] "KING HENRY IV"
-#> 
+#>
 #> [[6]]
 #> [1] "HOTSPUR"
-#> 
+#>
 #> [[7]]
 #> [1] "FALSTAFF"
-#> 
+#>
 #> [[8]]
 #> [1] "CHARLES"
-#> 
+#>
 #> [[9]]
 #> [1] ""
 ```
@@ -411,9 +405,14 @@ sapply(out$hits$hits, function(x) x$highlight$title[[1]])[8:10]
 ```
 
 ```
-#> [1] "DUSP1 Is a Novel Target for Enhancing Pancreatic Cancer <em>Cell</em> Sensitivity to Gemcitabine"                       
-#> [2] "Carbon Ion Radiation Inhibits Glioma and Endothelial <em>Cell</em> Migration Induced by Secreted VEGF"                  
-#> [3] "Dynamic Visualization of Dendritic <em>Cell</em>-Antigen Interactions in the Skin Following Transcutaneous Immunization"
+#> [[1]]
+#> NULL
+#>
+#> [[2]]
+#> NULL
+#>
+#> [[3]]
+#> NULL
 ```
 
 ### Scrolling search - instead of paging
@@ -450,13 +449,12 @@ library("ggplot2")
 res <- invisible(docs_bulk(diamonds, "diam"))
 ```
 
-
 ```r
 Search(index = "diam")$hits$total
 ```
 
 ```
-#> [1] 102340
+#> [1] 158140
 ```
 
 ## Get documents
@@ -471,23 +469,23 @@ docs_get(index='plos', type='article', id=1)
 ```
 #> $`_index`
 #> [1] "plos"
-#> 
+#>
 #> $`_type`
 #> [1] "article"
-#> 
+#>
 #> $`_id`
 #> [1] "1"
-#> 
+#>
 #> $`_version`
 #> [1] 1
-#> 
+#>
 #> $found
 #> [1] TRUE
-#> 
+#>
 #> $`_source`
 #> $`_source`$id
 #> [1] "10.1371/journal.pone.0098602"
-#> 
+#>
 #> $`_source`$title
 #> [1] "Population Genetic Structure of a Sandstone Specialist and a Generalist Heath Species at Two Levels of Sandstone Patchiness across the Strait of Gibraltar"
 ```
@@ -502,19 +500,19 @@ docs_get(index='plos', type='article', id=1, fields='id')
 ```
 #> $`_index`
 #> [1] "plos"
-#> 
+#>
 #> $`_type`
 #> [1] "article"
-#> 
+#>
 #> $`_id`
 #> [1] "1"
-#> 
+#>
 #> $`_version`
 #> [1] 1
-#> 
+#>
 #> $found
 #> [1] TRUE
-#> 
+#>
 #> $fields
 #> $fields$id
 #> $fields$id[[1]]
@@ -535,48 +533,48 @@ docs_mget(index="plos", type="article", id=3:4)
 #> $docs[[1]]
 #> $docs[[1]]$`_index`
 #> [1] "plos"
-#> 
+#>
 #> $docs[[1]]$`_type`
 #> [1] "article"
-#> 
+#>
 #> $docs[[1]]$`_id`
 #> [1] "3"
-#> 
+#>
 #> $docs[[1]]$`_version`
 #> [1] 1
-#> 
+#>
 #> $docs[[1]]$found
 #> [1] TRUE
-#> 
+#>
 #> $docs[[1]]$`_source`
 #> $docs[[1]]$`_source`$id
 #> [1] "10.1371/journal.pone.0107756"
-#> 
+#>
 #> $docs[[1]]$`_source`$title
 #> [1] "The Effect of S-Adenosylmethionine on Cognitive Performance in Mice: An Animal Model Meta-Analysis"
-#> 
-#> 
-#> 
+#>
+#>
+#>
 #> $docs[[2]]
 #> $docs[[2]]$`_index`
 #> [1] "plos"
-#> 
+#>
 #> $docs[[2]]$`_type`
 #> [1] "article"
-#> 
+#>
 #> $docs[[2]]$`_id`
 #> [1] "4"
-#> 
+#>
 #> $docs[[2]]$`_version`
 #> [1] 1
-#> 
+#>
 #> $docs[[2]]$found
 #> [1] TRUE
-#> 
+#>
 #> $docs[[2]]$`_source`
 #> $docs[[2]]$`_source`$id
 #> [1] "10.1371/journal.pone.0107758"
-#> 
+#>
 #> $docs[[2]]$`_source`$title
 #> [1] "Lactobacilli Inactivate Chlamydia trachomatis through Lactic Acid but Not H2O2"
 ```
@@ -591,23 +589,23 @@ docs_mget(index_type_id=list(c("plos","article",1), c("gbif","record",1)))$docs[
 ```
 #> $`_index`
 #> [1] "plos"
-#> 
+#>
 #> $`_type`
 #> [1] "article"
-#> 
+#>
 #> $`_id`
 #> [1] "1"
-#> 
+#>
 #> $`_version`
 #> [1] 1
-#> 
+#>
 #> $found
 #> [1] TRUE
-#> 
+#>
 #> $`_source`
 #> $`_source`$id
 #> [1] "10.1371/journal.pone.0098602"
-#> 
+#>
 #> $`_source`$title
 #> [1] "Population Genetic Structure of a Sandstone Specialist and a Generalist Heath Species at Two Levels of Sandstone Patchiness across the Strait of Gibraltar"
 ```
@@ -652,8 +650,8 @@ jsonlite::fromJSON(out)
 
 ## Citing
 
-> Scott Chamberlain (2015). elastic: General Purpose Interface to Elasticsearch. R package version 0.5.0.
-  http://CRAN.R-project.org/package=elastic
+> Scott Chamberlain (2016). elastic: General Purpose Interface to Elasticsearch. R package version 0.6.0.
+  http://cran.rstudio.com/package=elastic
 
 
 

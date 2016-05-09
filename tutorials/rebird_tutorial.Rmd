@@ -1,8 +1,44 @@
 ---
 title: rebird tutorial
 layout: tutorial
-packge_version: 0.2.0
+packge_version: 0.3.0
 ---
+
+```{r echo=FALSE}
+library("knitr")
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+   lines <- options$output.lines
+   if (is.null(lines)) {
+     return(hook_output(x, options))  # pass to default hook
+   }
+   x <- unlist(strsplit(x, "\n"))
+   more <- "..."
+   if (length(lines)==1) {        # first n lines
+     if (length(x) > lines) {
+       # truncate the output, but add ....
+       x <- c(head(x, lines), more)
+     }
+   } else {
+     x <- c(if (abs(lines[1])>1) more else NULL,
+            x[lines],
+            if (length(x)>lines[abs(length(lines))]) more else NULL
+           )
+   }
+   # paste these lines together
+   x <- paste(c(x, ""), collapse = "\n")
+   hook_output(x, options)
+ })
+
+knitr::opts_chunk$set(
+	fig.path = "../assets/tutorial-images/geojsonio/",
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+	output.lines = 1:10
+)
+```
 
 A programmatic interface to the eBird database. Find out more about eBird at [their website](http://ebird.org/content/ebird/).
 
@@ -42,7 +78,7 @@ Search for bird occurrences by latitude and longitude point
 ebirdgeo(species = 'spinus tristis', lat = 42, lng = -76)
 ```
 
-Same, but with additional parameter settings, returning only 10 records, including provisional records, and hotspot records.
+Same, but with additional parameter settings, returning only 10 records, including provisional records, and hotspot records. 
 
 ```{r ebirdgeo2}
 ebirdgeo(lat = 42, lng = -76, max = 10, includeProvisional = TRUE, hotspot = TRUE)
@@ -51,13 +87,13 @@ ebirdgeo(lat = 42, lng = -76, max = 10, includeProvisional = TRUE, hotspot = TRU
 
 ### Recent sightings frm location IDs
 
-Search for bird occurrences for two locations by their IDs
+Search for bird occurrences for two locations by their IDs 
 
 ```{r ebirdloc1}
 ebirdloc(locID = c('L99381','L99382'))
 ```
 
-Search by location ID and species name, as well as some additional parameter settings
+Search by location ID and species name, as well as some additional parameter settings 
 
 ```{r ebirdloc2}
 ebirdloc(locID = 'L99381', species = 'larus delawarensis', max = 10, provisional = TRUE, hotspot=TRUE)
@@ -155,6 +191,7 @@ ebirdregioncheck(loctype = 'counties', loc = 'CA-BC-GV')
 ```
 
 
+
 <section id="citing">
 
 ## Citing
@@ -163,7 +200,7 @@ To cite `rebird` in publications use:
 
 <br>
 
-> Rafael Maia, Scott Chamberlain and Andy Teucher (2015). rebird: Interface to eBird. R package version 0.2.0. http://github.com/ropensci/rebird
+> Rafael Maia, Scott Chamberlain, Andy Teucher and Sebastian Pardo (2016). rebird: R Client for the eBird Database of Bird Observations. R package version 0.3.0. https://github.com/ropensci/rebird
 
 <section id="license_bugs">
 

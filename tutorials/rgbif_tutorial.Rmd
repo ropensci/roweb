@@ -1,14 +1,14 @@
 ---
 title: rgbif tutorial
 layout: tutorial
-packge_version: 0.9.0
+packge_version: 0.9.3
 ---
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(
-	fig.path="../assets/tutorial-images/rgbif/",
-	fig.width=6,
-	fig.height=4,
+	fig.path = "../assets/tutorial-images/rgbif/",
+	fig.width = 6,
+	fig.height = 4,
 	comment = "#>",
 	collapse = TRUE,
 	warning = FALSE,
@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 Seach and retrieve data from the Global Biodiverity Information Facilty (GBIF)
 
-`rgbif` is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). `rgbif` wraps R code around the [GBIF API][gbifapi] to allow you to talk to GBIF from R.
+`rgbif` is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). `rgbif` wraps R code around the [GBIF API](http://www.gbif.org/developer/summary) to allow you to talk to GBIF from R.
 
 ********************
 
@@ -260,7 +260,7 @@ To cite `rgbif` in publications use:
 
 <br>
 
-> Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2015). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 0.9.0 https://github.com/ropensci/rgbif
+> Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2016). rgbif: Interface to the Global Biodiversity Information Facility API. R package version 0.9.3 https://github.com/ropensci/rgbif
 
 <section id="license_bugs">
 
@@ -270,5 +270,3 @@ To cite `rgbif` in publications use:
 * Report bugs at [our Github repo for rgbif](https://github.com/ropensci/rgbif/issues?state=open)
 
 [Back to top](#top)
-
-[gbifapi]: http://data.gbif.org/tutorial/services

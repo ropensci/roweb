@@ -8,7 +8,7 @@ packge_version: 2.0.4
 ## Set the paths for cache and figure
 library(methods)
 library(knitr)
-opts_chunk$set(cache = 1)
+opts_chunk$set(cache = TRUE)
 opts_chunk$set(fig.path = "../assets/tutorial-images/rnexml/", cache.path = "cache/")
 opts_chunk$set(tidy=FALSE, warning=FALSE, message=FALSE, comment = NA, verbose = TRUE)
 # basename <- 'S4'
@@ -171,6 +171,7 @@ data(bird.orders)
 Create an `nexml` object for the phylogeny `bird.orders` and add appropriate metadata:
 
 ```{r}
+data("bird.orders")
 birds <- add_trees(bird.orders)
 birds <- add_basic_meta(
   title = "Phylogeny of the Orders of Birds From Sibley and Ahlquist",
@@ -362,7 +363,7 @@ Now that we have nice `data.frame` objects for all our data, it's easy to join t
 taxa %>%
   left_join(char, by = c("label" = "taxa")) %>%
   left_join(otu_meta, by = "otu") %>%
-  select(id, label, x, href)
+  select(otu, label, x, href)
 ```
 
 Because these are all from the same otus block anyway, we haven't selected that column, but were it of interest it is also available in the taxa table.

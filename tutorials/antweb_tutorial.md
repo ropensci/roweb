@@ -1,7 +1,7 @@
 ---
 title: AntWeb tutorial
 layout: tutorial
-packge_version: 0.6.6
+packge_version: 0.7.0
 ---
 
 
@@ -11,9 +11,6 @@ packge_version: 0.6.6
 <section id="installation">
 
 ## Installation
-
-A stable version of the package (`0.6.1`) is now available on CRAN.
-
 
 
 ```r
@@ -47,18 +44,11 @@ To get data on an ant genus found widely through Central and South America
 ```r
 library("AntWeb")
 leaf_cutter_ants  <- aw_data(genus = "acromyrmex")
-```
-
-```
-## 713 results available for query.
-```
-
-```r
 leaf_cutter_ants$count
 ```
 
 ```
-## [1] 713
+#> [1] 777
 ```
 
 __Searching by species__
@@ -71,28 +61,27 @@ You can request data on any particular species
 ```
 
 ```
-## 2 results available for query.
-```
-
-```
-## [Total results on the server]: 2 
-## [Args]: 
-## genus = acanthognathus 
-## species = brevicornis 
-## [Dataset]: [2 x 13] 
-## [Data preview] :
-##                                                               url
-## 1 http://antweb.org/api/v2/?occurrenceId=CAS:ANTWEB:casent0280684
-## 2 http://antweb.org/api/v2/?occurrenceId=CAS:ANTWEB:casent0637708
-##   catalogNumber     family  subfamily          genus specificEpithet
-## 1 casent0280684 formicidae myrmicinae Acanthognathus     brevicornis
-## 2 casent0637708 formicidae myrmicinae Acanthognathus     brevicornis
-##              scientific_name typeStatus stateProvince  country
-## 1 acanthognathus brevicornis                          Colombia
-## 2 acanthognathus brevicornis                                  
-##   dateIdentified habitat minimumElevationInMeters
-## 1                                              NA
-## 2     2013-09-12                               NA
+#> [Total results on the server]: 4 
+#> [Args]: 
+#> genus = acanthognathus 
+#> species = brevicornis 
+#> [Dataset]: [4 x 16] 
+#> [Data preview] :
+#>                                                               url
+#> 1 http://antweb.org/api/v2/?occurrenceId=CAS:ANTWEB:casent0280684
+#> 2 http://antweb.org/api/v2/?occurrenceId=CAS:ANTWEB:casent0637708
+#>   catalogNumber     family  subfamily          genus specificEpithet
+#> 1 casent0280684 formicidae myrmicinae Acanthognathus     brevicornis
+#> 2 casent0637708 formicidae myrmicinae Acanthognathus     brevicornis
+#>              scientific_name typeStatus stateProvince  country
+#> 1 acanthognathus brevicornis                          Colombia
+#> 2 acanthognathus brevicornis            Madre de Dios     Peru
+#>   dateIdentified                             habitat
+#> 1                                                   
+#> 2     2013-09-12 Bamboo forest ex sifted leaf litter
+#>   minimumElevationInMeters geojson.type decimal_latitude decimal_longitude
+#> 1                       NA         <NA>             <NA>              <NA>
+#> 2                      252        point        -13.14142           -69.623
 ```
 
 You can also limit queries to observation records that have been geoferenced
@@ -103,7 +92,28 @@ You can also limit queries to observation records that have been geoferenced
 ```
 
 ```
-## NULL
+#> [Total results on the server]: 3 
+#> [Args]: 
+#> genus = acanthognathus 
+#> species = brevicornis 
+#> georeferenced = TRUE 
+#> [Dataset]: [3 x 16] 
+#> [Data preview] :
+#>                                                               url
+#> 1 http://antweb.org/api/v2/?occurrenceId=CAS:ANTWEB:casent0637708
+#> 2 http://antweb.org/api/v2/?occurrenceId=CAS:ANTWEB:casent0914659
+#>   catalogNumber     family  subfamily          genus specificEpithet
+#> 1 casent0637708 formicidae myrmicinae Acanthognathus     brevicornis
+#> 2 casent0914659 formicidae myrmicinae Acanthognathus     brevicornis
+#>              scientific_name typeStatus stateProvince country
+#> 1 acanthognathus brevicornis            Madre de Dios    Peru
+#> 2 acanthognathus brevicornis                   Darien  Panama
+#>   dateIdentified                             habitat
+#> 1     2013-09-12 Bamboo forest ex sifted leaf litter
+#> 2                                                   
+#>   minimumElevationInMeters geojson.type decimal_latitude decimal_longitude
+#> 1                      252        point        -13.14142           -69.623
+#> 2                      500        point          7.71667             -77.7
 ```
 
 
