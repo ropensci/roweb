@@ -25,7 +25,7 @@ peer review, often have little exposure to code review due to lack of training a
 historically little incentive to share the source code from their research. So
 scientific code, from one-off scripts to reusable R packages, is rarely subject
 to review. Most R packages are subject only to the automated checks required by
-CRAN, which primarily ensure that packages can be installed on multiple systems.
+  CRAN, which primarily ensure that packages can be installed on multiple systems.
 As such, The burden is on software users to discern well-written and efficient
 packages from poorly written ones.
 
@@ -41,7 +41,7 @@ reviewers.
 # Our System
 
 rOpenSci's package review process owes much to the experiments of others
-(such as the [Mozilla Science Lab](https://mozillascience.org/code-review-for-science-what-we-learned)),
+(such as [Marian Petre](http://mcs.open.ac.uk/mp8/) and the [Mozilla Science Lab](https://mozillascience.org/code-review-for-science-what-we-learned)),
 as well as the [active feedback](https://discuss.ropensci.org/t/code-review-onboarding-milestones/180) [from our
 community](https://discuss.ropensci.org/t/how-could-the-onboarding-package-review-process-be-even-better/302). Here's how it works: When an author submits
 a package, our editors evaluate it for fit according to our [criteria](https://github.com/ropensci/policies#package-fit), then assign reviewers who evaluate
