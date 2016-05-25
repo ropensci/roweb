@@ -83,7 +83,7 @@ Finally, I want to try to change our cultural understanding around the idea of o
 source software.  The fact that open source software is commonly viewed as free software is a problem, since to many
 people, free means of no value.  In particular, I believe we need to try to get to the point where companies that
 make heavy use of open source software feel that they have an obligation to support either the software or its
-developers in some way.  This is part of the larger sustainability discussion, since this is way that open
+developers in some way.  This is part of the larger sustainability discussion, since this is the way that open
 source projects can gain more resources and reduce the amount of work that they have to do internally.
 
 Any thoughts, comments, or suggestions are welcome. This is also cross-posted on [Dan's blog](https://danielskatzblog.wordpress.com/2016/05/25/software-sustainability-research-with-ropensci/)
