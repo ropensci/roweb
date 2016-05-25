@@ -4,7 +4,7 @@ layout: post
 title: "Software sustainability research with rOpenSci"
 date: 2016-05-25
 authors:
-  - name: Daniel Katz
+  - name: Daniel S. Katz
     url: https://twitter.com/danielskatz
 tags:
   - sustainability
