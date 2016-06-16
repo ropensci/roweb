@@ -11,6 +11,7 @@
 			{% else if %}
 				<item>
 					<title>{{ post.title }}</title>
+					<author>{{ post.authors | map: "name" | join: ", " }}</author>
 					<description>{{ post.content | relative_urls_to_absolute | xml_escape }}</description>
 					<published>{{ post.date }}</published>
 					<link>http://ropensci.org{{ post.url }}</link>
