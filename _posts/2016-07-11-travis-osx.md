@@ -12,7 +12,11 @@ tags:
   - OSX
 ---
 
-Travis has started to provide support for [multiple operating systems](https://docs.travis-ci.com/user/multi-os/), including Ubuntu 14.04 (Trusty) and various flavors of Mac OS-X. Jim Hester has done a great job of [tweaking](https://github.com/travis-ci/travis-build/commits/master/lib/travis/build/script/r.rb) the travis [R-language build script](https://github.com/travis-ci/travis-build/blob/master/lib/travis/build/script/r.rb) to automate building and checking of R packages on the various platforms. 
+Travis is a continuous integration service which allows for running automated testing code everytime you push to GitHub. Hadley's [book](http://r-pkgs.had.co.nz/check.html) about R packages explains how and why R package authors should take advantage of this in their development process.
+
+## The build matrix
+
+Travis is now providing support for [multiple operating systems](https://docs.travis-ci.com/user/multi-os/), including Ubuntu 14.04 (Trusty) and various flavors of Mac OS-X. Jim Hester has done a great job of [tweaking](https://github.com/travis-ci/travis-build/commits/master/lib/travis/build/script/r.rb) the travis [R-language build script](https://github.com/travis-ci/travis-build/blob/master/lib/travis/build/script/r.rb) to automate building and checking of R packages on the various platforms. 
 
 Cross system testing is mainly useful to check packages with compiled code (i.e. C or C++) against various combinations of compiler versions, external libraries or system services. However any R package can easily be configured to take advantage of these features immediately. It is free and easy to setup!
 
@@ -29,7 +33,7 @@ The R travis options are pretty well [documented](https://docs.travis-ci.com/use
 
 For extra credit also check out the [feather](https://github.com/wesm/feather/blob/master/.travis.yml) package which uses a single platform but has a very cool build matrix targeting multiple compilers with both the python and R interfaces.  
 
-## Systems and libraries
+## Systems and Libraries
 
 Most configuration options can either be set within or outside the multi-system build matrix (the `include` field in the yaml). Options which are set outside the matrix apply to each of the systems. If an option is both set within and outside the matrix the former overrides the latter.
 
@@ -41,6 +45,8 @@ dist: trusty
 sudo: required
 ```
 
+The `sudo` field is required to disable the docker environment which currently [does not support](https://docs.travis-ci.com/user/trusty-ci-environment/) Trusty yet. This [blog post](https://blog.rstudio.org/2016/03/09/r-on-travis-ci/) by RStudio has some more information about docker on Travis.
+
 To build on OS-X set the `os` and `osx_image` fields:
 
 ```
@@ -49,6 +55,7 @@ osx_image: xcode8
 ```
 
 The `osx_image` field specifies which version of OS-X and X-code this system has. The Travis [OS-X manual](https://docs.travis-ci.com/user/osx-ci-environment/) lists which combinations are currently available. 
+
 
 ## Homebrew
 
