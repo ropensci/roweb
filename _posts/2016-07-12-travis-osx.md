@@ -1,8 +1,8 @@
 ---
-name: tarvis-osx
+name: travis-osx
 layout: post
 title: "Testing packages with R Travis for OS-X"
-date: 2016-07-11
+date: 2016-07-12
 authors:
   - name: Jeroen Ooms
     url: https://jeroenooms.github.io
@@ -16,7 +16,7 @@ Travis is a continuous integration service which allows for running automated te
 
 ## The build matrix
 
-Travis is now providing support for [multiple operating systems](https://docs.travis-ci.com/user/multi-os/), including Ubuntu 14.04 (Trusty) and various flavors of Mac OS-X. Jim Hester has done a great job of [tweaking](https://github.com/travis-ci/travis-build/commits/master/lib/travis/build/script/r.rb) the travis [R-language build script](https://github.com/travis-ci/travis-build/blob/master/lib/travis/build/script/r.rb) to automate building and checking of R packages on the various platforms. 
+Travis is now providing support for [multiple operating systems](https://docs.travis-ci.com/user/multi-os/), including Ubuntu 14.04 (Trusty) and various flavors of Mac OS-X. Jim Hester has done a great job of [tweaking](https://github.com/travis-ci/travis-build/commits/master/lib/travis/build/script/r.rb) the travis [R-language build script](https://github.com/travis-ci/travis-build/blob/master/lib/travis/build/script/r.rb) to automate building and checking of R packages on the various platforms.
 
 Cross system testing is mainly useful to check packages with compiled code (i.e. C or C++) against various combinations of compiler versions, external libraries or system services. However any R package can easily be configured to take advantage of these features immediately. It is free and easy to setup!
 
@@ -25,13 +25,13 @@ Cross system testing is mainly useful to check packages with compiled code (i.e.
 The R travis options are pretty well [documented](https://docs.travis-ci.com/user/languages/r). The quickest way to get started is by borrowing a `.travis.yml` configuration from another package. Below a few example packages with a multi-OS build matrix which illustrate various options:
 
  - [jqr](https://travis-ci.org/ropensci/jqr): basic example with C code: [.travis.yml](https://github.com/ropensci/jqr/blob/master/.travis.yml)
- - [jsonlite](https://travis-ci.org/jeroenooms/jsonlite): also requires a custom Latex package (preprint): [.travis.yml](https://github.com/jeroenooms/jsonlite/blob/master/.travis.yml) 
+ - [jsonlite](https://travis-ci.org/jeroenooms/jsonlite): also requires a custom Latex package (preprint): [.travis.yml](https://github.com/jeroenooms/jsonlite/blob/master/.travis.yml)
  - [pdftools](https://travis-ci.org/ropensci/pdftools): requires external library (libpoppler): [.travis.yml](https://github.com/ropensci/pdftools/blob/master/.travis.yml)
- - [curl](https://travis-ci.org/jeroenooms/curl): external library (libcurl) and custom options: [.travis.yml](https://github.com/jeroenooms/curl/blob/master/.travis.yml)  
- - [sodium](https://travis-ci.org/jeroenooms/sodium): depends on an external library from a PPA. [.travis.yml](https://github.com/jeroenooms/sodium/blob/master/.travis.yml)  
- - [RMySQL](https://travis-ci.org/rstats-db/RMySQL): package with unit-tests that require both mysql server and client library. Also checks alternative configurations with mariadb: [.travis.yml](https://github.com/rstats-db/RMySQL/blob/master/.travis.yml) 
+ - [curl](https://travis-ci.org/jeroenooms/curl): external library (libcurl) and custom options: [.travis.yml](https://github.com/jeroenooms/curl/blob/master/.travis.yml)
+ - [sodium](https://travis-ci.org/jeroenooms/sodium): depends on an external library from a PPA. [.travis.yml](https://github.com/jeroenooms/sodium/blob/master/.travis.yml)
+ - [RMySQL](https://travis-ci.org/rstats-db/RMySQL): package with unit-tests that require both mysql server and client library. Also checks alternative configurations with mariadb: [.travis.yml](https://github.com/rstats-db/RMySQL/blob/master/.travis.yml)
 
-For extra credit also check out the [feather](https://github.com/wesm/feather/blob/master/.travis.yml) package which uses a single platform but has a very cool build matrix targeting multiple compilers with both the python and R interfaces.  
+For extra credit also check out the [feather](https://github.com/wesm/feather/blob/master/.travis.yml) package which uses a single platform but has a very cool build matrix targeting multiple compilers with both the python and R interfaces.
 
 ## Systems and Libraries
 
@@ -54,7 +54,7 @@ os: osx
 osx_image: xcode8
 ```
 
-The `osx_image` field specifies which version of OS-X and X-code this system has. The Travis [OS-X manual](https://docs.travis-ci.com/user/osx-ci-environment/) lists which combinations are currently available. 
+The `osx_image` field specifies which version of OS-X and X-code this system has. The Travis [OS-X manual](https://docs.travis-ci.com/user/osx-ci-environment/) lists which combinations are currently available.
 
 
 ## Homebrew
@@ -78,7 +78,7 @@ disable_homebrew: true
 
 ## Additional OS-X options
 
-Besides the version of OS-X and brew packages there are some additional options to customize the config. For example we can customize if Latex should be installed (defaults to true). Latex is huge and annoying so R packages that do not include pdf vignettes can significantly speed up the build process by disabling this. 
+Besides the version of OS-X and brew packages there are some additional options to customize the config. For example we can customize if Latex should be installed (defaults to true). Latex is huge and annoying so R packages that do not include pdf vignettes can significantly speed up the build process by disabling this.
 
 ```
 latex: false
@@ -100,4 +100,4 @@ before_install:
 
 Travis R [documentation](https://docs.travis-ci.com/user/languages/r) has some more options.
 
-Big thanks to Jim Hester and Craig Citro who have done all this amazing work to get R to work on Travis! 
+Big thanks to Jim Hester and Craig Citro who have done all this amazing work to get R to work on Travis!
