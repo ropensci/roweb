@@ -8,7 +8,7 @@ authors:
     url: https://jeroenooms.github.io
 tags:
   - travis
-  - cran
+  - CRAN
   - OSX
 ---
 
