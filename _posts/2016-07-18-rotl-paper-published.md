@@ -80,7 +80,7 @@ tree with theses species in the tips
     tr <- tol_induced_subtree(ott_ids=ott_id(resolved_names))
     plot(tr)
 
-![](2016-07-18-rotl-paper-published_files/figure-markdown_strict/unnamed-chunk-2-1.png)
+![](assets/blog-images/rotl_pub/ape_tree.png)
 
 The tree is an object of the `ape` class `phylo`, which is used by most
 other phylogeny packages in R. There are two vignettes describing how
