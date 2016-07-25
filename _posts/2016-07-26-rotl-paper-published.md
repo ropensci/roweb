@@ -3,7 +3,7 @@ name: rotl-paper-published
 layout: post
 title: "rotl paper published"
 date: 2016-07-26
-authors: 
+authors:
   - name: Francois Michonneau
     url: http://francoismichonneau.net/
   - name: Joseph Brown
@@ -19,12 +19,12 @@ tags:
 
 We are excited to announce a paper describing `rotl`, our package for the
 [Open Tree of Life](http://www.opentreeoflife.org/) data, has been
-[published](http://dx.doi.org/10.1111/2041-210X.12593). The full
+[published](https://doi.org/10.1111/2041-210X.12593). The full
 citation is:
 
 Michonneau, F., Brown, J. W. and Winter, D. J. (2016), rotl: an R
 package to interact with the Open Tree of Life data. *Methods Ecol
-Evol.* doi: <http://dx.doi.org/10.1111/2041-210X.12593>
+Evol.* doi: <https://doi.org/10.1111/2041-210X.12593>
 
 The paper, which is freely available, describes the package and the data
 it wraps in detail. Rather than rehash the information here, we will use
@@ -57,14 +57,14 @@ The function `tnrs_match_names` handles this task:
     library(rotl)
     apes <- c("Pongo", "Pan", "Gorilla", "Hoolock", "Homo")
     resolved_names <- tnrs_match_names(apes)
-    resolved_names 
+    resolved_names
 
     ##   search_string unique_name approximate_match ott_id is_synonym flags
-    ## 1         pongo       Pongo             FALSE 417949      FALSE      
-    ## 2           pan         Pan             FALSE 417957      FALSE      
-    ## 3       gorilla     Gorilla             FALSE 417969      FALSE      
-    ## 4       hoolock     Hoolock             FALSE 712902      FALSE      
-    ## 5          homo        Homo             FALSE 770309      FALSE      
+    ## 1         pongo       Pongo             FALSE 417949      FALSE
+    ## 2           pan         Pan             FALSE 417957      FALSE
+    ## 3       gorilla     Gorilla             FALSE 417969      FALSE
+    ## 4       hoolock     Hoolock             FALSE 712902      FALSE
+    ## 5          homo        Homo             FALSE 770309      FALSE
     ##   number_matches
     ## 1              1
     ## 2              1
@@ -80,7 +80,7 @@ tree with theses species in the tips
     tr <- tol_induced_subtree(ott_ids=ott_id(resolved_names))
     plot(tr)
 
-![](assets/blog-images/rotl_pub/ape_tree.png)
+![img](/assets/blog-images/rotl_pub/ape_tree.png)
 
 The tree is an object of the `ape` class `phylo`, which is used by most
 other phylogeny packages in R. There are two vignettes describing how
