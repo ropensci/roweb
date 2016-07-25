@@ -1,23 +1,23 @@
-    ---
-    name: rotl-paper-published
-    layout: post
-    title: "rotl paper published"
-    date: 2016-07-18
-    authors: 
-      - name: Francois Michonneau
-        url: http://francoismichonneau.net/
-      - name: Joseph Brown
-        url: http://www-personal.umich.edu/~josephwb/
-      - name: David Winter
-        url: http://david-winter.info
-    tags:
-    - R
-    - rotl
-    - open-tree
-    - publication
-    ---
+---
+name: rotl-paper-published
+layout: post
+title: "rotl paper published"
+date: 2016-07-26
+authors: 
+  - name: Francois Michonneau
+    url: http://francoismichonneau.net/
+  - name: Joseph Brown
+    url: http://www-personal.umich.edu/~josephwb/
+  - name: David Winter
+    url: http://david-winter.info
+tags:
+- R
+- rotl
+- open-tree
+- publication
+---
 
-We are excited to say a paper describing `rotl`, our package for the
+We are excited to announce a paper describing `rotl`, our package for the
 [Open Tree of Life](http://www.opentreeoflife.org/) data, has been
 [published](http://dx.doi.org/10.1111/2041-210X.12593). The full
 citation is:
@@ -49,7 +49,7 @@ comparative biology in R.
 A small example
 ---------------
 
-Using `rotl` to get a tree for a set of names is usually two step
+Using `rotl` to get a tree for a set of names is usually a two step
 process. You need to start by matching the set of names you have to
 records in the Open Tree database, and obtain unique IDs for each one.
 The function `tnrs_match_names` handles this task:
@@ -96,7 +96,7 @@ Thanks
 ------
 
 We'd like to thank the Open Tree project for providing such an amazing
-resource and produce and powerful and well-documented API. `rotl` was
+resource, and  for producing a powerful and well-documented API. `rotl` was
 initially developed as part of the [Open Tree's hackathon in Ann Arbor
 in
 2014](https://ropensci.org/blog/2014/08/15/open-tree-of-life-hackathon/).
