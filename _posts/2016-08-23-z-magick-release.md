@@ -1,5 +1,5 @@
 ---
-name: magick-release
+name: z-magick-release
 layout: post
 title: "Advanced Image-Processing in R with Magick, Part I"
 date: 2016-08-23
@@ -18,7 +18,7 @@ The ImageMagick library has an overwhelming amount of functionality. The current
 
 ## Installation
 
-On Windows or OS-X the package is most easily installed via CRAN. 
+On Windows or OS-X the package is most easily installed via CRAN.
 
 ```r
 install.packages("magick")
@@ -36,7 +36,7 @@ On Fedora or CentOS/RHEL we need [ImageMagick-c++-devel](https://apps.fedoraproj
 sudo yum install ImageMagick-c++-devel
 ```
 
-To install from source on OS-X you need `imagemagick` from homebrew. 
+To install from source on OS-X you need `imagemagick` from homebrew.
 
 ```
 brew install imagemagick --with-fontconfig --with-librsvg --with-fftw
@@ -49,7 +49,7 @@ library(magick)
 magick_config()
 ```
 
-Use `magick_config` to see which features and formats are supported by your version of ImageMagick. 
+Use `magick_config` to see which features and formats are supported by your version of ImageMagick.
 
 ## Reading and writing
 
@@ -114,7 +114,7 @@ image_flop(frink)
 image_background(frink, "pink", flatten = TRUE)
 
 # World-cup outfit (Flood fill)
-image_fill(frink, "orange", "+100+200", 30000) 
+image_fill(frink, "orange", "+100+200", 30000)
 ```
 
 ImageMagick also has a bunch of standard effects that are worth checking out.
@@ -150,7 +150,7 @@ Maybe this is enough to get started.
 
 ## Layers and animation
 
-The examples above concern single images. However all functions in magick have been vectorized to support working with layers, compositions or animation. 
+The examples above concern single images. However all functions in magick have been vectorized to support working with layers, compositions or animation.
 
 The standard base vector methods `[` `[[`, `$`, `c()` and `length()` are used to manipulate sets of images which can then be treated as layers or frames. This system is actually so extensive that we will do a separate blog post about it later.
 
