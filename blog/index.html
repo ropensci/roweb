@@ -25,7 +25,7 @@ title: "rOpenSci Blog"
 <div id='post' class="col-sm-12 col-md-9">
   <!--   List of posts for landing page -->
   {% for post in paginator.posts %}
-      {% if post.categories contains 'pt' or 'technotes' %}
+      {% if post.categories == "pt" or post.categories == "technotes" %}
       <!-- we do nothing -->
       {% else if %}
       <h3><a href="{{ site.dir }}{{ post.url }}">{{ post.title }}</a></h3>
