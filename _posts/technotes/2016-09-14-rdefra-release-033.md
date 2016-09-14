@@ -1,7 +1,7 @@
 ---
 name: rdefra-release-033
 layout: post
-title: "Get air quality data fr the United Kingdom using the rdefra package"
+title: "Get air quality data for the United Kingdom using the rdefra package"
 date: 2016-09-14
 authors:
   - name: Claudia Vitolo
