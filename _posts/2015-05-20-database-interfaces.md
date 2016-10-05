@@ -5,6 +5,8 @@ title: Database interfaces
 date: 2015-05-20
 authors:
   - name: Scott Chamberlain
+categories:
+  - blog
 tags:
 - R
 - database
@@ -25,12 +27,12 @@ NoSQL is often interpreted as _Not only SQL_ - meaning a database that is called
 
 If you aren't already using databases, why care about databases? We'll answer this through a number of use cases:
 
-* Use case 1: Let's say you are producing a lot of data in your lab - millions of rows of data. Storing all this data in `.xls` or `.csv` files would definitely get cumbersome. If the data is traditional row-column spreadsheet data, a SQL database is perfect, perhaps PostgreSQL. Putting your data in a database allows the data to scale up easily while maintaining speedy data access, many tables can be linked together if needed, and more. Of course if your data will always fit in memory of the machine you're working on, a database may be too much complexity. 
+* Use case 1: Let's say you are producing a lot of data in your lab - millions of rows of data. Storing all this data in `.xls` or `.csv` files would definitely get cumbersome. If the data is traditional row-column spreadsheet data, a SQL database is perfect, perhaps PostgreSQL. Putting your data in a database allows the data to scale up easily while maintaining speedy data access, many tables can be linked together if needed, and more. Of course if your data will always fit in memory of the machine you're working on, a database may be too much complexity.
 * Use case 2: You already have data in a database, whether SQL or NoSQL. Of course it makes sense to interface with the database from R instead of e.g., exporting files from the database, then into R.
 * Use case 3: A data provider gives dumps of data that you need for your research/work problem. You download the data and it's hundreds of `.csv` files. It sure would be nice to be able to efficiently search this data. Simple searches like _return all records with variable X < 10_ are ideal for a SQL database. If instead the files are blobs of XML, JSON, or something else non-tabular, a document database is ideal.
 * Use case 4: You need to perform more complicated searches than SQL can support. Some NoSQL databases have very powerful search engines, e.g., Elasticsearch.
-* Use case 5: Sometimes you just need to cache stuff. Caching is a good use case for key-value stores. Let's say you are requesting data from a database online, and you want to make a derivative data thing from the original data, but you don't want to lose the original data. Simply storing the original data on disk in files is easy and does the job. Sometimes though, you may need something more structured. Redis and etcd are two key-value stores we make clients for and can make caching easy. Another use for caching is to avoid repeating time-consuming queries or queries that may cost money.  
-* Use case 6: Indexable serialization. Related to the previous discussion of caching, this is caching, but better. That is, instead of dumping an R object to a cache, then retrieving the entire object later, NoSQL DB's make it easy to serialize an R object, and retrieve only what you need. See Rich FitzJohn's  [storr](http://htmlpreview.github.io/?https://raw.githubusercontent.com/richfitz/storr/master/inst/doc/storr.html#lists-and-indexable-serialisation) for an example of this. 
+* Use case 5: Sometimes you just need to cache stuff. Caching is a good use case for key-value stores. Let's say you are requesting data from a database online, and you want to make a derivative data thing from the original data, but you don't want to lose the original data. Simply storing the original data on disk in files is easy and does the job. Sometimes though, you may need something more structured. Redis and etcd are two key-value stores we make clients for and can make caching easy. Another use for caching is to avoid repeating time-consuming queries or queries that may cost money.
+* Use case 6: Indexable serialization. Related to the previous discussion of caching, this is caching, but better. That is, instead of dumping an R object to a cache, then retrieving the entire object later, NoSQL DB's make it easy to serialize an R object, and retrieve only what you need. See Rich FitzJohn's  [storr](http://htmlpreview.github.io/?https://raw.githubusercontent.com/richfitz/storr/master/inst/doc/storr.html#lists-and-indexable-serialisation) for an example of this.
 
 rOpenSci has an increasing suite of database tools:
 
@@ -43,21 +45,21 @@ rOpenSci has an increasing suite of database tools:
 * [ckanr](https://github.com/ropensci/ckanr) (SQL database as a service, open source)
 * [nodbi](https://github.com/ropensci/nodbi) (DBI, but for NoSQL DB's)
 
-Some of these packages (e.g., `rrlite`, `nodbi`) can be thought of as infrastructure, just like clients for PostgreSQL or SQLite, for which other R packages can be created - or that can be used to interface with a database. Other packages (e.g., `ckanr`) are more likely to be useful to end users for retrieving data for a project. 
+Some of these packages (e.g., `rrlite`, `nodbi`) can be thought of as infrastructure, just like clients for PostgreSQL or SQLite, for which other R packages can be created - or that can be used to interface with a database. Other packages (e.g., `ckanr`) are more likely to be useful to end users for retrieving data for a project.
 
-If you're wondering what database to use: 
+If you're wondering what database to use:
 
 - You may want a SQL database if: you have tabular data, and the schema is not going to change
 - You may want a NoSQL key-value database if: you want to shove objects into something, and then retrieve later by a key
-- You may want a NoSQL document database if: 
+- You may want a NoSQL document database if:
   - you need to store unstructured blobs, even including binary attachments
   - you need a richer query interface than a SQL database can provide
-  
+
 SQL databases have many advantages - one important advantage is that SQL syntax is widely used, and there are probably clients in every concievable language for interacting with SQL databases. However, NoSQL can be a better fit in many cases, overriding this SQL syntax familiarity.
 
 There is another type of NoSQL database, the graph database, including [Neo4j][neo4j] and [Titan][titan]. We didn't talk much about them here, but they can be useful when you have naturally graph like data. A science project using a graph database is [Open Tree of Life][opentree]. There is an R client for Neo4J: [RNeo4j](https://github.com/nicolewhite/RNeo4j).
 
-Let us know if you have any feedback on these packages, and/or if you think there's anything else we should be thinking about making in this space. Now on to some examples of rOpenSci packages. 
+Let us know if you have any feedback on these packages, and/or if you think there's anything else we should be thinking about making in this space. Now on to some examples of rOpenSci packages.
 
 ## Get devtools
 
@@ -119,9 +121,9 @@ aggs <- '{
 }'
 res <- Search("diam", body = aggs, size = 0)
 df <- do.call("rbind.data.frame", res$aggregations$pricebuckets$buckets)
-ggplot(df, aes(key, doc_count)) + 
-  geom_bar(stat = "identity") + 
-  theme_grey(base_size = 20) + 
+ggplot(df, aes(key, doc_count)) +
+  geom_bar(stat = "identity") +
+  theme_grey(base_size = 20) +
   labs(x = "Price", y = "Count")
 ```
 
@@ -173,13 +175,13 @@ Get the document
 doc_get(dbname = "sofadb", docid = "a_beer")
 ```
 
-There's a similar interface to inserting data within R directly into CouchDB, just as with Elasticsearch above. There's lots more to do in `sofa`, including adding ability to do map-reduce. 
+There's a similar interface to inserting data within R directly into CouchDB, just as with Elasticsearch above. There's lots more to do in `sofa`, including adding ability to do map-reduce.
 
 ## solr
 
 [solr](https://github.com/ropensci/solr) - A client for interacting with Solr.
 
-`solr` focuses on reading data from Solr engines. We are working on adding functionality for working with more Solr features, including writing documents. Adding support for writing to `solr` is a bit trickier than reading data, since writing data requires specifying a schema. 
+`solr` focuses on reading data from Solr engines. We are working on adding functionality for working with more Solr features, including writing documents. Adding support for writing to `solr` is a bit trickier than reading data, since writing data requires specifying a schema.
 
 
 ```r
@@ -193,7 +195,7 @@ library("solr")
 
 ### Example
 
-A quick example using a remote Solr server the Public Library of Science search engine. 
+A quick example using a remote Solr server the Public Library of Science search engine.
 
 
 ```r
@@ -228,7 +230,7 @@ solr_search(q = '*:*', fl = c('id', 'journal', 'publication_date'), base = 'http
 
 [etseed](https://github.com/ropensci/etseed) is an R client for the [etcd](https://github.com/coreos/etcd) key-value store, developed by the folks at [coreos](https://coreos.com/), written in [Go](https://golang.org/).
 
-This package is still in early days, and isn't exactly the fastest option in the bunch here - but upcoming changes (including allowing bulk writing and retrieval) in `etcd` should help. 
+This package is still in early days, and isn't exactly the fastest option in the bunch here - but upcoming changes (including allowing bulk writing and retrieval) in `etcd` should help.
 
 
 ```r
@@ -240,7 +242,7 @@ devtools::install_github("ropensci/etseed")
 library("etseed")
 ```
 
-> A note before we go through an example. etcd has a particular way of specifying keys, in that you have to prefix a key by a forward slash, like `/foobar` instead of `foobar`. 
+> A note before we go through an example. etcd has a particular way of specifying keys, in that you have to prefix a key by a forward slash, like `/foobar` instead of `foobar`.
 
 ### Example
 
@@ -251,31 +253,31 @@ Save a value to a key
 create(key = "/mykey", value = "this is awesome")
 #> $action
 #> [1] "set"
-#> 
+#>
 #> $node
 #> $node$key
 #> [1] "/mykey"
-#> 
+#>
 #> $node$value
 #> [1] "this is awesome"
-#> 
+#>
 #> $node$modifiedIndex
 #> [1] 1299
-#> 
+#>
 #> $node$createdIndex
 #> [1] 1299
-#> 
-#> 
+#>
+#>
 #> $prevNode
 #> $prevNode$key
 #> [1] "/mykey"
-#> 
+#>
 #> $prevNode$value
 #> [1] "this is awesome"
-#> 
+#>
 #> $prevNode$modifiedIndex
 #> [1] 1298
-#> 
+#>
 #> $prevNode$createdIndex
 #> [1] 1298
 ```
@@ -287,17 +289,17 @@ Fetch the value given a key
 key(key = "/mykey")
 #> $action
 #> [1] "get"
-#> 
+#>
 #> $node
 #> $node$key
 #> [1] "/mykey"
-#> 
+#>
 #> $node$value
 #> [1] "this is awesome"
-#> 
+#>
 #> $node$modifiedIndex
 #> [1] 1299
-#> 
+#>
 #> $node$createdIndex
 #> [1] 1299
 ```
@@ -333,13 +335,13 @@ r$get("foo")
 #> [19] 0.47487029 0.11644076
 ```
 
-This is a good candidate for using within other R packages for more sophisticated caching than simply writing to disk, and is especially easy since users aren't required to spin up a server as with normal Redis, or other DB's like CouchDB, MongoDB, etc. 
+This is a good candidate for using within other R packages for more sophisticated caching than simply writing to disk, and is especially easy since users aren't required to spin up a server as with normal Redis, or other DB's like CouchDB, MongoDB, etc.
 
 ## rerddap
 
 [rerddap](https://github.com/ropensci/rerddap) - A general purpose R client for any ERDDAP server.
 
-ERDDAP servers 
+ERDDAP servers
 
 
 ```r
@@ -351,7 +353,7 @@ install.packages("rerddap")
 library("rerddap")
 ```
 
-ERDDAP is a server built on top of [OPenDAP](http://www.opendap.org/). NOAA serve many differen datasets through ERDDAP servers. Through ERDDAP, you can get gridded data (see `griddap()`), which lets you query from gridded datasets (see `griddap()`), or tablular datasets (see `tabledap()`). ERDDAP is open source, so anyone can use it to serve data. 
+ERDDAP is a server built on top of [OPenDAP](http://www.opendap.org/). NOAA serve many differen datasets through ERDDAP servers. Through ERDDAP, you can get gridded data (see `griddap()`), which lets you query from gridded datasets (see `griddap()`), or tablular datasets (see `tabledap()`). ERDDAP is open source, so anyone can use it to serve data.
 
 `rerddap` by default grabs NetCDF files, a binary compressed file type that should be faster to download, and take up less disk space, than other formats (e.g., `csv`). However, this means that you need a client library for NetCDF files - but not to worry, we use `ncdf` by default (for which there are CRAN binaries for all platforms), but you can choose to use `ncdf4` (binaries only for some platforms).
 
@@ -362,7 +364,7 @@ In this example, we search for gridded datasets
 
 ```r
 ed_search(query = 'size', which = "grid")
-#> 6 results, showing first 20 
+#> 6 results, showing first 20
 #>                                                                                                   title          dataset_id
 #> 11                                                      NOAA Global Coral Bleaching Monitoring Products            NOAA_DHW
 #> 13 USGS COAWST Forecast, US East Coast and Gulf of Mexico (Experimental) [time][s_rho][eta_rho][xi_rho] whoi_7dd7_db97_4bbe
@@ -377,14 +379,14 @@ Get more information on a single dataset of interest
 
 ```r
 info('noaa_esrl_027d_0fb5_5d38')
-#> <ERDDAP info> noaa_esrl_027d_0fb5_5d38 
-#>  Dimensions (range):  
-#>      time: (1850-01-01T00:00:00Z, 2014-05-01T00:00:00Z) 
-#>      latitude: (87.5, -87.5) 
-#>      longitude: (-177.5, 177.5) 
-#>  Variables:  
-#>      air: 
-#>          Range: -20.9, 19.5 
+#> <ERDDAP info> noaa_esrl_027d_0fb5_5d38
+#>  Dimensions (range):
+#>      time: (1850-01-01T00:00:00Z, 2014-05-01T00:00:00Z)
+#>      latitude: (87.5, -87.5)
+#>      longitude: (-177.5, 177.5)
+#>  Variables:
+#>      air:
+#>          Range: -20.9, 19.5
 #>          Units: degC
 ```
 

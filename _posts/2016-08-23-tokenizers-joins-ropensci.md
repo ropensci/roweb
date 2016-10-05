@@ -6,6 +6,8 @@ date: 2016-08-23
 authors:
   - name: Lincoln Mullen
     url: http://lincolnmullen.com
+categories:
+  - blog
 tags:
 - R
 - natural-language

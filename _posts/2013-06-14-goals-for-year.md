@@ -5,6 +5,8 @@ title: What we hope to accomplish with the new funding
 date: 2013-06-14
 authors:
   - name: Core Team
+categories:
+  - blog
 tags:
 - funding
 - ropensci

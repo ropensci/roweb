@@ -5,6 +5,8 @@ title: Use case - how to get species occurrence data from GBIF for a genus
 date: 2013-04-12
 authors:
   - name: Scott Chamberlain
+categories:
+  - blog
 tags:
 - R
 - ropensci

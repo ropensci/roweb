@@ -5,6 +5,8 @@ title: Changed and new things in the new version of rgbif, v0.5
 date: 2014-02-17
 authors:
   - name: Scott Chamberlain
+categories:
+  - blog
 tags:
 - R
 - API
@@ -13,7 +15,7 @@ tags:
 
 `rgbif` is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). `rgbif` wraps R code around the [GBIF API][gbifapi] to allow you to talk to GBIF from R.
 
-We just pushed a new verion of `rgbif` to cran - v0.5.0.  Source and binary files are now available on CRAN.  
+We just pushed a new verion of `rgbif` to cran - v0.5.0.  Source and binary files are now available on CRAN.
 
 There are a few new functions: `count_facet`, `elevation`, and `installations`.  These are described, with examples, below.
 

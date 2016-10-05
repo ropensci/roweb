@@ -5,6 +5,8 @@ title: NCEAS Codefest
 date: 2014-08-06
 authors:
   - name: Scott Chamberlain
+categories:
+  - blog
 tags:
 - R
 - Conference

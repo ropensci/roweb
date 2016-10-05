@@ -6,6 +6,8 @@ date: 2014-02-20
 authors:
   - name: Thomas Leeper
     url: http://thomasleeper.com/
+categories:
+  - blog
 tags:
 - R
 - API

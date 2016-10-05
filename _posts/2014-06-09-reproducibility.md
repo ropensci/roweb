@@ -9,6 +9,8 @@ authors:
   - name: Matt Pennell
   - name: Amy Zanne
   - name: Will Cornwell
+categories:
+  - blog
 tags:
 - R
 - reproducibleresearch
@@ -62,7 +64,7 @@ We used [packrat](https://github.com/rstudio/packrat) for managing and archiving
 
 We found that moving from running analyses on one person's computer (with their particular constellation of software locations) to another was difficult. For example, see [this issue](https://github.com/richfitz/wood/issues/1) for the trouble that we had running the analyses on our own computers, knowing the scope of the project.  It's hard to anticipate all possible causes for confusion: one initial try at replication by [Carl Boettiger](http://carlboettiger.info) had [trouble](https://github.com/richfitz/wood/issues/12) due to incomplete documentation of required package versions.
 
-The set of scripts that manages the above jobs is comparable in size to the actual analysis; this is a large overhead to place on researchers.  There are also many different languages and frameworks involved, increasing both the technical knowledge required and the chance that something will break.  Automating as much of this process as possible is essential for reproducibility to become standard practice.  
+The set of scripts that manages the above jobs is comparable in size to the actual analysis; this is a large overhead to place on researchers.  There are also many different languages and frameworks involved, increasing both the technical knowledge required and the chance that something will break.  Automating as much of this process as possible is essential for reproducibility to become standard practice.
 
 The continuous integration approach has a huge potential to save headaches in managing computational research projects.  However, while our analysis acts as a proof-of-concept, it will be of limited general use: it requires that the project is open source (in a *public* [github](https://github.com) repository), and that the analysis is relatively quick to run (under an hour).  These limitations are reasonable given that it is a free service, but they don't match well with many research projects where development does not occur "in the open", and where computation can take many hours or days.
 

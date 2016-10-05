@@ -5,6 +5,8 @@ title: rOpenHack report
 date: 2014-05-14
 authors:
   - name: Karthik Ram
+categories:
+  - blog
 tags:
 - R
 - community
@@ -51,6 +53,6 @@ Alyssa Frazee wrote a great summary of the event on the [Simply Statistics blog]
 
 <!-- Video embed code -->
 
-## What's next on our event calendar?  
+## What's next on our event calendar?
 
 We're already looking forward to hosting the event again next year (late March 2015) at GitHub, in the very early stages of organizing something similar in London this fall (right around [Mozfest](http://2014.mozillafestival.org/)) and possibly one in Australia in February 2015. So if you live near one of these places and can help organize or sponsor any part of the event, please drop us a note. We would love to hear from you soon. Once we get the logistics and funding sorted out, we'll post a general call for participation with more lead time this year. If you're not already subscribed to our mailing list, this would be the perfect time to do it since we are gearing up for several more events this summer and fall.

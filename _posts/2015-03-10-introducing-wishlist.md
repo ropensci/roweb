@@ -6,6 +6,8 @@ date: 2015-03-10
 authors:
   - name: Oliver Keyes
     url: http://ironholds.org
+categories:
+  - blog
 tags:
 - R
 - ropensci

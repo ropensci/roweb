@@ -5,6 +5,8 @@ title: Overlaying climate data with species occurrence data
 date: 2013-07-29
 authors:
   - name: Ted Hart
+categories:
+  - blog
 tags:
 - R
 - API
@@ -48,7 +50,7 @@ sp.map + geom_point(data=gbifdata(out),aes(y=decimalLatitude,x=decimalLongitude,
 
 <br>
 
-So that's how you could make a basic map, but what if you want to overlay climate data with occurrence data?  That's easy too.  You repeat essentially the same steps as above, but be sure to grab some climate data too. In this example I've chose to grab data for 8 different tree species that exhibit somewhat of a lattitudinal gradient.  I'll map them on top of historical temperature data.  In this case I'll be using the average annual temperature from 1990 to 2000.  Because I want a bit better spatial resolution I'll be using basin level data instead of country level data.  
+So that's how you could make a basic map, but what if you want to overlay climate data with occurrence data?  That's easy too.  You repeat essentially the same steps as above, but be sure to grab some climate data too. In this example I've chose to grab data for 8 different tree species that exhibit somewhat of a lattitudinal gradient.  I'll map them on top of historical temperature data.  In this case I'll be using the average annual temperature from 1990 to 2000.  Because I want a bit better spatial resolution I'll be using basin level data instead of country level data.
 
 ```r
 

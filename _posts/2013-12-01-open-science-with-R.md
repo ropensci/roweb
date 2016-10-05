@@ -5,6 +5,8 @@ title: Open Science with R
 date: 2013-12-02
 authors:
   - name: Karthik Ram
+categories:
+  - blog
 tags:
 - R
 - ropensci
@@ -29,8 +31,8 @@ In many ways writing this book will be an exercise for us to share our research 
 
 The publisher has been kind enough to allow us to maintain a public version the book as a GitHub repository. Anyone will be able to read our chapters, review, comment, and send pull requests. The final edited and nicely formatted version with a complete index will of course only be available via the publisher copy. But that is a small trade off in this case. As an added advantage, we will be able to keep the material current and up-to-date long after publication.
 
-[GitHub repository for the book](https://github.com/ropensci/open-science-with-R)  
-[Issues, comments and suggestions](https://github.com/ropensci/open-science-with-R/issues?labels=chapter-01&state=open)  
+[GitHub repository for the book](https://github.com/ropensci/open-science-with-R)
+[Issues, comments and suggestions](https://github.com/ropensci/open-science-with-R/issues?labels=chapter-01&state=open)
 
 
 We expect the book to be out shortly after July 2014.

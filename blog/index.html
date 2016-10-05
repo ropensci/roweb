@@ -24,35 +24,13 @@ title: "rOpenSci Blog"
 
 <div id='post' class="col-sm-12 col-md-9">
   <!--   List of posts for landing page -->
-  {% for post in paginator.posts %}
-      {% if post.categories contains "pt" or post.categories contains "technotes" %}
-      <!-- we do nothing -->
-      {% else if %}
+
+  {% for post in site.categories.blog %}
       <h3><a href="{{ site.dir }}{{ post.url }}">{{ post.title }}</a></h3>
       {{ post.authors | map: "name" | join: ", " }} &mdash; <i>{{ post.date | date: "%B %e, %Y" }}</i><br>
       {{ post.content | strip_html | truncatewords:75 }}<br>
-      <!-- {{ post.content | remove_alerts | strip_html | truncatewords:75 }}<br> -->
       <hr class="gray-line">
-      {% endif %}
   {% endfor %}
 
-  <!-- Pagination links -->
-  <div class="pagination">
-    <ul>
-      {% if paginator.previous_page %}
-      <li>{% if paginator.previous_page == 1 %}<a href="/blog">&laquo;</a>{% else %}<a href="/blog/page{{paginator.previous_page}}">&laquo;</a>{% endif %}</li>
-      {% else %}
-      <li class="disabled"><a href="/blog">&laquo;</a></li>
-      {% endif %}
-      {% if paginator.page == 1 %}<li class="active"><a href="/blog">1</a></span>{% else %}<li><a href="/blog">1</a></li>{% endif %}
-
-      {% capture start %}{{ paginator.page | minus: 3 }}{% endcapture %}
-
-      {% for count in (2..paginator.total_pages) limit: 5 offset: start %}
-      {% if count == paginator.page %}<li class="active"><a href="/blog/page{{count}}">{{count}}</a></li>{% else %}<li><a href="/blog/page{{count}}">{{count}}</a></li>{% endif %}
-      {% endfor %}
-      {% if paginator.next_page %}<li><a href="/blog/page{{paginator.next_page}}">&raquo;</a></li>{% else %}<li class="disabled">&raquo;</li>{% endif %}
-    </ul>
-  </div>
   <!-- End pagination -->
 </div>

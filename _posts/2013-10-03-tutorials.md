@@ -5,6 +5,8 @@ title: A new tutorials setup
 date: 2013-10-03
 authors:
   - name: Scott Chamberlain
+categories:
+  - blog
 tags:
 - R
 - help

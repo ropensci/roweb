@@ -6,6 +6,8 @@ date: 2016-07-12
 authors:
   - name: Jeroen Ooms
     url: https://jeroenooms.github.io
+categories:
+  - blog
 tags:
   - travis
   - CRAN

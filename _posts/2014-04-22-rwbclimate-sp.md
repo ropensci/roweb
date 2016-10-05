@@ -5,6 +5,8 @@ title: Overlaying species occurrence data with climate data
 date: 2014-04-22
 authors:
   - name: Ted Hart
+categories:
+  - blog
 tags:
 - R
 - API

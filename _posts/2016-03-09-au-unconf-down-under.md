@@ -6,6 +6,8 @@ date: 2016-03-09
 authors:
   - name: Nicholas Tierney
     url: http://njtierney.com
+categories:
+  - blog
 tags:
 - R
 - ropensci

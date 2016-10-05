@@ -5,6 +5,8 @@ title: Introducing the ecoengine package
 date: 2014-01-30
 authors:
   - name: Karthik Ram
+categories:
+  - blog
 tags:
 - R
 - taxonomy
@@ -257,11 +259,11 @@ unique(spider_details$scientific_name)
 ## [21] "castianeira luctifera"     "meriola californica"
 ## [23] "drassyllus insularis"      "herpyllus propinquus"
 ## [25] "micaria utahna"            "trachyzelotes lyonneti"
-## [27] "ebo evansae"               "habronattus oregonensis"  
+## [27] "ebo evansae"               "habronattus oregonensis"
 ## [29] "metaphidippus sp."         "platycryptus californicus"
 ## [31] "calymmaria sp."            "frontinella communis"
 ## [33] "undetermined sp."          "latrodectus hesperus"
-## [35] "theridion sp. B"           "agelenopsis oregonensis"  
+## [35] "theridion sp. B"           "agelenopsis oregonensis"
 ## [37] "pardosa spp."              "schizocosa mccooki"
 ## [39] "hololena sp."              "callobius sp."
 ## [41] "pimus sp."                 "aliatypus sp."
@@ -330,7 +332,7 @@ Sensor data come from the [Keck HydroWatch Center](http://nrs.ucop.edu/research/
 * `ee_sensor_data()` - retrieves data for any of these sensors (ids obtained by the previous function) and a date window.
 * `ee_sensor_agg` - provides aggregated data that can be requested in any interval (minutes, days, weeks, months, years).
 
-### Searching the engine  
+### Searching the engine
 
 The search is [elastic](http://www.elasticsearch.org/) by default. One can search for any field in `ee_observations()` across all available resources. For example,
 

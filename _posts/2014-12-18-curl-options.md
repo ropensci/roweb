@@ -5,6 +5,8 @@ title: Curling - exploring web request options
 date: 2014-12-18
 authors:
   - name: Scott Chamberlain
+categories:
+  - blog
 tags:
 - R
 - API
@@ -136,7 +138,7 @@ res <- occ_search(geometry=c(-125.0,38.4,-121.8,40.9), limit=20, config=verbose(
 #> -> Host: api.gbif.org
 #> -> Accept-Encoding: gzip
 #> -> Accept: application/json, text/xml, application/xml, */*
-#> -> 
+#> ->
 #> <- HTTP/1.1 200 OK
 #> <- Content-Type: application/json
 #> <- Access-Control-Allow-Origin: *
@@ -149,7 +151,7 @@ res <- occ_search(geometry=c(-125.0,38.4,-121.8,40.9), limit=20, config=verbose(
 #> <- Age: 209
 #> <- Via: 1.1 varnish
 #> <- Connection: keep-alive
-#> <- 
+#> <-
 ```
 
 Print progress
@@ -165,9 +167,9 @@ You can also combine curl options - use `c()` in this case to combine them
 
 ```r
 c(verbose(), progress())
-#> Config: 
+#> Config:
 #> List of 4
-#>  $ debugfunction   :function (...)  
+#>  $ debugfunction   :function (...)
 #>  $ verbose         :TRUE
 #>  $ noprogress      :FALSE
 #>  $ progressfunction:function (...)
@@ -181,7 +183,7 @@ res <- occ_search(geometry=c(-125.0,38.4,-121.8,40.9), limit=20, config=c(verbos
 #> -> Host: api.gbif.org
 #> -> Accept-Encoding: gzip
 #> -> Accept: application/json, text/xml, application/xml, */*
-#> -> 
+#> ->
 #> <- HTTP/1.1 200 OK
 #> <- Content-Type: application/json
 #> <- Access-Control-Allow-Origin: *
@@ -194,7 +196,7 @@ res <- occ_search(geometry=c(-125.0,38.4,-121.8,40.9), limit=20, config=c(verbos
 #> <- Age: 209
 #> <- Via: 1.1 varnish
 #> <- Connection: keep-alive
-#> <- 
+#> <-
 #>   |======================================================================| 100%
 ```
 
@@ -262,13 +264,13 @@ HEAD("http://www.google.com/search", verbose())
 ```r
 res <- HEAD("http://www.google.com/search", add_headers(Accept = "application/json"))
 res$request$opts$httpheader
-#>             Accept 
+#>             Accept
 #> "application/json"
 ```
 
 > Note: there are shortcuts for `add_headers(Accept = "application/json")` and add_headers(Accept = "application/xml"): `accept_json()`, and `accept_xml()`
 
-* _Why use this?_ For some web resources, using headers is mandatory, and `httr` makes including them quite easy. Headers are nice too because e.g., passing authentication in the header instead of the URL string means your private data is not as exposed to prying eyes. 
+* _Why use this?_ For some web resources, using headers is mandatory, and `httr` makes including them quite easy. Headers are nice too because e.g., passing authentication in the header instead of the URL string means your private data is not as exposed to prying eyes.
 
 ## authenticate
 
@@ -282,7 +284,7 @@ res$request$opts$httpheader
 
 ```r
 authenticate(user = "foo", password = "bar")
-#> Config: 
+#> Config:
 #> List of 2
 #>  $ httpauth:1
 #>   ..- attr(*, "names")="basic"
@@ -356,7 +358,7 @@ GET("http://httpbin.org/cookies", set_cookies(a = 1, b = 2))
 #>   Size: 50 B
 #> {
 #>   "cookies": {
-#>     "a": "1", 
+#>     "a": "1",
 #>     "b": "2"
 #>   }
 ```
@@ -369,7 +371,7 @@ res <- GET("http://httpbin.org/cookies/set", query = list(a = 1, b = 2))
 cookies(res)
 #> $b
 #> [1] 2
-#> 
+#>
 #> $a
 #> [1] 1
 ```
@@ -401,7 +403,7 @@ res <- GET("http://httpbin.org", progress())
 GET("http://www.google.com/search", use_proxy(url = "125.39.66.66", port = 80, username = "username", password = "password"))
 ```
 
-* _Why use this?_ Most of us likely don't need to worry about this. However, if you are in a work place, or maybe in certain geographic locations, you may have to use a proxy. I haven't personally used a proxy in R, so any feedback on this is great. 
+* _Why use this?_ Most of us likely don't need to worry about this. However, if you are in a work place, or maybe in certain geographic locations, you may have to use a proxy. I haven't personally used a proxy in R, so any feedback on this is great.
 
 ## user agent
 
@@ -442,7 +444,7 @@ GET("http://httpbin.org/user-agent", user_agent("its me!"))
 
 ## Questions?
 
-Let us know if you have any questions. To a `curl` newbie, it may seem a bit overwhelming, but we're here to help. 
+Let us know if you have any questions. To a `curl` newbie, it may seem a bit overwhelming, but we're here to help.
 
 [curl]: http://curl.haxx.se/
 [jq]: http://stedolan.github.io/jq/

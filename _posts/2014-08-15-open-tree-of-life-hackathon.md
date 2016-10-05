@@ -6,6 +6,8 @@ date: 2014-08-15
 authors:
   - name: David Winter
     url: http://cartwrig.ht/people/#david-j-winter
+categories:
+  - blog
 tags:
 - R
 - Conference

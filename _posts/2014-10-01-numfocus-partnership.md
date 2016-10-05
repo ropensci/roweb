@@ -5,6 +5,8 @@ title: New fiscal sponsorship agreement with NumFocus foundation
 date: 2014-10-01
 authors:
   - name: Karthik Ram
+categories:
+  - blog
 tags:
 - R
 - funding
@@ -24,10 +26,10 @@ Carl Boettiger, [Gavin Simpson](http://www.uregina.ca/science/biology/people/fac
 
 All contributions to rOpenSci from US organizations and individuals are tax deductible donations. If you would like to support our activities, we are now able to accept donations in a variety of forms including PayPal, [BitCoin](https://bitpay.com/invoice?id=HvFM4eRTTscFKzuwK9Pqth), or checks made out to **NumFOCUS** (<i>note <b>rOpenSci</b> in the memo line</i>):
 
-NumFOCUS  
-P.O. Box 90596  
-Austin, TX 78709  
-USA  
+NumFOCUS
+P.O. Box 90596
+Austin, TX 78709
+USA
 <br>
 
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">

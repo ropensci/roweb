@@ -6,6 +6,8 @@ date: 2013-05-16
 authors:
   - name: Steve Moss
     url: http://about.me/gawbul
+categories:
+  - blog
 tags:
 - Python
 - pyOpenSci

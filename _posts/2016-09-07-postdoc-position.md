@@ -5,6 +5,8 @@ title: Postdoctoral Scholar – Sustainable Software and Reproducible Research
 date: 2016-09-07
 authors:
   - name: Karthik Ram
+categories:
+  - blog
 tags:
 - positions
 - postdoc
@@ -23,16 +25,16 @@ The rOpenSci project based at the University of California, Berkeley seeks to hi
 - Studying careers and profession institutional changes to support sustainable software such as promotion and tenure metrics, job categories and career paths
 
 We expect the postdoc will disseminate their findings in the form of blog posts, technical reports, workshop and conference talks and papers, journal papers or software products, as appropriate for the work and the applicant’s own career goals.
-While experience in developing academic software may be helpful, many projects in the areas above need not require software development experience.  
+While experience in developing academic software may be helpful, many projects in the areas above need not require software development experience.
 
-The candidate can expect to work closely with mentors from the rOpenSci project aligned with their interests, such as Dr. Karthik Ram and Dr. Carl Boettiger (UC Berkeley), Dr. Jenny Bryan (University of British Columbia), and Dr. Daniel S. Katz (University of Illinois), as well as other members from the rOpenSci and UC Berkeley communities. This position will be based at UC Berkeley, but arrangements for working remotely may be available.  
+The candidate can expect to work closely with mentors from the rOpenSci project aligned with their interests, such as Dr. Karthik Ram and Dr. Carl Boettiger (UC Berkeley), Dr. Jenny Bryan (University of British Columbia), and Dr. Daniel S. Katz (University of Illinois), as well as other members from the rOpenSci and UC Berkeley communities. This position will be based at UC Berkeley, but arrangements for working remotely may be available.
 
 This research is funded by the rOpenSci project through a grant from the Helmsely Trust. The initial appointment will be for 1 year, full-time (100%), renewable for another year based on adequate progress made in the first year. The position comes with a competitive postdoc salary [plus benefits](http://vspa.berkeley.edu/postdoc-health-and-welfare-benefits), as well as a generous yearly allowance for computing equipment, conference travel, and other research expenses. Earliest start date is November 2016. Please contact Dr. Karthik Ram <karthik.ram@berkeley.edu> with any informal questions about the position before applying.
 
 **Qualifications**:
 
-- Applicants must possess a PhD or equivalent degree by their start date (more details in the full job ad linked below). 
+- Applicants must possess a PhD or equivalent degree by their start date (more details in the full job ad linked below).
 - Applicants from natural or social sciences, computer science, statistics or related disciplines are all welcome.
 
- 
+
 To apply, submit the following items online at [https://aprecruit.berkeley.edu/apply/JPF01132](https://aprecruit.berkeley.edu/apply/JPF01132)

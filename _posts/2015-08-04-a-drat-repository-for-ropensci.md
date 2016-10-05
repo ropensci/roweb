@@ -2,9 +2,11 @@
 name: a-drat-repository-for-ropensci
 layout: post
 title: "A drat repository for rOpenSci"
-authors: 
+authors:
   - name: Carl Boettiger
-tags: 
+categories:
+  - blog
+tags:
 - R
 - drat
 - CRAN
@@ -15,7 +17,7 @@ tags:
 We're happy to announce the launch of a CRAN-style repository for rOpenSci at [http://packages.ropensci.org](http://packages.ropensci.org)
 
 This repository contains the latest nightly builds from the master branch of all rOpenSci packages currently on GitHub. This allows users to install development versions of our software without specialized functions such as `install_github()`, allows
-dependencies not hosted on CRAN to still be resolved automatically, and permits the use of `update.packages()`. 
+dependencies not hosted on CRAN to still be resolved automatically, and permits the use of `update.packages()`.
 
 
 ## Using the repository
@@ -66,18 +68,18 @@ With `ropkgs`, `drat` and `drat.builder`, we now have everything we need to auto
 - it supports custom Docker containers, allowing us to just download a container with most or all the dependencies we need to build packages, etc., without having to wait for them to install manually from source first.
 - it has a convenient web interface for providing secure credentials we'll need to publish the binary repository to GitHub or Amazon.
 
-Circle has other advantages too, like great live help and the ability to ssh into your CI run to troubleshoot when all else fails, but otherwise works like most other CI platforms.  More on that another day. You can see the daily builds here: [CircleCi](https://circleci.com/gh/ropensci/drat/tree/gh-pages), which are triggered by a simple `POST` request running as a cron job.  The [circle.yml](https://github.com/ropensci/drat/blob/gh-pages/circle.yml) configuration file appears in the project's drat repo -- check out how simple it is! 
+Circle has other advantages too, like great live help and the ability to ssh into your CI run to troubleshoot when all else fails, but otherwise works like most other CI platforms.  More on that another day. You can see the daily builds here: [CircleCi](https://circleci.com/gh/ropensci/drat/tree/gh-pages), which are triggered by a simple `POST` request running as a cron job.  The [circle.yml](https://github.com/ropensci/drat/blob/gh-pages/circle.yml) configuration file appears in the project's drat repo -- check out how simple it is!
 
 ### Publishing to Amazon
 
 The last step would be getting download logs; which is somewhat more complicated than it sounds.  `drat` conveniently already handles pushing packages to GitHub's gh-pages, a free and easy way to provide static hosting.  This is free and easy, but isn't ideal, particularly for large and frequently updated package collections.  Also, it is impossible to get download logs from this approach. To avoid these issues, we settled on pushing our package repository to a static site hosted through Amazon's S3 data storage "buckets."  It's not free, but for at most a few gigs of space we'll need it's still very cost effective.  In particular, S3 buckets can generate their own log files, which provides a way to count package downloads.
- 
-Secure communication with Amazon S3 system is accomplished using the very nascent / actively developing [aws.s3](https://github.com/cloudyr/aws.s3) R package from the awesome [cloudyr](https://cloudyr.github.io/) project.   
- 
+
+Secure communication with Amazon S3 system is accomplished using the very nascent / actively developing [aws.s3](https://github.com/cloudyr/aws.s3) R package from the awesome [cloudyr](https://cloudyr.github.io/) project.
+
 
 ### Parsing the download logs
 
-Amazon's S3 logs are rather raw and require some good ol data tidying work to transform them into the conveniently parsed, tidied and IP-address-anonymized format used by RStudio's download logs.  Eventually this too can be accomplished by the CircleCI builds, but at the moment is too computationally intensive for them.  A script for this work-flow can be found in the project repo, [parse_s3_logs.R](https://github.com/ropensci/drat/blob/gh-pages/parse_s3_logs.R).  As the data accumulate we should be able to start publishing the tidy logs.  
+Amazon's S3 logs are rather raw and require some good ol data tidying work to transform them into the conveniently parsed, tidied and IP-address-anonymized format used by RStudio's download logs.  Eventually this too can be accomplished by the CircleCI builds, but at the moment is too computationally intensive for them.  A script for this work-flow can be found in the project repo, [parse_s3_logs.R](https://github.com/ropensci/drat/blob/gh-pages/parse_s3_logs.R).  As the data accumulate we should be able to start publishing the tidy logs.
 
 This project is still in it's early days, and as ever, we welcome feedback, problems or ideas on the [issues tracker](https://github.com/ropensci/drat/issues).
 

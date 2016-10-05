@@ -5,6 +5,8 @@ title: Announcing our ambassadors program
 date: 2014-08-11
 authors:
   - name: Karthik Ram
+categories:
+  - blog
 tags:
 - R
 - ropensci

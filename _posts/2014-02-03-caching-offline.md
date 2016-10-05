@@ -5,6 +5,8 @@ title: Caching API calls offline
 date: 2014-02-03
 authors:
   - name: Scott Chamberlain
+categories:
+  - blog
 tags:
 - R
 - API
@@ -48,7 +50,7 @@ cachefxn <- function(q="*:*", db=NULL, cache=FALSE, backend='local', path)
 
   # if out=NULL, proceed to make call to web
   if(!is.null(out)){ out } else
-  {  
+  {
     tt <- GET(url, query = args)
     stop_for_status(tt)
     temp <- content(tt, as = "text")

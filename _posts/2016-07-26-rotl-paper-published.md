@@ -10,6 +10,8 @@ authors:
     url: http://www-personal.umich.edu/~josephwb/
   - name: David Winter
     url: http://david-winter.info
+categories:
+  - blog
 tags:
 - R
 - rotl

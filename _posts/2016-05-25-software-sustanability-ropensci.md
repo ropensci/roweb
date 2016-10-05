@@ -6,6 +6,8 @@ date: 2016-05-25
 authors:
   - name: Daniel S. Katz
     url: https://twitter.com/danielskatz
+categories:
+  - blog
 tags:
   - sustainability
   - researchsoftware
@@ -71,7 +73,7 @@ and peer review; catalogs, search, and review; portability; and reproducibility.
 under the [WSSSPE](http://wssspe.researchcomputing.org.uk/) umbrella.
 
 I will also work with rOpenSci to attempt to promote and encourage software
-metrics. A number of projects, including [sempervirens](https://github.com/njsmith/sempervirens) and 
+metrics. A number of projects, including [sempervirens](https://github.com/njsmith/sempervirens) and
 [Depsy](http://depsy.org), have begun to focus on particular parts of the problem space, but more general work and
 tools are needed, in particular to impact those outside of just the R and python communities.  There’s also some
 related work underway at NCSA and RENCI (that came out of WSSSPE3) to survey a set of developers on what impact

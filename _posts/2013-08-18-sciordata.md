@@ -5,6 +5,8 @@ title: Working with climate data from the web in R
 date: 2013-08-18
 authors:
   - name: Scott Chamberlain
+categories:
+  - blog
 tags:
 - climate change
 - phenology
@@ -37,7 +39,7 @@ n1$show(cdn = TRUE)
 ```
 
 
-Check out the output [here][rchartsout]. If you like you can take the source code from the visualization (right click on select *View Page Source*) and put it in your html files, and you're good to go (as long as you have dependencies, etc.) - quicker than learning [d3][d3] and company from scratch, eh. This is a super simple example, but you can imagine the possibilities.  
+Check out the output [here][rchartsout]. If you like you can take the source code from the visualization (right click on select *View Page Source*) and put it in your html files, and you're good to go (as long as you have dependencies, etc.) - quicker than learning [d3][d3] and company from scratch, eh. This is a super simple example, but you can imagine the possibilities.
 
 
 ## The data itself

@@ -11,6 +11,8 @@ authors:
   - name: Scott Chamberlain
   - name: Rich FitzJohn
   - name: Karthik Ram
+categories:
+  - blog
 tags:
   - software
   - review

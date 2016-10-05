@@ -6,6 +6,8 @@ date: 2014-08-08
 authors:
   - name: Scott Chamberlain
   - name: Karthik Ram
+categories:
+  - blog
 tags:
 - R
 - community

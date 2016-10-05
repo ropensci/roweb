@@ -5,6 +5,8 @@ title: New features in the most recent taxize update, v0.2
 date: 2014-02-19
 authors:
   - name: Scott Chamberlain
+categories:
+  - blog
 tags:
 - R
 - API
@@ -190,7 +192,7 @@ occ_search(id)
 ```
 
 
-In addition, `get_ids` now accepts 'gbif' as an option for the `db` parameter - `get_ids` is our omnibus function to search for taxon ids across all sources available in `taxize`.  
+In addition, `get_ids` now accepts 'gbif' as an option for the `db` parameter - `get_ids` is our omnibus function to search for taxon ids across all sources available in `taxize`.
 
 ### New functions: rbind and cbind for classification
 

@@ -5,6 +5,8 @@ title: Making maps of climate change
 date: 2013-07-19
 authors:
   - name: Ted Hart
+categories:
+  - blog
 tags:
 - R
 - API

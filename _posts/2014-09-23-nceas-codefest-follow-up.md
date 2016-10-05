@@ -6,6 +6,8 @@ date: 2014-09-23
 authors:
   - name: Scott Chamberlain
   - name: Ted Hart
+categories:
+  - blog
 tags:
 - R
 - Conference

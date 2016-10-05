@@ -5,6 +5,8 @@ title: Visualizing rOpenSci collaboration
 date: 2013-03-08
 authors:
   - name: Scott Chamberlain
+categories:
+  - blog
 tags:
 - R
 - ropensci

@@ -5,6 +5,8 @@ title: taxize changes
 date: 2013-11-19
 authors:
   - name: Scott Chamberlain
+categories:
+  - blog
 tags:
 - R
 - taxonomy

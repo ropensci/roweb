@@ -5,6 +5,8 @@ title: rOpenSci developer meeting in March
 date: 2014-02-10
 authors:
   - name: Karthik Ram
+categories:
+  - blog
 tags:
 - R
 - meeting
