@@ -8,9 +8,10 @@
             <div class="submitted">
               <!-- author goes here -->
     {% for author in page.authors %}
-      {% if author.name == "Carl Boettiger" or author.name == "Karthik Ram" or author.name == "Scott Chamberlain" or author.name == "Jenny Bryan" or author.name == "Rich FitzJohn" or author.name == "Leadership Team" or author.name == "Core Team" %}
+      {% if author.name == "Carl Boettiger" or author.name == "Karthik Ram" or author.name == "Scott Chamberlain" or author.name == "Jenny Bryan" or author.name == "Rich FitzJohn" or
+      author.name == "Leadership Team" or author.name == "Core Team" %}
         <a href="/about/#leadership"> {{ author.name }} </a>&nbsp;
-      {% elsif author.name == "Jeroen Ooms" %}
+      {% elsif author.name == "Jeroen Ooms" or author.name == "Stefanie Butland" %}
         <a href="/about/#staff"> {{ author.name }} </a>&nbsp;
       {% elsif author.name == "Ted Hart" %}
         <a href="/about/#alumni"> {{ author.name }} </a>&nbsp;
