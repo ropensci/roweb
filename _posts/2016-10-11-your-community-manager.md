@@ -5,7 +5,6 @@ title: "Greetings from Your Community Manager!"
 date: 2016-10-11
 authors:
   - name: Stefanie Butland
-    url: https://ropensci.org/about/
 tags:
 - ropensci
 - community
@@ -20,9 +19,7 @@ So much of my perspective of rOpenSci comes from being a newcomer. I was impress
 My Open Science Epiphany
 -----------------------------------------------------------------
 
-I completed my MSc in Biology at York University in Toronto, doing fruit fly behaviour genetics in a lab with a strong foundation in ecology and evolution and I’ve done molecular biology-based research in bacteria, plants, insects and mammals. My open science epiphany came in the late 90’s when I found so many different sequences of my favourite enzyme in public databases that I could learn more and faster by comparing these than I could by slowly cloning and sequencing one more example!
-
-You can check out my science [here](https://scholar.google.ca/citations?user=9HnWx2kAAAAJ).
+I completed my MSc in Biology at York University in Toronto, doing fruit fly behaviour genetics in a lab with a strong foundation in ecology and evolution and I’ve done molecular biology-based research in bacteria, plants, insects and mammals. My open science epiphany came in the late 90’s when I found so many different sequences of my favourite enzyme in public databases that I could learn more and faster by comparing these than I could by slowly cloning and sequencing one more example! [check out my science](https://scholar.google.ca/citations?user=9HnWx2kAAAAJ).
 
 This hooked me on bioinformatics and I worked in a core facility (for a former GenBank Coordinator!) connecting wet-lab biologists with data, software and approaches to advance their research. There, I learned the value of open data sharing, data curation and the curators themselves. I also did some Perl programming in a hunt for human disease-causing genes. During this time, I was part of an amazing team that trained hundreds of people in the [Canadian Bioinformatics Workshops](https://bioinformatics.ca/) and helped instructors get on board with providing open access to all training materials.
 
@@ -48,6 +45,6 @@ Talk to Me
 
 Tell me about your challenges and your triumphs. What do you want to read in the [blog](https://ropensci.org/blog/)? What would you like to learn in a [Community Call](https://github.com/ropensci/commcalls/)? (What would you like to present?) How do you define diversity and how can we cultivate it? Who are the connectors in your communities that we should be talking with?
 
-Share your thoughts in the comments below. Ask a question in the [discussion forum](https://discuss.ropensci.org/). Follow [@ropensci](https://twitter.com/rOpenSci) and me [@stefaniebutland](https://twitter.com/stefaniebutland) on Twitter. [Subscribe](link) to hear about new blog posts.
+Share your thoughts in the comments below. Ask a question in the [discussion forum](https://discuss.ropensci.org/). Follow [@ropensci](https://twitter.com/rOpenSci) and me [@stefaniebutland](https://twitter.com/stefaniebutland) on Twitter. [Subscribe](https://ropensci.org/#subscribe) to hear about new blog posts.
 
 Let’s do this!
