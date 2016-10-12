@@ -1,10 +1,12 @@
 ---
 name: your-community-manager
 layout: post
-title: "Greetings from Your Community Manager!"
+title: Greetings from Your Community Manager!
 date: 2016-10-12
 authors:
   - name: Stefanie Butland
+categories:
+  - blog
 tags:
 - ropensci
 - community
