@@ -2,7 +2,7 @@
 name: your-community-manager
 layout: post
 title: "Greetings from Your Community Manager!"
-date: 2016-10-11
+date: 2016-10-12
 authors:
   - name: Stefanie Butland
 tags:
