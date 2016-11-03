@@ -1,0 +1,135 @@
+---
+name: release-isdparser
+layout: post
+title: Parse NOAA Integrated Surface Data Files
+date: 2016-11-03
+authors:
+  - name: Scott Chamberlain
+categories:
+  - technotes
+tags:
+  - R
+  - climate
+---
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+A new package [isdparser](https://cran.rstudio.com/web/packages/isdparser) is 
+on CRAN. `isdparser` was in part liberated from [rnoaa](https://github.com/ropensci/rnoaa), 
+then improved. We'll use `isdparser` in `rnoaa` soon. 
+
+`isdparser` does not download files for you from NOAA's ftp servers. The 
+package focuses on parsing the files, which are variable length ASCII strings
+stored line by line, where each line has some mandatory data, and any amount 
+of optional data. 
+
+The data is great, and includes for example, wind speed and direction, temperature, 
+cloud data, sea level pressure, and more. Includes data from approximately 35,000 
+stations worldwide, though best coverage is in North America/Europe/Australia.
+Data go all the way back to 1901, and are updated daily.
+    
+However, [the data](ftp://ftp.ncdc.noaa.gov/pub/data/noaa/) is not fun to parse, 
+warranting an packge to deal with the parsing. 
+
+## Installation
+
+```{r eval=FALSE}
+install.packages("isdparser")
+```
+
+If binaries aren't available, try from source: 
+`install.packages("isdparser", type = "source")` or from GitHub: 
+`devtools::install_github("ropenscilabs/isdparser")`
+
+```{r}
+library(isdparser)
+library(dplyr)
+```
+
+## Parse individual lines
+
+If you want to parse individual lines, use `isd_parse_line()`
+
+First, let's get a ISD file. There's a few that come with the package:
+
+```{r}
+path <- system.file('extdata/024130-99999-2016.gz', package = "isdparser")
+```
+
+Read in the file
+
+```{r}
+lns <- readLines(path, encoding = "latin1")
+```
+
+Parse a line
+
+```{r}
+isd_parse_line(lns[1])
+```
+
+By default you get a tibble back, but you can ask for a list in return instead.
+
+Parsing by line allows the user to decide how to apply parsing across lines, 
+whether it be `lapply` style, or for loop, etc.
+
+## Parse entire files
+
+You can also parse entire ISD files.
+
+```{r}
+(res <- isd_parse(path))
+```
+
+Optionally, you can print progress:
+
+```{r}
+isd_parse(path, progress = TRUE)
+```
+
+There's a parallel option as well, coming in handy with the larger ISD files:
+
+```{r eval=FALSE}
+isd_parse(path, parallel = TRUE)
+```
+
+## Visualize the data
+
+Make better date + time
+
+```{r}
+df <- res %>% 
+  rowwise() %>% 
+  mutate(
+    datetime = as.POSIXct(strptime(paste(date, paste0(substring(time, 1, 2), ":00:00")), "%Y-%m-%d %H:%M:%S"))
+  ) %>% 
+  ungroup
+```
+
+viz
+
+```{r}
+# removing some outliers (obs, look into more for serious use)
+library(ggplot2)
+ggplot(df[df$temperature < 100,], aes(datetime, temperature)) +
+  geom_point() + 
+  theme_grey(base_size = 18)
+```
+
+
+## Future work
+
+I plan to improve performance via profiling and swapping out slower code for faster,
+as well as possibly dropping down to C++. 
+
+There was already a featur request for asking for fields of interest instead of
+getting all fields, so [that's on the list](https://github.com/ropenscilabs/isdparser/issues/8). 
+
+Do try out `isdparser`. Let us know of any bugs, and any feature requests!
