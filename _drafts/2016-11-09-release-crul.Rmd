@@ -1,0 +1,174 @@
+---
+name: release-crul
+layout: post
+title: crul - an HTTP client
+date: 2016-11-03
+authors:
+  - name: Scott Chamberlain
+categories:
+  - technotes
+tags:
+  - R
+  - api
+---
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+A new package [crul](https://cran.rstudio.com/web/packages/crul) is
+on CRAN. `crul` is another HTTP client for R, but is relatively simplified
+compared to [httr](https://github.com/hadley/httr), and is being built
+to link closely with [webmockr][webmockr] and [vcr][vcr]. `webmockr` and
+`vcr` are packages ported from Ruby's [webmock](https://github.com/bblimke/webmock)
+and [vcr](https://github.com/vcr/vcr), respectively.
+They both make mocking HTTP requests really easy.
+
+A major use case for mocking HTTP requests is for mocking HTTP requests
+in unit tests. Nearly all the packages I work on personally make HTTP
+requests in their test suites, so I wanted to make it really easy to
+mock HTTP requests. You don't have to use mocking in test suites of course.
+
+`crul` is not meant to replace other HTTP R libraries, but rather to make it
+easy to integrate mocking.
+
+## Installation
+
+```{r eval=FALSE}
+install.packages("crul")
+```
+
+If binaries aren't available, try from source:
+`install.packages("crul", type = "source")` or from GitHub:
+`devtools::install_github("ropenscilabs/crul")`
+
+```{r}
+library(crul)
+```
+
+## The client
+
+`HttpClient` is where to start
+
+```{r}
+(x <- HttpClient$new(
+  url = "https://httpbin.org",
+  opts = list(
+    timeout = 1
+  ),
+  headers = list(
+    a = "hello world"
+  )
+))
+```
+
+Makes a R6 class, that has all the bits and bobs you'd expect for doing HTTP
+requests. When it prints, it gives any defaults you've set. As you update
+the object you can see what's been set
+
+```{r}
+x$opts
+```
+
+```{r}
+x$headers
+```
+
+## Make a request
+
+The client object created above has http methods that you can call,
+and pass paths to, as well as query parameters, body values, and any other
+curl options.
+
+Here, we'll do a __GET__ request on the route `/get` on our base url
+`https://httpbin.org` (the full url is then `https://httpbin.org/get`)
+
+```{r}
+res <- x$get("get")
+```
+
+The response from a http request is another R6 class `HttpResponse`, which
+has slots for the outputs of the request, and some functions to deal with
+the response:
+
+Status code
+
+```{r}
+res$status_code
+```
+
+Status code with the message and explanation
+
+```{r}
+res$status_http()
+```
+
+The content
+
+```{r}
+res$content
+```
+
+HTTP method
+
+```{r}
+res$method
+```
+
+Request headers
+
+```{r}
+res$request_headers
+```
+
+Response headers
+
+```{r}
+res$response_headers
+```
+
+And you can parse the content with a provided function:
+
+```{r}
+res$parse()
+```
+
+parse the JSON
+
+```{r}
+jsonlite::fromJSON(res$parse())
+```
+
+## Future work
+
+### Mocking
+
+`crul` doesn't currently have mocking ability, but I am working right now on 
+getting the first version of [webmockr][webmockr] on
+CRAN. It will work together with `crul` so that when you use `crul` you can
+choose to turn on mocking, specify which patterns to match for mocking,
+and much more.  `webmockr` is built with plugin system in mind, so that we
+could make a plugin for `httr`, `RCurl`, or any other http R library.
+
+I actually started `vcr` first, but realized that I needed to go back and
+build `webmockr` first. So once `webmockr` is up on CRAN, I'll work on getting
+`vcr` on CRAN as well.
+
+### Errors
+
+Another package I've been working on, [fauxpas][fauxpas], is meant to be a 
+general purpose HTTP errors package, and work with any HTTP R library. 
+Other similar languages like Ruby and Python have a better error story, 
+and I thought I'd try it out for R.  I'll work on incorporating `fauxpas`
+into `crul` as well, though probably in Suggests in case users don't want 
+to use it.
+
+
+[webmockr]: https://github.com/ropenscilabs/webmockr
+[vcr]: https://github.com/ropenscilabs/vcr
+[fauxpas]: https://github.com/sckott/fauxpas
