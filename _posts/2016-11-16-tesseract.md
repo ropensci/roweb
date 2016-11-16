@@ -14,7 +14,7 @@ tags:
 - tesseract
 ---
 
-Optical character recognition (OCR) is the process of extracting written or typed text from images such as photos or scanned documents. This can be useful for automated text processing of documents that are not available in digital form, such as books or articles or public records. 
+Optical character recognition (OCR) is the process of extracting written or typed text from images such as photos and scanned documents into machine-encoded text. This method can be useful for automating extraction of hard to reach data into a form that allows for further downstream processing. 
 
 The new rOpenSci package [tesseract](https://cran.r-project.org/web/packages/tesseract/index.html) brings one of the best open-source OCR engines to R. This enables for example researchers or journalists to search and analyze vast amounts of documents which are only available in printed form.
 
@@ -90,7 +90,7 @@ Running this example in R shows that the accuracy of text extraction from the fi
 
 ## Future Plans
 
-The current version of the 'tesseract' package is stable and basically feature complete. We might do a followup release to add some additional utitlities for downloading and managing training data. Perhaps we can also add some integration with the rOpenSci [magick](https://cran.r-project.org/web/packages/magick/vignettes/intro.html) package to help with preprocessing images.
+The current version of the 'tesseract' package is stable and essentially feature complete. We may release an update in the future to include additional utitlities for downloading and managing training data. These updates may also include some integration with the rOpenSci's [magick](https://cran.r-project.org/web/packages/magick/vignettes/intro.html) package to help with preprocessing images.
 
-All of the development at rOpenSci is driven by user feedback. If you find a problem or have suggestions for improvement we love to hear about it on our [Github page](https://github.com/ropensci/tesseract/issues) ! 
+All of our development at rOpenSci is driven by user feedback. If you find a problem or have suggestions for improvement, we would love to hear about it on our [Github page](https://github.com/ropensci/tesseract/issues)! 
 
