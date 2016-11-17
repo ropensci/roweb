@@ -12,6 +12,7 @@ tags:
 - ropensci
 - packages
 - tesseract
+- R
 ---
 
 Optical character recognition (OCR) is the process of extracting written or typed text from images such as photos and scanned documents into machine-encoded text. The new rOpenSci package [tesseract](https://cran.r-project.org/web/packages/tesseract/index.html) brings one of the best open-source OCR engines to R. This enables researchers or journalists, for example, to search and analyze vast numbers of documents that are only available in printed form.
@@ -49,7 +50,7 @@ When using OCR to extract text from a document, the result will rarely be perfec
 
 ## Context Language
 
-A character can often only be recognized in the context of the word or sentence appears in. For example if a text contains the words *In love* the capital I and lower case l look (nearly) identical when printed. 
+A character can often only be recognized in the context of the word or sentence appears in. For example if a text contains the words *In love* the capital I and lower case l look (nearly) identical when printed.
 
 [![inlove](http://jeroenooms.github.io/files/inlove.png)](http://jeroenooms.github.io/files/inlove.png)
 
@@ -61,7 +62,7 @@ cat(text) # In love
 
 ```
 
-The OCR method used by tesseract uses language specific training data to optimize character recognition. The default language is English, training data for other languages are provided via the official [tessdata repository](https://github.com/tesseract-ocr/tessdata) directory. On Linux these can be installed directly with the [yum](https://apps.fedoraproject.org/packages/tesseract) or [apt](https://packages.debian.org/search?suite=stable&section=all&arch=any&searchon=names&keywords=tesseract-ocr-) package manager. 
+The OCR method used by tesseract uses language specific training data to optimize character recognition. The default language is English, training data for other languages are provided via the official [tessdata repository](https://github.com/tesseract-ocr/tessdata) directory. On Linux these can be installed directly with the [yum](https://apps.fedoraproject.org/packages/tesseract) or [apt](https://packages.debian.org/search?suite=stable&section=all&arch=any&searchon=names&keywords=tesseract-ocr-) package manager.
 
 On Windows/MacOS you have to manually download training data for other langauges for now. The next version of the package will hopefully make this a little easier.
 
@@ -72,7 +73,7 @@ Besides training data, the most important aspect of OCR performance is the quali
 [![dogs](http://jeroenooms.github.io/files/dog_hq.png)](http://jeroenooms.github.io/files/dog_hq.png)
 
 
-To put this to the test, we made two screenshots from the Wikipedia page above. The high quality image in the code below has approximately double the resolution of the low quality image. In addition the font rendering seems slightly better for the high quality image. 
+To put this to the test, we made two screenshots from the Wikipedia page above. The high quality image in the code below has approximately double the resolution of the low quality image. In addition the font rendering seems slightly better for the high quality image.
 
 ```r
 # Low quality:
@@ -90,5 +91,5 @@ Running this example in R shows that the accuracy of text extraction from the fi
 
 The current version of the 'tesseract' package is stable and essentially feature complete. We may release an update in the future to include additional utitlities for downloading and managing training data. These updates may also include some integration with the rOpenSci's [magick](https://cran.r-project.org/web/packages/magick/vignettes/intro.html) package to help with preprocessing images.
 
-All of our development at rOpenSci is driven by user feedback. If you find a problem or have suggestions for improvement, we would love to hear about it on our [Github page](https://github.com/ropensci/tesseract/issues)! 
+All of our development at rOpenSci is driven by user feedback. If you find a problem or have suggestions for improvement, we would love to hear about it on our [Github page](https://github.com/ropensci/tesseract/issues)!
 
