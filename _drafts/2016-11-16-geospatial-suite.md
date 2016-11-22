@@ -22,7 +22,7 @@ __Example 1__
 
 One of our geospatial packages, [geonames][geonames], is used for geocoding, the practice of either sorting out place names from geographic data, or vice versa. `geonames` interfaces with the open database of the same name: <http://www.geonames.org/>. A recent paper in PlosONE highlights a common use case. Harsch & HilleRisLambers[^1] asked how plant species distributions have shifted due to climate warming. They used the `GNsrtm3()` function in `geonames`, which uses [Shuttle Radar Topography Mission](http://www.geonames.org/export/web-services.html#srtm3) elevation data, to fill in missing or incorrect elevation values in their dataset.
 
-__Example 2__ 
+__Example 2__
 
 Another of our packages, [geojsonio][geojsonio], is used as a tool to ingest GeoJSON, or make GeoJSON from various inputs. `geojsonio` was used in Frankfurt's Open Data Hackathon in March 2016 in a project to present users with random Google Streetview Images of Frankfurt. Check out the repo at [safferli/opendataday2016](https://github.com/safferli/opendataday2016).
 
@@ -105,11 +105,13 @@ We're excited to announce a new package `geojson`, which is now on CRAN. Check o
 
 You can install the package from CRAN:
 
-```{r eval = FALSE}
+
+```r
 install.packages("geojson")
 ```
 
-```{r}
+
+```r
 library("geojson")
 ```
 
@@ -127,60 +129,212 @@ The `geojson` package has functions for creating each of the GeoJSON classes - f
 
 Internally, we perform some basic checks that the string first is proper JSON, then if you want to lint the GeoJSON (see the `linting_opts()` function) we'll lint the GeoJSON as well using our `geojsonlint` package.
 
-```{r collapse=TRUE}
+
+```r
 (x <- point('{ "type": "Point", "coordinates": [100.0, 0.0] }'))
+## <Point>
+##   coordinates:  [100,0]
 geo_type(x)
+## [1] "Point"
 geo_pretty(x)
+## {
+##     "type": "Point",
+##     "coordinates": [
+##         100.0,
+##         0.0
+##     ]
+## }
+##
 f <- tempfile(fileext = ".geojson")
 geo_write(y, f)
 jsonlite::fromJSON(f, FALSE)
+## $type
+## [1] "Polygon"
+##
+## $coordinates
+## $coordinates[[1]]
+## $coordinates[[1]][[1]]
+## $coordinates[[1]][[1]][[1]]
+## [1] 100
+##
+## $coordinates[[1]][[1]][[2]]
+## [1] 0
+##
+##
+## $coordinates[[1]][[2]]
+## $coordinates[[1]][[2]][[1]]
+## [1] 101
+##
+## $coordinates[[1]][[2]][[2]]
+## [1] 0
+##
+##
+## $coordinates[[1]][[3]]
+## $coordinates[[1]][[3]][[1]]
+## [1] 101
+##
+## $coordinates[[1]][[3]][[2]]
+## [1] 1
+##
+##
+## $coordinates[[1]][[4]]
+## $coordinates[[1]][[4]][[1]]
+## [1] 100
+##
+## $coordinates[[1]][[4]][[2]]
+## [1] 1
+##
+##
+## $coordinates[[1]][[5]]
+## $coordinates[[1]][[5]][[1]]
+## [1] 100
+##
+## $coordinates[[1]][[5]][[2]]
+## [1] 0
 ```
 
-```{r echo=FALSE}
-unlink(f)
-```
 
-In addition, you can perform some basic operations, such as adding (`properties_add()`) or getting properties (`properties_get()`), adding (`crs_add()`) or getting CRS (`crs_get()`), adding (`bbox_add()`) or getting (`bbox_get()`) a bounding box. You can calculate a bounding box on your GeoJSON with `geo_bbox()`, prettify your GeoJSON with `geo_pretty()`, and write your GeoJSON to disk with `geo_write()`. 
+
+In addition, you can perform some basic operations, such as adding (`properties_add()`) or getting properties (`properties_get()`), adding (`crs_add()`) or getting CRS (`crs_get()`), adding (`bbox_add()`) or getting (`bbox_get()`) a bounding box. You can calculate a bounding box on your GeoJSON with `geo_bbox()`, prettify your GeoJSON with `geo_pretty()`, and write your GeoJSON to disk with `geo_write()`.
 
 __properties__
 
-```{r collapse=TRUE}
+
+```r
 (y <- linestring('{ "type": "LineString", "coordinates": [ [100.0, 0.0], [101.0, 1.0] ]}'))
+## <LineString>
+##   coordinates:  [[100,0],[101,1]]
 (z <- y %>% feature() %>% properties_add(population = 1000))
+## {
+##     "type": "Feature",
+##     "properties": {
+##         "population": 1000
+##     },
+##     "geometry": {
+##         "type": "LineString",
+##         "coordinates": [
+##             [
+##                 100,
+##                 0
+##             ],
+##             [
+##                 101,
+##                 1
+##             ]
+##         ]
+##     }
+## }
 properties_get(z, property = 'population')
+## 1000
 ```
 
 __bbox__
 
-```{r collapse=TRUE}
+
+```r
 x <- '{ "type": "Polygon",
 "coordinates": [
   [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ]
   ]
 }'
 (y <- polygon(x))
+## <Polygon>
+##   no. lines:  1
+##   no. holes:  0
+##   no. nodes / line:  5
+##   coordinates:  [[[100,0],[101,0],[101,1],[100,1],[100,0]]]
 ```
 
 Add bbox - without an input, we figure out the 2D bbox for you
 
-```{r collapse=TRUE}
+
+```r
 y %>% feature() %>% bbox_add()
+## {
+##     "type": "Feature",
+##     "properties": {
+##
+##     },
+##     "geometry": {
+##         "type": "Polygon",
+##         "coordinates": [
+##             [
+##                 [
+##                     100,
+##                     0
+##                 ],
+##                 [
+##                     101,
+##                     0
+##                 ],
+##                 [
+##                     101,
+##                     1
+##                 ],
+##                 [
+##                     100,
+##                     1
+##                 ],
+##                 [
+##                     100,
+##                     0
+##                 ]
+##             ]
+##         ]
+##     },
+##     "bbox": [
+##         100,
+##         0,
+##         101,
+##         1
+##     ]
+## }
 ```
 
-Last, the Mapbox folks have a compact binary encoding for geographic data ([Geobuf](https://github.com/mapbox/geobuf)) that provides lossless compression of GeoJSON data into protocol buffers. Our own [Jeroen Ooms](https://ropensci.org/about/#staff) added Geobuf serialization to his [protolite][protolite] package, which we import in `geojson` to allow you to read Geobuf with `from_geobuf()` and write Geobuf with `to_geobuf()`. 
+Last, the Mapbox folks have a compact binary encoding for geographic data ([Geobuf](https://github.com/mapbox/geobuf)) that provides lossless compression of GeoJSON data into protocol buffers. Our own [Jeroen Ooms](https://ropensci.org/about/#staff) added Geobuf serialization to his [protolite][protolite] package, which we import in `geojson` to allow you to read Geobuf with `from_geobuf()` and write Geobuf with `to_geobuf()`.
 
-```{r}
+
+```r
 file <- system.file("examples/test.pb", package = "geojson")
 (json <- from_geobuf(file))
+```
+
+```
+## {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[102,0.5]},"id":999,"properties":{"prop0":"value0","double":0.0123,"negative_int":-100,"positive_int":100,"negative_double":-1.2345e+16,"positive_double":1.2345e+16,"null":null,"array":[1,2,3.1],"object":{"foo":[5,6,7]}},"blabla":{"foo":[1,1,1]}},{"type":"Feature","geometry":{"type":"LineString","coordinates":[[102,0],[103,-1.1],[104,-3],[105,1]]},"id":123,"properties":{"custom1":"test","prop0":"value0","prop1":0}},{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[100,0],[101,0],[101,1],[100,1],[100,0]],[[99,10],[101,0],[100,1],[99,10]]]},"id":"test-id","properties":{"prop0":"value0","prop1":{"this":"that"}},"custom1":"jeroen"},{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[102,2],[103,2],[103,3],[102,2]]],[[[100,0],[101,0],[101,1],[100,1],[100,0]],[[100.2,0.2],[100.2,0.8],[100.2,0.2]]]]}},{"type":"Feature","geometry":{"type":"GeometryCollection","geometries":[{"type":"Point","coordinates":[100,0]},{"type":"LineString","coordinates":[[101,0],[102,1]]},{"type":"MultiPoint","coordinates":[[100,0],[101,1]]},{"type":"MultiLineString","coordinates":[[[100,0],[101,1]],[[102,2],[103,3]]]},{"type":"MultiPolygon","coordinates":[[[[102,2],[103,2],[103,3],[102,3],[102,2]]],[[[100,0],[101,0],[101,1],[100,1],[100,0]],[[100.2,0.2],[100.8,0.2],[100.8,0.8],[100.2,0.8],[100.2,0.2]]]]}]}}]}
+```
+
+```r
 from_geobuf(file, pretty = TRUE)
+```
+
+```
+## {
+##   "type": "FeatureCollection",
+##   "features": [
+##     {
+##       "type": "Feature",
+##       "geometry": {
+##         "type": "Point",
+## ...
+```
+
+```r
 to_geobuf(json)
+```
+
+```
+##   [1] 0a 05 70 72 6f 70 30 0a 06 64 6f 75 62 6c 65 0a 0c 6e 65 67 61 74 69
+##  [24] 76 65 5f 69 6e 74 0a 0c 70 6f 73 69 74 69 76 65 5f 69 6e 74 0a 0f 6e
+##  [47] 65 67 61 74 69 76 65 5f 64 6f 75 62 6c 65 0a 0f 70 6f 73 69 74 69 76
+##  [70] 65 5f 64 6f 75 62 6c 65 0a 04 6e 75 6c 6c 0a 05 61 72 72 61 79 0a 06
+##  ...
 ```
 
 ## geoops
 
 <span class="label label-default">cran</span> <a href="https://github.com/ropensci/geoops"><span class="label label-info">github</span></a>
 
-[geoops](https://github.com/ropenscilabs/geoops) - `geoops` is not quite ready to use yet, but 
+[geoops](https://github.com/ropenscilabs/geoops) - `geoops` is not quite ready to use yet, but
 the goal with `geoops` is to provide spatial operations on GeoJSON that works with `geojson`
 package. Example operations are:
 
@@ -191,8 +345,8 @@ package. Example operations are:
 * Combine one or more polygons together
 * and more
 
-Another feature of `geoops` we're excited about is slicing up GeoJSON easily by using our 
-package [jqr][jqr]. It's similar in concept to using `dplyr` for drilling down into 
+Another feature of `geoops` we're excited about is slicing up GeoJSON easily by using our
+package [jqr][jqr]. It's similar in concept to using `dplyr` for drilling down into
 a data.frame, but instead we can do that with GeoJSON.
 
 > note: this package used to be called `siftgeojson`
@@ -212,28 +366,38 @@ towards our package `geojsonlint` for all GeoJSON linting tasks.
 
 A quick example of the power of `geojsonio`
 
-```{r eval = FALSE}
+
+```r
 install.packages("geojsonio")
 ```
 
-```{r}
+
+```r
 library("geojsonio")
 ```
 
 Convert a numeric vector to a GeoJSON `Point`:
 
-```{r}
+
+```r
 geojson_json(c(32.45, -99.74))
+```
+
+```
+## {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[32.45,-99.74]},"properties":{}}]}
 ```
 
 Read GeoJSON from a file with one simple command and plot it:
 
-```{r}
+
+```r
 file <- system.file("examples", "california.geojson", package = "geojsonio")
 out <- geojson_read(file, what = "sp")
 library('sp')
 plot(out)
 ```
+
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png)
 
 
 ## geojsonlint
@@ -243,35 +407,43 @@ plot(out)
 [geojsonlint](https://github.com/ropensci/geojsonlint) - `geojsonlint` is a client for linting
 GeoJSON. It provides three different ways to lint GeoJSON, using: the API at <geojsonlint.com>,
 the JS library `geojsonhint`, or the JS library `is-my-json-valid`. The package provides a consistent
-interface to the three different linters, always returning a boolean, and toggles provided for 
+interface to the three different linters, always returning a boolean, and toggles provided for
 verbose output and whether to stop when invalid GeoJSON is found.
 
 We had a new version (`v0.2`) come out this month, that uses the a newer version of the JS
 library `geojsonhint`, affecting the `geojson_hint()` function. Note that the dev version of
-`geojsonlint` has an even newer version of the JS `geojsonhint` library, so you may want to 
+`geojsonlint` has an even newer version of the JS `geojsonhint` library, so you may want to
 upgrade if you're using that linter: `devtools::install_github("ropensci/geojsonlint")`.
 
 ### Example
 
 A quick example of the power of `geojsonlint`
 
-```{r eval = FALSE}
+
+```r
 install.packages("geojsonlint")
 ```
 
-```{r}
+
+```r
 library("geojsonlint")
 ```
 
 Good GeoJSON
 
-```{r}
+
+```r
 geojson_hint(x = '{"type": "Point", "coordinates": [-100, 80]}')
+```
+
+```
+## [1] TRUE
 ```
 
 Bad GeoJSON
 
-```{r eval=FALSE}
+
+```r
 geojson_hint('{ "type": "FeatureCollection" }')
 #> [1] FALSE
 geojson_hint('{ "type": "FeatureCollection" }', verbose = TRUE)
@@ -290,30 +462,33 @@ geojson_hint('{ "type": "FeatureCollection" }', error = TRUE)
 
 <a href="https://cran.rstudio.com/web/packages/lawn/"><span class="label label-warning">cran</span></a> <a href="https://github.com/ropensci/lawn"><span class="label label-info">github</span></a>
 
-[lawn](https://github.com/ropensci/lawn) - `lawn` is an R client wrapping [Turf.js](http://turfjs.org/) 
+[lawn](https://github.com/ropensci/lawn) - `lawn` is an R client wrapping [Turf.js](http://turfjs.org/)
 from Mapbox. Turf is a JS library for doing advanced geospatial analysis. Using the great [V8][v8]
-R client from [Jeroen Ooms](https://ropensci.org/about/#staff) we can wrap Turf.js 
+R client from [Jeroen Ooms](https://ropensci.org/about/#staff) we can wrap Turf.js
 in R.
 
-We had a new version (`v0.3`) come out late last month that is a big change from the previous 
-version as we now wrap the newest version of Turf `v3.5.2` that dropped a number of methods, 
-and introduced new ones. 
+We had a new version (`v0.3`) come out late last month that is a big change from the previous
+version as we now wrap the newest version of Turf `v3.5.2` that dropped a number of methods,
+and introduced new ones.
 
 ### Example
 
 A quick example of the power of `lawn`
 
-```{r eval = FALSE}
+
+```r
 install.packages("lawn")
 ```
 
-```{r}
+
+```r
 library("lawn")
 ```
 
 Calcuate distance (default: km) between two points
 
-```{r}
+
+```r
 from <- '{
  "type": "Feature",
  "properties": {},
@@ -333,9 +508,14 @@ to <- '{
 lawn_distance(from, to)
 ```
 
+```
+## [1] 97.15958
+```
+
 Buffer a point (with distance of 5 km)
 
-```{r eval=FALSE}
+
+```r
 pt <- '{
  "type": "Feature",
  "properties": {},
@@ -352,7 +532,7 @@ lawn_buffer(pt, dist = 5)
 ## Future work
 
 <!-- will highlight upcoming new things and improvements to existing things here -->
-Despite all the above work, we still have a lot to do. Here's a run down of some of 
+Despite all the above work, we still have a lot to do. Here's a run down of some of
 the items on our list:
 
 * xxx
