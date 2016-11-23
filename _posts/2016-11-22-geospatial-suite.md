@@ -91,7 +91,7 @@ rOpenSci has a growing suite of database tools:
 * [lawn](https://github.com/ropensci/lawn) (Turf.js R client) (on CRAN)
 * [geoaxe](https://github.com/ropenscilabs/geoaxe) (split up well known text into chunks) (on CRAN)
 * [wellknown](https://github.com/ropenscilabs/wellknown) (Well-Known-Text <--> GeoJSON) (on CRAN)
-* [geoops](https://github.com/ropensci/geoops) (Operations on GeoJSON, sort of like `rgeos`)
+* [geoops](https://github.com/ropenscilabs/geoops) (Operations on GeoJSON, sort of like `rgeos`)
 
 ### Data/Data Services
 
@@ -368,7 +368,7 @@ to_geobuf(from_geobuf(file))
 
 ## geoops
 
-<span class="label label-default">cran</span> <a href="https://github.com/ropensci/geoops"><span class="label label-info">github</span></a>
+<span class="label label-default">cran</span> <a href="https://github.com/ropenscilabs/geoops"><span class="label label-info">github</span></a>
 
 [geoops](https://github.com/ropenscilabs/geoops) - `geoops` is not quite ready to use yet, but
 the goal with `geoops` is to provide spatial operations on GeoJSON that work with the `geojson`
