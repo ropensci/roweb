@@ -1,11 +1,11 @@
 ---
-name: sustaining-research-projects.md
+name: sustaining-research-projects
 layout: post
 title: "A guide to sustainability models for research software projects"
 date: 2016-11-22
 authors:
   - name: Daniel S. Katz
-    url: https://github.com/danielskatz/sustaining-research-projects
+    url: http://danielskatz.org
 categories:
   - blog
 tags:
