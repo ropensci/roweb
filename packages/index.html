@@ -9,12 +9,12 @@ title: "rOpenSci - Packages"
             <div class="col-md-10 col-md-offset-1">
 
     <h2>rOpenSci packages</h2>
-     <p>This is a complete list of all available rOpenSci packages. Packages are grouped by ones that acquire <a href="#data_access">data</a>, <a href="#literature">full-text of journal articles</a>, <a href="#altmetrics">altmetrics</a>, <a href="#data_publication">data-publication</a>, focus on <a href="#scalereprod">scalable and reproducibile computing</a>, <a href="#data_viz">data visualization</a>, <a href="#data_tools">data tools</a>, <a href="#image-processing">image processing</a>, <a href="#http_tools">HTTP tools</a>, or <a href="#geospatial">geospatial</a> work. Packages with a <span class="label label-success">cran</span> or <span class="label label-info">bioc</span> sign are stable versions that you can quickly install from your nearest mirror using <code>install.packages("PACKAGE_NAME")</code>. Others are in various stages of development (bleeding edge packages are not listed here) and you can learn more by following our <a href="https://github.com/ropensci" title="rOpenSci · GitHub">GitHub organization page</a>, and our <a href="https://github.com/ropenscilabs" title="rOpenSciLabs · GitHub">GitHub organization for bleeding edge projects</a>. All of our software packages are open source. Please see package description files for more information on specific licenses. </p>
+     <p>This is a complete list of all available rOpenSci packages. Packages are grouped by ones that acquire <a href="#data_access">data</a>, <a href="#literature">full-text of journal articles</a>, <a href="#altmetrics">altmetrics</a>, <a href="#data_publication">data publication</a>, focus on <a href="#scalereprod">scalable and reproducibile computing</a>, <a href="#data_viz">data visualization</a>, <a href="#data_tools">data tools</a>, <a href="#image-processing">image processing</a>, <a href="#http_tools">HTTP tools</a>, <a href="#data_analysis">data analysis</a> or <a href="#geospatial">geospatial</a> work. Packages with a <span class="label label-success">cran</span>, or <span class="label label-info">bioc</span> sign are stable versions that you can quickly install from your nearest mirror using <code>install.packages("PACKAGE_NAME")</code>. Others are in various stages of development (bleeding edge packages are not listed here) and you can learn more by following our <a href="https://github.com/ropensci" title="rOpenSci · GitHub">GitHub organization page</a>, and our <a href="https://github.com/ropenscilabs" title="rOpenSciLabs · GitHub">GitHub organization for bleeding edge projects</a>. All of our software packages are open source. Please see package description files for more information on specific licenses. </p>
      <p>Many of our packages are community-contributed.  If you are interested in contributing a package, please visit our <a href="https://github.com/ropensci/onboarding">onboarding repository</a> for details.</p>
 
 <br>
 
-<center> <a href="#data_publication">Data Publication</a> | <a href="#data_access">Data Access</a> | <a href="#literature">Literature</a> | <a href="#altmetrics">Altmetrics</a> | <a href="#scalereprod">Scalable &amp; Reproducible Computing</a> | <a href="#databases">Databases</a> | <a href="#data_viz">Data Vizualization</a> | <a href="#image-processing">Image Processing</a> | <a href="#data_tools">Data Tools</a> | <a href="#http_tools">HTTP tools</a> | <a href="#geospatial">Geospatial</a> </center>
+<center> <a href="#data_publication">Data Publication</a> | <a href="#data_access">Data Access</a> | <a href="#literature">Literature</a> | <a href="#altmetrics">Altmetrics</a> | <a href="#scalereprod">Scalable &amp; Reproducible Computing</a> | <a href="#databases">Databases</a> | <a href="#data_viz">Data Vizualization</a> | <a href="#image-processing">Image Processing</a> | <a href="#data_tools">Data Tools</a> | <a href="#http_tools">HTTP tools</a> | <a href="#geospatial">Geospatial</a> | <a href="#data_analysis">Data Analysis</a> </center>
 
 <!-- Data Publication Packages -->
 
@@ -775,6 +775,11 @@ title: "rOpenSci - Packages"
         <td><a href="https://cran.rstudio.com/web/packages/jqr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/jqr"><span class="label label-inverse">github</span></a></td>
       </tr>
       <tr>
+        <td><a href="https://github.com/ropensci/jsonld" id="jsonld">jsonld</a></td>
+        <td>R client for JSON-LD, a light-weight syntax for expressing linked data</td>
+        <td><a href="https://cran.rstudio.com/web/packages/jsonld"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/jsonld"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
         <td><a href="https://github.com/ropenscilabs/jsonvalidate" id="jsonvalidate">jsonvalidate</a></td>
         <td>Uses the node library <a href="https://www.npmjs.com/package/is-my-json-valid">is-my-json-valid</a> to validate JSON against a JSON schema.</td>
         <td><a href="https://cran.rstudio.com/web/packages/jsonvalidate"><span class="label label-success">cran</span> <a href="https://github.com/ropenscilabs/jsonvalidate"><span class="label label-inverse">github</span></a></td>
@@ -847,6 +852,31 @@ title: "rOpenSci - Packages"
 </div>
 </section>
 
+<section id="data_analysis">
+    <div class="page-header">
+    <h2>Data Analysis  <small>Utilities for doing data analysis.</small></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-12  table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+       </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://github.com/ropensci/phylocomr" id="phylocomr">phylocomr</a></td>
+        <td>Self-contained interface to <a href="http://phylodiversity.net/phylocom/">Phylocom</a> for analysis of phylogenetic community structure and character evolution</td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropensci/phylocomr/"><span class="label label-inverse">github</span></a> </td>
+      </tr>
+</tbody>
+</table>
+ </div>
+</div>
+</section>
 
 <section id="geospatial">
   <div class="page-header">
@@ -872,6 +902,11 @@ title: "rOpenSci - Packages"
         <td><a href="https://github.com/ropenscilabs/geoaxe" id="geoaxe">geoaxe</a></td>
         <td>Chop up polygons into pieces</td>
         <td><a href="https://cran.rstudio.com/web/packages/geoaxe"><span class="label label-success">cran</span> <a href="https://github.com/ropenscilabs/geoaxe/"><span class="label label-inverse">github</span></a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ropenscilabs/geofilter" id="geofilter">geofilter</a></td>
+        <td>Filter GeoJSON without heavy C libraries - but using <a href="#jqr">jqr</a></td>
+        <td><span class="label label-nocran">cran</span> <a href="https://github.com/ropenscilabs/geofilter/"><span class="label label-inverse">github</span></a></td>
       </tr>
       <tr>
         <td><a href="https://github.com/ropenscilabs/geojson" id="geojson">geojson</a></td>
