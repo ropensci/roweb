@@ -1,7 +1,7 @@
 ---
 name: ropensci-fellowship-zoon
 layout: post
-title: "Announcing our first fellowship awardeded to Dr Nick Golding for the Zoon Project"
+title: "Announcing our first fellowship awardeded to Dr Nick Golding for \"the Zoon Project\""
 date: 2016-12-08
 authors:
   - name: Stefanie Butland
@@ -24,6 +24,7 @@ To further promote reproducible research activities within specialized domains, 
 We are pleased to award the first fellowship to [Dr. Nick Golding](https://scholar.google.co.uk/citations?user=peoal7wAAAAJ&hl=en) to continue developing a framework for building and sharing reproducible species distribution models (SDM). Nick Golding is a Research Fellow in the [Quantitative & Applied Ecology Group](https://qaeco.com/) at the University of Melbourne, Australia. He develops statistical models and software to predict the distributions of species and human diseases like those caused by the Zika and Ebola viruses. Nick is particularly interested in improving these models with information about traits, mechanistic relationships and population dynamics.
 
 ![Dr Nick Golding, rOpenSci Fellow](/assets/blog-images/2016-12-08-ropensci-fellowship-zoon/nick-golding.jpg)
+
 **Dr Nick Golding**
 
 We interviewed Nick to learn more about him, the project, and what the fellowship will help him and his collaborators accomplish.
