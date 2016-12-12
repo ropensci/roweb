@@ -23,13 +23,13 @@ To further promote reproducible research activities within specialized domains, 
 
 We are pleased to award the first fellowship to [Dr. Nick Golding](https://scholar.google.co.uk/citations?user=peoal7wAAAAJ&hl=en) to continue developing a framework for building and sharing reproducible species distribution models (SDM). Nick Golding is a Research Fellow in the [Quantitative & Applied Ecology Group](https://qaeco.com/) at the University of Melbourne, Australia. He develops statistical models and software to predict the distributions of species and human diseases like those caused by the Zika and Ebola viruses. Nick is particularly interested in improving these models with information about traits, mechanistic relationships and population dynamics.
 
-![Dr Nick Golding, rOpenSci Fellow](/assets/blog-images/2016-12-12-ropensci-fellowship-zoon/nick-golding.jpg)
-
-**Dr Nick Golding**
+<img src="/assets/blog-images/2016-12-12-ropensci-fellowship-zoon/nick-golding.jpg" alt="Dr Nick Golding, rOpenSci Fellow" align="left" style="margin: 0px 20px">
 
 We interviewed Nick to learn more about him, the project, and what the fellowship will help him and his collaborators accomplish.
 
 ---
+
+<br><br><br>
 
 ### Q: What is the Zoon Project?
 
@@ -43,7 +43,7 @@ In other applications of machine learning, there are benchmark datasets used by 
 
 ![Zoon workflow](/assets/blog-images/2016-12-12-ropensci-fellowship-zoon/zoon_workflow.png)
 
-The Zoon package implements SDM analyses as workflows of bite-sized, interoperable software modules. Each module represents one of the five key steps in an SDM analysis.  
+The Zoon package implements SDM analyses as workflows of bite-sized, interoperable software modules. Each module represents one of the five key steps in an SDM analysis.
 
 
 
@@ -99,7 +99,7 @@ I started with an undergraduate degree in ecology from John Moores University in
 
 ### Q: How did you hear about rOpenSci?
 
-It’s hard to say, but I almost certainly first heard about [rOpenSci on twitter](https://twitter.com/ropensci). I’ve followed members of the team on there for a while, particularly because they’re part of an active online community interested in reproducibility in research. rOpenSci has lots of really useful tools. Packages like [rgbif](https://github.com/ropensci/rgbif/), which evolved into [spocc](http://ropensci.org/tutorials/spocc_tutorial.html) are part of the core input that goes into SDM models in Zoon.
+It’s hard to say, but I almost certainly first heard about [rOpenSci on twitter](https://twitter.com/ropensci). I’ve followed members of the team on there for a while, particularly because they’re part of an active online community interested in reproducibility in research. rOpenSci has lots of really useful tools. Packages like [rgbif](https://github.com/ropensci/rgbif/), which evolved into [spocc](https://github.com/ropensci/spocc) are part of the core input that goes into SDM models in Zoon.
 
 ---
 
@@ -117,11 +117,12 @@ Unlike species occurrence data, there’s currently no single portal to access a
 * Read Nick’s papers on [Google Scholar](https://scholar.google.ca/citations?user=peoal7wAAAAJ&hl=en).
 * Follow Nick on [Twitter](https://twitter.com/_nickgolding_)
 
+---
 
 <!-- references -->
 
-[^1]: Barbosa, F. G., & Schneck F. (2015). Characteristics of the top-cited papers in species distribution predictive models. Ecological Modelling, 313: 77-83. <http://doi.org/10.1016/j.ecolmodel.2015.06.014>
+[^1]: Barbosa, F. G., & Schneck F. (2015). Characteristics of the top-cited papers in species distribution predictive models. Ecological Modelling, 313: 77-83. <https://doi.org/10.1016/j.ecolmodel.2015.06.014>
 
-[^2]: Pigott DM, Golding N, Mylne A, Huang Z, Henry AJ, Weiss DJ, Brady OJ, Kraemer MU, Smith DL, Moyes CL, Bhatt S, Gething PW, Horby PW, Bogoch II, Brownstein JS, Mekaru SR, Tatem AJ, Khan K, Hay SI. (2014). Mapping the zoonotic niche of Ebola virus disease in Africa. Elife, 8(3), e04395. <http://doi.org/10.7554/eLife.04395>
+[^2]: Pigott DM, Golding N, Mylne A, Huang Z, Henry AJ, Weiss DJ, Brady OJ, Kraemer MU, Smith DL, Moyes CL, Bhatt S, Gething PW, Horby PW, Bogoch II, Brownstein JS, Mekaru SR, Tatem AJ, Khan K, Hay SI. (2014). Mapping the zoonotic niche of Ebola virus disease in Africa. Elife, 8(3), e04395. <https://doi.org/10.7554/eLife.04395>
 
-[^3]: Figure 5. Pigott DM, Golding N, Mylne A, Huang Z, Henry AJ, Weiss DJ, Brady OJ, Kraemer MU, Smith DL, Moyes CL, Bhatt S, Gething PW, Horby PW, Bogoch II, Brownstein JS, Mekaru SR, Tatem AJ, Khan K, Hay SI. (2014). Mapping the zoonotic niche of Ebola virus disease in Africa. Elife, 8(3), e04395. <http://doi.org/10.7554/eLife.04395.009>
+[^3]: Figure 5. Pigott DM, Golding N, Mylne A, Huang Z, Henry AJ, Weiss DJ, Brady OJ, Kraemer MU, Smith DL, Moyes CL, Bhatt S, Gething PW, Horby PW, Bogoch II, Brownstein JS, Mekaru SR, Tatem AJ, Khan K, Hay SI. (2014). Mapping the zoonotic niche of Ebola virus disease in Africa. Elife, 8(3), e04395. <https://doi.org/10.7554/eLife.04395.009>
