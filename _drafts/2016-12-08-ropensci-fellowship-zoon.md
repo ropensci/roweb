@@ -1,7 +1,7 @@
 ---
 name: ropensci-fellowship-zoon
 layout: post
-title: "First rOpenSci Fellowship Awarded to Dr Nick Golding for the Zoon Project"
+title: "Announcing our first fellowship awardeded to Dr Nick Golding for the Zoon Project"
 date: 2016-12-08
 authors:
   - name: Stefanie Butland
@@ -18,11 +18,13 @@ tags:
 rOpenSci's overarching mission is to promote a culture of transparent, open, and reproducible research across various scientific communities. All of our activities are geared towards lowering barriers to participation, and building a community of practitioners around the world. In addition to developing and maintaining a large suite of open source tools for data science, we actively support the research community with expert review on research software development, community calls, and hosting annual unconferences around the world.
 
 
-To further promote reproducible research activities within specialized domains, we will soon be announcing our annual fellowship program. These fellowships will provide support for collaborative research projects that strengthen one or more of rOpenSci's core efforts. These activities may include development of new domain-specific tools, or supporting projects that are exemplars of reproducible research. Our early fellowships are by invitation only and an open call will be forthcoming in early 2017.
+To further promote reproducible research activities within specialized domains, we will soon be announcing our annual fellowship program. These fellowships will provide support for collaborative research projects that strengthen one or more of rOpenSci's core efforts. These activities may include development of new domain-specific tools, or supporting projects that are exemplars of reproducible research. Our early fellowships are by invitation and an open call will be forthcoming in early 2017.
 
 
 We are pleased to award the first fellowship to [Dr. Nick Golding](https://scholar.google.co.uk/citations?user=peoal7wAAAAJ&hl=en) to continue developing a framework for building and sharing reproducible species distribution models (SDM). Nick Golding is a Research Fellow in the [Quantitative & Applied Ecology Group](https://qaeco.com/) at the University of Melbourne, Australia. He develops statistical models and software to predict the distributions of species and human diseases like those caused by the Zika and Ebola viruses. Nick is particularly interested in improving these models with information about traits, mechanistic relationships and population dynamics.
 
+![Dr Nick Golding, rOpenSci Fellow](/assets/blog-images/2016-12-08-ropensci-fellowship-zoon/nick-golding.jpg)
+**Dr Nick Golding**
 
 We interviewed Nick to learn more about him, the project, and what the fellowship will help him and his collaborators accomplish.
 
@@ -33,7 +35,7 @@ We interviewed Nick to learn more about him, the project, and what the fellowshi
 The Zoon Project began in the Computer Science department in Oxford as part of the EPSRC-funded [2020 Science project](http://www.2020science.net/), and is a collaboration between [a group of researchers](https://zoonproject.wordpress.com/user-panel/) with interests in SDM, scientific software and building better research communities. The name (Zoon) refers to an individual that is part of a compound organism, like the polyps that make up jellyfish. It’s a bit of a geeky name (you can blame Greg McInerny for that), but it fits well with the project’s aim to improve collaboration in this area of science.
 
 
-The main piece of the project is an R package: zoon; that allows you to develop your SDM analysis as a reproducible workflow. SDM involves taking records on where species have been observed and the environmental characteristics of those locations, representing these mathematically, and applying algorithms to turn these into predictions of geographical species distribution. The field of SDM within ecology has boomed in the last fifteen years[^1] ([free pdf](https://www.researchgate.net/profile/Fabiana_Barbosa4/publication/279750919_Characteristics_of_the_top-cited_papers_in_species_distribution_predictive_models/links/559963f108ae21086d25abe2.pdf)) coinciding with the increase in data and the birth of machine learning. The challenge is that the field is now a crowded and confusing place. There are are hundreds of different candidate models, and probably thousands of papers on SDM methods, with each new method generally evaluated against a different dataset. That poses a serious hurdle to the community objectively evaluating the available methods and can be baffling to newcomers to the field.
+The main piece of the project is an R package: [zoon](https://github.com/zoonproject/modules); that allows you to develop your SDM analysis as a reproducible workflow. SDM involves taking records on where species have been observed and the environmental characteristics of those locations, representing these mathematically, and applying algorithms to turn these into predictions of geographical species distribution. The field of SDM within ecology has boomed in the last fifteen years[^1] ([free pdf](https://www.researchgate.net/profile/Fabiana_Barbosa4/publication/279750919_Characteristics_of_the_top-cited_papers_in_species_distribution_predictive_models/links/559963f108ae21086d25abe2.pdf)) coinciding with the increase in data and the birth of machine learning. The challenge is that the field is now a crowded and confusing place. There are are hundreds of different candidate models, and probably thousands of papers on SDM methods, with each new method generally evaluated against a different dataset. That poses a serious hurdle to the community objectively evaluating the available methods and can be baffling to newcomers to the field.
 
 
 In other applications of machine learning, there are benchmark datasets used by everyone in the community to evaluate methods (e.g. [MNIST](http://yann.lecun.com/exdb/mnist/) and [many more](https://archive.ics.uci.edu/ml/datasets)). There are also software platforms (like [caret](http://topepo.github.io/caret/)) that enable many of the candidate methods to be run from the same software, and compared on the same dataset. We don’t currently have either of these things for SDM, which makes it really difficult to synthesize information from the literature. The motivation for the Zoon Project is to address this reproducibility challenge faced by the community.
@@ -55,13 +57,13 @@ The Zoon package implements SDM analyses as workflows of bite-sized, interoperab
 Multiple modules can be used at each stage, allowing them to be combined or compared and because modules can be switched in and out it’s easy to quickly see how an analysis would change if a different method or dataset were used.
 
 
-What makes the Zoon project unique is that all of these modules are developed by the community (not the Zoon team) and held together in an online repository, just like community-contributed R packages (but much easier). Basically, each software module has to conform to a set of input and output formats to make sure the modules are interoperable, and also requires some basic documentation. The zoon R package helps users to write, document, test and share these modules so that everyone, not just experienced R developers, can contribute modules to Zoon.
+What makes the Zoon project unique is that all of these modules are developed by the community (not the Zoon team) and held together in an online repository, just like community-contributed R packages (but much easier). Basically, each software module has to conform to a set of input and output formats to make sure the modules are interoperable, and also requires some basic documentation. The [zoon](https://github.com/zoonproject/modules) R package helps users to write, document, test and share these modules so that everyone, not just experienced R developers, can contribute modules.
 
 ---
 
 ### Q: What’s an example of a research question that can be addressed using the Zoon R package?
 
-SDM is increasingly being used in epidemiology and public health research. For example, the recent outbreak of Ebola in West Africa occurred in a place people weren’t really expecting, so being able to anticipate where future outbreaks might start is pretty important. During the outbreak, I worked with some colleagues to develop an SDM to identify areas in Africa that are environmentally similar to those where previous human outbreaks have started[^2] ([code](https://github.com/SEEG-Oxford/ebola_zoonotic)). This used location data for humans and animals infected with Ebola, environmental covariates like vegetation, elevation, temperature and evapotranspiration, and a machine learning method known in the SDM world as Boosted Regression Tree modelling. We didn’t have Zoon back then, but that whole workflow would have been quicker to put together using zoon, and would have made it really easy to quickly evaluate the effects of changing model assumptions on areas predicted to be at risk of future outbreaks.
+SDM is increasingly being used in epidemiology and public health research. For example, the recent outbreak of Ebola in West Africa occurred in a place people weren’t really expecting, so being able to anticipate where future outbreaks might start is pretty important. During the outbreak, I worked with some colleagues to develop an SDM to identify areas in Africa that are environmentally similar to those where previous human outbreaks have started[^2] ([code](https://github.com/SEEG-Oxford/ebola_zoonotic)). This used location data for humans and animals infected with Ebola, environmental covariates like vegetation, elevation, temperature and evapotranspiration, and a machine learning method known in the SDM world as Boosted Regression Tree modelling. We didn’t have Zoon back then, but it would have made that whole workflow quicker to put together, and really easy to quickly evaluate the effects of changing model assumptions on areas predicted to be at risk of future outbreaks.
 
 
 ![Figure 5B, Pigott et al 2014](/assets/blog-images/2016-12-08-ropensci-fellowship-zoon/elife-04395-fig5b-v2_crop.jpg)
@@ -77,7 +79,7 @@ We’ve already done most of the technical work in setting up the software and o
 **The Zoon Hub will include:**
 
 * A single web-based portal for new users
-* A basic introduction with tutorials to enable someone new to SDM to fit a model using the zoon R package and share their workflow with others. The objective here is to make Zoon easy to use so new SDM users get started using software with reproducibility baked in.
+* A basic introduction with tutorials to enable someone new to SDM to fit a model using the R package and share their workflow with others. The objective here is to make Zoon easy to use so new SDM users get started using software with reproducibility baked in.
 * A series of expert-written best practice guides, covering contentious or nuanced topics in SDM methodology, like dealing with biases in occurrence data. Each of these guides will  be backed up by reproducible examples in the form of Zoon workflows. We’ll be soliciting feedback on these guides from SDM methods experts via an open online forum. We’ll be encouraging any disputes about best practice to be resolved in an evidence-based way by sharing workflows that demonstrate a point.
 
 
@@ -117,11 +119,8 @@ Unlike species occurrence data, there’s currently no single portal to access a
 
 <!-- references -->
 
-[^1]: Barbosa, F. G., & Schneck F. (2015). Characteristics of the top-cited papers in species distribution predictive models. Ecological Modelling, 313: 77-83.
-<http://dx.doi.org/10.1016/j.ecolmodel.2015.06.014>
+[^1]: Barbosa, F. G., & Schneck F. (2015). Characteristics of the top-cited papers in species distribution predictive models. Ecological Modelling, 313: 77-83. <http://doi.org/10.1016/j.ecolmodel.2015.06.014>
 
-[^2]: Pigott DM, Golding N, Mylne A, Huang Z, Henry AJ, Weiss DJ, Brady OJ, Kraemer MU, Smith DL, Moyes CL, Bhatt S, Gething PW, Horby PW, Bogoch II, Brownstein JS, Mekaru SR, Tatem AJ, Khan K, Hay SI. (2014). Mapping the zoonotic niche of Ebola virus disease in Africa. Elife, 8(3), e04395.
-<http://dx.doi.org/10.7554/eLife.04395>
+[^2]: Pigott DM, Golding N, Mylne A, Huang Z, Henry AJ, Weiss DJ, Brady OJ, Kraemer MU, Smith DL, Moyes CL, Bhatt S, Gething PW, Horby PW, Bogoch II, Brownstein JS, Mekaru SR, Tatem AJ, Khan K, Hay SI. (2014). Mapping the zoonotic niche of Ebola virus disease in Africa. Elife, 8(3), e04395. <http://doi.org/10.7554/eLife.04395>
 
-[^3]: Figure 5. Pigott DM, Golding N, Mylne A, Huang Z, Henry AJ, Weiss DJ, Brady OJ, Kraemer MU, Smith DL, Moyes CL, Bhatt S, Gething PW, Horby PW, Bogoch II, Brownstein JS, Mekaru SR, Tatem AJ, Khan K, Hay SI. (2014). Mapping the zoonotic niche of Ebola virus disease in Africa. Elife, 8(3), e04395.
-<http://dx.doi.org/10.7554/eLife.04395.009>
+[^3]: Figure 5. Pigott DM, Golding N, Mylne A, Huang Z, Henry AJ, Weiss DJ, Brady OJ, Kraemer MU, Smith DL, Moyes CL, Bhatt S, Gething PW, Horby PW, Bogoch II, Brownstein JS, Mekaru SR, Tatem AJ, Khan K, Hay SI. (2014). Mapping the zoonotic niche of Ebola virus disease in Africa. Elife, 8(3), e04395. <http://doi.org/10.7554/eLife.04395.009>
