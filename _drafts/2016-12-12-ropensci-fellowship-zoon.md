@@ -1,8 +1,8 @@
 ---
 name: ropensci-fellowship-zoon
 layout: post
-title: "Announcing our first fellowship awardeded to Dr Nick Golding for \"the Zoon Project\""
-date: 2016-12-08
+title: "Announcing our first fellowship awarded to Dr. Nick Golding"
+date: 2016-12-12
 authors:
   - name: Stefanie Butland
   - name: Karthik Ram
@@ -23,7 +23,7 @@ To further promote reproducible research activities within specialized domains, 
 
 We are pleased to award the first fellowship to [Dr. Nick Golding](https://scholar.google.co.uk/citations?user=peoal7wAAAAJ&hl=en) to continue developing a framework for building and sharing reproducible species distribution models (SDM). Nick Golding is a Research Fellow in the [Quantitative & Applied Ecology Group](https://qaeco.com/) at the University of Melbourne, Australia. He develops statistical models and software to predict the distributions of species and human diseases like those caused by the Zika and Ebola viruses. Nick is particularly interested in improving these models with information about traits, mechanistic relationships and population dynamics.
 
-![Dr Nick Golding, rOpenSci Fellow](/assets/blog-images/2016-12-08-ropensci-fellowship-zoon/nick-golding.jpg)
+![Dr Nick Golding, rOpenSci Fellow](/assets/blog-images/2016-12-12-ropensci-fellowship-zoon/nick-golding.jpg)
 
 **Dr Nick Golding**
 
@@ -41,7 +41,7 @@ The main piece of the project is an R package: [zoon](https://github.com/zoonpro
 
 In other applications of machine learning, there are benchmark datasets used by everyone in the community to evaluate methods (e.g. [MNIST](http://yann.lecun.com/exdb/mnist/) and [many more](https://archive.ics.uci.edu/ml/datasets)). There are also software platforms (like [caret](http://topepo.github.io/caret/)) that enable many of the candidate methods to be run from the same software, and compared on the same dataset. We don’t currently have either of these things for SDM, which makes it really difficult to synthesize information from the literature. The motivation for the Zoon Project is to address this reproducibility challenge faced by the community.
 
-![Zoon workflow](/assets/blog-images/2016-12-08-ropensci-fellowship-zoon/zoon_workflow.png)
+![Zoon workflow](/assets/blog-images/2016-12-12-ropensci-fellowship-zoon/zoon_workflow.png)
 
 The Zoon package implements SDM analyses as workflows of bite-sized, interoperable software modules. Each module represents one of the five key steps in an SDM analysis.  
 
@@ -67,7 +67,7 @@ What makes the Zoon project unique is that all of these modules are developed by
 SDM is increasingly being used in epidemiology and public health research. For example, the recent outbreak of Ebola in West Africa occurred in a place people weren’t really expecting, so being able to anticipate where future outbreaks might start is pretty important. During the outbreak, I worked with some colleagues to develop an SDM to identify areas in Africa that are environmentally similar to those where previous human outbreaks have started[^2] ([code](https://github.com/SEEG-Oxford/ebola_zoonotic)). This used location data for humans and animals infected with Ebola, environmental covariates like vegetation, elevation, temperature and evapotranspiration, and a machine learning method known in the SDM world as Boosted Regression Tree modelling. We didn’t have Zoon back then, but it would have made that whole workflow quicker to put together, and really easy to quickly evaluate the effects of changing model assumptions on areas predicted to be at risk of future outbreaks.
 
 
-![Figure 5B, Pigott et al 2014](/assets/blog-images/2016-12-08-ropensci-fellowship-zoon/elife-04395-fig5b-v2_crop.jpg)
+![Figure 5B, Pigott et al 2014](/assets/blog-images/2016-12-12-ropensci-fellowship-zoon/elife-04395-fig5b-v2_crop.jpg)
 **Predicted geographical distribution of the zoonotic niche for Ebola virus.**[^3] _The scale reflects the relative probability that zoonotic transmission of Ebola virus could occur at these locations; areas closer to 1 (red) are more likely to harbour zoonotic transmission than those closer to 0 (blue). (Figure 5B from Pigott et al 2014. CC BY 4.0)_
 
 ---
