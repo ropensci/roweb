@@ -22,9 +22,9 @@ though it may have been taken from somewhere else earlier - if you know where, l
 
 ## A guide to sustainability models for research software projects
 
-Based on work from @nayafia, who studied how people fund their work on open source projects
+Based on work from Nadia Eghbal (@nayafia on GitHub), who studied how people fund their work on open source projects
 (https://github.com/nayafia/lemonade-stand), I wanted to understand how
-the projects themselves are sustained. @nayafia thought this was out of scope for her document
+the projects themselves are sustained. Nadia thought this was out of scope for her document
 (see https://github.com/nayafia/lemonade-stand/issues/1), so I forked her work and created
 
   https://github.com/danielskatz/sustaining-research-projects
