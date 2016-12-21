@@ -15,7 +15,7 @@ tags:
 ---
 Our [Community Call](https://ropensci.org/blog/blog/2016/10/31/comm-call-v12) on December 15th covered a big topic in tech communities: "How do I create a code of conduct for my event/lab/codebase?". Here, we cover some of the key themes and considerations that arose from the discussion and point to curated resources and examples to follow when developing a code of conduct (CoC) for your community.
 
-Three guest speakers shared different perspectives. Dr Pauline Barmby talked about the process and lessons learned as Data and Software Carpentries recently updated their CoC; Ms Safia Abdalla talked about "Codes of conduct for open source: the stuff no one tells you"; and Dr Titus Brown talked about his lab CoC. You can [read their bios](#speaker-bios) below and watch the [video](https://vimeo.com/196503807) of the call. Speakers did not use other presentation materials.
+Three guest speakers shared different perspectives. Dr Pauline Barmby talked about the process and lessons learned as [Data Carpentry](http://www.datacarpentry.org/) and [Software Carpentry](https://software-carpentry.org/) recently updated their CoC; Ms Safia Abdalla talked about "Codes of conduct for open source: the stuff no one tells you"; and Dr Titus Brown talked about his lab CoC. You can [read their bios](#speaker-bios) below and watch the [video](https://vimeo.com/196503807) of the call. Speakers did not use other presentation materials.
 
 From the talks and discussion it became clear that there are three key components to codes of conduct:
 
@@ -29,10 +29,11 @@ Once a group of interested people digs into the work of drafting a CoC, the proc
 
 Some notes:
 
-* Develop and post a CoC whether or not you know of any problems; setting clear expectations is 90% of the work
-* The CoC has to set expectations for everyone, including the boss
-* One big issue for the Carpentries was whether or not there should be specific lists of prohibited behaviors or protected groups
-* Because many of our communities cross international boundaries, our CoCs should be accessible in multiple languages. The [Contributor Covenant](http://contributor-covenant.org/) does provide a template CoC in [multiple languages](http://contributor-covenant.org/i18n/).
+* Develop and post a CoC whether or not you know of any problems; setting clear expectations is 90% of the work.
+* The CoC has to set expectations for everyone, including the boss (if there is one).
+* One big issue for the Carpentries was whether or not there should be specific lists of prohibited behaviors or protected groups.
+* Because many of our communities cross international boundaries, our CoCs should be accessible in multiple languages. The [Contributor Covenant](http://contributor-covenant.org/) does provide a template CoC in [multiple languages](http://contributor-covenant.org/i18n/). 
+* For international communities, what is enforceable or criminal depends on where you are. For example, Canadian laws against hate-speech are not necessarily enforceable in other countries.
 
 ## Adopting and Sharing a Code of Conduct
 With big online communities, you rely on buy-in of lots from people to publicize and enforce your CoC and set the tone for your community. When a small group has developed the CoC, it's important to have your leaders and key contributors be open and vocal about their top-down endorsement. In this way, community members without power in the organization can see they will be supported. Overtly showing kindness and pointing to the CoC tends to filter out people who don’t want to be subject to its enforcement.
@@ -55,7 +56,7 @@ In an academic research environment, there is a huge grey area between dealing w
 One tricky area of enforcement is around online conversations in discussion forums or in GitHub issues where people sometimes say things they shouldn’t. Safia made the excellent point that it helps to leave a comment on the issue because it will remain visible online. Saying something like “we're willing to help, but we don’t tolerate this kind of communication” means newcomers can see that bad behavior is addressed and not tolerated. This is also critical to maintain or rebuild trust from community members. If you're a GitHub admin you could choose to implement a time-based ban as a consequence. In this situation, recognition of a violation is easy, but there is a big enforcement challenge when that person is a significant contributor. This is where it is critical to have a strong enforcement board and a good structure for raising a violation through the ranks depending on its severity.
 
 ## We Have Work To Do
-rOpenSci currently has a [Code of Conduct for our events](http://unconf16.ropensci.org/coc.html) and for [software onboarding](https://github.com/ropensci/onboarding/blob/master/policies.md/#code-of-conduct). We'll take what we learned in this Community Call to develop a more comprehensive CoC, make sure it's easily findable and that consequences of violations are enforceable. [Let us know](https://ropensci.org/contact.html) if you'd like to get involved.
+rOpenSci currently has CoCs for [our events](http://unconf16.ropensci.org/coc.html), for [software onboarding](https://github.com/ropensci/onboarding/blob/master/policies.md/#code-of-conduct), and for many of our [individual packages](https://github.com/ropensci/taxize/blob/master/CONDUCT.md) (working on having this for all our packages!). We'll take what we learned in this Community Call to develop a more comprehensive CoC, make sure it's easily findable and that consequences of violations are enforceable. [Let us know](https://ropensci.org/contact.html) if you'd like to get involved.
 
 Resources
 ---
