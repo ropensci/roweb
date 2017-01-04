@@ -39,7 +39,7 @@ your project can figure out what works best for you.
 
 ## Possible next steps
 
-As @npch suggests (https://github.com/danielskatz/sustaining-research-projects/issues/3), it's likely that some models
+As Neil Chue Hong (@npch on GitHub) suggests (https://github.com/danielskatz/sustaining-research-projects/issues/3), it's likely that some models
 are better suited for particular stages of a project or for particulary types of projects.  It would be useful to
 examine the current examples to see what we can learn from them.  We could also learn from a much wider variety of
 projects, perhaps by a survey where we ask what models they have successfully used (and unsuccessfully tried), along
