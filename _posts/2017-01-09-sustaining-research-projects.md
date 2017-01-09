@@ -2,7 +2,7 @@
 name: sustaining-research-projects
 layout: post
 title: "A guide to sustainability models for research software projects"
-date: 2016-11-22
+date: 2017-01-09
 authors:
   - name: Daniel S. Katz
     url: http://danielskatz.org
@@ -40,7 +40,7 @@ your project can figure out what works best for you.
 ## Possible next steps
 
 As Neil Chue Hong (@npch on GitHub) suggests (https://github.com/danielskatz/sustaining-research-projects/issues/3), it's likely that some models
-are better suited for particular stages of a project or for particulary types of projects.  It would be useful to
+are better suited for particular stages of a project or for particularly types of projects.  It would be useful to
 examine the current examples to see what we can learn from them.  We could also learn from a much wider variety of
 projects, perhaps by a survey where we ask what models they have successfully used (and unsuccessfully tried), along
 with questions about what phases the projects has been in, and "demographic" information about the project (e.g.,
