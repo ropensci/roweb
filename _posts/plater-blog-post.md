@@ -15,7 +15,7 @@ tags:
 - R
 ---
 
-As a lab scientist, I do almost all of my experiments in [microtiter plates](https://en.wikipedia.org/wiki/Microtiter_plate). These tools are an efficient means of organizing many parallel experimental conditions. It's not always easy, however, to translate between the physical plate and a useful data structure for analysis. My first attempts to solve this problem--nesting one `ifelse` call inside of the next to describe which well was which--were very unsatisfying. Over time, my attempts at solving the problem grew more sophisticated, and eventually, the `plater` package was born. Here I will tell the story of how with the help of [R Packages](http://r-pkgs.had.co.nz/) and the [amazing](http://deanattali.com/) [reviewers](http://www.juliagustavsen.com/) and [editors](https://scottchamberlain.info/) at rOpenSci, I ended up with a package that makes it easy to work with plate-based data. 
+As a lab scientist, I do almost all of my experiments in [microtiter plates](https://en.wikipedia.org/wiki/Microtiter_plate). These tools are an efficient means of organizing many parallel experimental conditions. It's not always easy, however, to translate between the physical plate and a useful data structure for analysis. My first attempts to solve this problem--nesting one `ifelse` call inside of the next to describe which well was which--were very unsatisfying. Over time, my attempts at solving the problem grew more sophisticated, and eventually, the `plater` package was born. Here I will tell the story of how with the help of [R Packages](http://r-pkgs.had.co.nz/) and the amazing reviewers ([Julia Gustavsen](http://www.juliagustavsen.com/) and [Dean Attali](http://deanattali.com/)) and [editors](https://scottchamberlain.info/) at rOpenSci, I ended up with a package that makes it easy to work with plate-based data. 
 
 ## Plates are great
 
@@ -25,7 +25,7 @@ For example, say I have 8 samples and want to test 4 different drugs. Each drug 
 
 ![Example plate layout](plate-1.png)
 
-Typically, I make myself a map like the image above before I start the experiment, then I take it with me into the lab to when I'm ready to begin. The map creates a powerful mental connection between each experimental condition and its particular physical location on the plate. With large effects, you might even be able to visually see the results of your experiment: all the cells in this column died, or the cells grew like crazy in that row.  
+Typically, I make myself a map like the image above before I start the experiment, then I take it with me into the lab when I'm ready to begin. The map creates a powerful mental connection between each experimental condition and its particular physical location on the plate. With large effects, you might even be able to visually see the results of your experiment: all the cells in this column died, or the cells grew like crazy in that row.  
 
 This is very convenient to work with physically and remember mentally.
 
@@ -88,9 +88,9 @@ Eventually, I boiled it down to a small set of functions:
 
 With the package in place, I started getting ready to submit it to CRAN, but I wanted to get more feedback first and rOpenSci seemed perfect for that. 
 
-It turned out that the improvements started even before I got any feedback began. As I prepared to submit the package to rOpenSci, I went through their [thorough guide](https://github.com/ropensci/onboarding#how-to-submit-your-package-for-review)  to make sure `plater` met all of the requirements. This process made me aware of best practices and motivated me to handle niggling little details like using consistent `snake_case`, making sure all of the documentation was clear, and creating a code of conduct for contributors. In all, I made 22 commits preparing for submission.
+It turned out that the improvements started even before I got any feedback. As I prepared to submit the package to rOpenSci, I went through their [thorough guide](https://github.com/ropensci/onboarding#how-to-submit-your-package-for-review)  to make sure `plater` met all of the requirements. This process made me aware of best practices and motivated me to handle niggling little details like using consistent `snake_case`, making sure all of the documentation was clear, and creating a code of conduct for contributors. In all, I made 22 commits preparing for submission.
 
-The review process itself led to even more improvement. Two [generous](http://deanattali.com/) [reviewers](http://www.juliagustavsen.com/) and an [editor](https://scottchamberlain.info/) spent multiple hours reading the code, testing the functions, and thinking about how to make it more useful. Their thoughtful suggestions resulted in many changes to the package (I made 61 commits responding to the reviews) that made it more robust and useful. Among others: 
+The review process itself led to even more improvement. Two generous reviewers ([Julia Gustavsen](http://www.juliagustavsen.com/) and [Dean Attali](http://deanattali.com/)) and an [editor](https://scottchamberlain.info/) spent multiple hours reading the code, testing the functions, and thinking about how to make it more useful. Their thoughtful suggestions resulted in many changes to the package (I made 61 commits responding to the reviews) that made it more robust and useful. Among others: 
 
 * Make `add_plate` more easily pipeable by reordering the arguments
 * Add a function `check_plater_format` to test if a file is formatted correctly
