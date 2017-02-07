@@ -2,7 +2,7 @@
 name: plater-development
 layout: post
 title: From a million nested `ifelse`s to the plater package
-date: 2017-01-30
+date: 2017-02-06
 authors:
   - name: Sean Hughes
     url: https://github.com/seaaan
@@ -13,6 +13,9 @@ tags:
 - packages
 - plater
 - R
+- community
+- software
+- review
 ---
 
 As a lab scientist, I do almost all of my experiments in [microtiter plates](https://en.wikipedia.org/wiki/Microtiter_plate). These tools are an efficient means of organizing many parallel experimental conditions. It's not always easy, however, to translate between the physical plate and a useful data structure for analysis. My first attempts to solve this problem--nesting one `ifelse` call inside of the next to describe which well was which--were very unsatisfying. Over time, my attempts at solving the problem grew more sophisticated, and eventually, the `plater` package was born. Here I will tell the story of how with the help of [R Packages](http://r-pkgs.had.co.nz/) and the amazing reviewers ([Julia Gustavsen](http://www.juliagustavsen.com/) and [Dean Attali](http://deanattali.com/)) and [editors](https://scottchamberlain.info/) at rOpenSci, I ended up with a package that makes it easy to work with plate-based data. 
@@ -23,7 +26,7 @@ Microtiter plates are essential in the lab. Basically an ice cube tray about the
 
 For example, say I have 8 samples and want to test 4 different drugs. Each drug should be tested on each sample three separate times to ensure accurate results. A 96-well plate is perfect for this: it's a grid of 12 columns and 8 rows. So each sample would go in its own row. Each drug would then go in a group of three columns, say Drug A in columns 1-3, Drug B in columns 4-6, and so on. This is shown below, with the numbers 1-8 representing samples and the colors representing groups of wells treated with the same drug. 
 
-![Example plate layout](plate-1.png)
+![Example plate layout](/assets/blog-images/2017-02-plater-post/plate-1.png)
 
 Typically, I make myself a map like the image above before I start the experiment, then I take it with me into the lab when I'm ready to begin. The map creates a powerful mental connection between each experimental condition and its particular physical location on the plate. With large effects, you might even be able to visually see the results of your experiment: all the cells in this column died, or the cells grew like crazy in that row.  
 
