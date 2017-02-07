@@ -9,7 +9,7 @@ This is repo for [rOpenSci's website](http://ropensci.org/). To build the site, 
 
 ```
 # To build the site
-jekyll build
+bundle exec jekyll build
 ```
 
 
@@ -18,7 +18,7 @@ __Contributions__
 To contribute content to the website such as tutorials, use-cases, or blog posts (upon invitation), fork this repo, add your content and send a pull request. See the `CONTRIBUTIONS` file for additional details. You can test out the site locally by running
 
 ```
-jekyll serve --watch
+bundle exec jekyll serve --watch
 ```
 and previewing the site at `http://localhost:4000`
 
