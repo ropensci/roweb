@@ -68,7 +68,7 @@ My next strategy was to try to directly make a table and then merge it into the 
 
 While this merges nicely into a data frame and solves the problem of indicating what each well is, it's actually not that easy to create by hand, especially in more realistic experiments with more variables and a more complex plate layout. Even worse, there is a substantial risk of typos and copy-paste errors. 
 
-## `plater` to the rescue
+## [`plater`](https://github.com/ropenscilabs/plater) to the rescue
 
 The solution came from the plates themselves: store the data and mapping in the shape of the plate and then transform it into a tidy shape. Scientific instruments often provide data in the shape of a plate, in fact: you get back a spreadsheet with a grid of numbers shaped like your plate, with a cell for each well. 
 
