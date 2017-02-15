@@ -211,11 +211,11 @@ p <- ggplot(lima)+
         axis.ticks.x=element_blank())
 library("animation")
 ani.options(interval = 0.25, ani.width = 800, ani.height = 400)
-gganimate(p, "surf.gif")
+gganimate(p, "surf.mp4")
 
 ```
 
-![](./surf.gif)
+![](./surf.mp4)
 
 
 The use of such a plot might be to illustrate a very serious talk about the need for open air quality data. I promise you'll get attention from the audience.
@@ -270,7 +270,7 @@ usdata <- usdata %>%
 save(usdata, file = "data/4th_july.RData")
 ```
 
-This is how I make the visualization itself, using once again `gganimate`, and also `albersusa`. Note that I don't show Alaska and Hawai.
+This is how I make the visualization itself, using once again `gganimate`, and also [`albersusa`](https://github.com/hrbrmstr/albersusa). Note that I don't show Alaska and Hawai.
 
 ```{r, cache = TRUE}
 load( "data/4th_july.RData")
