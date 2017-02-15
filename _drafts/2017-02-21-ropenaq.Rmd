@@ -211,7 +211,7 @@ p <- ggplot(lima)+
         axis.ticks.x=element_blank())
 library("animation")
 ani.options(interval = 0.25, ani.width = 800, ani.height = 400)
-gg_animate(p, "surf.gif")
+gganimate(p, "surf.gif")
 
 ```
 
@@ -319,7 +319,7 @@ plotMap <- gg+
 
 ani.options(interval = 0.5, ani.width = 800, ani.height = 550)
 
-gg_animate(plotMap, "fireworks.gif")
+gganimate(plotMap, "fireworks.gif")
 
 ```
 
