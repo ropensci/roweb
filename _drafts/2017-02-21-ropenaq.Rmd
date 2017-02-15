@@ -48,6 +48,23 @@ So end of the story, now let's move to the more interesting stuff, what can you 
 
 # Getting data via `ropenaq`
 
+## Install the package
+
+Install the package with:
+
+```r
+install.packages("ropenaq")
+```
+
+Or install the development version using devtools with:
+
+```r
+library("devtools")
+install_github("ropensci/ropenaq")
+```
+
+Currently the development version, 1.0.4 implements OpenAQ new limit per API call of 10,000, while the CRAN version, 1.0.3, only allows to return 1,000 lines per API call. The development version should soon be submitted to CRAN.
+
 ## Find the air quality stations with available data
 
 The package contains three functions that are useful to find the stations at which there is data: `aq_countries`, `aq_cities` and `aq_locations`.
