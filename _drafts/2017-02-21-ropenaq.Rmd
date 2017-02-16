@@ -13,7 +13,7 @@ tags:
 - rdefra
 - openair
 - osmdata
-- gganimate
+- magick
 - gtfsr
 - riem
 - rnoaa
@@ -173,11 +173,11 @@ I promised I would show off cool plots... Let's say that in general plotting air
 
 ## Data surfing
 
-One day I was testing out `gganimate` for decorating a very simple air quality time series and while discussing options with [Christa Hasenkopf](https://twitter.com/sciencerely) and [Dirk Schumacher](https://twitter.com/dirk_sch)... the data surfer was born!
+One day I was testing out `gganimate` for decorating a very simple air quality time series and while discussing options with [Christa Hasenkopf](https://twitter.com/sciencerely) and [Dirk Schumacher](https://twitter.com/dirk_sch)... the data surfer was born! In the meantime I started using [`magick`](https://github.com/ropensci/magick) instead of `gganimate`, probably because of the elegance of [this post](https://rud.is/b/2016/07/27/u-s-drought-animations-with-the-witchs-brew-purrr-broom-magick/). Also, `magick` is a rOpenSci package and this is rOpenSci blog!
 
 ```{r, cache = TRUE}
 library("emojifont")
-library("gganimate")
+library("magick")
 library("ggthemes")
 
 load.emojifont('OpenSansEmoji.ttf')
@@ -185,37 +185,52 @@ load.emojifont('OpenSansEmoji.ttf')
 lima <- aq_measurements(country = "PE", limit = 1000)
 lima <- filter(lima, location == "US Diplomatic Post: Lima")
 lima <- mutate(lima, label = emoji("surfer"))
-Sys.setlocale("LC_ALL","English")
-p <- ggplot(lima)+ 
+
+figure_onetime <- function(now, lima){
+
+  p <- ggplot(lima)+ 
   geom_area(aes(x = dateLocal, 
                  y = value),
              size = 2, fill = "navyblue")+
   geom_text(aes(x = dateLocal, 
                 y = value+1,
-                label = label,
-                frame = dateLocal,
-                cumulative = FALSE),
+                label = label),
                 col = "goldenrod",
-            family="OpenSansEmoji", size=8)+
+            family="OpenSansEmoji", size=20,
+            data = filter_(lima, ~dateLocal == now))+
   ylab(expression(paste("PM2.5 concentration (", mu, "g/",m^3,")")))+ 
   xlab('Local date and time, Lima, Peru')+
   ylim(0, 50)+
+  ggtitle(as.character(now))+
   theme_hc(bgcolor = "darkunica") +  
   scale_colour_hc("darkunica")+
-  theme(text = element_text(size=20)) +
+  theme(text = element_text(size=40)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))+
   theme(plot.title=element_text(family="OpenSansEmoji",
                                 face="bold"))+
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
-library("animation")
-ani.options(interval = 0.25, ani.width = 800, ani.height = 400)
-gganimate(p, "surf.mp4")
+  outfil <- gsub("-", "", now)
+  outfil <- gsub(" ", "", outfil)
+  outfil <- gsub("[:punct:]", "", outfil)
+  outfil <- paste0(outfil, ".png")
+  ggsave(outfil, p, width=8, height=5)
+
+  outfil
+}
+
+sort(unique(lima$dateLocal)) %>%
+  map(figure_onetime, lima = lima)  %>%
+  map(image_read) %>%
+  image_join() %>%
+  image_animate(fps=2) %>%
+  image_write("surf.gif")
+
 
 ```
 
-![](./surf.mp4)
+![](./surf.gif)
 
 
 The use of such a plot might be to illustrate a very serious talk about the need for open air quality data. I promise you'll get attention from the audience.
@@ -226,7 +241,7 @@ When looking at the time series of PM2.5 over years in say Delhi, one can see pe
 
 First I got the necessary data.
 
-```r
+```{r}
 # find how many measurements there are
 first_test <- aq_measurements(country = "US", 
                               has_geo = TRUE, 
@@ -257,7 +272,7 @@ usdata <- (1:ceiling(count/10000)) %>%
 
 I then summarize it for having one value by hour only and replace values over 80 by 80, because otherwise it's hard to find a good colour scale for the graph later.
 
-```r
+```{r}
 usdata <- usdata %>% 
   group_by(hour = update(dateUTC, minute = 0),
            location, longitude, latitude, dateUTC) %>%
@@ -270,7 +285,7 @@ usdata <- usdata %>%
 save(usdata, file = "data/4th_july.RData")
 ```
 
-This is how I make the visualization itself, using once again `gganimate`, and also [`albersusa`](https://github.com/hrbrmstr/albersusa). Note that I don't show Alaska and Hawai.
+This is how I make the visualization itself, using once again `magick`, and also [`albersusa`](https://github.com/hrbrmstr/albersusa). Note that I don't show Alaska and Hawai.
 
 ```{r, cache = TRUE}
 load( "data/4th_july.RData")
@@ -289,7 +304,7 @@ gg <- ggplot()
 gg <- gg + geom_map(data=us_map, map=us_map,
                     aes(x=long, y=lat, map_id=id),
                     color="white", size=0.1, fill="black")
-gg <- gg + theme_map(base_size = 16)
+gg <- gg + theme_map(base_size = 40)
 gg <- gg + theme(plot.title = element_text(color="white"))
 gg <- gg + theme(legend.position = "bottom")
 gg <- gg + theme(panel.background = element_rect(fill = "black"))
@@ -306,20 +321,40 @@ usdata <- group_by(usdata, location, latitude) %>%
          latitude < 50, longitude > - 130) %>%
   ungroup()
 
-plotMap <- gg+
-  geom_point(data = usdata, aes(x=longitude,
-                                      y=latitude,
-                                      frame=as.character(hour),
-                                      colour = value,
-                                      size = value))+
+firework_onehour <- function(now, gg, usdata){
+  p <- gg+
+  geom_point(data = filter_(usdata, ~ hour == now),
+             aes(x=longitude,
+                  y =latitude,
+                  colour = value,
+                  size = value))+
+    ggtitle(as.character(now)) +
   coord_map()+
   viridis::scale_color_viridis(expression(paste("PM2.5 concentration (", mu, "g/",m^3,")Set to 80 if >80")),
-                               option = "inferno") 
+                               option = "inferno",
+                               limits = c(min(usdata$value),
+                                          max(usdata$value))) +
+    scale_size(limits = c(min(usdata$value),
+                                          max(usdata$value)))
+outfil <- gsub("-", "", now)
+  outfil <- gsub(" ", "", outfil)
+  outfil <- gsub("[:punct:]", "", outfil)
+  outfil <- paste0(outfil, "_fireworks.png")
+  ggsave(outfil, p, width=12, height=6)
+
+  outfil
+}
+
+sort(unique(usdata$hour)) %>%
+  map(firework_onehour, gg = gg, usdata = usdata)  %>%
+  map(image_read) %>%
+  image_join() %>%
+  image_animate(fps=1) %>%
+  image_write("fireworks.gif")
 
 
-ani.options(interval = 0.5, ani.width = 800, ani.height = 550)
 
-gganimate(plotMap, "fireworks.gif")
+
 
 ```
 
@@ -346,4 +381,4 @@ allows to  to interact with the UK AIR pollution database from DEFRA, including 
 
 * The [`usaqmindia` package](https://github.com/masalmon/usaqmindia) provides data from the US air quality monitoring program in India for Delhi, Mumbai, Chennai, Hyderabad and Kolkata from 2013. I packaged it up for ease of use, the data is included in the package.
 
-Thanks for reading until here! I also thank Stefanie Butland and Scott Chamberlain for their support during the preparation of this post.
+Thanks for reading until here! I also thank Stefanie Butland, Scott Chamberlain and Karthik Ram for their support during the preparation of this post.
