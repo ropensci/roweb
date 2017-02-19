@@ -167,7 +167,7 @@ Currently OpenAQ doesn't have all the data sources available in the world, nor a
 
 And with the current data available on OpenAQ, you'd already get much more data for the same efforts than on, say, the Indian Central Pollution Control Board website. So the existence of OpenAQ and of `ropenaq` are already really good news. For instance as an epidemiologist planning a study about the link between PM2.5 concentration and a disease. For choosing a sample size which would allow you to detect the assumed effect, you need to have a rough idea of the exposure of your study population to PM2.5. Maybe you got data from a collaborator for a rural area and you want to also recruit people in a more exposed, say urban area. With OpenAQ you could already use the average concentration of the last year in e.g. Delhi for your calculations. 
 
-# Some moving plots of OpenAQ data
+# Some animated plots of OpenAQ data
 
 I promised I would show off cool plots... Let's say that in general plotting air quality numbers that kill people isn't that cool, but one can also have fun with air quality data.
 
@@ -285,7 +285,7 @@ usdata <- usdata %>%
 save(usdata, file = "data/4th_july.RData")
 ```
 
-This is how I make the visualization itself, using once again `magick`, and also [`albersusa`](https://github.com/hrbrmstr/albersusa). Note that I don't show Alaska and Hawai.
+This is how I make the visualization itself, using once again `magick`, and also [`albersusa`](https://github.com/hrbrmstr/albersusa). The package has to be installed from Github: `devtools::install_github("hrbrmstr/albersusa")`. Note that I don't show Alaska and Hawai.
 
 ```{r, cache = TRUE}
 load( "data/4th_july.RData")
