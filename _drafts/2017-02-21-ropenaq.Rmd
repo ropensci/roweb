@@ -74,6 +74,7 @@ So say I'm looking for Indian data, I could choose to first check there's data f
 ```{r, message = FALSE, warning = FALSE}
 library("ropenaq")
 library("dplyr")
+import::from(dplyr, filter)
 countries <- aq_countries()
 filter(countries, name == "India")
 ```
