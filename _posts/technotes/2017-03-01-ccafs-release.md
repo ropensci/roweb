@@ -18,9 +18,14 @@ tags:
 
 
 
-I've recently released the new package [ccafs][].
+I've recently released the new package [ccafs][], which provides access
+to data from Climate Change, Agriculture and Food Security
+(CCAFS; <http://ccafs-climate.org/>) General Circulation Models (GCM) data.
+GCM's are a particular type of climate model, used for weather forecasting,
+and climate change forecasting - read more at
+<https://en.wikipedia.org/wiki/General_circulation_model>.
 
-`ccafs` falls in the data client camp - it's focus is on getting users
+`ccafs` falls in the data client camp - its focus is on getting users
 data - many [rOpenSci packages](https://ropensci.org/packages/#data_access)
 fall into this area. These kinds of packages are important so that
 scientists don't have to recreate the wheel themselves every time, but
