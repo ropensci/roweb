@@ -1,24 +1,10 @@
 ---
-name: hddtools
-layout: post
-title: Discover hydrological data using the hddtools R package
-date: 2017-03-07
-authors:
-  - name: Claudia Vitolo
-    url: http://www.claudiavitolo.com/
-categories:
-  - blog
-tags:
-- r
-- community
-- software
-- opendata
-- hydrology
-- rnrfa
-- earth-science
-- data-access
+title: "Discover hydrological data using the hddtools R package"
+author: "Claudia Vitolo"
+date: "`r Sys.Date()`"
+bibliography: ../assets/blog-images/2013-03-07-hddtools/hddtools.bib
+csl: ../assets/blog-images/2013-03-07-hddtools/hydrology-and-earth-system-sciences.csl
 ---
-
 
 
 I've worked for over 12 years in hydrology and natural hazard modelling and one of the things that still fascinates me is the variety of factors that come into play in trying to predict phenomena such as river floods. From local observations of meteorological and hydrological variables and their spatio-temporal patterns to the type and condition of soils and vegetation/land use as well as the geometry and state of river channels and engineering structures affecting the flow.
@@ -329,52 +315,13 @@ Kilphedir <- tsSEPA(stationID = catalogueSEPA()$stationId[1],
 ![](/assets/blog-images/2013-03-07-hddtools/unnamed-chunk-15-1.png)
 
 # Example applications
-There are a number of possible research applications for the `hddtools`
-package. Retrieved precipitation and streamflow data could, for
-instance, be used to draw spatial trends, as done by (Vitolo et al.,
-2016b) using the `rnrfa` package but over larger areas. The package
-could also be used to compare hydrological behaviours in different areas
-of the world, to run and calibrate hydrological models such as fuse
-(Clark et al., 2008, Vitolo et al. 2016a) as well as to undertake
-regionalisation studies.
+There are a number of possible research applications for the `hddtools` package. Retrieved precipitation and streamflow data could, for instance, be used to draw spatial trends, as done by [@rnrfaRjournal] using the `rnrfa` package but over larger areas. The package could also be used to compare hydrological behaviours in different areas of the world, to run and calibrate hydrological models such as fuse [@Clark2008, @fuseJOSS] as well as to undertake regionalisation studies.
 
 # Future developments
-If you have suggestions, please add them to the [issue
-tracker](https://github.com/ropensci/hddtools/issues) on github. Also,
-feel free to contribute to the package sending a [pull
-request](https://github.com/ropensci/hddtools/pulls), that would be
-greatly appreciated!
+If you have suggestions, please add them to the [issue tracker](https://github.com/ropensci/hddtools/issues) on github. Also, feel free to contribute to the package sending a [pull request](https://github.com/ropensci/hddtools/pulls), that would be greatly appreciated!
 
 # Acknowledgments
-I'm very grateful to [Erin Le Dell](https://github.com/ledell) and
-[Michael Sumner](https://github.com/mdsumner) who reviewed, on behalf of
-rOpenSci, the `hddtools` package and the related paper published in the
-Journal of Open Source Software (Vitolo, 2017). Both reviewers provided
-very constructive suggestions that grately improved this package. I'd
-like to also thank [Stephanie
-Butland](https://github.com/stefaniebutland) and [Scott
-Chamberlain](https://github.com/sckott) for providing invaluable advice
-when reviewing this post.
+I'm very grateful to [Erin Le Dell](https://github.com/ledell) and [Michael Sumner](https://github.com/mdsumner) who reviewed, on behalf of rOpenSci, the `hddtools` package and the related paper published in the Journal of Open Source Software [@hddtoolsJOSS]. Both reviewers provided very constructive suggestions that grately improved this package. I'd like to also thank [Stephanie Butland](https://github.com/stefaniebutland) and [Scott Chamberlain](https://github.com/sckott) for providing invaluable advice when reviewing this post.
 
 # References
 
-Clark, M. P., Slater, A. G., Rupp, D. E., Woods, R. A., Vrugt, J. A.,
-Gupta, H. V., Wagener, T. and Hay, L. E.: Framework for understanding
-structural errors (fuse): A modular framework to diagnose differences
-between hydrological models, Water Resources Research, 44(12), n/a–n/a,
-doi:[10.1029/2007WR006735](https://doi.org/10.1029/2007WR006735), 2008.
-
-Vitolo, C.: Hddtools: Hydrological data discovery tools, The Journal of
-Open Source Software, 2(9),
-doi:[10.21105/joss.00056](https://doi.org/10.21105/joss.00056), 2017.
-
-Vitolo, C., Wells, P., Dobias, M. and Buytaert, W.: fuse: An R package
-for ensemble Hydrological Modelling, The Journal of Open Source
-Software, 1(8),
-doi:[10.21105/joss.00052](https://doi.org/10.21105/joss.00052), 2016a.
-
-Vitolo, C., Fry, M. and Buytaert, W.: rnrfa: An R package to Retrieve,
-Filter and Visualize Data from the UK National River Flow Archive, The R
-Journal, 8(2) \[online\] Available from:
-<https://journal.r-project.org/archive/2016-2/vitolo-fry-buytaert.pdf>,
-2016b.
