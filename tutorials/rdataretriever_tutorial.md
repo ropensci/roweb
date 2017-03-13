@@ -1,7 +1,7 @@
 ---
-title: ecoretriever tutorial
+title: rdataretriever tutorial
 layout: tutorial
-packge_version: 0.2.1
+packge_version: 1.0.0
 ---
 
 
@@ -10,21 +10,18 @@ packge_version: 0.2.1
 
 ## Installation
 
-### Install EcoData Retriever
+### Install DataRetriever software
 
-To use the R package `ecoretriever` you first need to install `Retriever`. Installers are available for all major operating systems from the [Download page](http://www.ecodataretriever.org/) or it can be installed from [source](https://github.com/weecology/retriever).
+To use the R package `rdataretriever` you first need to install `Retriever`. Installers are available for all major operating systems from the [Download page](http://www.ecodataretriever.org/) or it can be installed from [source](https://github.com/weecology/retriever).
 
-### Add Retriever to the path
-
-The R package takes advantage of the EcoData Retriever's command line interface which must be enabled by adding it to the path on Mac platforms. On a Windows platform the Retriever should be added automatically to the path.
 
 ### Install R package
 
-Install and load `ecoretriever` into the R session. Stable version from CRAN
+Install and load `rdataretriever` into the R session. Stable version from CRAN
 
 
 ```r
-install.packages("ecoretriever")
+install.packages("rdataretriever")
 ```
 
 Or development version from Github:
@@ -32,12 +29,12 @@ Or development version from Github:
 
 ```r
 install.packages("devtools")
-devtools::install_github("ropensci/ecoretriever")
+devtools::install_github("ropensci/rdataretriever")
 ```
 
 
 ```r
-library('ecoretriever')
+library('rdataretriever')
 ```
 
 <section id="usage">
@@ -48,47 +45,47 @@ library('ecoretriever')
 
 
 ```r
-ecoretriever::datasets()
-#>  [1] "Available datasets (47):" ""                        
-#>  [3] "Adler2007"                "AmnioteDB"               
-#>  [5] "Anderson2011"             "ArcticBreedBird"         
-#>  [7] "AvianBodySize"            "BAAD"                    
-#>  [9] "BBS"                      "BBS50"                   
-#> [11] "Bioclim"                  "CForBioData"             
-#> [13] "Clark2006"                "DelMoral2010"            
-#> [15] "eBirdOD"                  "EltonTraits"             
-#> [17] "FIA"                      "FishParasiteHosts"       
-#> [19] "FrayJorge"                "Gentry"                  
-#> [21] "GWDD"                     "HomeRanges"              
-#> [23] "leaf_herbivory"           "leda"                    
-#> [25] "MammalDIET"               "MammalLH"                
-#> [27] "MammalMR2010"             "MarineSize"              
-#> [29] "Matter2014"               "MCDB"                    
-#> [31] "McGlinn2010"              "MiscAbundanceDB"         
-#> [33] "MoM2003"                  "NPN"                     
-#> [35] "Palmer2007"               "Pantheria"               
-#> [37] "Petraitis2008"            "PhytoplankonBiovolume"   
-#> [39] "PlantTaxonomy"            "PortalMammals"           
-#> [41] "PRISM"                    "Ramesh2010"              
-#> [43] "SonoranPerennials"        "Steppe_plants_2013"      
-#> [45] "TreeWesternGhats"         "vertnet"                 
-#> [47] "Woods2009"                "Zachmann2010"            
-#> [49] "Groups:"                  "ALL"                     
-#> [51] "ALLOCATION"               "ANIMALS"                 
-#> [53] "BIOMASS"                  "BIOME"                   
-#> [55] "BIRDS"                    "BUTTERFLIES"             
-#> [57] "CHINA"                    "CLIMATE"                 
-#> [59] "COMPILATION"              "CONTINENTAL"             
-#> [61] "DATA TYPE"                "DESERT"                  
-#> [63] "EXPERIMENTAL"             "FISH"                    
-#> [65] "FOREST TYPE"              "GLOBAL"                  
-#> [67] "LOCAL"                    "MAMMALS"                 
-#> [69] "METAPOPULATION"           "NECROMASS"               
-#> [71] "OBSERVATION"              "OBSERVATIONAL"           
-#> [73] "PHENOLOGY"                "PHYTOPLANKTON"           
-#> [75] "PLANTS"                   "REGIONAL"                
-#> [77] "SPATIAL SCALE"            "STAND STRUCTURE"         
-#> [79] "TAXON"                    "TAXONOMY"                
+rdataretriever::datasets()
+#>  [1] "Available datasets (47):" ""
+#>  [3] "Adler2007"                "AmnioteDB"
+#>  [5] "Anderson2011"             "ArcticBreedBird"
+#>  [7] "AvianBodySize"            "BAAD"
+#>  [9] "BBS"                      "BBS50"
+#> [11] "Bioclim"                  "CForBioData"
+#> [13] "Clark2006"                "DelMoral2010"
+#> [15] "eBirdOD"                  "EltonTraits"
+#> [17] "FIA"                      "FishParasiteHosts"
+#> [19] "FrayJorge"                "Gentry"
+#> [21] "GWDD"                     "HomeRanges"
+#> [23] "leaf_herbivory"           "leda"
+#> [25] "MammalDIET"               "MammalLH"
+#> [27] "MammalMR2010"             "MarineSize"
+#> [29] "Matter2014"               "MCDB"
+#> [31] "McGlinn2010"              "MiscAbundanceDB"
+#> [33] "MoM2003"                  "NPN"
+#> [35] "Palmer2007"               "Pantheria"
+#> [37] "Petraitis2008"            "PhytoplankonBiovolume"
+#> [39] "PlantTaxonomy"            "PortalMammals"
+#> [41] "PRISM"                    "Ramesh2010"
+#> [43] "SonoranPerennials"        "Steppe_plants_2013"
+#> [45] "TreeWesternGhats"         "vertnet"
+#> [47] "Woods2009"                "Zachmann2010"
+#> [49] "Groups:"                  "ALL"
+#> [51] "ALLOCATION"               "ANIMALS"
+#> [53] "BIOMASS"                  "BIOME"
+#> [55] "BIRDS"                    "BUTTERFLIES"
+#> [57] "CHINA"                    "CLIMATE"
+#> [59] "COMPILATION"              "CONTINENTAL"
+#> [61] "DATA TYPE"                "DESERT"
+#> [63] "EXPERIMENTAL"             "FISH"
+#> [65] "FOREST TYPE"              "GLOBAL"
+#> [67] "LOCAL"                    "MAMMALS"
+#> [69] "METAPOPULATION"           "NECROMASS"
+#> [71] "OBSERVATION"              "OBSERVATIONAL"
+#> [73] "PHENOLOGY"                "PHYTOPLANKTON"
+#> [75] "PLANTS"                   "REGIONAL"
+#> [77] "SPATIAL SCALE"            "STAND STRUCTURE"
+#> [79] "TAXON"                    "TAXONOMY"
 #> [81] "TIME SERIES"
 ```
 
@@ -98,8 +95,8 @@ Install the Gentry dataset into csv files in your working directory
 
 
 ```r
-ecoretriever::install(dataset = 'AvianBodySize', connection = 'csv', data_dir = "~/")
-head(read.csv("~/AvianBodySize_species.csv")[,c(1:10)])
+rdataretriever::install(dataset = 'AvianBodySize', connection = 'csv')
+head(read.csv("AvianBodySize_species.csv")[,c(1:10)])
 #>   record_id family species_number             species_name
 #> 1         1      1              1         Struthio camelus
 #> 2         2      3              7 Dromaius novaehollandiae
@@ -122,7 +119,7 @@ Install and load a dataset as a list
 
 
 ```r
-Gentry <- ecoretriever::fetch('Gentry')
+Gentry <- rdataretriever::fetch('Gentry')
 ```
 
 
@@ -157,8 +154,8 @@ Install a dataset into a SQLite database
 
 
 ```r
-ecoretriever::install(dataset = 'Gentry', connection = 'sqlite', db_file = "gentrysqlite.sqlite3")
-ecoretriever::install(dataset = 'MCDB', connection = 'sqlite', db_file = "mcdbsqlite.sqlite3")
+rdataretriever::install(dataset = 'Gentry', connection = 'sqlite', db_file = "gentrysqlite.sqlite3")
+rdataretriever::install(dataset = 'MCDB', connection = 'sqlite', db_file = "mcdbsqlite.sqlite3")
 ```
 
 Load `RSQLite` and connect to the database
@@ -174,7 +171,7 @@ List tables in the database
 
 ```r
 dbListTables(db)
-#> [1] "MCDB_communities" "MCDB_references"  "MCDB_sites"      
+#> [1] "MCDB_communities" "MCDB_references"  "MCDB_sites"
 #> [4] "MCDB_species"     "MCDB_trapping"
 ```
 
@@ -183,7 +180,7 @@ List fields in the table
 
 ```r
 dbListFields(db, "MCDB_species")
-#> [1] "species_id"    "family"        "genus"         "species"      
+#> [1] "species_id"    "family"        "genus"         "species"
 #> [5] "species_level"
 ```
 
@@ -209,11 +206,11 @@ dbGetQuery(db, "SELECT * FROM MCDB_species LIMIT 10")
 
 ## Citing
 
-To cite `ecoretriever` in publications use:
+To cite `rdataretriever` in publications use:
 
-Software: 
+Software:
 
-> Daniel McGlinn and Ethan White (2015). ecoretriever: R Interface to the EcoData Retriever. R package version 0.2.1 https://github.com/ropensci/ecoretriever
+> Daniel McGlinn, Henry Senyondo, Shawn Taylor and Ethan White (2017). rdataretriever: R Interface to the Data Retriever. R package version 1.0.0. https://github.com/ropensci/rdataretriever/
 
 Publication:
 
@@ -224,6 +221,6 @@ Publication:
 ## License and bugs
 
 * License: [MIT](http://opensource.org/licenses/MIT)
-* Report bugs at [our Github repo for ecoretriever](https://github.com/ropensci/ecoretriever/issues?state=open)
+* Report bugs at [our Github repo for rdataretriever](https://github.com/ropensci/rdataretriever/issues?state=open)
 
 [Back to top](#top)
