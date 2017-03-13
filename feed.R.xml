@@ -6,7 +6,7 @@
 		<title>rOpenSci Blog - R</title>
 		<description>Posts tagged as 'R'</description>
 		<link>http://ropensci.org/feed.R.xml</link>
-		{% for post in site.tags.R limit:10 %}
+		{% for post in (site.tags.r + site.tags.R) limit:10 %}
 			{% if post.categories contains 'pt' %}
 			{% else if %}
 				<item>
