@@ -1,6 +1,6 @@
 ---
 name: mongolite
-layout: post
+layout: post_discourse
 title: "Release mongolite 1.0"
 authors:
   - name: Jeroen Ooms
@@ -18,13 +18,13 @@ After 2.5 years of development, version 1.0 of the [mongolite](https://cran.r-pr
 
 ## MongoDB in R and mongolite
 
-I started working on mongolite in September 2014, and it was first announced at the rOpenSci [unconf 2015](https://twitter.com/_inundata/status/581605601882480640/photo/1). At this time, there were already two Mongo clients on CRAN: [rmongodb](https://cran.r-project.org/web/packages/rmongodb/index.html) (no longer works) and [RMongo](https://cran.r-project.org/web/packages/RMongo/index.html) (depends on Java). However I found both of them pretty clunky, and the MongoDB folks had just released 1.0 of their new C driver, so I decided to write a new client from scratch. 
+I started working on mongolite in September 2014, and it was first announced at the rOpenSci [unconf 2015](https://twitter.com/_inundata/status/581605601882480640/photo/1). At this time, there were already two Mongo clients on CRAN: [rmongodb](https://cran.r-project.org/web/packages/rmongodb/index.html) (no longer works) and [RMongo](https://cran.r-project.org/web/packages/RMongo/index.html) (depends on Java). However I found both of them pretty clunky, and the MongoDB folks had just released 1.0 of their new C driver, so I decided to write a new client from scratch.
 
 Mongolite aims to provide a *simple* R client for MongoDB, based on the excellent [mongo-c-driver](https://github.com/mongodb/mongo-c-driver) combined with super-powers from the [jsonlite](https://cran.r-project.org/web/packages/jsonlite/index.html) package. Simple means insert and query data in R using data-frames with a single command:
 
 ```r
 # Create a connection
-con <- mongolite::mongo("diamonds", 
+con <- mongolite::mongo("diamonds",
   url = "mongodb://readwrite:test@ds043942.mongolab.com:43942/jeroen_test")
 
 # Find diamonds with: cut == Premium & price < 500
@@ -73,7 +73,7 @@ The bookdown is now the primary documentation source for mongolite.
 
 ## Why MongoDB
 
-MongoDB is the [most popular]((http://db-engines.com/en/ranking)) nosql database (by market share), and the 5th most popular database allround. Mongo is relatively young in comparison with the traditional engines (Oracle, Microsoft, MySQL, Postgres), yet well established, fully open source, and backed by a professional company. 
+MongoDB is the [most popular]((http://db-engines.com/en/ranking)) nosql database (by market share), and the 5th most popular database allround. Mongo is relatively young in comparison with the traditional engines (Oracle, Microsoft, MySQL, Postgres), yet well established, fully open source, and backed by a professional company.
 
 MongoDB provides a modern high-performance DB engine with cool features that cannot be found anywhere else. The high quality client drivers are a pleasure to work with, and actively maintained by professional engineers. Writing bindings, it quickly became obvious that Mongo does not suffer from the legacy bloat that I have come to associate with traditional DB engines.
 
