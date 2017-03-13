@@ -1,0 +1,46 @@
+
+ {% include header_posts.html %}
+<section class="blog-3">
+    <div class="container">
+        <div class="title">
+            <img src="{{ site.url }}/assets/common-files/img/content/blog_header_logo.png" alt="">
+            <h3>{{ page.title }}</h3>
+            <div class="submitted">
+              <!-- author goes here -->
+    {% for author in page.authors %}
+      {% if author.name == "Carl Boettiger" or author.name == "Karthik Ram" or author.name == "Scott Chamberlain" or author.name == "Jenny Bryan" or author.name == "Rich FitzJohn" or
+      author.name == "Leadership Team" or author.name == "Core Team" %}
+        <a href="/about/#leadership"> {{ author.name }} </a>&nbsp;
+      {% elsif author.name == "Jeroen Ooms" or author.name == "Stefanie Butland" %}
+        <a href="/about/#staff"> {{ author.name }} </a>&nbsp;
+      {% elsif author.name == "Ted Hart" %}
+        <a href="/about/#alumni"> {{ author.name }} </a>&nbsp;
+      {% else %}
+        {% if author.url != null %} <a href={{ author.url }} target="_blank"> {% endif %} {{ author.name }} </a>&nbsp;
+      {% endif %}
+    {% endfor %}
+              <!-- end author -->
+            </div>
+            <div class="submitted">{{ page.date | date: "%B %e, %Y" }} </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                {{ content }}
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- The tags -->
+<div class="container">
+  <div class="col-sm-8 col-sm-offset-2">
+  {% for tag in page.tags %} <a href="/tags/{{ tag }}" class="badge badge-success" rel="tooltip" data-placement="right" title="View posts tagged with &quot;{{ tag }}&quot;"><span class="blog_tag">{{ tag }}</span></a> {% if forloop.last != true %} {% endif %} {% endfor %}
+</div>
+<div id="discourse">
+  {% include discourse.html %}
+</div>
+ </div>
+ <!-- End tags -->
+
+  {% include footer.html %}
