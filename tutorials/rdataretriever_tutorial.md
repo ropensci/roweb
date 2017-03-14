@@ -12,8 +12,9 @@ packge_version: 1.0.0
 
 ### Install DataRetriever software
 
-To use the R package `rdataretriever` you first need to install `Retriever`. Installers are available for all major operating systems from the [Download page](http://www.ecodataretriever.org/) or it can be installed from [source](https://github.com/weecology/retriever).
+To use the R package `rdataretriever` you first need to install `Retriever`. For installation instructions go to <http://www.data-retriever.org/#install>; you can install with `pip`, and there's installers available for all major operating systems, or it can be installed from source. 
 
+[Source code](https://github.com/weecology/retriever).
 
 ### Install R package
 
@@ -46,47 +47,31 @@ library('rdataretriever')
 
 ```r
 rdataretriever::datasets()
-#>  [1] "Available datasets (47):" ""
-#>  [3] "Adler2007"                "AmnioteDB"
-#>  [5] "Anderson2011"             "ArcticBreedBird"
-#>  [7] "AvianBodySize"            "BAAD"
-#>  [9] "BBS"                      "BBS50"
-#> [11] "Bioclim"                  "CForBioData"
-#> [13] "Clark2006"                "DelMoral2010"
-#> [15] "eBirdOD"                  "EltonTraits"
-#> [17] "FIA"                      "FishParasiteHosts"
-#> [19] "FrayJorge"                "Gentry"
-#> [21] "GWDD"                     "HomeRanges"
-#> [23] "leaf_herbivory"           "leda"
-#> [25] "MammalDIET"               "MammalLH"
-#> [27] "MammalMR2010"             "MarineSize"
-#> [29] "Matter2014"               "MCDB"
-#> [31] "McGlinn2010"              "MiscAbundanceDB"
-#> [33] "MoM2003"                  "NPN"
-#> [35] "Palmer2007"               "Pantheria"
-#> [37] "Petraitis2008"            "PhytoplankonBiovolume"
-#> [39] "PlantTaxonomy"            "PortalMammals"
-#> [41] "PRISM"                    "Ramesh2010"
-#> [43] "SonoranPerennials"        "Steppe_plants_2013"
-#> [45] "TreeWesternGhats"         "vertnet"
-#> [47] "Woods2009"                "Zachmann2010"
-#> [49] "Groups:"                  "ALL"
-#> [51] "ALLOCATION"               "ANIMALS"
-#> [53] "BIOMASS"                  "BIOME"
-#> [55] "BIRDS"                    "BUTTERFLIES"
-#> [57] "CHINA"                    "CLIMATE"
-#> [59] "COMPILATION"              "CONTINENTAL"
-#> [61] "DATA TYPE"                "DESERT"
-#> [63] "EXPERIMENTAL"             "FISH"
-#> [65] "FOREST TYPE"              "GLOBAL"
-#> [67] "LOCAL"                    "MAMMALS"
-#> [69] "METAPOPULATION"           "NECROMASS"
-#> [71] "OBSERVATION"              "OBSERVATIONAL"
-#> [73] "PHENOLOGY"                "PHYTOPLANKTON"
-#> [75] "PLANTS"                   "REGIONAL"
-#> [77] "SPATIAL SCALE"            "STAND STRUCTURE"
-#> [79] "TAXON"                    "TAXONOMY"
-#> [81] "TIME SERIES"
+#>  [1] "Available datasets : 47" ""                       
+#>  [3] "Adler2007"               "AmnioteDB"              
+#>  [5] "Anderson2011"            "ArcticBreedBird"        
+#>  [7] "AvianBodySize"           "BAAD"                   
+#>  [9] "BBS"                     "BBS50"                  
+#> [11] "Bioclim"                 "CForBioData"            
+#> [13] "Clark2006"               "DelMoral2010"           
+#> [15] "eBirdOD"                 "EltonTraits"            
+#> [17] "FIA"                     "FishParasiteHosts"      
+#> [19] "FrayJorge"               "Gentry"                 
+#> [21] "GWDD"                    "HomeRanges"             
+#> [23] "leaf_herbivory"          "leda"                   
+#> [25] "MammalDIET"              "MammalLH"               
+#> [27] "MammalMR2010"            "mammsupertree"          
+#> [29] "MarineSize"              "Matter2014"             
+#> [31] "MCDB"                    "McGlinn2010"            
+#> [33] "MiscAbundanceDB"         "MoM2003"                
+#> [35] "NPN"                     "Palmer2007"             
+#> [37] "Pantheria"               "Petraitis2008"          
+#> [39] "PhytoplankonBiovolume"   "PlantTaxonomy"          
+#> [41] "PortalMammals"           "PRISM"                  
+#> [43] "Ramesh2010"              "SonoranPerennials"      
+#> [45] "Steppe_plants_2013"      "TreeWesternGhats"       
+#> [47] "vertnet"                 "Woods2009"              
+#> [49] "Zachmann2010"
 ```
 
 ### Install into csv
@@ -97,20 +82,20 @@ Install the Gentry dataset into csv files in your working directory
 ```r
 rdataretriever::install(dataset = 'AvianBodySize', connection = 'csv')
 head(read.csv("AvianBodySize_species.csv")[,c(1:10)])
-#>   record_id family species_number             species_name
-#> 1         1      1              1         Struthio camelus
-#> 2         2      3              7 Dromaius novaehollandiae
-#> 3         3      4              8        Apteryx australis
-#> 4         4      4              9           Apteryx owenii
-#> 5         5      4             10          Apteryx haastii
-#> 6         6      5             14            Tinamus major
-#>          english_name subspecies m_mass m_mass_n f_mass f_mass_n
-#> 1             Ostrich            115000       NA 100000       NA
-#> 2                 Emu             32700       NA  38300       NA
-#> 3          Brown Kiwi              2208       11   2535       26
-#> 4 Little Spotted Kiwi              1135       51   1351       41
-#> 5  Great Spotted Kiwi              2610       12   3270        7
-#> 6       Great Tinamou              1059       NA    991       NA
+#>   family species_number             species_name        english_name
+#> 1      1              1         Struthio camelus             Ostrich
+#> 2      3              7 Dromaius novaehollandiae                 Emu
+#> 3      4              8        Apteryx australis          Brown Kiwi
+#> 4      4              9           Apteryx owenii Little Spotted Kiwi
+#> 5      4             10          Apteryx haastii  Great Spotted Kiwi
+#> 6      5             14            Tinamus major       Great Tinamou
+#>   subspecies m_mass m_mass_n f_mass f_mass_n unsexed_mass
+#> 1            115000       NA 100000       NA           NA
+#> 2             32700       NA  38300       NA           NA
+#> 3              2208       11   2535       26           NA
+#> 4              1135       51   1351       41           NA
+#> 5              2610       12   3270        7           NA
+#> 6              1059       NA    991       NA         1059
 ```
 
 ### Read into R
@@ -125,13 +110,13 @@ Gentry <- rdataretriever::fetch('Gentry')
 
 ```r
 head(Gentry$sites)
-#>   record_id site_id                                site_name country
-#> 1         1       1                                Kitlope 1  Canada
-#> 2         2       2                                Kitlope 2  Canada
-#> 3         3       3                          Mt. St. Hilaire  Canada
-#> 4         4       4           Metthieson Hammock County Park   U.S.A
-#> 5         5       5                      San Felasko Hammock   U.S.A
-#> 6         6       6 University of Florida Horticulture Woods   U.S.A
+#>   site_id                                site_name country
+#> 1       1                                Kitlope 1  Canada
+#> 2       2                                Kitlope 2  Canada
+#> 3       3                          Mt. St. Hilaire  Canada
+#> 4       4           Metthieson Hammock County Park   U.S.A
+#> 5       5                      San Felasko Hammock   U.S.A
+#> 6       6 University of Florida Horticulture Woods   U.S.A
 #>     state_province     continent abbreviation   lat     lon min_elev
 #> 1 British Columbia North America     KITLOPE1 53.07 -127.83       20
 #> 2 British Columbia North America     KITLOPE2 52.21 -127.79       10
@@ -171,7 +156,7 @@ List tables in the database
 
 ```r
 dbListTables(db)
-#> [1] "MCDB_communities" "MCDB_references"  "MCDB_sites"
+#> [1] "MCDB_communities" "MCDB_references"  "MCDB_sites"      
 #> [4] "MCDB_species"     "MCDB_trapping"
 ```
 
@@ -180,7 +165,7 @@ List fields in the table
 
 ```r
 dbListFields(db, "MCDB_species")
-#> [1] "species_id"    "family"        "genus"         "species"
+#> [1] "species_id"    "family"        "genus"         "species"      
 #> [5] "species_level"
 ```
 

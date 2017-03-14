@@ -20,7 +20,9 @@ knitr::opts_chunk$set(
 
 ### Install DataRetriever software
 
-To use the R package `rdataretriever` you first need to install `Retriever`. Installers are available for all major operating systems from the [Download page](http://www.ecodataretriever.org/) or it can be installed from [source](https://github.com/weecology/retriever).
+To use the R package `rdataretriever` you first need to install `Retriever`. For installation instructions go to <http://www.data-retriever.org/#install>; you can install with `pip`, and there's installers available for all major operating systems, or it can be installed from source. 
+
+[Source code](https://github.com/weecology/retriever).
 
 ### Install R package
 
