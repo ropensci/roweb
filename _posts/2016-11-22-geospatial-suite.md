@@ -931,8 +931,8 @@ We're so so grateful to our community for their hard work on these packages:
 [geonames]: https://github.com/ropensci/geonames
 [geojsonio]: https://github.com/ropensci/geojsonio
 [jqr]: https://github.com/ropensci/jqr
-[v8]: https://github.com/jeroenooms/v8
-[protolite]: https://github.com/jeroenooms/protolite
+[v8]: https://github.com/jeroen/v8
+[protolite]: https://github.com/jeroen/protolite
 [sf]: https://cran.rstudio.com/web/packages/sf/
 [geojsonrewind]: https://github.com/ropenscilabs/geojsonrewind
 

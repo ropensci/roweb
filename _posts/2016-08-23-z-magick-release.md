@@ -82,7 +82,7 @@ There is some functionality to convert images to R raster graphics and plot it o
 
 
 ```r
-frink <- image_read("https://jeroenooms.github.io/images/frink.png")
+frink <- image_read("https://jeroen.github.io/images/frink.png")
 raster <- as.raster(frink)
 plot(raster)
 ```
@@ -95,7 +95,7 @@ The best way to get a sense of available transformations is walk through the exa
 
 ```r
 # Example image
-frink <- image_read("https://jeroenooms.github.io/images/frink.png")
+frink <- image_read("https://jeroen.github.io/images/frink.png")
 
 # Trim margins
 image_trim(frink)

@@ -118,6 +118,6 @@ Pdftools usually does a decent job in retaining the positioning of table element
 
 ## Jeroen Ooms joins team rOpenSci!
 
-A message from the team: We are happy to announce that [Jeroen Ooms](https://jeroenooms.github.io/) has joined the rOpenSci crew! Jeroen is a prolific programmer and author of numerous [widely used packages](https://cran.r-project.org/web/checks/check_results_jeroen.ooms_at_stat.ucla.edu.html). At rOpenSci, he will continue to work on developing awesome packages and infrastructural software for improving the scientific tool chain.
+A message from the team: We are happy to announce that [Jeroen Ooms](https://jeroen.github.io/) has joined the rOpenSci crew! Jeroen is a prolific programmer and author of numerous [widely used packages](https://cran.r-project.org/web/checks/check_results_jeroen.ooms_at_stat.ucla.edu.html). At rOpenSci, he will continue to work on developing awesome packages and infrastructural software for improving the scientific tool chain.
 
 

@@ -5,7 +5,7 @@ title: "Testing packages with R Travis for OS-X"
 date: 2016-07-12
 authors:
   - name: Jeroen Ooms
-    url: https://jeroenooms.github.io
+    url: https://jeroen.github.io
 categories:
   - blog
 tags:
@@ -27,10 +27,10 @@ Cross system testing is mainly useful to check packages with compiled code (i.e.
 The R travis options are pretty well [documented](https://docs.travis-ci.com/user/languages/r). The quickest way to get started is by borrowing a `.travis.yml` configuration from another package. Below a few example packages with a multi-OS build matrix which illustrate various options:
 
  - [jqr](https://travis-ci.org/ropensci/jqr): basic example with C code: [.travis.yml](https://github.com/ropensci/jqr/blob/master/.travis.yml)
- - [jsonlite](https://travis-ci.org/jeroenooms/jsonlite): also requires a custom Latex package (preprint): [.travis.yml](https://github.com/jeroenooms/jsonlite/blob/master/.travis.yml)
+ - [jsonlite](https://travis-ci.org/jeroen/jsonlite): also requires a custom Latex package (preprint): [.travis.yml](https://github.com/jeroen/jsonlite/blob/master/.travis.yml)
  - [pdftools](https://travis-ci.org/ropensci/pdftools): requires external library (libpoppler): [.travis.yml](https://github.com/ropensci/pdftools/blob/master/.travis.yml)
- - [curl](https://travis-ci.org/jeroenooms/curl): external library (libcurl) and custom options: [.travis.yml](https://github.com/jeroenooms/curl/blob/master/.travis.yml)
- - [sodium](https://travis-ci.org/jeroenooms/sodium): depends on an external library from a PPA. [.travis.yml](https://github.com/jeroenooms/sodium/blob/master/.travis.yml)
+ - [curl](https://travis-ci.org/jeroen/curl): external library (libcurl) and custom options: [.travis.yml](https://github.com/jeroen/curl/blob/master/.travis.yml)
+ - [sodium](https://travis-ci.org/jeroen/sodium): depends on an external library from a PPA. [.travis.yml](https://github.com/jeroen/sodium/blob/master/.travis.yml)
  - [RMySQL](https://travis-ci.org/rstats-db/RMySQL): package with unit-tests that require both mysql server and client library. Also checks alternative configurations with mariadb: [.travis.yml](https://github.com/rstats-db/RMySQL/blob/master/.travis.yml)
 
 For extra credit also check out the [feather](https://github.com/wesm/feather/blob/master/.travis.yml) package which uses a single platform but has a very cool build matrix targeting multiple compilers with both the python and R interfaces.
@@ -61,7 +61,7 @@ The `osx_image` field specifies which version of OS-X and X-code this system has
 
 ## Homebrew
 
-By default all OS-X images include a copy of homebrew. The `brew_packages` field can be used to install brew packages before building and checking the R package, similar to `apt_packages` on Linux. See [pdftools](https://github.com/ropensci/pdftools/blob/master/.travis.yml) or [sodium](https://github.com/jeroenooms/sodium/blob/master/.travis.yml) for examples.
+By default all OS-X images include a copy of homebrew. The `brew_packages` field can be used to install brew packages before building and checking the R package, similar to `apt_packages` on Linux. See [pdftools](https://github.com/ropensci/pdftools/blob/master/.travis.yml) or [sodium](https://github.com/jeroen/sodium/blob/master/.travis.yml) for examples.
 
 
 ```
@@ -93,7 +93,7 @@ r_build_args: '--no-build-vignettes'
 r_check_args: '--ignore-vignettes --no-examples'
 ```
 
-The [curl](https://github.com/jeroenooms/curl/blob/master/.travis.yml) config has a real world example. Finally you can put almost anything in the before and after install scripts. Use the `TRAVIS_OS_NAME` environment variable to run something only on OSX or Linux. An example from [jsonlite](https://github.com/jeroenooms/jsonlite/blob/master/.travis.yml) which installs a custom Latex package:
+The [curl](https://github.com/jeroen/curl/blob/master/.travis.yml) config has a real world example. Finally you can put almost anything in the before and after install scripts. Use the `TRAVIS_OS_NAME` environment variable to run something only on OSX or Linux. An example from [jsonlite](https://github.com/jeroen/jsonlite/blob/master/.travis.yml) which installs a custom Latex package:
 
 ```
 before_install:

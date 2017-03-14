@@ -65,9 +65,9 @@ In my experience, a simple interface is critical to get started. Obviously, adva
 
 ## Bookdown documentation
 
-The 1.0 release has fresh documentation based on the awesome bookdown system. You can find documentation on the mongolite [github homepage](https://jeroenooms.github.io/mongolite/).
+The 1.0 release has fresh documentation based on the awesome bookdown system. You can find documentation on the mongolite [github homepage](https://jeroen.github.io/mongolite/).
 
-[![mongolite-docs](/assets/blog-images/mongolite-docs.png)](https://jeroenooms.github.io/mongolite/)
+[![mongolite-docs](/assets/blog-images/mongolite-docs.png)](https://jeroen.github.io/mongolite/)
 
 The bookdown is now the primary documentation source for mongolite.
 
@@ -82,9 +82,9 @@ At the same time the ecosystem is mature and offers reliability and continuity t
 
 ## Changes in 1.0
 
-The [NEWS](https://github.com/jeroenooms/mongolite/blob/master/NEWS) file on Github lists what has changed in this release:
+The [NEWS](https://github.com/jeroen/mongolite/blob/master/NEWS) file on Github lists what has changed in this release:
 
- - New mongo bookdown docs at https://jeroenooms.github.io/mongolite
+ - New mongo bookdown docs at https://jeroen.github.io/mongolite
  - Update mongo-c-driver to upstream 1.6.0
  - Add basic decimal 128 support (coerce to double)
  - Improve enterprise authentication for LDAP, X509 and Kerberos
@@ -102,6 +102,6 @@ The [NEWS](https://github.com/jeroenooms/mongolite/blob/master/NEWS) file on Git
 
 ## Tell us what you think
 
-At rOpenSci we're interested to hear who is using R and how. If you decide to give mongolite a try, please share your experiences and suggestions. Open an [issue on github](https://github.com/jeroenooms/mongolite/issues) for specific problems and feature requests, or join the rOpenSci [slack](https://ropensci.slack.com) to talk about mongolite or other rOpenSci packages. Or just come say hi and hang out :)
+At rOpenSci we're interested to hear who is using R and how. If you decide to give mongolite a try, please share your experiences and suggestions. Open an [issue on github](https://github.com/jeroen/mongolite/issues) for specific problems and feature requests, or join the rOpenSci [slack](https://ropensci.slack.com) to talk about mongolite or other rOpenSci packages. Or just come say hi and hang out :)
 
 We both love hearing from academic users, but also industry applications of R and synergy between the industry and open source scientific software.
