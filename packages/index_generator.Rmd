@@ -1,0 +1,129 @@
+```{r}
+library(whisker)
+library(ropkgs)
+library(dplyr)
+```
+
+```{r}
+section_titles <- list(
+  `data-publication` = 'Data Publication  <small>Packages that not only retrieve data but also allows for data submission.</small>',
+  `data-access` = 'Data Access <small>Packages that interface with data repositories</small>',
+  literature = 'Literature <small>Packages that interface with journal full-text or metadata</small>',
+  altmetrics = 'Altmetrics <small>Packages that interface with raw and aggregate altmetrics data.</small>',
+  scalereprod = 'Scalable &amp; Reproducible Computing  <small>Packages that support scalable and/or reproducibile computing.</small>',
+  databases = 'Databases <small>Packages for interfacing with databases.</small>',
+  `data-visualization` = 'Data Visualization  <small>Packages primarily for data vizualization.</small>',
+  `image-processing` = 'Image Processing  <small>Packages primarily for image processing.</small>',
+  `data-tools` = 'Data Tools  <small>Packages for manipulating data.</small>',
+  taxonomy = 'Taxonomy  <small>Packages for handling taxonomic names.</small>',
+  `http-tools` = 'HTTP Tools  <small>Utilities for working with the web.</small>',
+  `data-analysis` = 'Data Analysis  <small>Utilities for doing data analysis.</small>',
+  geospatial = 'Geospatial <small>Spatial data I/O and mapping.</small>',
+  `developer-tools` = 'Developer Tools <small>Tools for making R packages</small>',
+  `security` = 'Security <small>Tools for security</small>'
+)
+```
+
+```{r}
+template <- '
+{{#ropenscidata}}
+    <tr>
+      <td><a href="https://github.com/{{repo_name}}" id="{{name}}">{{name}}</a></td>
+      <td>{{description}}</td>
+      <td><a href="https://cran.rstudio.com/web/packages/{{name}}"><span class="label label-success">cran</span></a> <a href="https://github.com/{{repo_name}}"><span class="label label-inverse">github</span></a></td>
+    </tr>
+{{/ropenscidata}}
+'
+```
+
+```{r}
+top <- '---
+layout: dummy_page
+title: "rOpenSci - Packages"
+---
+
+{% include header_with_chat.html %}
+
+<section class="post">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+
+    <h2>rOpenSci packages</h2>
+     <p>This is a complete list of all available rOpenSci packages. Packages are grouped by ones that acquire <a href="#data-access">data</a>, <a href="#literature">full-text of journal articles</a>, <a href="#altmetrics">altmetrics</a>, <a href="#data-publication">data publication</a>, focus on <a href="#scalereprod">scalable and reproducibile computing</a>, <a href="#data-visualization">data visualization</a>, <a href="#data_tools">data tools</a>, <a href="#image-processing">image processing</a>, <a href="#taxonomy">taxonomy</a>, <a href="#http-tools">HTTP tools</a>, <a href="#data-analysis">data analysis</a> or <a href="#geospatial">geospatial</a> work. Packages with a <span class="label label-success">cran</span>, or <span class="label label-info">bioc</span> sign are stable versions that you can quickly install from your nearest mirror using <code>install.packages("PACKAGE_NAME")</code>. Others are in various stages of development (bleeding edge packages are not listed here) and you can learn more by following our <a href="https://github.com/ropensci" title="rOpenSci · GitHub">GitHub organization page</a>, and our <a href="https://github.com/ropenscilabs" title="rOpenSciLabs · GitHub">GitHub organization for bleeding edge projects</a>. All of our software packages are open source. Please see package description files for more information on specific licenses. </p>
+     <p>Many of our packages are community-contributed.  If you are interested in contributing a package, please visit our <a href="https://github.com/ropensci/onboarding">onboarding repository</a> for details.</p>
+
+<br>
+
+<center> <a href="#data-publication">Data Publication</a> | <a href="#data-access">Data Access</a> | <a href="#literature">Literature</a> | <a href="#altmetrics">Altmetrics</a> | <a href="#scalereprod">Scalable &amp; Reproducible Computing</a> | <a href="#databases">Databases</a> | <a href="#data-visualization">Data Vizualization</a> | <a href="#image-processing">Image Processing</a> | <a href="#data-tools">Data Tools</a> | <a href="#taxonomy">Taxonomy</a> | <a href="#http-tools">HTTP tools</a> | <a href="#geospatial">Geospatial</a> | <a href="#data-analysis">Data Analysis</a> </center>
+
+'
+
+template_section <- '
+
+<section id="%s">
+  <div class="page-header">
+    <h2>%s</h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-12  table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+       </tr>
+    </thead>
+    <tbody>
+    %s
+    </tbody>
+    </table>
+  </div>
+  </div>
+  </section>
+
+'
+
+bottom <- '
+   </tbody>
+  </table>
+  <br>
+  <p>Did not find what you were looking for? We are working on several new packages and updates so check back later (or browse our Github org account). You can also browse the <a href="https://github.com/ropensci/webservices" title="CRAN Task View: Web Technologies and Services">web technologies task view</a> or the <a href="https://github.com/ropensci/opendata" title="CRAN Task View: Open Data">open data task view</a> for related packages that might suit your needs, or post to our <a href="https://discuss.ropensci.org/" title="rOpenSci Discuss">discussion forum</a>.</p>
+
+    </div>
+  </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% include footer.html %}
+'
+```
+
+# get ropensci pkg data
+
+```{r}
+pkgs <- ropkgs::ro_pkgs()
+df <- pkgs$packages
+df$repo_name <- gsub("https?://github.com/", "", df$url)
+# remove those that are cran archived or on hiatus/etc
+df <- tbl_df(df) %>% filter(!cran_archived, status == "good")
+# remove those in certain ropensci categories
+df <- df %>% filter(!ropensci_category %in% "ignore")
+dfsplit <- split(df, df$ropensci_category)
+```
+
+# generate html page and write to disk
+
+```{r}
+htmls <- Map(function(a, b) {
+  ropenscidata <- unname(apply(a[,c('name', 'repo_name', 'description')], 1, as.list))
+  html <- whisker::whisker.render(template)
+  sprintf(template_section, b, section_titles[[b]], html)
+}, dfsplit, names(dfsplit))
+allhtml <- paste0(top, paste0(unlist(unname(htmls)), collapse = "\n"), bottom, 
+                  collapse = "\n")
+write(allhtml, file = "packages/index_generated.html")
+```

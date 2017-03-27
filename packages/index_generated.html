@@ -1,0 +1,1439 @@
+---
+layout: dummy_page
+title: "rOpenSci - Packages"
+---
+
+{% include header_with_chat.html %}
+
+<section class="post">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+
+    <h2>rOpenSci packages</h2>
+     <p>This is a complete list of all available rOpenSci packages. Packages are grouped by ones that acquire <a href="#data-access">data</a>, <a href="#literature">full-text of journal articles</a>, <a href="#altmetrics">altmetrics</a>, <a href="#data-publication">data publication</a>, focus on <a href="#scalereprod">scalable and reproducibile computing</a>, <a href="#data-visualization">data visualization</a>, <a href="#data_tools">data tools</a>, <a href="#image-processing">image processing</a>, <a href="#taxonomy">taxonomy</a>, <a href="#http-tools">HTTP tools</a>, <a href="#data-analysis">data analysis</a> or <a href="#geospatial">geospatial</a> work. Packages with a <span class="label label-success">cran</span>, or <span class="label label-info">bioc</span> sign are stable versions that you can quickly install from your nearest mirror using <code>install.packages("PACKAGE_NAME")</code>. Others are in various stages of development (bleeding edge packages are not listed here) and you can learn more by following our <a href="https://github.com/ropensci" title="rOpenSci · GitHub">GitHub organization page</a>, and our <a href="https://github.com/ropenscilabs" title="rOpenSciLabs · GitHub">GitHub organization for bleeding edge projects</a>. All of our software packages are open source. Please see package description files for more information on specific licenses. </p>
+     <p>Many of our packages are community-contributed.  If you are interested in contributing a package, please visit our <a href="https://github.com/ropensci/onboarding">onboarding repository</a> for details.</p>
+
+<br>
+
+<center> <a href="#data-publication">Data Publication</a> | <a href="#data-access">Data Access</a> | <a href="#literature">Literature</a> | <a href="#altmetrics">Altmetrics</a> | <a href="#scalereprod">Scalable &amp; Reproducible Computing</a> | <a href="#databases">Databases</a> | <a href="#data-visualization">Data Vizualization</a> | <a href="#image-processing">Image Processing</a> | <a href="#data-tools">Data Tools</a> | <a href="#taxonomy">Taxonomy</a> | <a href="#http-tools">HTTP tools</a> | <a href="#geospatial">Geospatial</a> | <a href="#data-analysis">Data Analysis</a> </center>
+
+
+
+<section id="altmetrics">
+  <div class="page-header">
+    <h2>Altmetrics <small>Packages that interface with raw and aggregate altmetrics data.</small></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-12  table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+       </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+      <td><a href="https://github.comropensci/rAltmetric" id="rAltmetric">rAltmetric</a></td>
+      <td>Programmatic interface to article-evel metrics data from Altmetric.com</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rAltmetric"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rAltmetric"><span class="label label-inverse">github</span></a></td>
+    </tr>
+
+    </tbody>
+    </table>
+  </div>
+  </div>
+  </section>
+
+
+
+
+<section id="data-access">
+  <div class="page-header">
+    <h2>Data Access <small>Packages that interface with data repositories</small></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-12  table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+       </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+      <td><a href="https://github.comropensci/AntWeb" id="AntWeb">AntWeb</a></td>
+      <td>Access data from the world's largest ant database. Maintained and developed by the California Academy of Science</td>
+      <td><a href="https://cran.rstudio.com/web/packages/AntWeb"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/AntWeb"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/bold" id="bold">bold</a></td>
+      <td>R client for BOLD Systems (Barcode Of Life Database).</td>
+      <td><a href="https://cran.rstudio.com/web/packages/bold"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/bold"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/clifro" id="clifro">clifro</a></td>
+      <td>An R client for New Zealand's National Climate Database</td>
+      <td><a href="https://cran.rstudio.com/web/packages/clifro"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/clifro"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/ecoengine" id="ecoengine">ecoengine</a></td>
+      <td>Retrieve 3+ MM records, checklists and photos from Berkeley's ecoengine</td>
+      <td><a href="https://cran.rstudio.com/web/packages/ecoengine"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/ecoengine"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/gender" id="gender">gender</a></td>
+      <td>gender is an R package to encode gender based on names and dates of birth</td>
+      <td><a href="https://cran.rstudio.com/web/packages/gender"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/gender"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/historydata" id="historydata">historydata</a></td>
+      <td>An R package with datasets of interest to historians. It is primarily intended for pedagogic purposes in teaching historians how to use R</td>
+      <td><a href="https://cran.rstudio.com/web/packages/historydata"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/historydata"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/neotoma" id="neotoma">neotoma</a></td>
+      <td>Search for sites and download data for use in analytical workflows of paleoecological research using the Neotoma Paleoecological Database</td>
+      <td><a href="https://cran.rstudio.com/web/packages/neotoma"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/neotoma"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/ots" id="ots">ots</a></td>
+      <td>ocean time series datasets</td>
+      <td><a href="https://cran.rstudio.com/web/packages/ots"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/ots"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/paleobioDB" id="paleobioDB">paleobioDB</a></td>
+      <td>Access data from the Paleobiology Database, a warehouse of paleobiology database</td>
+      <td><a href="https://cran.rstudio.com/web/packages/paleobioDB"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/paleobioDB"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/pangaear" id="pangaear">pangaear</a></td>
+      <td>An R client to interact with the Pangaea database.  In early development</td>
+      <td><a href="https://cran.rstudio.com/web/packages/pangaear"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/pangaear"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/pleiades" id="pleiades">pleiades</a></td>
+      <td>Search for and retrieve metadata and spatial location data on archeological places and names from Pleiades.  </td>
+      <td><a href="https://cran.rstudio.com/web/packages/pleiades"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/pleiades"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/prism" id="prism">prism</a></td>
+      <td>Download data from the Oregon PRISM climate data project http://www.prism.oregonstate.edu/</td>
+      <td><a href="https://cran.rstudio.com/web/packages/prism"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/prism"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rAvis" id="rAvis">rAvis</a></td>
+      <td>Download occurrence data for bird species, and associated metadata from ProyectoAvis, a citizen science bird project in Spain.</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rAvis"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rAvis"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rbhl" id="rbhl">rbhl</a></td>
+      <td>Access full text and metadata on scanned and OCR text for biodiversity literature from Biodiversity Heritage Library</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rbhl"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rbhl"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rbison" id="rbison">rbison</a></td>
+      <td>R client for USGS's BISON (Biodiversity Information Serving Our Nation).</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rbison"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rbison"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rdryad" id="rdryad">rdryad</a></td>
+      <td>Push data to and get data from Dryad a repository of data associated with published scholarly papers. Development pending upcoming API changes.</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rdryad"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rdryad"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rebird" id="rebird">rebird</a></td>
+      <td>Search and acquire occurrence records of bird sightings collated in the eBird database</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rebird"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rebird"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rentrez" id="rentrez">rentrez</a></td>
+      <td>rentrez provides functions that work with the NCBI eutils to search or download data from various NCBI databases</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rentrez"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rentrez"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/reol" id="Reol">Reol</a></td>
+      <td>R client to the Encyclopedia of Life a website and database of data/images/descriptions of species.</td>
+      <td><a href="https://cran.rstudio.com/web/packages/Reol"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/reol"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rfishbase" id="rfishbase">rfishbase</a></td>
+      <td>Access any fish data from Fishbase.org, including occurrence records, habitat data, and more</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rfishbase"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rfishbase"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rfisheries" id="rfisheries">rfisheries</a></td>
+      <td>Search and retrieve data from the OpenFisheries.org, currently providing access to global capture fishing landings from the Food and Agriculture Organization (FAO) of the United Nations</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rfisheries"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rfisheries"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rgbif" id="rgbif">rgbif</a></td>
+      <td>Access more than 400 million species occurrence records from across the globe in one place, from the Global Biodiversity Information Facility</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rgbif"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rgbif"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rglobi" id="rglobi">rglobi</a></td>
+      <td>R library to access species interaction data of http://globalbioticinteractions.org</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rglobi"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rglobi"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rinat" id="rinat">rinat</a></td>
+      <td>A programmatic interface to the API provided by iNaturalist.</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rinat"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rinat"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rnbn" id="rnbn">rnbn</a></td>
+      <td>Access to the United Kingdom's National Biodiversity Network data.</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rnbn"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rnbn"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rnoaa" id="rnoaa">rnoaa</a></td>
+      <td>Access climate data from NOAA, including temperature and precipitation, as well as sea ice cover data, and extreme weather events</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rnoaa"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rnoaa"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rnpn" id="rnpn">rnpn</a></td>
+      <td>Access phenological data from US National Phenology Network for plants and animals</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rnpn"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rnpn"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rsnps" id="rsnps">rsnps</a></td>
+      <td>Search and retrieve Single Nucleotide Polymorphism data from openSNP, a repository of direct-o-ustomer genetic test results</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rsnps"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rsnps"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rvertnet" id="rvertnet">rvertnet</a></td>
+      <td>Access to specimen records for vertebrates across many museums though VertNet</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rvertnet"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rvertnet"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rWBclimate" id="rWBclimate">rWBclimate</a></td>
+      <td>Programmatic interface to the World Bank climate data used in the World Bank climate knowledge portal.</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rWBclimate"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rWBclimate"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/spocc" id="spocc">spocc</a></td>
+      <td>Collect and map species occurrence data from GBIF, iNaturalist, Ecoengine, AntWeb, eBird, and USGS's BISON.</td>
+      <td><a href="https://cran.rstudio.com/web/packages/spocc"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/spocc"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/traits" id="traits">traits</a></td>
+      <td>A high level R package to acquire species trait data from many sources, including Polytraits, BETTYdb, NCBI, Phylomatic, and more.</td>
+      <td><a href="https://cran.rstudio.com/web/packages/traits"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/traits"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/treeBASE" id="treebase">treebase</a></td>
+      <td>Programmatic interface to Treebase -a database of phylogenetic trees</td>
+      <td><a href="https://cran.rstudio.com/web/packages/treebase"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/treeBASE"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/USAboundaries" id="USAboundaries">USAboundaries</a></td>
+      <td>Historical boundaries of the United States. Map the United States (or the colonies that became the United States) on any date from 1629 to 2000. Contains both county and state/territory level polygons.</td>
+      <td><a href="https://cran.rstudio.com/web/packages/USAboundaries"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/USAboundaries"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/USAboundariesData" id="USAboundariesData">USAboundariesData</a></td>
+      <td>Datasets for the 'USAboundaries' package</td>
+      <td><a href="https://cran.rstudio.com/web/packages/USAboundariesData"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/USAboundariesData"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/chromer" id="chromer">chromer</a></td>
+      <td>package for interacting with the chromosome counts database (CCDB) at http://ccdb.tau.ac.il</td>
+      <td><a href="https://cran.rstudio.com/web/packages/chromer"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/chromer"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/musemeta" id="musemeta">musemeta</a></td>
+      <td>R Client for Scraping Museum Metadata, including The Metropolitan Museum of Art, the Canadian Science &amp; Technology Museum Corporation, the National Gallery of Art, and the Getty Museum, and more to come</td>
+      <td><a href="https://cran.rstudio.com/web/packages/musemeta"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/musemeta"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rdpla" id="rdpla">rdpla</a></td>
+      <td>An R client to interact with Digital Public Library of America (DPLA) metadata</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rdpla"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rdpla"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rerddap" id="rerddap">rerddap</a></td>
+      <td>R client for working with ERDDAP servers</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rerddap"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rerddap"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/reuropeana" id="reuropeana">reuropeana</a></td>
+      <td>An R client to interact with Europeana metadata</td>
+      <td><a href="https://cran.rstudio.com/web/packages/reuropeana"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/reuropeana"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rGEM" id="rGEM">rGEM</a></td>
+      <td>A wrapper around GEM data</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rGEM"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rGEM"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/genderdata" id="genderdata">genderdata</a></td>
+      <td>Historical data sets for the study of gender</td>
+      <td><a href="https://cran.rstudio.com/web/packages/genderdata"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/genderdata"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/hathi" id="hathi">hathi</a></td>
+      <td>An R client for HathiTrust API</td>
+      <td><a href="https://cran.rstudio.com/web/packages/hathi"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/hathi"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/internetarchive" id="internetarchive">internetarchive</a></td>
+      <td>An API Client for the Internet Archive</td>
+      <td><a href="https://cran.rstudio.com/web/packages/internetarchive"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/internetarchive"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/opencontext" id="opencontext">opencontext</a></td>
+      <td>API Client for the Open Context Archeological Database</td>
+      <td><a href="https://cran.rstudio.com/web/packages/opencontext"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/opencontext"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/helminthR" id="helminthR">helminthR</a></td>
+      <td>Parasite occurrence records from the London Natural History Museum's Host-Parasite database</td>
+      <td><a href="https://cran.rstudio.com/web/packages/helminthR"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/helminthR"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rdopa" id="rdopa">rdopa</a></td>
+      <td>R client to Joint Research Centre's DOPA REST API</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rdopa"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rdopa"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rif" id="rif">rif</a></td>
+      <td>Client for Neuroscience Information Framework APIs</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rif"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rif"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/webchem" id="webchem">webchem</a></td>
+      <td>Chemical Information from the Web</td>
+      <td><a href="https://cran.rstudio.com/web/packages/webchem"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/webchem"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rotl" id="rotl">rotl</a></td>
+      <td>Interface to Open Tree of Life API</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rotl"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rotl"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rusda" id="rusda">rusda</a></td>
+      <td>Interface to USDA Databases</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rusda"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rusda"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/brranching" id="brranching">brranching</a></td>
+      <td>Fetch Phylogenies from Many Sources</td>
+      <td><a href="https://cran.rstudio.com/web/packages/brranching"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/brranching"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/ccafs" id="ccafs">ccafs</a></td>
+      <td>Client for Climate Change, Agriculture, and Food Security (CCAFS) General Circulation Models (GCM) data. Data is stored in Amazon S3, from which we provide functions to fetch data</td>
+      <td><a href="https://cran.rstudio.com/web/packages/ccafs"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/ccafs"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/cmipr" id="cmipr">cmipr</a></td>
+      <td>Client for CMIP data. Data is stored on an FTP server, from which we provide functions to fetch data</td>
+      <td><a href="https://cran.rstudio.com/web/packages/cmipr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/cmipr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/cored" id="cored">cored</a></td>
+      <td>Client for the CORE API (https://core.ac.uk/docs/)</td>
+      <td><a href="https://cran.rstudio.com/web/packages/cored"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/cored"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/eechidna" id="eechidna">eechidna</a></td>
+      <td>Exploring Election and Census Highly Informative Data Nationally for Australia</td>
+      <td><a href="https://cran.rstudio.com/web/packages/eechidna"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/eechidna"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/getlandsat" id="getlandsat">getlandsat</a></td>
+      <td>Get Landsat 8 Data from AWS public data sets. Includes functions for listing images and fetching them</td>
+      <td><a href="https://cran.rstudio.com/web/packages/getlandsat"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/getlandsat"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/gtfsr" id="gtfsr">gtfsr</a></td>
+      <td>Working with GTFS (General Transit Feed Specification) feeds in R</td>
+      <td><a href="https://cran.rstudio.com/web/packages/gtfsr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/gtfsr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/gutenbergr" id="gutenbergr">gutenbergr</a></td>
+      <td>Download and Process Public Domain Works from Project Gutenberg</td>
+      <td><a href="https://cran.rstudio.com/web/packages/gutenbergr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/gutenbergr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/opencage" id="opencage">opencage</a></td>
+      <td>Interface to the OpenCage API</td>
+      <td><a href="https://cran.rstudio.com/web/packages/opencage"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/opencage"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/originr" id="originr">originr</a></td>
+      <td>Fetch Species Origin Data from the Web</td>
+      <td><a href="https://cran.rstudio.com/web/packages/originr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/originr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/riodata" id="riodata">riodata</a></td>
+      <td>Get data related to transportation and cultural places from Rio de Janeiro, Brazil</td>
+      <td><a href="https://cran.rstudio.com/web/packages/riodata"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/riodata"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/ropenaq" id="ropenaq">ropenaq</a></td>
+      <td>Access Air Quality Data From OpenAQ</td>
+      <td><a href="https://cran.rstudio.com/web/packages/ropenaq"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/ropenaq"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rredlist" id="rredlist">rredlist</a></td>
+      <td>'IUCN' Red List (&lt;http://apiv3.iucnredlist.org/api/v3/docs&gt;) client. The 'IUCN' Red List is a global list of threatened and endangered species. Functions cover all of the Red List 'API' routes</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rredlist"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rredlist"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/rwdpa" id="rwdpa">rwdpa</a></td>
+      <td>Client for the World Database of Protected Areas. Fetching metadata on the areas, fetching shape files for each, functions for simplifying polygons, for plotting, and converting to WKT to faciltate downstream queries of species occurrence data</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rwdpa"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/rwdpa"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/solrium" id="solrium">solrium</a></td>
+      <td>Provides a set of functions for querying and parsing data from 'Solr' (&lt;http://lucene.apache.org/solr&gt;) 'endpoints' (local and remote), including search, 'faceting', 'highlighting', 'stats', and 'more like this'. In addition, some functionality is included for creating, deleting, and updating documents in a 'Solr' 'database'</td>
+      <td><a href="https://cran.rstudio.com/web/packages/solrium"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/solrium"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/spenv" id="spenv">spenv</a></td>
+      <td>Add Environmental Data to Spatial Data</td>
+      <td><a href="https://cran.rstudio.com/web/packages/spenv"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/spenv"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/spplist" id="spplist">spplist</a></td>
+      <td>Get species lists form many data sources, including any available via the spocc and rgbif packages</td>
+      <td><a href="https://cran.rstudio.com/web/packages/spplist"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/spplist"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/spplit" id="spplit">spplit</a></td>
+      <td>Combine literature and species occurrence data. Literature data sources include the Biodiversity Heritage Library, and species occurrence data sources include the Global Biodiversity Information Facility (GBIF; &lt;http://www.gbif.org/&gt;) and the Integrated Digitized Biocollections (iDigBio; &lt;https://www.idigbio.org/&gt;). More data sources to come.</td>
+      <td><a href="https://cran.rstudio.com/web/packages/spplit"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/spplit"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/stplanr" id="stplanr">stplanr</a></td>
+      <td>Functionality and data access tools for transport planning, including origin-destination analysis, route allocation and modelling travel patterns</td>
+      <td><a href="https://cran.rstudio.com/web/packages/stplanr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/stplanr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/dissem" id="dissem">dissem</a></td>
+      <td>dissem.in client for R</td>
+      <td><a href="https://cran.rstudio.com/web/packages/dissem"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/dissem"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/riem" id="riem">riem</a></td>
+      <td>Accesses Weather Data from the Iowa Environment Mesonet</td>
+      <td><a href="https://cran.rstudio.com/web/packages/riem"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/riem"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comgmbecker/genbankr" id="genbankr">genbankr</a></td>
+      <td>Parsing GenBank files into semantically useful objects</td>
+      <td><a href="https://cran.rstudio.com/web/packages/genbankr"><span class="label label-success">cran</span></a> <a href="https://github.com/gmbecker/genbankr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/monkeylearn" id="monkeylearn">monkeylearn</a></td>
+      <td>Access to the Monkeylearn API for text classifiers and extractors</td>
+      <td><a href="https://cran.rstudio.com/web/packages/monkeylearn"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/monkeylearn"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/laselva" id="laselva">laselva</a></td>
+      <td>FIA (Forest Inventory and Analysis) data client</td>
+      <td><a href="https://cran.rstudio.com/web/packages/laselva"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/laselva"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/hoasts" id="hoasts">hoasts</a></td>
+      <td>host/parasite data from occurrence databases</td>
+      <td><a href="https://cran.rstudio.com/web/packages/hoasts"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/hoasts"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/natserv" id="natserv">natserv</a></td>
+      <td>NatureServe R Client</td>
+      <td><a href="https://cran.rstudio.com/web/packages/natserv"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/natserv"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/jaod" id="jaod">jaod</a></td>
+      <td>R client for Directory of Open Access Journals API</td>
+      <td><a href="https://cran.rstudio.com/web/packages/jaod"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/jaod"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/rdefra" id="rdefra">rdefra</a></td>
+      <td>Interact with the UK AIR Pollution Database from DEFRA</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rdefra"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/rdefra"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/dbhydroR" id="dbhydroR">dbhydroR</a></td>
+      <td>Client for programmatic access to the South Florida Water Management District's DBHYDRO database</td>
+      <td><a href="https://cran.rstudio.com/web/packages/dbhydroR"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/dbhydroR"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/crevents" id="crevents">crevents</a></td>
+      <td>Client for the Crossref Events API</td>
+      <td><a href="https://cran.rstudio.com/web/packages/crevents"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/crevents"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/nneo" id="nneo">nneo</a></td>
+      <td>NEON API Client</td>
+      <td><a href="https://cran.rstudio.com/web/packages/nneo"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/nneo"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/isdparser" id="isdparser">isdparser</a></td>
+      <td>Parse NOAA Integrated Surface Data Files</td>
+      <td><a href="https://cran.rstudio.com/web/packages/isdparser"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/isdparser"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/camsRad" id="camsRad">camsRad</a></td>
+      <td>Client for CAMS Radiation Service</td>
+      <td><a href="https://cran.rstudio.com/web/packages/camsRad"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/camsRad"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/scatr" id="scatr">scatr</a></td>
+      <td>client for Scholastic Commentaries and Texts Archive http://scta.info/</td>
+      <td><a href="https://cran.rstudio.com/web/packages/scatr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/scatr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/rbace" id="rbace">rbace</a></td>
+      <td>BASE (https://www.base-search.net/about/download/base_interface.pdf) R client</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rbace"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/rbace"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/ridb" id="ridb">ridb</a></td>
+      <td>Client for Index Database (&lt;http://www.indexdatabase.de/&gt;) of remote sensing indices</td>
+      <td><a href="https://cran.rstudio.com/web/packages/ridb"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/ridb"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/hddtools" id="hddtools">hddtools</a></td>
+      <td>Hydrological Data Discovery Tools</td>
+      <td><a href="https://cran.rstudio.com/web/packages/hddtools"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/hddtools"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/GSODR" id="GSODR">GSODR</a></td>
+      <td>Global Summary Daily Weather Data in R</td>
+      <td><a href="https://cran.rstudio.com/web/packages/GSODR"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/GSODR"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rdataretriever" id="rdataretriever">rdataretriever</a></td>
+      <td>Provides an R interface to the Data Retriever &lt;http://data-retriever.org/&gt; via the Data Retriever's command line interface.</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rdataretriever"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rdataretriever"><span class="label label-inverse">github</span></a></td>
+    </tr>
+
+    </tbody>
+    </table>
+  </div>
+  </div>
+  </section>
+
+
+
+
+<section id="data-analysis">
+  <div class="page-header">
+    <h2>Data Analysis  <small>Utilities for doing data analysis.</small></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-12  table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+       </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+      <td><a href="https://github.comropensci/appl" id="appl">appl</a></td>
+      <td>APPL is a C++ toolkit for approximate POMDP planning. Originally, it is based on the SARSOP algorithm for solving discrete POMDPs.</td>
+      <td><a href="https://cran.rstudio.com/web/packages/appl"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/appl"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/phylocomr" id="phylocomr">phylocomr</a></td>
+      <td>Client for Phylocom</td>
+      <td><a href="https://cran.rstudio.com/web/packages/phylocomr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/phylocomr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+
+    </tbody>
+    </table>
+  </div>
+  </div>
+  </section>
+
+
+
+
+<section id="data-publication">
+  <div class="page-header">
+    <h2>Data Publication  <small>Packages that not only retrieve data but also allows for data submission.</small></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-12  table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+       </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+      <td><a href="https://github.comropensci/dvn" id="dvn">dvn</a></td>
+      <td>Programmatic interface to the DataVerse Network.</td>
+      <td><a href="https://cran.rstudio.com/web/packages/dvn"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/dvn"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/EML" id="EML">EML</a></td>
+      <td>An R package for reading, writing, integrating and publishing data using the Ecological Metadata Language (EML) format.</td>
+      <td><a href="https://cran.rstudio.com/web/packages/EML"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/EML"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rfigshare" id="rfigshare">rfigshare</a></td>
+      <td>Push data, figures, and text to, and search and retrieve data from, Figshare from R</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rfigshare"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rfigshare"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/RNeXML" id="RNeXML">RNeXML</a></td>
+      <td>Semantically rich NeXML I/O in R -next generation XML for Phylogenetic data.</td>
+      <td><a href="https://cran.rstudio.com/web/packages/RNeXML"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/RNeXML"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/redland-bindings" id="redland-bindings">redland-bindings</a></td>
+      <td>Redland librdf language bindings</td>
+      <td><a href="https://cran.rstudio.com/web/packages/redland-bindings"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/redland-bindings"><span class="label label-inverse">github</span></a></td>
+    </tr>
+
+    </tbody>
+    </table>
+  </div>
+  </div>
+  </section>
+
+
+
+
+<section id="data-tools">
+  <div class="page-header">
+    <h2>Data Tools  <small>Packages for manipulating data.</small></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-12  table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+       </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+      <td><a href="https://github.comropensci/finch" id="finch">finch</a></td>
+      <td>Parse and create Darwin Core Simple and Archive Files</td>
+      <td><a href="https://cran.rstudio.com/web/packages/finch"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/finch"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/jqr" id="jqr">jqr</a></td>
+      <td>An R client for jq</td>
+      <td><a href="https://cran.rstudio.com/web/packages/jqr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/jqr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/colorpiler" id="colorpiler">colorpiler</a></td>
+      <td>Provides community-driven color palettes</td>
+      <td><a href="https://cran.rstudio.com/web/packages/colorpiler"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/colorpiler"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/convertr" id="convertr">convertr</a></td>
+      <td>Provides conversion functionality between a broad range of scientific, historical, and industrial unit types</td>
+      <td><a href="https://cran.rstudio.com/web/packages/convertr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/convertr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/datapack" id="datapack">datapack</a></td>
+      <td>A Flexible Container to Transport and Manipulate Data and Associated Resources</td>
+      <td><a href="https://cran.rstudio.com/web/packages/datapack"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/datapack"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/datapkg" id="datapkg">datapkg</a></td>
+      <td>Convenience functions for reading and writing datasets following the 'data packagist' format</td>
+      <td><a href="https://cran.rstudio.com/web/packages/datapkg"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/datapkg"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/dirdf" id="dirdf">dirdf</a></td>
+      <td>Extracts Metadata from Directory and File Names</td>
+      <td><a href="https://cran.rstudio.com/web/packages/dirdf"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/dirdf"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/hunspell" id="hunspell">hunspell</a></td>
+      <td>A spell checker and morphological analyzer library designed for languages with rich morphology and complex word compounding or character encoding</td>
+      <td><a href="https://cran.rstudio.com/web/packages/hunspell"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/hunspell"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/jsonvalidate" id="jsonvalidate">jsonvalidate</a></td>
+      <td>Validate JSON. Uses is-my-json-valid to validate JSON against a schema</td>
+      <td><a href="https://cran.rstudio.com/web/packages/jsonvalidate"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/jsonvalidate"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/scrubr" id="scrubr">scrubr</a></td>
+      <td>Clean biological occurrence records. Includes functionality for cleaning based on various aspects of spatial coordinates, unlikely values due to political 'centroids', coordinates based on where collections of specimens are held, and more</td>
+      <td><a href="https://cran.rstudio.com/web/packages/scrubr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/scrubr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/splister" id="splister">splister</a></td>
+      <td>Match Species Lists Against Reference List</td>
+      <td><a href="https://cran.rstudio.com/web/packages/splister"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/splister"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/plater" id="plater">plater</a></td>
+      <td>Read, Tidy, and Display Data from Microtiter Plates</td>
+      <td><a href="https://cran.rstudio.com/web/packages/plater"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/plater"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/phyrmeta" id="phyrmeta">phyrmeta</a></td>
+      <td>Client to Handle Phylometa Output</td>
+      <td><a href="https://cran.rstudio.com/web/packages/phyrmeta"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/phyrmeta"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/jsonld" id="jsonld">jsonld</a></td>
+      <td>R wrapper for jsonld.js JavaScript library</td>
+      <td><a href="https://cran.rstudio.com/web/packages/jsonld"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/jsonld"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/charlatan" id="charlatan">charlatan</a></td>
+      <td>Make fake data</td>
+      <td><a href="https://cran.rstudio.com/web/packages/charlatan"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/charlatan"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/zissou" id="zissou">zissou</a></td>
+      <td>AquaMaps (http://www.aquamaps.org/) R Interface</td>
+      <td><a href="https://cran.rstudio.com/web/packages/zissou"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/zissou"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/xslt" id="xslt">xslt</a></td>
+      <td>An extension for the xml2 package to transform XML documents by applying an XSL stylesheet</td>
+      <td><a href="https://cran.rstudio.com/web/packages/xslt"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/xslt"><span class="label label-inverse">github</span></a></td>
+    </tr>
+
+    </tbody>
+    </table>
+  </div>
+  </div>
+  </section>
+
+
+
+
+<section id="data-visualization">
+  <div class="page-header">
+    <h2>Data Visualization  <small>Packages primarily for data vizualization.</small></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-12  table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+       </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+      <td><a href="https://github.comropensci/plotly" id="plotly">plotly</a></td>
+      <td>Programmatic interface to the Plot.ly API -construct plots with ggplot2 and push to Plot.ly for an interactive plot with a few lines of code</td>
+      <td><a href="https://cran.rstudio.com/web/packages/plotly"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/plotly"><span class="label label-inverse">github</span></a></td>
+    </tr>
+
+    </tbody>
+    </table>
+  </div>
+  </div>
+  </section>
+
+
+
+
+<section id="databases">
+  <div class="page-header">
+    <h2>Databases <small>Packages for interfacing with databases.</small></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-12  table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+       </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+      <td><a href="https://github.comropensci/elastic" id="elastic">elastic</a></td>
+      <td>An R client for Elasticsearch In early development</td>
+      <td><a href="https://cran.rstudio.com/web/packages/elastic"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/elastic"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/solr" id="solr">solr</a></td>
+      <td>An R client for Apache Solr</td>
+      <td><a href="https://cran.rstudio.com/web/packages/solr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/solr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/ckanr" id="ckanr">ckanr</a></td>
+      <td>R client for CKAN RESTful API</td>
+      <td><a href="https://cran.rstudio.com/web/packages/ckanr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/ckanr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/elasticdsl" id="elasticdsl">elasticdsl</a></td>
+      <td>Elasticsearch DSL</td>
+      <td><a href="https://cran.rstudio.com/web/packages/elasticdsl"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/elasticdsl"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/etseed" id="etseed">etseed</a></td>
+      <td>R client to interact with the etcd key-value data store</td>
+      <td><a href="https://cran.rstudio.com/web/packages/etseed"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/etseed"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/nodbi" id="nodbi">nodbi</a></td>
+      <td>Simplified document database manipulation and analysis</td>
+      <td><a href="https://cran.rstudio.com/web/packages/nodbi"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/nodbi"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/RedisAPI" id="RedisAPI">RedisAPI</a></td>
+      <td>Wrapper For Redis API</td>
+      <td><a href="https://cran.rstudio.com/web/packages/RedisAPI"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/RedisAPI"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rrlite" id="rrlite">rrlite</a></td>
+      <td>R Bindings to rlite</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rrlite"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rrlite"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/sofa" id="sofa">sofa</a></td>
+      <td>Easy R Connector to CouchDB</td>
+      <td><a href="https://cran.rstudio.com/web/packages/sofa"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/sofa"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/sparqldsl" id="sparqldsl">sparqldsl</a></td>
+      <td>SPARQL DSL client for R</td>
+      <td><a href="https://cran.rstudio.com/web/packages/sparqldsl"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/sparqldsl"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/reeack" id="reeack">reeack</a></td>
+      <td>A Riak R client</td>
+      <td><a href="https://cran.rstudio.com/web/packages/reeack"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/reeack"><span class="label label-inverse">github</span></a></td>
+    </tr>
+
+    </tbody>
+    </table>
+  </div>
+  </div>
+  </section>
+
+
+
+
+<section id="developer-tools">
+  <div class="page-header">
+    <h2>Developer Tools <small>Tools for making R packages</small></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-12  table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+       </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+      <td><a href="https://github.comropenscilabs/atomize" id="atomize">atomize</a></td>
+      <td>Scatter Functions into New Packages</td>
+      <td><a href="https://cran.rstudio.com/web/packages/atomize"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/atomize"><span class="label label-inverse">github</span></a></td>
+    </tr>
+
+    </tbody>
+    </table>
+  </div>
+  </div>
+  </section>
+
+
+
+
+<section id="geospatial">
+  <div class="page-header">
+    <h2>Geospatial <small>Spatial data I/O and mapping.</small></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-12  table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+       </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+      <td><a href="https://github.comropensci/geojsonio" id="geojsonio">geojsonio</a></td>
+      <td>A package to convert many data formats to geoJSON or Bostock's topoJSON</td>
+      <td><a href="https://cran.rstudio.com/web/packages/geojsonio"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/geojsonio"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/geonames" id="geonames">geonames</a></td>
+      <td>Grab data from the GeoNames geographical database which covers all countries and contains over eight million placenames</td>
+      <td><a href="https://cran.rstudio.com/web/packages/geonames"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/geonames"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/cartographer" id="cartographer">cartographer</a></td>
+      <td>A wrapper around d3-carto-map and the d3.js visualization library to create interactive maps at the R console and in R documents.</td>
+      <td><a href="https://cran.rstudio.com/web/packages/cartographer"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/cartographer"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/lawn" id="lawn">lawn</a></td>
+      <td>R Client for turf.js for Geospatial Analysis</td>
+      <td><a href="https://cran.rstudio.com/web/packages/lawn"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/lawn"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/proj" id="proj">proj</a></td>
+      <td>R Client for proj4js</td>
+      <td><a href="https://cran.rstudio.com/web/packages/proj"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/proj"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/wellknown" id="wellknown">wellknown</a></td>
+      <td>Convert Between WKT to GeoJSON</td>
+      <td><a href="https://cran.rstudio.com/web/packages/wellknown"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/wellknown"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/geoaxe" id="geoaxe">geoaxe</a></td>
+      <td>Split 'geospatial' objects into pieces. Includes support for some spatial object inputs, 'Well-Known Text', and 'GeoJSON'</td>
+      <td><a href="https://cran.rstudio.com/web/packages/geoaxe"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/geoaxe"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/geojson" id="geojson">geojson</a></td>
+      <td>GeoJSON Classes</td>
+      <td><a href="https://cran.rstudio.com/web/packages/geojson"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/geojson"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/geojsonlint" id="geojsonlint">geojsonlint</a></td>
+      <td>Tools for linting 'GeoJSON'. Includes tools for interacting with the online tool, the Javascript library geojsonhint, and validating against a GeoJSON schema via the Javascript library</td>
+      <td><a href="https://cran.rstudio.com/web/packages/geojsonlint"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/geojsonlint"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/geolocart" id="geolocart">geolocart</a></td>
+      <td>The Package Aims at Geoloparsing Scientific Articles</td>
+      <td><a href="https://cran.rstudio.com/web/packages/geolocart"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/geolocart"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/geoops" id="geoops">geoops</a></td>
+      <td>GeoJSON Manipulation Operations</td>
+      <td><a href="https://cran.rstudio.com/web/packages/geoops"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/geoops"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/mapr" id="mapr">mapr</a></td>
+      <td>Utilities for 'vizualizing' species occurrence data. Includes functions to 'vizualize' occurrence data from 'spocc', 'rgbif', and other packages. Mapping options included for base R plots, 'ggplot2', and various interactive maps</td>
+      <td><a href="https://cran.rstudio.com/web/packages/mapr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/mapr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/mregions" id="mregions">mregions</a></td>
+      <td>Marine regions from Marineregions.org</td>
+      <td><a href="https://cran.rstudio.com/web/packages/mregions"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/mregions"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/osmplotr" id="osmplotr">osmplotr</a></td>
+      <td>Customisable Images of OpenStreetMap Data</td>
+      <td><a href="https://cran.rstudio.com/web/packages/osmplotr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/osmplotr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/rgeospatialquality" id="rgeospatialquality">rgeospatialquality</a></td>
+      <td>Wrapper for the Geospatial Data Quality REST API</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rgeospatialquality"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/rgeospatialquality"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/rnaturalearthdata" id="rnaturalearthdata">rnaturalearthdata</a></td>
+      <td>World Vector Map Data from Natural Earth Used in rnaturalearth</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rnaturalearthdata"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/rnaturalearthdata"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/rnaturalearth" id="rnaturalearth">rnaturalearth</a></td>
+      <td>World Map Data from Natural Earth</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rnaturalearth"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/rnaturalearth"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/geoparser" id="geoparser">geoparser</a></td>
+      <td>Interface to the Geoparser.io API for Identifying and Disambiguating Places Mentioned in Text</td>
+      <td><a href="https://cran.rstudio.com/web/packages/geoparser"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/geoparser"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/geojsonrewind" id="geojsonrewind">geojsonrewind</a></td>
+      <td>Fix GeoJSON Winding Direction</td>
+      <td><a href="https://cran.rstudio.com/web/packages/geojsonrewind"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/geojsonrewind"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/geofilter" id="geofilter">geofilter</a></td>
+      <td>filter/sift GeoJSON in R</td>
+      <td><a href="https://cran.rstudio.com/web/packages/geofilter"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/geofilter"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/wicket" id="wicket">wicket</a></td>
+      <td>Utilities to handle WKT (Well-Known Text) spatial data</td>
+      <td><a href="https://cran.rstudio.com/web/packages/wicket"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/wicket"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/randgeo" id="randgeo">randgeo</a></td>
+      <td>Make random WKT or GeoJSON</td>
+      <td><a href="https://cran.rstudio.com/web/packages/randgeo"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/randgeo"><span class="label label-inverse">github</span></a></td>
+    </tr>
+
+    </tbody>
+    </table>
+  </div>
+  </div>
+  </section>
+
+
+
+
+<section id="http-tools">
+  <div class="page-header">
+    <h2>HTTP Tools  <small>Utilities for working with the web.</small></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-12  table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+       </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+      <td><a href="https://github.comropensci/RSelenium" id="RSelenium">RSelenium</a></td>
+      <td>An R client for Selenium Remote WebDriver</td>
+      <td><a href="https://cran.rstudio.com/web/packages/RSelenium"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/RSelenium"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/apipkgen" id="apipkgen">apipkgen</a></td>
+      <td>Generate a HTTP API wrapper package from a yaml template for the API</td>
+      <td><a href="https://cran.rstudio.com/web/packages/apipkgen"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/apipkgen"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/robotstxt" id="robotstxt">robotstxt</a></td>
+      <td>A robots.txt Parser and Webbot/Spider/Crawler Permissions Checker</td>
+      <td><a href="https://cran.rstudio.com/web/packages/robotstxt"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/robotstxt"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/urltemplate" id="urltemplate">urltemplate</a></td>
+      <td>URL templating following RFC6570 (&lt;https://tools.ietf.org/html/rfc6570#page-14&gt;)</td>
+      <td><a href="https://cran.rstudio.com/web/packages/urltemplate"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/urltemplate"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/vcr" id="vcr">vcr</a></td>
+      <td>Record test suite 'HTTP' requests and replay them during future test runs</td>
+      <td><a href="https://cran.rstudio.com/web/packages/vcr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/vcr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/ghql" id="ghql">ghql</a></td>
+      <td>General purpose GraphQL R client </td>
+      <td><a href="https://cran.rstudio.com/web/packages/ghql"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/ghql"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/graphql" id="graphql">graphql</a></td>
+      <td>Bindings to libgraphqlparser</td>
+      <td><a href="https://cran.rstudio.com/web/packages/graphql"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/graphql"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/crul" id="crul">crul</a></td>
+      <td>http client for R</td>
+      <td><a href="https://cran.rstudio.com/web/packages/crul"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/crul"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/fauxpas" id="fauxpas">fauxpas</a></td>
+      <td>HTTP error helpers</td>
+      <td><a href="https://cran.rstudio.com/web/packages/fauxpas"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/fauxpas"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rjsonapi" id="rjsonapi">rjsonapi</a></td>
+      <td>Consumer for APIs that Follow the JSON API Specification</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rjsonapi"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rjsonapi"><span class="label label-inverse">github</span></a></td>
+    </tr>
+
+    </tbody>
+    </table>
+  </div>
+  </div>
+  </section>
+
+
+
+
+<section id="image-processing">
+  <div class="page-header">
+    <h2>Image Processing  <small>Packages primarily for image processing.</small></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-12  table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+       </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+      <td><a href="https://github.comropensci/magick" id="magick">magick</a></td>
+      <td>Advanced Image-Processing in R, using the imagemagick library</td>
+      <td><a href="https://cran.rstudio.com/web/packages/magick"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/magick"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/tesseract" id="tesseract">tesseract</a></td>
+      <td>Bindings to Tesseract OCR engine</td>
+      <td><a href="https://cran.rstudio.com/web/packages/tesseract"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/tesseract"><span class="label label-inverse">github</span></a></td>
+    </tr>
+
+    </tbody>
+    </table>
+  </div>
+  </div>
+  </section>
+
+
+
+
+<section id="literature">
+  <div class="page-header">
+    <h2>Literature <small>Packages that interface with journal full-text or metadata</small></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-12  table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+       </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+      <td><a href="https://github.comropensci/aRxiv" id="aRxiv">aRxiv</a></td>
+      <td>Access to the aRxiv preprint repository</td>
+      <td><a href="https://cran.rstudio.com/web/packages/aRxiv"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/aRxiv"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/bmc" id="bmc">bmc</a></td>
+      <td>An R interface to Biomed Central (BMC) search API and full text XML</td>
+      <td><a href="https://cran.rstudio.com/web/packages/bmc"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/bmc"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/fulltext" id="fulltext">fulltext</a></td>
+      <td>An high level R interface to many different sources for full text (or nearly) scholarly texts, including PLOS, PMC, PeerJ, eLife, arXiv, and many more</td>
+      <td><a href="https://cran.rstudio.com/web/packages/fulltext"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/fulltext"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/IEEER" id="IEEER">IEEER</a></td>
+      <td>Interface to the IEEE Xplore Gateway</td>
+      <td><a href="https://cran.rstudio.com/web/packages/IEEER"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/IEEER"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rcrossref" id="rcrossref">rcrossref</a></td>
+      <td>An R interface to Crossref metadata search API</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rcrossref"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rcrossref"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rdatacite" id="rdatacite">rdatacite</a></td>
+      <td>Wrapper to DataCite metadata</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rdatacite"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rdatacite"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/europepmc" id="europepmc">europepmc</a></td>
+      <td>Access to the European PubMed Central database of papers and metadata</td>
+      <td><a href="https://cran.rstudio.com/web/packages/europepmc"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/europepmc"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rmetadata" id="rmetadata">rmetadata</a></td>
+      <td>A high level R interface to many different scholarly metadata sources, which will include Crossref, any OAI-MH provider, Digital Public Library of America, Hathi Trust, Europeana, and more</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rmetadata"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rmetadata"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rorcid" id="rorcid">rorcid</a></td>
+      <td>A programmatic interface the Orcid.org</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rorcid"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rorcid"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rplos" id="rplos">rplos</a></td>
+      <td>Connects to the full-ext API of the Public Library of Science (PLOS). They provide a powerful search engine by exposing Solr search endpoints</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rplos"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rplos"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/zenodo" id="zenodo">zenodo</a></td>
+      <td>Deposit data (or any research object) into Zenodo</td>
+      <td><a href="https://cran.rstudio.com/web/packages/zenodo"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/zenodo"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/seasl" id="seasl">seasl</a></td>
+      <td>Parse CSL Styles</td>
+      <td><a href="https://cran.rstudio.com/web/packages/seasl"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/seasl"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rchie" id="rchie">rchie</a></td>
+      <td>A Parser for ArchieML</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rchie"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rchie"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/oai" id="oai">oai</a></td>
+      <td>R client to work with OAI-PMH services</td>
+      <td><a href="https://cran.rstudio.com/web/packages/oai"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/oai"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/aspacer" id="aspacer">aspacer</a></td>
+      <td>Client for the ArchiveSpace API (http://archivesspace.org/)</td>
+      <td><a href="https://cran.rstudio.com/web/packages/aspacer"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/aspacer"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/pdftools" id="pdftools">pdftools</a></td>
+      <td>Extract Text and Data from PDF Documents</td>
+      <td><a href="https://cran.rstudio.com/web/packages/pdftools"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/pdftools"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/scitations" id="scitations">scitations</a></td>
+      <td>citations client</td>
+      <td><a href="https://cran.rstudio.com/web/packages/scitations"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/scitations"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/tabulizer" id="tabulizer">tabulizer</a></td>
+      <td>Bindings for Tabula PDF Table Extractor Library</td>
+      <td><a href="https://cran.rstudio.com/web/packages/tabulizer"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/tabulizer"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/crminer" id="crminer">crminer</a></td>
+      <td>Crossref Text Mining Client</td>
+      <td><a href="https://cran.rstudio.com/web/packages/crminer"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/crminer"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/extractr" id="extractr">extractr</a></td>
+      <td>Extract text from PDFs with various tools</td>
+      <td><a href="https://cran.rstudio.com/web/packages/extractr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/extractr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/microdemic" id="microdemic">microdemic</a></td>
+      <td>Microsoft Academic API R client</td>
+      <td><a href="https://cran.rstudio.com/web/packages/microdemic"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/microdemic"><span class="label label-inverse">github</span></a></td>
+    </tr>
+
+    </tbody>
+    </table>
+  </div>
+  </div>
+  </section>
+
+
+
+
+<section id="scalereprod">
+  <div class="page-header">
+    <h2>Scalable &amp; Reproducible Computing  <small>Packages that support scalable and/or reproducibile computing.</small></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-12  table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+       </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+      <td><a href="https://github.comropensci/gistr" id="gistr">gistr</a></td>
+      <td>gistr is a light interface to GitHub's gists for R</td>
+      <td><a href="https://cran.rstudio.com/web/packages/gistr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/gistr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/git2r" id="git2r">git2r</a></td>
+      <td>Git bindings from R</td>
+      <td><a href="https://cran.rstudio.com/web/packages/git2r"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/git2r"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/testdat" id="testdat">testdat</a></td>
+      <td>A test suite to ensure that tabular data are correctly formatted</td>
+      <td><a href="https://cran.rstudio.com/web/packages/testdat"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/testdat"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/snowball" id="snowball">snowball</a></td>
+      <td>Spin up a managed cluster and perform parallel calculations</td>
+      <td><a href="https://cran.rstudio.com/web/packages/snowball"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/snowball"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/assertr" id="assertr">assertr</a></td>
+      <td>Assertive Programming for R Analysis Pipelines</td>
+      <td><a href="https://cran.rstudio.com/web/packages/assertr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/assertr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/tokenizers" id="tokenizers">tokenizers</a></td>
+      <td>A Consistent Interface to Tokenize Natural Language Text</td>
+      <td><a href="https://cran.rstudio.com/web/packages/tokenizers"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/tokenizers"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/ezknitr" id="ezknitr">ezknitr</a></td>
+      <td>Avoid the Typical Working Directory Pain When Using knitr</td>
+      <td><a href="https://cran.rstudio.com/web/packages/ezknitr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/ezknitr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/travis" id="travis">travis</a></td>
+      <td>Set Up Travis for R package</td>
+      <td><a href="https://cran.rstudio.com/web/packages/travis"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/travis"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/tic" id="tic">tic</a></td>
+      <td>Tasks Integrating Continuously</td>
+      <td><a href="https://cran.rstudio.com/web/packages/tic"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/tic"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/hoardr" id="hoardr">hoardr</a></td>
+      <td>Manage Cached Files</td>
+      <td><a href="https://cran.rstudio.com/web/packages/hoardr"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/hoardr"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/rzmq" id="rzmq">rzmq</a></td>
+      <td>R Bindings for ZeroMQ</td>
+      <td><a href="https://cran.rstudio.com/web/packages/rzmq"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/rzmq"><span class="label label-inverse">github</span></a></td>
+    </tr>
+
+    </tbody>
+    </table>
+  </div>
+  </div>
+  </section>
+
+
+
+
+<section id="security">
+  <div class="page-header">
+    <h2>Security <small>Tools for security</small></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-12  table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+       </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+      <td><a href="https://github.comropensci/agent" id="agent">agent</a></td>
+      <td>Encrypted Key-Value Store for Sensitive Data</td>
+      <td><a href="https://cran.rstudio.com/web/packages/agent"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/agent"><span class="label label-inverse">github</span></a></td>
+    </tr>
+
+    </tbody>
+    </table>
+  </div>
+  </div>
+  </section>
+
+
+
+
+<section id="taxonomy">
+  <div class="page-header">
+    <h2>Taxonomy  <small>Packages for handling taxonomic names.</small></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-12  table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+        <th>Details</th>
+       </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+      <td><a href="https://github.comropensci/ritis" id="ritis">ritis</a></td>
+      <td>Wrapper to the Integrated Taxonomic Information Service (ITIS) API</td>
+      <td><a href="https://cran.rstudio.com/web/packages/ritis"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/ritis"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/taxize" id="taxize">taxize</a></td>
+      <td>Get taxonomic identifiers from many different databases; taxonomic synonyms; taxonomic hierarchies; retrieve common names, and more. Access to a dozen different sources</td>
+      <td><a href="https://cran.rstudio.com/web/packages/taxize"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/taxize"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/taxizesoap" id="taxizesoap">taxizesoap</a></td>
+      <td>taxize but for SOAP data sources</td>
+      <td><a href="https://cran.rstudio.com/web/packages/taxizesoap"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/taxizesoap"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/binomen" id="binomen">binomen</a></td>
+      <td>Taxonomic name classes and parsing methods</td>
+      <td><a href="https://cran.rstudio.com/web/packages/binomen"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/binomen"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/taxa" id="taxa">taxa</a></td>
+      <td>Taxonomic Classes for R</td>
+      <td><a href="https://cran.rstudio.com/web/packages/taxa"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/taxa"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/taxizedb" id="taxizedb">taxizedb</a></td>
+      <td>Tools for Working with Taxonomic Databases</td>
+      <td><a href="https://cran.rstudio.com/web/packages/taxizedb"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/taxizedb"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropenscilabs/wikitaxa" id="wikitaxa">wikitaxa</a></td>
+      <td>Taxonomic information from Wikipedia, Wikidata, and Wikispecies</td>
+      <td><a href="https://cran.rstudio.com/web/packages/wikitaxa"><span class="label label-success">cran</span></a> <a href="https://github.com/ropenscilabs/wikitaxa"><span class="label label-inverse">github</span></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.comropensci/worrms" id="worrms">worrms</a></td>
+      <td>World Register of Marine Species R client</td>
+      <td><a href="https://cran.rstudio.com/web/packages/worrms"><span class="label label-success">cran</span></a> <a href="https://github.com/ropensci/worrms"><span class="label label-inverse">github</span></a></td>
+    </tr>
+
+    </tbody>
+    </table>
+  </div>
+  </div>
+  </section>
+
+
+   </tbody>
+  </table>
+  <br>
+  <p>Did not find what you were looking for? We are working on several new packages and updates so check back later (or browse our Github org account). You can also browse the <a href="https://github.com/ropensci/webservices" title="CRAN Task View: Web Technologies and Services">web technologies task view</a> or the <a href="https://github.com/ropensci/opendata" title="CRAN Task View: Open Data">open data task view</a> for related packages that might suit your needs, or post to our <a href="https://discuss.ropensci.org/" title="rOpenSci Discuss">discussion forum</a>.</p>
+
+    </div>
+  </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% include footer.html %}
+
