@@ -1,0 +1,206 @@
+---
+name: tabulizer
+layout: post
+title: "Release 'open' data from their PDF prisons using tabulizer"
+date: 2017-04-18
+authors:
+  - name: Thomas J. Leeper
+    url: http://www.thomasleeper.com/
+categories:
+  - blog
+tags:
+- r
+- community
+- software
+- opendata
+- pdf
+- tabulizer
+- data-extraction
+---
+
+```{r setup, echo=FALSE, results="hide"}
+library("knitr")
+opts_knit$set(upload.fun = imgur_upload, base.url = NULL)
+```
+
+There is no problem in science quite as frustrating as *other peoples' data*. Whether it's malformed spreadsheets, disorganized documents, proprietary file formats, data without metadata, or any other data scenario created by someone else, [scientists have taken to Twitter to complain about it](https://twitter.com/hashtag/otherpeoplesdata?src=hash). As a political scientist who regularly encounters so-called "open data" in PDFs, this problem is particularly irritating. PDFs may have "portable" in their name, making them display consistently on various platforms, but that portability means any information contained in a PDF is irritatingly difficult to extract computationally. Encountering "open data" PDFs therefore makes me shout things like this repeatedly:
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">HEY US GOVERNMENT! Tables in PDF documents aren&#39;t &quot;Open Data.&quot; Please provide machine-readable formats or it doesn&#39;t count.</p>&mdash; Anthony A. Boyles (@AABoyles) <a href="https://twitter.com/AABoyles/status/776428077123506176">September 15, 2016</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+What can we do about such data other than extract it by hand? One answer is rely on [`tabulizer`](https://github.com/ropensci/tabulizer) a package I submitted to rOpenSci that reduces some and often all of the hassle of extracting tabular data locked inside PDFs.
+
+# What is `tabulizer`?
+
+`tabulizer` provides R bindings to [the tabula-java library](https://github.com/tabulapdf/tabula-java), the open-source java library that powers [Tabula](http://tabula.technology/) (source code on [GitHub](https://github.com/tabulapdf/tabula)). What this means is that `tabulizer` relies directly on the underlying java classes that power Tabula without the need for system calls or the need to explicitly install Tabula on your system. (A potential downside is the need to handle intricacies of rJava - R's interface to Java, which I discuss in depth below.)
+
+Tabula is an extremely powerful tool for extracting tabular data locked in PDFs. It's an incredibly valuable tool because the PDF file specification does not have a "table" representation. Instead, PDFs simply represent tables through the fixed positioning of text into rows and columns. Thus, unlike HTML, Word (.docx), or Open Document (.odt) file formats, there is no easy programmatic way to identify a table in a PDF. Tabula thus implements novel algorithms for identifying rows and columns of data and extracting them. `tabulizer` just provides a thin R layer on top of this power Java code.
+
+Unfortunately, this means that `tabulizer` is not a universal solution to data trapped in PDFs. In particular, it can only identify and extract tables that are represented as *text* in a PDF:
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Oh no no no no no! Just received <a href="https://twitter.com/hashtag/otherpeoplesdata?src=hash">#otherpeoplesdata</a> as a 276 page set of printed tables scanned in to a PDF</p>&mdash; Dr Elizabeth Sargent (@esargent184) <a href="https://twitter.com/esargent184/status/510056437033091074">September 11, 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+If a PDF is a scan of a document or the table is actually an image embedded in the PDF, tabula - and thus `tabulizer` - are useless. In those cases, users might want to check out the OCR functionality of [tesseract](https://github.com/ropensci/tesseract), which Jeroen Ooms developed for rOpenSci and [discussed previously on this blog](https://ropensci.org/blog/blog/2016/11/16/tesseract).
+
+But it does mean that a substantial amount of difficult-to-parse tabular information in PDFs is now readily and quickly accessible via just one `tabulizer` function: `extract_tables()`.
+
+## Installation 
+
+`tabulizer` is not yet on CRAN. (It's CRAN-ready but due to some underlying developments that are ongoing in the tabula-java library, I'm waiting for a formal release.) In the meantime, it's possible to install `tabulizer` directly from GitHub.
+
+Before doing that, I would encourage users to make sure they have rJava installed (from CRAN) and that it works correctly on their platform. A lot of users report difficulties installing `tabulizer` that ultimately boil down to being Java and rJava issues that need to be resolved first. The [package README](https://github.com/ropensci/tabulizer#installation) provides a number of details on installation, which requires a strictly ordered set of steps:
+
+ 1. Install the Java Development Kit, if you don't already have it on your system. (Note that the JDK is different from the Java Runtime Environment (JRE) that you almost certainly already have.) Details of how to do this vary a lot between platforms, so see the [README](https://github.com/ropensci/tabulizer#installation) for details.
+ 2. Install rJava using `install.packages("rJava")` and resolve any issues surrounding the `JAVA_HOME` environment variable that may need to be set before and/or after installing rJava. Again, see the [README](https://github.com/ropensci/tabulizer#installation) or [various question/answer pairs on StackOverflow](http://stackoverflow.com/search?q=%5Br%5D+rjava+install) for platform-specific instructions.
+ 3. Install `tabulizer` and `tabulizerjars` (the package containing the tabula java library) using your favorite GitHub package installer:
+
+```R
+library("ghit")
+ghit::install_github(c("ropensci/tabulizerjars","ropensci/tabulizer"))
+```
+
+This should work. If not, set `verbose = TRUE` in `ghit::install_github()` to identify the source of any issues. Some common problems are the dependency on the **png** package, which might need to be installed first. On Windows (depending on your version of R and how it was installed) may require setting `INSTALL_opts = "--no-multiarch"` in `ghit::install_github()`.
+
+If none of these steps work, scroll through [the GitHub issues page](https://github.com/ropensci/tabulizer/issues?utf8=%E2%9C%93&q=is%3Aissue) for anyone experiencing a similar problem and, if not resolved in any of those discussions, feel free to open an issue on GitHub describing your problem including the fully verbose output of `install_github()` and your `sessionInfo()`.
+
+# Unlocking elections data with `tabulizer` 
+
+Elections data are the bread and butter of a lot of quantitative political science research. Many researchers in my field need to know how many citizens voted and for whom in order to make sense of campaigns, election integrity, partisanship, and so forth. Yet a substantial amount of election-related data is locked in government-produced PDFs. Worse, national, state, and local governments have little to no standardization in the formatting of elections data, meaning even if one could figure out a computational strategy for extracting one kind of data about elections in one year from one state, that computational strategy would likely be useless in the same state in another year or in any other state. Elections provide a fantastic and highly visible example of "open" government data that's not really open or usable at all.
+
+As a simple example, [this PDF from the California Secretary of State's office](http://elections.cdn.sos.ca.gov/sov/2016-general/sov/04-historical-voter-reg-participation.pdf) contains historical voter registration and turnout data in a well-formatted table. Why this is a PDF nobody knows. But extracting the tables using `tabulizer`'s `extract_tables()` function is a breeze with no need to even download the file:
+
+```{r example1a, results="hold"}
+library("tabulizer")
+sos_url <- "http://elections.cdn.sos.ca.gov/sov/2016-general/sov/04-historical-voter-reg-participation.pdf"
+tab1 <- extract_tables(sos_url)
+str(tab1)
+```
+
+The (default) result is a list of two matrices, each containing the tables from pages 1 and 2 of the document, respectively. A couple of quick cleanups and this becomes a well-formatted data frame:
+
+```{r example1b, results="hold"}
+# save header
+h <- tab1[[1]][2,]
+# remove headers in first table
+tab1[[1]] <- tab1[[1]][-c(1,2),]
+# remove duplicated header in second table
+tab1[[2]] <- tab1[[2]][-c(1,2),]
+# merge into one table
+tab1df <- setNames(as.data.frame(do.call("rbind", tab1), stringsAsFactors = FALSE), h)
+str(tab1df)
+```
+
+Which is very easy to then quickly turn into a time-series visualization of registration rates:
+
+```{r example1plot, results = "hold"}
+library("ggplot2")
+years <- regexpr("[[:digit:]]{4}",tab1df[["Election Date"]])
+tab1df$Year <- as.numeric(regmatches(tab1df[["Election Date"]], years))
+tab1df$RegPerc <- as.numeric(gsub("%", "", tab1df$Registered))
+ggplot(tab1df, aes(x = Year, y = RegPerc)) + 
+  geom_line() + ylim(c(0,100)) + ylab("% Registered") + 
+  ggtitle("California Voter Registration, by Year")
+```
+
+## Optional arguments
+
+The `extract_tables()` has several arguments that control extraction and the return value of the function. They performed reasonably well here, but it's worth seeing a few of the other options. The `method` argument controls the return value. For extremely well-formatted tables, setting this to "data.frame" can be convenient, though it doesn't work perfectly here:
+
+```{r example1c}
+str(tab2 <- extract_tables(sos_url, method = "data.frame"))
+```
+
+Setting `method = "character"` returns a list of character vectors with white space reflecting the positioning of text within the PDF's tabular representation:
+
+```{r example1d}
+str(tab3 <- extract_tables(sos_url, method = "character"))
+```
+
+This argument can also be set to `"csv"`, `"tsv"`, or `"json"` to use a java-level utility to write the table to files in the working directory but this tends to be inconvenient. (For advanced users, `method = "asis"` returns an rJava object reference for those who want to manipulate the Java representation of the table directly.)
+
+The other most important option to be aware of is `guess`, which indicates whether a column-finding algorithm should be used to identify column breaks. This should almost always be `TRUE`, setting it to `FALSE` will tend to return a less useful structure:
+
+```{r example1e}
+head(extract_tables(sos_url, guess = FALSE)[[1]], 10)
+```
+
+However, it can be useful if users want to specify the locations of tables manually. The `area` argument allows users to specifying a `c(top,left,bottom,right)` vector of coordinates for the location of tables on a page (which is useful if pages also contain other non-tabular content); setting `columns` with `guess = FALSE` indicates where the column breaks are within a table. With a little care in specifying column positions we can successfully separate the "P" flags specifying Presidential elections that were earlier concatenated with the election dates:
+
+```{r example1f, results = "hold"}
+cols <- list(c(76,123,126,203,249,297,342,392,453,498,548))
+tab4 <- extract_tables(sos_url, guess = FALSE, columns = cols)
+
+# save header
+h <- tab4[[1]][5,-1]
+# clean tables
+tab4[[1]] <- tab4[[1]][-c(1:5,62),-1]
+tab4[[2]] <- tab4[[2]][-c(1:5,10:17),-1]
+# merge into one table
+tab4df <- setNames(as.data.frame(do.call("rbind", tab4), stringsAsFactors = FALSE), h)
+str(tab4df)
+```
+
+Figuring out columns positions and/or table areas is quite challenging to do by hand, so the `locate_areas()` provides an interactive interface for identifying areas. It returns lists of coordinates for specific table areas. A higher-level function, `extract_areas()`, connects that GUI directly to `extract_tables()` to return the tables within specified areas. Two other functions can be useful in this respect: `get_n_pages()` indicates the number of pages in a PDF and `get_page_dims()` indicates the dimensions of the pages.
+
+## Some other functionality
+
+In addition to the core functionality around `extract_tables()`, `tabulizer` also provides some functions for working with PDFs that might be useful to those trapped in other peoples' data. We'll download the file first just to save some time:
+
+```{r example2a}
+tmp <- tempfile(fileext = ".pdf")
+download.file(sos_url, destfile = tmp, mode = "wb", quiet = TRUE)
+```
+
+The `extract_text()` function extracts text content of the PDF, separately by page, as character strings:
+
+```{r example2b}
+extract_text(tmp)
+```
+
+This can be useful for non-tabular content, getting a sense of the document's contents, or troubleshooting the main extraction function (e.g., sometimes there is non-visible text that confuses `extract_tables()`). `extract_metadata()` returns a list of the PDF's embedded document metadata:
+
+```{r example2c}
+str(extract_metadata(tmp))
+```
+
+The `make_thumbnails()` function produces images (by default PNG) of pages, which can also be useful for debugging or just for the mundane purpose of image conversion:
+
+```{r example2d, results = "hold"}
+thumb <- make_thumbnails(tmp, pages = 1)
+library("png")
+thispng <- readPNG(thumb, native = TRUE)
+d <- get_page_dims(tmp, pages = 1)[[1]]
+plot(c(0, d[1]), c(0, d[2]), type = "n", xlab = "", ylab = "", asp = 1)
+rasterImage(thispng, 0, 0, d[1], d[2])
+```
+
+And, lastly, the `split_pdf()` and `merge_pdf()` functions can extract specific pages from a PDF or merge multiple PDFs together. Those functions should find multiple uses cases beyond the challenges of working with other peoples' data.
+
+# Conclusion
+
+`tabulizer` can't solve all your PDF problems. More likely than not you'll at some point encounter a PDF that contains scanned tables or tables that tabula-java's algorithms can't identify well. But for a wide array of well-formatted PDF tables, `tabulizer` should provide a much simpler and much faster initial extraction of data than attempting to transcribe their contents manually.
+
+## Contribute
+
+As always, the [issue tracker](https://github.com/ropensci/tabulizer/issues) on Github is open for suggestions, bug reports, and package support. [Pull requests](https://github.com/ropensci/tabulizer/pulls) are always welcome.
+
+I've flagged some specific issues on GitHub which interested users might want to help out with. These range from some basic issues:
+
+ - Identifying and creating [example use cases for the new `tabulizer` wiki](https://github.com/ropensci/tabulizer/issues/47) to showcase how the package works
+ - Adding [comprehensive, cross-platform installation instructions](https://github.com/ropensci/tabulizer/issues/46) to deal with the various intricacies of Java and rJava on various platforms
+
+To moderately difficult issues, like:
+
+ - [Improving the functionality and attractiveness of the Shiny-based `extract_areas()` graphical interface](https://github.com/ropensci/tabulizer/issues/49)
+
+To more advanced topics that more experienced developers - especially those with Java experience - might be interested in working on:
+
+ - Improving handling of [non-latin encodings](https://github.com/ropensci/tabulizer/issues/10) including adding tests thereof
+ - Preparing `tabulizer` for [the migration of the tabula-java library to PDFBox 2.0](https://github.com/ropensci/tabulizer/issues/48), which will change some of the underlying classes (and methods thereof) that `tabulizer` calls from both tabula-java and PDFBox
+
+Help of any kind on these issues will be very useful for getting the package ready for CRAN release!
+
+## Acknowledgments
+
+Many, many thanks to the Tabula team who have done considerable work to make the tabula-java library on which `tabulizer` depends. I also want to express considerable thanks to [David Gohel](https://github.com/davidgohel) and [Lincoln Mullen](https://github.com/lmullen) for their feedback during the [rOpenSci onboarding process](https://github.com/ropensci/onboarding/issues/42), which resulted in numerous improvements to the package and its usability, not least of which is the interactive shiny widget. Thanks, too, to [Scott Chamberlain](https://github.com/sckott) for overseeing the review process and to the whole of rOpenSci for their support of the R community.
