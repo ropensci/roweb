@@ -44,13 +44,13 @@ Check out Katie's [GitHub activity for rOpenSci related work](https://github.com
 
 <img src="../assets/blog-images/2017-04-27-ropensci-interns/diana.jpg" width="250">
 
-Diana is just getting started. She'll be working on documentation and maintenance. 
+Diana is just getting started. She'll be working on documentation and maintenance.
 
 In addition, she'll be working on an R package that will make it easy to make [cheatsheets](https://github.com/ropensci/cheatsheets) for packages from simple markdown templates - no editing powerpoint or keynote files needed!
 
 ### Steven
 
-<img src="../assets/common-files/img/community/girl.png" width="250">
+<img src="../assets/blog-images/2017-04-27-ropensci-interns/steven.JPG" width="250">
 
 [Software unit tests](https://en.wikipedia.org/wiki/Unit_testing) (method to determine whether software components perform as designed) are very important. We have it as [policy that packages submitted to our onboarding repository have tests](https://github.com/ropensci/onboarding/blob/master/issue_template.md).
 
