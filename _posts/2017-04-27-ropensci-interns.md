@@ -2,7 +2,7 @@
 name: ropensci-interns
 layout: post_discourse
 title: Welcome to our rOpenSci Interns
-date: 2017-04-25
+date: 2017-04-27
 authors:
   - name: Scott Chamberlain
   - name: Stefanie Butland
@@ -30,7 +30,7 @@ There's a lot of work that goes in to making software: the code that does the th
 
 ### Katie
 
-<img src="../assets/blog-images/2017-04-27-ropensci-interns/katie.jpg" width="250">
+<img src="/assets/blog-images/2017-04-27-ropensci-interns/katie.jpg" width="250">
 
 README's are the first thing someone reads when landing on a GitHub repository. Thus, it's important that the README has sufficient information to tell the reader what the software is for, who it's meant for, what it does, how to install and how to give feedback.
 
@@ -42,7 +42,7 @@ Check out Katie's [GitHub activity for rOpenSci related work](https://github.com
 
 ### Diana
 
-<img src="../assets/blog-images/2017-04-27-ropensci-interns/diana.jpg" width="250">
+<img src="/assets/blog-images/2017-04-27-ropensci-interns/diana.jpg" width="350">
 
 Diana is just getting started. She'll be working on documentation and maintenance.
 
@@ -50,7 +50,7 @@ In addition, she'll be working on an R package that will make it easy to make [c
 
 ### Steven
 
-<img src="../assets/blog-images/2017-04-27-ropensci-interns/steven.JPG" width="250">
+<img src="/assets/blog-images/2017-04-27-ropensci-interns/steven.JPG" width="250">
 
 [Software unit tests](https://en.wikipedia.org/wiki/Unit_testing) (method to determine whether software components perform as designed) are very important. We have it as [policy that packages submitted to our onboarding repository have tests](https://github.com/ropensci/onboarding/blob/master/issue_template.md).
 
@@ -64,7 +64,7 @@ This is where Steven comes in! When a package has tests already, he adds integra
 
 Check out Steven's [GitHub activity for rOpenSci related work](https://github.com/search?p=1&q=is%3Apr+involves%3Asteven2249+user%3Aropensci&type=Issues).
 
-
+<br><br>
 
 ## Want to be an rOpenSci intern?
 
