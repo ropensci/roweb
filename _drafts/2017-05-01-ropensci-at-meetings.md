@@ -84,13 +84,19 @@ Where's rOpenSci?
 	<td><a href="http://www.ievobio.org/">iEvoBio</a></td>
 </tr>
 <tr>
-	<td>Aug&#8211;8, 2017</td>
-	<td>Karthik Ram<</td>
-	<td>Baltimore, MD</td>
-	<td>Space Telescope Science Institute engineer colloquium</td>
+	<td>Jul 4-7, 2017</td>
+	<td>Jeroen Ooms</td>
+	<td>Brussels, BE</td>
+	<td><a href="https://user2017.brussels/">UseR</a></td>
 </tr>
 <tr>
-	<td>Oct 25-26, 2017</td>
+	<td>Aug&#8211;8, 2017</td>
+	<td>Karthik Ram</td>
+	<td>Baltimore, MD</td>
+	<td>Space Telescope Science Institute Engineering Colloquium</td>
+</tr>
+<tr>
+	<td>Oct 26-27, 2017</td>
 	<td>TBD</td>
 	<td>Melbourne, AU</td>
 	<td><a href="https://njtierney.typeform.com/to/RzeQVp">2nd Annual rOpenSci AU-Unconf</a></td>
