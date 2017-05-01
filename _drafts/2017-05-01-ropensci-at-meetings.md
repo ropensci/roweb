@@ -36,7 +36,7 @@ Where's rOpenSci?
 	<td><a href="https://csvconf.com/">csv,conf,v3</a></td>
 </tr>
 <tr>
-	<td>May&#8211;9, 2017</td>
+	<td>May 9, 2017</td>
 	<td>Scott Chamberlain</td>
 	<td>Portland, OR</td>
 	<td>Exploring Data with R, guest lecture, U of Oregon</td>
@@ -54,7 +54,7 @@ Where's rOpenSci?
 	<td><a href="http://unconf17.ropensci.org/">rOpenSci Unconf</a></td>
 </tr>
 <tr>
-	<td>Jun&#8211;3, 2017</td>
+	<td>Jun 3, 2017</td>
 	<td>Scott Chamberlain</td>
 	<td>Portland, OR</td>
 	<td><a href="https://cascadiarconf.com/">CascadiaRConf</a></td>
@@ -66,7 +66,7 @@ Where's rOpenSci?
 	<td><a href="https://www.aaas.org/cefp/meet-our-fellows">AAAS Community Engagement Fellows meeting</a></td>
 </tr>
 <tr>
-	<td>Jun&#8211;8, 2017</td>
+	<td>Jun 8, 2017</td>
 	<td>Karthik Ram</td>
 	<td>Stanford, CA</td>
 	<td><a href="http://med.stanford.edu/dbds/education/workshop.html">Stanford biostatistics seminar</a></td>
@@ -78,7 +78,7 @@ Where's rOpenSci?
 	<td><a href="http://www.huber.embl.de/csama2017/">Statistical Data Analysis for Genome Scale Biology</a></td>
 </tr>
 <tr>
-	<td>Jun&#8211;23, 2017</td>
+	<td>Jun 23, 2017</td>
 	<td>Scott Chamberlain</td>
 	<td>Portland, OR</td>
 	<td><a href="http://www.ievobio.org/">iEvoBio</a></td>
@@ -90,7 +90,7 @@ Where's rOpenSci?
 	<td><a href="https://user2017.brussels/">UseR</a></td>
 </tr>
 <tr>
-	<td>Aug&#8211;8, 2017</td>
+	<td>Aug 8, 2017</td>
 	<td>Karthik Ram</td>
 	<td>Baltimore, MD</td>
 	<td>Space Telescope Science Institute Engineering Colloquium</td>
