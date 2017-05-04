@@ -7,6 +7,7 @@ authors:
   - name: Stefanie Butland
 categories:
   - blog
+topicid: 683
 tags:
 - ropensci
 - community

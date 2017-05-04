@@ -8,6 +8,7 @@ authors:
     url: http://kenbenoit.net
 categories:
   - blog
+topicid: 689
 tags:
 - R
 - text analysis

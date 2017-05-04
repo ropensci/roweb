@@ -7,6 +7,7 @@ authors:
   - name: Scott Chamberlain
   - name: Stefanie Butland
 categories: blog
+topicid: 674
 tags:
 - community
 - ropensci

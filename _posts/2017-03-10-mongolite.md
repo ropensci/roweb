@@ -6,6 +6,7 @@ authors:
   - name: Jeroen Ooms
 categories:
   - blog
+topicid: 626
 tags:
 - r
 - ropensci
