@@ -124,9 +124,6 @@ $(document).ready(function () {
 
 
 
-
-
-
 <p>As all other types of visualization, linguistic mapping has two main goals: data presentation and data analysis. The most common purpose for which linguistic maps are used, is simply pointing to the location of one or more languages of interest (presentation). A more sophisticated task is showing the distribution of particular linguistic features or their combination among languages of a certain area (presentation and analysis). There are three linguistic subdisciplines that use maps for visualization: linguistic typology, areal linguistics and dialectology. <code>lingtypology</code> makes it easier to create all kinds of linguistic maps simplifying both: data presentation and data analysis.</p>
 <p>The <code>lingtypology</code> package connects the <a href="http://glottolog.org/">Glottolog database (v. 2.7)</a>, which is a catalogue of the world’s languages with the <a href="https://rstudio.github.io/leaflet/">leaflet package</a> for interactive maps. This package helps researchers to make linguistic maps, using the philosophy of <a href="http://clld.org/">the Cross-Linguistic Linked Data project</a>, which is creating uniform access to linguistic data. Let me walk you through some of its functionalities!</p>
 <div id="installation" class="section level2">
@@ -278,7 +275,7 @@ I will use a built-in dataset of Circassian villages in Russia that contains the
 </div>
 <div id="acknowledgments" class="section level2">
 <h2>5. Acknowledgments</h2>
-<p>I would like to thank <a href="https://www.hse.ru/en/org/persons/6635821">Misha Daniel</a>, <a href="https://www.hse.ru/en/staff/samiraverhees">Samira Verhees</a>, <a href="https://borstell.github.io/#name">Calle Börstell</a>, <a href="http://phonetik.phil-fak.uni-koeln.de/troettger.html">Timo Roettger</a> and <a href="https://www.shh.mpg.de/person/45369/25522">Robert Forkel</a> for their ideas and comments. I sincerely thank the reviewers for their constructive criticism and valuable comments during the rOpenSci reviewing: <a href="https://github.com/timelyportfolio">Kenton Russell</a>, <a href="https://github.com/tzakharko">Taras Zahkarko</a>, <span class="citation">[@languageSpaceLabs]</span>(<a href="https://github.com/languagespacelabs" class="uri">https://github.com/languagespacelabs</a>), <a href="https://github.com/sckott">Scott Chamberlain</a>, and <a href="https://github.com/stefaniebutland">Stefanie Butland</a>.</p>
+<p>I would like to thank <a href="https://www.hse.ru/en/org/persons/6635821">Misha Daniel</a>, <a href="https://www.hse.ru/en/staff/samiraverhees">Samira Verhees</a>, <a href="https://borstell.github.io/#name">Calle Börstell</a>, <a href="http://phonetik.phil-fak.uni-koeln.de/troettger.html">Timo Roettger</a> and <a href="https://www.shh.mpg.de/person/45369/25522">Robert Forkel</a> for their ideas and comments. I sincerely thank the reviewers for their constructive criticism and valuable comments during the rOpenSci reviewing: <a href="https://github.com/timelyportfolio">Kenton Russell</a>, <a href="https://github.com/tzakharko">Taras Zahkarko</a>, <a href="https://github.com/languagespacelabs">languageSpaceLabs</a>, and <a href="https://github.com/sckott">Scott Chamberlain</a>.</p>
 </div>
 <div class="footnotes">
 <hr />
