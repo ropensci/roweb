@@ -3,7 +3,7 @@ markdown: redcarpet
 
 paginate_path: "blog/page:num"
 paginate: 3
-highlighter: pygments
+highlighter: rogue
 redcarpet:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data", "footnotes"]
 deploy: false
