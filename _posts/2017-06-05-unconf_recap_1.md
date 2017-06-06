@@ -1,7 +1,7 @@
 ---
 name: unconf17recap
 layout: post_discourse
-title: "Unconf recap 1"
+title: "Unconf projects 1"
 date: 2017-06-05
 authors:
   - name: Karthik Ram
