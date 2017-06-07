@@ -38,6 +38,8 @@ The `miner` package provides a nice interface to the Minecraft API and allows us
 
 **Team:** Brooke Anderson, Karl Broman, Gergely Daróczi, Mario Inchiosa, David Smith, Ali Zaidi 
 
+![miner team](http://i.imgur.com/EBVkz7G.jpg)
+
 **Github:** https://github.com/ROpenSciLabs/miner
 
 
