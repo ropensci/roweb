@@ -45,7 +45,7 @@ The `miner` package provides a nice interface to the Minecraft API and allows us
 
 ## `rcheatsheet`
 
-**Summary:**  RStudio pioneered the idea of having beautiful cheatsheets for R packages. Creating them however, is quite time consuming and requires effort to maintain as packages evolve.  The `rcheatsheet` package makes it easy for any package author to quickly generate beautufil cheatsheets from a simple table stored on a Google sheet or a local table. This short slide deck provides a [quick overview](https://gitpitch.com/ramnathv/rcheatsheet/master?grs=github&t=moon)
+**Summary:**  RStudio pioneered the idea of having beautiful cheatsheets for R packages. Creating them however, is quite time consuming and requires effort to maintain as packages evolve.  The `rcheatsheet` package makes it easy for any package author to quickly generate beautiful cheatsheets from a simple table stored on a Google sheet or a local table. This short slide deck provides a [quick overview](https://gitpitch.com/ramnathv/rcheatsheet/master?grs=github&t=moon)
 
 ![R cheat sheet](https://i.imgur.com/JUC3Ljh.gif)
 
