@@ -100,7 +100,7 @@ jpeg::writeJPEG(bitmap, "page.jpeg")
 webp::write_webp(bitmap, "page.webp")
 ```
 
-This feature is still experimental and currently does not work on Windows.
+This feature now works on all platforms.
 
 ## Limitations
 
