@@ -14,9 +14,9 @@ tags:
 - pdf
 ---
 
-At the rOpenSci [text workshop](http://textworkshop17.ropensci.org/) in April we discussed many ideas for improving text processing in R. Over the past weeks I was able to work on some of these suggestions and we released a few packages for reading and analyzing text. 
+At the rOpenSci [text workshop](https://ropensci.org/blog/blog/2017/05/03/textworkshop17) in April we discussed many ideas for improving text processing in R. Over the past weeks I was able to work on some of these suggestions and we released a few packages for reading and analyzing text.
 
-Below an update on new and improved rOpenSci tools for working with text in R!
+Below is an update on new and improved rOpenSci tools for working with text in R!
 
 ## Google language detector 2 and 3
 
@@ -34,7 +34,7 @@ cld2::detect_language(text)
 # [1] "fr" "ja" "ru" "nl"
 ```
 
-Maëlle has written a [cool post](http://www.masalmon.eu/2017/06/10/rolandgarros/) comparing language classification methods using 18000 `"#RolandGarros2017"` tweets and Thomas [reminds us](http://notstatschat.tumblr.com/post/161449071226/stupid-word-games) that algorithms can easily be fooled. Still I found the accuracy on real text quite astonishing given the relatively small size of these libraries. 
+[Maëlle](https://maelle.github.io) has written a [cool post](http://www.masalmon.eu/2017/06/10/rolandgarros/) comparing language classification methods using 18000 `"#RolandGarros2017"` tweets and [Thomas](https://www.stat.auckland.ac.nz/people/tlum005) [reminds us](http://notstatschat.tumblr.com/post/161449071226/stupid-word-games) that algorithms can easily be fooled. Still I found the accuracy on real text quite astonishing given the relatively small size of these libraries.
 
 Note that the algorithm for CLD3 is still under development and the engineers at Google have recently [opened](https://github.com/google/cld3/issues) their Github issues page for feedback.
 
@@ -64,12 +64,12 @@ Also have a look at meta packages `readtext` or `textreadr` which import these a
 
 ## pdf utilities
 
-Our [pdftools](https://cran.r-project.org/web/packages/pdftools/index.html) package now supports reading pdf (extracting text or metadata) and rendering pdf to png, jpeg, tiff, or raw vectors on all platforms (incl. windows).
+Our [pdftools](https://cran.r-project.org/web/packages/pdftools/index.html) package now supports reading pdf (extracting text or metadata) and rendering pdf to png, jpeg, tiff, or raw vectors on all platforms (incl. Windows).
 
 ```r
 # Read some text
 text <- pdftools::pdf_text('https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf')
-cat(pages[1])
+cat(text[1])
 # An Introduction to R
 #             Notes on R: A Programming Environment for Data Analysis and Graphics
 #                                                        Version 3.4.0 (2017-04-21)
