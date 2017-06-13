@@ -14,9 +14,14 @@ tags:
 - pdf
 ---
 
-At the rOpenSci [text workshop](https://ropensci.org/blog/blog/2017/05/03/textworkshop17) in April we discussed many ideas for improving text processing in R. Over the past weeks I was able to work on some of these suggestions and we released a few packages for reading and analyzing text.
+Textual data and natural language processing are still a niche domain within the R ecosytstem. The [NLP task view](https://cran.r-project.org/view=NaturalLanguageProcessing) gives an overview of existing work however a lot of basic infrastructure is still missing.
+At the rOpenSci [text workshop](https://ropensci.org/blog/blog/2017/05/03/textworkshop17) in April we discussed many ideas for improving text processing in R. These discussions revealed core areas in R that need improvement:
 
-Below is an update on new and improved rOpenSci tools for working with text in R!
+ - Reading: better tools for extracing text and metadata from documents in various formats (doc, rtf, pdf, etc). 
+ - Encoding: many text packages work well for ascii text but rapidly break down when text contains Hungarian, Korean or emojis.
+ - Integerchange: packages don't work well together due to lack of data classes or conventions for textual data (see also [ropensci/tif](https://github.com/ropensci/tif))
+
+There were also many suggestions for C/C++ libraries that text researchers in R might benefit from. Over the past weeks I was able to look into these suggestions and work on a few packages for reading and analyzing text. Below is an update on new and improved rOpenSci tools for text processsing in R!
 
 ## Google language detector 2 and 3
 
@@ -60,7 +65,7 @@ cat(text)
 ### Lots of text...
 ```
 
-Also have a look at meta packages `readtext` or `textreadr` which import these and other tools for automatically reading text in many different formats. 
+Also have a look at meta packages `readtext` or `textreadr` which wrap these and other packages for automatically reading text in many different formats. 
 
 ## pdf utilities
 
