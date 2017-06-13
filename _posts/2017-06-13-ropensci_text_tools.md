@@ -96,7 +96,7 @@ pdftools::pdf_info('https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf
 You can use either render a page into a raw bitmap array, or directly to an image format such as png, jpeg or tiff.
 
 ```r
-files <- pdftools::pdf_convert('https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf', format = "png" pages = 1:5)
+files <- pdftools::pdf_convert('https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf', format = "png", pages = 1:5)
 # Converting page 1 to R-intro_1.png... done!
 # Converting page 2 to R-intro_2.png... done!
 # Converting page 3 to R-intro_3.png... done!
