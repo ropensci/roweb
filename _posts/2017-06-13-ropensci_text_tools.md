@@ -2,10 +2,11 @@
 name: ropensci_text_tools
 layout: post_discourse
 title: "New rOpenSci Packages for Text Procesing in R"
-date: 2017-06-14
+date: 2017-06-13
 authors:
   - name: Jeroen Ooms
 categories: blog
+topicid: 746
 tags:
 - r
 - packages
@@ -17,7 +18,7 @@ tags:
 Textual data and natural language processing are still a niche domain within the R ecosytstem. The [NLP task view](https://cran.r-project.org/view=NaturalLanguageProcessing) gives an overview of existing work however a lot of basic infrastructure is still missing.
 At the rOpenSci [text workshop](https://ropensci.org/blog/blog/2017/05/03/textworkshop17) in April we discussed many ideas for improving text processing in R. These discussions revealed core areas in R that need improvement:
 
- - Reading: better tools for extracing text and metadata from documents in various formats (doc, rtf, pdf, etc). 
+ - Reading: better tools for extracing text and metadata from documents in various formats (doc, rtf, pdf, etc).
  - Encoding: many text packages work well for ascii text but rapidly break down when text contains Hungarian, Korean or emojis.
  - Integerchange: packages don't work well together due to lack of data classes or conventions for textual data (see also [ropensci/tif](https://github.com/ropensci/tif))
 
@@ -32,7 +33,7 @@ New packages `cld2` and `cld3` are wrappers C++ libraries by Google for language
 install.packages(c("cld2", "cld3"))
 
 # Vectorized function
-text <- c("À chaque fou plaît sa marotte.", "猿も木から落ちる", 
+text <- c("À chaque fou plaît sa marotte.", "猿も木から落ちる",
 	"Алты́нного во́ра ве́шают, а полти́нного че́ствуют.", "Nou breekt mijn klomp!")
 
 cld2::detect_language(text)
@@ -65,7 +66,7 @@ cat(text)
 ### Lots of text...
 ```
 
-Also have a look at meta packages `readtext` or `textreadr` which wrap these and other packages for automatically reading text in many different formats. 
+Also have a look at meta packages `readtext` or `textreadr` which wrap these and other packages for automatically reading text in many different formats.
 
 ## pdf utilities
 
@@ -85,10 +86,10 @@ cat(text[1])
 pdftools::pdf_info('https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf')
 # $version
 # [1] "1.5"
-# 
+#
 # $pages
 # [1] 105
-# 
+#
 # .... much more :)
 ```
 
@@ -113,13 +114,13 @@ Our [hunspell](https://cran.r-project.org/web/packages/hunspell/index.html) pack
 # Extract incorrect from a piece of text
 bad <- hunspell("spell checkers are not neccessairy for langauge ninja's")
 print(bad[[1]])
-# [1] "neccessairy" "langauge"   
+# [1] "neccessairy" "langauge"
 hunspell_suggest(bad[[1]])
 # [[1]]
-# [1] "necessary"    "necessarily"  "necessaries"  "recessionary" "accessory"    "incarcerate" 
-# 
+# [1] "necessary"    "necessarily"  "necessaries"  "recessionary" "accessory"    "incarcerate"
+#
 # [[2]]
-# [1] "language"  "Langeland" "Lagrange"  "Lange"     "gaugeable" "linkage"   "Langland" 
+# [1] "language"  "Langeland" "Lagrange"  "Lange"     "gaugeable" "linkage"   "Langland"
 ```
 
 
@@ -144,16 +145,16 @@ words <- c("loving", "loved", "lover", "lovely", "love")
 hunspell_analyze(words)
 # [[1]]
 # [1] " st:loving"    " st:love fl:G"
-# 
+#
 # [[2]]
 # [1] " st:loved"     " st:love fl:D"
-# 
+#
 # [[3]]
 # [1] " st:lover"     " st:love fl:R"
-# 
+#
 # [[4]]
 # [1] " st:lovely"    " st:love fl:Y"
-# 
+#
 # [[5]]
 # [1] " st:love"
 ```
