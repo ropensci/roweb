@@ -2,7 +2,7 @@
 name: ropensci_text_tools
 layout: post_discourse
 title: "New rOpenSci Packages for Text Procesing in R"
-date: 2017-06-12
+date: 2017-06-14
 authors:
   - name: Jeroen Ooms
 categories: blog
