@@ -1,0 +1,266 @@
+---
+name: charlatan
+layout: post_discourse
+title: All the fake data that's fit to print
+authors:
+  - name: Scott Chamberlain
+categories:
+  - technotes
+topicid: xxx
+tags:
+- data
+- datasets
+- r
+---
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+
+**charlatan** makes fake data.
+
+`charlatan` is inspired from and ports many things from Python's
+<https://github.com/joke2k/faker> library. In turn, `faker` was inspired from
+[PHP's faker](https://github.com/fzaninotto/Faker),
+[Perl's Faker](http://search.cpan.org/~jasonk/Data-Faker-0.07/), and
+[Ruby's faker](https://rubygems.org/gems/faker). It appears that the PHP
+library was the original - nice work PHP.
+
+
+### Use cases
+
+What could you do with this package? Here's some use cases:
+
+* Students in a classroom setting learning any task that needs a dataset.
+* People doing simulations/modeling that need some fake data
+* Generate fake dataset of users for a database before actual users exist
+* Complete missing spots in a dataset
+* Generate fake data to replace sensitive real data with before public release
+* Create a random set of colors for visualization
+* Generate random coordinates for a map
+* Get a set of randomly generated DOIs (Digial Object Identifiers) to
+assign to fake scholarly artifacts
+* Generate fake taxonomic names for a biological dataset
+* Get a set of fake sequences to use to test code/software that uses
+sequence data
+
+
+### Features
+
+* Language support: A huge selling point of `charlatan` is language support.
+Of course for some data types (numbers), languages don't come into play, but
+for many they do. That means you can create fake datasets specific to a
+language, or a dataset with a mix of languages, etc. For the variables
+in this package, we have not yet ported over all languages for those
+variables that Python's `faker` has.
+* Lite weight: We've tried to make this package as lite as possible so
+that it's just generally easy to install, but also can be used in
+other packages or workflows while bringing along as little baggage
+as possible.
+* Reviewed: it's been reviewed! See reviews by [Brooke Anderson](reviewba) and
+[Tristan Mahr][reviewtj], and handling editor [Noam Ross](https://github.com/noamross)
+* R specific features such as methods to create data.frame's (so the
+user doesn’t have to do the extra step of putting vectors together)
+
+
+### Status
+
+We have not ported every variable, or every language yet in those variables.
+We have added some variables to `charlatan` that are not in `faker` (e.g.,
+taxonomy, gene sequences). Check out the [issues](https://github.com/ropensci/charlatan/issues)
+to follow progress.
+
+
+### Package API
+
+* `ch_generate`: generate a data.frame with fake data
+* `fraudster`: single interface to all fake data methods
+* High level interfaces: There are high level functions prefixed with
+`ch_` that wrap low level interfaces, and are meant to be easier
+to use and provide easy way to make many instances of a thing.
+* Low level interfaces: All of these are R6 objects that a user can
+initialize and then call methods on the them.
+
+
+### Other R work in this space:
+
+* [generator](https://github.com/paulhendricks/generator)
+* [fakeR](https://cran.rstudio.com/web/packages/fakeR/)
+* [randNames](https://github.com/karthik/randNames)
+
+### Vignette
+
+Check out the [package vignette](https://cran.rstudio.com/web/packages/charlatan/vignettes/charlatan_vignette.html) to get started.
+
+
+## setup
+
+Install `charlatan`
+
+
+```{r eval=FALSE}
+install.packages("charlatan")
+```
+
+Or get the development version:
+
+```{r eval=FALSE}
+devtools::install_github("ropensci/charlatan")
+```
+
+
+```{r}
+library(charlatan)
+```
+
+
+## Examples
+
+
+### high level interface
+
+`fraudster` is an interface for all fake data variables (and locales):
+
+```{r}
+x <- fraudster()
+x$job()
+x$name()
+x$job()
+x$color_name()
+```
+
+If you want to set locale, do so like `fraudster(locale = "{locale}")`
+
+### locale support
+
+The locales that are supported vary by data variable. We're adding more 
+locales through time, so do check in from time to time - or even better, 
+send a pull request adding support for the locale you want for the 
+variable(s) you want.
+
+As an example, you can set locale for job data to any number of supported 
+locales.
+
+For jobs:
+
+```{r}
+ch_job(locale = "en_US", n = 3)
+ch_job(locale = "fr_FR", n = 3)
+ch_job(locale = "hr_HR", n = 3)
+ch_job(locale = "uk_UA", n = 3)
+ch_job(locale = "zh_TW", n = 3)
+```
+
+For colors:
+
+```{r}
+ch_color_name(locale = "en_US", n = 3)
+ch_color_name(locale = "uk_UA", n = 3)
+```
+
+`charlatan` will tell you when a locale is not supported
+
+```{r eval=FALSE}
+ch_job(locale = "cv_MN")
+#> Error: cv_MN not in set of available locales
+```
+
+
+### generate a dataset
+
+`ch_generate()` helps you create data.frame's with whatever variables
+you want that `charlatan` supports. Then you're ready to use the 
+data.frame immediately in whatever your application is.
+
+By default, you get back a certain set of variables. Right now, that is:
+`name`, `job`, and `phone_number`.
+
+```{r}
+ch_generate()
+```
+
+You can select just the variables you want:
+
+```{r}
+ch_generate('job', 'phone_number', n = 30)
+```
+
+
+### Data types
+
+A sampling of the data types available in `charlatan`:
+
+**person name**
+
+```{r}
+ch_name()
+```
+
+```{r}
+ch_name(10)
+```
+
+**phone number**
+
+```{r}
+ch_phone_number()
+```
+
+```{r}
+ch_phone_number(10)
+```
+
+**job**
+
+```{r}
+ch_job()
+```
+
+```{r}
+ch_job(10)
+```
+
+### Messy data
+
+Real data is messy!  `charlatan` makes it easy to create
+messy data. This is still in the early stages so is not available
+across most data types and languages, but we're working on it.
+
+For example, create messy names:
+
+```{r}
+ch_name(50, messy = TRUE)
+```
+
+Right now only suffixes and prefixes for names in `en_US` locale
+are supported. Notice above some variation in prefixes and suffixes.
+
+
+## TO DO 
+
+We have lots ot do still. Some of those things include:
+
+* Locales: For existing data variables in the package, we need to fill in 
+locales for which Python's `faker` has the data, but we need to port it over
+still. 
+* Data variables: there's more we can port over from Python's `faker`.
+In addition, we may find inspiration from faker libraries in other 
+programming languages.
+* Messy data: we want to make messy data support more available throughout
+the package. Watch [issue #41](https://github.com/ropensci/charlatan/issues/41).
+* If you have ideas for potential data variables, [issue #11](https://github.com/ropensci/charlatan/issues/11) is a good place for those.
+Or open a new issue, either way.
+* One reviewer brought up whether data should be within bounds of reality (
+see [issue #40](https://github.com/ropensci/charlatan/issues/40)). The first 
+question for me is should we do this - if the answer is yes or at least sometimes,
+then we can explore how. It's not yet clear if it's the right thing to do.
+
+
+[reviewba]: (https://github.com/ropensci/onboarding/issues/94#issuecomment-284578088)
+[reviewtj]: (https://github.com/ropensci/onboarding/issues/94#issuecomment-283799109)
