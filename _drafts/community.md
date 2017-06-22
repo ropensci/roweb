@@ -18,7 +18,7 @@ What's that? You've heard of R? You use R? You develop in R? You know someone el
 
 We recently had a group discussion at [rOpenSci](https://ropensci.org/)'s  [#runconf17](https://twitter.com/search?q=%23runconf17&lang=en) in Los Angeles, CA about the R community. I initially opened the [issue on GitHub](https://github.com/ropensci/unconf17/issues/63). After this issue was well-received (check out the emoji-love below!), we realized people were keen to talk about this and decided to have an optional and informal discussion in person.
 
-<center>![](https://ShanEllis.github.io/images/github_feedback.png)</center>
+![](https://ShanEllis.github.io/images/github_feedback.png)
 
 To get the discussion started I posed two general questions and then just let discussion fly. I prompted the group with the following: 
 
@@ -57,6 +57,7 @@ To summarize here:
 - Avoid the word "just" when helping others. "Here's one way of thinking about that" >> "Just do it this way"
 - Include people whose primary language is not English in the conversation! Consider tweeting & retweeting in your own language to extend the community. This helps include others and spread knowledge!
 - Be involved in open projects. If you chose to turn down an opportunity that is not open, do your best to explain why being involved in open projects is important to you.
+- [David Smith](https://twitter.com/revodavid) [recently suggested](https://twitter.com/revodavid/status/874687595120406528) getting [#rbeginners](https://twitter.com/hashtag/rbeginners?src=hash) to take off as a hashtag - a great way to direct newer members' attention to tips and resources!
 - Be conscious of your tone. When in doubt, check out [tone checker](http://politeness.cornell.edu/).
 - If you see someone being belittling in their answers, consider reaching out to the person who is behaving inappropriately. There was some agreement that reaching out privately may be more effective as a first approach than calling them out in public.Strong arguments against that strategy and in favor of a public response from [Oliver Keyes](https://twitter.com/kopshtik) can be found [here](https://ironholds.org/not-about-image/).
 - Also, it's often easier to defend on behalf of someone else than it is on one's own behalf. Keep that in mind if you see negative things happening, and consider defending on someone else's behalf.
