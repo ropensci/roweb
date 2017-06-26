@@ -22,6 +22,7 @@ tags:
   - software
   - unconf
   - meetings
+  - R
 ---
 
 # packagemetrics - Helping you choose a package since `#runconf17`
