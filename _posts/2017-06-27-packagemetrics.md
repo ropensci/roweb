@@ -59,6 +59,7 @@ In addition to the package catalog resources listed above, unconf participants a
 While there was wide variation in how users gathered their initial lists of packages, they relied on common indicators to narrow their lists, including, "Is the package actively maintained?" and "Is it being tested? If so, how?". The last step often brought out personal preferences ("I pick the one whose API I like best").
 
 Through these discussions, it became evident that while there are resources for _finding_ packages, tools for _comparing_ packages would be helpful additions. Two possible approaches to comparing packages are:
+
 - **Standardized data collection:** Collecting metrics on criteria that unconf participants use to appraise packages. This can be applied uniformly across packages and hence is closer to an objective comparison. Additionally, metric collection can be wrapped in a package itself which makes it easier to collect these metrics at scale.
 - **Expert user review:** In-depth exploration and review of similar packages - think ["The Wirecutter"](http://thewirecutter.com/) but for R tasks. Reviews and recommendations are more subjective and require time and expertise - but user experience and feedback are important measures of the quality and potential of an R package. There is much insight that can be gained by installing a package and exploring it yourself.
 
