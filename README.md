@@ -3,8 +3,10 @@
 
 !['ropensci website'](http://ropensci.org/assets/common-files/img/content/blog_header_logo.png)
 
+[![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](http://numfocus.org)
 
-This is repo for [rOpenSci's website](http://ropensci.org/). To build the site, clone the repo and run. If you don't have the appropriate gems,  you will have to bundle install before running jekyll.
+
+This is repo for [rOpenSci's website](http://ropensci.org/). To contribute to the site, fork the repo to your account, make your changes and send a pull request with a concise explanation describing your contribution. To preview the site locally, install any missing gems with `bundle install`, and then run `bundle exec jekyll serve --watch --incremental`
 
 
 ```
