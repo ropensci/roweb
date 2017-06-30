@@ -340,7 +340,7 @@ The project is about to get some real world use in an upcoming project
 so expect a bunch of issues and design considerations to shake out of
 that. Constructive feedback on our effort and/or contributions are very
 welcome! Feel free to engage us on Twitter
-([@aliciaschep](<https://twitter.com/AliciaSchep>),
-[@milesmcbain](<https://twitter.com/MilesMcBain>)), rOpenSci slack
+([@aliciaschep](https://twitter.com/AliciaSchep),
+[@milesmcbain](https://twitter.com/MilesMcBain)), rOpenSci slack
 (check out the `#webrockets` channel), or the issues on the
 [`webrockets` Github repo](https://github.com/ropenscilabs/webrockets).
