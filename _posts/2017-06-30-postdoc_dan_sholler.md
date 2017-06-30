@@ -19,12 +19,13 @@ We are pleased to welcome our Postdoctoral Fellow, [Dr. Dan Sholler](https://dan
 
 Dan will be the first postdoc for the rOpenSci project, based at UC Berkeley and the [Berkeley Institute for Data Science](https://bids.berkeley.edu/), supervised by Karthik Ram and co-supervised by [Carl Boettiger](https://ropensci.org/about/#leadership) and [Daniel Katz](http://danielskatz.org/).
 
-<img src="/assets/blog-images/2017-06-30-postdoc-dan-sholler/dan-sholler.jpg" alt="Dr Dan Sholler" align="left" style="margin: 0px 20px" width="250">
+<img src="/assets/blog-images/2017-06-30-postdoc-dan-sholler/dan-sholler.jpg" alt="Dr Dan Sholler" align="left" style="margin: 0px 20px" width="250" style="float: left;clear:both">
 
 We interviewed Dan to introduce you to him and his research (a fascinating conversation!). This short introduction can’t do him justice, but he'll share his research plan in another post in Fall 2017.
 
----
+<br><br>
 
+---
 ### Q: Tell us a bit about your background
 I'm a (mostly) qualitative, ethnographic researcher who studies user acceptance, resistance, and adaptation in digital infrastructure development programs. In other words, I like to study the factors that motivate people to engage with or resist new technologies, with the goal of helping to improve design and implementation strategies for eliciting engagement.
 
@@ -41,7 +42,8 @@ I want to leverage my experience to explore how and why scientists engage with o
 ### Q: What would you like to accomplish with your postdoc?
 Just like any other academic postdoc, I plan to publish papers - in my case, examining the development of open science communities - and draw upon theories that might help to understand engagement and resistance. I intend to apply what I learn from the project and advise rOpenSci (and other open science communities) about strategies for anticipating, dealing with, and overcoming issues related to user engagement and/or resistance.
 
-I’ll strive to gain a deeper understanding of the open science movement, focusing first on general questions like,
+I’ll strive to gain a deeper understanding of the open science movement, focusing first on general questions like:
+
 - “What drives community leaders to devote time and resources to building a robust infrastructure to support open science?
 - What social and technical circumstances support or stand in the way of infrastructure development?
 - What managerial strategies might be applied to get scientists to engage or to help them deal with the perceived detriments of participating in the open science community?”
@@ -66,5 +68,6 @@ The rOpenSci community, to me, is an ideal place to carry out a qualitative rese
 
 ### Want to learn more about Dan Sholler?
 Read Dan’s publications on [Google Scholar](https://scholar.google.com/citations?user=fHVPc94AAAAJ&hl=en&oi=ao)
+<br>
 Follow [Dan on Twitter](https://twitter.com/dansholler)
 
