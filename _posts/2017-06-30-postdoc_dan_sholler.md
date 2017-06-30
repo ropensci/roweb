@@ -19,7 +19,7 @@ We are pleased to welcome our Postdoctoral Fellow, [Dr. Dan Sholler](https://dan
 
 Dan will be the first postdoc for the rOpenSci project, based at UC Berkeley and the [Berkeley Institute for Data Science](https://bids.berkeley.edu/), supervised by Karthik Ram and co-supervised by [Carl Boettiger](https://ropensci.org/about/#leadership) and [Daniel Katz](http://danielskatz.org/).
 
-<img src="/assets/blog-images/2017-06-30-postdoc-dan-sholler/dan-sholler.jpg" alt="Dr Dan Sholler" align="left" style="margin: 0px 20px" width="300">
+<img src="/assets/blog-images/2017-06-30-postdoc-dan-sholler/dan-sholler.jpg" alt="Dr Dan Sholler" align="left" style="margin: 0px 20px" width="250">
 
 We interviewed Dan to introduce you to him and his research (a fascinating conversation!). This short introduction can’t do him justice, but he'll share his research plan in another post in Fall 2017.
 
