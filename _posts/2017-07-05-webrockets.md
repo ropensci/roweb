@@ -162,7 +162,7 @@ concern for HTTP headers or URL strings!
 You can read a great explanation
 [here](http://www.websocket.org/quantum.html).
 
-Webrockets :rocket:
+Webrockets <img src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f680.png" height="20" width="20" align="absmiddle">
 ===================
 
 We've discussed our personal motivations, but the [project
