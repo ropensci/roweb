@@ -65,7 +65,7 @@ neat, and 2) I wanted to push myself to learn something really new, and
 I didn't know much about web sockets! This type of project was something
 that I would be very hesitant about jumping into on my own, so the
 unconf seemed like a great time for it. I figured you could teach me all
-I needed to know about web sockets :smile: (and if those reading this
+I needed to know about web sockets :D (and if those reading this
 don't know what web sockets are, don't worry... later in this post we'll
 [explain it to you too](#cool-but-what-is-a-websocket)!)
 
@@ -279,7 +279,7 @@ Streaming sensor data
 
 We were pretty happy to get the proof of concept `shiny` app that
 updates based on a test server up and running — lots of high fives and
-cheering :tada: when we saw the first few points getting added to the
+cheering when we saw the first few points getting added to the
 plot! We then set our sights higher — could we plot some real sensor
 data? Miles set up an app on his phone that would start a websockets
 server that would send out messages containing accelerometer data from
