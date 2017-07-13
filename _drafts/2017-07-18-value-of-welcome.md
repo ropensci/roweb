@@ -34,7 +34,7 @@ People are introducing themselves, tagging with emoji and thanking “the commun
 
 >“…I feel super lucky to be a part of the rOpenSci community, which has … had a great positive impact on my life!”
 
->“I :heart emoji: rOpenSci for building this community and helping people like me become confident data scientists!”
+>“I love rOpenSci for building this community and helping people like me become confident data scientists!”
 
 >“[I’m] hoping to contribute more to the group moving forward”
 
