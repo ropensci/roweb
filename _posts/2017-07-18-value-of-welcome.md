@@ -6,7 +6,7 @@ date: 2017-07-18
 authors:
   - name: Stefanie Butland
 categories: blog
-topicid: 
+topicid: 123
 tags:
 - community
 - ropensci-team
@@ -14,14 +14,16 @@ tags:
 ---
 
 <div class="alert alert-info" role="alert">
-I’m participating in the <a href="https://www.aaas.org/cefp/about" target="_blank">AAAS Community Engagement Fellows Program (CEFP)</a>, funded by the Alfred P. Sloan Foundation. The inaugural <a href="https://blog.trelliscience.com/introducing-the-2017-community-engagement-fellows/" target="_blank">cohort of Fellows</a> is made up of 17 community managers working in a wide range of scientific communities. This is cross-posted from the <a href="https://blog.trelliscience.com/the-value-of-welcome/"target="_blank">Trellis blog</a> as part of a <a href="https://blog.trelliscience.com/tag/fellows-blog-series" target="_blank"> series of reflections</a> that the CEFP Fellows are sharing.</div>
+I’m participating in the <a href="https://www.aaas.org/cefp/about" target="_blank">AAAS Community Engagement Fellows Program (CEFP)</a>, funded by the Alfred P. Sloan Foundation. The inaugural <a href="https://blog.trelliscience.com/introducing-the-2017-community-engagement-fellows/" target="_blank">cohort of Fellows</a> is made up of 17 community managers working in a wide range of scientific communities. This is cross-posted from the <a href="https://blog.trelliscience.com/the-value-of-welcome/"target="_blank">Trellis blog</a> as part of a <a href="https://blog.trelliscience.com/tag/fellows-blog-series" target="_blank"> series of reflections</a> that the CEFP Fellows are sharing.
+</div>
 
 In my training as a [AAAS Community Engagement Fellow](https://blog.trelliscience.com/introducing-the-2017-community-engagement-fellows/), I hear repeatedly about the value of extending a personal welcome to your community members. This seems intuitive, but recently I put this to the test. Let me tell you about my experience creating and maintaining a #welcome channel in a community Slack group.
 
-<img align=center src="https://blog.trelliscience.com/wp-content/uploads/2017/07/4344878104_e537b0248b_z.jpg">
+<div id="blimages">
+<img class="center_blog" src="https://blog.trelliscience.com/wp-content/uploads/2017/07/4344878104_e537b0248b_z.jpg">
 
 <a href="https://www.flickr.com/photos/90371939@N00/4344878104">"Welcome"</a> by <a href="https://www.flickr.com/photos/90371939@N00/">Nathan</a> under <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>
-
+</div>
 
 
 I listen in on and occasionally participate in a Slack group for [R-Ladies](http://rladies.org/) community organizers (R-Ladies is a global organization with local meetup chapters around the world, for women who do/want to do programming in R). Their Slack is incredibly well-organized and has a #welcome channel where new joiners are invited to introduce themselves in a couple of sentences. The leaders regularly jump in to add a wave emoji and ask people to introduce themselves if they have not already.

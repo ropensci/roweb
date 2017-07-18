@@ -2474,3 +2474,15 @@ color: #1ABC9C;
 #disqus {
   color: #31465A;
 }
+
+
+.center_blog {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30px; 
+}
+
+#blimages {
+    text-align:center;
+}
