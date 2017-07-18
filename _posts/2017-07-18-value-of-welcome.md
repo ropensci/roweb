@@ -6,7 +6,7 @@ date: 2017-07-18
 authors:
   - name: Stefanie Butland
 categories: blog
-topicid: 123
+topicid: 776
 tags:
 - community
 - ropensci-team
@@ -25,6 +25,7 @@ In my training as a [AAAS Community Engagement Fellow](https://blog.trelliscienc
 <a href="https://www.flickr.com/photos/90371939@N00/4344878104">"Welcome"</a> by <a href="https://www.flickr.com/photos/90371939@N00/">Nathan</a> under <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>
 </div>
 
+<br>
 
 I listen in on and occasionally participate in a Slack group for [R-Ladies](http://rladies.org/) community organizers (R-Ladies is a global organization with local meetup chapters around the world, for women who do/want to do programming in R). Their Slack is incredibly well-organized and has a #welcome channel where new joiners are invited to introduce themselves in a couple of sentences. The leaders regularly jump in to add a wave emoji and ask people to introduce themselves if they have not already.
 
@@ -42,5 +43,5 @@ People are introducing themselves, tagging with emoji and thanking “the commun
 
 >“…thank you for having me part of this community!”
 
- 
+
 Such is the value of #welcome.
