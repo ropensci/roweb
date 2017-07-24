@@ -11,7 +11,7 @@ encoding: utf-8
 
 gems: ['jekyll-paginate']
 
-exclude: ['*.Rmd']
+exclude: ['*.Rmd', '*.R']
 
 packages:
 - rbefdata
