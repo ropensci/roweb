@@ -1,0 +1,434 @@
+---
+name: taxonomy-suite
+layout: post_discourse
+title: The rOpenSci Taxonomy Suite
+date: 2017-07-27
+authors:
+  - name: Scott Chamberlain
+categories:
+  - blog
+topicid: xxx
+tags:
+- R
+- taxonomy
+---
+
+```{r echo=FALSE}
+library("knitr")
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+   lines <- options$output.lines
+   if (is.null(lines)) {
+     return(hook_output(x, options))  # pass to default hook
+   }
+   x <- unlist(strsplit(x, "\n"))
+   more <- "..."
+   if (length(lines)==1) {        # first n lines
+     if (length(x) > lines) {
+       # truncate the output, but add ....
+       x <- c(head(x, lines), more)
+     }
+   } else {
+     x <- c(if (abs(lines[1])>1) more else NULL,
+            x[lines],
+            if (length(x)>lines[abs(length(lines))]) more else NULL
+           )
+   }
+   # paste these lines together
+   x <- paste(c(x, ""), collapse = "\n")
+   hook_output(x, options)
+ })
+
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  fig.path = '../assets/blog-images/2017-07-27-taxonomy-suite/'
+)
+```
+
+
+## What is Taxonomy?
+
+Taxonomy in its most general sense is [the practice and science of classification](https://en.wikipedia.org/wiki/Taxonomy_(general)). It can refer to many things. You may have heard or used the word _taxonomy_ used to indicate any sort of classification of things, whether it be companies or widgets. Here, we're talking about [biological taxonomy](https://en.wikipedia.org/wiki/Taxonomy_(biology)), the science of defining and naming groups of biological organisms. 
+
+In case you aren't familiar with the terminology, here's a brief intro.
+
+* `species` - the term you are likely most familiar with, usually a group of individuals in which any 2 individuals can produce fertile offspring (definitions can vary)
+* `taxon` - a species, e.g., _Homo sapiens_
+* `taxa` - a grouping of species (plural of `taxon`)
+* `taxonomic hierarchy` (or `taxonomic classification`) - all the higher level taxonomic names for a taxon
+
+## Ubiquity and Importance of Taxonomic Names
+
+We put a lot of time into our suite of taxonomic software for a good reason - probably all naturalists/biologists/environmental consultants/etc. will be confronted with taxonomic names in their research/work/surveys/etc. at some point or all along the way. Some people study a single species their entire career, likely having little trouble with taxonomic names - while others study entire communities or ecosystems, dealing with thousands of taxonomic names.
+
+Taxonomic names are not only ubiquitous but are incredibly important to get right. Just as the URL points to the correct page you want to view on the internet (an incorrect URL will not get you where you want to go), taxonomic names point to the right definition/description of a taxon, leading to lots of resources increasingly online including text, images, sounds, etc. If you get the taxonomic name wrong, all information downstream is likely to be wrong.
+
+## Why R for taxonomic names?
+
+R is widely used in academia, and particuarly widely used in biology within academia. At least in my graduate school experience ('06 - '12), most graduate students used R - despite their bosses often using other things, not to be named. 
+
+Given that R is widely used among biologists that have to deal with taxonomic names, it makes a lot of sense to build taxonomic tools in R.
+
+## rOpenSci Taxonomy Suite
+
+We have an ever-growing suite of taxonomy packages.
+
+* `taxize` - taxonomic data from many sources
+* `taxizedb` - work with taxonomic SQL databases locally
+* `taxa` - taxonomic classes for R
+* `binomen` - (getting folded into `taxa`, will be archived on CRAN soon)
+* `wikitaxa` - taxonomic data from Wikipedia/Wikidata/Wikispecies
+* `ritis` - get ITIS (Integrated Taxonomic Information Service) taxonomic data
+* `worrms` - get WORMS (World Register of Marine Species) taxonomic data
+* `pegax` - taxonomy PEG (Parsing Expression Grammar)
+
+<br><br>
+
+For each package below, there are 2-3 badges. One for whether the package is on CRAN
+or not (<span class="label label-warning">cran</span> if on CRAN, <span class="label label-default">cran</span>
+if not), and for link to source on GitHub (<span class="label label-info">github</span>).
+
+For each package we show a very brief example - all packages have much more functionality - check them out on CRAN or GitHub.
+
+## taxize
+
+<a href="https://cran.rstudio.com/web/packages/taxize/"><span class="label label-warning">cran</span></a> <a href="https://github.com/ropensci/taxize"><span class="label label-info">github</span></a>
+
+This was our first package for taxonomy. It is a one stop shop for lots of different taxonomic data sources online, including NCBI, ITIS, GBIF, EOL, IUCN, and more - up to 22 data sources now.
+
+The canonical reference for `taxize` is the paper we published in 2013:
+
+> Chamberlain, S. A., & Szöcs, E. (2013). taxize: taxonomic search and retrieval in R. F1000Research.
+
+Check it out at <https://doi.org/10.12688/f1000research.2-191.v1>
+
+We released a new version (`v0.8.8`) about a month ago (a tiny bug fix was pushed more recently (`v0.8.9`)) with some new features requested by users:
+
+- You can now get downstream taxa from NCBI, see `ncbi_downstream` and `downstream`
+- Wikipedia/Wikidata/Wikispecies are now data sources! via the `wikitaxa` package
+- Now you can get IUCN IDs for taxa, see `get_iucn`
+- `tax_rank` now works with many more data sources: ncbi, itis, eol, col, tropicos, gbif, nbn,
+worms, natserv, and bold
+- Many improvements and bug fixes
+
+### Example
+
+A quick example of the power of `taxize`
+
+```{r eval = FALSE}
+install.packages("taxize")
+```
+
+```{r}
+library("taxize")
+```
+
+Get WORMS identifiers for three taxa:
+
+```{r}
+ids <- get_wormsid(c("Platanista gangetica", "Lichenopora neapolitana", 'Gadus morhua'))
+```
+
+Get classifications for each taxon
+
+```{r}
+clazz <- classification(ids, db = 'worms')
+```
+
+Combine all three into a single data.frame
+
+```{r}
+head(rbind(clazz))
+```
+
+
+## taxizedb
+
+<a href="https://cran.rstudio.com/web/packages/taxizedb/"><span class="label label-warning">cran</span></a> <a href="https://github.com/ropensci/taxizedb"><span class="label label-info">github</span></a>
+
+`taxizedb` is a relatively new package. We just released a new version (`v0.1.4`) about one month ago, with fixes for the new `dplyr` version.
+
+The sole purpose of `taxizedb` is to solve the use case where a user has a lot of taxonomic names, and thus using `taxize` is too slow. Although `taxize` is a powerful tool, for all data requests it's making another request to get data from the web, and the speed of that transaction can vary from very fast to very slow, depending on three factors: data provider speed (including many things), your internet speed, and how much data you requested. `taxizedb` gets around this problem by using a local SQL database of the same stuff the data providers have, so you can get things done much faster. 
+
+The trad-off with `taxizedb` is that the interface is quite different from `taxize`.  So there is a learning curve. There are two options in `taxizedb`: you can use SQL syntax, or `dplyr` commands. Clearly more and more people know the latter, but the former I imagine not so many.
+
+### Example
+
+Install `taxizedb`
+
+```{r eval = FALSE}
+install.packages("taxizedb")
+```
+
+```{r}
+library("taxizedb")
+```
+
+Here, we show working with the ITIS SQL database. Other sources work with the same workflow of function calls.
+
+Download ITIS SQL database
+
+```{r eval=FALSE}
+x <- db_download_itis()
+#> downloading...
+#> unzipping...
+#> cleaning up...
+#> [1] "/Users/sacmac/Library/Caches/R/taxizedb/ITIS.sql"
+```
+
+`db_load_tpl()` loads the SQL database into Postgres. Data sources vary in the SQL database used, see help for more.
+
+```{r eval=FALSE}
+db_load_tpl(x, "<your Postgresql user name>", "your Postgresql password, if any")
+```
+
+Create a `src` object to connect to the SQL database.
+
+```{r eval=FALSE}
+src <- src_itis("<your Postgresql user name>", "your Postgresql password, if any")
+```
+
+Query!
+
+```{r eval=FALSE}
+library(dbplyr)
+library(dplyr)
+tbl(src, sql("select * from taxonomic_units limit 10"))
+# Source:   SQL [?? x 26]
+# Database: postgres 9.6.0 [sacmac@localhost:5432/ITIS]
+     tsn unit_ind1                          unit_name1 unit_ind2 unit_name2 unit_ind3 unit_name3 unit_ind4 unit_name4
+   <int>     <chr>                               <chr>     <chr>      <chr>     <chr>      <chr>     <chr>      <chr>
+ 1    50      <NA> Bacteria                                 <NA>       <NA>      <NA>       <NA>      <NA>       <NA>
+ 2    51      <NA> Schizomycetes                            <NA>       <NA>      <NA>       <NA>      <NA>       <NA>
+ 3    52      <NA> Archangiaceae                            <NA>       <NA>      <NA>       <NA>      <NA>       <NA>
+ 4    53      <NA> Pseudomonadales                          <NA>       <NA>      <NA>       <NA>      <NA>       <NA>
+ 5    54      <NA> Rhodobacteriineae                        <NA>       <NA>      <NA>       <NA>      <NA>       <NA>
+ 6    55      <NA> Pseudomonadineae                         <NA>       <NA>      <NA>       <NA>      <NA>       <NA>
+ 7    56      <NA> Nitrobacteraceae                         <NA>       <NA>      <NA>       <NA>      <NA>       <NA>
+ 8    57      <NA> Nitrobacter                              <NA>       <NA>      <NA>       <NA>      <NA>       <NA>
+ 9    58      <NA> Nitrobacter                              <NA>     agilis      <NA>       <NA>      <NA>       <NA>
+10    59      <NA> Nitrobacter                              <NA>     flavus      <NA>       <NA>      <NA>       <NA>
+# ... with more rows, and 17 more variables: unnamed_taxon_ind <chr>, name_usage <chr>, unaccept_reason <chr>,
+#   credibility_rtng <chr>, completeness_rtng <chr>, currency_rating <chr>, phylo_sort_seq <int>, initial_time_stamp <dttm>,
+#   parent_tsn <int>, taxon_author_id <int>, hybrid_author_id <int>, kingdom_id <int>, rank_id <int>, update_date <date>,
+#   uncertain_prnt_ind <chr>, n_usage <chr>, complete_name <chr>
+```
+
+
+## taxa
+
+<a href="https://cran.rstudio.com/web/packages/taxa/"><span class="label label-warning">cran</span></a> <a href="https://github.com/ropensci/taxa"><span class="label label-info">github</span></a>
+
+`taxa` is our newest entry (hit CRAN just a few weeks ago) into the taxonomic R package space. It defines taxonomic classes for R, and basic, but powerful manipulations on those classes. 
+
+It defines two broad types of classes: those with just taxonomic names data, and those with taxonomic names data plus other data (such as traits, environmental data, etc.) - so called `taxmap` classes. 
+
+With these taxonomic classes, you can do various operations on them. With the taxonomic classes, you can filter out or keep taxa based on various criteria, and with the `taxmap` classes when you filter on taxa, the associated data is filtered the same way so taxa and data are in sync.
+
+A manuscript about `taxa` is being prepared at the moment - so look out for that.
+
+### Example
+
+A quick example of the power of `taxa`
+
+```{r eval = FALSE}
+install.packages("taxa")
+```
+
+```{r}
+library("taxa")
+```
+
+An example `Hierarchy` data object that comes with the package:
+
+```{r}
+ex_hierarchy1
+```
+
+We can remove taxa like the following, combining criteria targeting ranks, taxonomic names, or IDs:
+
+```{r}
+ex_hierarchy1 %>% pop(ranks("family"), ids(4544))
+```
+
+An example `taxmap` class:
+
+```{r}
+ex_taxmap
+```
+
+Here, filter by taxonomic names to those starting with the letter `t` (notice the taxa, edgelist, and datasets have changed)
+
+```{r}
+filter_taxa(ex_taxmap, startsWith(taxon_names, "t"))
+```
+
+## wikitaxa
+
+<a href="https://cran.rstudio.com/web/packages/wikitaxa/"><span class="label label-warning">cran</span></a> <a href="https://github.com/ropensci/wikitaxa"><span class="label label-info">github</span></a>
+
+`wikitaxa` is a client that allows you to get taxonomic data from four different Wiki-* sites: 
+
+* Wikipedia
+* Wikispecies
+* Wikidata
+* Wikicommons
+
+The only site of the four above that's only taxonomy is Wikispecies - for the others you could use `wikitaxa` to do any searches, but we look for and parse out taxonomic specific items in the wiki objects that are returned.
+
+We released a new version (`v0.1.4`) earlier this year. Big thanks to [Ethan Welty](https://github.com/ezwelty) for help on this package.
+
+`wikitaxa` is used in `taxize` to get Wiki* data.
+
+### Example
+
+A quick example of the power of `wikitaxa`
+
+```{r eval = FALSE}
+install.packages("wikitaxa")
+```
+
+```{r}
+library("wikitaxa")
+```
+
+Search for _Malus domestica_ (apple):
+
+```{r}
+res <- wt_wikispecies(name = "Malus domestica")
+# links to language sites for the taxon
+res$langlinks
+# any external links on the page
+res$externallinks
+# any common names, and the language they are from
+res$common_names
+# the taxonomic hierarchy - or classification
+res$classification
+```
+
+
+
+## ritis
+
+<a href="https://cran.rstudio.com/web/packages/ritis/"><span class="label label-warning">cran</span></a> <a href="https://github.com/ropensci/ritis"><span class="label label-info">github</span></a>
+
+`ritis` is a client for ITIS (Integrated Taxonomic Information Service), part of [USGS](https://www.usgs.gov/).
+
+There's a number of different ways to get ITIS data, one of which (local SQL dump) is available in `taxizedb`, while the others are covered in `ritis`:
+
+- SOLR web service <https://www.itis.gov/solr_documentation.html>
+- RESTful web service <https://www.itis.gov/web_service.html>
+
+The functions that use the SOLR service are: `itis_search`, `itis_facet`, `itis_group`, and `itis_highlight`.
+
+All other functions interact with the RESTful web service.
+
+We released a new version (`v0.5.4`) late last year.
+
+`ritis` is used in `taxize` to get ITIS data.
+
+### Example
+
+A quick example of the power of `ritis`
+
+```{r eval = FALSE}
+install.packages("ritis")
+```
+
+```{r}
+library("ritis")
+```
+
+Search for blue oak ( _Quercus douglasii_ )
+
+```{r}
+search_scientific("Quercus douglasii")
+```
+
+Get taxonomic hierarchy down from the Oak genus - that is, since it's a genus, get all species in the Oak genus
+
+```{r}
+res <- search_scientific("Quercus")
+hierarchy_down(res[1,]$tsn)
+```
+
+
+
+## worrms
+
+<a href="https://cran.rstudio.com/web/packages/worrms/"><span class="label label-warning">cran</span></a> <a href="https://github.com/ropensci/worrms"><span class="label label-info">github</span></a>
+
+`worrms` is a client for working with data from World Register of Marine Species (WoRMS).
+
+WoRMS is the most authoritative list of names of all marine species globally.
+
+We released our first version (`v0.1.0`) earlier this year.
+
+`worrms` is used in `taxize` to get WoRMS data.
+
+### Example
+
+A quick example of the power of `worrms`
+
+```{r eval = FALSE}
+install.packages("worrms")
+```
+
+```{r}
+library("worrms")
+```
+
+Get taxonomic name synonyms for salmon ( _Oncorhynchus_ )
+
+```{r}
+xx <- wm_records_name("Oncorhynchus", fuzzy = FALSE)
+wm_synonyms(id = xx$AphiaID)
+```
+
+
+## pegax
+
+<span class="label label-default">cran</span> <a href="https://github.com/ropenscilabs/pegax"><span class="label label-info">github</span></a>
+
+`pegax` aims to be a powerful taxonomic name parser for R. This package started at [#runconf17](http://unconf17.ropensci.org/) - was made possible because the talented [Oliver Keyes](https://github.com/Ironholds/) created a [Parsing Expression Grammar](https://en.wikipedia.org/wiki/Parsing_expression_grammar) package for R: [piton](https://github.com/Ironholds/piton)
+
+From `piton` PEGs are: 
+
+> a way of defining formal grammars for formatted data that allow you to identify matched structures and then take actions on them
+
+Some great taxonomic name parsing does exist already. [Global Names Parser, gnparser](https://github.com/GlobalNamesArchitecture/gnparser) is a great effort by [Dmitry Mozzherin](https://github.com/dimus) and others. The only problem is Java does not play nice with R - thus `pegax`, implementing in C++. We'll definitely try to learn alot from the work they have done on `gnparser`. 
+
+`pegax` is not on CRAN yet.  The package is in very very early days, so expect lots of changes.
+
+### Example
+
+A quick example of the power of `pegax`
+
+```{r eval = FALSE}
+devtools::install_github("ropenscilabs/pegax")
+```
+
+```{r}
+library("pegax")
+```
+
+Parse out authority name
+
+```{r}
+authority_names("Linnaeus, 1758")
+```
+
+Parse out authority year
+
+```{r}
+authority_years("Linnaeus, 1758")
+```
+
+-------
+
+## Feedback
+
+What do you think about the taxonomic suite of packages?  Anything we're missing? Anything we can be doing better with any of the packages?  Are you working on a taxonomic R package? Consider [submitting to rOpenSci](https://github.com/ropensci/onboarding).
