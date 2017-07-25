@@ -18,7 +18,7 @@ tags:
 
 ## What is Taxonomy?
 
-Taxonomy in its most general sense is [the practice and science of classification](https://en.wikipedia.org/wiki/Taxonomy_(general)). It can refer to many things. You may have heard or used the word _taxonomy_ used to indicate any sort of classification of things, whether it be companies or widgets. Here, we're talking about [biological taxonomy](https://en.wikipedia.org/wiki/Taxonomy_(biology)), the science of defining and naming groups of biological organisms. 
+Taxonomy in its most general sense is [the practice and science of classification](https://en.wikipedia.org/wiki/Taxonomy_(general)). It can refer to many things. You may have heard or used the word _taxonomy_ used to indicate any sort of classification of things, whether it be companies or widgets. Here, we're talking about [biological taxonomy](https://en.wikipedia.org/wiki/Taxonomy_(biology)), the science of defining and naming groups of biological organisms.
 
 In case you aren't familiar with the terminology, here's a brief intro.
 
@@ -35,7 +35,7 @@ Taxonomic names are not only ubiquitous but are incredibly important to get righ
 
 ## Why R for taxonomic names?
 
-R is widely used in academia, and particuarly widely used in biology within academia. At least in my graduate school experience ('06 - '12), most graduate students used R - despite their bosses often using other things, not to be named. 
+R is widely used in academia, and particuarly widely used in biology within academia. At least in my graduate school experience ('06 - '12), most graduate students used R - despite their bosses often using other things, not to be named.
 
 Given that R is widely used among biologists that have to deal with taxonomic names, it makes a lot of sense to build taxonomic tools in R.
 
@@ -130,7 +130,7 @@ head(rbind(clazz))
 
 `taxizedb` is a relatively new package. We just released a new version (`v0.1.4`) about one month ago, with fixes for the new `dplyr` version.
 
-The sole purpose of `taxizedb` is to solve the use case where a user has a lot of taxonomic names, and thus using `taxize` is too slow. Although `taxize` is a powerful tool, for all data requests it's making another request to get data from the web, and the speed of that transaction can vary from very fast to very slow, depending on three factors: data provider speed (including many things), your internet speed, and how much data you requested. `taxizedb` gets around this problem by using a local SQL database of the same stuff the data providers have, so you can get things done much faster. 
+The sole purpose of `taxizedb` is to solve the use case where a user has a lot of taxonomic names, and thus using `taxize` is too slow. Although `taxize` is a powerful tool, for all data requests it's making another request to get data from the web, and the speed of that transaction can vary from very fast to very slow, depending on three factors: data provider speed (including many things), your internet speed, and how much data you requested. `taxizedb` gets around this problem by using a local SQL database of the same stuff the data providers have, so you can get things done much faster.
 
 The trad-off with `taxizedb` is that the interface is quite different from `taxize`.  So there is a learning curve. There are two options in `taxizedb`: you can use SQL syntax, or `dplyr` commands. Clearly more and more people know the latter, but the former I imagine not so many.
 
@@ -207,13 +207,15 @@ tbl(src, sql("select * from taxonomic_units limit 10"))
 
 <a href="https://cran.rstudio.com/web/packages/taxa/"><span class="label label-warning">cran</span></a> <a href="https://github.com/ropensci/taxa"><span class="label label-info">github</span></a>
 
-`taxa` is our newest entry (hit CRAN just a few weeks ago) into the taxonomic R package space. It defines taxonomic classes for R, and basic, but powerful manipulations on those classes. 
+`taxa` is our newest entry (hit CRAN just a few weeks ago) into the taxonomic R package space. It defines taxonomic classes for R, and basic, but powerful manipulations on those classes.
 
-It defines two broad types of classes: those with just taxonomic names data, and those with taxonomic names data plus other data (such as traits, environmental data, etc.) - so called `taxmap` classes. 
+It defines two broad types of classes: those with just taxonomic names data, and those with taxonomic names data plus other data (such as traits, environmental data, etc.) - so called `taxmap` classes.
 
 With these taxonomic classes, you can do various operations on them. With the taxonomic classes, you can filter out or keep taxa based on various criteria, and with the `taxmap` classes when you filter on taxa, the associated data is filtered the same way so taxa and data are in sync.
 
 A manuscript about `taxa` is being prepared at the moment - so look out for that.
+
+Most of the hard work in `taxa` has been done by my co-maintainer [Zachary Foster](https://github.com/zachary-foster)!
 
 ### Example
 
@@ -235,9 +237,9 @@ An example `Hierarchy` data object that comes with the package:
 ```r
 ex_hierarchy1
 #> <Hierarchy>
-#>   no. taxon's:  3 
-#>   Poaceae / family / 4479 
-#>   Poa / genus / 4544 
+#>   no. taxon's:  3
+#>   Poaceae / family / 4479
+#>   Poa / genus / 4544
 #>   Poa annua / species / 93036
 ```
 
@@ -247,7 +249,7 @@ We can remove taxa like the following, combining criteria targeting ranks, taxon
 ```r
 ex_hierarchy1 %>% pop(ranks("family"), ids(4544))
 #> <Hierarchy>
-#>   no. taxon's:  1 
+#>   no. taxon's:  1
 #>   Poa annua / species / 93036
 ```
 
@@ -302,7 +304,7 @@ filter_taxa(ex_taxmap, startsWith(taxon_names, "t"))
 
 <a href="https://cran.rstudio.com/web/packages/wikitaxa/"><span class="label label-warning">cran</span></a> <a href="https://github.com/ropensci/wikitaxa"><span class="label label-info">github</span></a>
 
-`wikitaxa` is a client that allows you to get taxonomic data from four different Wiki-* sites: 
+`wikitaxa` is a client that allows you to get taxonomic data from four different Wiki-* sites:
 
 * Wikipedia
 * Wikispecies
@@ -520,11 +522,11 @@ wm_synonyms(id = xx$AphiaID)
 
 `pegax` aims to be a powerful taxonomic name parser for R. This package started at [#runconf17](http://unconf17.ropensci.org/) - was made possible because the talented [Oliver Keyes](https://github.com/Ironholds/) created a [Parsing Expression Grammar](https://en.wikipedia.org/wiki/Parsing_expression_grammar) package for R: [piton](https://github.com/Ironholds/piton)
 
-From `piton` PEGs are: 
+From `piton` PEGs are:
 
 > a way of defining formal grammars for formatted data that allow you to identify matched structures and then take actions on them
 
-Some great taxonomic name parsing does exist already. [Global Names Parser, gnparser](https://github.com/GlobalNamesArchitecture/gnparser) is a great effort by [Dmitry Mozzherin](https://github.com/dimus) and others. The only problem is Java does not play nice with R - thus `pegax`, implementing in C++. We'll definitely try to learn alot from the work they have done on `gnparser`. 
+Some great taxonomic name parsing does exist already. [Global Names Parser, gnparser](https://github.com/GlobalNamesArchitecture/gnparser) is a great effort by [Dmitry Mozzherin](https://github.com/dimus) and others. The only problem is Java does not play nice with R - thus `pegax`, implementing in C++. We'll definitely try to learn alot from the work they have done on `gnparser`.
 
 `pegax` is not on CRAN yet.  The package is in very very early days, so expect lots of changes.
 
