@@ -22,10 +22,11 @@ Taxonomy in its most general sense is [the practice and science of classificatio
 
 In case you aren't familiar with the terminology, here's a brief intro.
 
-* `species` - the term you are likely most familiar with, usually a group of individuals in which any 2 individuals can produce fertile offspring (definitions can vary)
-* `taxon` - a species, e.g., _Homo sapiens_
-* `taxa` - a grouping of species (plural of `taxon`)
-* `taxonomic hierarchy` (or `taxonomic classification`) - all the higher level taxonomic names for a taxon
+* `species` - the term you are likely most familiar with, usually defined as a group of individuals in which any 2 individuals can produce fertile offspring, although definitions can vary.
+* `genus`/`family`/`order`/`class`/`phylum`/`kingdom` -  These are nested groupings of similar species. `genus` (e.g. _Homo_) is  restrictive grouping and `kingdom` (e.g. _Animalia_) is a much more inclusive grouping. There are genera in families, families in orders, etc.
+* `taxon` - a species or grouping of species. e.g. _Homo sapiens_, _Primates_, and _Animalia_ are all taxa.
+* `taxa` - the plural of `taxon`.
+* `taxonomic hierarchy` or `taxonomic classification` - the list of groups a species (or other taxon) belongs to. For example the taxonomic classification of humans is: `Animalia;Chordata;Mammalia;Primates;Hominidae;Homo;sapiens`
 
 ## Ubiquity and Importance of Taxonomic Names
 
@@ -35,7 +36,7 @@ Taxonomic names are not only ubiquitous but are incredibly important to get righ
 
 ## Why R for taxonomic names?
 
-R is widely used in academia, and particuarly widely used in biology within academia. At least in my graduate school experience ('06 - '12), most graduate students used R - despite their bosses often using other things, not to be named.
+R is widely used in academia, and particularly widely used in biology within academia. At least in my graduate school experience ('06 - '12), most graduate students used R - despite their bosses often using other things, not to be named.
 
 Given that R is widely used among biologists that have to deal with taxonomic names, it makes a lot of sense to build taxonomic tools in R.
 
@@ -45,7 +46,7 @@ We have an ever-growing suite of taxonomy packages.
 
 * `taxize` - taxonomic data from many sources
 * `taxizedb` - work with taxonomic SQL databases locally
-* `taxa` - taxonomic classes for R
+* `taxa` - taxonomic classes and manipulation functions
 * `binomen` - (getting folded into `taxa`, will be archived on CRAN soon)
 * `wikitaxa` - taxonomic data from Wikipedia/Wikidata/Wikispecies
 * `ritis` - get ITIS (Integrated Taxonomic Information Service) taxonomic data
@@ -130,7 +131,7 @@ head(rbind(clazz))
 
 `taxizedb` is a relatively new package. We just released a new version (`v0.1.4`) about one month ago, with fixes for the new `dplyr` version.
 
-The sole purpose of `taxizedb` is to solve the use case where a user has a lot of taxonomic names, and thus using `taxize` is too slow. Although `taxize` is a powerful tool, for all data requests it's making another request to get data from the web, and the speed of that transaction can vary from very fast to very slow, depending on three factors: data provider speed (including many things), your internet speed, and how much data you requested. `taxizedb` gets around this problem by using a local SQL database of the same stuff the data providers have, so you can get things done much faster.
+The sole purpose of `taxizedb` is to solve the use case where a user has a lot of taxonomic names, and thus using `taxize` is too slow. Although `taxize` is a powerful tool, every request is a transaction over the internet, and the speed of that transaction can vary from very fast to very slow, depending on three factors: data provider speed (including many things), your internet speed, and how much data you requested. `taxizedb` gets around this problem by using a local SQL database of the same stuff the data providers have, so you can get things done much faster.
 
 The trad-off with `taxizedb` is that the interface is quite different from `taxize`.  So there is a learning curve. There are two options in `taxizedb`: you can use SQL syntax, or `dplyr` commands. Clearly more and more people know the latter, but the former I imagine not so many.
 
@@ -209,9 +210,9 @@ tbl(src, sql("select * from taxonomic_units limit 10"))
 
 `taxa` is our newest entry (hit CRAN just a few weeks ago) into the taxonomic R package space. It defines taxonomic classes for R, and basic, but powerful manipulations on those classes.
 
-It defines two broad types of classes: those with just taxonomic names data, and those with taxonomic names data plus other data (such as traits, environmental data, etc.) - so called `taxmap` classes.
+It defines two broad types of classes: those with just taxonomic data, and a class with taxonomic data plus other associated data (such as traits, environmental data, etc.) called `taxmap`.
 
-With these taxonomic classes, you can do various operations on them. With the taxonomic classes, you can filter out or keep taxa based on various criteria, and with the `taxmap` classes when you filter on taxa, the associated data is filtered the same way so taxa and data are in sync.
+The `taxa` package includes function to do various operations with these taxonomic classes. With the taxonomic classes, you can filter out or keep taxa based on various criteria. In the case of the `taxmap` class, when you filter on taxa, the associated data is filtered the same way so taxa and data are in sync.
 
 A manuscript about `taxa` is being prepared at the moment - so look out for that.
 
@@ -237,9 +238,9 @@ An example `Hierarchy` data object that comes with the package:
 ```r
 ex_hierarchy1
 #> <Hierarchy>
-#>   no. taxon's:  3
-#>   Poaceae / family / 4479
-#>   Poa / genus / 4544
+#>   no. taxon's:  3 
+#>   Poaceae / family / 4479 
+#>   Poa / genus / 4544 
 #>   Poa annua / species / 93036
 ```
 
@@ -249,7 +250,7 @@ We can remove taxa like the following, combining criteria targeting ranks, taxon
 ```r
 ex_hierarchy1 %>% pop(ranks("family"), ids(4544))
 #> <Hierarchy>
-#>   no. taxon's:  1
+#>   no. taxon's:  1 
 #>   Poa annua / species / 93036
 ```
 
@@ -311,7 +312,7 @@ filter_taxa(ex_taxmap, startsWith(taxon_names, "t"))
 * Wikidata
 * Wikicommons
 
-The only site of the four above that's only taxonomy is Wikispecies - for the others you could use `wikitaxa` to do any searches, but we look for and parse out taxonomic specific items in the wiki objects that are returned.
+Only Wikispecies is focused on taxonomy - for the others you could use `wikitaxa` to do any searches, but we look for and parse out taxonomic specific items in the wiki objects that are returned.
 
 We released a new version (`v0.1.4`) earlier this year. Big thanks to [Ethan Welty](https://github.com/ezwelty) for help on this package.
 
