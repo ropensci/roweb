@@ -11,6 +11,16 @@ topicid: xxx
 tags:
 - R
 - taxonomy
+- software
+- packages
+- taxize
+- taxa
+- taxizedb
+- wikitaxa
+- binomen
+- ritis
+- worrms
+- pegax
 ---
 
 
@@ -36,18 +46,25 @@ Taxonomic names are not only ubiquitous but are incredibly important to get righ
 
 ## Why R for taxonomic names?
 
-R is widely used in academia, and particularly widely used in biology within academia. At least in my graduate school experience ('06 - '12), most graduate students used R - despite their bosses often using other things, not to be named.
+R is gaining in popularity in general ([TIOBE index][tiobe], [Muenchen 2017][muenchen]), and in [academia][nature]. At least in my graduate school experience ('06 - '12), most graduate students used R - despite their bosses often using other things.
 
 Given that R is widely used among biologists that have to deal with taxonomic names, it makes a lot of sense to build taxonomic tools in R.
 
 ## rOpenSci Taxonomy Suite
 
-We have an ever-growing suite of taxonomy packages.
+We have an ever-growing suite of packages that enable users to:
+
+* Search for taxonomic names
+* Correct taxonomic names
+* Embed their taxonomic names in R classes that enable powerful downstream manipulations
+* Leverage dozens of taxonomic data sources
+
+The packgages:
 
 * `taxize` - taxonomic data from many sources
 * `taxizedb` - work with taxonomic SQL databases locally
 * `taxa` - taxonomic classes and manipulation functions
-* `binomen` - (getting folded into `taxa`, will be archived on CRAN soon)
+* `binomen` - taxonomic name classes and parsing methods (getting folded into `taxa`, will be archived on CRAN soon)
 * `wikitaxa` - taxonomic data from Wikipedia/Wikidata/Wikispecies
 * `ritis` - get ITIS (Integrated Taxonomic Information Service) taxonomic data
 * `worrms` - get WORMS (World Register of Marine Species) taxonomic data
@@ -133,7 +150,7 @@ head(rbind(clazz))
 
 The sole purpose of `taxizedb` is to solve the use case where a user has a lot of taxonomic names, and thus using `taxize` is too slow. Although `taxize` is a powerful tool, every request is a transaction over the internet, and the speed of that transaction can vary from very fast to very slow, depending on three factors: data provider speed (including many things), your internet speed, and how much data you requested. `taxizedb` gets around this problem by using a local SQL database of the same stuff the data providers have, so you can get things done much faster.
 
-The trad-off with `taxizedb` is that the interface is quite different from `taxize`.  So there is a learning curve. There are two options in `taxizedb`: you can use SQL syntax, or `dplyr` commands. Clearly more and more people know the latter, but the former I imagine not so many.
+The trade-off with `taxizedb` is that the interface is quite different from `taxize`.  So there is a learning curve. There are two options in `taxizedb`: you can use SQL syntax, or `dplyr` commands. I'm guessing people are more familiar with the latter.
 
 ### Example
 
@@ -212,7 +229,7 @@ tbl(src, sql("select * from taxonomic_units limit 10"))
 
 It defines two broad types of classes: those with just taxonomic data, and a class with taxonomic data plus other associated data (such as traits, environmental data, etc.) called `taxmap`.
 
-The `taxa` package includes function to do various operations with these taxonomic classes. With the taxonomic classes, you can filter out or keep taxa based on various criteria. In the case of the `taxmap` class, when you filter on taxa, the associated data is filtered the same way so taxa and data are in sync.
+The `taxa` package includes functions to do various operations with these taxonomic classes. With the taxonomic classes, you can filter out or keep taxa based on various criteria. In the case of the `taxmap` class, when you filter on taxa, the associated data is filtered the same way so taxa and data are in sync.
 
 A manuscript about `taxa` is being prepared at the moment - so look out for that.
 
@@ -563,6 +580,19 @@ authority_years("Linnaeus, 1758")
 
 -------
 
-## Feedback
+## Conclusion
+
+Together, the rOpenSci taxonomy suite of packages make it much easier to work with taxonomy data in R. We hope you agree :)
+
+Despite all of the above, we still have some things to work on:
+
+* Use `taxa` taxonomy classes where appropriate. We plan to deploy `taxa` classes inside of the `taxize` package very soon, but they may be appropriate elsewhere as well. Using the same classes in many packages will make working with taxonomic data more consistent across packages.
+* `taxizedb` needs to be more robust. Given that the package not only touches your file system, and for some databases depends on different SQL databases, we likely will run into many problems with various operating system + database combinations. Please do kick the tires and get back to us! 
+* Once `pegax` is ready for use, we'll be able to use it in many packages whenever we need to parse taxonomic names.
+* They'll always be more data sources that we can potentially add to `taxize` - get in touch and let us know.
 
 What do you think about the taxonomic suite of packages?  Anything we're missing? Anything we can be doing better with any of the packages?  Are you working on a taxonomic R package? Consider [submitting to rOpenSci](https://github.com/ropensci/onboarding).
+
+[tiobe]: https://www.tiobe.com/tiobe-index//
+[nature]: http://www.nature.com/news/programming-tools-adventures-with-r-1.16609
+[muenchen]: http://r4stats.com/articles/popularity/
