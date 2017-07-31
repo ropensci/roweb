@@ -60,5 +60,5 @@ To apply, please submit a 3-page proposal that describes your goals, expected ou
 
 Questions about the fellowship are welcome at fellowships@ropensci.org
 
-Expect a FAQ page shortly as we receive questions.
+Please check out the <a href="https://ropensci.org/fellowship-faq.html">FAQ page</a> for any questions that have already been answered.
 
