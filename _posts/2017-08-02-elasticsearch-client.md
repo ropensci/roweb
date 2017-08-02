@@ -1,7 +1,7 @@
 ---
 name: elasticsearch-client
 layout: post_discourse
-title: elastic - elasticsearch for R
+title: elastic - Elasticsearch for R
 date: 2017-08-02
 authors:
   - name: Scott Chamberlain
