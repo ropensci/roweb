@@ -41,7 +41,7 @@ We chose R because everything else in our project, well data processing, documen
 
 # Features of `rtimicropem`: transform, explore and learn about data cleaning
 
-First things first, our package lives [here](https://github.com/ropensci/rtimicropem) and we plan a CRAN submission very soon. It has a [nice documentation website](http://ropensci.github.io/rtimicropem/) thanks to [`pkgdown`](https://github.com/hadley/pkgdown).
+First things first, our package lives [here](https://github.com/ropensci/rtimicropem) andis [on CRAN](https://cran.r-project.org/web/packages/rtimicropem/index.html). It has a [nice documentation website](http://ropensci.github.io/rtimicropem/) thanks to [`pkgdown`](https://github.com/hadley/pkgdown).
 
 ## Transform and explore single files
 
