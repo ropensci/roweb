@@ -1,15 +1,15 @@
 ---
-name: ropenaq
+name: rtimicropem
 layout: post
 title: rtimicropem: Using an *R* package as platform for harmonized cleaning of data from RTI MicroPEM air quality sensors
 date: 2017-07-19
 authors:
-  - name: Maëlle Salmon
+  - name: MaÃ«lle Salmon
     url: http://www.masalmon.eu/
 categories:
   - blog
 tags:
-- r
+- R
 - community
 - software
 - review
