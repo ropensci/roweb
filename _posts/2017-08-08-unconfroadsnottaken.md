@@ -3,9 +3,9 @@ name: unconfroadsnottaken
 authors:
 - name: Noam Ross
   url: https://twitter.com/noamross
-categories: 
+categories:
 - blog
-topicid: 
+topicid: 814
 date: '2017-08-08'
 layout: post_discourse
 tags:
@@ -30,7 +30,7 @@ This year wasn't just our biggest unconf ever, it was the biggest in terms of pr
 ### Development tools
 
 -   There were lots of ideas of how to extend package testing and test coverage, such as measuring [how much of package code is documented] in examples and vignettes, and unit testing for and test coverage [for imported functions], to make sure package dependencies are behaving as expected. Also, improving frameworks for [performance testing], so as to measure performance improvement or regression as an R package develops.
--   Documentation and discoverability are always close to our hearts, so it is no surprise we had proposals to [promote more linkages in package metadata], [more package-level man pages], [richer HTML help pages], and of course, [badges]!    
+-   Documentation and discoverability are always close to our hearts, so it is no surprise we had proposals to [promote more linkages in package metadata], [more package-level man pages], [richer HTML help pages], and of course, [badges]!
 -   The RStudio crowd has some ideas to [make autocompletion extensible]
 -   A tool for [reminding people about deadlines].
 
@@ -57,8 +57,10 @@ This year wasn't just our biggest unconf ever, it was the biggest in terms of pr
 -   What's the right [blend] of vignettes, R markdown templates, and parameterized reports for getting new learners up and running?
 -   One of the things we hope to do more of is enable scientists to publish and get credit for their software and data. How about [automating software citation], or packages for auto-submission to [software] or [data] journals?
 
+<br><br>
+
 ## It's Your Turn
-Interested in pursuing one of these ideas? Pick up on the discussion in the project's [GitHub repo] and the friendly people there will welcome your contributions!  
+Interested in pursuing one of these ideas? Pick up on the discussion in the project's [GitHub repo] and the friendly people there will welcome your contributions!
 
   [many projects]: https://ropensci.org/blog/blog/2017/06/08/unconf_recap_4
   [rOpenSci Unconf]: https://ropensci.org/blog/blog/2017/06/02/unconf2017
