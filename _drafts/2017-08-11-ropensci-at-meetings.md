@@ -48,6 +48,12 @@ Where's rOpenSci?
 	<td><a href="https://earlconf.com/london/">EARL Conference</a>; <a href="https://www.meetup.com/rladies-london/">R-Ladies London</a></td>
 </tr>
 <tr>
+	<td>Sep 19-20, 2017</td>
+	<td>Jenny Bryan</td>
+	<td>San Francisco, CA</td>
+	<td><a href="https://www.rstudio.com/workshops/extending-the-tidyverse/">Extending the tidyverse</a></td>
+</tr>
+<tr>
 	<td>Oct 1-4, 2017</td>
 	<td>Scott Chamberlain</td>
 	<td>Ottawa, CA</td>
@@ -60,6 +66,12 @@ Where's rOpenSci?
 	<td><a href="https://www.numfocus.org/">NumFOCUS Summit</a></td>
 </tr>
 <tr>
+	<td>Oct 19-21, 2017</td>
+	<td>Jenny Bryan</td>
+	<td>La Jolla, CA</td>
+	<td><a href="https://ww2.amstat.org/meetings/wsds/2017/">Women in Statistics and Data Science Conference</a></td>
+</tr>
+<tr>
 	<td>Oct 26-27, 2017</td>
 	<td>TBD</td>
 	<td>Melbourne, AU</td>
@@ -68,7 +80,7 @@ Where's rOpenSci?
 <tr>
 	<td>Nov 7-10, 2017</td>
 	<td>Scott Chamberlain</td>
-	<td>City?, NC</td>
+	<td>Durham, NC</td>
 	<td><a href="http://phenoscape.org/">Phenoscape Hackathon</a></td>
 </tr>
 <tr>
