@@ -42,6 +42,12 @@ Where's rOpenSci?
 	<td><a href="https://webcast.stsci.edu/webcast/detail.xhtml;jsessionid=26CCC422B4D65C9671F8FE1ED3D55423?talkid=5823&parent=1">Space Telescope Science Institute Engineering Colloquium</a></td>
 </tr>
 <tr>
+	<td>Sep 12-14, 2017</td>
+	<td>Jenny Bryan</td>
+	<td>London, UK</td>
+	<td><a href="https://earlconf.com/london/">EARL Conference</a>; <a href="https://www.meetup.com/rladies-london/">R-Ladies London</a></td>
+</tr>
+<tr>
 	<td>Oct 1-4, 2017</td>
 	<td>Scott Chamberlain</td>
 	<td>Ottawa, CA</td>
