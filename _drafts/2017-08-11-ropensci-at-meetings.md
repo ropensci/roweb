@@ -90,6 +90,12 @@ Where's rOpenSci?
 	<td><a href="https://www.aaas.org/cefp/meet-our-fellows">AAAS Community Engagement Fellows meeting</a></td>
 </tr>
 <tr>
+	<td>Dec 10-14, 2017</td>
+	<td>Jenny Bryan</td>
+	<td>Auckland, NZ</td>
+	<td><a href="http://www.stats.org.nz/events-archive/2017-nzsa-conference">IASC-ARS/NZSA Conference</a></td>
+</tr>
+<tr>
 	<td>Dec 11, 2017</td>
 	<td><a href="https://ropensci.org/blog/blog/2016/12/12/ropensci-fellowship-zoon">Nick Golding</a></td>
 	<td>Ghent, BE</td>
