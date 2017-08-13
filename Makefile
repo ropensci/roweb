@@ -3,6 +3,6 @@ deploy:
 
 serve:
 	rm -Rf _site
-	bundle exec jekyll serve --watch --incremental
+	bundle exec jekyll serve --watch --incremental --future
 
 
