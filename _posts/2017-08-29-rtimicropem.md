@@ -2,7 +2,7 @@
 name: rtimicropem
 layout: post
 title: rtimicropem: Using an *R* package as platform for harmonized cleaning of data from RTI MicroPEM air quality sensors
-date: 2017-07-19
+date: 2017-08-29
 authors:
   - name: Maëlle Salmon
     url: http://www.masalmon.eu/
@@ -21,11 +21,11 @@ As you might remember from [my blog post about `ropenaq`](https://ropensci.org/b
 
 # Why write the `rtimicropem` package?
 
-![](/assets/blog-images/2017-07-19-rtimicropem/Allequipment_Frontview_cropped.jpg)
+![](/assets/blog-images/2017-08-29-rtimicropem/Allequipment_Frontview_cropped.jpg)
 
 Part of the CHAI project is a panel study involving about 40 people wearing several devices, as you see above. The devices include a GPS, an accelerometer, a wearable camera, and a PM2.5 monitor outputting time-resolved data (the grey box on the left). Basically, with this device, the RTI MicroPEM, we get one PM2.5 exposure value every 10 seconds. This is quite exciting, right? Except that we have two main issues with it...
 
-![](/assets/blog-images/2017-07-19-rtimicropem/screenshot_output2.png)
+![](/assets/blog-images/2017-08-29-rtimicropem/screenshot_output2.png)
 
 First of all, the output of the device, a file with a ".csv" extension corresponding to a session of measurements, in our case 24 hours of measurements, is not really a csv. The header contains information about settings of the device for that session, and then comes the actual table with measurements.
 
@@ -47,7 +47,7 @@ First things first, our package lives [here](https://github.com/ropensci/rtimicr
 
 In `rtimicropem` after the use of the `convert_output` function, one gets an object of the R6 class `micropem` class. Its fields include the settings and measurements as two `data.frames`, and it has methods such as `summary` and `plot` for which you see the static output below (no unit on this exploratory plot).
 
-![](/assets/blog-images/2017-07-19-rtimicropem/plotexample.png)
+![](/assets/blog-images/2017-08-29-rtimicropem/plotexample.png)
 
 The plot method can also outputs an interactive graph thanks to [`rbokeh`](http://hafen.github.io/rbokeh/).
 
