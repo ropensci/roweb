@@ -1,7 +1,7 @@
 ---
 name: rtimicropem
 layout: post
-title: rtimicropem: Using an *R* package as platform for harmonized cleaning of data from RTI MicroPEM air quality sensors
+title: "rtimicropem: Using an *R* package as platform for harmonized cleaning of data from RTI MicroPEM air quality sensors"
 date: 2017-08-29
 authors:
   - name: Maëlle Salmon
