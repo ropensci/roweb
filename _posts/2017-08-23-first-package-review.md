@@ -14,6 +14,8 @@ tags:
 - package
 ---
 
+Contributing to an open-source community _without_ contributing code is an oft-vaunted idea that can seem nebulous. Luckily, putting vague ideas into action is one of the strengths of the [rOpenSci Community](https://ropensci.org/community/), and their package onboarding system offers a chance to do just that.
+
 This was my first time reviewing a package, and, as with so many things in life, I went into it worried that I'd somehow ruin the package-reviewing process— not just the package itself, but the actual onboarding infrastructure...maybe even rOpenSci on the whole.
 
 Barring the destruction of someone else's hard work and/or an entire organization, I was fairly confident that I'd have little to offer in the way of useful advice. _What if I have absolutely nothing to say other than, yes, this is, in fact, a package?!_
