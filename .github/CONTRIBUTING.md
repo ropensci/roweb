@@ -6,8 +6,8 @@ To submit any changes to the [rOpenSci website](http://ropensci.org), please for
 If we've asked for an invited blog post, write your post as `.md` or if it contains R examples as `.Rmd` and render the file to the [`_posts`](https://github.com/ropensci/roweb/tree/master/_posts) folder.
 
 Then add appropriate `yml` to your post, including `authorurl` if you are not a core member of the rOpenSci team.
-- [example 1](https://github.com/ropensci/roweb/blob/master/_posts/2014-06-09-reproducibility.md)
--  [example 2](https://github.com/ropensci/roweb/blob/master/_posts/2014-08-15-open-tree-of-life-hackathon.md)
+- [example 1](https://github.com/ropensci/roweb/blob/master/_posts/2017-08-15-magick-10.md)
+-  [example 2](https://github.com/ropensci/roweb/blob/master/_posts/2017-06-23-community.md)
 
 Your `yml` should include the following information (the date format can be
 generated in r `format(Sys.time(), "%Y-%m-%d")`):
