@@ -61,7 +61,7 @@ There are two primary reasons for this:
 
 Combined, these two things make patents a prime target for data
 analysis. However, until recently it was hard to get at the data inside
-these documents. One had to either collect it manually using USPTOâ€™s
+these documents. One had to either collect it manually using USPTO’s
 search engine, or figure out a way to download, parse, and model huge
 XML data dumps. Enter PatentsView.
 
@@ -402,7 +402,7 @@ I'd like to thank the package's two reviewers, [Paul
 Oldham](https://github.com/poldham) and [Verena
 Haunschmid](https://github.com/expectopatronum), for taking the time to
 review the package and providing helpful feedback. I'd also like to
-thank [MaÃ«lle Salmon](https://github.com/maelle) for shepherding the
+thank [Maëlle Salmon](https://github.com/maelle) for shepherding the
 package along the rOpenSci review process, as well [Scott
 Chamberlain](https://github.com/sckott) and [Stefanie
 Butland](https://github.com/stefaniebutland) for their miscellaneous
