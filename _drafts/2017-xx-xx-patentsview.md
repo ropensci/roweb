@@ -1,4 +1,5 @@
-### Why care about patents?
+Why care about patents?
+-----------------------
 
 **1. Patents play a critical role in incentivizing innovation, without
 which we wouldn't have much of the technology we rely on everyday**
