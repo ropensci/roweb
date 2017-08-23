@@ -1,3 +1,21 @@
+---
+title: "Accessing patent data with the patentsview package"
+name: patentsview
+author:
+  - name: Chris Baker
+    url: http://github.com/crew102
+date: '2017-08-20'
+layout: post
+tags:
+  - R
+  - Patents
+  - PatentsView
+  - Package
+  - API
+  - USPTO
+categories: blog
+---
+
 Why care about patents?
 -----------------------
 
