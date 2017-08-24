@@ -5,6 +5,7 @@ title: FedData - Getting assorted geospatial data into R
 date: 2017-08-24
 authors:
   - name: Kyle Bocinsky
+    url: https://github.com/bocinsky
 categories:
   - technotes
 tags:
