@@ -1,6 +1,6 @@
 ---
 name: FedData-release
-layout: post
+layout: post_discourse
 title: FedData - Getting assorted geospatial data into R
 date: 2017-08-24
 authors:
@@ -20,7 +20,7 @@ tags:
   - FedData
 ---
 
-The package [FedData](https://github.com/ropensci/FedData) is now part of [rOpenSci](https://ropensci.org/). FedData includes functions to automate downloading geospatial data available from several federated data sources (mainly sources maintained by the US Federal government).
+The package [`FedData`](https://github.com/ropensci/FedData) has gone through software review and is now part of [rOpenSci](https://ropensci.org/). `FedData` includes functions to automate downloading geospatial data available from several federated data sources (mainly sources maintained by the US Federal government).
 
 Currently, the package enables extraction from six datasets:
 
@@ -31,23 +31,23 @@ Currently, the package enables extraction from six datasets:
 -   The [Daymet](https://daymet.ornl.gov/) gridded estimates of daily weather parameters for North America, version 3, available from the Oak Ridge National Laboratory's Distributed Active Archive Center (DAAC), and
 -   The [International Tree Ring Data Bank (ITRDB)](http://www.ncdc.noaa.gov/data-access/paleoclimatology-data/datasets/tree-ring), coordinated by National Climatic Data Center at NOAA.
 
-FedData is designed with the large-scale geographic information system (GIS) use-case in mind: cases where the use of dynamic web-services is impractical due to the scale (spatial and/or temporal) of analysis. It functions primarily as a means of downloading tiled or otherwise spatially-defined datasets; additionally, it can preprocess those datasets by extracting data within an area of interest (AoI), defined spatially. It relies heavily on the [**sp**](https://cran.r-project.org/package=sp), [**raster**](https://cran.r-project.org/package=raster), and [**rgdal**](https://cran.r-project.org/package=rgdal) packages.
+`FedData` is designed with the large-scale geographic information system (GIS) use-case in mind: cases where the use of dynamic web-services is impractical due to the scale (spatial and/or temporal) of analysis. It functions primarily as a means of downloading tiled or otherwise spatially-defined datasets; additionally, it can preprocess those datasets by extracting data within an area of interest (AoI), defined spatially. It relies heavily on the [`sp`](https://cran.r-project.org/package=sp), [`raster`](https://cran.r-project.org/package=raster), and [`rgdal`](https://cran.r-project.org/package=rgdal) packages.
 
 Acknowledgements
 ----------------
 
-FedData is a product of SKOPE ([Synthesizing Knowledge of Past Environments](http://www.openskope.org)) and the [Village Ecodynamics Project](http://veparchaeology.org/).
+`FedData` is a product of SKOPE ([Synthesizing Knowledge of Past Environments](http://www.openskope.org)) and the [Village Ecodynamics Project](http://veparchaeology.org/).
 
-FedData was reviewed for [rOpenSci](https://ropensci.org) by [@jooolia](https://github.com/jooolia), and was greatly improved as a result. [rOpenSci](https://ropensci.org) onboarding was coordinated by [@sckott](https://github.com/sckott).
+`FedData` was reviewed for [rOpenSci](https://ropensci.org) by [@jooolia](https://github.com/jooolia), with [@sckott](https://github.com/sckott) as onboarding editor, and was greatly improved as a result.
 
 TODO
 ----
 
-**The current CRAN version of FedData, v2.4.6, will (hopefully) be the final CRAN release of FedData 2. FedData 3 will be released in the coming months, but some code built on FedData 2 will not be compatible with FedData 3.**
+**The current CRAN version of `FedData`, v2.4.6, will (hopefully) be the final CRAN release of `FedData` 2. `FedData` 3 will be released in the coming months, but some code built on `FedData` 2 will not be compatible with FedData 3.**
 
-FedData was initially developed prior to widespread use of modern web mapping services and RESTful APIs by many Federal data-holders. Future releases of FedData will limit data transfer by utilizing server-side geospatial and data queries. We will also implement of data grammars from [dplyr](https://github.com/hadley/dplyr), tidy data structures, piping throughout ([magrittr](https://github.com/tidyverse/magrittr)), functional programming using [purrr](https://github.com/hadley/purrr), simple features for spatial data from [sf](https://github.com/edzer/sfr), and local data storage in OGC-compliant data formats (probably geojson and netCDF). I am also aiming for 100% testing coverage!
+`FedData` was initially developed prior to widespread use of modern web mapping services and RESTful APIs by many Federal data-holders. Future releases of `FedData` will limit data transfer by utilizing server-side geospatial and data queries. We will also implement of data grammars from [`dplyr`](https://github.com/hadley/dplyr), tidy data structures, piping throughout ([`magrittr`](https://github.com/tidyverse/magrittr)), functional programming using [`purrr`](https://github.com/hadley/purrr), simple features for spatial data from [`sf`](https://github.com/edzer/sfr), and local data storage in OGC-compliant data formats (probably geojson and netCDF). I am also aiming for 100% testing coverage!
 
-All that being said, much of the functionality of the FedData package could be spun off into more domain-specific packages. For example, ITRDB download functions could be part of the [dplR](https://r-forge.r-project.org/projects/dplr/) dendrochronology package; concepts/functions having to do with the GHCN data integrated into [rnoaa](https://github.com/ropensci/rnoaa); and Daymet concepts integrated into [daymetr](https://github.com/khufkens/daymetr). I welcome any and all suggestions about how to improve the utility of FedData; please [submit an issue](https://github.com/ropensci/FedData/issues).
+All that being said, much of the functionality of the `FedData` package could be spun off into more domain-specific packages. For example, ITRDB download functions could be part of the [`dplR`](https://r-forge.r-project.org/projects/dplr/) dendrochronology package; concepts/functions having to do with the GHCN data integrated into [`rnoaa`](https://github.com/ropensci/rnoaa); and Daymet concepts integrated into [`daymetr`](https://github.com/khufkens/daymetr). I welcome any and all suggestions about how to improve the utility of FedData; please [submit an issue](https://github.com/ropensci/FedData/issues).
 
 Examples
 --------
