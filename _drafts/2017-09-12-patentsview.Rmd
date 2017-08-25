@@ -35,9 +35,9 @@ knitr::opts_chunk$set(
 What does your iPhone, Google's PageRank algorithm, and a butter substitute called Smart Balance all have in common? 
 
 <span> <!-- These are open source images taken from: https://pixabay.com/ -->
-<img src="2017-xx-xx-patentsview-iphone.png" width="15%">
-<img src="2017-xx-xx-patentsview-google.jpg" width="25%">
-<img src="2017-xx-xx-patentsview-butter.png" width="25%">
+<img src="2017-09-12-patentsview-iphone.png" width="15%">
+<img src="2017-09-12-patentsview-google.jpg" width="25%">
+<img src="2017-09-12-patentsview-butter.png" width="25%">
 </span>
 
 ...They all probably wouldn't be here if not for patents. A patent provides its owner with the ability to make money off of something that they invented, without having to worry about someone else copying their technology. Think Apple would spend millions of dollars developing the iPhone if Samsung could just come along and [rip it off](http://www.reuters.com/article/us-apple-samsung-elec-appeal-idUSKCN1271LF)? Probably not. 

@@ -1,36 +1,17 @@
----
-title: "Accessing patent data with the patentsview package"
-name: patentsview
-author:
-  - name: Chris Baker
-    url: http://github.com/crew102
-date: '2017-08-20'
-layout: post
-tags:
-  - R
-  - Patents
-  - PatentsView
-  - Package
-  - API
-  - USPTO
-categories: blog
----
-
 Why care about patents?
 -----------------------
 
 **1. Patents play a critical role in incentivizing innovation, without
 which we wouldn't have much of the technology we rely on everyday**
 
-What does the your iPhone, Google's PageRank algorithm, and a butter
-substitute called [Smart Balance](https://www.smartbalance.com/) all
-have in common?
+What does your iPhone, Google's PageRank algorithm, and a butter
+substitute called Smart Balance all have in common?
 
 <span>
 <!-- These are open source images taken from: https://pixabay.com/ -->
-<img src="2017-xx-xx-patentsview-iphone.png" width="15%">
-<img src="2017-xx-xx-patentsview-google.jpg" width="25%">
-<img src="2017-xx-xx-patentsview-butter.png" width="25%"> </span>
+<img src="2017-09-12-patentsview-iphone.png" width="15%">
+<img src="2017-09-12-patentsview-google.jpg" width="25%">
+<img src="2017-09-12-patentsview-butter.png" width="25%"> </span>
 
 ...They all probably wouldn't be here if not for patents. A patent
 provides its owner with the ability to make money off of something that
@@ -47,36 +28,39 @@ There are two primary reasons for this:
 -   **Patent data is public**. In return for the exclusive right to
     profit off an invention, an individual/company has to publicly
     disclose the details of their invention to the rest of the world.
-    Those details come in the form of a patent's title, abstract,
-    technology classification, assigned organizations, etc.
+    [Examples of those
+    details](http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=11&f=G&l=50&co1=AND&d=PTXT&s1=dog&OS=dog&RS=dog)
+    include the patent's title, abstract, technology classification,
+    assigned organizations, etc.
 -   **Patent data can answer questions that people care about**.
     Companies (especially big ones like IBM and Google) have a vested
     interest in extracting insights from patents, and spend a lot of
     time/resources trying figure out how to best manage their
     intellectual property (IP) rights. They're plagued by questions like
-    "who should i sell my underperforming patents to," "which technology
-    areas are open to new innovations", "what's going to be the next big
+    "who should I sell my underperforming patents to," "which technology
+    areas are open to new innovations," "what's going to be the next big
     thing in the world of buttery spreads," etc. Patents offer a way to
     provide data-driven answers to these questions.
 
 Combined, these two things make patents a prime target for data
 analysis. However, until recently it was hard to get at the data inside
-these documents. One had to either collect it manually using USPTO’s
-search engine, or figure out a way to download, parse, and model huge
-XML data dumps. Enter PatentsView.
+these documents. One had to either collect it manually using the
+official [United States Patent and Trademark
+Office](https://en.wikipedia.org/wiki/United_States_Patent_and_Trademark_Office)
+(USPTO) [search
+engine](http://patft.uspto.gov/netahtml/PTO/search-adv.htm), or figure
+out a way to download, parse, and model huge XML data dumps. Enter
+PatentsView.
 
-PatentsView and `patentsview`
------------------------------
+PatentsView and the `patentsview` package
+-----------------------------------------
 
 [PatentsView](http://www.patentsview.org/web/#viz/relationships) is one
-of the [United States Patent and Trademark
-Office](https://en.wikipedia.org/wiki/United_States_Patent_and_Trademark_Office)'s
-new initiatives intended to increase the usability and value of patent
-data. One feature of this project is a publicly accessible API that
-makes it easy to programmatically interact with the data. A few of the
-reasons why I like the API (and PatentsView more generally):
+of USPTO's new initiatives intended to increase the usability and value
+of patent data. One feature of this project is a publicly accessible API
+that makes it easy to programmatically interact with the data. A few of
+the reasons why I like the API (and PatentsView more generally):
 
-<!-- TO REVIEWER: Do you think I should drop the discussion of why i like patentsview? -->
 -   The API is free (no credential required) and currently doesn't
     impose rate limits/bandwidth throttling.
 -   The project offers [bulk downloads of patent
@@ -126,7 +110,7 @@ write the query directly and pass it as a string to `search_pv()`:
     library(patentsview)
 
     qry_1 <- '{"_gt":{"patent_year":2007}}'
-    search_pv(query = qry_1, fields = NULL) # # This will retrieve a default set of fields
+    search_pv(query = qry_1, fields = NULL) # This will retrieve a default set of fields
     #> $data
     #> #### A list with a single data frame on the patent data level:
     #> 
@@ -167,7 +151,6 @@ write the query directly and pass it as a string to `search_pv()`:
 queries search for patents in USPTO that were published after 2007.
 There are three gotchas to look out for when writing a query:
 
-<!-- TO REVIEWER: Do you think I should drop the remaining part of this section? -->
 1.  **Field is queryable.** The API has 7 endpoints (the default
     endpoint is "patents"), and each endpoint has its own set of fields
     that you can filter on. *The fields that you can filter on are not
@@ -277,8 +260,9 @@ these are retrievable:
 Example
 -------
 
-Let's look at a quick example of analyzing the patent data. We'll look
-at patents that are classified below the [H04L63/00 CPC
+Let's look at a quick example of pulling and analyzing patent data.
+We'll look at patents from the last ten years that are classified below
+the [H04L63/00 CPC
 code](https://worldwide.espacenet.com/classification#!/CPC=H04L63/02).
 Patents in this area relate to "network architectures or network
 communication protocols for separating internal from external
@@ -305,7 +289,7 @@ interest, though getting a sense of their hierarchy can be tricky.
       get_fields(endpoint = "patents", groups = c("assignees", "cpcs"))
     )
 
-    # Send request
+    # Send HTTP request to API's server:
     pv_res <- search_pv(query = query, fields = fields, all_pages = TRUE)
 
 1.  See where the patents are coming from (geographically)
@@ -338,7 +322,7 @@ interest, though getting a sense of their hierarchy can be tricky.
       addCircleMarkers(lng = ~assignee_longitude, lat = ~assignee_latitude,
                        popup = ~popup, ~sqrt(num_pats), color = "yellow")
 
-![](2017-xx-xx-patentsview_files/figure-markdown_strict/unnamed-chunk-9-1.png)
+![](2017-09-12-patentsview_files/figure-markdown_strict/unnamed-chunk-9-1.png)
 
 <br>
 
@@ -376,12 +360,11 @@ interest, though getting a sense of their hierarchy can be tricky.
       scale_x_continuous("\nPublication year", limits = c(2007, 2016), 
                          breaks = 2007:2016) +
       scale_y_continuous("Patents\n", limits = c(0, 700)) +
-      ylab("Patents\n") +
       scale_colour_manual("", values = brewer.pal(5, "Set2")) +
       theme_bw() + # theme inspired by https://hrbrmstr.github.io/hrbrthemes/
       theme(panel.border = element_blank(), axis.ticks = element_blank())
 
-![](2017-xx-xx-patentsview_files/figure-markdown_strict/unnamed-chunk-10-1.png)
+![](2017-09-12-patentsview_files/figure-markdown_strict/unnamed-chunk-10-1.png)
 
 Learning more
 -------------
@@ -392,20 +375,21 @@ vignettes](https://ropensci.github.io/patentsview/articles/citation-networks.htm
 on the package's website. If you're just interested in `search_pv()`,
 there are
 [examples](https://ropensci.github.io/patentsview/articles/examples.html)
-on the site for that as well.
+on the site for that as well. To contribute to the package or report an
+issue, check out the [issues page on
+GitHub](https://github.com/ropensci/patentsview/issues).
 
 Acknowledgments
 ---------------
 
-<!-- TO REVIEWER: Should I use these people's personal websites or GitHub pages? -->
 I'd like to thank the package's two reviewers, [Paul
 Oldham](https://github.com/poldham) and [Verena
-Haunschmid](https://github.com/expectopatronum), for taking the time to
-review the package and providing helpful feedback. I'd also like to
-thank [Maëlle Salmon](https://github.com/maelle) for shepherding the
-package along the rOpenSci review process, as well [Scott
-Chamberlain](https://github.com/sckott) and [Stefanie
-Butland](https://github.com/stefaniebutland) for their miscellaneous
+Haunschmid](http://blog.haunschmid.name/), for taking the time to review
+the package and providing helpful feedback. I'd also like to thank
+[Maëlle Salmon](http://www.masalmon.eu/) for shepherding the package
+along the rOpenSci review process, as well [Scott
+Chamberlain](https://scottchamberlain.info/) and [Stefanie
+Butland](https://twitter.com/stefaniebutland) for their miscellaneous
 help.
 
 [1] This is both good and bad, as there are errors in the
@@ -414,8 +398,8 @@ was created by the winner of the [PatentsView Inventor Disambiguation
 Technical Workshop](http://www.patentsview.org/workshop/).
 
 [2] These two parameters end up getting translated into a MySQL query by
-the API's server, which then gets sent to a back-end USPTO database.
-`query` and `fields` are used to create the query's `WHERE` and `SELECT`
+the API's server, which then gets sent to a back-end database. `query`
+and `fields` are used to create the query's `WHERE` and `SELECT`
 clauses, respectively.
 
 [3] There is a slightly more in-depth definition that says that these
