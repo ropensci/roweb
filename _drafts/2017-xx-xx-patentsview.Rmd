@@ -55,8 +55,6 @@ Combined, these two things make patents a prime target for data analysis. Howeve
 
 [PatentsView](http://www.patentsview.org/web/#viz/relationships) is one of USPTO's new initiatives intended to increase the usability and value of patent data. One feature of this project is a publicly accessible API that makes it easy to programmatically interact with the data. A few of the reasons why I like the API (and PatentsView more generally):
 
-<!-- TO REVIEWER: Do you think I should drop the discussion of why i like patentsview? -->
-
 * The API is free (no credential required) and currently doesn't impose rate limits/bandwidth throttling.
 * The project offers [bulk downloads of patent data](http://www.patentsview.org/download/) on their website (in a flat file format), for those who want to be closest to the data. 
 * Both the API and the bulk download data contain disambiguated entities such as inventors, assignees, organizations, etc. In other words, the API will tell you whether it thinks that John Smith on patent X is the same person as John Smith on patent Y.[^1]  
@@ -91,7 +89,7 @@ Your query has to use the [PatentsView query language](http://www.patentsview.or
 library(patentsview)
 
 qry_1 <- '{"_gt":{"patent_year":2007}}'
-search_pv(query = qry_1, fields = NULL) # # This will retrieve a default set of fields
+search_pv(query = qry_1, fields = NULL) # This will retrieve a default set of fields
 ```
 
 ...Or you can use the domain specific language (DSL) provided in the `patentsview` package to help you write the query:
@@ -104,8 +102,6 @@ search_pv(query = qry_2)
 ```
 
 `qry_1` and `qry_2` will result in the same HTTP call to the API. Both queries search for patents in USPTO that were published after 2007. There are three gotchas to look out for when writing a query:
-
-<!-- TO REVIEWER: Do you think I should drop the remaining part of this section? -->
 
 1. **Field is queryable.** The API has 7 endpoints (the default endpoint is "patents"), and each endpoint has its own set of fields that you can filter on. _The fields that you can filter on are not necessarily the same as the ones that you can retrieve._ In other words, the fields that you can include in `query` (e.g., `patent_year`) are not necessarily the same as those that you can include in `fields`. To see which fields you can query on, look in the `fieldsdf` data frame (`View(patentsview::fieldsdf)`) for fields that have a "y" indicator in their `can_query` column for your given endpoint.
 2. **Correct data type for field.** If you're filtering on a field in your query, you have to make sure that the value you are filtering on is consistent with the field's data type. For example, `patent_year` has type "integer," so if you pass 2007 as a string then you're going to get an error (`patent_year = 2007` is good, `patent_year = "2007"` is no good). You can find a field's data type in the `fieldsdf` data frame.
@@ -136,7 +132,7 @@ search_pv(
 
 ## Example
 
-Let's look at a quick example of analyzing the patent data. We'll look at patents that are classified below the [H04L63/00 CPC code](https://worldwide.espacenet.com/classification#!/CPC=H04L63/02). Patents in this area relate to "network architectures or network communication protocols for separating internal from external traffic."[^3] CPC codes offer a quick and dirty way to find patents of interest, though getting a sense of their hierarchy can be tricky.
+Let's look at a quick example of pulling and analyzing patent data. We'll look at patents from the last ten years that are classified below the [H04L63/00 CPC code](https://worldwide.espacenet.com/classification#!/CPC=H04L63/02). Patents in this area relate to "network architectures or network communication protocols for separating internal from external traffic."[^3] CPC codes offer a quick and dirty way to find patents of interest, though getting a sense of their hierarchy can be tricky.
 
 1. Download the data
 
@@ -157,7 +153,7 @@ fields <- c(
   get_fields(endpoint = "patents", groups = c("assignees", "cpcs"))
 )
 
-# Send request
+# Send HTTP request to API's server:
 pv_res <- search_pv(query = query, fields = fields, all_pages = TRUE)
 ```
 
@@ -226,7 +222,6 @@ ggplot(data = data) +
   scale_x_continuous("\nPublication year", limits = c(2007, 2016), 
                      breaks = 2007:2016) +
   scale_y_continuous("Patents\n", limits = c(0, 700)) +
-  ylab("Patents\n") +
   scale_colour_manual("", values = brewer.pal(5, "Set2")) +
   theme_bw() + # theme inspired by https://hrbrmstr.github.io/hrbrthemes/
   theme(panel.border = element_blank(), axis.ticks = element_blank())
@@ -238,10 +233,8 @@ For analysis examples that go into a little more depth, check out the [data appl
 
 ## Acknowledgments
 
-<!-- TO REVIEWER: Should I use these people's personal websites or GitHub pages? -->
-
 I'd like to thank the package's two reviewers, [Paul Oldham](https://github.com/poldham) and [Verena Haunschmid](http://blog.haunschmid.name/), for taking the time to review the package and providing helpful feedback. I'd also like to thank [Maëlle Salmon](http://www.masalmon.eu/) for shepherding the package along the rOpenSci review process, as well [Scott Chamberlain](https://scottchamberlain.info/) and [Stefanie Butland](https://twitter.com/stefaniebutland) for their miscellaneous help.
 
 [^1]: This is both good and bad, as there are errors in the disambiguation. The algorithm that is responsible for the disambiguation was created by the winner of the [PatentsView Inventor Disambiguation Technical Workshop](http://www.patentsview.org/workshop/).
-[^2]: These two parameters end up getting translated into a MySQL query by the API's server, which then gets sent to a back-end USPTO database. `query` and `fields` are used to create the query's `WHERE` and `SELECT` clauses, respectively.
+[^2]: These two parameters end up getting translated into a MySQL query by the API's server, which then gets sent to a back-end database. `query` and `fields` are used to create the query's `WHERE` and `SELECT` clauses, respectively.
 [^3]: There is a slightly more in-depth definition that says that these are patents "related to the (logical) separation of traffic/(sub-) networks to achieve protection." 
