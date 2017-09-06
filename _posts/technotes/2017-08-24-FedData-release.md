@@ -11,7 +11,6 @@ categories:
 topicid: 840
 tags:
   - R
-  - package
   - data-access
   - packages
   - spatial

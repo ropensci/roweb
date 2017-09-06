@@ -5,9 +5,10 @@ title: "Spelling 1.0: quick and effective spell checking in R"
 date: 2017-09-07
 authors:
   - name: Jeroen Ooms
-categories: blog
+categories: technotes
+topicid: 856
 tags:
-- r
+- R
 - packages
 - software
 - spelling
@@ -31,7 +32,7 @@ xlsx       write_xlsx.Rd:6,18
            description:1
 ```
 
-Results may contain false positives, i.e. names or technical jargon which does not appear in the English dictionary. Therefore you can create a WORDLIST file, which serves as a package-specific dictionary of allowed words: 
+Results may contain false positives, i.e. names or technical jargon which does not appear in the English dictionary. Therefore you can create a WORDLIST file, which serves as a package-specific dictionary of allowed words:
 
 ```r
 > spelling::update_wordlist("~/workspace/writexl")
