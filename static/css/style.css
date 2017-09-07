@@ -2486,3 +2486,7 @@ color: #1ABC9C;
 #blimages {
     text-align:center;
 }
+
+pre code{
+  font-size: 0.8em;
+}
