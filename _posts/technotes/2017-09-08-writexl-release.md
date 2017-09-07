@@ -6,6 +6,7 @@ date: 2017-09-08
 authors:
   - name: Jeroen Ooms
 categories: technotes
+topicid: 859
 tags:
 - R
 - packages
