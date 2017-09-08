@@ -1,12 +1,12 @@
 ---
 name: rrricanes
 layout: post_discourcse
-title: "rrricanes to Access Tropical Cyclone Data"
-date: `r format(Sys.time(), "%Y-%m-%d")`
+title: rrricanes to Access Tropical Cyclone Data
 authors:
   - name: Tim Trice
-  - url: http://timtrice.net/
-categories: blog
+    url: http://timtrice.net/
+categories: 
+  - blog
 tags:
   - R
   - community
