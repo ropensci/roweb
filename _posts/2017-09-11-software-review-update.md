@@ -35,7 +35,7 @@ Here, we summarize some of the more important changes to peer review at rOpenSci
 
 ### We've Expanded Our Scope
 
-Our [Aims and Scope][aims] document what types of packages we accept from community contributors. The scope emerges from three main guidelines. First, we accept packages that fit our mission of enabling open and reproducible research. Second we only accept packages that we feel our editors and community of reviewers are competent to review, and third, accept packages for which we can reasonably endorse as improving on existing solutions.  In practice, this last component means that we don't accept  general packages. That's why, for instance, our "data munging" category only applies to packages designed to work with specific scientific data types.
+Our [Aims and Scope][aims] document what types of packages we accept from community contributors. The scope emerges from three main guidelines. First, we accept packages that fit our mission of enabling open and reproducible research. Second, we only accept packages that we feel our editors and community of reviewers are competent to review. Third, we accept packages for which we can reasonably endorse as improving on existing solutions.  In practice, we don't accept  general packages. That's why, for instance, our "data munging" category only applies to packages designed to work with specific scientific data types.
 
 We've refined our focal areas from
 
@@ -60,7 +60,7 @@ You will note that we've removed data visualization. We've had some truly excell
 
 We've also added geospatial and text analysis as areas where we accept packages that might seem more general or methods-y than we would otherwise.  These are areas where we've built, among our staff and reviewers, topic-specific expertise.
 
-Given that we accept packages that improve on existing solutions, in practice we avoid accepting more than one package of similar scope. We've also added [clarifying language][over] about what this entails and how we define overlap with other packages.
+Given that we accept packages that improve on existing solutions, in practice we generally avoid accepting more than one package of similar scope. We've also added [clarifying language][over] about what this entails and how we define overlap with other packages.
 
 We now strongly encourage [pre-submission inquiries][presub] to quickly assess whether the package falls into scope. Some of these lead to suggesting the person submit their package, while others are determined out-of-scope. This reduces effort on all sides for packages that be out-of-scope. Many authors do this prior to completing their package so they can decide whether to tailor their development process to rOpenSci.
 
