@@ -23,41 +23,48 @@ tags:
 
 <!-- open source image taken from: https://upload.wikimedia.org/wikipedia/commons/2/21/Bell_System_switchboard.jpg -->
 <span>
-<div align="center"><img src="../assets/blog-images/2017-10-03-googlelanguager/switchboard.jpg"></div>
+<div align="center"><img src="/assets/blog-images/2017-10-03-googlelanguager/switchboard.jpg"></div>
 </span>
 
-One of the greatest assets human beings possess is the power of speech and language, from which almost all our other accomplishments flow.  To be able to analyse communication offers us a chance to gain a greater understanding of one another. 
+One of the greatest assets human beings possess is the power of speech and language, from which almost all our other accomplishments flow. To be able to analyse communication offers us a chance to gain a greater understanding of one another.
 
-A new tool to help you do that is now available on [`rOpenSci`](https://ropensci.org/) -  [`googleLanguageR`](http://code.markedmondson.me/googleLanguageR/) is an R package that allows you to perform speech-to-text transcription, neural net translation and natural language processing via the [Google Cloud machine learning services](https://cloud.google.com/products/machine-learning/).  
+To help you with this, [`googleLanguageR`](http://code.markedmondson.me/googleLanguageR/) is an R package that allows you to perform speech-to-text transcription, neural net translation and natural language processing via the [Google Cloud machine learning services](https://cloud.google.com/products/machine-learning/).  
 
 An introduction to the package is below, but you can find out more details at the [`googleLanguageR` website](http://code.markedmondson.me/googleLanguageR/).
 
 ## Google's bet
 
-Google predicts that machine learning is to be a fundamental feature of business, and so are looking to position themselves as machine learning infrastructure. 
+Google predicts that machine learning is to be a fundamental feature of business, and so they are looking to become the infrastructure that makes machine learning possible. Metaphorically speaking: If machine learning is electricity, then Google wants to be the pylons carrying it around the country. 
 
 <!-- open source image taken from: https://pixabay.com/en/pylon-sky-electricity-tower-2515429/ -->
 <span>
-<div align="center"><img src="../assets/blog-images/2017-10-03-googlelanguager/pylon.jpg"></div>
+<div align="center"><img src="/assets/blog-images/2017-10-03-googlelanguager/pylon.jpg"></div>
 </span>
 
-To help with that, one advantage Google has is the amount of data it can use to train models.  Twenty years of web crawling has given it an unprecedented amount of data, supplemented in recent years by voice search and utilized by its own machine learning solutions spearheaded by [Deepmind](https://deepmind.com/) and [Tensorflow](https://www.tensorflow.org/). 
+Google may not be the only company with such ambitions, but one advantage Google has is the amount of data it possesses. Twenty years of web crawling has given it an unprecedented corpus to train its models.  In addition, its recent moves into voice and video gives it one of the biggest audio and speech datasets, all of which have been used to help create machine learning applications within its products such as search and Gmail. Further investment in machine learning is shown by Google's purchase of [Deepmind](https://deepmind.com/), a UK based A.I research firm that recently was in the news for defeating the top Go champion with its neural network trained Go bot.  Google has also taken an open-source route with the creation and publication of [Tensorflow](https://www.tensorflow.org/), a leading machine learning framework.
 
-Whilst you can create your own machine learning models using the Tensorflow platform, for those users who haven't the expertise, data or time to do so, Google also offers an increasing range of machine learning APIs that are pre-trained, such as image and video recognition or job search.  `googleLanguageR` wraps the subset of those APIs that are language flavoured - Cloud Speech, Translation and Natural Language.
+Whilst you can create your own machine learning models, for those users who haven't the expertise, data or time to do so, Google also offers an increasing range of machine learning APIs that are pre-trained, such as image and video recognition or job search.  `googleLanguageR` wraps the subset of those machine learning APIs that are language flavoured - Cloud Speech, Translation and Natural Language.
 
-These three APIs were put into one R package since they carry such complementary outputs that can be used in each other's input. For example, you can transcribe a recording of someone speaking in Danish, translate that to English and then perform sentiment or entity analysis of that text.
+Since they carry complementary outputs that can be used in each other's input, all three of the APIs are included in one package. For example, you can transcribe a recording of someone speaking in Danish, translate that to English and then identify how positive or negative the writer felt about its content (sentiment analysis) then identify the most important concepts and objects within the content (entity analysis).
+
 
 ## Motivations
 
-One reason why I started looking at this area was the growth of 'fake news', and its effect on political discourse on social media. I wondered if there was some way to put metrics on how much a news story fuelled one's own bias within your own filter bubble.  By downloading social media posts such as tweets and parsing them through sentiment analysis and entity identification, then comparing that with networks of similar users and the stories they shared, the hope is to be able to judge random news stories and reveal any hidden bias. 
+### Fake news
+
+One reason why I started looking at this area was the growth of 'fake news', and its effect on political discourse on social media. I wondered if there was some way to put metrics on how much a news story fuelled one's own bias within your own filter bubble.  The entity API provides a way to perform entity and sentiment analysis at scale on tweets, and by then comparing different users and news sources preferences the hope is to be able to judge how much they are in agreement with your own bias, views and trusted reputation sources.  
+
+### Make your own Alexa
 
 Another motivating application is the growth of voice commands that will become the primary way of user interface with technology.  Already, [Google reports up to 20% of search in its app](https://www.thinkwithgoogle.com/data-gallery/detail/google-app-voice-search/) is via voice search.  I'd like to be able to say "R, print me out that report for client X".  A Shiny app that records your voice, uploads to the API then parses the return text into actions gives you a chance to create your very own Alexa-like infrastructure. 
 
 <span style="text-align:center">
-<div align="center"><img src="../assets/blog-images/2017-10-03-googlelanguager/alexa.jpg"></div>
+<div align="center"><img src="/assets/blog-images/2017-10-03-googlelanguager/alexa.jpg"></div>
 </span>
 
-*Alexa image from www.amazon.co.uk*
+*The voice activated internet connected speaker, Amazon's Alexa - image from www.amazon.co.uk*
+
+### Translate everything
 
 Finally, I live and work in Denmark.  As Danish is only spoken by less than 6 million people, applications that work in English may not be available in Danish very quickly, if at all.  The API's translation service is the one that made the news in 2016 for ["inventing its own language"](https://research.googleblog.com/2016/09/a-neural-network-for-machine.html), and offers much better English to Danish translations that the free web version and may make services available in Denmark sooner.
 
@@ -71,7 +78,7 @@ After that, you feed in the R objects you want to operate upon.  The `rOpenSci` 
 
 The [Cloud Speech API](http://code.markedmondson.me/googleLanguageR/articles/speech.html) is exposed via the [`gl_speech`](http://code.markedmondson.me/googleLanguageR/reference/gl_speech.html) function. 
 
-It supports multiple audio formats and languages, and you can either feed a sub-60 second audio file firectly, or perform asynchrnous requests for longer audio files.  No transcription service is yet 100%, but to help it out you can also supply `speechContexts` which gives the API clues what certain words mean.
+It supports multiple audio formats and languages, and you can either feed a sub-60 second audio file directly, or perform asynchrnous requests for longer audio files.
 
 Example code:
 
@@ -120,13 +127,13 @@ The [Natural Language API](http://code.markedmondson.me/googleLanguageR/articles
 
 It returns several analysis:
 
-* Entity analysis - Finds named entities (currently proper names and common nouns) in the text along with entity types, salience, mentions for each entity, and other properties. If possible, will also return metadata about that entity such as a Wikipedia URL. 
-* Syntax - Analyzes the syntax of the text and provides sentence boundaries and tokenization along with part of speech tags, dependency trees, and other properties.
-* Sentiment - The overall sentiment of the text, represented by a magnitude [0, +inf] and score between -1.0 (negative sentiment) and 1.0 (positive sentiment)
+* *Entity analysis* - finds named entities (currently proper names and common nouns) in the text along with entity types, salience, mentions for each entity, and other properties. If possible, will also return metadata about that entity such as a Wikipedia URL. 
+* *Syntax* - analyzes the syntax of the text and provides sentence boundaries and tokenization along with part of speech tags, dependency trees, and other properties.
+* *Sentiment* - the overall sentiment of the text, represented by a magnitude [0, +inf] and score between -1.0 (negative sentiment) and 1.0 (positive sentiment)
 
 These are all useful to get an understanding of the meaning of a sentence, and has potentially the greatest number of applications of the APIs featured.  With entity analysis, auto categorisation of text is possible; the syntax returns let you pull out nouns and verbs for parsing into other actions; and the sentiment analysis allows you to get a feeling for emotion within text. 
 
-A demonstration is below:
+A demonstration is below which gives an idea of what output you can generate:
 
 ```r
 library(googleLanguageR)
