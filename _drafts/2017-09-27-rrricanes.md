@@ -1,6 +1,6 @@
 ---
 name: rrricanes
-layout: post_discourcse
+layout: post_discourse
 title: rrricanes to Access Tropical Cyclone Data
 authors:
   - name: Tim Trice
@@ -19,12 +19,7 @@ tags:
   - weather
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, 
-                      fig.width = 7, 
-                      fig.asp = 1, 
-                      fig.align = "center")
-```
+
 
 ## What is rrricanes
 
@@ -130,10 +125,51 @@ We start exploring `rrricanes` by finding a storm (or storms) we wish to analyze
 
 An empty call to the function will return storms for both the Atlantic and East Pacific basin for the current year. 
 
-```{r, message = FALSE}
+
+```r
 library(dplyr)
 library(rrricanes)
 get_storms() %>% print(n = nrow(.))
+```
+
+```
+## # A tibble: 33 x 4
+##     Year                           Name Basin
+##    <dbl>                          <chr> <chr>
+##  1  2017          Tropical Storm Arlene    AL
+##  2  2017            Tropical Storm Bret    AL
+##  3  2017           Tropical Storm Cindy    AL
+##  4  2017       Tropical Depression Four    AL
+##  5  2017             Tropical Storm Don    AL
+##  6  2017           Tropical Storm Emily    AL
+##  7  2017             Hurricane Franklin    AL
+##  8  2017                 Hurricane Gert    AL
+##  9  2017               Hurricane Harvey    AL
+## 10  2017 Potential Tropical Cyclone Ten    AL
+## 11  2017                 Hurricane Irma    AL
+## 12  2017                 Hurricane Jose    AL
+## 13  2017                Hurricane Katia    AL
+## 14  2017                  Hurricane Lee    AL
+## 15  2017                Hurricane Maria    AL
+## 16  2017          Tropical Storm Adrian    EP
+## 17  2017         Tropical Storm Beatriz    EP
+## 18  2017          Tropical Storm Calvin    EP
+## 19  2017                 Hurricane Dora    EP
+## 20  2017               Hurricane Eugene    EP
+## 21  2017             Hurricane Fernanda    EP
+## 22  2017            Tropical Storm Greg    EP
+## 23  2017    Tropical Depression Eight-E    EP
+## 24  2017               Hurricane Hilary    EP
+## 25  2017                Hurricane Irwin    EP
+## 26  2017   Tropical Depression Eleven-E    EP
+## 27  2017            Tropical Storm Jova    EP
+## 28  2017              Hurricane Kenneth    EP
+## 29  2017           Tropical Storm Lidia    EP
+## 30  2017                 Hurricane Otis    EP
+## 31  2017                  Hurricane Max    EP
+## 32  2017                Hurricane Norma    EP
+## 33  2017           Tropical Storm Pilar    EP
+## # ... with 1 more variables: Link <chr>
 ```
 
 Function `get_storms` returns four variables:
@@ -158,7 +194,8 @@ Once we have identified the storms we want to retrieve we can begin working on g
 
 The easiest method to getting storm data is the function `get_storm_data`. This function can take multiple storm archive URLs and return multiple datasets within a list. 
 
-```{r}
+
+```r
 ds <- get_storms() %>% 
   filter(Name == "Hurricane Harvey") %>% 
   pull(Link) %>% 
@@ -173,20 +210,141 @@ An additional option is `rrricanes.working_msg`; FALSE by default. This option w
 
 At this point, we have a list - `ds` - of dataframes. Each dataframe is named after the product.
 
-```{r}
+
+```r
 names(ds)
+```
+
+```
+## [1] "discus" "fstadv"
 ```
 
 `discus` is one of the products that isn't parsed; the full text of the product is returned.
 
-```{r}
+
+```r
 str(ds$discus)
+```
+
+```
+## Classes 'tbl_df', 'tbl' and 'data.frame':	43 obs. of  6 variables:
+##  $ Status  : chr  "Potential Tropical Cyclone" "Tropical Storm" "Tropical Storm" "Tropical Storm" ...
+##  $ Name    : chr  "Nine" "Harvey" "Harvey" "Harvey" ...
+##  $ Adv     : num  1 2 3 4 5 6 7 8 9 10 ...
+##  $ Date    : POSIXct, format: "2017-08-17 15:00:00" "2017-08-17 21:00:00" ...
+##  $ Key     : chr  "AL092017" "AL092017" "AL092017" "AL092017" ...
+##  $ Contents: chr  "\nZCZC MIATCDAT4 ALL\nTTAA00 KNHC DDHHMM\n\nPotential Tropical Cyclone Nine Discussion Number   1\nNWS National"| __truncated__ "\nZCZC MIATCDAT4 ALL\nTTAA00 KNHC DDHHMM\n\nTropical Storm Harvey Discussion Number   2\nNWS National Hurricane"| __truncated__ "\nZCZC MIATCDAT4 ALL\nTTAA00 KNHC DDHHMM\n\nTropical Storm Harvey Discussion Number   3\nNWS National Hurricane"| __truncated__ "\nZCZC MIATCDAT4 ALL\nTTAA00 KNHC DDHHMM\n\nTropical Storm Harvey Discussion Number   4\nNWS National Hurricane"| __truncated__ ...
 ```
 
 The `fstadv` dataframes, however, are parsed and contain the bulk of the information for the storm.
 
-```{r}
+
+```r
 str(ds$fstadv)
+```
+
+```
+## Classes 'tbl_df', 'tbl' and 'data.frame':	43 obs. of  117 variables:
+##  $ Status       : chr  "Potential Tropical Cyclone" "Tropical Storm" "Tropical Storm" "Tropical Storm" ...
+##  $ Name         : chr  "Nine" "Harvey" "Harvey" "Harvey" ...
+##  $ Adv          : num  1 2 3 4 5 6 7 8 9 10 ...
+##  $ Date         : POSIXct, format: "2017-08-17 15:00:00" "2017-08-17 21:00:00" ...
+##  $ Key          : chr  "AL092017" "AL092017" "AL092017" "AL092017" ...
+##  $ Lat          : num  13.1 13 13 13.1 13.1 13.4 13.7 13.8 13.9 14.1 ...
+##  $ Lon          : num  -54.1 -55.8 -57.4 -59.1 -61.3 -62.9 -64.1 -65.9 -68.1 -70 ...
+##  $ Wind         : num  30 35 35 35 35 35 35 35 35 30 ...
+##  $ Gust         : num  40 45 45 45 45 45 45 45 45 40 ...
+##  $ Pressure     : num  1008 1004 1005 1004 1005 ...
+##  $ PosAcc       : num  30 30 30 30 30 40 40 30 30 30 ...
+##  $ FwdDir       : num  270 270 270 270 270 275 275 275 275 275 ...
+##  $ FwdSpeed     : num  15 16 16 16 18 18 16 18 19 19 ...
+##  $ Eye          : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ SeasNE       : num  NA 60 60 60 75 150 60 60 45 NA ...
+##  $ SeasSE       : num  NA 0 0 0 0 0 0 0 0 NA ...
+##  $ SeasSW       : num  NA 0 0 0 0 0 0 0 0 NA ...
+##  $ SeasNW       : num  NA 60 60 60 60 60 45 60 45 NA ...
+##  $ NE64         : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ SE64         : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ SW64         : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ NW64         : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ NE50         : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ SE50         : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ SW50         : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ NW50         : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ NE34         : num  NA 30 50 50 60 60 60 60 0 NA ...
+##  $ SE34         : num  NA 0 0 0 0 0 0 0 0 NA ...
+##  $ SW34         : num  NA 0 0 0 0 0 0 0 0 NA ...
+##  $ NW34         : num  NA 30 50 50 60 60 60 60 60 NA ...
+##  $ Hr12FcstDate : POSIXct, format: "2017-08-18 00:00:00" "2017-08-18 06:00:00" ...
+##  $ Hr12Lat      : num  13.1 13.1 13.2 13.2 13.3 13.6 14 14 14.1 14.3 ...
+##  $ Hr12Lon      : num  -56.4 -58.3 -59.9 -61.7 -63.8 -65.7 -66.8 -68.7 -70.9 -73 ...
+##  $ Hr12Wind     : num  30 35 35 35 35 35 35 35 35 30 ...
+##  $ Hr12Gust     : num  40 45 45 45 45 45 45 45 45 40 ...
+##  $ Hr12NE64     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr12SE64     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr12SW64     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr12NW64     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr12NE50     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr12SE50     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr12SW50     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr12NW50     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr12NE34     : num  NA 30 50 50 60 60 60 60 60 NA ...
+##  $ Hr12SE34     : num  NA 0 0 0 0 0 0 0 0 NA ...
+##  $ Hr12SW34     : num  NA 0 0 0 0 0 0 0 0 NA ...
+##  $ Hr12NW34     : num  NA 30 50 50 60 60 60 60 60 NA ...
+##  $ Hr24FcstDate : POSIXct, format: "2017-08-18 12:00:00" "2017-08-18 18:00:00" ...
+##  $ Hr24Lat      : num  13.2 13.4 13.6 13.5 13.6 13.9 14.3 14.3 14.4 14.6 ...
+##  $ Hr24Lon      : num  -59.8 -61.6 -63.3 -65.2 -67.3 -69.3 -70.4 -72.7 -74.9 -77 ...
+##  $ Hr24Wind     : num  35 40 40 40 40 40 40 40 40 35 ...
+##  $ Hr24Gust     : num  45 50 50 50 50 50 50 50 50 45 ...
+##  $ Hr24NE64     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr24SE64     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr24SW64     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr24NW64     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr24NE50     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr24SE50     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr24SW50     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr24NW50     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr24NE34     : num  50 40 50 50 60 60 60 60 60 60 ...
+##  $ Hr24SE34     : num  0 0 0 0 30 0 0 0 0 0 ...
+##  $ Hr24SW34     : num  0 0 0 0 30 0 0 0 0 0 ...
+##  $ Hr24NW34     : num  50 40 50 50 60 60 60 60 60 60 ...
+##  $ Hr36FcstDate : POSIXct, format: "2017-08-19 00:00:00" "2017-08-19 06:00:00" ...
+##  $ Hr36Lat      : num  13.5 13.7 13.9 13.9 14 14.2 14.5 14.6 14.9 15.2 ...
+##  $ Hr36Lon      : num  -63.2 -65.1 -67 -68.8 -71.1 -73 -74.3 -76.7 -78.7 -80.5 ...
+##  $ Hr36Wind     : num  40 45 45 40 40 40 40 45 45 40 ...
+##  $ Hr36Gust     : num  50 55 55 50 50 50 50 55 55 50 ...
+##  $ Hr36NE64     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr36SE64     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr36SW64     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr36NW64     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr36NE50     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr36SE50     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr36SW50     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr36NW50     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Hr36NE34     : num  60 60 60 60 60 60 60 70 70 60 ...
+##  $ Hr36SE34     : num  0 30 30 30 30 0 0 0 0 0 ...
+##  $ Hr36SW34     : num  0 30 30 30 30 0 0 0 0 0 ...
+##  $ Hr36NW34     : num  60 60 60 60 60 60 60 70 70 60 ...
+##  $ Hr48FcstDate : POSIXct, format: "2017-08-19 12:00:00" "2017-08-19 18:00:00" ...
+##  $ Hr48Lat      : num  13.9 14 14.1 14.1 14.3 14.5 14.8 15.2 15.7 16 ...
+##  $ Hr48Lon      : num  -66.7 -68.8 -70.9 -72.7 -75 -76.7 -78.1 -80.1 -82.4 -83.8 ...
+##  $ Hr48Wind     : num  45 45 50 50 50 45 45 50 50 45 ...
+##  $ Hr48Gust     : num  55 55 60 60 60 55 55 60 60 55 ...
+##  $ Hr48NE50     : num  NA NA 30 30 30 NA NA 30 30 NA ...
+##  $ Hr48SE50     : num  NA NA 0 0 0 NA NA 0 0 NA ...
+##  $ Hr48SW50     : num  NA NA 0 0 0 NA NA 0 0 NA ...
+##  $ Hr48NW50     : num  NA NA 30 30 30 NA NA 30 30 NA ...
+##  $ Hr48NE34     : num  60 60 60 60 70 60 60 90 90 70 ...
+##  $ Hr48SE34     : num  30 30 30 30 30 30 0 50 50 0 ...
+##  $ Hr48SW34     : num  30 30 30 30 30 30 0 40 40 0 ...
+##  $ Hr48NW34     : num  60 60 60 60 70 60 60 70 70 70 ...
+##  $ Hr72FcstDate : POSIXct, format: "2017-08-20 12:00:00" "2017-08-20 18:00:00" ...
+##  $ Hr72Lat      : num  14.5 14.5 14.8 15 15 15.5 16.5 17 17.5 18 ...
+##  $ Hr72Lon      : num  -74.5 -76.5 -78.6 -80.2 -82 -83.5 -84.7 -86.5 -88 -89 ...
+##  $ Hr72Wind     : num  55 55 60 60 60 60 55 55 60 45 ...
+##  $ Hr72Gust     : num  65 65 75 75 75 75 65 65 75 55 ...
+##   [list output truncated]
 ```
 
 Each product can also be accessed on its own. For example, if you only wish to view `discus` products, use the `get_discus` function. `fstadv` products can be accessed with `get_fstadv`. Every products specific function is preceeded by `get_`. 
@@ -211,8 +369,21 @@ If a storm is not expected to survive the full forecast period, then only releva
 
 We use `tidy_fcst` to return these forecast points in a tidy fashion from `fstadv`.
 
-```{r}
+
+```r
 str(tidy_fcst(ds$fstadv))
+```
+
+```
+## Classes 'tbl_df', 'tbl' and 'data.frame':	283 obs. of  8 variables:
+##  $ Key     : chr  "AL092017" "AL092017" "AL092017" "AL092017" ...
+##  $ Adv     : num  1 1 1 1 1 1 1 2 2 2 ...
+##  $ Date    : POSIXct, format: "2017-08-17 15:00:00" "2017-08-17 15:00:00" ...
+##  $ FcstDate: POSIXct, format: "2017-08-18 00:00:00" "2017-08-18 12:00:00" ...
+##  $ Lat     : num  13.1 13.2 13.5 13.9 14.5 15.5 17 13.1 13.4 13.7 ...
+##  $ Lon     : num  -56.4 -59.8 -63.2 -66.7 -74.5 -82 -87.5 -58.3 -61.6 -65.1 ...
+##  $ Wind    : num  30 35 40 45 55 65 65 35 40 45 ...
+##  $ Gust    : num  40 45 50 55 65 80 80 45 50 55 ...
 ```
 
 Wind radius values are issued with parameters of 34, 50 and 64. These values are the radius to which minimum one-minute sustained winds can be expected or exist.
@@ -223,18 +394,68 @@ Wind radius values are further seperated by quadrant; NE (northeast), SE, SW and
 
 When appropriate, a forecast/advisory product will contain these values for the current position and for each forecast position. Use `tidy_wr` and `tidy_fcst_wr`, respectively, for these variables.
 
-```{r}
+
+```r
 str(tidy_wr(ds$fstadv))
 ```
 
-```{r}
+```
+## Classes 'tbl_df', 'tbl' and 'data.frame':	56 obs. of  8 variables:
+##  $ Key      : chr  "AL092017" "AL092017" "AL092017" "AL092017" ...
+##  $ Adv      : num  2 3 4 5 6 7 8 9 15 16 ...
+##  $ Date     : POSIXct, format: "2017-08-17 21:00:00" "2017-08-18 03:00:00" ...
+##  $ WindField: num  34 34 34 34 34 34 34 34 34 34 ...
+##  $ NE       : num  30 50 50 60 60 60 60 0 100 80 ...
+##  $ SE       : num  0 0 0 0 0 0 0 0 0 30 ...
+##  $ SW       : num  0 0 0 0 0 0 0 0 0 20 ...
+##  $ NW       : num  30 50 50 60 60 60 60 60 50 50 ...
+```
+
+
+```r
 str(tidy_fcst_wr(ds$fstadv))
+```
+
+```
+## Classes 'tbl_df', 'tbl' and 'data.frame':	246 obs. of  9 variables:
+##  $ Key      : chr  "AL092017" "AL092017" "AL092017" "AL092017" ...
+##  $ Adv      : num  1 1 1 1 1 2 2 2 2 2 ...
+##  $ Date     : POSIXct, format: "2017-08-17 15:00:00" "2017-08-17 15:00:00" ...
+##  $ FcstDate : POSIXct, format: "2017-08-18 12:00:00" "2017-08-19 00:00:00" ...
+##  $ WindField: num  34 34 34 34 50 34 34 34 34 34 ...
+##  $ NE       : num  50 60 60 80 30 30 40 60 60 80 ...
+##  $ SE       : num  0 0 30 40 0 0 0 30 30 40 ...
+##  $ SW       : num  0 0 30 40 0 0 0 30 30 40 ...
+##  $ NW       : num  50 60 60 80 30 30 40 60 60 80 ...
 ```
 
 Lastly, you may only want to focus on current storm details. For this, we use `tidy_fstadv`:
 
-```{r}
+
+```r
 str(tidy_fstadv(ds$fstadv))
+```
+
+```
+## Classes 'tbl_df', 'tbl' and 'data.frame':	43 obs. of  18 variables:
+##  $ Key     : chr  "AL092017" "AL092017" "AL092017" "AL092017" ...
+##  $ Adv     : num  1 2 3 4 5 6 7 8 9 10 ...
+##  $ Date    : POSIXct, format: "2017-08-17 15:00:00" "2017-08-17 21:00:00" ...
+##  $ Status  : chr  "Potential Tropical Cyclone" "Tropical Storm" "Tropical Storm" "Tropical Storm" ...
+##  $ Name    : chr  "Nine" "Harvey" "Harvey" "Harvey" ...
+##  $ Lat     : num  13.1 13 13 13.1 13.1 13.4 13.7 13.8 13.9 14.1 ...
+##  $ Lon     : num  -54.1 -55.8 -57.4 -59.1 -61.3 -62.9 -64.1 -65.9 -68.1 -70 ...
+##  $ Wind    : num  30 35 35 35 35 35 35 35 35 30 ...
+##  $ Gust    : num  40 45 45 45 45 45 45 45 45 40 ...
+##  $ Pressure: num  1008 1004 1005 1004 1005 ...
+##  $ PosAcc  : num  30 30 30 30 30 40 40 30 30 30 ...
+##  $ FwdDir  : num  270 270 270 270 270 275 275 275 275 275 ...
+##  $ FwdSpeed: num  15 16 16 16 18 18 16 18 19 19 ...
+##  $ Eye     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ SeasNE  : num  NA 60 60 60 75 150 60 60 45 NA ...
+##  $ SeasSE  : num  NA 0 0 0 0 0 0 0 0 NA ...
+##  $ SeasSW  : num  NA 0 0 0 0 0 0 0 0 NA ...
+##  $ SeasNW  : num  NA 60 60 60 60 60 45 60 45 NA ...
 ```
 
 In release 0.2.1, `tidy_fstadv` will be renamed to `tidy_adv`.
@@ -249,7 +470,8 @@ As with `rrricanes`, `rrricanesdata` is not available in CRAN (nor will be due t
 
 I'll load all datasets with the call:
 
-```{r, message = FALSE}
+
+```r
 library(rrricanesdata)
 data(list = data(package = "rrricanesdata")$results[,3])
 ```
@@ -262,9 +484,12 @@ All core product datasets are available. The dataframes `adv`, `fcst`, `fcst_wr`
 
 You can generate a default plot for the entire globe with `tracking_chart`:
 
-```{r}
+
+```r
 tracking_chart()
 ```
+
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" style="display: block; margin: auto;" />
 
 You may find this handy when examining cyclones that cross basins (from the Atlantic to east Pacific such as Hurricane Otto, 2016).
 
@@ -278,19 +503,28 @@ You may find this handy when examining cyclones that cross basins (from the Atla
 
 We do not see countries and states in the map above because of the ggplot defaults. Let's try it again:
 
-```{r}
+
+```r
 tracking_chart(color = "black", size = 0.1, fill = "white")
 ```
 
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" style="display: block; margin: auto;" />
+
 We can "zoom in" on each basin with helper functions `al_tracking_chart` and `ep_tracking_chart`:
 
-```{r}
+
+```r
 al_tracking_chart(color = "black", size = 0.1, fill = "white")
 ```
 
-```{r}
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" style="display: block; margin: auto;" />
+
+
+```r
 ep_tracking_chart(color = "black", size = 0.1, fill = "white")
 ```
+
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" />
 
 ## GIS Data
 
@@ -316,7 +550,8 @@ All above functions only return URL's to their respective datasets. This was don
 
 Let's go through each of these. First, let's get the `Key` of Hurricane Harvey:
 
-```{r}
+
+```r
 # Remember that ds already and only contains data for Hurricane Harvey
 key <- ds$fstadv %>% pull(Key) %>% first()
 ```
@@ -333,46 +568,229 @@ key <- ds$fstadv %>% pull(Key) %>% first()
 
 If we leave out advisory we get all related datasets for Hurricane Harvey:
 
-```{r}
+
+```r
 x <- gis_advisory(key = key)
 length(x)
+```
+
+```
+## [1] 77
+```
+
+```r
 head(x, n = 5L)
+```
+
+```
+## [1] "http://www.nhc.noaa.gov/gis/forecast/archive/al092017_5day_001.zip" 
+## [2] "http://www.nhc.noaa.gov/gis/forecast/archive/al092017_5day_001A.zip"
+## [3] "http://www.nhc.noaa.gov/gis/forecast/archive/al092017_5day_002.zip" 
+## [4] "http://www.nhc.noaa.gov/gis/forecast/archive/al092017_5day_002A.zip"
+## [5] "http://www.nhc.noaa.gov/gis/forecast/archive/al092017_5day_003.zip"
 ```
 
 As you can see, there is quite a bit (and why the core gis functions only return URLs rather than the actual datasets). Let's trim this down a bit. Sneaking a peek ([cheating](http://www.nhc.noaa.gov/archive/2017/HARVEY_graphics.php?product=5day_cone_with_line_and_wind)) I find advisory 19 seems a good choice.
 
-```{r}
+
+```r
 gis_advisory(key = key, advisory = 19)
+```
+
+```
+## [1] "http://www.nhc.noaa.gov/gis/forecast/archive/al092017_5day_019.zip"
 ```
 
 Good; there is a data package available for this advisory. Once you have confirmed the package you want to retrieve, use `gis_download` to get the data.
 
-```{r}
+
+```r
 gis <- gis_advisory(key = key, advisory = 19) %>% 
   gis_download()
 ```
 
+```
+## OGR data source with driver: ESRI Shapefile 
+## Source: "/var/folders/gs/4khph0xs0436gmd2gdnwsg080000gn/T//Rtmp1wYg2x", layer: "al092017-019_5day_lin"
+## with 1 features
+## It has 7 fields
+## OGR data source with driver: ESRI Shapefile 
+## Source: "/var/folders/gs/4khph0xs0436gmd2gdnwsg080000gn/T//Rtmp1wYg2x", layer: "al092017-019_5day_pgn"
+## with 1 features
+## It has 7 fields
+## OGR data source with driver: ESRI Shapefile 
+## Source: "/var/folders/gs/4khph0xs0436gmd2gdnwsg080000gn/T//Rtmp1wYg2x", layer: "al092017-019_5day_pts"
+## with 8 features
+## It has 23 fields
+## OGR data source with driver: ESRI Shapefile 
+## Source: "/var/folders/gs/4khph0xs0436gmd2gdnwsg080000gn/T//Rtmp1wYg2x", layer: "al092017-019_ww_wwlin"
+## with 5 features
+## It has 8 fields
+```
+
 Let's see what we have.
 
-```{r}
+
+```r
 str(gis)
+```
+
+```
+## List of 4
+##  $ al092017_019_5day_lin:Formal class 'SpatialLinesDataFrame' [package "sp"] with 4 slots
+##   .. ..@ data       :'data.frame':	1 obs. of  7 variables:
+##   .. .. ..$ STORMNAME: chr "Harvey"
+##   .. .. ..$ STORMTYPE: chr "HU"
+##   .. .. ..$ ADVDATE  : chr "1000 PM CDT Thu Aug 24 2017"
+##   .. .. ..$ ADVISNUM : chr "19"
+##   .. .. ..$ STORMNUM : num 9
+##   .. .. ..$ FCSTPRD  : num 120
+##   .. .. ..$ BASIN    : chr "AL"
+##   .. ..@ lines      :List of 1
+##   .. .. ..$ :Formal class 'Lines' [package "sp"] with 2 slots
+##   .. .. .. .. ..@ Lines:List of 1
+##   .. .. .. .. .. ..$ :Formal class 'Line' [package "sp"] with 1 slot
+##   .. .. .. .. .. .. .. ..@ coords: num [1:8, 1:2] -94.6 -95.6 -96.5 -97.1 -97.3 -97.5 -97 -95 25.2 26.1 ...
+##   .. .. .. .. ..@ ID   : chr "0"
+##   .. ..@ bbox       : num [1:2, 1:2] -97.5 25.2 -94.6 29.5
+##   .. .. ..- attr(*, "dimnames")=List of 2
+##   .. .. .. ..$ : chr [1:2] "x" "y"
+##   .. .. .. ..$ : chr [1:2] "min" "max"
+##   .. ..@ proj4string:Formal class 'CRS' [package "sp"] with 1 slot
+##   .. .. .. ..@ projargs: chr "+proj=longlat +a=6371200 +b=6371200 +no_defs"
+##  $ al092017_019_5day_pgn:Formal class 'SpatialPolygonsDataFrame' [package "sp"] with 5 slots
+##   .. ..@ data       :'data.frame':	1 obs. of  7 variables:
+##   .. .. ..$ STORMNAME: chr "Harvey"
+##   .. .. ..$ STORMTYPE: chr "HU"
+##   .. .. ..$ ADVDATE  : chr "1000 PM CDT Thu Aug 24 2017"
+##   .. .. ..$ ADVISNUM : chr "19"
+##   .. .. ..$ STORMNUM : num 9
+##   .. .. ..$ FCSTPRD  : num 120
+##   .. .. ..$ BASIN    : chr "AL"
+##   .. ..@ polygons   :List of 1
+##   .. .. ..$ :Formal class 'Polygons' [package "sp"] with 5 slots
+##   .. .. .. .. ..@ Polygons :List of 1
+##   .. .. .. .. .. ..$ :Formal class 'Polygon' [package "sp"] with 5 slots
+##   .. .. .. .. .. .. .. ..@ labpt  : num [1:2] -95.4 29.2
+##   .. .. .. .. .. .. .. ..@ area   : num 51.7
+##   .. .. .. .. .. .. .. ..@ hole   : logi FALSE
+##   .. .. .. .. .. .. .. ..@ ringDir: int 1
+##   .. .. .. .. .. .. .. ..@ coords : num [1:1482, 1:2] -94.6 -94.7 -94.7 -94.7 -94.7 ...
+##   .. .. .. .. ..@ plotOrder: int 1
+##   .. .. .. .. ..@ labpt    : num [1:2] -95.4 29.2
+##   .. .. .. .. ..@ ID       : chr "0"
+##   .. .. .. .. ..@ area     : num 51.7
+##   .. ..@ plotOrder  : int 1
+##   .. ..@ bbox       : num [1:2, 1:2] -100 24.9 -91 33
+##   .. .. ..- attr(*, "dimnames")=List of 2
+##   .. .. .. ..$ : chr [1:2] "x" "y"
+##   .. .. .. ..$ : chr [1:2] "min" "max"
+##   .. ..@ proj4string:Formal class 'CRS' [package "sp"] with 1 slot
+##   .. .. .. ..@ projargs: chr "+proj=longlat +a=6371200 +b=6371200 +no_defs"
+##  $ al092017_019_5day_pts:Formal class 'SpatialPointsDataFrame' [package "sp"] with 5 slots
+##   .. ..@ data       :'data.frame':	8 obs. of  23 variables:
+##   .. .. ..$ ADVDATE  : chr [1:8] "1000 PM CDT Thu Aug 24 2017" "1000 PM CDT Thu Aug 24 2017" "1000 PM CDT Thu Aug 24 2017" "1000 PM CDT Thu Aug 24 2017" ...
+##   .. .. ..$ ADVISNUM : chr [1:8] "19" "19" "19" "19" ...
+##   .. .. ..$ BASIN    : chr [1:8] "AL" "AL" "AL" "AL" ...
+##   .. .. ..$ DATELBL  : chr [1:8] "10:00 PM Thu" "7:00 AM Fri" "7:00 PM Fri" "7:00 AM Sat" ...
+##   .. .. ..$ DVLBL    : chr [1:8] "H" "H" "M" "M" ...
+##   .. .. ..$ FCSTPRD  : num [1:8] 120 120 120 120 120 120 120 120
+##   .. .. ..$ FLDATELBL: chr [1:8] "2017-08-24 7:00 PM Thu CDT" "2017-08-25 7:00 AM Fri CDT" "2017-08-25 7:00 PM Fri CDT" "2017-08-26 7:00 AM Sat CDT" ...
+##   .. .. ..$ GUST     : num [1:8] 90 115 135 120 85 45 45 45
+##   .. .. ..$ LAT      : num [1:8] 25.2 26.1 27.2 28.1 28.6 28.5 28.5 29.5
+##   .. .. ..$ LON      : num [1:8] -94.6 -95.6 -96.5 -97.1 -97.3 -97.5 -97 -95
+##   .. .. ..$ MAXWIND  : num [1:8] 75 95 110 100 70 35 35 35
+##   .. .. ..$ MSLP     : num [1:8] 973 9999 9999 9999 9999 ...
+##   .. .. ..$ SSNUM    : num [1:8] 1 2 3 3 1 0 0 0
+##   .. .. ..$ STORMNAME: chr [1:8] "Hurricane Harvey" "Hurricane Harvey" "Hurricane Harvey" "Hurricane Harvey" ...
+##   .. .. ..$ STORMNUM : num [1:8] 9 9 9 9 9 9 9 9
+##   .. .. ..$ STORMSRC : chr [1:8] "Tropical Cyclone" "Tropical Cyclone" "Tropical Cyclone" "Tropical Cyclone" ...
+##   .. .. ..$ STORMTYPE: chr [1:8] "HU" "HU" "MH" "MH" ...
+##   .. .. ..$ TCDVLP   : chr [1:8] "Hurricane" "Hurricane" "Major Hurricane" "Major Hurricane" ...
+##   .. .. ..$ TAU      : num [1:8] 0 12 24 36 48 72 96 120
+##   .. .. ..$ TCDIR    : num [1:8] 315 9999 9999 9999 9999 ...
+##   .. .. ..$ TCSPD    : num [1:8] 9 9999 9999 9999 9999 ...
+##   .. .. ..$ TIMEZONE : chr [1:8] "CDT" "CDT" "CDT" "CDT" ...
+##   .. .. ..$ VALIDTIME: chr [1:8] "25/0000" "25/1200" "26/0000" "26/1200" ...
+##   .. ..@ coords.nrs : num(0) 
+##   .. ..@ coords     : num [1:8, 1:2] -94.6 -95.6 -96.5 -97.1 -97.3 -97.5 -97 -95 25.2 26.1 ...
+##   .. .. ..- attr(*, "dimnames")=List of 2
+##   .. .. .. ..$ : NULL
+##   .. .. .. ..$ : chr [1:2] "coords.x1" "coords.x2"
+##   .. ..@ bbox       : num [1:2, 1:2] -97.5 25.2 -94.6 29.5
+##   .. .. ..- attr(*, "dimnames")=List of 2
+##   .. .. .. ..$ : chr [1:2] "coords.x1" "coords.x2"
+##   .. .. .. ..$ : chr [1:2] "min" "max"
+##   .. ..@ proj4string:Formal class 'CRS' [package "sp"] with 1 slot
+##   .. .. .. ..@ projargs: chr "+proj=longlat +a=6371200 +b=6371200 +no_defs"
+##  $ al092017_019_ww_wwlin:Formal class 'SpatialLinesDataFrame' [package "sp"] with 4 slots
+##   .. ..@ data       :'data.frame':	5 obs. of  8 variables:
+##   .. .. ..$ STORMNAME: chr [1:5] "Harvey" "Harvey" "Harvey" "Harvey" ...
+##   .. .. ..$ STORMTYPE: chr [1:5] "HU" "HU" "HU" "HU" ...
+##   .. .. ..$ ADVDATE  : chr [1:5] "1000 PM CDT Thu Aug 24 2017" "1000 PM CDT Thu Aug 24 2017" "1000 PM CDT Thu Aug 24 2017" "1000 PM CDT Thu Aug 24 2017" ...
+##   .. .. ..$ ADVISNUM : chr [1:5] "19" "19" "19" "19" ...
+##   .. .. ..$ STORMNUM : num [1:5] 9 9 9 9 9
+##   .. .. ..$ FCSTPRD  : num [1:5] 120 120 120 120 120
+##   .. .. ..$ BASIN    : chr [1:5] "AL" "AL" "AL" "AL" ...
+##   .. .. ..$ TCWW     : chr [1:5] "TWA" "HWA" "TWR" "TWR" ...
+##   .. ..@ lines      :List of 5
+##   .. .. ..$ :Formal class 'Lines' [package "sp"] with 2 slots
+##   .. .. .. .. ..@ Lines:List of 1
+##   .. .. .. .. .. ..$ :Formal class 'Line' [package "sp"] with 1 slot
+##   .. .. .. .. .. .. .. ..@ coords: num [1:3, 1:2] -97.7 -97.4 -97.2 24.3 25.2 ...
+##   .. .. .. .. ..@ ID   : chr "0"
+##   .. .. ..$ :Formal class 'Lines' [package "sp"] with 2 slots
+##   .. .. .. .. ..@ Lines:List of 1
+##   .. .. .. .. .. ..$ :Formal class 'Line' [package "sp"] with 1 slot
+##   .. .. .. .. .. .. .. ..@ coords: num [1:3, 1:2] -97.2 -97.2 -97.3 26 26.1 ...
+##   .. .. .. .. ..@ ID   : chr "1"
+##   .. .. ..$ :Formal class 'Lines' [package "sp"] with 2 slots
+##   .. .. .. .. ..@ Lines:List of 1
+##   .. .. .. .. .. ..$ :Formal class 'Line' [package "sp"] with 1 slot
+##   .. .. .. .. .. .. .. ..@ coords: num [1:3, 1:2] -97.2 -97.2 -97.3 26 26.1 ...
+##   .. .. .. .. ..@ ID   : chr "2"
+##   .. .. ..$ :Formal class 'Lines' [package "sp"] with 2 slots
+##   .. .. .. .. ..@ Lines:List of 1
+##   .. .. .. .. .. ..$ :Formal class 'Line' [package "sp"] with 1 slot
+##   .. .. .. .. .. .. .. ..@ coords: num [1:10, 1:2] -95.6 -95.3 -95.1 -95.1 -94.8 ...
+##   .. .. .. .. ..@ ID   : chr "3"
+##   .. .. ..$ :Formal class 'Lines' [package "sp"] with 2 slots
+##   .. .. .. .. ..@ Lines:List of 1
+##   .. .. .. .. .. ..$ :Formal class 'Line' [package "sp"] with 1 slot
+##   .. .. .. .. .. .. .. ..@ coords: num [1:16, 1:2] -97.3 -97.3 -97.3 -97.4 -97.4 ...
+##   .. .. .. .. ..@ ID   : chr "4"
+##   .. ..@ bbox       : num [1:2, 1:2] -97.7 24.3 -94.4 29.8
+##   .. .. ..- attr(*, "dimnames")=List of 2
+##   .. .. .. ..$ : chr [1:2] "x" "y"
+##   .. .. .. ..$ : chr [1:2] "min" "max"
+##   .. ..@ proj4string:Formal class 'CRS' [package "sp"] with 1 slot
+##   .. .. .. ..@ projargs: chr "+proj=longlat +a=6371200 +b=6371200 +no_defs"
 ```
 
 We get four spatial dataframes - points, polygons and lines. 
 
-```{r}
+
+```r
 names(gis)
+```
+
+```
+## [1] "al092017_019_5day_lin" "al092017_019_5day_pgn" "al092017_019_5day_pts"
+## [4] "al092017_019_ww_wwlin"
 ```
 
 With the expection of point spatial dataframes (which can be converted to dataframe using `tibble::as_data_frame`, use helper function `shp_to_df` to convert the spatial dataframes to dataframes.
 
 #### Forecast Track
 
-```{r}
+
+```r
 library(ggplot2)
 al_tracking_chart(color = "black", size = 0.1, fill = "white") + 
   geom_path(data = shp_to_df(gis$al092017_019_5day_lin), aes(x = long, y = lat))
 ```
+
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
 
 Use `geom_path` instead of `geom_line` to keep the positions in order.
 
@@ -380,17 +798,32 @@ You can "zoom in" even further using `ggplot2::coord_equal`. For that, we need t
 
 But, we don't want to use the "al092017_019_5day_lin" dataset. Our `gis` dataset contains a forecast cone which expands well beyond the lines dataset.  Take a look:
 
-```{r}
+
+```r
 sp::bbox(gis$al092017_019_5day_lin)
 ```
 
-```{r}
+```
+##     min   max
+## x -97.5 -94.6
+## y  25.2  29.5
+```
+
+
+```r
 sp::bbox(gis$al092017_019_5day_pgn)
+```
+
+```
+##          min       max
+## x -100.01842 -90.96327
+## y   24.86433  33.01644
 ```
 
 So, let's get the bounding box of our forecast cone dataset and zoom in on our map.
 
-```{r}
+
+```r
 bb <- sp::bbox(gis$al092017_019_5day_pgn)
 al_tracking_chart(color = "black", size = 0.1, fill = "white") + 
   geom_path(data = shp_to_df(gis$al092017_019_5day_lin), 
@@ -399,9 +832,12 @@ al_tracking_chart(color = "black", size = 0.1, fill = "white") +
               ylim = c(bb[2,1], bb[2,2]))
 ```
 
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" style="display: block; margin: auto;" />
+
 That's much better. For simplicity I'm going to save the base map, `bp`, without the line plot.
 
-```{r}
+
+```r
 bp <- al_tracking_chart(color = "black", size = 0.1, fill = "white") + 
   coord_equal(xlim = c(bb[1,1], bb[1,2]), 
               ylim = c(bb[2,1], bb[2,2]))
@@ -411,7 +847,8 @@ bp <- al_tracking_chart(color = "black", size = 0.1, fill = "white") +
 
 Forecast points identify each forecast position along with forecast winds and date. Remember that for point spatial dataframes you use `tibble::as_data_frame` rather than `sp_to_df`.
 
-```{r, eval = FALSE}
+
+```r
 bp + 
   geom_point(data = tibble::as_data_frame(gis$al092017_019_5day_pts), 
              aes(x = long, y = lat))
@@ -425,18 +862,29 @@ Error in FUN(X[[i]], ...) : object 'long' not found
 
 Why? The variable `long` does not exist as it does in other GIS datasets; it is `lon`. This is one of the inconsistencies I was referring to previously. Additionally, the variables are all uppercase. 
 
-```{r}
+
+```r
 names(gis$al092017_019_5day_pts)
+```
+
+```
+##  [1] "ADVDATE"   "ADVISNUM"  "BASIN"     "DATELBL"   "DVLBL"    
+##  [6] "FCSTPRD"   "FLDATELBL" "GUST"      "LAT"       "LON"      
+## [11] "MAXWIND"   "MSLP"      "SSNUM"     "STORMNAME" "STORMNUM" 
+## [16] "STORMSRC"  "STORMTYPE" "TCDVLP"    "TAU"       "TCDIR"    
+## [21] "TCSPD"     "TIMEZONE"  "VALIDTIME"
 ```
 
 Let's try it again.
 
-```{r}
+
+```r
 bp + 
   geom_point(data = tibble::as_data_frame(gis$al092017_019_5day_pts), 
              aes(x = LON, y = LAT))
-
 ```
+
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" style="display: block; margin: auto;" />
 
 Better.
 
@@ -446,34 +894,64 @@ A forecast cone identifies the probability of error in a forecast. Forecasting t
 
 Generally, a forecast cone package contains two subsets: 72-hour forecast cone and 120-hour forecast cone. This is identified in the dataset under the variable `FCSTPRD`. Let's take a look at the 72-hour forecast period:
 
-```{r}
+
+```r
 bp + 
   geom_polygon(data = shp_to_df(gis$al092017_019_5day_pgn) %>% 
                  filter(FCSTPRD == 72), 
                aes(x = long, y = lat, color = FCSTPRD))
 ```
 
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-29-1.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" style="display: block; margin: auto;" />
+
 Nothing there!
 
 As mentioned earlier, these are experimental products issued by the NHC and they do contain inconsistencies. To demonstrate, I'll use Hurricane Ike advisory 42.
 
-```{r}
+
+```r
 df <- gis_advisory(key = "AL092008", advisory = 42) %>% 
   gis_download()
+```
 
+```
+## OGR data source with driver: ESRI Shapefile 
+## Source: "/var/folders/gs/4khph0xs0436gmd2gdnwsg080000gn/T//Rtmp1wYg2x", layer: "al092008.042_5day_lin"
+## with 2 features
+## It has 9 fields
+## OGR data source with driver: ESRI Shapefile 
+## Source: "/var/folders/gs/4khph0xs0436gmd2gdnwsg080000gn/T//Rtmp1wYg2x", layer: "al092008.042_5day_pgn"
+## with 2 features
+## It has 9 fields
+## OGR data source with driver: ESRI Shapefile 
+## Source: "/var/folders/gs/4khph0xs0436gmd2gdnwsg080000gn/T//Rtmp1wYg2x", layer: "al092008.042_5day_pts"
+## with 13 features
+## It has 20 fields
+## OGR data source with driver: ESRI Shapefile 
+## Source: "/var/folders/gs/4khph0xs0436gmd2gdnwsg080000gn/T//Rtmp1wYg2x", layer: "al092008.042_ww_wwlin"
+## with 5 features
+## It has 10 fields
+```
+
+```r
 al_tracking_chart(color = "black", size = 0.1, fill = "white") + 
   geom_polygon(data = shp_to_df(df$al092008_042_5day_pgn) %>% 
                  filter(FCSTPRD == 72), 
                   aes(x = long, y = lat))
 ```
 
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-30-1.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" style="display: block; margin: auto;" />
+
 We do, however, have a 120-hour forecast cone for Hurricane Harvey. Let's go ahead and plot that.
 
-```{r}
+
+```r
 bp + 
   geom_polygon(data = gis$al092017_019_5day_pgn, 
                aes(x = long, y = lat), alpha = 0.15)
 ```
+
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-31-1.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" style="display: block; margin: auto;" />
 
 It's an odd-looking forecast cone, for sure. But this demonstrates the entire area that Harvey could have potentially traveled. 
 
@@ -481,15 +959,19 @@ It's an odd-looking forecast cone, for sure. But this demonstrates the entire ar
 
 Our last dataset in this package is "al092017_09_ww_wlin". These are the current watches and warnings in effect. This is a spatial lines dataframe that needs `shp_to_df`. Again, we use `geom_path` instead of `geom_line`. And we want to group our paths by the variable `TCWW`.
 
-```{r}
+
+```r
 bp + 
   geom_path(data = shp_to_df(gis$al092017_019_ww_wwlin), 
             aes(x = long, y = lat, group = group, color = TCWW), size = 1)
 ```
 
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-32-1.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" style="display: block; margin: auto;" />
+
 The paths won't follow our coastlines exactly but you get the idea. The abbreviations don't really give much information, either. Convert `TCWW` to factor and provide better labels for your legend.
 
-```{r}
+
+```r
 ww_wlin <- shp_to_df(gis$al092017_019_ww_wwlin)
 ww_wlin$TCWW <- factor(ww_wlin$TCWW, 
                               levels = c("TWA", "TWR", "HWA", "HWR"), 
@@ -502,6 +984,8 @@ bp +
   geom_path(data = ww_wlin, 
             aes(x = long, y = lat, group = group, color = TCWW), size = 1)
 ```
+
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-33-1.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" style="display: block; margin: auto;" />
 
 See [Forecast/Adivsory GIS](https://ropensci.github.io/rrricanes/articles/articles/forecast_advisory.html) on the `rrricanes` website for an example of putting all of this data together in one map.
 
@@ -521,36 +1005,76 @@ The `products` parameter expects a list of values for each product. For esurge p
 
 Let's see if any esurge products exist for Harvey.
 
-```{r}
+
+```r
 length(gis_prob_storm_surge(key = key, 
                             products = list("esurge" = seq(10, 50, by = 10))))
 ```
 
+```
+## [1] 150
+```
+
 And psurge:
 
-```{r}
+
+```r
 length(gis_prob_storm_surge(key = key, products = list("psurge" = 0:20)))
+```
+
+```
+## [1] 630
 ```
 
 So, we have access to a ton of data here. When discussing `gis_advisory`, we were able to filter by advisory number. With `gis_prob_storm_surge`, this is not an option; we have to use the `datetime` parameter to filter. Let's find the `Date` for advisory 19.
 
-```{r}
+
+```r
 (d <- ds$fstadv %>% filter(Adv == 19) %>% pull(Date))
+```
+
+```
+## [1] "2017-08-25 03:00:00 UTC"
 ```
 
 #### esurge
 
 Now, let's view all esurge products for date only (exlude time).
 
-```{r}
+
+```r
 gis_prob_storm_surge(key = key, 
                      products = list("esurge" = seq(10, 50, by = 10)), 
                      datetime = strftime(d, "%Y%m%d", tz = "UTC"))
 ```
 
+```
+##  [1] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge10_2017082500.zip"
+##  [2] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge10_2017082506.zip"
+##  [3] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge10_2017082512.zip"
+##  [4] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge10_2017082518.zip"
+##  [5] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge20_2017082500.zip"
+##  [6] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge20_2017082506.zip"
+##  [7] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge20_2017082512.zip"
+##  [8] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge20_2017082518.zip"
+##  [9] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge30_2017082500.zip"
+## [10] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge30_2017082506.zip"
+## [11] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge30_2017082512.zip"
+## [12] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge30_2017082518.zip"
+## [13] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge40_2017082500.zip"
+## [14] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge40_2017082506.zip"
+## [15] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge40_2017082512.zip"
+## [16] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge40_2017082518.zip"
+## [17] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge50_2017082500.zip"
+## [18] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge50_2017082506.zip"
+## [19] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge50_2017082512.zip"
+## [20] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge50_2017082518.zip"
+```
+
 That's still quite a bit. We can filter it to more by adding hour to the `datetime` parameter.
 
-```{r, eval = FALSE}
+
+```r
 gis_prob_storm_surge(key = key, 
                      products = list("esurge" = seq(10, 50, by = 10)), 
                      datetime = strftime(d, "%Y%m%d%H", tz = "UTC"))
@@ -568,16 +1092,26 @@ But, this isn't entirely correct. When an advisory package is issued it contains
 
 Let's try it again with the math:
 
-```{r}
+
+```r
 gis_prob_storm_surge(key = key, 
                      products = list("esurge" = seq(10, 50, by = 10)), 
                      datetime = strftime(d - 60 * 60 * 3, "%Y%m%d%H", 
                                          tz = "UTC"))
 ```
 
+```
+## [1] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge10_2017082500.zip"
+## [2] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge20_2017082500.zip"
+## [3] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge30_2017082500.zip"
+## [4] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge40_2017082500.zip"
+## [5] "http://www.nhc.noaa.gov/gis/storm_surge/al092017_esurge50_2017082500.zip"
+```
+
 As I don't want to get all of these datasets, I'll limit my esurge to show surge values with at least a 50% chance of being exceeded:
 
-```{r}
+
+```r
 gis <- gis_prob_storm_surge(key = key, 
                             products = list("esurge" = 50), 
                             datetime = strftime(d - 60 * 60 * 3, "%Y%m%d%H", 
@@ -585,18 +1119,41 @@ gis <- gis_prob_storm_surge(key = key,
   gis_download()
 ```
 
+```
+## OGR data source with driver: ESRI Shapefile 
+## Source: "/var/folders/gs/4khph0xs0436gmd2gdnwsg080000gn/T//Rtmp1wYg2x", layer: "al092017_2017082500_e50"
+## with 97 features
+## It has 2 fields
+```
+
 This will bring us a spatial polygon dataframe. 
 
-```{r}
+
+```r
 df <- shp_to_df(gis$al092017_2017082500_e50)
 bb <- sp::bbox(gis$al092017_2017082500_e50)
 ```
 
-```{r}
+
+```r
 str(df)
 ```
 
-```{r}
+```
+## Classes 'tbl_df', 'tbl' and 'data.frame':	161313 obs. of  9 variables:
+##  $ long   : num  -93.2 -93.2 -93.2 -93.2 -93.2 ...
+##  $ lat    : num  29.9 29.9 29.9 29.9 29.9 ...
+##  $ order  : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ hole   : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
+##  $ piece  : Factor w/ 349 levels "1","2","3","4",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ group  : Factor w/ 7909 levels "0.1","0.2","0.3",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ id     : chr  "0" "0" "0" "0" ...
+##  $ POINTID: int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ TCSRG50: num  0 0 0 0 0 0 0 0 0 0 ...
+```
+
+
+```r
 al_tracking_chart(color = "black", size = 0.1, fill = "white") + 
   geom_polygon(data = df, 
             aes(x = long, y = lat, group = group, color = TCSRG50)) + 
@@ -604,13 +1161,16 @@ al_tracking_chart(color = "black", size = 0.1, fill = "white") +
               ylim = c(bb[2,1], bb[2,2]))
 ```
 
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-43-1.png" title="plot of chunk unnamed-chunk-43" alt="plot of chunk unnamed-chunk-43" style="display: block; margin: auto;" />
+
 This plot tells us that, along the central Texas coast, the expected storm surge along with tides is greater than 7.5 feet and there is a 50% chance of this height being exceeded. 
 
 #### psurge
 
 The psurge product gives us the probabilistic storm surge for a location within the given forecast period. 
 
-```{r}
+
+```r
 gis <- gis_prob_storm_surge(key = key, 
                             products = list("psurge" = 20), 
                             datetime = strftime(d - 60 * 60 * 3, "%Y%m%d%H", 
@@ -618,18 +1178,41 @@ gis <- gis_prob_storm_surge(key = key,
   gis_download()
 ```
 
+```
+## OGR data source with driver: ESRI Shapefile 
+## Source: "/var/folders/gs/4khph0xs0436gmd2gdnwsg080000gn/T//Rtmp1wYg2x", layer: "al092017_2017082500_gt20"
+## with 12 features
+## It has 2 fields
+```
+
 This will bring us a spatial polygon dataframe. 
 
-```{r}
+
+```r
 df <- shp_to_df(gis$al092017_2017082500_gt20)
 bb <- sp::bbox(gis$al092017_2017082500_gt20)
 ```
 
-```{r}
+
+```r
 str(df)
 ```
 
-```{r}
+```
+## Classes 'tbl_df', 'tbl' and 'data.frame':	3293 obs. of  9 variables:
+##  $ long     : num  -96.8 -96.8 -96.8 -96.8 -96.8 ...
+##  $ lat      : num  28.5 28.5 28.4 28.4 28.4 ...
+##  $ order    : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ hole     : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
+##  $ piece    : Factor w/ 54 levels "1","2","3","4",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ group    : Factor w/ 227 levels "0.1","0.2","0.3",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ id       : chr  "0" "0" "0" "0" ...
+##  $ POINTID  : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ PSurge20c: num  1 1 1 1 1 1 1 1 1 1 ...
+```
+
+
+```r
 al_tracking_chart(color = "black", size = 0.1, fill = "white") + 
   geom_polygon(data = df, 
             aes(x = long, y = lat, group = group, color = PSurge20c)) + 
@@ -637,11 +1220,14 @@ al_tracking_chart(color = "black", size = 0.1, fill = "white") +
               ylim = c(bb[2,1], bb[2,2]))
 ```
 
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-47-1.png" title="plot of chunk unnamed-chunk-47" alt="plot of chunk unnamed-chunk-47" style="display: block; margin: auto;" />
+
 This map shows the cumulative probability that a storm surge of greater than 20 feet will be seen within the highlighted regions. 
 
 This particular map doesn't help much as we've zoomed in too far. What may provide use is a list of probability stations as obtained from the NHC. For this, you can use `al_prblty_stations` (`ep_prblty_stations` returns FALSE since, as of this writing, the format is invalid).
 
-```{r}
+
+```r
 stations <- al_prblty_stations()
 
 al_tracking_chart(color = "black", size = 0.1, fill = "white") + 
@@ -652,22 +1238,42 @@ al_tracking_chart(color = "black", size = 0.1, fill = "white") +
               ylim = c(bb[2,1], bb[2,2]))
 ```
 
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-48-1.png" title="plot of chunk unnamed-chunk-48" alt="plot of chunk unnamed-chunk-48" style="display: block; margin: auto;" />
+
 ### gis_windfield
 
 When possible, there may also be a cyclone wind radius dataset for the current and forecast positions. With this function we can resort back to `Key` and an advisory number.
 
-```{r}
+
+```r
 gis <- gis_windfield(key = key, advisory = 19) %>% 
   gis_download()
 ```
 
-```{r}
+```
+## OGR data source with driver: ESRI Shapefile 
+## Source: "/var/folders/gs/4khph0xs0436gmd2gdnwsg080000gn/T//Rtmp1wYg2x", layer: "al092017_2017082503_forecastradii"
+## with 15 features
+## It has 13 fields
+## OGR data source with driver: ESRI Shapefile 
+## Source: "/var/folders/gs/4khph0xs0436gmd2gdnwsg080000gn/T//Rtmp1wYg2x", layer: "al092017_2017082503_initialradii"
+## with 3 features
+## It has 13 fields
+```
+
+
+```r
 names(gis)
+```
+
+```
+## [1] "al092017_2017082503_forecastradii" "al092017_2017082503_initialradii"
 ```
 
 Let's get the bounding box and plot our initialradii dataset.
 
-```{r}
+
+```r
 bb <- sp::bbox(gis$al092017_2017082503_initialradii)
 
 al_tracking_chart(color = "black", size = 0.1, fill = "white") + 
@@ -678,9 +1284,12 @@ al_tracking_chart(color = "black", size = 0.1, fill = "white") +
               ylim = c(bb[2,1], bb[2,2]))
 ```
 
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-51-1.png" title="plot of chunk unnamed-chunk-51" alt="plot of chunk unnamed-chunk-51" style="display: block; margin: auto;" />
+
 And add the forecast wind radii data onto the chart (modifying `bb`):
 
-```{r}
+
+```r
 bb <- sp::bbox(gis$al092017_2017082503_forecastradii)
 
 al_tracking_chart(color = "black", size = 0.1, fill = "white") + 
@@ -694,6 +1303,8 @@ al_tracking_chart(color = "black", size = 0.1, fill = "white") +
   coord_equal(xlim = c(bb[1,1], bb[1,2]), 
               ylim = c(bb[2,1], bb[2,2]))
 ```
+
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-52-1.png" title="plot of chunk unnamed-chunk-52" alt="plot of chunk unnamed-chunk-52" style="display: block; margin: auto;" />
 
 ### gis_wsp
 
@@ -709,33 +1320,100 @@ Wind fields are for 34, 50 and 64 knots. Not all resolutions or windfields will 
 
 Sticking with our variable `d`, let's first make sure there is a dataset that exists for that time.
 
-```{r}
+
+```r
 gis_wsp(datetime = strftime(d - 60 * 60 * 3, format = "%Y%m%d%H", tz = "UTC"))
+```
+
+```
+## [1] "http://www.nhc.noaa.gov/gis/"
 ```
 
 For this article, we'll stick to the higher resolution plot.
 
-```{r}
-gis <- gis_wsp(datetime = strftime(d - 60 * 60 * 3, format = "%Y%m%d%H", 
-                                   tz = "UTC"), 
-               res = 5) %>% 
+> we need a temporarily fixed function to replace `gis_wsp()`, which will be 
+fixed in package soon
+
+
+```r
+gis_wsp_2 <- function(datetime, res = c(5, 0.5, 0.1)) {
+  res <- as.character(res)
+  res <- stringr::str_replace(res, "^5$", "5km")
+  res <- stringr::str_replace(res, "^0.5$", "halfDeg")
+  res <- stringr::str_replace(res, "^0.1$", "tenthDeg")
+  year <- stringr::str_sub(datetime, 0L, 4L)
+  request <- httr::GET("http://www.nhc.noaa.gov/gis/archive_wsp.php", 
+                       query = list(year = year))
+  contents <- httr::content(request, as = "parsed", encoding = "UTF-8")
+  ds <- rvest::html_nodes(contents, xpath = "//a") %>% rvest::html_attr("href") %>% 
+    stringr::str_extract(".+\\.zip$") %>% .[stats::complete.cases(.)]
+  if (nchar(datetime) < 10) {
+    ptn_datetime <- paste0(datetime, "[:digit:]+")
+  } else {
+    ptn_datetime <- datetime
+  }
+  ptn_res <- paste(res, collapse = "|")
+  ptn <- sprintf("%s_wsp_[:digit:]{1,3}hr(%s)", ptn_datetime, 
+                 ptn_res)
+  links <- ds[stringr::str_detect(ds, ptn)]
+  links <- paste0("http://www.nhc.noaa.gov/gis/", links)
+  return(links)
+}
+```
+
+
+
+```r
+gis <- gis_wsp_2(
+  datetime = strftime(d - 60 * 60 * 3, format = "%Y%m%d%H", tz = "UTC"), 
+  res = 5) %>% 
   gis_download()
+```
+
+```
+## OGR data source with driver: ESRI Shapefile 
+## Source: "/var/folders/gs/4khph0xs0436gmd2gdnwsg080000gn/T//Rtmp1wYg2x", layer: "2017082500_wsp34knt120hr_5km"
+## with 11 features
+## It has 1 fields
+## OGR data source with driver: ESRI Shapefile 
+## Source: "/var/folders/gs/4khph0xs0436gmd2gdnwsg080000gn/T//Rtmp1wYg2x", layer: "2017082500_wsp50knt120hr_5km"
+## with 11 features
+## It has 1 fields
+## OGR data source with driver: ESRI Shapefile 
+## Source: "/var/folders/gs/4khph0xs0436gmd2gdnwsg080000gn/T//Rtmp1wYg2x", layer: "2017082500_wsp64knt120hr_5km"
+## with 11 features
+## It has 1 fields
 ```
 
 All of these datasets are spatial polygon dataframes. Again, we will need to convert to dataframe using `shp_to_df`.
 
-```{r}
+
+```r
 bb <- sp::bbox(gis$`2017082500_wsp34knt120hr_5km`)
 ```
 
 Examine the structure.
 
-```{r}
+
+```r
 df <- shp_to_df(gis$`2017082500_wsp34knt120hr_5km`)
 str(df)
 ```
 
-```{r}
+```
+## Classes 'tbl_df', 'tbl' and 'data.frame':	24182 obs. of  8 variables:
+##  $ long      : num  -97.2 -97.2 -97.2 -97.3 -97.3 ...
+##  $ lat       : num  20.3 20.3 20.3 20.3 20.4 ...
+##  $ order     : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ hole      : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
+##  $ piece     : Factor w/ 8 levels "1","2","3","4",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ group     : Factor w/ 52 levels "0.1","0.2","0.3",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ id        : chr  "0" "0" "0" "0" ...
+##  $ PERCENTAGE: chr  "<5%" "<5%" "<5%" "<5%" ...
+```
+
+
+```r
 al_tracking_chart(color = "black", size = 0.1, fill = "white") + 
   geom_polygon(data = df, 
                aes(x = long, y = lat, group = group, fill = PERCENTAGE), 
@@ -744,14 +1422,19 @@ al_tracking_chart(color = "black", size = 0.1, fill = "white") +
               ylim = c(bb[2,1], bb[2,2]))
 ```
 
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-58-1.png" title="plot of chunk unnamed-chunk-58" alt="plot of chunk unnamed-chunk-58" style="display: block; margin: auto;" />
+
 There aren't many ways we can narrow this down other than using arbitrary longitude values. The observations in the dataset do not have a variable identifying which storm each set of values belongs to. So, I'll remove the `coord_equal` call so we're only focused on the Atlantic basin.
 
-```{r}
+
+```r
 al_tracking_chart(color = "black", size = 0.1, fill = "white") + 
   geom_polygon(data = df, 
                aes(x = long, y = lat, group = group, fill = PERCENTAGE), 
                alpha = 0.25)
 ```
+
+<img src="../assets/blog-images/2017-09-27-rrricanes/unnamed-chunk-59-1.png" title="plot of chunk unnamed-chunk-59" alt="plot of chunk unnamed-chunk-59" style="display: block; margin: auto;" />
 
 Of course, you can narrow it down further as you see fit. 
 
@@ -761,7 +1444,8 @@ Do not confuse this GIS dataset with the `wndprb` product or similar `prblty` pr
 
 For active cyclones, you can retrieve all available GIS datasets using `gis_latest`. Note that, unlike the previous GIS functions, this function will return a list of all GIS dataframes available.
 
-```{r}
+
+```r
 gis <- gis_latest()
 ```
 
