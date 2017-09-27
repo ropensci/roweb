@@ -33,7 +33,8 @@ I knew nothing about [Nicholas Tierney](https://github.com/njtierney)'s [`visdat
 
 If you're _not_ familiar with `visdat`, it "provides a quick way for the user to visually examine the structure of their data set, and, more specifically, where and what kinds of data are missing."[^1] With early-stage EDA (exploratory data analysis), you're really trying to get a _feel_ of your data. So, knowing that I couldn't be much help in the _"here's how you could make this faster with C++"_ department, I decided to fully embrace my role as _"naïve user"_.[^2]
 
-#### Questions I kept in mind as ~myself~ resident naïf:
+#### Questions I kept in mind as <del>myself</del>  resident naïf:
+
 * What did I think this thing would do? Did it do it?
 * What are things that scare me off?
 
