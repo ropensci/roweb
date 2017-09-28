@@ -41,7 +41,7 @@ Google predicts that machine learning is to be a fundamental feature of business
 <div align="center"><img src="/assets/blog-images/2017-10-03-googlelanguager/pylon.jpg"></div>
 </span>
 
-Google may not be the only company with such ambitions, but one advantage Google has is the amount of data it possesses. Twenty years of web crawling has given it an unprecedented corpus to train its models.  In addition, its recent moves into voice and video gives it one of the biggest audio and speech datasets, all of which have been used to help create machine learning applications within its products such as search and Gmail. Further investment in machine learning is shown by Google's purchase of [Deepmind](https://deepmind.com/), a UK based A.I research firm that recently was in the news for defeating the top Go champion with its neural network trained Go bot.  Google has also taken an open-source route with the creation and publication of [Tensorflow](https://www.tensorflow.org/), a leading machine learning framework.
+Google may not be the only company with such ambitions, but one advantage Google has is the amount of data it possesses. Twenty years of web crawling has given it an unprecedented corpus to train its models.  In addition, its recent moves into voice and video gives it one of the biggest audio and speech datasets, all of which have been used to help create machine learning applications within its products such as search and Gmail. Further investment in machine learning is shown by Google's purchase of [Deepmind](https://deepmind.com/), a UK based A.I. research firm that recently was in the news for defeating the top Go champion with its neural network trained Go bot.  Google has also taken an open-source route with the creation and publication of [Tensorflow](https://www.tensorflow.org/), a leading machine learning framework.
 
 Whilst you can create your own machine learning models, for those users who haven't the expertise, data or time to do so, Google also offers an increasing range of machine learning APIs that are pre-trained, such as image and video recognition or job search.  `googleLanguageR` wraps the subset of those machine learning APIs that are language flavoured - Cloud Speech, Translation and Natural Language.
 
@@ -72,7 +72,7 @@ Finally, I live and work in Denmark.  As Danish is only spoken by less than 6 mi
 
 To use these APIs within R, you first need to do a one-time setup to create a Google Project, add a credit card and authenticate which is [detailed on the package website](http://code.markedmondson.me/googleLanguageR/#installation).
 
-After that, you feed in the R objects you want to operate upon.  The `rOpenSci` review helped to ensure that this can scale up easily, so that you can feed in large character vectors which the library will parse and rate limit as required.  The functions also work within [tidyverse](https://www.tidyverse.org/) pipe syntax.
+After that, you feed in the R objects you want to operate upon.  The [rOpenSci review](https://github.com/ropensci/onboarding/issues/127) helped to ensure that this can scale up easily, so that you can feed in large character vectors which the library will parse and rate limit as required.  The functions also work within [tidyverse](https://www.tidyverse.org/) pipe syntax.
 
 ### Speech-to-text
 
@@ -97,7 +97,7 @@ gl_speech(my_audio)
 
 The [Cloud Translation API](http://code.markedmondson.me/googleLanguageR/articles/translation.html) lets you translate text via [`gl_translate`](http://code.markedmondson.me/googleLanguageR/reference/gl_translate.html)
 
-As you are charged per character, one tip here if you are working with lots of different languages is to perform detection of language offline first using another `rOpenSci` package, [`cld2`](https://github.com/ropensci/cld2).  That way you can avoid charges for text that is already in your target language i.e. English.
+As you are charged per character, one tip here if you are working with lots of different languages is to perform detection of language offline first using another rOpenSci package, [`cld2`](https://github.com/ropensci/cld2).  That way you can avoid charges for text that is already in your target language i.e. English.
 
 ```r
 library(googleLanguageR)
