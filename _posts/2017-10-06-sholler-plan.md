@@ -23,9 +23,9 @@ As studies of other digital infrastructures have pointed out, developing and dep
 
 As a postdoc with rOpenSci, I have begun a qualitative, ethnographic project to explore the organizational and social processes involved in making open science the norm in two disciplines: astronomy and ecology. I focus on these two disciplines to narrow, isolate, and compare the set of contextual factors (e.g., disciplinary histories, research norms, and the like) that might influence perceptions of open science. Specifically, I aim to answer the following research questions (RQ):
  
-RQ1a: What are the primary motivations of scientists who actively engage with open science infrastructures?
+**RQ1a: What are the primary motivations of scientists who actively engage with open science infrastructures?**
     
-RQ1b: What are the factors that influence resistance to open science among some scientists?
+**RQ1b: What are the factors that influence resistance to open science among some scientists?**
  
 RQ2: What strategies do open science infrastructure leaders use to encourage participation, govern contributions, and overcome resistance to open science infrastructure use?
 a. To what extent do governance strategies balance standardization and flexibility, centralization and decentralization, and voluntary and mandatory contributions?
