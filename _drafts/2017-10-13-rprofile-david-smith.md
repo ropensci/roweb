@@ -17,6 +17,8 @@ tags:
 In this occasional series, we interview someone using a loosely defined set of interview questions for the purpose of “Demystifying the Creative/Development Process of the R Community”. This interview was conducted and prepared by Kelly O'Briant as part of an rOpenSci unconf17 project.
 </div>
 
+<br>
+
 <img src="/assets/blog-images/2017-10-13-rprofile_david_smith/david-smith.jpg" alt="David Smith, R Community Lead at Microsoft" align="left" style="margin: 0px 20px", width="250px">
 
 _David Smith is a Blogger and Community Lead at Microsoft. I had the chance to interview David last May at rOpenSci unconf17. We spoke about his career, the process of working remote within a team, community development/outreach and his personal methods for discovering great content to share and write about._
