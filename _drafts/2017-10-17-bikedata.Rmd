@@ -125,7 +125,7 @@ the primary means of aggregation is in terms of "trip matrices", which are
 square matrices of numbers of trips between all pairs of stations, extracted
 with:
 ```{r, eval = FALSE}
-tm <- bike_tripmat (bikedb = "bikedb", city = "chi")
+trips <- bike_tripmat (bikedb = "bikedb", city = "chi")
 ```
 Note that most parameters are highly flexible in terms of formatting, so pretty
 much anything starting with `"ch"` will be recognised as Chicago. Of course, if
@@ -138,10 +138,10 @@ there can be no guarantee of their accuracy.) These can all be combined in calls
 like the following, which further demonstrates the highly flexible ways of
 specifying the various parameters:
 ```{r, eval = FALSE}
-tm <- bike_tripmat ("bikedb", city = "london, innit",
-                    start_date = 20160101, end_date = "16,02,28",
-                    start_time = 6, end_time = 24,
-                    birth_year = 1980:1990, gender = "f")
+trips <- bike_tripmat ("bikedb", city = "london, innit",
+                       start_date = 20160101, end_date = "16,02,28",
+                       start_time = 6, end_time = 24,
+                       birth_year = 1980:1990, gender = "f")
 ```
 The second mode of aggregation is as daily time series, via the
 `bike_daily_trips()` function. See [the
@@ -152,56 +152,57 @@ further details.
 
 Lots of things. How about examining how far people ride. This requires getting
 the distances between all pairs of docking stations as routed through the street
-network, to yield a distance matrix corresponding to the trip matrix.
-Fortunately, a new R package has just been released to perform exactly that
-task. It's called [`dodgr`](https://cran.r-project.org/package=dodgr) (Distances
-on Directed Graphs). (Disclaimer: It's my package, and this is a shameless plug
-for it - please use it!) Calculating distance matrices is as easy as,
+network, to yield a distance matrix corresponding to the trip matrix. The latest
+version of [`bikedata`](https://github.com/ropensci/bikedata) has a brand new
+function to perform exactly that task, so it's as easy as
 ```{r, eval = FALSE}
-library (dodgr)
-stns <- bike_stations ("bikedb", city = "chicago")
-xy <- stns [, which (names (stns) %in% c ("longitude", "latitude", "stn_id"))]
-dmat <- dodgr_dists (from = xy, to = xy, quiet = FALSE)
+devtools::install_github ("ropensci/bikedata") # to install latest version
+dists <- bike_distmat (bikedb = bikedb, city = "chicago")
+```
+These are distances as routed through the underlying street network, with street
+types prioritised for bicycle travel. The network is extracted from
+OpenStreetMap using the [rOpenSci `osmdata`
+package](https://github.com/ropensci/osmdata), and the distances are calculated
+using a brand new package called
+[`dodgr`](https://cran.r-project.org/package=dodgr) (Distances on Directed
+Graphs). (Disclaimer: It's my package, and this is a shameless plug for it -
+please use it!)
+
+The distance matrix extracted with `bike_distmat` is between all stations listed
+for a given system, which `bike_tripmat` will return trip matrices only between
+those stations in operation over a specified time period. Because systems expand
+over time, the two matrices will generally not be directly comparable, so it is
+necessary to submit both to the `bikedata` function `match_matrices()`:
+```{r, eval = FALSE}
+dim (trips); dim (dists)
 ```
 ```{r, echo = FALSE}
-message (paste0 ("No graph submitted to dodgr_dists; ",
-                 "downloading street network ...  done\n",
-                 "Converting network to dodgr graph ... done\n",
-                 "Calculating shortest paths ... done."))
+c (581, 581)
+c (636, 636)
 ```
-This function may take a minute or two to execute, mostly because it works by
-first downloading the entire street network encompassing those stations (using
-the rOpenSci package `osmdata`). The actual routing throughout the network is
-relatively quick.  Including the `stn_id` columns in `xy` ensures that the rows
-and columns of `dmat` will be labelled by the station ID. These enable the
-distance matrix to be matched to the trip matrix, which is necessary because the
-latter may not include all stations listed by a given system. Trip matrices may
-be extracted as demonstrated above with the `bike_tripmat()` function.  The rows
-and columns of the two matrices can be matched with the following simple
-function:
-```{r}
-match_mats <- function (dmat, tmat)
-{
-    nms <- intersect (rownames (tmat), rownames (dmat))
-    index <- match (nms, rownames (tmat))
-    tmat <- tmat [index, index]
-    index <- match (nms, rownames (dmat))
-    dmat <- dmat [index, index]
-    list (tmat = tmat, dmat = dmat)
-}
+```{r, eval = FALSE}
+mats <- match_matrices (trips, dists)
+trips <- mats$trip
+dists <- mats$dist
+dim (trips); dim (dists)
+```{r, echo = FALSE}
+c (581, 581)
+c (581, 581)
+```
+```{r, eval = FALSE}
+identical (rownames (trips), rownames (dists))
+```
+```{r, echo = FALSE}
+TRUE
 ```
 Distances can then be visually related to trip numbers to reveal their
 distributional form. These matrices contain too many values to plot directly, so
 the `hexbin` package is used here to aggregate in a `ggplot`.
 ```{r, echo = FALSE, eval = FALSE}
-mats <- match_mats (dmat, tmat)
-dmat <- mats$dmat
-tmat <- mats$tmat
-
 library (hexbin)
 library (ggplot2)
-dat <- data.frame (distance = as.vector (dmat),
-                   number = as.vector (tmat))
+dat <- data.frame (distance = as.vector (dists),
+                   number = as.vector (trips))
 ggplot (dat, aes (x = distance, y = number)) +
     stat_binhex(aes(fill = log (..count..))) +
     scale_x_log10 (breaks = c (0.1, 0.5, 1, 2, 5, 10, 20),
@@ -218,7 +219,7 @@ ggsave (file = "chicago.png", width = 2, height = 2, units = "in")
 library (hexbin)
 library (ggplot2)
 dat <- data.frame (distance = as.vector (dmat),
-                   number = as.vector (tmat))
+                   number = as.vector (trips))
 ggplot (dat, aes (x = distance, y = number)) +
     stat_binhex(aes(fill = log (..count..))) +
     scale_x_log10 (breaks = c (0.1, 0.5, 1, 2, 5, 10, 20),
@@ -237,7 +238,7 @@ scales are logarithmic), with most trip distances lying below 5km.  What is the
 "average" distance travelled in Chicago? The easiest way to calculate this is
 as a weighted mean,
 ```{r, eval = FALSE}
-sum (as.vector (dmat) * as.vector (tmat) / sum (tmat), na.rm = TRUE)
+sum (as.vector (dmat) * as.vector (trips) / sum (trips), na.rm = TRUE)
 ```
 ```{r, echo = FALSE}
 2.510285
@@ -254,19 +255,18 @@ dmean <- function (bikedb = "bikedb", city = "chicago")
     tm_memb <- bike_tripmat (bikedb = bikedb, city = city, member = TRUE)
     tm_nomemb <- bike_tripmat (bikedb = bikedb, city = city, member = FALSE)
     stns <- bike_stations (bikedb = bikedb, city = city)
+    dists <- bike_distmat (bikedb = bikedb, city = city)
+    mats <- match_mats (dists, tm_memb)
+    tm_memb <- mats$trip
+    mats <- match_mats (dists, tm_nomemb)
+    tm_nomemb <- mats$trip
+    mats <- match_mats (dists, tm)
+    tm <- mats$trip
+    dists <- mats$dists
 
-    xy <- stns [, which (names (stns) %in% c ("longitude", "latitude", "stn_id"))]
-    dm <- dodgr_dists (from = xy, to = xy, quiet = FALSE)
-
-    tm_memb <- match_mats (dm, tm_memb)$tmat
-    tm_nomemb <- match_mats (dm, tm_nomemb)$tmat
-    mats <- match_mats (dm, tm)
-    dm <- mats$dmat
-    tm <- mats$tmat
-
-    d0 <- sum (as.vector (dm) * as.vector (tm) / sum (tm), na.rm = TRUE)
-    dmemb <- sum (as.vector (dm) * as.vector (tmemb) / sum (t_memb), na.rm = TRUE)
-    dnomemb <- sum (as.vector (dm) * as.vector (tm_nomemb) / sum (tm_nomemb), na.rm = TRUE)
+    d0 <- sum (as.vector (dists) * as.vector (tm) / sum (tm), na.rm = TRUE)
+    dmemb <- sum (as.vector (dists) * as.vector (tmemb) / sum (t_memb), na.rm = TRUE)
+    dnomemb <- sum (as.vector (dists) * as.vector (tm_nomemb) / sum (tm_nomemb), na.rm = TRUE)
     res <- c (d0, dmemb / dnomemb)
     names (res) <- c ("dmean", "ratio_memb_non")
     return (res)
@@ -310,57 +310,123 @@ note that these two measures can't be statistically compared in any direct way,
 because mean distances are also affected by relative numbers of member to
 non-member trips.) These results likely reflect a host of (scientifically)
 interesting cultural and geo-spatial differences between these cities, and
-demonstrate how the `bikedata` package (combined with `dodgr` and `osmdata`) can
-provide unique insight into differences in human behaviour between some of the
-most important cities in the U.S.
+demonstrate how the [`bikedata`](https://github.com/ropensci/bikedata) package
+(combined with [`dodgr`](https://github.com/gmost/dodgr) and
+[`osmdata`](https://github.com/ropensci/osmdata)) can provide unique insight
+into differences in human behaviour between some of the most important cities in
+the U.S.
 
 # visualisation
 
 Many users are likely to want to visualise how people use a given bicycle
-system, and in particular are likely to want to produce maps. This is readily
-done in conjunction with the rOpenSci packages
-[`osmdata`](https://github.com/ropensci/osmdata) for the street network and
-[`stplanr`](https://github.com/ropensci/stplanr) for mapping trip densities onto
-the network, as illustrated at the end of the [`bikedata`
-vignette](https://ropensci.github.io/bikedata/articles/bikedata.html#visualisation-of-bicycle-trips),
-which details the code necessary to produce this map of usage of the Los Angeles
-system:
+system, and in particular are likely to want to produce maps. This is also readily
+done with the [`dodgr` package](https://github.com/gmost/dodgr), which can
+route and aggregate transit flows for a particular mode of transport throughout
+a street network. Let's plot bicycle flows for the Indego System of Philadelphia
+PA. First get the trip matrix, along with the coordinates of all bicycle stations.
+```{r, eval = FALSE}
+devtools::install_github ("gmost/dodgr") # to install latest version
+city <- "ph"
+# store_bikedata (bikedb = bikedb, city = city) # if not already done
+trips <- bike_tripmat (bikedb = bikedb, city = city)
+stns <- bike_stations (bikedb = bikedb, city = city)
+xy <- stns [, which (names (stns) %in% c ("longitude", "latitude"))]
+```
+Flows of cyclists are calculated between those `xy`points, so the `trips` table
+has to match the `stns` table:
+```{r, eval = FALSE}
+indx <- match (stns$stn_id, rownames (trips))
+trips <- trips [indx, indx]
+```
+The [`dodgr` package](https://github.com/gmost/dodgr) can be used to extract the
+underlying street network surrounding those `xy` points (expanded
+here by 50%):
+```{r, eval = FALSE}
+net <- dodgr_streetnet (pts = xy, expand = 0.5) %>%
+    weight_streetnet (wt_profile = "bicycle")
+```
+We then need to align the bicycle station coordinates in `xy` to the nearest
+points (or "vertices") in the street network:
+```{r, eval = FALSE}
+verts <- dodgr_vertices (net)
+pts <- verts$id [match_pts_to_graph (verts, xy)]
+```
+Flows between these points can then mapped onto the underlying street network
+with:
+```{r, eval = FALSE}
+flow <- dodgr_flows (net, from = pts, to = pts, flow = trips) %>%
+    merge_directed_flows ()
+net <- net [flow$edge_id, ]
+net$flow <- flow$flow
+```
+See the [`dodgr` documentation](https://github.com/gmost/dodgr) for further
+details of how this works. We're now ready to plot those flows, but before we
+do, let's overlay them on top of the rivers of Philadelphia, extracted with 
+rOpenSci's [`osmdata` package](https://github.com/ropensci/osmdata).
+```{r, eval = FALSE}
+q <- opq ("Philadelphia pa")
+rivers1 <- q %>%
+    add_osm_feature (key = "waterway", value = "river", value_exact = FALSE) %>%
+    osmdata_sf (quiet = FALSE)
+rivers2 <- q %>%
+    add_osm_feature (key = "natural", value = "water") %>%
+    osmdata_sf (quiet = FALSE)
+rivers <- c (rivers1, rivers2)
+```
+And finally plot the map, using rOpenSci's [`osmplotr`
+package](https://github.com/ropensci/osmplotr) to prepare a base map with the
+underlying rivers, and the `ggplot2::geom_segment()` function to add the line
+segments with colours and widths weighted by bicycle flows.
+```{r, eval = FALSE}
+#gtlibrary (osmplotr)
+require (ggplot2)
+bb <- get_bbox (c (-75.22, 39.91, -75.10, 39.98))
+cols <- colorRampPalette (c ("lawngreen", "red")) (30)
+map <- osm_basemap (bb, bg = "gray10") %>%
+    add_osm_objects (rivers$osm_multipolygons, col = "gray20") %>%
+    add_osm_objects (rivers$osm_lines, col = "gray20") %>%
+    add_colourbar (zlims = range (net$flow / 1000), col = cols)
+map <- map + geom_segment (data = net, size = net$flow / 50000,
+                           aes (x = from_lon, y = from_lat, xend = to_lon, yend = to_lat,
+                                colour = flow, size = flow)) +
+    scale_colour_gradient (low = "lawngreen", high = "red", guide = "none")
+print_osm_map (map)
+```
+```{r, eval = FALSE, echo = FALSE}
+fwd <- 800
+fht <- fwd * diff (bb [2, ]) / diff (bb [1, ])
+print_osm_map (map, file = "ph.png", width = fwd, height = fht, units = "px",
+               dpi = 72)
+```
+<!--- ![](/assets/blog-images/2017-10-17-bikedata/ph.png) --->
+![](ph.png)
 
-<!--- ![](/assets/blog-images/2017-10-17-bikedata/la.png) --->
-![](la.png)
+The colour bar on the right shows thousands of trips, with the map revealing the
+relatively enormous numbers crossing the South Street Bridge over the Schuylkill
+River, leaving most other flows coloured in the lower range of green or yellows.
+This map thus reveals that anyone wanting to see Philadelphia's Indego bikes in
+action without braving the saddle themselves would be best advised to head
+straight for the South Street Bridge.
 
-The code to produce this map is, however, rather protracted, and relies on a
-variety of arguably outdated code required to interface with other packages.
-Plans are afoot to make such plotting much easier, and to incorporate it
-directly within the [`bikedata` package](https://github.com/ropensci/bikedata),
-which brings us to the penultimate point of ...
+# Future plans
 
-# What could be done better?
+Although the [`dodgr` package](https://github.com/gmost/dodgr) great facilitates
+the production of such maps, the code is nevertheless rather protracted, and it
+would probably be very useful to convert much of the code in the preceding
+section to an internal [`bikedata`](https://github.com/ropensci/bikedata)
+function to map trips between pairs of stations onto corresponding flows through
+the underlying street networks.
 
-The previous two sections highlight two particular aspects of the package that
-could be improved:
-
-1. There is definitely a need to incorporate calculation of distance matrices
-   within the package itself, and to ensure that these matrices precisely match
-   corresponding trip matrices, rather than relying on the somewhat unwieldy
-   code above (via the `match_mats()` function).
-2. There is likely also a need to map numbers of trips between pairs of stations
-   directly onto cumulative flow densities throughout the underlying street
-   network. This can be done as illustrated in the [current 
-vignette](https://ropensci.github.io/bikedata/articles/bikedata.html#visualisation-of-bicycle-trips)
-   using the [`stplanr` package](https://github.com/ropensci/stplanr), but could
-   be made easier, and likely incorporated directed within
-   [`bikedata`](https://github.com/ropensci/bikedata).
-3. Building directly from these two points, there is also highly likely to be a
-   need to be able to visualise trip matrices using some kind of internal 
-   [`bikedata`](https://github.com/ropensci/bikedata) function.
-
-How can you help? A great place to start, and one that would really help
-improve the package, is the official [Hacktoberfest
+Beyond that point, and the list of currently open issues awaiting developed on
+the [github repository](https://github.com/ropensci/bikedata/issues), future
+development is likely to depend very much on how users use the package, and on
+what extra features people might want. How can you help? A great place to start
+might be the official [Hacktoberfest
 issue](https://ropensci.org/blog/blog/2017/10/02/hacktoberfest), helping to
 import the next lot of data from [San
-Francisco](https://github.com/ropensci/bikedata/issues/34). See the
-[contributing
+Francisco](https://github.com/ropensci/bikedata/issues/34). Or just use the
+package, and open up a new issue in response to any ideas that might pop up, no
+matter how minor they might seem.  See the [contributing
 guidelines](https://github.com/ropensci/bikedata/blob/master/CONTRIBUTING.md)
 for general advice.
 
