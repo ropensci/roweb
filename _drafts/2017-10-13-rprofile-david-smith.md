@@ -6,7 +6,6 @@ date: 2017-10-13
 authors:
   - name: Kelly O'Briant
     url: https://kellobri.github.io/
-  - name: Stefanie Butland
 tags:
 - R
 - community
