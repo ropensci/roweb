@@ -1,0 +1,1 @@
+This repo is no longer active. If you have an issue with the rOpenSci website, please file an issue here: https://github.com/ropensci/roweb2/issues
